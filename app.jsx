@@ -1753,7 +1753,7 @@ const CALCULATORS = {
     component: "tokuhashi",
   },
 };
-https://www.openevidence.com/
+
 
 
 const CTCAE_SYMPTOMS = [
