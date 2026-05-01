@@ -4,18 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClinGuide — NUH Acute Oncology</title>
+  <style>
+    body { margin: 0; background: #f8f9fa; }
+    #loading { display: flex; align-items: center; justify-content: center; height: 100vh; color: #666; font-size: 16px; font-family: sans-serif; }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="text/babel" src="./app.jsx" data-plugins="transform-modules-umd"></script>
+  <div id="root"><div id="loading">Loading ClinGuide...</div></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.23.3/babel.min.js"></script>
+
   <script>
-    window.addEventListener('load', function () {
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(React.createElement(App));
-    });
+    fetch('./app.jsx')
+      .then(r => r.text())
+      .then(code => {
+        // Remove import statement - we use global React instead
+        const cleaned = code.replace(/^import\s+\{[^}]+\}\s+from\s+['"]react['"];?\n?/m, '');
+        // Add hook aliases at top
+        const withHooks = 'const {useState,useEffect,useRef,useCallback,useMemo}=React;\n' + cleaned;
+        const transformed = Babel.transform(withHooks, {
+          presets: ['react'],
+          filename: 'app.jsx'
+        }).code;
+        // Execute in global scope so App becomes available
+        const script = document.createElement('script');
+        script.textContent = transformed;
+        document.head.appendChild(script);
+        // Render
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+      })
+      .catch(err => {
+        document.getElementById('root').innerHTML =
+          '<div style="padding:40px;color:red;font-family:monospace">' +
+          '<h2>Error loading app</h2><pre>' + err.message + '</pre></div>';
+        console.error(err);
+      });
   </script>
 </body>
 </html>
