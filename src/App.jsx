@@ -40,8 +40,8 @@ const SITES = [
           { label: "Vancomycin Dosing (NUH)", url: "https://clinicalportal.nuh.nhs.uk/vancomycin", description: "NUH vancomycin dosing and monitoring calculator" },
           { label: "Gentamicin Single Dose (NUH)", url: "https://clinicalportal.nuh.nhs.uk/gentamicin", description: "Single-dose gentamicin calculator for high-risk sepsis" },
         ],
-        pdfUrl: "https://www.nuh.nhs.uk/guidelines/neutropenic-sepsis",
-        portalUrl: "https://clinicalportal.nuh.nhs.uk/neutropenic-sepsis",
+        pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=775fd63ed18bd2297398cbaab940c0cb",
+        portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=775fd63ed18bd2297398cbaab940c0cb",
         updated: "July 2027 (review)",
         sections: [
           {
