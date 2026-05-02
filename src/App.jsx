@@ -2851,8 +2851,7 @@ function SinsCalculator() {
             <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
               {item.options.map((opt, i) => (
                 <button key={i} onClick={() => setAnswers(a => ({ ...a, [item.id]: opt.score }))}
-                  style={{ padding: "8px 12px", border: "none", borderBottom: i < item.options.length - 1 ? "1px solid var(--border-light)" : "none", background: answers[item.id] === opt.score ? "#e8f4f8" : "var(--surface)", color: answers[item.id] === opt.score ? "#1a6b8a" : "var(--text-secondary)", fontSize: 12.5, cursor: "pointer", transition: "all 0.15s", fontFamily: "DM Sans, sans-serif", fontWeight: answers[item.id] === opt.score ? 600 : 400, display: "flex", alignItems: "left
-                    ", justifyContent: "space-between", textAlign: "left" }}
+                  style={{ padding: "8px 12px", border: "none", borderBottom: i < item.options.length - 1 ? "1px solid var(--border-light)" : "none", background: answers[item.id] === opt.score ? "#e8f4f8" : "var(--surface)", color: answers[item.id] === opt.score ? "#1a6b8a" : "var(--text-secondary)", fontSize: 12.5, cursor: "pointer", transition: "all 0.15s", fontFamily: "DM Sans, sans-serif", fontWeight: answers[item.id] === opt.score ? 600 : 400, display: "flex", alignItems: "center", justifyContent: "space-between", textAlign: "left" }}
                 >
                   <span>{opt.label}</span>
                   <span style={{ fontSize: 11, fontWeight: 700, opacity: 0.8, flexShrink: 0, marginLeft: 8 }}>{opt.score} pts</span>
