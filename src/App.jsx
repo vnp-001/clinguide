@@ -2207,12 +2207,151 @@ const SITES = [
             id: "pall-pain",
             title: "Cancer Pain Management",
             category: "Symptom Control",
-            summary: "WHO analgesic ladder application, opioid titration, breakthrough dosing, and rotation principles. Covers oral, subcutaneous, and transdermal routes.",
-            tags: ["WHO Ladder", "Opioids", "Breakthrough", "Rotation"],
-            related: ["pall-syringe", "pall-bone-pain", "pall-neuropathic"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-pain",
+            authors: "Nottingham APC Palliative Care Pocketbook",
+            evidenceBase: "Notts APC Palliative Care Pocketbook | PCF6 | WHO Analgesic Ladder",
+            summary: "WHO analgesic ladder applied by the clock, by the mouth, by the ladder. Opioid titration from weak to strong opioids, breakthrough dosing (1/10–1/6 of 24h dose), opioid rotation principles, adjuvant analgesics, and transdermal patch management.",
+            summaryCalcLink: { calcId: "opioid-converter", label: "Opioid Equianalgesic Converter", text: "For dose conversions between opioids, SC routes, and transdermal patches" },
+            tags: ["WHO Ladder", "Morphine", "Oxycodone", "Fentanyl patch", "Breakthrough", "Opioid rotation", "Adjuvants", "CSCI"],
+            related: ["pall-syringe", "pall-bone-pain", "pall-neuropathic", "pall-opioid-conversion", "pall-renal"],
+            pdfUrl: "http://www.nottsapc.nhs.uk/media/1079/end-of-life-prescribinq-guidance.pdf",
             portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-pain",
-            updated: "Mar 2025",
+            updated: "Current edition",
+            sections: [
+              {
+                heading: "Key Principles — WHO Analgesic Ladder",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "By the clock. By the mouth. By the ladder.",
+                    items: [
+                      "Give analgesia REGULARLY — not just PRN",
+                      "Oral route preferred wherever possible",
+                      "Accurate pain diagnosis before prescribing — treat correctable causes",
+                      "Explain treatment options; set realistic goals with patient and carers",
+                      "Reassess regularly after every change",
+                      "For patients in the last 48h of life: refer to Last Days of Life / Anticipatory Prescribing guidelines",
+                      "!!bot:Refer to specialist palliative care if pain not progressively relieved. Hayward House: 0115 9627619 | Advice line (Mon–Fri 9–5): 0115 9934934",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "🧮 Opioid Equianalgesic Converter",
+                type: "calc_link",
+                calcId: "opioid-converter",
+                description: "Calculate morphine equivalents, SC conversions, fentanyl/buprenorphine patch doses, and breakthrough doses interactively.",
+              },
+              {
+                heading: "Starting Strong Opioids — Morphine",
+                type: "pall_groups",
+                note: "Morphine is the strong opioid of first choice.",
+                groups: [
+                  {
+                    label: "Starting dose",
+                    items: [
+                      "Opioid-naive: IR morphine 2.5–5mg PO 4-hourly + PRN  OR  MR morphine 10–15mg PO 12-hourly",
+                      "Converting from max weak opioid (e.g. codeine 240mg/24h): start morphine 24mg/24h PO",
+                      "Elderly / frail / renal impairment: start 1.25–2.5mg — seek advice in moderate–severe renal impairment",
+                    ],
+                  },
+                  {
+                    label: "Titration",
+                    items: [
+                      "Increase by no more than 33–50% every 24h",
+                      "IR preparations: can review every 1–2 days",
+                      "MR preparations: review every 2–3 days",
+                      "Account for PRN use when calculating new regular dose",
+                    ],
+                  },
+                  {
+                    label: "Breakthrough dose",
+                    items: [
+                      "Breakthrough = 1/10 to 1/6 of total 24h opioid dose",
+                      "Give every 2–4h PRN (up to 1-hourly in severe pain or last days of life)",
+                      "!!≥2 PRN doses in 24h → review and increase regular dose",
+                    ],
+                  },
+                  {
+                    label: "Side effect prophylaxis — prescribe from day one",
+                    items: [
+                      "Nausea (50% of patients): metoclopramide 10mg TDS PRN for first week — regularly if prior nausea with weak opioid",
+                      "Constipation: regular laxatives (e.g. senna) from the outset — do not wait",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Alternative Strong Opioids & Rotation",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "When to switch from morphine",
+                    items: [
+                      "Unacceptable adverse effects with morphine (e.g. delirium, myoclonus, hallucinations)",
+                      "Options: oxycodone PO/SC, transdermal fentanyl, transdermal buprenorphine, alfentanil SC (renal failure)",
+                      "Each has advantages and disadvantages — seek specialist palliative care guidance",
+                    ],
+                  },
+                  {
+                    label: "Dose reduction on switching (incomplete cross-tolerance)",
+                    items: [
+                      "Reduce equianalgesic dose by 25–50% when switching",
+                      "Use PRN doses to cover deficit while titrating new opioid",
+                      "Use Opioid Equianalgesic Converter for calculations",
+                      "!!Reduce by 50% if: morphine ≥1g/24h equivalent, elderly/frail, intolerable side effects (e.g. delirium), or after rapid dose escalation",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Fentanyl & Buprenorphine Patches",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Before prescribing",
+                    items: [
+                      "Use conversion tables in Opioid Equianalgesic Converter",
+                      "Patients on patches still require PRN medication for breakthrough pain",
+                      "!!Contraindicated for acute pain requiring rapid titration — effect takes >12h to establish",
+                    ],
+                  },
+                  {
+                    label: "Managing patches in the terminal phase",
+                    items: [
+                      "Continue patch — replace with new one when due",
+                      "Give SC morphine/diamorphine PRN for breakthrough pain",
+                      "!!bot:≥2 PRN doses in 24h → start CSCI using sum of breakthrough doses from preceding 24h (max 50% of existing regular opioid dose)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Adjuvant Analgesics",
+                type: "pall_groups",
+                note: "Consider adding an NSAID before adjuvants if not contraindicated — cancer pain typically has an inflammatory component.",
+                groups: [
+                  {
+                    label: "By pain type",
+                    items: [
+                      "Neuropathic: gabapentin, pregabalin, amitriptyline, duloxetine, corticosteroids",
+                      "Skeletal muscle cramp: benzodiazepines",
+                      "Smooth muscle spasm / colic: antimuscarinics, GTN, calcium channel blockers",
+                      "Raised intracranial pressure: dexamethasone",
+                      "Bone pain: bisphosphonates (zoledronic acid), denosumab",
+                    ],
+                  },
+                  {
+                    label: "Non-pharmacological measures",
+                    items: [
+                      "Radiotherapy — particularly effective for bone pain",
+                      "Nerve blockade — for localised or neuropathic pain refractory to systemic treatment",
+                      "TENS, heat/cold, relaxation, distraction",
+                      "Address psychological, social, and spiritual dimensions of total pain",
+                    ],
+                  },
+                ],
+              },
+            ],
           },
           {
             id: "pall-neuropathic",
@@ -2240,34 +2379,479 @@ const SITES = [
             id: "pall-breathlessness",
             title: "Breathlessness",
             category: "Symptom Control",
-            summary: "Non-pharmacological and pharmacological management of cancer-related breathlessness. Low-dose opioids, benzodiazepines, fan therapy, and oxygen use.",
-            tags: ["Opioids", "Benzodiazepines", "Oxygen", "Dyspnoea"],
-            related: ["pall-syringe", "pall-anxiety"],
+            authors: "NUH Palliative Care",
+            evidenceBase: "NUH04453S | Revised April 2025 | Review April 2028",
+            summary: "Non-pharmacological measures first (fan, repositioning, reassurance). Step 1: SC morphine PRN ± midazolam PRN for anxiety. Step 2: start CSCI if ≥2 PRN doses effective in 24h. Step 3: increase CSCI by previous 24h PRN doses (max 50% increase). If eGFR <30: see renal opioid guidelines.",
+            tags: ["Morphine", "Midazolam", "CSCI", "Dyspnoea", "Opioids", "Breathlessness", "Palliative"],
+            related: ["pall-syringe", "pall-anxiety", "pall-secretions", "pall-renal"],
             pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-breathlessness",
             portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-breathlessness",
-            updated: "Feb 2025",
+            updated: "April 2025",
+            sections: [
+              {
+                heading: "Non-Drug Management — Always Do These First",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Measures that can relieve breathlessness without medication",
+                    items: [
+                      "Explanation and reassurance — address anxiety around breathlessness",
+                      "Repositioning — sitting upright or leaning forward",
+                      "Electric fan or cool draught of air directed at the face",
+                      "Relaxation and breathing techniques",
+                      "!!If eGFR <30ml/min/1·73m² — refer to Renal Impairment & Opioids guideline before prescribing",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 1 — PRN Only",
+                type: "pall_groups",
+                note: "Start here. Escalate to Step 2 if ≥2 PRN doses are needed and effective in 24 hours.",
+                groups: [
+                  {
+                    label: "Patient NOT on regular strong opioids",
+                    items: [
+                      "Morphine 2·5–5mg SC 1-hourly PRN for breathlessness",
+                      "Midazolam 2·5–5mg SC 1-hourly PRN for anxiety/distress",
+                    ],
+                  },
+                  {
+                    label: "Patient on regular oral morphine",
+                    items: [
+                      "Morphine SC PRN dose = total 24h oral morphine (regular + PRN) converted to SC ÷ 6",
+                      "Midazolam 2·5–5mg SC 1-hourly PRN for anxiety/distress",
+                      "!!Seek advice if patient is on oxycodone, fentanyl, buprenorphine, opioid combinations, or opioid via other routes",
+                    ],
+                  },
+                  {
+                    label: "Trigger for Step 2",
+                    items: [
+                      "!!≥2 PRN doses of morphine ±midazolam effective in 24 hours → start CSCI (Step 2)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 2 — Start CSCI",
+                type: "pall_groups",
+                note: "Triggered when ≥2 PRN doses effective in 24h. Round all doses to a convenient number.",
+                groups: [
+                  {
+                    label: "Starting the syringe driver",
+                    items: [
+                      "Morphine CSCI dose = total 24h morphine (regular + PRN) converted to SC",
+                      "Add midazolam 10mg to the CSCI",
+                      "Start CSCI 2 hours before next oral opioid is due — or immediately if a dose has been missed, or if not on regular morphine",
+                      "Discontinue regular oral opioid once CSCI started",
+                    ],
+                  },
+                  {
+                    label: "Update PRN doses alongside CSCI",
+                    items: [
+                      "Update morphine SC 1-hourly PRN = morphine CSCI dose ÷ 6 to 10",
+                      "Midazolam 2·5–5mg SC 1-hourly PRN for anxiety/distress — continue",
+                    ],
+                  },
+                  {
+                    label: "Trigger for Step 3",
+                    items: [
+                      "!!≥2 PRN doses of morphine ±midazolam effective in 24 hours → increase CSCI (Step 3)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 3 — Increase CSCI",
+                type: "pall_groups",
+                note: "Review 24-hourly. Maximum CSCI dose increase is 50% of previous CSCI doses.",
+                groups: [
+                  {
+                    label: "Calculating the new CSCI doses",
+                    items: [
+                      "New morphine CSCI = previous morphine CSCI + previous 24h morphine PRN doses (converted to SC)",
+                      "New midazolam CSCI = previous midazolam CSCI + previous 24h midazolam PRN doses",
+                      "!!Maximum single increase = 50% of previous CSCI dose — do not exceed this",
+                      "Round to a convenient dose",
+                    ],
+                  },
+                  {
+                    label: "Update PRN doses",
+                    items: [
+                      "Update morphine SC 1-hourly PRN = new morphine CSCI ÷ 6",
+                      "Review midazolam PRN dose and increase if appropriate",
+                      "!!If ≥2 PRN doses effective in next 24h → repeat Step 3",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Worked Example — Titrating CSCI & PRN Doses",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Scenario: patient on morphine 30mg + midazolam 10mg CSCI, used 2 × morphine 5mg PRN and 2 × midazolam 2·5mg PRN in last 24h",
+                    items: [
+                      "Total SC morphine in 24h = 30mg + (2 × 5mg) = 40mg",
+                      "Total SC midazolam in 24h = 10mg + (2 × 2·5mg) = 15mg",
+                      "New 24h CSCI = morphine 40mg + midazolam 15mg",
+                      "New morphine PRN = 40mg ÷ 6 = 6·667mg → use range 5–7·5mg SC 1-hourly",
+                      "New midazolam PRN = 2·5–5mg SC (unchanged)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Also Consider",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Additional treatments depending on cause",
+                    items: [
+                      "Furosemide 20–40mg SC/IV 2-hourly PRN for pulmonary oedema (max 20mg single SC injection — beware urinary retention)",
+                      "Hyoscine butylbromide for respiratory tract secretions — see Respiratory Tract Secretions guideline",
+                      "Bronchodilator for bronchospasm",
+                      "Oxygen therapy if appropriate (comfort, symptomatic relief)",
+                      "!!bot:For advice if patient not tolerating current opioid or symptoms persist: contact hospital palliative care team or out-of-hours consultant advice line",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "pall-secretions",
+            title: "Respiratory Tract Secretions",
+            category: "Symptom Control",
+            authors: "NUH Palliative Care",
+            evidenceBase: "NUH04453S | Revised April 2025 | Review April 2028",
+            summary: "Noisy breathing from pooled secretions the patient can no longer clear. Avoid fluid overload. Reposition first. Hyoscine butylbromide SC PRN (Step 1), then CSCI if secretions present or develop (Step 2: 20–60mg/24h), increasing to 60–120mg/24h if ≥2 PRN doses effective (Step 3).",
+            tags: ["Hyoscine butylbromide", "Buscopan", "Secretions", "Death rattle", "CSCI", "End of life"],
+            related: ["pall-breathlessness", "pall-syringe", "pall-nausea"],
+            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-secretions",
+            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-secretions",
+            updated: "April 2025",
+            sections: [
+              {
+                heading: "Key Principles",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Before reaching for medication",
+                    items: [
+                      "Reduce risk of secretions by avoiding fluid overload — review any assisted hydration or nutrition (IV/SC fluids, feeding) if symptoms develop",
+                      "Reposition the patient — can sometimes alleviate symptoms without medication",
+                      "!!It is essential to explain to family/carers that noisy breathing is due to secretions in the airways and throat that the patient can no longer clear by coughing or swallowing — it does not mean the patient is distressed or suffocating",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 1 — Secretions Absent: Prescribe PRN",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Prescribe anticipatory medication in case secretions develop",
+                    items: [
+                      "Hyoscine butylbromide 20mg SC 1-hourly PRN",
+                    ],
+                  },
+                  {
+                    label: "Trigger for Step 2",
+                    items: [
+                      "!!Secretions present or develop → move to Step 2 (CSCI)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 2 — Secretions Present: Start CSCI",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Start syringe driver",
+                    items: [
+                      "Hyoscine butylbromide 20–60mg/24h CSCI",
+                      "Hyoscine butylbromide 20mg SC 1-hourly PRN (continue alongside)",
+                      "Review 24-hourly",
+                    ],
+                  },
+                  {
+                    label: "Trigger for Step 3",
+                    items: [
+                      "!!≥2 PRN doses effective in 24h → increase CSCI (Step 3)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 3 — Increase CSCI",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Escalate dose",
+                    items: [
+                      "Hyoscine butylbromide 60–120mg/24h CSCI",
+                      "Hyoscine butylbromide 20mg SC 1-hourly PRN (continue)",
+                      "Review 24-hourly",
+                      "!!bot:If symptoms persist at Step 3: contact hospital palliative care team or out-of-hours consultant advice line",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Associated Respiratory Symptoms",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Respiratory tract infection",
+                    items: [
+                      "!!Generally not appropriate to prescribe antibacterials in an imminently dying patient",
+                      "Review any current antibacterial treatment — consider stopping if no longer aligned with goals of care",
+                    ],
+                  },
+                  {
+                    label: "Pulmonary oedema",
+                    items: [
+                      "Furosemide 20–40mg SC/IV 2-hourly PRN",
+                      "Maximum 20mg as a single SC injection",
+                      "!!Beware of precipitating urinary retention",
+                    ],
+                  },
+                  {
+                    label: "Gastric reflux",
+                    items: [
+                      "Metoclopramide 10mg SC/IV 2-hourly PRN (max 30mg/24h)",
+                      "!!Antimuscarinics (e.g. hyoscine butylbromide) block the prokinetic effect of metoclopramide — avoid concurrent use if possible",
+                    ],
+                  },
+                ],
+              },
+            ],
           },
           {
             id: "pall-nausea",
             title: "Nausea & Vomiting",
             category: "Symptom Control",
-            summary: "Cause-directed antiemetic selection, opioid-induced nausea management, bowel obstruction nausea, and CSCI antiemetic protocols.",
-            tags: ["Antiemetics", "Metoclopramide", "Cyclizine", "Haloperidol"],
-            related: ["pall-syringe", "pall-bowel"],
+            authors: "Nottingham APC Palliative Care Pocketbook",
+            evidenceBase: "Notts APC Palliative Care Pocketbook | PCF6",
+            summary: "Cause-directed antiemetic selection — identify the underlying cause first. Step 1: target the cause with prokinetics (gastric stasis), haloperidol (chemical), or cyclizine (raised ICP/motion). Step 2: if not controlled, escalate to broad-spectrum levomepromazine. Correct reversible causes where appropriate.",
+            tags: ["Antiemetics", "Metoclopramide", "Haloperidol", "Cyclizine", "Levomepromazine", "Domperidone", "CSCI", "Gastric stasis", "Hypercalcaemia"],
+            related: ["pall-syringe", "pall-bowel", "pall-pain"],
             pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-nausea",
             portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-nausea",
-            updated: "Jan 2025",
+            updated: "Current edition",
+            sections: [
+              {
+                heading: "Key Principles",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Identify the cause before selecting antiemetic",
+                    items: [
+                      "Choice of antiemetic varies with the underlying cause — do not prescribe empirically without attempting to identify cause",
+                      "Consider bloods if biochemical derangement suspected (calcium, renal function)",
+                      "Correct reversible causes: new medicines, severe pain, cough, infection, hypercalcaemia, renal failure",
+                      "Prescribe the most appropriate antiemetic regularly AND PRN",
+                      "If already on effective oral antiemetic: can be prescribed subcutaneously instead when required",
+                      "!!bot:Treatment of hypercalcaemia and infection may not be appropriate in a dying patient — consider goals of care before investigating",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 1 — Target the Cause",
+                type: "pall_groups",
+                note: "Use the most specific antiemetic for the identified cause before escalating to broad-spectrum.",
+                groups: [
+                  {
+                    label: "Gastric stasis / gastroparesis / functional bowel obstruction (peristaltic failure) — use prokinetics",
+                    items: [
+                      "Metoclopramide PO 10mg TDS–QDS  OR  CSCI 30–40mg/24h + 10mg SC PRN",
+                      "Usual maximum dose: 100mg/24h",
+                      "Domperidone PO 10mg BD–TDS (alternative — less central side effects)",
+                      "!!Do NOT use prokinetics if mechanical bowel obstruction suspected — see Bowel Obstruction guideline",
+                    ],
+                  },
+                  {
+                    label: "Chemical causes — opioids, hypercalcaemia, renal failure — use dopamine antagonists",
+                    items: [
+                      "Metoclopramide as above",
+                      "Haloperidol 0.5–1.0mg nocte + PRN  OR  SC/CSCI 2.5–5mg/24h + 1mg SC PRN",
+                      "Usual maximum dose: 10mg/24h",
+                    ],
+                  },
+                  {
+                    label: "Raised intracranial pressure / motion sickness — use cyclizine",
+                    items: [
+                      "Cyclizine PO 50mg BD–TDS + 50mg PRN  OR  CSCI 75–150mg/24h + 25–50mg SC PRN",
+                      "Usual maximum daily dose: 200mg PO/CSCI",
+                      "!!Avoid cyclizine with domperidone or metoclopramide — antagonistic effects",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 2 — Broad Spectrum",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "If Step 1 not effective — levomepromazine",
+                    items: [
+                      "Levomepromazine PO/SC starting dose 6.25mg at bedtime + up to 2-hourly PRN",
+                      "Usual maximum dose: 25mg/24h",
+                      "Broad-spectrum — dopamine antagonist + antihistamine + anticholinergic",
+                      "Can cause sedation — useful if agitation also present",
+                      "!!bot:If above not effective: contact specialist palliative care. Dual antiemetics may be advised (e.g. levomepromazine + ondansetron)",
+                    ],
+                  },
+                ],
+              },
+            ],
           },
           {
             id: "pall-bowel",
-            title: "Bowel Management",
+            title: "Constipation",
             category: "Symptom Control",
-            summary: "Constipation prevention and treatment in opioid-treated patients, malignant bowel obstruction medical management, diarrhoea causes and treatment.",
-            tags: ["Constipation", "Laxatives", "MBO", "Diarrhoea"],
-            related: ["pall-nausea", "pall-pain"],
+            authors: "Nottingham APC Palliative Care Pocketbook",
+            evidenceBase: "Notts APC Palliative Care Pocketbook | PCF6",
+            summary: "Prevention is better than cure. Almost all patients prescribed an opioid will require a regular laxative from day one. Prescribe a stimulant laxative (senna or bisacodyl) and titrate to response. Add a faecal softener if maximum tolerated stimulant dose is ineffective.",
+            tags: ["Constipation", "Senna", "Bisacodyl", "Macrogol", "Docusate", "Laxatives", "Opioid"],
+            related: ["pall-nausea", "pall-pain", "pall-mbo"],
             pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-bowel",
             portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-bowel",
-            updated: "Nov 2024",
+            updated: "Current edition",
+            sections: [
+              {
+                heading: "General Measures — Do These First",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Assessment & reversible causes",
+                    items: [
+                      "Correct causes where possible: drugs, poor diet, dehydration, debility",
+                      "Encourage fluids, fruit juice, and fruit",
+                      "Ask about patient's usual bowel habit and current laxative use",
+                      "Do a PR examination if: bowels not opened ≥3 days, rectal discomfort, or diarrhoea suggesting faecal impaction with overflow",
+                      "!!Almost all patients prescribed an opioid will require a regular laxative — prescribe from day one",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Stimulant Laxatives — First Line with Opioids",
+                type: "lax_table",
+                note: "Prescribe when opioid started. Titrate every 24–48h according to response.",
+                drugs: [
+                  {
+                    name: "Senna",
+                    doses: [
+                      "15mg at bedtime",
+                      "15mg morning and bedtime",
+                      "Titrate every 24–48h to maximum 30mg TDS",
+                    ],
+                  },
+                  {
+                    name: "Bisacodyl",
+                    doses: [
+                      "5mg at bedtime",
+                      "10mg at bedtime",
+                      "Titrate every 24–48h to maximum 20mg TDS",
+                    ],
+                  },
+                ],
+                footer: "If stimulant laxative causes bowel colic: divide dose into smaller more frequent doses OR switch to a faecal softener.",
+              },
+              {
+                heading: "Add Faecal Softener if Maximum Stimulant Dose Ineffective",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Options",
+                    items: [
+                      "Macrogol (Movicol) 1 sachet each morning",
+                      "Sodium docusate 100–200mg BD",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "pall-mbo",
+            title: "Inoperable Bowel Obstruction",
+            category: "Symptom Control",
+            authors: "Nottingham APC Palliative Care Pocketbook",
+            evidenceBase: "Notts APC Palliative Care Pocketbook | PCF6",
+            summary: "Rest GI tract and treat pain with opioids via CSCI. Consider a dexamethasone trial (dex 6·6mg SC once daily × 5–7 days). Step 1: metoclopramide CSCI for functional obstruction/no colic. Step 2: stop prokinetics, start hyoscine butylbromide (Buscopan) for mechanical obstruction/colic. Step 3: octreotide or specialist advice.",
+            tags: ["Bowel obstruction", "MBO", "Hyoscine butylbromide", "Buscopan", "Metoclopramide", "Dexamethasone", "Octreotide", "CSCI", "Colic"],
+            related: ["pall-bowel", "pall-nausea", "pall-syringe"],
+            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-mbo",
+            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-mbo",
+            updated: "Current edition",
+            sections: [
+              {
+                heading: "Initial Management",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "GI rest & supportive measures",
+                    items: [
+                      "Rest the GI tract — may allow obstruction to settle",
+                      "Allow sips of fluid for mouth comfort and oral hydration",
+                      "If sips not sufficient: discuss SC/IV fluids or NG tube with specialist palliative care",
+                      "Ensure background pain treated with opioids via CSCI",
+                      "In partial obstruction (some flatus/faeces passing): sodium docusate 100–200mg BD if laxative needed — avoid stimulant laxatives",
+                      "!!bot:Several days of dose titration may be needed before optimum symptom relief — reassess daily",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Dexamethasone Trial",
+                type: "dex_table",
+                drug: "Dexamethasone",
+                dose: "6.6mg SC once daily — with PPI or ranitidine cover",
+                note: "Ranitidine also reduces gastric secretions — 150–200mg/24h CSCI.",
+                rows: [
+                  { label: "Initial Mx", action: "Start dexamethasone 6.6mg SC OD. Prescribe PPI or ranitidine 150–200mg/24h CSCI alongside for gastric protection." },
+                  { label: "Monitoring", action: "Reassess daily. Several days of titration may be needed before optimum relief." },
+                  { label: "No response at 5–7 days", action: "Stop dexamethasone — no benefit demonstrated. Move to antisecretory / antiemetic step-wise management below." },
+                  { label: "If beneficial", action: "Titrate to the lowest effective dose. Continue with regular review." },
+                ],
+                footer: "Ranitidine 150–200mg/24h CSCI also reduces gastric secretions and may be continued alongside or instead of dexamethasone.",
+              },
+              {
+                heading: "Step-wise Antiemetic / Antisecretory Management",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Step 1 — No colic: probable functional obstruction (peristaltic failure)",
+                    items: [
+                      "Metoclopramide 30–40mg/24h CSCI + 10mg SC PRN",
+                      "If beneficial: titrate up to 100mg/24h if necessary",
+                    ],
+                  },
+                  {
+                    label: "Step 2 — Colic present: probable mechanical obstruction",
+                    items: [
+                      "!!Stop all prokinetic medicines (metoclopramide, domperidone) — they worsen colic in mechanical obstruction",
+                      "Hyoscine butylbromide (Buscopan) 60–120mg/24h CSCI + 20mg SC PRN (reported max 300mg/24h)",
+                      "AND/OR levomepromazine 6.25–12.5mg/24h CSCI + 6.25mg SC PRN (usual max 25mg/24h)",
+                    ],
+                  },
+                  {
+                    label: "Step 3 — If above not effective",
+                    items: [
+                      "Contact specialist palliative care unit for advice",
+                      "Octreotide may be advised — reduces GI secretions",
+                      "Alternative antiemetics e.g. ondansetron may be advised",
+                      "!!bot:Do not continue prokinetics once mechanical obstruction confirmed — colic will worsen",
+                    ],
+                  },
+                ],
+              },
+            ],
           },
           {
             id: "pall-anxiety",
@@ -2405,6 +2989,709 @@ const SITES = [
     },
   },
 
+  {
+    id: "electrolytes",
+    label: "Electrolyte Abnormalities",
+    color: "#2563a8",
+    accent: "#e8f0fb",
+    icon: "🧪",
+    subsites: [
+      {
+        id: "electrolytes-calcium",
+        label: "Calcium",
+        guidelines: [
+          {
+            id: "elec-hypercalcaemia",
+            title: "Acute Hypercalcaemia",
+            category: "Calcium",
+            version: "1",
+            authors: "Jennifer Walsh, Neil Gittoes, Peter Selby & Society for Endocrinology Clinical Committee",
+            evidenceBase: "Society for Endocrinology Clinical Guidelines | Guideline No. 3667 | Review: June 2026",
+            summary: "Corrected calcium >3·5 = URGENT — risk of dysrhythmia and coma. Rehydrate with IV 0·9% saline 4–6L/24h first. Add IV bisphosphonate if further treatment required (zoledronic acid 4mg over 15 min first line). Monitor calcium nadir at 2–4 days. 90% of cases: primary hyperparathyroidism or malignancy.",
+            tags: ["Hypercalcaemia", "Calcium", "Zoledronic acid", "Pamidronate", "Bisphosphonate", "PTH", "Malignancy", "Rehydration", "IV saline"],
+            related: [],
+            summaryCalcLink: null,
+            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypercalcaemia",
+            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypercalcaemia",
+            updated: "June 2026 (review)",
+            sections: [
+              {
+                heading: "Severity Classification",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "Mild", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Corrected calcium <3·0 mmol/L", "Often asymptomatic", "Does not usually require urgent correction"] },
+                  { grade: 2, label: "Moderate", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Corrected calcium 3·0–3·5 mmol/L", "May be well tolerated if risen slowly", "May be symptomatic — prompt treatment usually indicated"] },
+                  { grade: 3, label: "Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Corrected calcium >3·5 mmol/L", "!!Requires URGENT correction", "Risk of dysrhythmia and coma"] },
+                ],
+                management: [
+                  { grade: 1, icpi: null, items: ["Monitor — does not usually require urgent correction", "Investigate underlying cause (see Investigations section)", "Review medications contributing to hypercalcaemia"] },
+                  { grade: 2, icpi: null, items: ["Prompt treatment usually indicated", "IV rehydration with 0·9% saline", "Investigate underlying cause", "Consider IV bisphosphonate if not responding to fluids"] },
+                  { grade: 3, icpi: null, items: ["!!URGENT correction required", "IV rehydration immediately — 0·9% saline 4–6L/24h", "IV bisphosphonate once adequately rehydrated", "ECG monitoring", "Consider ITU/HDU if obtunded or dysrhythmia present"] },
+                ],
+              },
+              {
+                heading: "Clinical Features & Causes",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Clinical Features",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "management", heading: "Symptoms & Signs", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Polyuria and thirst",
+                          "Anorexia, nausea, and constipation",
+                          "Mood disturbance, cognitive dysfunction, confusion, coma",
+                          "Renal impairment",
+                          "Shortened QT interval and dysrhythmias",
+                          "Nephrolithiasis, nephrocalcinosis",
+                          "Pancreatitis",
+                          "Peptic ulceration",
+                          "Hypertension, cardiomyopathy",
+                          "Muscle weakness",
+                          "Band keratopathy",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Causes",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "90% of cases", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: ["Primary hyperparathyroidism", "Malignancy (PTHrP, osteolytic metastases, 1,25-OHD production)"],
+                      },
+                      {
+                        icon: "management", heading: "Less common causes", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "Thiazide diuretics", "Familial hypocalciuric hypercalcaemia",
+                          "Non-malignant granulomatous disease (sarcoidosis, TB)",
+                          "Thyrotoxicosis", "Tertiary hyperparathyroidism",
+                          "Hypervitaminosis D or A", "Rhabdomyolysis",
+                          "Lithium", "Immobilisation", "Adrenal insufficiency",
+                          "Milk-alkali syndrome", "Theophylline toxicity", "Phaeochromocytoma",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Investigation",
+                type: "list",
+                groups: [
+                  {
+                    icon: "history", label: "History",
+                    items: [
+                      "Symptoms of hypercalcaemia and duration",
+                      "Symptoms of underlying causes (weight loss, night sweats, cough, bone pain)",
+                      "Family history of hypercalcaemia or hyperparathyroidism",
+                      "All medications including supplements and over-the-counter preparations",
+                    ],
+                  },
+                  {
+                    icon: "investigations", label: "Examination",
+                    items: [
+                      "Assess for cognitive impairment",
+                      "Fluid balance status",
+                      "Signs of underlying cause: neck (goitre/parathyroid), respiratory, abdomen, breasts, lymph nodes",
+                    ],
+                  },
+                  {
+                    icon: "investigations", label: "Investigations",
+                    items: [
+                      "Calcium corrected for albumin",
+                      "Phosphate, urea and electrolytes, creatinine",
+                      "PTH (essential — guides aetiology)",
+                      "ECG: look for shortened QT interval and other conduction abnormalities",
+                      "Consider: 25-OHD, 1,25-OHD, PTHrP, TFTs, urine calcium:creatinine ratio",
+                    ],
+                  },
+                  {
+                    icon: "immediate", label: "PTH Interpretation",
+                    items: [
+                      "High calcium + High PTH → Primary or tertiary hyperparathyroidism",
+                      "High calcium + Low PTH → Malignancy or other less common causes",
+                      "Note: Familial hypocalciuric hypercalcaemia may be misdiagnosed as primary hyperparathyroidism (inappropriately normal/raised PTH) — usually not severe, less likely to present as emergency",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Step 1 — Rehydration (always first)",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "immediate", heading: "IV 0·9% Saline — 4–6L in 24 hours", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Start immediately — rehydration is the most important first step",
+                          "Monitor closely for fluid overload — especially in renal impairment or elderly patients",
+                          "Loop diuretics (furosemide): rarely used — only if fluid overload develops. NOT effective for reducing serum calcium",
+                          "Consider dialysis if severe renal failure present",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Step 2 — IV Bisphosphonate (if further treatment required)",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "First line: Zoledronic acid", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "4mg IV over 15 minutes",
+                          "Give more slowly and consider dose reduction in renal impairment (eGFR <60)",
+                          "Monitor serum calcium — nadir reached at 2–4 days",
+                          "!!Can cause hypocalcaemia if vitamin D deficiency or suppressed PTH is present — check before giving",
+                        ],
+                      },
+                      {
+                        icon: "drug", heading: "Alternatives", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "Pamidronate 30–90mg IV at 20mg/h (dose depends on severity)",
+                          "Ibandronic acid 2–4mg IV",
+                          "Dose reduce in renal impairment for all agents",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Step 3 — Second-Line Treatments",
+                    color: "#276749",
+                    headerBg: "#f0fff4",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Glucocorticoids", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "Inhibit 1,25-OHD production",
+                          "Indicated for: lymphoma, granulomatous disease, 25-OHD poisoning",
+                          "Prednisolone 40mg daily — usually effective within 2–4 days",
+                        ],
+                      },
+                      {
+                        icon: "drug", heading: "Calcimimetics / Denosumab / Calcitonin", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "Under specialist supervision only",
+                          "Consider if poor response to other measures",
+                        ],
+                      },
+                      {
+                        icon: "referral", heading: "Parathyroidectomy", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "Consider in acute presentation of primary hyperparathyroidism",
+                          "Severe hypercalcaemia with poor response to other measures",
+                          "Refer to endocrine surgery",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "elec-hypocalcaemia",
+            title: "Acute Hypocalcaemia",
+            category: "Calcium",
+            version: "4",
+            authors: "Dr Peter Prinsloo, Azma Malik, Dr Katharine Whitehurst — NUH",
+            evidenceBase: "NUH Guideline 1531 | Version 4 | October 2020 | Review: October 2023",
+            summary: "Adjusted calcium <1·90 = medical emergency — IV calcium gluconate required regardless of symptoms. Symptoms correlate with RATE of drop not just absolute level. Correct magnesium first if low. Most common cause in hospital: post-thyroidectomy hypoparathyroidism. Always use ADJUSTED calcium for all decisions.",
+            tags: ["Hypocalcaemia", "Calcium gluconate", "IV calcium", "Alfacalcidol", "Calcitriol", "Hypoparathyroidism", "Post-thyroidectomy", "Vitamin D", "Magnesium"],
+            related: ["elec-hypercalcaemia"],
+            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypocalcaemia",
+            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypocalcaemia",
+            updated: "October 2023 (review)",
+            sections: [
+              {
+                heading: "Severity Classification",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "Normal", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Adjusted calcium 2·20–2·60 mmol/L", "No treatment required"] },
+                  { grade: 2, label: "Mild Hypocalcaemia", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Adjusted calcium 1·90–<2·20 mmol/L", "May be symptomatic or asymptomatic"] },
+                  { grade: 3, label: "Severe Hypocalcaemia", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Adjusted calcium <1·90 mmol/L", "Medical emergency", "!!Symptoms may occur at HIGHER levels if calcium dropped suddenly — rate and magnitude matter, not just absolute level"] },
+                ],
+                management: [
+                  { grade: 2, icpi: null, items: ["Check Vitamin D, Magnesium, PTH, calcium intake", "If low magnesium: correct FIRST — calcium may normalise within 2 days", "Asymptomatic: oral calcium supplementation", "Symptomatic: IV calcium gluconate required"] },
+                  { grade: 3, icpi: null, items: ["!!IV calcium gluconate required regardless of symptoms", "Continuous cardiac monitoring if ECG changes or on digoxin", "Correct magnesium if low — without this, calcium increase may be transient", "Check PTH, phosphate, magnesium, Vit D, LFTs, U&Es"] },
+                ],
+              },
+              {
+                heading: "⚠ Key Principles Before Treating",
+                type: "alert",
+                items: [
+                  "Always use ADJUSTED calcium — corrects for albumin. Use ionised calcium from blood gas if albumin unreliable",
+                  "Symptoms correlate with RATE and MAGNITUDE of calcium drop — not just absolute level",
+                  "Correct magnesium FIRST if low — calcium may normalise spontaneously within 2 days. Long-term PPI use can cause hypomagnesaemia",
+                  "Alkalosis DECREASES ionised calcium (worsens symptoms); acidosis INCREASES ionised calcium",
+                  "Undetectable PTH (post-surgery): need ACTIVE vitamin D (alfacalcidol or calcitriol) — cannot activate standard colecalciferol",
+                  "Renal impairment: refer to renal team for ALL management decisions",
+                  "Excludes critical care and renal patients — alternative regimens used in these areas",
+                ],
+              },
+              {
+                heading: "Signs & Symptoms",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Clinical Features",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "immediate", heading: "Neuromuscular", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: ["Perioral paraesthesia", "Muscle twitching and cramps", "Tremor, tetany", "Trousseau's sign (carpal spasm with BP cuff inflation)", "Chvostek's sign (facial twitch on tapping)", "Laryngospasm"],
+                      },
+                      {
+                        icon: "management", heading: "Neuropsychiatric", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: ["Fatigue, confusion, anxiety, depression, irritability", "Seizures", "Dyspnoea"],
+                      },
+                      {
+                        icon: "immediate", heading: "Cardiovascular", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: ["Cardiac arrhythmia, bradycardia, hypotension", "Congestive cardiac failure", "!!ECG: prolonged QT interval — risk of torsades de pointes"],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Causes",
+                type: "list",
+                groups: [
+                  {
+                    icon: "immediate", label: "Most common cause in hospital",
+                    items: ["!!Post-thyroidectomy/parathyroidectomy hypoparathyroidism — may be temporary or permanent", "Hypocalcaemia occurs in 20–25% after total thyroidectomy", "Permanent hypoparathyroidism: 0·8–3·0% of patients"],
+                  },
+                  {
+                    icon: "management", label: "General causes",
+                    items: ["Hypoparathyroidism (post-surgery, autoimmune)", "Magnesium deficiency (PPIs)", "Severe vitamin D deficiency / osteomalacia", "Acute pancreatitis", "Rhabdomyolysis", "Large volume blood transfusion (citrate chelation)", "Renal failure, hyperphosphataemia", "Malabsorption, malignant disease", "Toxic shock syndrome, plasmapheresis"],
+                  },
+                  {
+                    icon: "drug", label: "Drug-induced hypocalcaemia",
+                    items: ["Bisphosphonates, denosumab (Prolia/Xgeva)", "Aminoglycosides, foscarnet", "Phenytoin, glucocorticoids, furosemide", "Cinacalcet, calcitonin, phosphates", "Antineoplastic agents, citrated blood transfusions", "Contact Pharmacy Medicines Information (ext 64185) for full list"],
+                  },
+                ],
+              },
+              {
+                heading: "Investigations",
+                type: "list",
+                groups: [
+                  {
+                    icon: "investigations", label: "Required bloods",
+                    items: ["Adjusted calcium", "Phosphate", "PTH — ESSENTIAL", "Urea and electrolytes", "Magnesium", "LFTs including albumin", "Vitamin D (25-OHD)"],
+                  },
+                  {
+                    icon: "immediate", label: "Special considerations",
+                    items: ["Low magnesium: correct FIRST — calcium may normalise within 2 days", "Renal insufficiency: seek renal team advice before treating", "Consider tumour lysis in haematology/oncology patients"],
+                  },
+                ],
+              },
+              {
+                heading: "IV Calcium Replacement",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Step 1 — Initial IV Bolus",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "immediate", heading: "10ml 10% Calcium Gluconate in 100ml 0·9% NaCl or 5% glucose — over 10 minutes", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "10ml of 10% calcium gluconate = 2·23 mmol calcium",
+                          "Give into large peripheral or central vein",
+                          "NEVER exceed 0·5 mmol per minute",
+                          "Emergency (life-threatening): undiluted 10ml as slow IV bolus over minimum 5 minutes",
+                          "!!Continuous ECG monitoring if cardiac disease, arrhythmia risk, or on digoxin",
+                          "STOP or SLOW if bradycardia or hypotension develops",
+                          "Obs 4-hourly: Temp, BP, HR, RR, SpO₂, fluid balance",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Step 2 — Repeat or Proceed to Continuous Infusion",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "management", heading: "Decision after Step 1", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: ["Still symptomatic: repeat the bolus", "Temporary improvement: proceed to continuous infusion (Step 3)"],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Step 3 — Continuous Infusion",
+                    color: "#276749",
+                    headerBg: "#f0fff4",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "100ml (22·3 mmol) 10% Calcium Gluconate in 1000ml NaCl 0·9% — over 12–24 hours", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "Also compatible with glucose 5% and glucose/NaCl 0·9%",
+                          "Very severe cases: can give over 6 hours with cardiac monitoring",
+                          "Check calcium 2 hours after infusion completion",
+                          "Start oral supplements ± alfacalcidol/calcitriol once IV complete",
+                          "Hypoparathyroidism: give at 50% rate — 50ml (11·3 mmol) in 1000ml NaCl 0·9% over 12–24 hours",
+                          "CKD stages 4–5 / AKI: consult renal team",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Oral Calcium Supplementation",
+                type: "list",
+                groups: [
+                  {
+                    icon: "drug", label: "For mild asymptomatic hypocalcaemia (1·90–2·20 mmol/L) — typical dose 500–2000mg/day",
+                    items: [
+                      "Calvive® 1000 effervescent: 1000mg — 1–2 tablets daily",
+                      "Calcichew® chewable: 500mg — 2–3 tablets daily",
+                      "Cacit® effervescent (calcium citrate): 500mg — 2–5 tablets daily",
+                      "Adcal D3® chewable (+ Vit D 400 units): 600mg — 1 tablet twice daily",
+                      "!!Post-gastric bypass or PPI use: use calcium CITRATE (Cacit®) — needs acidic environment for absorption",
+                      "!!Do NOT give at same time as tetracyclines, ciprofloxacin, or bisphosphonates — reduces absorption",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Vitamin D Replacement",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Choosing the right Vitamin D preparation",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Normal PTH — use standard colecalciferol", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: ["PTH drives liver/kidney activation of standard Vit D", "Use oral colecalciferol — see Notts APC Vitamin D guideline"],
+                      },
+                      {
+                        icon: "drug", heading: "Low PTH or renal impairment — use ACTIVE Vit D", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "Kidney cannot activate colecalciferol — must use pre-activated form",
+                          "Alfacalcidol: onset 2–5 days. Effective in renal failure. NOT in liver failure",
+                          "Calcitriol: onset 1–2 days. Effective in renal AND liver failure",
+                          "!!Active Vit D has NO effect without adequate calcium intake — always co-prescribe oral calcium",
+                          "!!Lifelong use: monitor for hypercalcaemia, hypercalciuria, renal impairment, nephrocalcinosis, kidney stones",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Replacement Regimes by Cause",
+                    color: "#276749",
+                    headerBg: "#f0fff4",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Chronic hypoparathyroidism (post-surgical, autoimmune)", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "Alfacalcidol 250–1000 nanograms daily OR Calcitriol 250–1000 nanograms daily",
+                          "PLUS Calvive® 1000mg 2–3 times daily",
+                          "Monitor daily until calcium stable",
+                          "!!Long-term: refer to Metabolic Bone Service (City ext 77271 / Treatment Centre Gateway E)",
+                        ],
+                      },
+                      {
+                        icon: "drug", heading: "Chronic renal impairment / PTH deficiency or resistance", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "CRI: REFER TO RENAL TEAM",
+                          "PTH deficiency/resistance: alfacalcidol 500–1000 nanograms daily",
+                          "Monitor urinary and serum calcium weekly until stable, then 3–6 monthly",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Post-Operative Management",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Day 1 Post-Op — Adjusted Calcium",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "management", heading: "Normal 2·20–2·60", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: ["No action", "Warn patient of potential delayed hypocalcaemia symptoms"],
+                      },
+                      {
+                        icon: "management", heading: "Borderline 2·00–<2·20", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: ["Repeat calcium and PTH", "PTH ≥20 + asymptomatic: no action initially", "Symptomatic or PTH <20: Calvive® 1000mg TDS + alfacalcidol 500–1000 nanograms daily"],
+                      },
+                      {
+                        icon: "management", heading: "Low <2·00", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
+                        items: ["Start oral Sandocal 1g TDS", "Repeat calcium and PTH", "Manage per PTH level (see full guideline Table 4)"],
+                      },
+                      {
+                        icon: "immediate", heading: "Severe <1·80 or severe symptoms", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "!!START URGENT TREATMENT — PTH usually undetectable",
+                          "IV: 10ml 10% calcium gluconate in 100ml NaCl 0·9% over 10 min with ECG monitoring",
+                          "Then oral: Calvive® 2000mg STAT then 1000mg TDS",
+                          "PLUS alfacalcidol 1000 nanograms daily (higher doses may be needed — seek consultant)",
+                          "Check and replace magnesium",
+                          "Repeat adjusted calcium 6-hourly until stable",
+                          "Monitor with GP at 2 and 6 weeks",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "electrolytes-magnesium",
+        label: "Magnesium",
+        guidelines: [
+          {
+            id: "elec-hypomagnesaemia",
+            title: "Hypomagnesaemia",
+            category: "Magnesium",
+            version: "4.0",
+            authors: "NUH NHS Trust",
+            evidenceBase: "NUH Hypomagnesaemia Treatment Guideline v4·0 | Reviewed December 2023 | Excludes Critical Care and Renal",
+            summary: "Mild (0·5–0·7): oral Magnaspartate® 1–2 sachets/day if symptomatic. Severe (<0·5): IV magnesium sulphate regardless of symptoms — Day 1: 40mmol over 12h, Days 2–5: 20mmol over 6h. Treat for minimum 5 days. Always check calcium and potassium — hypomagnesaemia commonly causes secondary hypocalcaemia and hypokalaemia.",
+            tags: ["Hypomagnesaemia", "Magnesium sulphate", "Magnaspartate", "IV magnesium", "Hypokalaemia", "Hypocalcaemia", "CSCI", "Electrolytes"],
+            related: ["elec-hypocalcaemia", "elec-hypercalcaemia"],
+            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypomagnesaemia",
+            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypomagnesaemia",
+            updated: "December 2023",
+            sections: [
+              {
+                heading: "Severity & First-Line Treatment",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "Normal", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Serum magnesium 0·7–1·0 mmol/L", "No treatment required"] },
+                  { grade: 2, label: "Mild", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Serum magnesium 0·5–0·7 mmol/L", "Symptoms usually absent at this level"] },
+                  { grade: 3, label: "Moderate–Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Serum magnesium <0·5 mmol/L", "!!IV treatment required regardless of symptoms", "Symptoms usually occur below 0·5 mmol/L"] },
+                ],
+                management: [
+                  { grade: 2, icpi: null, items: ["Symptomatic: oral Magnaspartate® 1–2 sachets/day (10 mmol/sachet)", "Asymptomatic: may not require treatment — clinical risk-benefit decision", "Review medications and address underlying cause", "Check calcium and potassium"] },
+                  { grade: 3, icpi: null, items: ["!!IV treatment required — both symptomatic and asymptomatic", "Day 1: magnesium sulphate 40mmol in 500ml NaCl 0·9% over 12 hours", "Days 2–5: magnesium sulphate 20mmol in 500ml NaCl 0·9% over 6 hours", "Check magnesium 6h after infusion then daily", "Complete full 5-day course — do not stop early based on serum levels alone", "Check calcium and potassium throughout"] },
+                ],
+                note: "Treat for minimum 5 days. Plasma levels may appear artificially normal while magnesium redistributes into the intracellular compartment.",
+              },
+              {
+                heading: "⚠ Key Principles",
+                type: "alert",
+                items: [
+                  "Treat for a MINIMUM of 5 days — plasma levels may appear normal while Mg equilibrates intracellularly",
+                  "Always check calcium and potassium — hypomagnesaemia commonly causes secondary hypocalcaemia and hypokalaemia",
+                  "Correcting magnesium will often correct calcium and potassium without separate replacement",
+                  "Plasma contains only ~0·5% of total body magnesium — serum levels may be normal despite significant total body depletion",
+                  "Review medications and address underlying cause in all patients",
+                  "Refer to speciality guideline where applicable (Haematology / Critical Care / Renal)",
+                ],
+              },
+              {
+                heading: "Signs, Symptoms & Causes",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Clinical Features",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "immediate", heading: "Neuromuscular & Cardiac", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: ["Muscle weakness, tremor, ataxia, seizures, carpopedal spasm", "Ventricular arrhythmias, prolonged QT interval, tachycardia"],
+                      },
+                      {
+                        icon: "management", heading: "Neuropsychiatric & Metabolic", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: ["Depression, psychosis, vertigo", "Secondary hypocalcaemia, hypokalaemia, hyponatraemia", "Hyperinsulinism"],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Causes",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "management", heading: "General causes", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: ["GI: diarrhoea, malabsorption, malnutrition, acute pancreatitis", "Renal: tubular reabsorption defects", "Endocrine: hyperaldosteronism, DKA, refeeding syndrome*", "Other: chronic alcoholism, lactation, long-term IV nutrition or fluid therapy"],
+                      },
+                      {
+                        icon: "drug", heading: "Drug causes (not exhaustive — contact Medicines Information ext 84185)", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "PPIs (lansoprazole, omeprazole — common cause)",
+                          "Cisplatin and other cancer chemotherapy",
+                          "Antimicrobials: foscarnet, amphotericin B, aminoglycosides",
+                          "Diuretics: thiazides, loop diuretics",
+                          "Immunosuppressants: ciclosporin, tacrolimus",
+                          "EGF-receptor antagonists: cetuximab",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "IV Replacement",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Dosing regimen",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Day 1", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: ["Magnesium sulphate 40mmol in 500ml NaCl 0·9% over 12 hours", "Maximum 40mmol/day"],
+                      },
+                      {
+                        icon: "drug", heading: "Days 2–5", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: ["Magnesium sulphate 20mmol in 500ml NaCl 0·9% over 6 hours", "Maximum 20mmol/day", "Compatible fluids: NaCl 0·9% preferred; glucose 5% or glucose 4%/NaCl 0·18% also acceptable"],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Administration & infusion rates",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "management", heading: "Route & rate", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Route: large peripheral vein preferred; central venous catheter acceptable",
+                          "Standard rate: 1g MgSO₄ (4mmol Mg)/hour",
+                          "Maximum ward rate: 2g MgSO₄ (8mmol Mg)/hour",
+                          "Emergency/Critical Care: up to 9g MgSO₄ (36mmol)/hour — ECG monitoring required",
+                          "Fluid restricted: max concentration 20% peripherally (20mmol in 25ml = 0·8 mmol/ml)",
+                          "!!Total course: patients may require up to 160mmol over 5 days — up to 50% of infused dose is renally excreted",
+                        ],
+                      },
+                      {
+                        icon: "drug", heading: "Available ampoules", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "2ml ampoule: 1g magnesium sulphate = 4mmol magnesium",
+                          "10ml ampoule: 5g magnesium sulphate = 20mmol magnesium",
+                          "20ml ampoule: 10g magnesium sulphate = 40mmol magnesium",
+                          "!!50% solution — requires dilution before administration",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Oral Replacement",
+                type: "list",
+                groups: [
+                  {
+                    icon: "drug", label: "Standard regimen — Magnaspartate®",
+                    items: [
+                      "Standard total daily dose: 24mmol/day in divided doses",
+                      "Magnaspartate® 1–2 sachets daily (10mmol/sachet)",
+                      "Dissolve in 50–200ml water, tea, or orange juice — take immediately after preparation",
+                      "Can be given enterally — note jejunal route reduces bioavailability (requires gastric acid for absorption)",
+                      "!!If discharged before completing oral course: state stop date on discharge prescription and instruct GP on monitoring",
+                    ],
+                  },
+                  {
+                    icon: "drug", label: "Alternative preparations",
+                    items: [
+                      "Magnesium citrate 150mg tablets: 6·2mmol Mg/tablet",
+                      "Magnesium glycerophosphate (Neomag® 4mmol/tab): restricted — consultant gastroenterologist initiation only; reserved for short bowel patients",
+                      "!!Magnaspartate® contains sucrose — do NOT use in fructose intolerance, glucose-galactose malabsorption, or sucrase-isomaltase insufficiency",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Monitoring",
+                type: "list",
+                groups: [
+                  {
+                    icon: "monitoring", label: "During IV infusion",
+                    items: [
+                      "Monitor: blood pressure, heart rate, respiratory rate, urine output",
+                      "Watch for signs of hypermagnesaemia (see below)",
+                      "Hypocalcaemia, hypotension, and phlebitis can occur with rapid administration",
+                    ],
+                  },
+                  {
+                    icon: "investigations", label: "Electrolyte checks",
+                    items: [
+                      "Magnesium: 6h after end of IV infusion, then daily",
+                      "Calcium: check — hypomagnesaemia commonly causes hypocalcaemia",
+                      "Potassium: check — hypomagnesaemia commonly causes hypokalaemia",
+                      "Correcting magnesium will often correct calcium and potassium without separate replacement",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Hypermagnesaemia — Recognition",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "2·0–3·5 mmol/L", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Flushing", "ECG changes"] },
+                  { grade: 2, label: "4·0–5·0 mmol/L", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["Drowsiness", "Slurred speech", "Absent deep tendon reflexes"] },
+                  { grade: 3, label: ">6·0 mmol/L", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Muscle paralysis", "Respiratory depression"] },
+                  { grade: 4, label: ">8·0 mmol/L", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["!!Cardiac arrest"] },
+                ],
+                management: [
+                  { grade: 1, icpi: null, items: ["Slow or stop infusion", "Monitor ECG", "Check renal function"] },
+                  { grade: 2, icpi: null, items: ["Stop infusion", "Monitor closely", "Consider calcium gluconate IV if severe symptoms"] },
+                  { grade: 3, icpi: null, items: ["!!Stop infusion immediately", "IV calcium gluconate 10ml 10% as antidote", "Supportive care", "Consider dialysis in renal failure"] },
+                  { grade: 4, icpi: null, items: ["!!Cardiac arrest protocol", "IV calcium gluconate immediately", "Advanced life support", "Emergency dialysis"] },
+                ],
+              },
+              {
+                heading: "Special Precautions & Interactions",
+                type: "list",
+                groups: [
+                  {
+                    icon: "avoid", label: "Contraindications and high-risk situations",
+                    items: [
+                      "Renal impairment: Mg renally excreted — reduce dose, close monitoring",
+                      "Cardiac conduction defects / heart block / myocardial damage: avoid parenteral and oral magnesium",
+                      "Myasthenia gravis / hepatic impairment: use with caution",
+                      "Older patients: increased sensitivity — exercise caution",
+                      "!!Do NOT co-administer IV MgSO₄ with barbiturates, opioids, or hypnotics — risk of respiratory depression",
+                      "!!Nifedipine: avoid concurrent use — profound hypotension reported",
+                    ],
+                  },
+                  {
+                    icon: "drug", label: "Drug interactions",
+                    items: [
+                      "Digoxin: administer with caution",
+                      "Fluorides / tetracyclines: chelation in gut — separate doses by ≥2–3 hours",
+                      "Aminoquinolines, quinidine, iron, bisphosphonates, eltrombopag, nitroxoline, penicillamine, nitrofurantoin: reduced absorption — take Mg 3–4 hours before or after",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    get guidelines() {
+      return this.subsites.flatMap(ss => ss.guidelines || []);
+    },
+  },
+
 ];
 
 const ALL_GUIDELINES = SITES.flatMap(s => {
@@ -2467,6 +3754,23 @@ const CALCULATORS = {
       ],
     },
     component: "sins",
+  },
+  "opioid-converter": {
+    id: "opioid-converter",
+    label: "Opioid Equianalgesic Converter",
+    siteId: "palliative",
+    icon: "💊",
+    whenToUse: {
+      headline: "When to use this calculator",
+      checks: [
+        { type: "question", text: "Are you switching between opioids? Use this to find the equianalgesic dose when rotating from one opioid to another, or converting between oral and subcutaneous routes." },
+        { type: "warning", text: "Always reduce the calculated dose by 25–50% on switching — incomplete cross-tolerance means the full equianalgesic dose will be excessive. Reduce by 50% at high doses, in elderly/frail patients, or after rapid escalation." },
+        { type: "question", text: "Are you starting a transdermal patch? Patches are contraindicated in acute pain — effect takes >12h. Ensure PRN medication is prescribed alongside." },
+        { type: "info", text: "Conversions are approximate guides. Individual variation is significant — verify with PCF or specialist palliative care team at high doses or in complex cases." },
+        { type: "warning", text: "Renal impairment significantly changes opioid handling. In moderate–severe renal failure, seek specialist advice — consider alfentanil or fentanyl as safer alternatives." },
+      ],
+    },
+    component: "opioid-converter",
   },
   "tokuhashi": {
     id: "tokuhashi",
@@ -2923,6 +4227,7 @@ function CalculatorView({ calcId, onNavigate }) {
         <h3 style={{ marginBottom: 14 }}>Calculator</h3>
         {calc.component === "irae" && <IraeGradeCalculator siteColor={site?.color || "#6d4c9e"} siteAccent={site?.accent || "#f3effe"} />}
         {calc.component === "mascc" && <MasccCalculator />}
+        {calc.component === "opioid-converter" && <OpioidConverter />}
         {calc.component === "sins" && <SinsCalculator />}
         {calc.component === "tokuhashi" && (
           <div style={{ padding: "12px", background: "var(--bg)", borderRadius: 8, border: "1px solid var(--border)" }}>
@@ -2934,6 +4239,92 @@ function CalculatorView({ calcId, onNavigate }) {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+
+function OpioidConverter() {
+  const C = "#4a7c6b";
+  const [drug, setDrug] = useState("morphine-po");
+  const [dose, setDose] = useState("");
+
+  const conversions = {
+    "codeine-po":        { label: "Codeine PO",          toMorphinePO: 1/10 },
+    "dihydrocodeine-po": { label: "Dihydrocodeine PO",   toMorphinePO: 1/10 },
+    "tramadol-po":       { label: "Tramadol PO",         toMorphinePO: 1/10 },
+    "morphine-po":       { label: "Morphine PO",         toMorphinePO: 1 },
+    "oxycodone-po":      { label: "Oxycodone PO",        toMorphinePO: 1.5 },
+  };
+
+  const d = parseFloat(dose);
+  const valid = !isNaN(d) && d > 0;
+  const morphinePO = valid ? d * (conversions[drug]?.toMorphinePO || 1) : null;
+
+  const fentanylTable = [[30,12],[60,25],[120,50],[180,75],[240,100]];
+  const bupTable      = [[12,5],[24,10],[48,20],[84,35],[126,52.5],[168,70]];
+
+  function getPatch(table, val) {
+    for (let i = table.length - 1; i >= 0; i--) {
+      if (val >= table[i][0]) return table[i][1];
+    }
+    return table[0][1];
+  }
+
+  const fentPatch      = morphinePO ? getPatch(fentanylTable, morphinePO) : null;
+  const bupPatch       = morphinePO ? getPatch(bupTable, morphinePO) : null;
+  const diamorphineSC  = morphinePO ? morphinePO / 3 : null;
+  const morphineSC     = morphinePO ? morphinePO / 2 : null;
+  const btMin          = morphinePO ? morphinePO / 10 : null;
+  const btMax          = morphinePO ? morphinePO / 6 : null;
+
+  const R = ({ label, value, unit, note, highlight }) => (
+    <div style={{ padding: "10px 14px", background: highlight ? "#eaf3f0" : "var(--bg)", border: `1px solid ${highlight ? C : "var(--border)"}`, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
+      <div style={{ textAlign: "left" }}>
+        <div style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>{label}</div>
+        {note && <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 2, lineHeight: 1.4 }}>{note}</div>}
+      </div>
+      <div style={{ fontSize: 18, fontWeight: 700, color: C, fontFamily: "Sora, sans-serif", flexShrink: 0, marginLeft: 12 }}>
+        {value != null ? `${Math.round(value * 10) / 10}${unit ? " " + unit : ""}` : "—"}
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12, textAlign: "left" }}>
+      <div style={{ padding: "10px 14px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 8, fontSize: 13, color: "#92700a", lineHeight: 1.5 }}>
+        ⚠ Always reduce by 25–50% when switching opioids (incomplete cross-tolerance). Reduce by 50% at high doses, in elderly/frail, or after rapid escalation. Verify with PCF or palliative care team.
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <div>
+          <label style={{ fontSize: 12, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", display: "block", marginBottom: 6 }}>Current opioid</label>
+          <select value={drug} onChange={e => setDrug(e.target.value)}
+            style={{ width: "100%", padding: "10px 12px", border: "1px solid var(--border)", borderRadius: 8, fontSize: 14, background: "var(--bg)", color: "var(--text-primary)", fontFamily: "DM Sans, sans-serif" }}>
+            {Object.entries(conversions).map(([k,v]) => <option key={k} value={k}>{v.label}</option>)}
+          </select>
+        </div>
+        <div>
+          <label style={{ fontSize: 12, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", display: "block", marginBottom: 6 }}>Total 24-hour dose (mg)</label>
+          <input type="number" value={dose} onChange={e => setDose(e.target.value)} placeholder="e.g. 60"
+            style={{ width: "100%", padding: "10px 12px", border: `1px solid ${valid ? C : "var(--border)"}`, borderRadius: 8, fontSize: 16, fontFamily: "Sora, sans-serif", fontWeight: 700, color: C, background: "var(--bg)", boxSizing: "border-box" }} />
+        </div>
+      </div>
+      {valid && (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>Oral equivalences</div>
+          <R label="Morphine PO /24h" value={morphinePO} unit="mg" highlight />
+          <R label="Breakthrough dose" value={btMin} unit={`– ${Math.round(btMax*10)/10} mg`} note="1/10 to 1/6 of 24h morphine PO — every 2–4h PRN" />
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginTop: 4 }}>SC conversions</div>
+          <R label="Diamorphine SC /24h" value={diamorphineSC} unit="mg" note="÷ 3 from morphine PO" />
+          <R label="Morphine SC /24h" value={morphineSC} unit="mg" note="÷ 2 from morphine PO" />
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginTop: 4 }}>Transdermal equivalents</div>
+          <R label="Fentanyl patch" value={fentPatch} unit="mcg/h" note="72h patch — nearest standard dose. Ratio 100:1 (morphine PO : fentanyl TD)" />
+          <R label="Buprenorphine patch" value={bupPatch} unit="mcg/h" note="Nearest standard dose. Ratio 100:1 (morphine PO : buprenorphine TD)" />
+          <div style={{ padding: "9px 12px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 8, fontSize: 12.5, color: "#742a2a", lineHeight: 1.5 }}>
+            ⚡ Patches contraindicated for acute pain (effect takes &gt;12h). Always prescribe PRN medication alongside patches. Verify at high doses with PCF or palliative care team.
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -3311,8 +4702,8 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {sec.items.map((item, i) => (
             <div key={i} style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 8, padding: "12px 14px" }}>
-              <div style={{ fontSize: 13.5, fontWeight: 600, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 4 }}>{item.label}</div>
-              <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>{item.detail}</div>
+              <div style={{ fontSize: 13.5, fontWeight: 600, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 4, textAlign: "left" }}>{item.label}</div>
+              <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, textAlign: "left" }}>{item.detail}</div>
               {item.warning && (
                 <div style={{ marginTop: 8, padding: "7px 10px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 6, fontSize: 12.5, color: "#92700a", lineHeight: 1.5 }}>
                   ⚠ {item.warning}
@@ -3377,6 +4768,151 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
             </div>
           ))}
         </div>
+      </div>
+    );
+  }
+
+
+  // ── Palliative grouped sections — table layout, urgent items pinned ──────
+  if (sec.type === "pall_groups") {
+    const C = { color: siteColor, bg: siteAccent, border: siteColor + "55", divider: siteColor + "33" };
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        {sec.heading && (
+          <div style={{ padding: "14px 18px 10px", borderBottom: `1px solid var(--border-light)` }}>
+            <h3 style={{ margin: 0 }}>{sec.heading}</h3>
+            {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4, fontStyle: "italic", lineHeight: 1.5, marginBottom: 0 }}>ⓘ {sec.note}</p>}
+          </div>
+        )}
+        <div>
+          {sec.groups.map((group, gi) => {
+            const urgentTop    = group.items.filter(i => i.startsWith("!!top:") || (i.startsWith("!!") && !i.startsWith("!!bot:")));
+            const urgentBottom = group.items.filter(i => i.startsWith("!!bot:"));
+            const normal       = group.items.filter(i => !i.startsWith("!!"));
+            const isLast = gi === sec.groups.length - 1;
+            return (
+              <div key={gi} style={{ borderBottom: isLast ? "none" : `1px solid var(--border-light)`, textAlign: "left" }}>
+                {/* Group header row */}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 18px", background: C.bg }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: siteColor, flexShrink: 0 }} />
+                  <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: siteColor, letterSpacing: "-0.01em" }}>{group.label}</span>
+                </div>
+                {/* Body */}
+                <div style={{ padding: "10px 18px 12px", background: "var(--surface)", display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
+                  {/* Urgent top items */}
+                  {urgentTop.map((item, ii) => {
+                    const text = item.replace(/^!!top:|^!!/, "").trim();
+                    return (
+                      <div key={"top-"+ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 10px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+                        <span style={{ color: "#742a2a", fontSize: 12, flexShrink: 0, marginTop: 1 }}>⚡</span>
+                        <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45, textAlign: "left" }}>{text}</span>
+                      </div>
+                    );
+                  })}
+                  {/* Normal items */}
+                  {normal.map((item, ii) => (
+                    <div key={"n-"+ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, textAlign: "left" }}>
+                      <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                      <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55, textAlign: "left" }}>{item}</span>
+                    </div>
+                  ))}
+                  {/* Urgent bottom items */}
+                  {urgentBottom.map((item, ii) => {
+                    const text = item.replace(/^!!bot:/, "").trim();
+                    return (
+                      <div key={"bot-"+ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 10px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 6 }}>
+                        <span style={{ color: "#92700a", fontSize: 12, flexShrink: 0, marginTop: 1 }}>ℹ</span>
+                        <span style={{ fontSize: 13, fontWeight: 600, color: "#92700a", lineHeight: 1.45, textAlign: "left" }}>{text}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+
+  // ── Laxative comparison table ────────────────────────────────────────────
+  if (sec.type === "lax_table") {
+    const C = siteColor;
+    const rows = ["Not constipated", "Already constipated", "No response — titrate"];
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        {sec.heading && (
+          <div style={{ padding: "12px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
+            <h3 style={{ margin: 0 }}>{sec.heading}</h3>
+            {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4, fontStyle: "italic", lineHeight: 1.5, marginBottom: 0 }}>ⓘ {sec.note}</p>}
+          </div>
+        )}
+        {/* Table */}
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5, textAlign: "left" }}>
+            <thead>
+              <tr>
+                <th style={{ padding: "9px 14px", background: "var(--bg)", borderBottom: "1px solid var(--border)", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", width: "30%" }}>Situation</th>
+                {sec.drugs.map((drug, di) => (
+                  <th key={di} style={{ padding: "9px 14px", background: di % 2 === 0 ? siteAccent : "var(--bg)", borderBottom: "1px solid var(--border)", borderLeft: "1px solid var(--border-light)", fontSize: 13, fontWeight: 700, color: C, fontFamily: "Sora, sans-serif" }}>{drug.name}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, ri) => (
+                <tr key={ri} style={{ borderBottom: ri < rows.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+                  <td style={{ padding: "9px 14px", color: "var(--text-muted)", fontSize: 12.5, fontWeight: 600, fontFamily: "Sora, sans-serif", background: "var(--bg)", verticalAlign: "top" }}>{row}</td>
+                  {sec.drugs.map((drug, di) => (
+                    <td key={di} style={{ padding: "9px 14px", color: "var(--text-secondary)", background: di % 2 === 0 ? siteAccent + "55" : "var(--surface)", borderLeft: "1px solid var(--border-light)", verticalAlign: "top", lineHeight: 1.5 }}>{drug.doses[ri]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {sec.footer && (
+          <div style={{ padding: "9px 14px", background: "#fffbeb", borderTop: "1px solid #f6d860", display: "flex", alignItems: "flex-start", gap: 8 }}>
+            <span style={{ fontSize: 12, flexShrink: 0, marginTop: 1 }}>ℹ</span>
+            <span style={{ fontSize: 12.5, color: "#92700a", lineHeight: 1.5 }}>{sec.footer}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ── Dexamethasone monitoring table ───────────────────────────────────────
+  if (sec.type === "dex_table") {
+    const C = siteColor;
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        {sec.heading && (
+          <div style={{ padding: "12px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
+            <h3 style={{ margin: 0 }}>{sec.heading}</h3>
+            {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4, fontStyle: "italic", lineHeight: 1.5, marginBottom: 0 }}>ⓘ {sec.note}</p>}
+          </div>
+        )}
+        {/* Drug + dose row */}
+        <div style={{ padding: "10px 18px", background: siteAccent, borderBottom: "1px solid var(--border-light)", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: C, flexShrink: 0 }} />
+          <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: C }}>{sec.drug}</span>
+          <span style={{ fontSize: 13, color: C, opacity: 0.85, marginLeft: 4 }}>{sec.dose}</span>
+        </div>
+        {/* Monitoring rows */}
+        <div>
+          {sec.rows.map((row, ri) => (
+            <div key={ri} style={{ display: "flex", borderBottom: ri < sec.rows.length - 1 ? "1px solid var(--border-light)" : "none", textAlign: "left" }}>
+              <div style={{ width: "35%", minWidth: 110, padding: "9px 14px", background: "var(--bg)", borderRight: "1px solid var(--border-light)", fontSize: 12, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", display: "flex", alignItems: "center" }}>{row.label}</div>
+              <div style={{ flex: 1, padding: "9px 14px", background: "var(--surface)", fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>{row.action}</div>
+            </div>
+          ))}
+        </div>
+        {sec.footer && (
+          <div style={{ padding: "9px 14px", background: "#fffbeb", borderTop: "1px solid #f6d860", display: "flex", alignItems: "flex-start", gap: 8 }}>
+            <span style={{ fontSize: 12, flexShrink: 0, marginTop: 1 }}>ℹ</span>
+            <span style={{ fontSize: 12.5, color: "#92700a", lineHeight: 1.5 }}>{sec.footer}</span>
+          </div>
+        )}
       </div>
     );
   }
@@ -3812,7 +5348,7 @@ const css = `
   .search-icon { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
 
   /* Content */
-  .content { flex: 1; overflow-y: auto; padding: 28px 32px; }
+  .content { flex: 1; overflow-y: auto; padding: 28px 32px; text-align: left; }
 
   /* Homepage */
   .home-greeting {
@@ -3995,9 +5531,10 @@ const css = `
   }
 
   /* Guideline detail */
-  .guideline-detail { max-width: 760px; }
+  .guideline-detail { max-width: 760px; text-align: left; }
   .detail-header {
     margin-bottom: 24px;
+    text-align: left;
   }
   .detail-back-btn {
     display: inline-flex; align-items: center; gap: 6px;
@@ -4257,6 +5794,12 @@ export default function App() {
     if (mobile) setSidebarOpen(false);
   };
 
+  useEffect(() => {
+    const handler = (e) => navigate({ type: "calculator", calcId: e.detail });
+    window.addEventListener("navigateCalc", handler);
+    return () => window.removeEventListener("navigateCalc", handler);
+  }, []);
+
   const openSidebar = () => setSidebarOpen(true);
   const closeSidebar = () => { setSidebarOpen(false); };
 
@@ -4354,75 +5897,92 @@ export default function App() {
               </div>
               {expandedSections.allSites && (
                 <div className="sidebar-section-body">
-                  {SITES.map(site => (
-                    <div key={site.id}>
-                      <div
-                        className={`sidebar-item ${view.type === "site" && view.siteId === site.id ? "active" : ""}`}
-                        onClick={() => navigate({ type: "site", siteId: site.id })}
-                      >
-                        <span className="site-dot" style={{ background: site.color }} />
-                        {site.label}
+                  {SITES.map(site => {
+                    const siteOpen = isSidebarCatOpen(`site-${site.id}`);
+                    const isActiveSite = (view.type === "site" && view.siteId === site.id) || (view.type === "guideline" && currentGuideline?.siteId === site.id);
+                    return (
+                      <div key={site.id}>
+                        {/* Site header row — dot+label toggles dropdown, chevron also toggles */}
+                        <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
+                          <div
+                            className={`sidebar-item ${isActiveSite ? "active" : ""}`}
+                            style={{ flex: 1, minWidth: 0 }}
+                            onClick={() => {
+                              toggleSidebarCat(`site-${site.id}`);
+                              navigate({ type: "site", siteId: site.id });
+                            }}
+                          >
+                            <span className="site-dot" style={{ background: site.color }} />
+                            {site.label}
+                          </div>
+                          <div
+                            onClick={() => toggleSidebarCat(`site-${site.id}`)}
+                            style={{ padding: "6px 8px", cursor: "pointer", color: siteOpen ? site.color : "var(--text-muted)", display: "flex", alignItems: "center", flexShrink: 0 }}
+                          >
+                            <span style={{ transform: siteOpen ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex" }}><IconChevronRight /></span>
+                          </div>
+                        </div>
+                        {/* Expanded: regular site categories */}
+                        {siteOpen && !site.isParent && (
+                          <div style={{ marginBottom: 4 }}>
+                            {[...new Set(site.guidelines.map(g => g.category))].map(cat => {
+                              const catKey = `${site.id}-${cat}`;
+                              const open = isSidebarCatOpen(catKey);
+                              return (
+                                <div key={cat}>
+                                  <div
+                                    onClick={() => toggleSidebarCat(catKey)}
+                                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 10px 5px 22px", cursor: "pointer", userSelect: "none" }}
+                                  >
+                                    <span style={{ fontSize: "10.5px", color: "var(--text-muted)", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "Sora, sans-serif" }}>{cat}</span>
+                                    <span style={{ color: "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex" }}><IconChevronRight /></span>
+                                  </div>
+                                  {open && site.guidelines.filter(g => g.category === cat).map(g => (
+                                    <div key={g.id}
+                                      className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
+                                      style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
+                                      onClick={() => !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
+                                    >
+                                      {g.title}
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                        {/* Expanded: parent site subsites */}
+                        {siteOpen && site.isParent && (
+                          <div style={{ marginBottom: 4 }}>
+                            {site.subsites.map(ss => {
+                              const ssKey = `${site.id}-${ss.id}`;
+                              const open = isSidebarCatOpen(ssKey);
+                              return (
+                                <div key={ss.id}>
+                                  <div
+                                    onClick={() => toggleSidebarCat(ssKey)}
+                                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 10px 5px 22px", cursor: "pointer", userSelect: "none" }}
+                                  >
+                                    <span style={{ fontSize: "10.5px", color: site.color, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "Sora, sans-serif" }}>{ss.label}</span>
+                                    <span style={{ color: site.color, opacity: 0.7, transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex" }}><IconChevronRight /></span>
+                                  </div>
+                                  {open && ss.guidelines.map(g => (
+                                    <div key={g.id}
+                                      className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
+                                      style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
+                                      onClick={() => !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
+                                    >
+                                      {g.title}
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
-                      {/* Nested: regular site — collapsible categories */}
-                      {!site.isParent && ((view.type === "site" && view.siteId === site.id) || (view.type === "guideline" && currentGuideline?.siteId === site.id)) && (
-                        <div style={{ marginBottom: 4 }}>
-                          {[...new Set(site.guidelines.map(g => g.category))].map(cat => {
-                            const catKey = `${site.id}-${cat}`;
-                            const open = isSidebarCatOpen(catKey);
-                            return (
-                              <div key={cat}>
-                                <div
-                                  onClick={() => toggleSidebarCat(catKey)}
-                                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 10px 5px 22px", cursor: "pointer", userSelect: "none" }}
-                                >
-                                  <span style={{ fontSize: "10.5px", color: "var(--text-muted)", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "Sora, sans-serif" }}>{cat}</span>
-                                  <span style={{ color: "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex" }}><IconChevronRight /></span>
-                                </div>
-                                {open && site.guidelines.filter(g => g.category === cat).map(g => (
-                                  <div key={g.id}
-                                    className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
-                                    style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
-                                    onClick={() => !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
-                                  >
-                                    {g.title}
-                                  </div>
-                                ))}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                      {/* Nested: parent site — collapsible subsites */}
-                      {site.isParent && ((view.type === "site" && view.siteId === site.id) || (view.type === "guideline" && currentGuideline?.siteId === site.id)) && (
-                        <div style={{ marginBottom: 4 }}>
-                          {site.subsites.map(ss => {
-                            const ssKey = `${site.id}-${ss.id}`;
-                            const open = isSidebarCatOpen(ssKey);
-                            return (
-                              <div key={ss.id}>
-                                <div
-                                  onClick={() => toggleSidebarCat(ssKey)}
-                                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 10px 5px 22px", cursor: "pointer", userSelect: "none" }}
-                                >
-                                  <span style={{ fontSize: "10.5px", color: site.color, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "Sora, sans-serif" }}>{ss.label}</span>
-                                  <span style={{ color: site.color, opacity: 0.7, transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex" }}><IconChevronRight /></span>
-                                </div>
-                                {open && ss.guidelines.map(g => (
-                                  <div key={g.id}
-                                    className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
-                                    style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
-                                    onClick={() => !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
-                                  >
-                                    {g.title}
-                                  </div>
-                                ))}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -4899,6 +6459,17 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
             </li>
           ))}
         </ul>
+        {g.summaryCalcLink && (
+          <div style={{ marginTop: 10, padding: "10px 14px", background: site.accent, border: `1.5px solid ${site.color}`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 13.5, color: site.color, lineHeight: 1.5, flex: 1 }}>
+              💊 {g.summaryCalcLink.text}
+            </span>
+            <button onClick={() => onNavigate({ type: "calculator", calcId: g.summaryCalcLink.calcId })}
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", background: site.color, color: "white", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap" }}>
+              {g.summaryCalcLink.label} →
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Rich sections */}
