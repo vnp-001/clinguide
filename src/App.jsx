@@ -243,8 +243,8 @@ const SITES = [
             related: [],
             calculators: [
               { label: "SINS Score Calculator", url: "https://www.mdcalc.com/calc/3971/spinal-instability-neoplastic-score-sins", description: "Spinal Instability Neoplastic Score — guides surgical referral" },
-              { label: "Revised Tokuhashi Score", url: "https://www.mdcalc.com/calc/2130/revised-tokuhashi-score-metastatic-spinal-sarcoma", description: "Prognosis in spinal metastases — guides treatment intensity" },
-              { label: "Frankel / ASIA Classification", url: "https://www.mdcalc.com/calc/3724/asia-impairment-scale-ais", description: "Neurological injury severity classification" },
+              { label: "Revised Tokuhashi Score", url: "https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system", description: "Prognosis in spinal metastases — guides treatment intensity" },
+              { label: "Frankel / ASIA Classification", url: "https://www.asia-spinalinjury.org/wp-content/uploads/2019/10/ASIA-ISCOS-Worksheet_10.2019_PRINT-Page-1-2.pdf", description: "ASIA Neurological injury severity classification" },
             ],
             pdfUrl: "https://www.nuh.nhs.uk/guidelines/mscc",
             portalUrl: "https://clinicalportal.nuh.nhs.uk/mscc",
@@ -2927,7 +2927,7 @@ function CalculatorView({ calcId, onNavigate }) {
         {calc.component === "tokuhashi" && (
           <div style={{ padding: "12px", background: "var(--bg)", borderRadius: 8, border: "1px solid var(--border)" }}>
             <p style={{ fontSize: 13.5, color: "var(--text-secondary)", marginBottom: 12 }}>The Revised Tokuhashi Score is best calculated using the validated MDCalc tool which includes full scoring tables:</p>
-            <a href="https://www.mdcalc.com/calc/2130/revised-tokuhashi-score-metastatic-spinal-sarcoma" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system" target="_blank" rel="noopener noreferrer"
               className="detail-btn detail-btn-primary" style={{ display: "inline-flex" }}>
               <IconExternal /> Open Tokuhashi Calculator on MDCalc
             </a>
@@ -4034,6 +4034,7 @@ const css = `
     border-radius: var(--radius);
     padding: 22px 24px;
     margin-bottom: 14px;
+    text-align: left;
   }
   .detail-card h3 {
     font-size: 12px;
