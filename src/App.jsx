@@ -4593,7 +4593,7 @@ function HomePage({ sites, onNavigate }) {
   return (
     <div>
       <div className="home-greeting">
-        <h1>Clinical Guidelines</h1>
+        <h1>Clinical Guidelines NUH</h1>
         <p>NUH Clinical Oncology — Acute Inpatient Guidelines (Pilot Preview)</p>
       </div>
 
