@@ -41,8 +41,9 @@ const SITES = [
           { label: "Gentamicin Single Dose (NUH)", url: "https://clinicalportal.nuh.nhs.uk/gentamicin", description: "Single-dose gentamicin calculator for high-risk sepsis" },
         ],
         pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=775fd63ed18bd2297398cbaab940c0cb",
-        portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=775fd63ed18bd2297398cbaab940c0cb",
+        portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9727&query_desc=neutropenic",
         updated: "July 2027 (review)",
+        summaryCalcLink: { calcId: "mascc", label: "MASCC Risk Score", text: "Use the MASCC risk score calculator once diagnosis established" },
         sections: [
           {
             heading: "⚠ Critical: Treat Within 1 Hour",
@@ -96,8 +97,8 @@ const SITES = [
                 label: "Severe Immediate Allergy (Anaphylaxis)",
                 color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
                 indication: "Collapse, swelling, breathing difficulties within 1h of penicillin",
-                urgent: "Meropenem 1g IV TDS",
-                exclusions: ["+ Vancomycin IV: MRSA risk or line infection", "Vancomycin alternative: Teicoplanin 12mg/kg IV q12h × 3, then once daily", "Red Man Syndrome is NOT a contraindication to teicoplanin"],
+                urgent: "Ciprofloxacin 750mg PO BD (or 400mg IV TDS if unable to take oral)",
+                exclusions: ["+ Vancomycin IV for ALL patients", "+ Metronidazole 500mg IV TDS: suspected abdominal sepsis", "+ Gentamicin IV single dose: high-risk sepsis", "Prior quinolone prophylaxis: discuss with microbiology first", "!!Meropenem is a beta-lactam — do NOT use in severe immediate (anaphylactic) penicillin allergy", "Vancomycin alternative: Teicoplanin 12mg/kg IV q12h × 3, then once daily"],
               },
             ],
           },
@@ -117,43 +118,75 @@ const SITES = [
             ],
           },
           {
-            heading: "24–48 Hour Review",
-            type: "grader",
-            grades: [
-              { grade: 1, label: "Neutropenic + NOT Improving", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Still febrile or haemodynamically unstable", "Remains neutropenic", "No clear response to initial antibiotics"] },
-              { grade: 2, label: "Neutropenic + Clinically Improving", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Apyrexial or clear trend to improvement", "Remains neutropenic", "Cultures negative or low-risk organism"] },
-              { grade: 3, label: "No Longer / Never Neutropenic", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Neutrophils recovering above 1.0 × 10⁹/L", "Is bacterial infection still the working diagnosis?"] },
+            heading: "Review & Monitoring",
+            type: "review_flow",
+            review24: {
+              callout: "Review ALL patients within 24–48 hours",
+              items: [
+                "**ALL patients** must be reviewed within 24 hours by a registrar or consultant — **including weekends**",
+                "Microbiology will ring through positive blood cultures — review the need for antibiotics accordingly",
+                "FBC + U&Es daily while inpatient",
+                "Repeat blood cultures if temperature spikes",
+                "Do **NOT** change empiric regimen without clinical deterioration or clear microbiological indication",
+              ],
+            },
+            statuses: [
+              {
+                key: 1,
+                label: "Status 1 — Never / No Longer Neutropenic",
+                color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                criteria: ["Neutrophils recovering above 1·0 × 10⁹/L", "No longer neutropenic at any point"],
+                items: [
+                  "If identifiable infection focus: treat per relevant NUH guideline",
+                  "If no focus and no high-risk features: consider stopping antibiotics",
+                  "Criteria to stop: apyrexial >24h, stable, no focus, negative cultures",
+                  "Use MASCC score to guide discharge decision",
+                ],
+              },
+              {
+                key: 2,
+                label: "Status 2 — Neutropenic + Clinically Improving",
+                color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                criteria: ["Apyrexial or clear trend to improvement", "Remains neutropenic", "Cultures negative or low-risk organism"],
+                items: [
+                  "Continue IV antibiotics and FBC + U&Es daily",
+                  "If cultures negative and improving → consider switch to oral at 24–48h (see IV→Oral below)",
+                  "Consider discharge later same day once on oral therapy",
+                  "Document IV→oral decision and stop date in notes",
+                ],
+              },
+              {
+                key: 3,
+                label: "Status 3 — Neutropenic + Not Improving",
+                color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                criteria: ["Still febrile or haemodynamically unstable", "Remains neutropenic", "No clear response to initial antibiotics"],
+                items: [
+                  "Continue IV antibiotics",
+                  "Repeat blood cultures if spiking",
+                  "At 48h: review all microbiology",
+                  "!!Do NOT change empiric regimen without clinical deterioration or microbiological indication",
+                  "!!If no response by 48–72h → see No Response section below",
+                ],
+              },
             ],
-            management: [
-              { grade: 1, icpi: null, items: ["Continue IV antibiotics", "FBC + U&Es daily", "Repeat blood cultures if temperature spikes", "At 48h: review all microbiology", "!!Do NOT change empiric regimen without clinical deterioration or microbiological indication", "If no response by 48–72h: see 'No Response' considerations"] },
-              { grade: 2, icpi: null, items: ["Continue IV antibiotics and FBC + U&Es daily", "If cultures negative and improving → switch to oral at 24–48h (see IV→Oral section)", "Consider discharge later same day once on oral therapy", "Document IV→oral decision and stop date in notes"] },
-              { grade: 3, icpi: null, items: ["If identifiable infection focus: treat per relevant NUH guideline", "If no focus and no high-risk features: consider stopping antibiotics", "Criteria to stop: apyrexial >24h, stable, no focus, negative cultures", "Use MASCC score to guide discharge decision"] },
-            ],
-            note: "Registrar or consultant review within 24h of admission — including weekends. Microbiology will call through positive blood cultures.",
-          },
-          {
-            heading: "No Response at 48–72h — Consider",
-            type: "list",
-            groups: [
-              { icon: "history", label: "Review Diagnosis", items: ["Non-infective pyrexia: disease activity, drug reaction", "Has empiric regimen been appropriate for the clinical picture?"] },
-              { icon: "investigations", label: "Microbiology Review", items: ["Multi-resistant organism: review all previous microbiology; discuss with microbiology team", "Atypical pathogens: Legionella, PCP, disseminated viral infection"] },
-              { icon: "referral", label: "Source Control", items: ["Ongoing focus: suspected line infection → consider line removal", "Invasive fungal infection: consider if neutropenia >10 days, prolonged steroids >3 weeks, or T-cell immunosuppressants"] },
-            ],
-          },
-          {
-            heading: "IV to Oral Switch",
-            type: "grader",
-            grades: [
-              { grade: 1, label: "No source — low Pseudomonas risk, neutrophils recovering", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["No identifiable infection source", "Low Pseudomonas risk", "Neutrophils recovering"] },
-              { grade: 2, label: "No source — high Pseudomonas risk or profoundly neutropenic", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["No identifiable infection source", "High Pseudomonas risk OR neutrophils still very low"] },
-              { grade: 3, label: "Penicillin allergic — no source identified", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["Documented penicillin allergy", "No identifiable infection source"] },
-            ],
-            management: [
-              { grade: 1, icpi: null, items: ["Co-amoxiclav 625mg PO TDS", "Total course: 5 days", "HIGH RISK for C. difficile — consult microbiology if CDT-positive or previous C. diff"] },
-              { grade: 2, icpi: null, items: ["Ciprofloxacin 750mg PO BD", "Total course: 5 days", "HIGH RISK for C. difficile", "Previous MRSA: discuss with microbiology before quinolone", "!!Fluoroquinolones: rare risk of long-lasting multisystem side effects — document consent"] },
-              { grade: 3, icpi: null, items: ["Levofloxacin 500mg PO OD", "Total course: 5 days", "HIGH RISK for C. difficile", "!!Fluoroquinolones: rare risk of long-lasting multisystem side effects — document consent"] },
-            ],
-            note: "Oral choices do NOT cover all pathogens covered by IV treatment. Switch appropriate after 24–48h if MASCC low-risk.",
+            noResponse: {
+              trigger: "Beyond 48 hours — No Response",
+              instruction: "Discuss with experienced registrar or consultant. Review factors for non-response:",
+              factors: [
+                { icon: "🔍", label: "Review Diagnosis", items: ["Non-infective pyrexia: disease activity, drug reaction", "Has the empiric regimen been appropriate for the clinical picture?"] },
+                { icon: "🧫", label: "Microbiology Review", items: ["Multi-resistant organism: review all previous microbiology; discuss with microbiology team", "Atypical pathogens: Legionella, PCP, disseminated viral infection"] },
+                { icon: "🔗", label: "Source Control", items: ["Ongoing focus: suspected line infection → consider line removal", "Invasive fungal infection: consider if neutropenia >10 days, steroids >3 weeks, or T-cell immunosuppressants"] },
+              ],
+            },
+            oralSwitch: {
+              trigger: "If Good Clinical Response — IV to Oral Switch",
+              note: "Oral choices do NOT cover all pathogens covered by IV treatment. Switch appropriate after 24–48h if MASCC low-risk.",
+              options: [
+                { label: "No source — low Pseudomonas risk, neutrophils recovering", drug: "Co-amoxiclav 625mg PO TDS", course: "5 days", warning: "HIGH RISK for C. difficile — consult microbiology if CDT-positive or previous C. diff" },
+                { label: "No source — high Pseudomonas risk or profoundly neutropenic", drug: "Ciprofloxacin 750mg PO BD", course: "5 days", warning: "HIGH RISK for C. difficile. Previous MRSA: discuss with microbiology. Fluoroquinolones: rare risk of long-lasting multisystem side effects — document consent" },
+                { label: "Penicillin allergic — no source identified", drug: "Levofloxacin 500mg PO OD", course: "5 days", warning: "HIGH RISK for C. difficile. Fluoroquinolones: rare risk of long-lasting multisystem side effects — document consent" },
+              ],
+            },
           },
           {
             heading: "Additional Medications & Never Do",
@@ -164,74 +197,7 @@ const SITES = [
             ],
           },
         ],
-      },
-          {
-            id: "onco-line-infection",
-            title: "Central Line Infection (CVAD)",
-            category: "Haematological Emergencies",
-            summary: "Management of suspected and confirmed CVAD-associated bloodstream infection. Includes line salvage criteria, antibiotic lock therapy, vancomycin dosing, indications for line removal, and Candida coverage in high-risk patients.",
-            tags: ["CVAD", "PICC", "Vancomycin", "Line salvage"],
-            related: ["onco-neutropenic-sepsis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/cvad-infection",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/cvad-infection",
-            updated: "Jan 2025",
-          },
-          {
-            id: "onco-dit",
-            title: "Disseminated Intravascular Coagulation (DIC)",
-            category: "Haematological Emergencies",
-            summary: "Recognition and acute management of DIC in malignancy, including ISTH scoring, FFP/cryoprecipitate/platelet transfusion thresholds, fibrinogen targets, and triggers for haematology referral.",
-            tags: ["DIC", "ISTH score", "FFP", "Fibrinogen", "Coagulopathy"],
-            related: ["onco-neutropenic-sepsis", "pall-haemorrhage"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/dic",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/dic",
-            updated: "Nov 2024",
-          },
-          {
-            id: "onco-hyperviscosity",
-            title: "Hyperviscosity Syndrome",
-            category: "Haematological Emergencies",
-            summary: "Diagnosis and emergency management of hyperviscosity in multiple myeloma and Waldenström macroglobulinaemia. Plasmapheresis indications, fluid management, and urgent haematology escalation pathway.",
-            tags: ["Myeloma", "Plasmapheresis", "Paraprotein", "Waldenström"],
-            related: ["onco-dit", "onco-neutropenic-sepsis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hyperviscosity",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/hyperviscosity",
-            updated: "Sep 2024",
-          },
-          {
-            id: "onco-hypercalcaemia",
-            title: "Hypercalcaemia of Malignancy",
-            category: "Metabolic Emergencies",
-            summary: "Assessment and management of hypercalcaemia in cancer. Corrected calcium thresholds for treatment, IV rehydration regimens, zoledronic acid dosing (with renal adjustment), denosumab as alternative, and monitoring protocol.",
-            tags: ["Zoledronic acid", "Denosumab", "Corrected calcium", "Rehydration"],
-            related: ["onco-tumour-lysis", "pall-bone-pain"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypercalcaemia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypercalcaemia",
-            updated: "Mar 2025",
-          },
-          {
-            id: "onco-tumour-lysis",
-            title: "Tumour Lysis Syndrome (TLS)",
-            category: "Metabolic Emergencies",
-            summary: "Cairo-Bishop criteria for laboratory and clinical TLS. Risk stratification (low/intermediate/high), allopurinol and rasburicase prophylaxis protocols, aggressive IV hydration, electrolyte correction priorities, and renal replacement therapy triggers.",
-            tags: ["TLS", "Rasburicase", "Allopurinol", "Hyperkalaemia", "Cairo-Bishop"],
-            related: ["onco-hypercalcaemia", "onco-neutropenic-sepsis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/tls",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/tls",
-            updated: "Feb 2025",
-          },
-          {
-            id: "onco-hyponatraemia",
-            title: "Hyponatraemia in Oncology",
-            category: "Metabolic Emergencies",
-            summary: "Differential diagnosis of hyponatraemia in cancer patients including SIADH (chemotherapy-induced, CNS disease, pulmonary), adrenal insufficiency, and third-spacing. Correction rate limits, hypertonic saline indications, and fluid restriction protocols.",
-            tags: ["SIADH", "Hypertonic saline", "Sodium correction", "Fluid restriction"],
-            related: ["onco-hypercalcaemia", "onco-tumour-lysis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hyponatraemia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/hyponatraemia",
-            updated: "Jan 2025",
-          },
-          {
+      },          {
             id: "onco-mscc",
             title: "Malignant Spinal Cord Compression (MSCC)",
             category: "Structural & Compressive Emergencies",
@@ -246,9 +212,10 @@ const SITES = [
               { label: "Revised Tokuhashi Score", url: "https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system", description: "Prognosis in spinal metastases — guides treatment intensity" },
               { label: "Frankel / ASIA Classification", url: "https://www.asia-spinalinjury.org/wp-content/uploads/2019/10/ASIA-ISCOS-Worksheet_10.2019_PRINT-Page-1-2.pdf", description: "ASIA Neurological injury severity classification" },
             ],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/mscc",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/mscc",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=64b1c0f07b8b8d13e4e9c6b664d0f7f5",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10504&query_desc=spinal%20cord%20compression",
             updated: "Mar 2028 (review)",
+            summaryCalcLink: { calcId: "sins", label: "SINS Score Calculator", text: "Use the SINS risk score for spinal instability to guide surgical referral" },
             sections: [
               {
                 heading: "⚠ Red Flags — Act Immediately",
@@ -376,41 +343,7 @@ const SITES = [
                 ],
               },
             ],
-          },
-          {
-            id: "onco-svco",
-            title: "Superior Vena Cava Obstruction (SVCO)",
-            category: "Structural & Compressive Emergencies",
-            summary: "Clinical recognition and grading of SVCO. Emergency dexamethasone, endovascular stenting vs urgent RT decision-making, tissue diagnosis considerations, and fractionation options for palliative RT.",
-            tags: ["SVCO", "Stenting", "Dexamethasone", "Urgent RT"],
-            related: ["onco-mscc", "onco-pericardial-tamponade"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/svco",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/svco",
-            updated: "Mar 2025",
-          },
-          {
-            id: "onco-pericardial-tamponade",
-            title: "Malignant Pericardial Effusion & Tamponade",
-            category: "Structural & Compressive Emergencies",
-            summary: "Recognition of haemodynamic compromise from malignant pericardial effusion. Echocardiography criteria, urgent pericardiocentesis pathway, indications for pericardial window, and post-drainage monitoring.",
-            tags: ["Tamponade", "Pericardiocentesis", "Echo", "Effusion"],
-            related: ["onco-svco", "onco-mscc"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pericardial-tamponade",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pericardial-tamponade",
-            updated: "Oct 2024",
-          },
-          {
-            id: "onco-raised-icp",
-            title: "Raised Intracranial Pressure",
-            category: "Structural & Compressive Emergencies",
-            summary: "Management of symptomatic brain metastases and leptomeningeal disease causing raised ICP. Dexamethasone initiation and tapering, osmotherapy (mannitol/hypertonic saline), seizure prophylaxis, and urgent neurosurgical or SRS referral criteria.",
-            tags: ["Brain mets", "Dexamethasone", "Mannitol", "ICP", "SRS"],
-            related: ["onco-mscc", "onco-svco"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/raised-icp",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/raised-icp",
-            updated: "Feb 2025",
-          },
-        ],
+          },        ],
       },
       {
         id: "onco-sact-rt",
@@ -427,8 +360,8 @@ const SITES = [
             tags: ["Mucositis", "Mouthwash", "CTCAE", "5FU", "Caphosol"],
             related: [],
             calculators: [],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/mucositis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/mucositis",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=06a07ac9af7cd720d38a9e0c02fe22d8",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9726&query_desc=mucositis",
             updated: "Feb 2028 (review)",
             sections: [
               {
@@ -620,8 +553,8 @@ const SITES = [
             summary: "CTCAE-graded management of diarrhoea post-SACT or radiotherapy. Key decision points: categorise SACT type first (immunotherapy requires different pathway — see irAE section); exclude infection (CDiff, neutropenic sepsis); grade severity to guide loperamide, codeine, octreotide, and admission decisions. Fluoropyrimidines (capecitabine, 5-FU) and irinotecan require specific additional management. Grade 3–4 always requires admission.",
             tags: ["Diarrhoea", "Loperamide", "Octreotide", "Irinotecan", "Capecitabine", "5-FU", "CTCAE", "CDiff", "Radiation proctitis", "DPYD"],
             related: ["onco-neutropenic-sepsis", "onco-mucositis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/chemo-rt-diarrhoea",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/chemo-rt-diarrhoea",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3691c5877f67bbf1d519fe66515e3bc6",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9824&query_desc=diarrhoea",
             updated: "May 2023 (review)",
             sections: [
               {
@@ -745,8 +678,8 @@ const SITES = [
             summary: "Select antiemetic regimen based on the emetogenic tier of the highest-risk agent in the regimen. Four tiers: High (>90% emesis without prophylaxis — cisplatin, AC regimens, ABVD), Moderate (30–90% — carboplatin, oxaliplatin, irinotecan), Low (10–30% — docetaxel, paclitaxel, gemcitabine), Minimal (<10% — trastuzumab, checkpoint inhibitors, vinorelbine IV). Pre-chemotherapy antiemetics are mandatory for high/moderate risk. Assess and document CTCAE grade after every cycle.",
             tags: ["CINV", "Nausea", "Vomiting", "Ondansetron", "Dexamethasone", "NK1 antagonist", "Aprepitant", "Olanzapine", "Metoclopramide", "Emetogenic risk", "Anticipatory", "Breakthrough"],
             related: ["onco-chemo-rt-diarrhoea", "onco-mucositis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/cinv",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/cinv",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=d8886b7660342320c8e4ad7cf4de2c1b",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9712&query_desc=nausea",
             updated: "February 2028 (review)",
             sections: [
               {
@@ -1206,8 +1139,8 @@ const SITES = [
             summary: "Extravasation is leakage of IV cytotoxic into surrounding tissue. Can cause pain, erythema, necrosis and functional loss if untreated. Treatment depends on drug class: DNA-binding vesicants need DMSO + cold, non-DNA-binding vesicants need hyaluronidase + warm, irritants need cold + hydrocortisone cream. All vesicant extravasations require urgent plastic/hand surgery referral.",
             tags: ["Extravasation", "Vesicant", "DMSO", "Hyaluronidase", "Anthracycline", "Vinca alkaloids", "Plastic surgery"],
             related: ["onco-line-infection", "onco-neutropenic-sepsis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/extravasation",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/extravasation",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=5cbe18a5cdb5536252a9433b96d8e448",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9813&query_desc=extravasation",
             updated: "June 2024 (review)",
             sections: [
               {
@@ -1415,31 +1348,7 @@ const SITES = [
                 ],
               },
             ],
-          },
-
-          {
-            id: "onco-rt-toxicity",
-            title: "Acute Radiotherapy Toxicity",
-            category: "RT & SACT Toxicities",
-            summary: "Inpatient management of acute radiation toxicities requiring admission: severe mucositis, oesophagitis (dysphagia, aspiration risk), acute radiation proctitis/cystitis, and radiation pneumonitis. CTCAE grading, NG/PEG indications, steroid protocols.",
-            tags: ["CTCAE", "Mucositis", "Oesophagitis", "Proctitis", "Pneumonitis"],
-            related: ["onco-chemo-rt-diarrhoea", "onco-neutropenic-sepsis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/rt-toxicity",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/rt-toxicity",
-            updated: "Mar 2025",
-          },
-          {
-            id: "onco-cci",
-            title: "Chemotherapy-Induced Cardiac Toxicity",
-            category: "RT & SACT Toxicities",
-            summary: "Acute cardiotoxicity from anthracyclines, trastuzumab, and 5-FU. Presents including cardiomyopathy, vasospastic angina (5-FU), QTc prolongation (arsenic trioxide), and hypertensive crisis (VEGF inhibitors). Monitoring thresholds, cardiology escalation pathway, and treatment hold criteria.",
-            tags: ["Anthracycline", "5-FU vasospasm", "QTc", "Cardiomyopathy", "Trastuzumab"],
-            related: ["onco-extravasation", "onco-pericardial-tamponade"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/chemo-cardiac",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/chemo-cardiac",
-            updated: "Jan 2025",
-          },
-        ],
+          },        ],
       },
       {
         id: "onco-io",
@@ -1447,13 +1356,13 @@ const SITES = [
         guidelines: [
           {
             id: "io-skin-toxicity",
-            title: "Skin Toxicity",
+            title: "Skin Toxicity & Dermatitis (ICPI)",
             category: "Skin & Mucosal",
             summary: "Grade 1–4 skin toxicity management. Topical corticosteroid selection by potency, systemic steroids from grade 3, bullous dermatitis (urgent derm input, rituximab for refractory), Stevens-Johnson / TEN (inpatient IV methylprednisolone 1–2mg/kg). ICPI hold/restart criteria. Grade 2 pruritus: consider gabapentin/pregabalin if antihistamine-refractory.",
             tags: ["Rash", "Pruritus", "SJS/TEN", "BSA", "Topical steroids"],
             related: ["io-peripheral-neuro", "io-colitis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-skin",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-skin",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1477,13 +1386,13 @@ const SITES = [
         
           {
             id: "io-peripheral-neuro",
-            title: "Peripheral Neurological Toxicity",
+            title: "Peripheral Neurological Toxicity (ICPI)",
             category: "Neurological",
             summary: "Asymmetric/systemic motor deficit, painful or painless sensory deficit, autonomic dysfunction, hypo/areflexia. GI tract paresis from myenteric neuritis is rare but may present with sudden profound ileus. Grade 1: monitor. Grade 2: prednisolone 0.5–1mg/kg + amitriptyline/gabapentin for pain, withhold ICPI. Grade 3/4: admit, IV methylprednisolone 2mg/kg/day, neurology team, withhold/discontinue ICPI. Steroid wean: 4–8 weeks. Consider PCP prophylaxis if >4 weeks.",
             tags: ["Peripheral neuropathy", "Motor deficit", "Gabapentin", "Methylprednisolone"],
             related: ["io-central-neuro", "io-gbs-mg"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-peripheral-neuro",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-peripheral-neuro",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1504,13 +1413,13 @@ const SITES = [
           },
           {
             id: "io-gbs-mg",
-            title: "Guillain-Barré Syndrome & Myasthenia Gravis",
+            title: "Guillain-Barré Syndrome & Myasthenia Gravis (ICPI)",
             category: "Neurological",
             summary: "GBS: progressive symmetrical muscle weakness, absent tendon reflexes, respiratory/bulbar involvement, autonomic instability. Steroids not recommended in idiopathic GBS — trial of methylprednisolone 1–2mg/kg reasonable for ICPI-induced GBS. Plasmapheresis or IVIG. HDU/ITU if FVC <15–20ml/kg. MG: fluctuating proximal/ocular/bulbar weakness with fatigability. Steroids indicated — prednisolone 20mg increasing to 1mg/kg/day. Pyridostigmine 30mg TDS. Avoid ciprofloxacin, beta-blockers. Discontinue ICPI permanently (consultant decision).",
             tags: ["GBS", "Myasthenia gravis", "IVIG", "Plasmapheresis", "Pyridostigmine"],
             related: ["io-peripheral-neuro", "io-central-neuro"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-gbs-mg",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-gbs-mg",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1611,13 +1520,13 @@ const SITES = [
           },
           {
             id: "io-central-neuro",
-            title: "Central Neurotoxicity",
+            title: "Central Neurotoxicity (ICPI)",
             category: "Neurological",
             summary: "Aseptic meningitis (headache, photophobia, neck stiffness, normal cognition), encephalitis (confusion, personality change, altered GCS), transverse myelitis (acute motor/sensory/autonomic deficit, sensory level, often bilateral). All require urgent exclusion of infection before steroids. Withhold/discontinue ICPI (consultant decision). Other rare presentations: neurosarcoidosis, PRES, Vogt-Harada-Koyanagi, demyelination, vasculitic encephalopathy, generalised seizures.",
             tags: ["Encephalitis", "Meningitis", "Transverse myelitis", "LP", "Methylprednisolone"],
             related: ["io-peripheral-neuro", "io-gbs-mg"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-central-neuro",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-central-neuro",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1737,13 +1646,13 @@ const SITES = [
         
           {
             id: "io-colitis",
-            title: "Diarrhoea & Colitis",
+            title: "Diarrhoea & Colitis (ICPI)",
             category: "GI & Hepatic",
             summary: "Grade 1 (≤3 liquid stools/day): fluid intake, monitor q72h. Grade 2 (4–6 stools, abdominal pain, blood): prednisolone 0.5–1mg/kg or budesonide 3mg TDS if no bloody diarrhoea; outpatient flexi-sig. Grade 3/4 (≥6 stools, loose stools within 1h of eating): admit to SRU, IV methylprednisolone 1–2mg/kg, urgent flexi-sig + biopsies (CMV PCR), CT abdomen/pelvis, pre-infliximab screening. Steroid-refractory: infliximab 5mg/kg (up to 3 infusions). Vedolizumab, mycophenolate, or tacrolimus as alternatives. Continue enteral feeding — not harmful, may aid resolution.",
             tags: ["Colitis", "Diarrhoea", "Infliximab", "Flexi-sig", "CMV"],
             related: ["io-hepatitis", "io-peripheral-neuro"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-colitis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-colitis",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1766,13 +1675,13 @@ const SITES = [
           },
           {
             id: "io-hepatitis",
-            title: "Hepatic Toxicity",
+            title: "Hepatitis (ICPI)",
             category: "GI & Hepatic",
             summary: "Grade 1 (ALT/AST <3× ULN): watch, repeat LFTs in 1 week. Grade 2 (3–5× ULN): no immunosuppression unless worsening; consultant decision to initiate prednisolone 0.5–1mg/kg PO. Grade 3 (5–20× ULN): withhold ICPI, re-check LFTs/INR/albumin q2–3 days, consider hepatology review + liver biopsy before steroids. Grade 4 (>20× ULN): admit, IV methylprednisolone 1–2mg/kg/day, hepatology review + biopsy. Steroid-refractory: switch to IV if on oral, add mycophenolate 500–1000mg BD, then consider tacrolimus. For grade >1 transaminitis with bilirubin >1.5× ULN: follow grade 4 pathway (unless Gilbert's).",
             tags: ["Hepatitis", "Transaminitis", "Mycophenolate", "Liver biopsy", "Infliximab"],
             related: ["io-colitis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-hepatitis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-hepatitis",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1796,13 +1705,13 @@ const SITES = [
         
           {
             id: "io-thyroid",
-            title: "Thyroid Toxicity",
+            title: "Thyroid Toxicity (ICPI)",
             category: "Endocrine",
             summary: "Monitor TSH, FT4, T3 before every cycle. Subclinical hyperthyroidism / thyrotoxicosis often precedes overt hypothyroidism. Falling TSH across 2 measurements may suggest pituitary dysfunction — check weekly cortisol. Hypothyroidism (low FT4 + elevated TSH, or TSH >10): thyroxine 0.15–1.5µg/kg (start low in elderly/cardiac history) if random cortisol normal — check cortisol first. Continue ICPI. Thyrotoxicosis: beta-blockers for symptoms, repeat TFTs in 4–6 weeks. Carbimazole is NOT indicated in immunotherapy-induced thyrotoxicosis. CT iodine contrast can affect TFTs.",
             tags: ["Hypothyroidism", "Thyrotoxicosis", "TSH", "Thyroxine", "Cortisol"],
             related: ["io-hypophysitis", "io-adrenal"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-thyroid",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-thyroid",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1887,13 +1796,13 @@ const SITES = [
           },
           {
             id: "io-hypophysitis",
-            title: "Hypophysitis",
+            title: "Hypophysitis (ICPI)",
             category: "Endocrine",
             summary: "Acute: headache, photophobia, dizziness, nausea, fevers, anorexia, visual field cuts, severe fatigue. Bloods: low ACTH, low morning cortisol, low Na, low K, low testosterone. Grade 1–2: pituitary axis bloods + MRI pituitary. Oral prednisolone 0.5–1mg/kg. Grade 3–4: IV methylprednisolone 1mg/kg. DO NOT STOP STEROIDS. Wean over 2–4 weeks to 5mg prednisolone. Refer endocrinology. Hydrocortisone replacement: 10mg am / 5mg midday / 5mg 4pm if cortisol low or inadequate synacthen response. Always replace cortisol 1 week before starting thyroxine.",
             tags: ["Hypophysitis", "Cortisol", "ACTH", "MRI pituitary", "Hydrocortisone"],
             related: ["io-thyroid", "io-adrenal"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-hypophysitis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-hypophysitis",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1915,13 +1824,13 @@ const SITES = [
           },
           {
             id: "io-adrenal",
-            title: "Hypoadrenalism / Adrenal Insufficiency",
+            title: "Hypoadrenalism / Adrenal Insufficiency (ICPI)",
             category: "Endocrine",
             summary: "May occur without hypophysitis. Incidental low cortisol: check steroid history → if no steroids and asymptomatic, arrange short synacthen test within 24–48h via SDEC. Adequate response (cortisol >420nmol/L at 30min post-synacthen): discharge with advice. Inadequate response or symptomatic: manage as suspected primary adrenal insufficiency. Adrenal crisis: admit SRU, random cortisol + ACTH (must reach lab within 4h), treat acutely as per endocrinology adrenal crisis guideline. Maintenance: hydrocortisone PO 10mg am / 5mg midday / 5mg 4pm. Provide sick day rules + injectable hydrocortisone (2 vials 100mg/1ml). Refer endocrinology.",
             tags: ["Adrenal insufficiency", "Cortisol", "Synacthen", "Hydrocortisone", "Sick day rules"],
             related: ["io-hypophysitis", "io-thyroid"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-adrenal",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-adrenal",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -1948,13 +1857,13 @@ const SITES = [
           },
           {
             id: "io-hyperglycaemia",
-            title: "Hyperglycaemia",
+            title: "Hyperglycaemia (ICPI)",
             category: "Endocrine",
             summary: "New onset fasting glucose >7.0 mmol/L or random >11 mmol/L. Immunotherapy can cause new-onset type 1 diabetes. In steroid-treated patients: steroid-induced hyperglycaemia likely. Pre-existing T2DM: titrate usual medication, plan reduction when steroids weaned. No T2DM: start gliclazide 40–80mg morning (max 240mg morning, 320mg total daily). If persistent hyperglycaemia: discuss insulin with endocrinology. If DKA features: hold immunotherapy, manage as per NUH DKA guideline, endocrinology referral.",
             tags: ["Hyperglycaemia", "DKA", "Type 1 diabetes", "Gliclazide", "Steroids"],
             related: ["io-hypophysitis", "io-adrenal"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-hyperglycaemia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-hyperglycaemia",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -2033,13 +1942,13 @@ const SITES = [
         
           {
             id: "io-pneumonitis",
-            title: "Pneumonitis",
+            title: "Pneumonitis (ICPI)",
             category: "Pulmonary & Renal",
             summary: "Grade 1 (radiographic only — ground glass): consider delay, monitor every 2–3 days. Grade 2 (mild/moderate symptoms — dyspnoea, cough, chest pain): treat infection first; if no infection or no improvement with antibiotics after 48h: prednisolone 1mg/kg/day. Grade 3–4 (severe symptoms, new/worsening hypoxia, ARDS): admit, IV methylprednisolone 1–2mg/kg/day, taper over 6 weeks, ceiling of care discussion. If no improvement in 48h: infliximab 5mg/kg (or mycophenolate if concurrent hepatic toxicity, or IVIG). Investigations: CXR, B-D glucan/galactomannan, viral PCR (PCP + COVID), troponin (myocarditis), BNP (heart failure).",
             tags: ["Pneumonitis", "Ground glass", "Methylprednisolone", "Infliximab", "ARDS"],
             related: ["io-colitis", "io-hepatitis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-pneumonitis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-pneumonitis",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -2060,13 +1969,13 @@ const SITES = [
           },
           {
             id: "io-nephritis",
-            title: "Nephritis",
+            title: "Nephritis (ICPI)",
             category: "Pulmonary & Renal",
             summary: "Grade 1 (creatinine 1.5–2× baseline/ULN): weekly U&Es. Grade 2 (2–3×): review hydration, renal USS, creatinine in 48–72h, nephrology discussion (biopsy), steroids 0.5–1mg/kg if IRAE. Grade 3/4 (>3×, grade 4 = dialysis indicated): admit, strict fluid balance, daily U&Es, nephrology + biopsy, methylprednisolone 1–2mg/kg. If no improvement after 1 week: azathioprine, cyclophosphamide, ciclosporin, infliximab or mycophenolate. May need renal replacement therapy.",
             tags: ["Nephritis", "Creatinine", "Renal biopsy", "Mycophenolate", "Nephrologist"],
             related: ["io-pneumonitis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-nephritis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-nephritis",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -2086,31 +1995,7 @@ const SITES = [
                 ],
               },
             ],
-          },
-        
-          {
-            id: "io-arthralgia",
-            title: "Arthralgia",
-            category: "Musculoskeletal",
-            summary: "Grade 1 (mild pain, single joint, erythema/swelling): paracetamol + ibuprofen. Grade 2 (moderate pain, multiple joints, limits instrumental ADLs): NSAIDs (diclofenac/naproxen/etoricoxib); if inadequate: prednisolone 10–20mg or intra-articular steroids for large joints. Grade 3–4 (severe, irreversible joint damage, limits self-care): prednisolone 0.5–1mg/kg; if no improvement in 4 weeks or worsening: rheumatology referral + consider anti-TNFα. Monitor ESR/CRP q4–6 weeks.",
-            tags: ["Arthralgia", "NSAIDs", "Prednisolone", "Anti-TNFα", "Rheumatology"],
-            related: ["io-myositis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-arthralgia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-arthralgia",
-            updated: "Jan 2024",
-          },
-          {
-            id: "io-myositis",
-            title: "Myalgia & Myositis",
-            category: "Musculoskeletal",
-            summary: "Myalgia: marked muscle discomfort. Myositis: inflammation/weakness of skeletal muscles. Grade 1 (mild pain): pain treatment, monitor serial CK + troponin, muscle strength testing. Consider concomitant MG or myocarditis. Grade 2 (moderate pain + weakness, elevated CK/aldolase, limiting ADLs): prednisolone 1–2mg/kg/day ± IVIG 2g/kg; consider muscle MRI + EMG + biopsy + rheumatology/neurology consult. Grade 3 (severe weakness, limiting self-care): as grade 2; if refractory: plasmapheresis, infliximab or mycophenolate. Hold immunotherapy from grade 2, permanently discontinue from grade 3.",
-            tags: ["Myositis", "CK", "IVIG", "Myocarditis", "Troponin"],
-            related: ["io-arthralgia", "io-gbs-mg"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-myositis",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-myositis",
-            updated: "Jan 2024",
-          },
-        
+          },        
           {
             id: "io-steroids-guide",
             title: "Steroid Prescribing & Monitoring",
@@ -2118,8 +2003,8 @@ const SITES = [
             summary: "All patients on steroids for irAE: issue pharmacy steroid card + Steroid Alert Card (carry at all times). Steroid taper: irAEs may worsen during dose reduction — counsel patients, escalate if needed, record in hand-held record. PPI required for high-dose steroids (lansoprazole 30mg OD or omeprazole 40mg OD). If on or will be on high-dose steroids >2 weeks: add cotrimoxazole 480mg OD (PCP prophylaxis) + AdCal D3 1 tablet daily (osteoporosis prevention). Do NOT check cortisol whilst on steroids.",
             tags: ["PPI", "PCP prophylaxis", "Steroid card", "Bone protection", "Cortisol"],
             related: ["io-hypophysitis", "io-adrenal", "io-pneumonitis"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/io-steroids",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/io-steroids",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
             updated: "Jan 2024",
             sections: [
               {
@@ -2145,30 +2030,7 @@ const SITES = [
       {
         id: "onco-vte-haem",
         label: "VTE & Haemostasis",
-        guidelines: [
-          {
-            id: "onco-vte",
-            title: "Cancer-Associated Thrombosis (VTE)",
-            category: "VTE & Haemostasis",
-            summary: "Diagnosis and management of DVT and PE in cancer patients. LMWH vs DOAC selection (Khorana score, bleeding risk), treatment duration, IVC filter indications, and management of anticoagulation around invasive procedures.",
-            tags: ["VTE", "PE", "DVT", "LMWH", "DOAC", "Khorana"],
-            related: ["onco-svco", "onco-dit"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/cancer-vte",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/cancer-vte",
-            updated: "Mar 2025",
-          },
-          {
-            id: "onco-bone-pain-acute",
-            title: "Acute Bone Pain Crisis",
-            category: "VTE & Haemostasis",
-            summary: "Management of acute severe bone pain in oncology inpatients including pathological fracture recognition, urgent orthopaedic referral criteria, analgesic escalation, radiation emergency referral pathway, and G-CSF-induced bone pain.",
-            tags: ["Bone pain", "Pathological fracture", "Orthopaedics", "G-CSF"],
-            related: ["onco-mscc", "pall-bone-pain", "pall-pain"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/acute-bone-pain",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/acute-bone-pain",
-            updated: "Feb 2025",
-          },
-        ],
+        guidelines: [        ],
       },
       {
         id: "onco-outpatient",
@@ -2213,8 +2075,8 @@ const SITES = [
             summaryCalcLink: { calcId: "opioid-converter", label: "Opioid Equianalgesic Converter", text: "For dose conversions between opioids, SC routes, and transdermal patches" },
             tags: ["WHO Ladder", "Morphine", "Oxycodone", "Fentanyl patch", "Breakthrough", "Opioid rotation", "Adjuvants", "CSCI"],
             related: ["pall-syringe", "pall-bone-pain", "pall-neuropathic", "pall-opioid-conversion", "pall-renal"],
-            pdfUrl: "http://www.nottsapc.nhs.uk/media/1079/end-of-life-prescribinq-guidance.pdf",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-pain",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
               {
@@ -2352,30 +2214,7 @@ const SITES = [
                 ],
               },
             ],
-          },
-          {
-            id: "pall-neuropathic",
-            title: "Neuropathic Pain",
-            category: "Symptom Control",
-            summary: "Adjuvant analgesic selection including gabapentinoids, tricyclics, SNRIs, and ketamine. Neuropathic pain assessment tools and management in the palliative setting.",
-            tags: ["Gabapentin", "Ketamine", "Adjuvants", "Assessment"],
-            related: ["pall-pain", "pall-syringe"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-neuropathic",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-neuropathic",
-            updated: "Jan 2025",
-          },
-          {
-            id: "pall-bone-pain",
-            title: "Bone Pain & Hypercalcaemia",
-            category: "Symptom Control",
-            summary: "Bisphosphonates and denosumab for bone pain, radiotherapy referral criteria, and hypercalcaemia of malignancy management including rehydration and zoledronic acid.",
-            tags: ["Zoledronic acid", "Denosumab", "Hypercalcaemia", "RT"],
-            related: ["pall-pain", "onco-bone-mets"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-bone",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-bone",
-            updated: "Feb 2025",
-          },
-          {
+          },          {
             id: "pall-breathlessness",
             title: "Breathlessness",
             category: "Symptom Control",
@@ -2384,8 +2223,8 @@ const SITES = [
             summary: "Non-pharmacological measures first (fan, repositioning, reassurance). Step 1: SC morphine PRN ± midazolam PRN for anxiety. Step 2: start CSCI if ≥2 PRN doses effective in 24h. Step 3: increase CSCI by previous 24h PRN doses (max 50% increase). If eGFR <30: see renal opioid guidelines.",
             tags: ["Morphine", "Midazolam", "CSCI", "Dyspnoea", "Opioids", "Breathlessness", "Palliative"],
             related: ["pall-syringe", "pall-anxiety", "pall-secretions", "pall-renal"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-breathlessness",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-breathlessness",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "April 2025",
             sections: [
               {
@@ -2528,8 +2367,8 @@ const SITES = [
             summary: "Noisy breathing from pooled secretions the patient can no longer clear. Avoid fluid overload. Reposition first. Hyoscine butylbromide SC PRN (Step 1), then CSCI if secretions present or develop (Step 2: 20–60mg/24h), increasing to 60–120mg/24h if ≥2 PRN doses effective (Step 3).",
             tags: ["Hyoscine butylbromide", "Buscopan", "Secretions", "Death rattle", "CSCI", "End of life"],
             related: ["pall-breathlessness", "pall-syringe", "pall-nausea"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-secretions",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-secretions",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "April 2025",
             sections: [
               {
@@ -2638,8 +2477,8 @@ const SITES = [
             summary: "Cause-directed antiemetic selection — identify the underlying cause first. Step 1: target the cause with prokinetics (gastric stasis), haloperidol (chemical), or cyclizine (raised ICP/motion). Step 2: if not controlled, escalate to broad-spectrum levomepromazine. Correct reversible causes where appropriate.",
             tags: ["Antiemetics", "Metoclopramide", "Haloperidol", "Cyclizine", "Levomepromazine", "Domperidone", "CSCI", "Gastric stasis", "Hypercalcaemia"],
             related: ["pall-syringe", "pall-bowel", "pall-pain"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-nausea",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-nausea",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
               {
@@ -2718,8 +2557,8 @@ const SITES = [
             summary: "Prevention is better than cure. Almost all patients prescribed an opioid will require a regular laxative from day one. Prescribe a stimulant laxative (senna or bisacodyl) and titrate to response. Add a faecal softener if maximum tolerated stimulant dose is ineffective.",
             tags: ["Constipation", "Senna", "Bisacodyl", "Macrogol", "Docusate", "Laxatives", "Opioid"],
             related: ["pall-nausea", "pall-pain", "pall-mbo"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-bowel",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-bowel",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
               {
@@ -2786,8 +2625,8 @@ const SITES = [
             summary: "Rest GI tract and treat pain with opioids via CSCI. Consider a dexamethasone trial (dex 6·6mg SC once daily × 5–7 days). Step 1: metoclopramide CSCI for functional obstruction/no colic. Step 2: stop prokinetics, start hyoscine butylbromide (Buscopan) for mechanical obstruction/colic. Step 3: octreotide or specialist advice.",
             tags: ["Bowel obstruction", "MBO", "Hyoscine butylbromide", "Buscopan", "Metoclopramide", "Dexamethasone", "Octreotide", "CSCI", "Colic"],
             related: ["pall-bowel", "pall-nausea", "pall-syringe"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-mbo",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-mbo",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
               {
@@ -2852,136 +2691,22 @@ const SITES = [
                 ],
               },
             ],
-          },
-          {
-            id: "pall-anxiety",
-            title: "Anxiety & Agitation",
-            category: "Symptom Control",
-            summary: "Management of anxiety disorders in palliative patients, existential distress, terminal restlessness, and refractory agitation. Benzodiazepines and antipsychotics.",
-            tags: ["Midazolam", "Haloperidol", "Terminal restlessness", "Existential"],
-            related: ["pall-syringe", "pall-breathlessness", "pall-sedation"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-anxiety",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-anxiety",
-            updated: "Mar 2025",
-          },
-        ],
+          },        ],
       },
       {
         id: "pall-routes",
         label: "Routes of Administration",
-        guidelines: [
-          {
-            id: "pall-syringe",
-            title: "Syringe Driver Protocol",
-            category: "Routes of Administration",
-            summary: "Indications, drug compatibility, infusion rates, and dose calculations for continuous subcutaneous infusions. Includes common drug combinations and incompatibilities.",
-            tags: ["CSCI", "Compatibility", "Subcutaneous", "T34"],
-            related: ["pall-pain", "pall-nausea", "pall-anxiety"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/syringe-driver",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/syringe-driver",
-            updated: "Apr 2025",
-          },
-          {
-            id: "pall-opioid-conversion",
-            title: "Opioid Conversion",
-            category: "Routes of Administration",
-            summary: "Equianalgesic dose tables for opioid switching. Oral to subcutaneous conversion, transdermal patches, fentanyl and buprenorphine dosing, and dose reduction rationale.",
-            tags: ["Equianalgesic", "Fentanyl patch", "Conversion", "Rotation"],
-            related: ["pall-pain", "pall-syringe", "pall-renal"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/opioid-conversion",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/opioid-conversion",
-            updated: "Mar 2025",
-          },
-          {
-            id: "pall-renal",
-            title: "Renal Impairment & Opioids",
-            category: "Routes of Administration",
-            summary: "Safe prescribing of opioids in renal failure, accumulation risk, preferred agents (alfentanil, fentanyl), and dose reduction / frequency adjustment guidance.",
-            tags: ["Alfentanil", "Fentanyl", "eGFR", "Accumulation"],
-            related: ["pall-opioid-conversion", "pall-pain"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-renal",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-renal",
-            updated: "Jan 2025",
-          },
-        ],
+        guidelines: [        ],
       },
       {
         id: "pall-eol",
         label: "End of Life",
-        guidelines: [
-          {
-            id: "pall-eolc",
-            title: "End of Life Care",
-            category: "End of Life",
-            summary: "Recognition of dying, DNACPR decisions, preferred place of care, Individualised Care Plan, communication with patients and families, and verification of death.",
-            tags: ["DNACPR", "ICP", "Preferred place", "Ceiling of care"],
-            related: ["pall-sedation", "pall-syringe", "pall-spiritual"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/eolc",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/eolc",
-            updated: "Apr 2025",
-          },
-          {
-            id: "pall-sedation",
-            title: "Palliative Sedation",
-            category: "End of Life",
-            summary: "Indications for palliative sedation, consent and capacity considerations, proportionate sedation, and monitoring refractory symptoms.",
-            tags: ["Refractory symptoms", "Midazolam", "Proportionate", "Capacity"],
-            related: ["pall-eolc", "pall-anxiety", "pall-syringe"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-sedation",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-sedation",
-            updated: "Feb 2025",
-          },
-          {
-            id: "pall-spiritual",
-            title: "Psychosocial & Spiritual Care",
-            category: "End of Life",
-            summary: "Spiritual and existential distress assessment, chaplaincy referral, bereavement support, and dignity-centred communication frameworks.",
-            tags: ["Dignity therapy", "Chaplaincy", "Bereavement", "SPICT"],
-            related: ["pall-eolc", "pall-anxiety"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/pall-spiritual",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/pall-spiritual",
-            updated: "Jan 2025",
-          },
-        ],
+        guidelines: [        ],
       },
       {
         id: "pall-emergencies",
         label: "Oncological Emergencies",
-        guidelines: [
-          {
-            id: "pall-mscc",
-            title: "Malignant Spinal Cord Compression",
-            category: "Oncological Emergencies",
-            summary: "MSCC recognition, dexamethasone dosing, urgent imaging pathway, neurosurgical vs RT decision-making, and post-treatment rehabilitation.",
-            tags: ["MSCC", "Dexamethasone", "Urgent RT", "Decompression"],
-            related: ["pall-eolc", "onco-cns", "onco-bone-mets"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/mscc",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/mscc",
-            updated: "Mar 2025",
-          },
-          {
-            id: "pall-svco",
-            title: "Superior Vena Cava Obstruction",
-            category: "Oncological Emergencies",
-            summary: "Clinical recognition of SVCO, emergency management with steroids, stenting vs RT decision, and palliative RT fractionation options.",
-            tags: ["SVCO", "Stenting", "Steroids", "Palliative RT"],
-            related: ["pall-mscc", "onco-svco"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/svco",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/svco",
-            updated: "Nov 2024",
-          },
-          {
-            id: "pall-haemorrhage",
-            title: "Catastrophic Haemorrhage",
-            category: "Oncological Emergencies",
-            summary: "Anticipation and preparation for catastrophic bleeding in malignancy, emergency management, sedation for distress, and communication with families.",
-            tags: ["Catastrophic bleed", "Dark towels", "Midazolam", "Anticipatory"],
-            related: ["pall-eolc", "pall-sedation"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/haemorrhage",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/haemorrhage",
-            updated: "Oct 2024",
-          },
-        ],
+        guidelines: [        ],
       },
     ],
     get guidelines() {
@@ -2995,6 +2720,7 @@ const SITES = [
     color: "#2563a8",
     accent: "#e8f0fb",
     icon: "🧪",
+    isParent: true,
     subsites: [
       {
         id: "electrolytes-calcium",
@@ -3011,8 +2737,8 @@ const SITES = [
             tags: ["Hypercalcaemia", "Calcium", "Zoledronic acid", "Pamidronate", "Bisphosphonate", "PTH", "Malignancy", "Rehydration", "IV saline"],
             related: [],
             summaryCalcLink: null,
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypercalcaemia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypercalcaemia",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=c17cf4cb43ce09621a1129564e7e12a2",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=11200&query_desc=hypercalcaemia",
             updated: "June 2026 (review)",
             sections: [
               {
@@ -3209,8 +2935,8 @@ const SITES = [
             summary: "Adjusted calcium <1·90 = medical emergency — IV calcium gluconate required regardless of symptoms. Symptoms correlate with RATE of drop not just absolute level. Correct magnesium first if low. Most common cause in hospital: post-thyroidectomy hypoparathyroidism. Always use ADJUSTED calcium for all decisions.",
             tags: ["Hypocalcaemia", "Calcium gluconate", "IV calcium", "Alfacalcidol", "Calcitriol", "Hypoparathyroidism", "Post-thyroidectomy", "Vitamin D", "Magnesium"],
             related: ["elec-hypercalcaemia"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypocalcaemia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypocalcaemia",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=83cab27a4dd0e5d6e8c8bd3e8a004ecd",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9722&query_desc=hypocalcaemia",
             updated: "October 2023 (review)",
             sections: [
               {
@@ -3470,18 +3196,17 @@ const SITES = [
             version: "4.0",
             authors: "NUH NHS Trust",
             evidenceBase: "NUH Hypomagnesaemia Treatment Guideline v4·0 | Reviewed December 2023 | Excludes Critical Care and Renal",
-            summary: "Mild (0·5–0·7): oral Magnaspartate® 1–2 sachets/day if symptomatic. Severe (<0·5): IV magnesium sulphate regardless of symptoms — Day 1: 40mmol over 12h, Days 2–5: 20mmol over 6h. Treat for minimum 5 days. Always check calcium and potassium — hypomagnesaemia commonly causes secondary hypocalcaemia and hypokalaemia.",
-            tags: ["Hypomagnesaemia", "Magnesium sulphate", "Magnaspartate", "IV magnesium", "Hypokalaemia", "Hypocalcaemia", "CSCI", "Electrolytes"],
-            related: ["elec-hypocalcaemia", "elec-hypercalcaemia"],
-            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypomagnesaemia",
-            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypomagnesaemia",
+            summary: "Normal range: 0·7–1·0 mmol/L. Mild (0·5–0·7): oral Magnaspartate® 1–2 sachets/day if symptomatic. Severe (<0·5): IV magnesium sulphate regardless of symptoms — Day 1: 40mmol over 12h, Days 2–5: 20mmol over 6h. Treat minimum 5 days. Symptoms usually occur <0·5 mmol/L. Always check calcium and potassium.",
+            tags: ["Hypomagnesaemia", "Magnesium sulphate", "Magnaspartate", "IV magnesium", "Hypokalaemia", "Hypocalcaemia", "Electrolytes"],
+            related: ["elec-hypocalcaemia", "elec-hypercalcaemia", "elec-hypermagnesaemia"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=264c8cb81dbd4129a7831ce423360731",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9656&query_desc=hypomagnesaemia",
             updated: "December 2023",
             sections: [
               {
                 heading: "Severity & First-Line Treatment",
                 type: "grader",
                 grades: [
-                  { grade: 1, label: "Normal", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Serum magnesium 0·7–1·0 mmol/L", "No treatment required"] },
                   { grade: 2, label: "Mild", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Serum magnesium 0·5–0·7 mmol/L", "Symptoms usually absent at this level"] },
                   { grade: 3, label: "Moderate–Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Serum magnesium <0·5 mmol/L", "!!IV treatment required regardless of symptoms", "Symptoms usually occur below 0·5 mmol/L"] },
                 ],
@@ -3504,8 +3229,9 @@ const SITES = [
                 ],
               },
               {
-                heading: "Signs, Symptoms & Causes",
+                heading: "Signs & Symptoms",
                 type: "callouts",
+                note: "Symptoms usually occur when serum magnesium falls below 0·5 mmol/L",
                 panels: [
                   {
                     label: "Clinical Features",
@@ -3522,30 +3248,9 @@ const SITES = [
                       },
                     ],
                   },
-                  {
-                    label: "Causes",
-                    color: "#744210",
-                    headerBg: "#fffff0",
-                    blocks: [
-                      {
-                        icon: "management", heading: "General causes", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: ["GI: diarrhoea, malabsorption, malnutrition, acute pancreatitis", "Renal: tubular reabsorption defects", "Endocrine: hyperaldosteronism, DKA, refeeding syndrome*", "Other: chronic alcoholism, lactation, long-term IV nutrition or fluid therapy"],
-                      },
-                      {
-                        icon: "drug", heading: "Drug causes (not exhaustive — contact Medicines Information ext 84185)", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: [
-                          "PPIs (lansoprazole, omeprazole — common cause)",
-                          "Cisplatin and other cancer chemotherapy",
-                          "Antimicrobials: foscarnet, amphotericin B, aminoglycosides",
-                          "Diuretics: thiazides, loop diuretics",
-                          "Immunosuppressants: ciclosporin, tacrolimus",
-                          "EGF-receptor antagonists: cetuximab",
-                        ],
-                      },
-                    ],
-                  },
                 ],
               },
+
               {
                 heading: "IV Replacement",
                 type: "callouts",
@@ -3642,7 +3347,51 @@ const SITES = [
                 ],
               },
               {
-                heading: "Hypermagnesaemia — Recognition",
+                heading: "Causes",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Causes of Hypomagnesaemia",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "management", heading: "General causes", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: ["GI: diarrhoea, malabsorption, malnutrition, acute pancreatitis", "Renal: tubular reabsorption defects", "Endocrine: hyperaldosteronism, DKA, refeeding syndrome*", "Other: chronic alcoholism, lactation, long-term IV nutrition or fluid therapy"],
+                      },
+                      {
+                        icon: "drug", heading: "Drug causes (not exhaustive — contact Medicines Information ext 84185)", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "PPIs (lansoprazole, omeprazole — common cause)",
+                          "Cisplatin and other cancer chemotherapy",
+                          "Antimicrobials: foscarnet, amphotericin B, aminoglycosides",
+                          "Diuretics: thiazides, loop diuretics",
+                          "Immunosuppressants: ciclosporin, tacrolimus",
+                          "EGF-receptor antagonists: cetuximab",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "elec-hypermagnesaemia",
+            title: "Hypermagnesaemia",
+            category: "Magnesium",
+            version: "1.0",
+            authors: "NUH NHS Trust",
+            evidenceBase: "NUH Hypomagnesaemia Treatment Guideline v4·0 | Reviewed December 2023",
+            summary: "Hypermagnesaemia most commonly occurs with excessive magnesium replacement, particularly in renal impairment. Clinical features are level-dependent: flushing and ECG changes at 2·0–3·5, drowsiness and absent reflexes at 4·0–5·0, respiratory depression above 6·0, cardiac arrest above 8·0. Antidote: IV calcium gluconate 10ml 10%.",
+            tags: ["Hypermagnesaemia", "Magnesium toxicity", "Calcium gluconate", "ECG", "Respiratory depression", "Electrolytes"],
+            related: ["elec-hypomagnesaemia"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=264c8cb81dbd4129a7831ce423360731",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9656&query_desc=hypomagnesaemia",
+            updated: "December 2023",
+            sections: [
+              {
+                heading: "Clinical Features by Level",
                 type: "grader",
                 grades: [
                   { grade: 1, label: "2·0–3·5 mmol/L", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Flushing", "ECG changes"] },
@@ -3652,32 +3401,639 @@ const SITES = [
                 ],
                 management: [
                   { grade: 1, icpi: null, items: ["Slow or stop infusion", "Monitor ECG", "Check renal function"] },
-                  { grade: 2, icpi: null, items: ["Stop infusion", "Monitor closely", "Consider calcium gluconate IV if severe symptoms"] },
+                  { grade: 2, icpi: null, items: ["Stop infusion", "Monitor closely", "Consider IV calcium gluconate if severe symptoms"] },
                   { grade: 3, icpi: null, items: ["!!Stop infusion immediately", "IV calcium gluconate 10ml 10% as antidote", "Supportive care", "Consider dialysis in renal failure"] },
                   { grade: 4, icpi: null, items: ["!!Cardiac arrest protocol", "IV calcium gluconate immediately", "Advanced life support", "Emergency dialysis"] },
                 ],
+                note: "Other features at any level: thirst, hypotension, nausea/vomiting, diplopia, confusion, bradycardia, AV block, coma.",
               },
               {
-                heading: "Special Precautions & Interactions",
+                heading: "Special Precautions",
+                type: "proc_equip",
+                items: [
+                  { item: "Renal impairment", detail: "Mg renally excreted — higher risk of adverse effects. Use with caution, reduce dose, close monitoring" },
+                  { item: "Myasthenia gravis / Hepatic impairment", detail: "Risk of renal impairment or respiratory insufficiency — use with caution" },
+                  { item: "Cardiac conduction defects", detail: "Heart block, myocardial damage, bradycardia — avoid parenteral and oral magnesium" },
+                  { item: "Older patients", detail: "Increased sensitivity — exercise caution with all replacement" },
+                  { item: "Digoxin", detail: "Interaction risk — administer with caution" },
+                  { item: "Barbiturates / opioids / hypnotics (IV)", detail: "Risk of respiratory depression — do NOT co-administer with IV MgSO₄" },
+                  { item: "Nifedipine", detail: "Profound hypotension reported — avoid concurrent use" },
+                  { item: "Fluorides / tetracyclines", detail: "Chelation in gut — separate doses by ≥2–3 hours" },
+                  { item: "Aminoquinolines, quinidine, iron, bisphosphonates, eltrombopag, nitroxoline, penicillamine, nitrofurantoin", detail: "Reduced absorption — take Mg 3–4 hours before or after" },
+                  { item: "Magnaspartate® (sucrose content)", detail: "Do NOT use in fructose intolerance, glucose-galactose malabsorption, or sucrase-isomaltase insufficiency" },
+                ],
+              },
+              {
+                heading: "Further Advice",
+                type: "alert",
+                items: [
+                  "Further advice on magnesium replacement can be obtained from the Clinical Chemistry Physicians",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "electrolytes-potassium",
+        label: "Potassium",
+        guidelines: [
+          {
+            id: "elec-hypokalaemia",
+            title: "Hypokalaemia",
+            category: "Potassium",
+            version: "4",
+            authors: "E Snow / S Cartwright (Pharmacists NUH) — Diagnostics & Clinical Support",
+            evidenceBase: "NUH Hypokalaemia Treatment Guideline v4 | Updated March 2023",
+            summary: "Normal K⁺: 3·5–5·3 mmol/L. Mild (3·0–3·5): oral Sando® K 2 tabs TDS. Moderate (2·5–2·9): oral Sando® K 2 tabs QDS or IV KCl 20–40 mmol/L if not tolerating oral. Severe (<2·5): IV KCl 40 mmol/L in NaCl 0·9% — contact CCOT immediately if ECG changes. Check magnesium first — hypomagnesaemia impairs K⁺ correction.",
+            tags: ["Hypokalaemia", "Potassium", "Sando K", "KCl", "IV potassium", "CCOT", "ECG", "Magnesium", "Digoxin"],
+            related: ["elec-hypomagnesaemia", "elec-hyperkalaemia"],
+            pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypokalaemia",
+            portalUrl: "https://clinicalportal.nuh.nhs.uk/hypokalaemia",
+            updated: "March 2023",
+            sections: [
+              {
+                heading: "Severity & First-Line Treatment",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "Mild", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["K⁺ 3·0–3·5 mmol/L", "Usually asymptomatic", "*Arrhythmia risk (see below)"] },
+                  { grade: 2, label: "Moderate", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["K⁺ 2·5–2·9 mmol/L", "Generalised weakness, lassitude, constipation", "*Arrhythmia risk"] },
+                  { grade: 3, label: "Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["K⁺ <2·5 mmol/L", "Muscle weakness and necrosis", "Paralysis and respiratory impairment if <2·0", "!!*Arrhythmia risk — contact CCOT immediately if ECG changes"] },
+                ],
+                management: [
+                  { grade: 1, icpi: null, items: ["Oral: Sando® K 2 tabs TDS = 72 mmol/day", "Kay-Cee-L® 25ml TDS = 75 mmol/day (alternative)", "If NBM or ECG changes → treat as severe", "Monitor K⁺ daily until in range (~3 days)"] },
+                  { grade: 2, icpi: null, items: ["Oral: Sando® K 2 tabs QDS = 96 mmol/day", "Kay-Cee-L® 25ml QDS = 100 mmol/day (alternative)", "IV if not tolerating oral: KCl 20–40 mmol/L in NaCl 0·9%", "If symptomatic or ECG changes → treat as severe"] },
+                  { grade: 3, icpi: null, items: ["!!Contact CCOT immediately if ECG changes — CCOT QMC: Bleep 284 1049 | CCOT City: Bleep 284 1069 (24h)", "IV: KCl 40 mmol/L in NaCl 0·9% — standard preparation, repeated as required", "Max total daily dose: 2–3 mmol K⁺/kg body weight in 24 hours", "Continuous ECG monitoring if rate >20 mmol/hour", "Do NOT use glucose as infusion vehicle — glucose lowers K⁺ further", "Check K⁺ after every 40–80 mmol; minimum once daily", "Step down to oral once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved"] },
+                ],
+                note: "Approximate deficit: 1 mmol/L drop in K⁺ ≈ 100–200 mmol total body loss. Chronic hypokalaemia may take several days to correct.",
+              },
+              {
+                heading: "⚠ Universal Principles",
+                type: "alert",
+                items: [
+                  "Review history for underlying cause and treat appropriately",
+                  "Review medications — especially diuretics. Check digoxin levels if on digoxin",
+                  "**Check magnesium first** — hypomagnesaemia impairs K⁺ correction. Correct Mg if deficient before or alongside K⁺ replacement",
+                  "If acidotic: correct K⁺ before treating acidosis — alkali causes intracellular K⁺ shift",
+                  "**Never use glucose infusions** as initial replacement vehicle — glucose lowers K⁺ further",
+                  "Account for K⁺ from all sources (IV fluids, TPN) in dose calculations",
+                  "Chronic hypokalaemia = profound total body deficit; replacement may take several days",
+                  "!!ECG changes (U waves, T wave flattening, ST depression) + hypokalaemia → contact CCOT immediately",
+                ],
+              },
+              {
+                heading: "Arrhythmia Risk Groups",
                 type: "list",
                 groups: [
                   {
-                    icon: "avoid", label: "Contraindications and high-risk situations",
+                    icon: "immediate", label: "High-risk groups — even mild hypokalaemia dangerous",
                     items: [
-                      "Renal impairment: Mg renally excreted — reduce dose, close monitoring",
-                      "Cardiac conduction defects / heart block / myocardial damage: avoid parenteral and oral magnesium",
-                      "Myasthenia gravis / hepatic impairment: use with caution",
-                      "Older patients: increased sensitivity — exercise caution",
-                      "!!Do NOT co-administer IV MgSO₄ with barbiturates, opioids, or hypnotics — risk of respiratory depression",
-                      "!!Nifedipine: avoid concurrent use — profound hypotension reported",
+                      "Ischaemic heart disease, heart failure, or LV hypertrophy — even mild hypokalaemia increases arrhythmia risk",
+                      "Liver cirrhosis — hypokalaemia increases ammonia production and risk of hepatic encephalopathy",
+                      "!!Digoxin: hypokalaemia increases digoxin toxicity and arrhythmogenic potential — treat as severe hypokalaemia and check digoxin levels",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Oral / Enteral Replacement",
+                type: "list",
+                groups: [
+                  {
+                    icon: "drug", label: "Preparations in order of preference",
+                    items: [
+                      "**1st line — Sando® K effervescent tablets**: 12 mmol/tablet. Dissolves in water; can be given via enteral feeding tubes. Take with or after food",
+                      "**2nd line — Kay-Cee-L® syrup**: 5 mmol/5ml. Use if Sando® K not tolerated",
+                      "**3rd line — KCl 600mg MR tablets (unlicensed)**: 8 mmol/tablet. Swallow whole with fluid during meals, sitting upright. Risk of intestinal ulceration — follow Trust unlicensed medicines policy",
+                      "Jejunal route: Sando® K preferred; jejunal bioavailability may be reduced",
                     ],
                   },
                   {
-                    icon: "drug", label: "Drug interactions",
+                    icon: "management", label: "When to use IV instead of oral",
                     items: [
-                      "Digoxin: administer with caution",
-                      "Fluorides / tetracyclines: chelation in gut — separate doses by ≥2–3 hours",
-                      "Aminoquinolines, quinidine, iron, bisphosphonates, eltrombopag, nitroxoline, penicillamine, nitrofurantoin: reduced absorption — take Mg 3–4 hours before or after",
+                      "Patient cannot tolerate oral/enteral therapy",
+                      "Not achieving adequate rise in K⁺ in a clinically acceptable time",
+                      "Use KCl 20–40 mmol/L infusion — see IV section for rates",
+                      "!!Do NOT use glucose infusions as initial vehicle — glucose lowers K⁺",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "IV Replacement — Severe / Symptomatic / ECG Changes",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Standard IV regimen",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "KCl 40 mmol/L in NaCl 0·9% — standard preparation", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "Give over 4–6 hours per bag, repeated as required",
+                          "Max total daily dose: 2–3 mmol K⁺/kg body weight in 24 hours",
+                          "Repeat venous blood gas and serum K⁺ at end of initial treatment",
+                          "Step down once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved",
+                          "!!A rate-controlled infusion pump (volumetric or syringe pump) MUST be used for ALL potassium infusions — use DERS guardrails on Alaris pumps",
+                          "!!Do NOT use glucose as infusion vehicle",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Rate & concentration limits",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "management", heading: "Peripheral line", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Standard max rate: 20 mmol/hour",
+                          "Exceptional max rate: 40 mmol/hour — continuous ECG monitoring required",
+                          "Standard concentration: 40 mmol/L (usual bags)",
+                          "Exceptional concentration: 80 mmol/L — senior staff authorisation only",
+                          "Concentrations >40 mmol/L are painful — use largest suitable vein",
+                        ],
+                      },
+                      {
+                        icon: "management", heading: "Central venous (concentrated K⁺ areas only)", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Standard max rate: 20 mmol/hour",
+                          "Exceptional max rate: 40 mmol/hour — continuous ECG monitoring required",
+                          "20 mmol in 20ml or 50 mmol in 50ml — treated as CD, restricted areas only",
+                          "!!Concentrated potassium: refer to NUH Code of Practice (Medicines Code Chapter 25) for approved stock-holding areas",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Available pre-mixed solutions",
+                    color: "#276749",
+                    headerBg: "#f0fff4",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Standard concentrations", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "10 mmol/500ml — NaCl 0·9%, Glucose 5%, Glucose 10%, Glucose 5%/NaCl 0·9%",
+                          "20 mmol/500ml — NaCl 0·9%, Glucose 5%, Glucose 10%, Glucose 5%/NaCl 0·9%",
+                          "20 mmol/1L — NaCl 0·9%, Glucose 5%, Glucose 4%/NaCl 0·18%",
+                          "40 mmol/1L — NaCl 0·9%, Glucose 5%, Glucose 4%/NaCl 0·18%",
+                        ],
+                      },
+                      {
+                        icon: "avoid", heading: "High concentration — senior medical staff authorisation required", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "40 mmol/500ml (= 80 mmol/L) — NaCl 0·9% only",
+                          "60 mmol/1L (0·45% w/v) — NaCl 0·9% only",
+                          "!!Rate-controlled infusion pump MUST be used for ALL potassium infusions",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Monitoring & Adverse Effects",
+                type: "list",
+                groups: [
+                  {
+                    icon: "monitoring", label: "Monitoring during replacement",
+                    items: [
+                      "Oral: daily serum K⁺ until in range (~3 days)",
+                      "IV routine: check K⁺ after every 40–80 mmol; minimum once daily",
+                      "Check Mg²⁺ — correct if low",
+                      "Infusion site: check regularly for pain, redness, inflammation — avoid extravasation",
+                      "Digoxin patients: check digoxin levels",
+                      "Account for K⁺ from all IV fluids and TPN in calculations",
+                    ],
+                  },
+                  {
+                    icon: "avoid", label: "Adverse effects of IV potassium",
+                    items: [
+                      "Hyperkalaemia — especially in renal impairment",
+                      "Fluid overload from rapid infusions — high risk in heart failure or IHD",
+                      "!!Cardiac arrhythmias / sudden cardiac death — risk increased with rapid IV replacement; continuous ECG required if rate >20 mmol/hr",
+                      "Phlebitis — concentrations >40 mmol/L are painful; use largest suitable vein",
+                      "Extravasation and tissue damage — more likely with higher concentrations",
+                    ],
+                  },
+                  {
+                    icon: "referral", label: "Renal impairment caution",
+                    items: [
+                      "Replace K⁺ cautiously in renal impairment — risk of hyperkalaemia due to impaired excretion",
+                      "!!Contact renal team if patient is on dialysis, CKD stage 4/5 (GFR <30), or AKI stage 2/3",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Causes & Drug Causes",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Causes of Hypokalaemia",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "management", heading: "General causes", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "Inadequate diet: anorexia, malnutrition, bulimia",
+                          "High dietary sodium intake",
+                          "GI loss: diarrhoea, vomiting, ileostomy, intestinal fistulae",
+                          "Renal losses including dialysis",
+                          "Urinary loss in congestive heart failure",
+                          "Hypomagnesaemia",
+                          "Endocrine: hyperaldosteronism, Cushing's syndrome, ectopic ACTH (e.g. small cell lung cancer)",
+                          "Metabolic alkalosis",
+                          "Transcellular shift (K⁺ movement from serum into cells)",
+                        ],
+                      },
+                      {
+                        icon: "drug", heading: "Drug causes (contact Pharmacy Medicines Information ext 84185 for full list)", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "Transcellular shift: beta-agonists, aminophylline, theophylline, verapamil, insulin (esp. DKA treatment), caffeine",
+                          "Increased renal K⁺ loss: loop diuretics, high-dose thiazides, metolazone, indapamide, corticosteroids, cisplatin, AmBisome, aminoglycosides, high-dose penicillins, foscarnet",
+                          "GI loss: laxative abuse",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Investigations",
+                type: "list",
+                groups: [
+                  {
+                    icon: "investigations", label: "Key investigations",
+                    items: [
+                      "ECG strongly recommended in: severe/symptomatic hypokalaemia, cardiac disease, or renal impairment",
+                      "U&Es, bicarbonate, chloride, glucose",
+                      "**Magnesium levels** — failure to correct K⁺ despite treatment may be due to hypomagnesaemia",
+                      "Spot urine K⁺ if cause unclear: >15–20 mmol/L suggests renal loss",
+                      "Unexplained renal loss ± hypertension: refer to investigate for Bartter's or Liddle's syndromes",
+                      "Hypertensive patients: consider Endocrinology referral to exclude Conn's and Cushing's syndrome",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "elec-hyperkalaemia",
+            title: "Hyperkalaemia",
+            category: "Potassium",
+            version: "9",
+            authors: "Emily Payne (Clinical Pharmacist); reviewed Dr Charlotte Bebb (Consultant Renal Medicine), Selina Ladak (Lead Pharmacist for Medication Safety & Governance)",
+            evidenceBase: "NUH Guideline 1352 | Version 9 | Revised December 2022, Amended September 2024 | Review: September 2027 | Excludes DKA and Paediatrics",
+            summary: "Hyperkalaemia: K⁺ ≥6·0 mmol/L (≥6·5 in dialysis patients). ECG changes = emergency — do NOT delay treatment. Three steps: (1) Protect heart — calcium gluconate 10% 30ml over 10 min, (2) Shift K⁺ into cells — Actrapid® 10 units in 50ml glucose 50% over 30 min ± salbutamol 10–20mg nebulised, (3) Remove K⁺ — Lokelma® 10g TDS up to 72h. Monitor blood glucose for 12 hours post insulin-glucose.",
+            tags: ["Hyperkalaemia", "Potassium", "Calcium gluconate", "Actrapid", "Insulin glucose", "Lokelma", "Salbutamol", "Sodium bicarbonate", "ECG", "Dialysis", "CCOT", "Pseudohyperkalaemia"],
+            related: ["elec-hypokalaemia", "elec-hypomagnesaemia"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=758ca78e4708c7d0b87b6209446c66d0",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9682&query_desc=hyperkalaemia",
+            updated: "September 2027 (review)",
+            sections: [
+              {
+                heading: "⚠ Initial Assessment & Escalation",
+                type: "alert",
+                items: [
+                  "Assess patient using the ABCDE approach",
+                  "12-lead ECG and monitor cardiac rhythm if K⁺ ≥6·0 mmol/L",
+                  "Exclude pseudohyperkalaemia — send Whole Blood Potassium (WBK) in green Lithium-Heparin tube",
+                  "Dialysis patients: hyperkalaemia defined as K⁺ ≥6·5 mmol/L — refer to renal team, request continuous 3-lead ECG",
+                  "!!If significant hyperkalaemia or ECG changes: DO NOT delay treatment awaiting repeat result or specialist review",
+                  "Out of hours: lab escalates to H24 who will alert prescriber and escalate to CCOT if required",
+                  "!!Use the Hyperkalaemia prescription chart for calcium gluconate and insulin-glucose treatment (available on ward or print from intranet)",
+                ],
+              },
+              {
+                heading: "Severity Classification",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "Mild", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["K⁺ 5·5–5·9 mmol/L", "Consider cause and need for treatment"] },
+                  { grade: 2, label: "Moderate", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["K⁺ 6·0–6·4 mmol/L", "Management guided by clinical condition, ECG, and rate of rise"] },
+                  { grade: 3, label: "Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["K⁺ ≥6·5 mmol/L", "!!Emergency treatment indicated", "ECG changes at any level = treat as severe"] },
+                ],
+                management: [
+                  { grade: 1, icpi: null, items: ["Consider cause and need for treatment", "Stop potassium-containing/sparing drugs", "Review diet and medications", "Monitor K⁺ and renal function"] },
+                  { grade: 2, icpi: null, items: ["Request urgent 12-lead ECG", "Repeat K⁺ + Whole Blood Potassium (green Lithium-Heparin tube)", "Repeat K⁺ can be confirmed by venous blood gas to avoid delay", "If ECG changes: treat as severe immediately", "If no ECG changes: reduce total body K⁺ (diet, stop offending drugs, Lokelma® if cause not identified/corrected)", "Consider insulin-glucose if severe AKI, persistent high K⁺, or unwell", "Recheck K⁺ after 4–6 hours then daily"] },
+                  { grade: 3, icpi: null, items: ["!!Do NOT delay treatment awaiting repeat results or specialist review", "Request urgent 12-lead ECG + continuous cardiac monitoring", "Repeat K⁺ + Whole Blood Potassium (green tube)", "Step 1: Calcium gluconate 10% 30ml over 10 min — protect heart", "Step 2: Actrapid® 10 units in 50ml glucose 50% over 30 min — shift K⁺ into cells", "Step 3: Lokelma® 10g TDS PO up to 72h — remove K⁺", "Monitor blood glucose for 12 hours post insulin-glucose", "Recheck K⁺ at 2h via VBG, then 4–6h, then daily", "If K⁺ ≥6·5 despite treatment or patient anuric: contact Renal SpR on-call urgently"] },
+                ],
+                note: "ECG changes in hyperkalaemia: tall peaked T waves, flattening/loss of P waves, broadening of QRS complexes, bradycardia, sine wave, VT.",
+              },
+              {
+                heading: "Step 1 — Protect the Heart",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Calcium Gluconate 10% — if K⁺ ≥6·5 mmol/L or ECG changes",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "immediate", heading: "30ml IV over 10 minutes — undiluted via syringe pump", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "If no syringe pump: give as 3 × 10ml boluses over 10 minutes",
+                          "Doctor must stay near patient during administration",
+                          "Does NOT lower serum K⁺ — protects cardiac membrane only",
+                          "ECG changes should improve within 1–3 minutes; effect lasts ~30 minutes",
+                          "!!Digoxin: give slowly — mix with 100ml 5% glucose and give over 60 minutes (rapid calcium may precipitate digoxin toxicity)",
+                          "Cardiac arrest only: calcium chloride 10% 10ml (6·8 mmol) from cardiac arrest box — more irritant peripherally",
+                          "!!Never give calcium gluconate at same time as sodium bicarbonate or insulin-glucose via the same access site — risk of precipitation",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 2 — Shift K⁺ Into Cells",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Actrapid® insulin + glucose — first line",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "10 units Actrapid® in 50ml glucose 50% — IV over 30 minutes via syringe pump", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "Give into a large vein — irritant. Monitor for phlebitis if 50% glucose given peripherally",
+                          "Reduces serum K⁺ by 0·65–1·0 mmol/L",
+                          "If pre-treatment blood glucose <7 mmol/L: also give 250ml glucose 10% at 50ml/hour for 5 hours to prevent hypoglycaemia",
+                          "Monitor blood glucose before and after infusion, every 15–30 minutes and hourly for up to 12 hours — risk of late hypoglycaemia",
+                          "If BM <4 mmol/L: treat per NUH hypoglycaemia guideline",
+                          "!!Two-person check required for preparation",
+                          "!!Insulin-glucose is a HOLDING MEASURE only — does not treat the underlying cause",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Adjuncts — salbutamol and sodium bicarbonate",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Salbutamol 10–20mg nebulised", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "Additive effect to insulin-glucose — optional, must NOT be used as single agent",
+                          "Reduces K⁺ by 0·53–0·88 mmol/L (inconsistent response)",
+                          "Caution: ischaemic heart disease, cardiac arrhythmias (avoid or use lower dose)",
+                          "Response reduced in patients on β-blockers or digoxin",
+                        ],
+                      },
+                      {
+                        icon: "drug", heading: "Sodium bicarbonate 1·4% 500ml IV over 2 hours", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "!!Only if pH <7·2 AND on advice of Renal Registrar or Critical Care — do not use routinely",
+                          "Risk of sodium/fluid overload (pulmonary oedema)",
+                          "Risk of tetany in chronic renal failure with underlying hypocalcaemia",
+                          "!!Never give via same access site as IV calcium — precipitation risk",
+                          "CKD with HCO₃⁻ <22 mmol/L: consider sodium bicarbonate 1g PO BD (caution in fluid overload/hypertension — seek Renal advice)",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 3 — Remove K⁺ From the Body",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management", label: "Reduce K⁺ intake",
+                    items: [
+                      "Low potassium diet — order appropriate renal diet. City: ext 77139 | QMC: ext 81628",
+                      "Stop all potassium-containing/sparing drugs",
+                      "Avoid fluids containing potassium (e.g. Hartmann's) — use NaCl 0·9% preferably",
+                    ],
+                  },
+                  {
+                    icon: "management", label: "Promote urinary K⁺ loss",
+                    items: [
+                      "Monitor fluid balance and encourage good urine output — ensure adequate hydration",
+                      "Treat hypotension — review antihypertensives on drug chart",
+                      "If well hydrated: consider starting or increasing a loop diuretic",
+                    ],
+                  },
+                  {
+                    icon: "drug", label: "Potassium binders",
+                    items: [
+                      "**Lokelma® (sodium zirconium cyclosilicate) 10g PO TDS** up to 72 hours — NICE TA599. Onset 1 hour, median resolution 2·2 hours. Reduces K⁺ by 0·81–1·10 mmol/L",
+                      "Empty sachet into ~45ml water, stir well (powder will not dissolve), drink while cloudy. If settles, stir again",
+                      "Consider stopping Lokelma® when K⁺ <6·0 mmol/L. Stop when K⁺ ≤5·5 mmol/L or after 72 hours",
+                      "Caution: separate anti-retrovirals, tyrosine kinase inhibitors, and azole antifungals by 2 hours before and after Lokelma®",
+                      "If unable to take orally: Calcium Resonium® 30g BD rectally — contact ward/on-call pharmacist for guidance",
+                      "!!Potassium binders may not be necessary if obvious cause has been identified and corrected",
+                    ],
+                  },
+                  {
+                    icon: "immediate", label: "Dialysis",
+                    items: [
+                      "Required if patient does not respond to above measures",
+                      "!!LIKELY NEEDED IF: K⁺ very high, patient oligo/anuric, already on long-term dialysis, or advanced CKD",
+                      "Contact Renal Registrar/Consultant on-call urgently",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Monitoring & Drug Reference",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Post-treatment monitoring",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "monitoring", heading: "K⁺ and glucose checks", color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Recheck K⁺ after 2 hours via VBG — confirm with lab results",
+                          "K⁺ <6·0 mmol/L: repeat K⁺ and renal function after 4–6 hours then daily",
+                          "K⁺ 6·0–6·4 mmol/L: consider repeating insulin-glucose",
+                          "K⁺ ≥6·5 mmol/L despite medical therapy: contact Renal SpR on-call urgently — consider dialysis",
+                          "Blood glucose: monitor regularly for 12 hours after insulin-glucose infusion",
+                          "Ensure adequate hydration and monitor urine output",
+                          "Stop all potassium-containing/sparing drugs; ensure low K⁺ diet",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Drug mechanisms & timing",
+                    color: "#276749",
+                    headerBg: "#f0fff4",
+                    blocks: [
+                      {
+                        icon: "drug", heading: "Treatment summary", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                        items: [
+                          "Calcium gluconate: antagonises cardiac membrane excitability — onset 1–3 min, duration 30–60 min",
+                          "Actrapid® + glucose: intracellular K⁺ uptake via Na-K ATPase — onset within 15 min (peak 30–60 min), duration 2–6h, reduces K⁺ by 0·65–1·0 mmol/L",
+                          "Nebulised salbutamol: Na-K ATPase pump — onset within 30 min (max 60 min), duration 1–3h, reduces K⁺ by 0·53–0·88 mmol/L",
+                          "Lokelma® (sodium zirconium cyclosilicate): selective K⁺ binding — onset 1h, reduces K⁺ by 0·81–1·10 mmol/L",
+                          "Calcium Resonium®: ion exchange resin — onset 2–6h, duration 4–6h",
+                          "Sodium bicarbonate: corrects acidosis, promotes intracellular K⁺ shift — onset after 60 min (variable)",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Drugs that raise K⁺ — review and stop if possible",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "avoid", heading: "Stop or review", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "Potassium supplements (IV and oral)",
+                          "ACE inhibitors, Angiotensin II receptor blockers",
+                          "Mineralocorticoid receptor antagonists (spironolactone, eplerenone)",
+                          "Entresto (sacubitril/valsartan)",
+                          "Potassium-sparing diuretics (amiloride)",
+                          "Trimethoprim/co-trimoxazole",
+                          "Non-selective beta-blockers, NSAIDs",
+                          "Salt substitutes (Lo-Salt)",
+                          "Heparins; digoxin (in toxicity)",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Causes of Hyperkalaemia",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management", label: "Causes",
+                    items: [
+                      "**Pseudohyperkalaemia**: haemolysis (samples must arrive at lab within 5h — NEVER refrigerate), EDTA contamination, prolonged tourniquet, marked leucocytosis/thrombocytosis (use whole blood K⁺ in green tube), sample from drip arm",
+                      "Acute kidney injury / Chronic kidney disease",
+                      "Drugs — see Drugs that raise K⁺ above",
+                      "Acidosis (excluding DKA — follow separate DKA guideline)",
+                      "Mineralocorticoid deficiency (Addison's disease)",
+                      "Endogenous release: tumour lysis syndrome, rhabdomyolysis, trauma, burns",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    get guidelines() {
+      return this.subsites.flatMap(ss => ss.guidelines || []);
+    },
+  },
+
+  {
+    id: "procedures",
+    label: "Procedures",
+    color: "#5b4fcf",
+    accent: "#f0effe",
+    icon: "🔬",
+    isParent: true,
+    subsites: [
+      {
+        id: "proc-respiratory",
+        label: "Respiratory",
+        guidelines: [
+          {
+            id: "proc-pleurodesis",
+            title: "Chemical Pleurodesis",
+            category: "Respiratory",
+            bodySite: "Respiratory",
+            authors: "NUH — Step-by-Step Nursing & Clinical Procedure Guide",
+            evidenceBase: "NUH Local Guidelines | BTS 2010 | Antunes et al 2003 | Roberts et al 2010 | UK Medicines Information",
+            summary: "Chemical pleurodesis using sterile talc 4–5g in 50ml 0·9% saline. Pre-medicate with **oramorph 5–10mg** 1 hour before. Lidocaine 1% via drain: >75kg → 25ml, <75kg → 20ml. Talc is stable for **1 hour only** once in solution. After instillation, elevate drain over pillows for 10 min to distribute agent. **Never clamp a bubbling drain.**",
+            tags: ["Pleurodesis", "Talc", "Chest drain", "Lidocaine", "Pleural effusion", "Respiratory", "Procedure"],
+            related: [],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=18ad5b7f3eea3dda16851f36eca33517",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9951",
+            updated: "Current NUH edition",
+            sections: [
+              {
+                heading: "⚠ Best Practice & Critical Safety",
+                type: "alert",
+                items: [
+                  "Pleura must remain in contact with the sclerosing agent for adequate chemical pleurodesis — seek medical instruction before the procedure on how this will be achieved and document in notes",
+                  "**NEVER clamp a bubbling chest drain** — risk of potentially fatal tension pneumothorax",
+                  "Avoid NSAIDs — may reduce the inflammatory response required for pleurodesis success",
+                  "Talc is stable for **1 hour only** once in solution — prepare immediately prior and do not leave unattended",
+                ],
+              },
+              {
+                heading: "Equipment",
+                type: "proc_equip",
+                items: [
+                  { item: "Prescribed analgesia", detail: "Oramorph 5–10mg PO — give 1 hour pre-procedure" },
+                  { item: "Prescribed premedication", detail: "As prescribed — to alleviate anxiety" },
+                  { item: "Sclerosant", detail: "Talc 4g — dispensed with adaptor for syringe, on named patient basis" },
+                  { item: "1% Lidocaine", detail: ">75kg → 25ml | <75kg → 20ml (max 250mg = 3mg/kg)" },
+                  { item: "2 × 50ml syringes", detail: "For lidocaine and talc — label each clearly" },
+                  { item: "Chloraprep® wands", detail: "70% isopropyl alcohol & 2% chlorhexidine" },
+                  { item: "2 × drawing-up needles", detail: "For preparing solutions" },
+                  { item: "100ml 0·9% saline", detail: "For talc reconstitution" },
+                  { item: "Sterile dressing pack", detail: "With sterile gloves" },
+                  { item: "Chest drain clamps", detail: "If required/available" },
+                ],
+              },
+              {
+                heading: "Procedure Steps",
+                type: "proc_steps",
+                note: "Perform in order. Senior clinician must be present for all steps involving the chest drain.",
+                groups: [
+                  {
+                    label: "Preparation — Steps 1–4",
+                    steps: [
+                      { num: 1, action: "Obtain valid **informed consent**", rationale: "Medic with knowledge of procedure. Ensures patient understands and gives valid consent (NUH)", warning: null, note: null },
+                      { num: 2, action: "Record baseline **NEWS2 score**", rationale: "Establishes a baseline for ongoing monitoring", warning: null, note: null },
+                      { num: 3, action: "Consider **premedication** (BTS 2010)", rationale: "Alleviates anxiety and reduces pain associated with pleurodesis", warning: null, note: null },
+                      { num: 4, action: "Ensure recent **CXR within 24h** has been reviewed by medical staff", rationale: "Confirms chest drain is correctly positioned and lung is fully expanded", warning: null, note: null },
+                    ],
+                  },
+                  {
+                    label: "Medications — Steps 5–6",
+                    steps: [
+                      { num: 5, action: "Ensure prescribed **talc and analgesia** are available. Talc: 4–5g sterile graded talc in 50ml 0·9% NaCl", rationale: "Talc dispensed on named patient basis on base wards", warning: null, note: null },
+                      { num: 6, action: "Administer prescribed **analgesia** and allow time for effect — **oramorph 5–10mg**, 1 hour pre-procedure", rationale: "Pleurodesis creates a painful chemical pleurisy (Roberts et al 2010)", warning: null, note: "Avoid NSAIDs — may reduce inflammatory response required for pleurodesis success (Antunes et al 2003)" },
+                    ],
+                  },
+                  {
+                    label: "Drawing Up — Steps 7–9",
+                    steps: [
+                      { num: 7, action: "Draw up **1% lidocaine** into a 50ml syringe — **label clearly** and take directly to patient. Dose: **>75kg → 25ml; <75kg → 20ml**", rationale: "Distinguishes syringes and reduces risk of wrong-route error (UK Medicines Information)", warning: null, note: null },
+                      { num: 8, action: "Prepare **talc solution immediately prior** to procedure — done by the medic performing the procedure, not left unattended", rationale: "Minimises wrong-route error risk. Talc stable for **1 hour only** once in solution", warning: null, note: null },
+                      { num: 9, action: "Senior clinician draws up **50ml normal saline** into labelled syringe, injects into talc vial, shakes well for **5 minutes**, draws back into labelled 50ml syringe — take directly to bedside", rationale: "Clearly identifies solution and reduces wrong-route error risk", warning: "Do not leave talc syringe unattended", note: null },
+                    ],
+                  },
+                  {
+                    label: "Instillation — Steps 10–12",
+                    steps: [
+                      { num: 10, action: "**Position patient** comfortably with easy access to the affected side/drain", rationale: "Maintains comfort and allows access to drain", warning: null, note: null },
+                      { num: 11, action: "Senior clinician shuts **3-way tap or clamps/kinks drain**, inserts syringe into chest drain tubing. Unclamp/release and administer **lidocaine via drain** to distribute anaesthetic", rationale: "Prevents air entering system. Distributes local anaesthetic across pleura", warning: "A BUBBLING CHEST DRAIN MUST NEVER BE CLAMPED — risk of fatal tension pneumothorax", note: null },
+                      { num: 12, action: "Once lidocaine instilled, **elevate drainage tube over pillows** or shut 3-way tap. Leave to work for **10 minutes**", rationale: "Keeps pleura in contact with LA using gravity — avoids need for clamping and associated risks", warning: null, note: null },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "References",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management", label: "Evidence base",
+                    items: [
+                      "Antunes et al (2003): NSAIDs may reduce the inflammatory response in pleurodesis",
+                      "BTS (2010): Guidelines on premedication for pleurodesis",
+                      "Roberts et al (2010): Pleurodesis creates a painful chemical pleurisy",
+                      "UK Medicines Information: Lidocaine dosing guidance",
+                      "NUH: Nottingham University Hospitals NHS Trust local guidelines",
                     ],
                   },
                 ],
@@ -4530,7 +4886,7 @@ function CinvTierBlock({ tier, c, siteColor }) {
                     ) : (
                       <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
                         <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
-                        {item}
+                        {boldify(item)}
                       </li>
                     );
                   })}
@@ -4550,7 +4906,188 @@ function CinvTierBlock({ tier, c, siteColor }) {
   );
 }
 
-function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedScore, setExpandedScore }) {
+
+// ── Inline renderer — supports **bold**, *italic*, `code`, [[guideline-id]] ──
+function renderInline(text, onNavigate) {
+  if (!text) return text;
+  // tokenise: **bold**, *italic*, `code`, [[id|label]] or [[id]]
+  const TOKEN = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`|\[\[[^\]]+\]\])/g;
+  const parts = text.split(TOKEN);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**"))
+      return <strong key={i} style={{ fontWeight: 700 }}>{part.slice(2,-2)}</strong>;
+    if (part.startsWith("*") && part.endsWith("*") && part.length > 2)
+      return <em key={i} style={{ fontStyle: "italic" }}>{part.slice(1,-1)}</em>;
+    if (part.startsWith("`") && part.endsWith("`"))
+      return <code key={i} style={{ fontFamily: "monospace", fontSize: "0.92em", background: "var(--border)", padding: "1px 5px", borderRadius: 4, color: "var(--text-primary)" }}>{part.slice(1,-1)}</code>;
+    if (part.startsWith("[[") && part.endsWith("]]")) {
+      const inner = part.slice(2,-2);
+      const [id, label] = inner.includes("|") ? inner.split("|") : [inner, inner];
+      return onNavigate
+        ? <span key={i} onClick={() => onNavigate({ type: "guideline", guidelineId: id.trim() })}
+            style={{ color: "var(--accent)", textDecoration: "underline", cursor: "pointer", fontWeight: 500 }}>{label.trim()}</span>
+        : <span key={i} style={{ color: "var(--accent)", fontWeight: 500 }}>{label.trim()}</span>;
+    }
+    return part;
+  });
+}
+
+// Legacy alias — keeps existing boldify() calls working
+function boldify(text) { return renderInline(text, null); }
+
+// ── Markdown section renderer — renders a full markdown string ───────────────
+function MarkdownSection({ content, siteColor, siteAccent, onNavigate }) {
+  if (!content) return null;
+  const lines = content.split("\n");
+  const elements = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // Skip blank lines
+    if (!line.trim()) { i++; continue; }
+
+    // ::: callout blocks  :::warning / :::info / :::danger / :::note
+    if (line.trim().match(/^:::(warning|info|danger|note|success)/)) {
+      const type = line.trim().replace(":::", "").trim();
+      const styles = {
+        warning: { bg: "#fffbeb", border: "#f6d860", color: "#92700a", icon: "⚠" },
+        info:    { bg: siteAccent, border: siteColor + "55", color: siteColor, icon: "ℹ" },
+        danger:  { bg: "#fff5f5", border: "#fc8181", color: "#742a2a", icon: "⚡" },
+        note:    { bg: "var(--bg)", border: "var(--border)", color: "var(--text-muted)", icon: "📋" },
+        success: { bg: "#f0fff4", border: "#9ae6b4", color: "#276749", icon: "✓" },
+      };
+      const s = styles[type] || styles.info;
+      const blockLines = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith(":::")) {
+        blockLines.push(lines[i]);
+        i++;
+      }
+      i++; // consume closing :::
+      elements.push(
+        <div key={i} style={{ padding: "10px 14px", background: s.bg, border: `1px solid ${s.border}`, borderRadius: 8, display: "flex", gap: 10, marginBottom: 8 }}>
+          <span style={{ color: s.color, flexShrink: 0, fontWeight: 700, fontSize: 14 }}>{s.icon}</span>
+          <div style={{ color: s.color, fontSize: 13.5, lineHeight: 1.6 }}>
+            {blockLines.map((bl, bi) => <div key={bi}>{renderInline(bl, onNavigate)}</div>)}
+          </div>
+        </div>
+      );
+      continue;
+    }
+
+    // --- horizontal rule
+    if (line.trim() === "---") {
+      elements.push(<hr key={i} style={{ border: "none", borderTop: "1px solid var(--border-light)", margin: "12px 0" }} />);
+      i++; continue;
+    }
+
+    // ## heading
+    if (line.startsWith("## ")) {
+      elements.push(<h4 key={i} style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6, marginTop: 10 }}>{line.slice(3)}</h4>);
+      i++; continue;
+    }
+
+    // | table |
+    if (line.trim().startsWith("|")) {
+      const tableLines = [];
+      while (i < lines.length && lines[i].trim().startsWith("|")) {
+        tableLines.push(lines[i]);
+        i++;
+      }
+      const rows = tableLines
+        .filter(tl => !tl.match(/^\|[-| ]+\|$/)) // skip separator rows
+        .map(tl => tl.split("|").slice(1,-1).map(c => c.trim()));
+      if (rows.length > 0) {
+        elements.push(
+          <div key={i} style={{ overflowX: "auto", marginBottom: 8 }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5, textAlign: "left" }}>
+              <thead>
+                <tr>{rows[0].map((cell, ci) => (
+                  <th key={ci} style={{ padding: "7px 12px", background: siteAccent, color: siteColor, fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12, borderBottom: `2px solid ${siteColor}55`, whiteSpace: "nowrap" }}>{renderInline(cell, onNavigate)}</th>
+                ))}</tr>
+              </thead>
+              <tbody>
+                {rows.slice(1).map((row, ri) => (
+                  <tr key={ri} style={{ borderBottom: "1px solid var(--border-light)", background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)" }}>
+                    {row.map((cell, ci) => (
+                      <td key={ci} style={{ padding: "7px 12px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{renderInline(cell, onNavigate)}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+      continue;
+    }
+
+    // > blockquote
+    if (line.startsWith("> ")) {
+      elements.push(
+        <div key={i} style={{ borderLeft: `3px solid ${siteColor}`, paddingLeft: 12, margin: "6px 0", color: "var(--text-secondary)", fontStyle: "italic", fontSize: 13.5, lineHeight: 1.6 }}>
+          {renderInline(line.slice(2), onNavigate)}
+        </div>
+      );
+      i++; continue;
+    }
+
+    // - / * bullet list
+    if (line.match(/^[-*] /)) {
+      const listItems = [];
+      while (i < lines.length && lines[i].match(/^[-*] /)) {
+        listItems.push(lines[i].slice(2));
+        i++;
+      }
+      elements.push(
+        <ul key={i} style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 5, marginBottom: 8, padding: 0 }}>
+          {listItems.map((li, lii) => (
+            <li key={lii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+              <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+              {renderInline(li, onNavigate)}
+            </li>
+          ))}
+        </ul>
+      );
+      continue;
+    }
+
+    // 1. numbered list
+    if (line.match(/^\d+\. /)) {
+      const listItems = [];
+      let num = 1;
+      while (i < lines.length && lines[i].match(/^\d+\. /)) {
+        listItems.push(lines[i].replace(/^\d+\. /, ""));
+        i++;
+      }
+      elements.push(
+        <ol key={i} style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 5, marginBottom: 8, padding: 0 }}>
+          {listItems.map((li, lii) => (
+            <li key={lii} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+              <span style={{ color: siteColor, fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12, flexShrink: 0, minWidth: 18 }}>{lii+1}.</span>
+              {renderInline(li, onNavigate)}
+            </li>
+          ))}
+        </ol>
+      );
+      continue;
+    }
+
+    // Plain paragraph
+    elements.push(
+      <p key={i} style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: 6 }}>
+        {renderInline(line, onNavigate)}
+      </p>
+    );
+    i++;
+  }
+
+  return <>{elements}</>;
+}
+
+function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedScore, setExpandedScore, onNavigate }) {
   if (sec.type === "callouts") {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -4619,6 +5156,140 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
       </div>
     );
   }
+
+  // ── Neutropenic sepsis review & monitoring flow ───────────────────────────
+  if (sec.type === "review_flow") {
+    const ClockIcon = () => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+        <circle cx="8" cy="8" r="6.5"/><polyline points="8 4.5 8 8 10.5 9.5"/>
+      </svg>
+    );
+    const ArrowDown = () => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+        <line x1="8" y1="2" x2="8" y2="12"/><polyline points="4 8 8 13 12 8"/>
+      </svg>
+    );
+
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        {/* Section heading */}
+        <div style={{ padding: "13px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
+          <h3 style={{ margin: 0 }}>Review &amp; Monitoring</h3>
+        </div>
+
+        <div style={{ padding: "14px 18px", display: "flex", flexDirection: "column", gap: 14 }}>
+
+          {/* 24–48h callout */}
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "11px 14px", background: siteAccent, border: `1.5px solid ${siteColor}`, borderRadius: 8 }}>
+            <span style={{ color: siteColor, flexShrink: 0, marginTop: 1 }}><ClockIcon /></span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: siteColor, marginBottom: 6 }}>{sec.review24.callout}</div>
+              {sec.review24.items.map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
+                  <span style={{ color: siteColor, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                  <span style={{ fontSize: 13, color: siteColor, lineHeight: 1.55, opacity: 0.9 }}>{renderInline(item, onNavigate)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Status boxes */}
+          <div style={{ display: "flex", flexDirection: "column", border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden" }}>
+            <div style={{ padding: "7px 14px", background: "var(--bg)", borderBottom: "1px solid var(--border-light)" }}>
+              <span style={{ fontFamily: "Sora, sans-serif", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>Patient Status at Review</span>
+            </div>
+            {sec.statuses.map((st, si) => (
+              <div key={si} style={{ borderBottom: si < sec.statuses.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+                <div style={{ padding: "8px 14px", background: st.bg, display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 20, height: 20, borderRadius: "50%", background: st.color, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{st.key}</div>
+                  <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: st.color }}>{st.label}</span>
+                </div>
+                <div style={{ padding: "8px 14px 10px", background: "var(--surface)" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 10px", marginBottom: 7 }}>
+                    {st.criteria.map((c, ci) => (
+                      <span key={ci} style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic" }}>• {c}</span>
+                    ))}
+                  </div>
+                  {st.items.map((item, ii) => {
+                    const isUrgent = item.startsWith("!!");
+                    const text = isUrgent ? item.slice(2).trim() : item;
+                    return isUrgent ? (
+                      <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, padding: "5px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6, marginBottom: 4 }}>
+                        <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 1 }}>⚡</span>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{renderInline(text, onNavigate)}</span>
+                      </div>
+                    ) : (
+                      <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
+                        <span style={{ color: st.color, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                        <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{renderInline(item, onNavigate)}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Arrow down */}
+          <div style={{ display: "flex", justifyContent: "center", color: "var(--text-muted)" }}><ArrowDown /></div>
+
+          {/* No Response — amber/red */}
+          <div style={{ border: "1.5px solid #e53e3e", borderRadius: 8, overflow: "hidden" }}>
+            <div style={{ padding: "9px 14px", background: "#fff5f5", display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ color: "#e53e3e", flexShrink: 0 }}><ClockIcon /></span>
+              <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: "#742a2a" }}>{sec.noResponse.trigger}</span>
+            </div>
+            <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
+              <div style={{ fontSize: 13, color: "#742a2a", fontWeight: 600, marginBottom: 10 }}>{sec.noResponse.instruction}</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {sec.noResponse.factors.map((f, fi) => (
+                  <div key={fi} style={{ background: "var(--bg)", border: "1px solid var(--border-light)", borderRadius: 7, overflow: "hidden" }}>
+                    <div style={{ padding: "7px 12px", background: "#fff5f5", borderBottom: "1px solid #fc8181", display: "flex", alignItems: "center", gap: 7 }}>
+                      <span style={{ fontSize: 13 }}>{f.icon}</span>
+                      <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12, color: "#742a2a" }}>{f.label}</span>
+                    </div>
+                    <div style={{ padding: "8px 12px", display: "flex", flexDirection: "column", gap: 4 }}>
+                      {f.items.map((item, ii) => (
+                        <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7 }}>
+                          <span style={{ color: "#e53e3e", fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                          <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{renderInline(item, onNavigate)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Arrow down */}
+          <div style={{ display: "flex", justifyContent: "center", color: "#276749" }}><ArrowDown /></div>
+
+          {/* Good response — IV to Oral switch (green) */}
+          <div style={{ border: "1.5px solid #9ae6b4", borderRadius: 8, overflow: "hidden" }}>
+            <div style={{ padding: "9px 14px", background: "#f0fff4", display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 14 }}>✓</span>
+              <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: "#276749" }}>{sec.oralSwitch.trigger}</span>
+            </div>
+            <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic", marginBottom: 10 }}>{sec.oralSwitch.note}</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {sec.oralSwitch.options.map((opt, oi) => (
+                  <div key={oi} style={{ background: "#f0fff4", border: "1px solid #9ae6b4", borderRadius: 7, padding: "9px 12px" }}>
+                    <div style={{ fontSize: 12, color: "#276749", fontWeight: 600, marginBottom: 4 }}>{opt.label}</div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#276749", fontFamily: "Sora, sans-serif", marginBottom: 4 }}>{opt.drug} <span style={{ fontWeight: 400, fontSize: 12 }}>× {opt.course}</span></div>
+                    <div style={{ fontSize: 12, color: "#744210", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 5, padding: "4px 8px" }}>⚠ {opt.warning}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
   // ── CINV Types — unified table, all blue, clock icon on timing ──────────
   if (sec.type === "cinv_types") {
     const C = { color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0", badge: "#b8dff0", divider: "#c8e6f2" };
@@ -4690,6 +5361,15 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
 
 
 
+  if (sec.type === "markdown") {
+    return (
+      <div className="detail-card">
+        {sec.heading && <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>}
+        <MarkdownSection content={sec.content} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />
+      </div>
+    );
+  }
+
   if (sec.type === "grader") {
     return <GraderSection sec={sec} siteColor={siteColor} siteId={siteId} subsiteId={subsiteId} />;
   }
@@ -4741,7 +5421,7 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
           {sec.items.map((item, i) => (
             <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "#742a2a" }}>
               <span style={{ color: "#e53e3e", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
-              {item}
+              {boldify(item)}
             </li>
           ))}
         </ul>
@@ -4813,7 +5493,7 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
                   {normal.map((item, ii) => (
                     <div key={"n-"+ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, textAlign: "left" }}>
                       <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
-                      <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55, textAlign: "left" }}>{item}</span>
+                      <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55, textAlign: "left" }}>{boldify(item)}</span>
                     </div>
                   ))}
                   {/* Urgent bottom items */}
@@ -4917,6 +5597,99 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
     );
   }
 
+
+
+  // ── Procedure equipment — 2-column table ─────────────────────────────────
+  if (sec.type === "proc_equip") {
+    const C = siteColor;
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        {sec.heading && (
+          <div style={{ padding: "12px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
+            <h3 style={{ margin: 0 }}>{sec.heading}</h3>
+          </div>
+        )}
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5, textAlign: "left" }}>
+            <thead>
+              <tr style={{ borderBottom: "1px solid var(--border-light)" }}>
+                <th style={{ padding: "7px 14px", background: siteAccent, color: C, fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.05em", width: "35%" }}>Item</th>
+                <th style={{ padding: "7px 14px", background: siteAccent, color: C, fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.05em" }}>Detail / Dose</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sec.items.map((row, ri) => (
+                <tr key={ri} style={{ borderBottom: ri < sec.items.length - 1 ? "1px solid var(--border-light)" : "none", background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)" }}>
+                  <td style={{ padding: "8px 14px", fontWeight: 600, color: "var(--text-primary)", verticalAlign: "top", lineHeight: 1.5 }}>{renderInline(row.item, onNavigate)}</td>
+                  <td style={{ padding: "8px 14px", color: "var(--text-secondary)", verticalAlign: "top", lineHeight: 1.5 }}>{renderInline(row.detail, onNavigate)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Procedure steps — grid layout with numbered rows ─────────────────────
+  if (sec.type === "proc_steps") {
+    const C = siteColor;
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        <div style={{ padding: "13px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
+          <h3 style={{ margin: 0 }}>{sec.heading}</h3>
+          {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4, fontStyle: "italic", marginBottom: 0 }}>ⓘ {sec.note}</p>}
+        </div>
+        {sec.groups.map((group, gi) => (
+          <div key={gi} style={{ borderBottom: gi < sec.groups.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+            {/* Group header */}
+            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 18px", background: siteAccent }}>
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: C, flexShrink: 0 }} />
+              <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: C, letterSpacing: "-0.01em" }}>{group.label}</span>
+            </div>
+            {/* Step rows */}
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5, textAlign: "left" }}>
+                <thead>
+                  <tr style={{ borderBottom: "1px solid var(--border-light)" }}>
+                    <th style={{ padding: "6px 12px", background: "var(--bg)", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", width: 60, whiteSpace: "nowrap" }}>Step</th>
+                    <th style={{ padding: "6px 12px", background: "var(--bg)", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif" }}>Action</th>
+                    <th style={{ padding: "6px 12px", background: "var(--bg)", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", width: "35%" }}>Rationale</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {group.steps.map((step, si) => (
+                    <tr key={si} style={{ borderBottom: si < group.steps.length - 1 ? "1px solid var(--border-light)" : "none", background: si % 2 === 0 ? "var(--surface)" : "var(--bg)" }}>
+                      <td style={{ padding: "9px 12px", verticalAlign: "top" }}>
+                        <div style={{ width: 24, height: 24, borderRadius: "50%", background: C, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{step.num}</div>
+                      </td>
+                      <td style={{ padding: "9px 12px", verticalAlign: "top", lineHeight: 1.55, color: "var(--text-secondary)" }}>
+                        {renderInline(step.action, onNavigate)}
+                        {step.warning && (
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 7, marginTop: 6, padding: "5px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+                            <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 1 }}>⚡</span>
+                            <span style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{renderInline(step.warning, onNavigate)}</span>
+                          </div>
+                        )}
+                        {step.note && (
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 7, marginTop: 6, padding: "5px 9px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 6 }}>
+                            <span style={{ color: "#92700a", fontSize: 11, flexShrink: 0, marginTop: 1 }}>ℹ</span>
+                            <span style={{ fontSize: 13, color: "#92700a", lineHeight: 1.45 }}>{renderInline(step.note, onNavigate)}</span>
+                          </div>
+                        )}
+                      </td>
+                      <td style={{ padding: "9px 12px", verticalAlign: "top", fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.5, fontStyle: "italic" }}>{step.rationale}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   if (sec.type === "list") {
     if (sec.groups) {
       const groupIconMap = {
@@ -4946,12 +5719,12 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
                     return isUrgent ? (
                       <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
                         <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
-                        <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{text}</span>
+                        <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{boldify(text)}</span>
                       </li>
                     ) : (
                       <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
                         <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
-                        {text}
+                        {boldify(text)}
                       </li>
                     );
                   })}
@@ -4970,7 +5743,7 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
           {(sec.items || []).map((item, i) => (
             <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)" }}>
               <span style={{ color: siteColor, flexShrink: 0, marginTop: 3, fontSize: 10 }}>●</span>
-              {item}
+              {boldify(item)}
             </li>
           ))}
         </ul>
@@ -5941,7 +6714,7 @@ export default function App() {
                                     <div key={g.id}
                                       className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
                                       style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
-                                      onClick={() => !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
+                                      onClick={() => g.redirectTo ? navigate({ type: "guideline", guidelineId: g.redirectTo }) : !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
                                     >
                                       {g.title}
                                     </div>
@@ -5970,7 +6743,7 @@ export default function App() {
                                     <div key={g.id}
                                       className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
                                       style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
-                                      onClick={() => !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
+                                      onClick={() => g.redirectTo ? navigate({ type: "guideline", guidelineId: g.redirectTo }) : !g.sections ? null : navigate({ type: "guideline", guidelineId: g.id })}
                                     >
                                       {g.title}
                                     </div>
@@ -6277,7 +7050,7 @@ function SiteView({ site, favourites, onStar, onNavigate }) {
                         ))}
                         {(ss.guidelines || []).filter(g => !g.sections).map(g => (
                           <GuidelinePill key={g.id} g={g} site={site} starred={false}
-                            onStar={onStar} onClick={null} stub={true} />
+                            onStar={onStar} onClick={g.redirectTo ? () => onNavigate({ type: "guideline", guidelineId: g.redirectTo }) : null} stub={!g.redirectTo} />
                         ))}
                       </div>
                     )}
@@ -6309,7 +7082,7 @@ function SiteView({ site, favourites, onStar, onNavigate }) {
             <div className="guideline-pills-grid">
               {site.guidelines.filter(g => g.category === cat).map(g => (
                 <GuidelinePill key={g.id} g={g} site={site} starred={favourites.includes(g.id)}
-                  onStar={onStar} onClick={() => onNavigate({ type: "guideline", guidelineId: g.id })} stub={!g.sections} />
+                  onStar={onStar} onClick={() => onNavigate({ type: "guideline", guidelineId: g.redirectTo || g.id })} stub={!g.sections && !g.redirectTo} />
               ))}
             </div>
           </div>
@@ -6320,19 +7093,22 @@ function SiteView({ site, favourites, onStar, onNavigate }) {
 }
 
 function GuidelinePill({ g, site, starred, onStar, onClick, showSite, stub }) {
+  const isRedirect = !!(g && g.redirectTo);
+  const effectiveStub = stub && !isRedirect;
   return (
     <div
-      className={`guideline-pill${stub ? " stub" : ""}`}
+      className={`guideline-pill${effectiveStub ? " stub" : ""}`}
       style={{ "--pill-color": site.color, "--pill-accent": site.accent }}
-      onClick={stub ? undefined : onClick}
+      onClick={effectiveStub ? undefined : onClick}
     >
       <span style={{ width: 8, height: 8, borderRadius: "50%", background: site.color, flexShrink: 0, opacity: stub ? 0.5 : 0.8 }} />
       <span className="guideline-pill-title">
         {g.title}
-        {stub && <span className="guideline-pill-badge" style={{ marginLeft: 6 }}>Pending</span>}
+        {effectiveStub && <span className="guideline-pill-badge" style={{ marginLeft: 6 }}>Pending</span>}
+        {isRedirect && <span className="guideline-pill-badge" style={{ marginLeft: 6, background: site.accent, border: `1px solid ${site.color}`, color: site.color }}>→ Oncology</span>}
         {showSite && <span style={{ display: "block", fontSize: 11, color: "var(--text-muted)", fontWeight: 400, fontFamily: "DM Sans, sans-serif", marginTop: 1 }}>{site.label}</span>}
       </span>
-      {!stub && (
+      {!effectiveStub && !isRedirect && (
         <button
           className={`star-btn guideline-pill-star${starred ? " starred" : ""}`}
           onClick={e => { e.stopPropagation(); onStar(e, g.id); }}
@@ -6356,7 +7132,8 @@ function GuidelineRow({ g, site, starred, onStar, onClick, showSite, stub }) {
       <span style={{ width: 8, height: 8, borderRadius: "50%", background: site.color, flexShrink: 0, opacity: 0.8 }} />
       <span className="guideline-pill-title">
         {g.title}
-        {stub && <span className="guideline-pill-badge" style={{ marginLeft: 6 }}>Pending</span>}
+        {effectiveStub && <span className="guideline-pill-badge" style={{ marginLeft: 6 }}>Pending</span>}
+        {isRedirect && <span className="guideline-pill-badge" style={{ marginLeft: 6, background: site.accent, border: `1px solid ${site.color}`, color: site.color }}>→ Oncology</span>}
         {showSite && <span style={{ display: "block", fontSize: 11, color: "var(--text-muted)", fontWeight: 400, fontFamily: "DM Sans, sans-serif", marginTop: 1 }}>{site.label} · {g.category}</span>}
       </span>
       {!stub && (
@@ -6455,19 +7232,26 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
           {summaryBullets.map((b, i) => (
             <li key={i}>
               <span className="summary-callout-dot" style={{ background: site.color }} />
-              {b}
+              {renderInline(b, onNavigate)}
             </li>
           ))}
         </ul>
         {g.summaryCalcLink && (
           <div style={{ marginTop: 10, padding: "10px 14px", background: site.accent, border: `1.5px solid ${site.color}`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 13.5, color: site.color, lineHeight: 1.5, flex: 1 }}>
-              💊 {g.summaryCalcLink.text}
+            <span style={{ fontSize: 13.5, color: site.color, lineHeight: 1.5, flex: 1, display: "flex", alignItems: "center", gap: 7 }}>
+              <IconCalc /> {g.summaryCalcLink.text}
             </span>
-            <button onClick={() => onNavigate({ type: "calculator", calcId: g.summaryCalcLink.calcId })}
-              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", background: site.color, color: "white", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap" }}>
-              {g.summaryCalcLink.label} →
-            </button>
+            {g.summaryCalcLink.url ? (
+              <a href={g.summaryCalcLink.url} target="_blank" rel="noopener noreferrer"
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", background: site.color, color: "white", borderRadius: 8, fontSize: 13, fontWeight: 600, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap", textDecoration: "none" }}>
+                {g.summaryCalcLink.label} <IconExternal />
+              </a>
+            ) : (
+              <button onClick={() => onNavigate({ type: "calculator", calcId: g.summaryCalcLink.calcId })}
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", background: site.color, color: "white", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap" }}>
+                {g.summaryCalcLink.label} →
+              </button>
+            )}
           </div>
         )}
       </div>
@@ -6476,7 +7260,7 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
       {(g.sections || []).map((sec, i) => (
         <SectionBlock key={i} sec={sec} siteColor={site.color} siteAccent={site.accent}
           siteId={site.id} subsiteId={g.subsiteId}
-          expandedScore={expandedScore} setExpandedScore={setExpandedScore} />
+          expandedScore={expandedScore} setExpandedScore={setExpandedScore} onNavigate={onNavigate} />
       ))}
     </div>
   );
