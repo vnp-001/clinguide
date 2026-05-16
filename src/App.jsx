@@ -62,7 +62,7 @@ const SITES = [
             type: "criteria",
             intro: "Must meet Criteria 1 AND (Criteria 2 OR 3):",
             items: [
-              { label: "Criteria 1 — Neutropenia (REQUIRED)", detail: "Neutrophils <1.0 × 10⁹/L OR suspected neutropenia. Any SACT with neutropenia potential in last 4 weeks — treat without waiting for FBC. G-CSF recipients still at risk.", warning: "Pure immunotherapy regimens (pembrolizumab, nivolumab, ipilimumab, atezolizumab etc.) RARELY cause neutropenia — use High Risk Red Sepsis pathway instead if on these agents only." },
+              { label: "Criteria 1 — Neutropenia (REQUIRED)", detail: "Neutrophils <1.0 × 10^9/L OR suspected neutropenia. Any SACT with neutropenia potential in last 4 weeks — treat without waiting for FBC. G-CSF recipients still at risk.", warning: "Pure immunotherapy regimens (pembrolizumab, nivolumab, ipilimumab, atezolizumab etc.) RARELY cause neutropenia — use High Risk Red Sepsis pathway instead if on these agents only." },
               { label: "Criteria 2 — Fever (if no Criteria 3)", detail: "Temp >38°C on one occasion (before or during admission) OR rigors / feeling cold or shivery. Patient-reported fever before admission counts. Temp 37–38°C: repeat after 1 hour." },
               { label: "Criteria 3 — Sepsis Signs (alternative to Criteria 2)", detail: "Tachycardia, hypotension, tachypnoea, or obvious infection focus (line site erythema, chest signs). Refer to High Risk Red Sepsis criteria on intranet antibiotic website." },
             ],
@@ -135,7 +135,7 @@ const SITES = [
                 key: 1,
                 label: "Status 1 — Never / No Longer Neutropenic",
                 color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                criteria: ["Neutrophils recovering above 1·0 × 10⁹/L", "No longer neutropenic at any point"],
+                criteria: ["Neutrophils recovering above 1·0 × 10^9/L", "No longer neutropenic at any point"],
                 items: [
                   "If identifiable infection focus: treat per relevant NUH guideline",
                   "If no focus and no high-risk features: consider stopping antibiotics",
@@ -208,7 +208,7 @@ const SITES = [
             tags: ["MSCC", "Dexamethasone", "Urgent RT", "MRI spine", "SINS", "Tokuhashi", "Bilsky", "Surgery"],
             related: [],
             calculators: [
-              { label: "SINS Score Calculator", url: "https://www.mdcalc.com/calc/3971/spinal-instability-neoplastic-score-sins", description: "Spinal Instability Neoplastic Score — guides surgical referral" },
+              { label: "SINS Score Calculator", calcId: "sins", url: "https://www.mdcalc.com/calc/3971/spinal-instability-neoplastic-score-sins", description: "Spinal Instability Neoplastic Score — guides surgical referral" },
               { label: "Revised Tokuhashi Score", url: "https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system", description: "Prognosis in spinal metastases — guides treatment intensity" },
               { label: "Frankel / ASIA Classification", url: "https://www.asia-spinalinjury.org/wp-content/uploads/2019/10/ASIA-ISCOS-Worksheet_10.2019_PRINT-Page-1-2.pdf", description: "ASIA Neurological injury severity classification" },
             ],
@@ -297,12 +297,12 @@ const SITES = [
                     exclusions: [],
                   },
                   {
-                    label: "Best Supportive Care",
-                    color: "#5a6474", bg: "#f5f6f8", border: "#c8cdd6",
-                    indication: "Prognosis <1 month, established paralysis without pain, unfit or declining treatment",
-                    urgent: null,
-                    exclusions: ["Early MDT input essential: palliative care, PT/OT, orthotics", "Document spinal stability for nursing"],
-                  },
+  label: "Best Supportive Care",
+  color: "#5a6474", bg: "#f5f6f8", border: "#c8cdd6",
+  indication: "Prognosis <1 month, established paralysis without pain, unfit or declining treatment",
+  urgent: null,
+  notes: ["Early MDT input essential: palliative care, PT/OT, orthotics", "Document spinal stability for nursing"],
+},,
                 ],
               },
               {
@@ -1995,7 +1995,232 @@ const SITES = [
                 ],
               },
             ],
-          },        
+          },
+          {
+            id: "io-myocarditis",
+            title: "Myocarditis (ICPI)",
+            category: "Cardiovascular",
+            version: "1.0",
+            authors: "Ritika Tuli, Dr Navin Mathiyalagan",
+            evidenceBase: "ESMO / ESC Cardio-Oncology Guidelines | Modified Lake Louise Criteria | BSE Consensus",
+            summary: "ICI myocarditis carries 40–50% mortality — the highest of all irAEs. Highest risk: high-grade AV block, ventricular arrhythmias, severe LV dysfunction, MMM overlap syndrome (Myocarditis + Myositis + Myasthenia Gravis). 'Asymptomatic' does NOT mean low risk. Hold ICI immediately and activate cardio-oncology MDT.",
+            tags: ["Myocarditis", "ICPI", "Cardiotoxicity", "Troponin", "CMR", "Steroids", "MMM", "Cardio-oncology"],
+            related: ["io-steroids-guide", "io-gbs-mg"],
+            pdfUrl: "#",
+            portalUrl: "#",
+            updated: "2024",
+            sections: [
+              {
+                heading: "⚠ Why This Matters",
+                type: "alert",
+                items: [
+                  "!!ICI myocarditis carries 40–50% mortality — the highest of all irAEs",
+                  "Higher risk with combination ICI therapy",
+                  "Highest risk features: high-grade AV block, ventricular arrhythmias, severe LV dysfunction, MMM overlap syndrome",
+                  "!!**'Asymptomatic' does NOT mean low risk** — biomarker or EKG changes alone warrant urgent assessment",
+                ],
+              },
+              {
+                heading: "Initial Workup",
+                type: "hypo_assessment",
+                blocks: [
+                  {
+                    id: "bloods",
+                    label: "Urgent Bloods & Investigations",
+                    icon: "investigations",
+                    checklist: true,
+                    items: [
+                      "12-lead ECG",
+                      "High-sensitivity troponin",
+                      "NT-proBNP",
+                      "TTE — in all high-risk patients",
+                      "Rule out ACS and infective myocarditis",
+                    ],
+                  },
+                  {
+                    id: "mmm",
+                    label: "Screen for MMM Overlap Syndrome",
+                    icon: "management",
+                    checklist: true,
+                    items: [
+                      "Myositis: CK, MRI thighs",
+                      "Thyroiditis: TSH, T4",
+                      "Myasthenia Gravis: demonstrable fatigable muscle weakness with improvement on rest — AChR antibody",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Diagnosis",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Cardiac MRI (CMR)",
+                    color: "#2563a8",
+                    headerBg: "#e8f0fb",
+                    blocks: [
+                      {
+                        icon: "imaging",
+                        heading: "Modified Lake Louise Criteria",
+                        color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+                        items: [
+                          "Best window: 4–14 days after onset or biomarker rise",
+                          "50% have normal or non-diagnostic CMR findings — clinical suspicion, biomarker correlation and MDT assessment remain paramount",
+                          "!!Do not delay treatment waiting for CMR if clinical picture is compelling",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Endomyocardial Biopsy",
+                    color: "#744210",
+                    headerBg: "#fffff0",
+                    blocks: [
+                      {
+                        icon: "immediate",
+                        heading: "Gold standard — MDT decision",
+                        color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        items: [
+                          "Gold standard for diagnosis",
+                          "Reserved for diagnostically uncertain cases or refractory disease",
+                          "Discuss with cardio-oncology MDT before proceeding",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Grading & Management",
+                type: "grader",
+                grades: [
+                  {
+                    grade: 1,
+                    label: "Grade 1 — Asymptomatic",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                    criteria: [
+                      "No symptoms",
+                      "Mild biomarker elevation or non-specific EKG changes only",
+                    ],
+                  },
+                  {
+                    grade: 2,
+                    label: "Grade 2 — Mild Symptoms",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                    criteria: [
+                      "Mild symptoms (fatigue, dyspnoea, palpitations)",
+                      "OR convincing biomarker / EKG changes",
+                      "Usually requires admission",
+                    ],
+                  },
+                  {
+                    grade: 3,
+                    label: "Grade 3/4 — Severe / Life-threatening",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                    criteria: [
+                      "Severe cardiac dysfunction",
+                      "Malignant arrhythmias",
+                      "High-grade AV block",
+                      "Cardiogenic shock",
+                    ],
+                  },
+                ],
+                management: [
+                  {
+                    grade: 1,
+                    icpi: "Hold ICI — discuss restart with cardio-oncology MDT",
+                    items: [
+                      "Hold ICI immediately",
+                      "Activate cardio-oncology MDT",
+                      "Repeat troponin and ECG at 24–48h",
+                      "TTE if not already done",
+                      "Close monitoring — Grade 1 can deteriorate rapidly",
+                      "!!Asymptomatic does NOT mean safe to continue ICI",
+                    ],
+                  },
+                  {
+                    grade: 2,
+                    icpi: "Hold ICI — do not restart without cardio-oncology MDT",
+                    items: [
+                      "!!Hold ICI immediately",
+                      "Admit for monitoring",
+                      "Activate cardio-oncology MDT",
+                      "High-dose corticosteroids early — methylprednisolone 1–2mg/kg/day IV",
+                      "TTE, continuous cardiac monitoring, daily troponin",
+                      "Screen for MMM overlap syndrome",
+                    ],
+                  },
+                  {
+                    grade: 3,
+                    icpi: "Permanently discontinue ICI",
+                    items: [
+                      "!!Permanently discontinue ICI",
+                      "!!Admit to cardiac monitoring unit or ICU/HDU",
+                      "!!Activate cardio-oncology MDT urgently",
+                      "Pulse dose steroids: methylprednisolone 500mg–1g IV daily × 3–5 days",
+                      "Continuous ECG monitoring — pacing if high-grade AV block",
+                      "Escalate immunosuppression if refractory — MDT guided: MMF, tacrolimus, abatacept, tocilizumab, ruxolitinib",
+                      "!!Infliximab: AVOID if LVEF <40%",
+                      "Consider endomyocardial biopsy",
+                    ],
+                  },
+                ],
+                note: "Infliximab is contraindicated if LVEF <40% — use alternative immunosuppression.",
+              },
+              {
+                heading: "Steroid Prophylaxis & Monitoring",
+                type: "checklist",
+                items: [
+                  "PCP prophylaxis if prolonged or high-dose steroids (cotrimoxazole 480mg OD)",
+                  "GI protection: famotidine (preferred over PPI in cardiac patients)",
+                  "Bone protection: Vitamin D ± calcium; consider bisphosphonate based on risk and duration",
+                  "Monitor blood glucose and blood pressure regularly",
+                ],
+              },
+              {
+                heading: "MMM Overlap Syndrome",
+                type: "callouts",
+                panels: [
+                  {
+                    label: "Myocarditis + Myositis + Myasthenia Gravis (MMM)",
+                    color: "#742a2a",
+                    headerBg: "#fff5f5",
+                    blocks: [
+                      {
+                        icon: "warning",
+                        heading: "High-risk constellation — requires urgent MDT",
+                        color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        items: [
+                          "MMM overlap carries significantly higher mortality than isolated myocarditis",
+                          "!!Permanently discontinue ICI",
+                          "Involve cardiology, neurology, and rheumatology MDT",
+                          "Myositis: CK elevation, proximal weakness, MRI thighs",
+                          "Myasthenia: fatigable weakness, ptosis, diplopia, bulbar symptoms — AChR antibody",
+                          "Management per individual syndrome guidelines — see GBS/MG guideline for MG management",
+                          "!!Infliximab: avoid — may worsen MG",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Additional Considerations",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "ICI-Induced Accelerated Atherosclerosis",
+                    items: [
+                      "Emerging evidence of ICI-accelerated atherosclerosis — 'hidden iceberg' of ICI cardiotoxicity",
+                      "Consider ischaemic evaluation in patients with new cardiac symptoms even if troponin negative",
+                      "Discuss with cardio-oncology MDT",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
           {
             id: "io-steroids-guide",
             title: "Steroid Prescribing & Monitoring",
@@ -2030,7 +2255,537 @@ const SITES = [
       {
         id: "onco-vte-haem",
         label: "VTE & Haemostasis",
-        guidelines: [        ],
+        guidelines: [
+          {
+  id: "vte-recurrence",
+  title: "Recurrent VTE on Anticoagulation",
+  category: "VTE & Haemostasis",
+  version: "1.0",
+  authors: "NUH Non-Malignant Haematology Team",
+  evidenceBase: "ISTH Guidelines | NUH Local Guideline",
+  summary: "4–9% of cancer patients on anticoagulation develop recurrent VTE, more commonly in advanced cancer. Before escalating therapy, always review adherence and correct dosing. No routine role for anti-Xa monitoring. Management differs depending on whether recurrence occurred on LMWH or a DOAC.",
+  tags: ["Recurrent VTE", "DVT", "PE", "LMWH", "DOAC", "Anticoagulation failure", "Anti-Xa"],
+  related: ["vte-cat"],
+  pdfUrl: "#",
+  portalUrl: "#",
+  updated: "NUH Non-Malignant Haematology Team",
+  sections: [
+  ,
+    {
+      heading: "Management by Current Anticoagulant",
+      type: "callouts",
+      panels: [
+        {
+          label: "Recurrent VTE on LMWH",
+          color: "#1a6b8a",
+          headerBg: "#e8f4f8",
+          blocks: [
+            {
+              icon: "investigations",
+              heading: "Step 1 — Check adherence",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "Review whether the patient has been taking LMWH correctly and consistently",
+                "Assess for practical barriers: injection technique, storage, carer support",
+              ],
+            },
+            {
+              icon: "management",
+              heading: "Good compliance",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "Increase LMWH dose by 25%",
+                "Alternatively, switch to a DOAC if appropriate — see Drug Choice guideline (section 3.1)",
+              ],
+            },
+            {
+              icon: "drug",
+              heading: "Poor compliance — investigate why",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "Identify and address the reason for non-adherence before changing therapy",
+                "Continue LMWH with additional support (e.g. district nurse, carer input)",
+                "Switch to a DOAC if improved compliance is likely with oral therapy",
+              ],
+            },
+          ],
+        },
+        {
+          label: "Recurrent VTE on DOAC",
+          color: "#744210",
+          headerBg: "#fffff0",
+          blocks: [
+            {
+              icon: "investigations",
+              heading: "Step 1 — Check adherence",
+              color: "#744210",
+              bg: "#fffff0",
+              border: "#f6e05e",
+              items: [
+                "Review whether the patient has been taking the DOAC correctly and consistently",
+                "!!Rivaroxaban must be taken with food — confirm this is happening",
+                "Check for drug interactions between the DOAC and current anti-cancer or regular medications",
+              ],
+            },
+            {
+              icon: "management",
+              heading: "Good compliance",
+              color: "#744210",
+              bg: "#fffff0",
+              border: "#f6e05e",
+              items: [
+                "Switch to LMWH",
+                "Consider haematology advice if recurrence is confirmed despite verified adherence",
+              ],
+            },
+            {
+              icon: "drug",
+              heading: "Poor compliance — investigate why",
+              color: "#744210",
+              bg: "#fffff0",
+              border: "#f6e05e",
+              items: [
+                "Identify and address the reason for non-adherence",
+                "If oral route is a barrier: switch to LMWH",
+                "If oral adherence can be improved: continue DOAC with support",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+},
+          {
+  id: "vte-cat",
+  title: "Cancer-Associated Thrombosis (CAT)",
+  category: "VTE & Haemostasis",
+  version: "1.0",
+  authors: "NUH Non-Malignant Haematology Team",
+  evidenceBase: "CLOT Trial | Hokusai-VTE Cancer | SELECT-D | Caravaggio | ISTH Guidelines | NUH Local Guideline",
+  summary: "Cancer patients have a 4-fold increased VTE risk but also a 2-fold increased bleeding risk on anticoagulation. LMWH is gold standard for high bleeding risk and GI/urothelial cancers. DOACs are non-inferior alternatives in appropriate patients. Minimum treatment duration 6 months. Incidental VTE should be managed identically to symptomatic VTE.",
+  tags: ["VTE", "DVT", "PE", "LMWH", "Enoxaparin", "DOAC", "Apixaban", "Rivaroxaban", "Edoxaban", "Thromboprophylaxis", "CAT"],
+  related: [],
+  pdfUrl: "#",
+  portalUrl: "#",
+  updated: "NUH Non-Malignant Haematology Team",
+  sections: [
+    {
+      heading: "⚠ Key Principles",
+      type: "alert",
+      items: [
+        "Cancer patients have a 4-fold increased VTE risk compared to the general population",
+        "Cancer patients also have a 2-fold increased risk of anticoagulant-related bleeding — all decisions must balance both risks individually",
+        "Incidental VTE diagnosed on imaging should be managed identically to symptomatic VTE",
+      ],
+    },
+    {
+      heading: "Primary Thromboprophylaxis",
+      type: "prophylaxis_box",
+      panels: [
+        {
+          label: "Indications",
+          color: "red",
+          groups: [
+            {
+              heading: "Cancer surgery",
+              items: [
+                "LMWH post-op for 7–10 days if low bleeding risk",
+                "Extend to 28 days following major abdominal or pelvic cancer surgery if low bleeding risk",
+              ],
+            },
+            {
+              heading: "Pancreatic cancer",
+              items: [
+                "Ambulatory locally advanced or metastatic pancreatic cancer on chemotherapy with low bleeding risk",
+              ],
+            },
+            {
+              heading: "High VTE-risk medications",
+              items: [
+                "Patients on tamoxifen or lenalidomide: risk-assess for primary thromboprophylaxis individually",
+              ],
+            },
+          ],
+        },
+        {
+          label: "Consider Treatment",
+          color: "amber",
+          groups: [
+            {
+              heading: "Previous VTE history",
+              items: [
+                "Consider prophylaxis in active cancer or during cancer treatment",
+                "Balance bleeding risk; review regularly, especially towards end of life",
+              ],
+            },
+            {
+              heading: "High-risk thrombophilias",
+              items: [
+                "Antithrombin, protein C or S deficiency: consider alongside other factors",
+                "Does not warrant prophylaxis in isolation",
+              ],
+            },
+            {
+              heading: "Low-risk thrombophilias",
+              items: [
+                "Factor V Leiden, prothrombin gene mutation: prophylaxis not required unless personal VTE history",
+              ],
+            },
+            {
+              heading: "First-degree family history",
+              items: [
+                "Unprovoked proximal DVT or PE in a first-degree relative carries higher risk",
+                "Individual decision required based on full clinical context",
+              ],
+            },
+            {
+              heading: "Other VTE risk factors",
+              items: [
+                "BMI, smoking, and other general risk factors may inform assessment",
+                "Not an indication for prophylaxis on their own",
+                "Review decision regularly throughout treatment, especially if end-of-life care plan is established",
+              ],
+            },
+          ],
+        },
+        {
+          label: "Not Recommended",
+          color: "green",
+          groups: [
+            {
+              heading: "Routine prophylaxis not indicated in",
+              items: [
+                "All ambulatory outpatients on systemic anticancer therapy",
+                "Locally advanced or metastatic lung cancer",
+                "Patients with central venous access devices (CVAD) — not routinely indicated",
+                "Patients with high bleeding risk",
+              ],
+            },
+          ],
+        },
+      ],
+    },,
+    {
+      heading: "Treatment — Drug Choice",
+      type: "callouts",
+      panels: [
+        
+        {
+          label: "Use LMWH (Enoxaparin) preferentially",
+          color: "#742a2a",
+          headerBg: "#fff5f5",
+          blocks: [
+            {
+              icon: "immediate",
+              heading: "Prefer LMWH when",
+              color: "#742a2a",
+              bg: "#fff5f5",
+              border: "#fc8181",
+              items: [
+                "High bleeding risk",
+                "Luminal GI cancer with intact primary",
+                "Genitourinary, bladder or nephrostomy-tube tumours",
+                "Active GI mucosal abnormality (duodenal ulcer, gastritis, oesophagitis, colitis)",
+                "Body weight <50kg or >200kg",
+                "Renal impairment (CrCl <30 ml/min)",
+                "Concerns about oral intake or absorption",
+                "Significant DOAC–SACT drug interaction",
+                "Patient preference for LMWH",
+              ],
+            },
+            {
+              icon: "drug",
+              heading: "NUH community/nurse-led DVT pathway",
+              color: "#742a2a",
+              bg: "#fff5f5",
+              border: "#fc8181",
+              items: [
+                "Patients with active malignancy diagnosed via community DVT pathway will be started on LMWH pending oncology review",
+                "!!Review DOAC suitability in oncology clinic — seek haematology advice if needed",
+              ],
+            },
+          ],
+        },
+        {
+          label: "DOAC reasonable alternative",
+          color: "#276749",
+          headerBg: "#f0fff4",
+          blocks: [
+            {
+              icon: "management",
+              heading: "DOAC Indications",
+              color: "#276749",
+              bg: "#f0fff4",
+              border: "#9ae6b4",
+              items: [
+                "No high-risk GI or urothelial cancer",
+                "No significant DOAC–SACT drug interaction",
+                "No other contraindication to DOAC",
+                "ECOG PS 0–2",
+                "Adequate renal function (CrCl ≥30 ml/min)",
+                "Patient preference for oral therapy",
+                "Check interactions: EHRA tool or cancer-druginteractions.org",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "vte_drug_choice",
+    },
+    {
+      heading: "Treatment — Duration of Anticoagulation",
+      type: "list",
+      groups: [
+        {
+          icon: "immediate",
+          label: "Minimum 6 months for all cancer-associated VTE",
+          items: [
+            "All patients should receive anticoagulation for a minimum of 6 months",
+            "Evidence base is robust for the initial 6-month period",
+            "Evidence beyond 6 months is less robust",
+          ],
+        },
+        {
+          icon: "management",
+          label: "Stop at 6 months if ALL of the following are true",
+          items: [
+            "No evidence of active cancer",
+            "Not receiving any treatment with associated VTE risk (e.g. tamoxifen)",
+          ],
+        },
+        {
+          icon: "monitoring",
+          label: "Continue beyond 6 months until one of the following",
+          items: [
+            "No longer evidence of active cancer",
+            "No longer receiving treatment with associated VTE risk",
+            "Bleeding risk deemed too high to continue anticoagulation",
+            "If continuing beyond 6 months, consider switching to Apixaban 2.5mg BD if the sole indication is tamoxifen therapy — discuss with haematology on an individual basis if required",
+          ],
+        },
+      ],
+    },
+  ],
+},
+{
+  id: "vte-thrombocytopenia",
+  title: "VTE & Thrombocytopenia",
+  category: "VTE & Haemostasis",
+  version: "1.0",
+  authors: "NUH Non-Malignant Haematology Team",
+  evidenceBase: "ISTH Guidelines | NUH Local Guideline",
+  summary: "Cancer-associated VTE with thrombocytopenia requires careful balancing of bleeding and thrombotic risk. Despite increased bleeding risk, recurrent VTE risk is also increased 4-fold. The first 30 days post-VTE carries the highest recurrence risk. DOACs should be avoided — LMWH is preferred. Patients with platelets ≥50×10⁹/L can receive full-dose anticoagulation without transfusion. Those with platelets <50×10⁹/L require management guided by thrombus progression risk and platelet count.",
+  tags: ["Thrombocytopenia", "VTE", "LMWH", "Platelet transfusion", "Anticoagulation", "Bleeding risk"],
+  related: ["vte-cat"],
+  pdfUrl: "#",
+  portalUrl: "#",
+  updated: "NUH Non-Malignant Haematology Team",
+  sections: [
+    {
+      heading: "⚠ Key Principles",
+      type: "alert",
+      items: [
+        "Despite increased bleeding risk, recurrent VTE risk is also increased 4-fold in patients with both cancer-associated VTE and thrombocytopenia",
+        "The first 30 days following acute VTE is the highest risk period for recurrence — this must be factored into all decisions",
+        "There is insufficient data for DOACs in thrombocytopenia — DOACs have increased bleeding risk compared to LMWH in this setting",
+        "Patients with platelets ≥50×10⁹/L can be treated with full-dose anticoagulation without platelet transfusions",
+        "Patients with platelets <50×10⁹/L require the pathway below — discuss with haematology",
+      ],
+    },
+    {
+      heading: "Risk Stratification — Thrombus Progression",
+      type: "callouts",
+      panels: [
+        {
+          label: "High risk of thrombus progression",
+          color: "#742a2a",
+          headerBg: "#fff5f5",
+          blocks: [
+            {
+              icon: "immediate",
+              heading: "Features suggesting high risk",
+              color: "#742a2a",
+              bg: "#fff5f5",
+              border: "#fc8181",
+              items: [
+                "Symptomatic central or segmental PE",
+                "Proximal DVT",
+                "History of recurrent or progressive VTE",
+              ],
+            },
+          ],
+        },
+        {
+          label: "Low risk of thrombus progression",
+          color: "#276749",
+          headerBg: "#f0fff4",
+          blocks: [
+            {
+              icon: "management",
+              heading: "Features suggesting low risk",
+              color: "#276749",
+              bg: "#f0fff4",
+              border: "#9ae6b4",
+              items: [
+                "Incidental subsegmental PE",
+                "Distal DVT",
+                "Catheter-related thrombosis",
+              ],
+            },
+          ],
+        },
+        
+      ],
+    },
+    {
+      heading: "Acute VTE — First 30 Days (Platelets <50×10⁹/L)",
+      type: "table",
+      note: "Discuss all cases with haematology before initiating anticoagulation in this setting.",
+      columns: ["", "Platelets 25–50×10⁹/L", "Platelets <25×10⁹/L"],
+      rows: [
+        [
+          "🔴 High risk of thrombus progression",
+          "Full treatment dose LMWH + platelet transfusion support. Aim to maintain platelets >40×10⁹/L.",
+          "Full treatment dose LMWH + platelet transfusion support. Aim to maintain platelets >40×10⁹/L.",
+        ],
+        [
+          "🟢 Low risk of thrombus progression",
+          "Give either: 50% of treatment dose LMWH, or prophylactic dose LMWH",
+          "Temporarily stop anticoagulation. Restart when platelets recover to ≥25×10⁹/L.",
+        ],
+      ],
+    },
+    {
+      heading: "Subacute (>30 days) or Chronic VTE (Platelets <50×10⁹/L)",
+      type: "table",
+      columns: ["", "Platelets 25–50×10⁹/L", "Platelets <25×10⁹/L"],
+      rows: [
+        [
+          "🔴 High risk of thrombus progression",
+          "50% of treatment dose LMWH, or prophylactic dose LMWH",
+          "Temporarily stop anticoagulation. Restart when platelets recover to ≥25×10⁹/L.",
+        ],
+        [
+          "🟢 Low risk of thrombus progression",
+          "50% of treatment dose LMWH, or prophylactic dose LMWH",
+          "Temporarily stop anticoagulation. Restart when platelets recover to ≥25×10⁹/L.",
+        ],
+      ],
+    },
+  ],
+},
+{
+  id: "vte-crt",
+  title: "Catheter-Related Thrombosis (CRT)",
+  category: "VTE & Haemostasis",
+  version: "1.0",
+  authors: "NUH Non-Malignant Haematology Team",
+  evidenceBase: "ISTH Guidelines | NUH Local Guideline",
+  summary: "Symptomatic CRT occurs in ~3% of patients with CVADs. PE complicates up to 10–15% of cases. Treatment is individualised based on CVAD function and ongoing need. Minimum anticoagulation duration is 3 months, extended if the catheter remains in situ. Line removal is not routinely required if the CVAD is well-positioned, uninfected, and functioning.",
+  tags: ["CRT", "Catheter", "CVAD", "PICC", "Hickman", "DVT", "Anticoagulation", "SVC syndrome", "Thrombolysis"],
+  related: ["vte-cat"],
+  pdfUrl: "#",
+  portalUrl: "#",
+  updated: "NUH Non-Malignant Haematology Team",
+  sections: [
+    {
+      heading: "⚠ Key Principles",
+      type: "alert",
+      items: [
+        "Symptomatic CRT occurs in ~3% of patients with CVADs — PE complicates up to 10–15% of cases and loss of venous access occurs in ~10%",
+        "PICC lines carry a higher risk of CRT than Hickman lines or ports",
+        "Lowest CRT risk: right-sided insertion, jugular vein, distal tip at SVC–right atrial junction (not within the right atrium)",
+        "Treatment should be individualised — consider whether the CVAD is functioning and whether it is still needed for future treatment",
+        "If evidence of SVC syndrome related to CRT: consider thrombolysis if appropriate",
+      ],
+    },
+    {
+      heading: "Device Risk by CVAD Type",
+      type: "table",
+      columns: ["Device", "Relative CRT Risk", "Notes"],
+      rows: [
+        ["PICC line", "Highest", "Higher CRT risk than Hickman or port"],
+        ["Hickman line", "Moderate", "Lower risk than PICC"],
+        ["Port", "Lowest", "Preferred for long-term access where feasible"],
+      ],
+    },
+    {
+      heading: "Tip Position & Insertion Side",
+      type: "callouts",
+      panels: [
+        {
+          label: "Factors that increase CRT risk",
+          color: "#742a2a",
+          headerBg: "#fff5f5",
+          blocks: [
+            {
+              icon: "immediate",
+              heading: "Avoid where possible",
+              color: "#742a2a",
+              bg: "#fff5f5",
+              border: "#fc8181",
+              items: [
+                "Left-sided insertion — right-sided carries lower CRT risk",
+                "Tip placement within the right atrium — tip should sit at the SVC–right atrial junction, not inside the right atrium",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    
+    {
+      heading: "Treatment",
+      type: "list",
+      groups: [
+        {
+          icon: "drug",
+          label: "Anticoagulation",
+          items: [
+            "Both LMWH and DOACs are options for treatment of CRT",
+            "Choice should follow the same principles as cancer-associated VTE — see Drug Choice guideline",
+            "Minimum duration: 3 months",
+            "If the CVAD remains in situ: continue anticoagulation for as long as the catheter is in place",
+          ],
+        },
+        {
+          icon: "management",
+          label: "CVAD management — when to keep the line",
+          items: [
+            "If the CVAD is well-positioned, not infected, and functioning: no need to remove",
+            "Continue anticoagulation and monitor for symptom resolution",
+          ],
+        },
+        {
+          icon: "immediate",
+          label: "CVAD management — when to remove the line",
+          items: [
+            "If symptoms persist after 4 weeks of anticoagulation: remove the CVAD",
+            "!!Continue anticoagulation for a minimum of 3 months even after CVAD removal",
+          ],
+        },
+        {
+          icon: "referral",
+          label: "SVC syndrome",
+          items: [
+            "If CRT causes SVC syndrome: consider thrombolysis if clinically appropriate",
+            "!!Discuss urgently with haematology and the treating oncology team",
+          ],
+        },
+      ],
+    },
+  ],
+},
+        ],
       },
       {
         id: "onco-outpatient",
@@ -2691,7 +3446,96 @@ const SITES = [
                 ],
               },
             ],
-          },        ],
+          },
+          {
+            id: "pall-delirium-agitation",
+            title: "Delirium & Agitation",
+            category: "Symptom Control",
+            authors: "Nottingham APC Palliative Care Pocketbook",
+            evidenceBase: "Notts APC Palliative Care Pocketbook | PCF6",
+            summary: "Address correctable causes first (pain, urinary retention, constipation, withdrawal). Step 1: non-drug management. Step 2: levomepromazine 12·5mg SC PRN (6·25mg in elderly) ± midazolam 2·5–5mg SC PRN if anxiety prominent. Step 3: start CSCI if ≥2 PRN doses effective in 24h — levomepromazine 12·5–25mg + midazolam 10–20mg/24h.",
+            tags: ["Delirium", "Agitation", "Levomepromazine", "Midazolam", "CSCI", "Terminal restlessness", "Palliative"],
+            related: ["pall-breathlessness", "pall-secretions"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=e94963b0748b3e70052c1db1954a3c43",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
+            updated: "Current edition",
+            sections: [
+              {
+                heading: "⚠ Key Principles",
+                type: "alert",
+                items: [
+                  "Use the **lowest effective dose** and titrate carefully to relieve distress",
+                  "Review regularly — reassess response at each step",
+                  "**Elderly patients: always start with the lower dose**",
+                ],
+              },
+              {
+                heading: "Step 1 — Non-Drug Management",
+                type: "pall_groups",
+                groups: [
+                  {
+                    label: "Address correctable causes before prescribing",
+                    items: [
+                      "Pain — assess and treat appropriately",
+                      "Urinary retention — consider bladder scan and catheterisation",
+                      "Faecal impaction — PR examination if not opened bowels ≥3 days",
+                      "Withdrawal — nicotine, alcohol, recreational or non-medical drug use",
+                      "Other reversible causes: infection, metabolic disturbance, medication side effects",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 2 — PRN Medication",
+                type: "pall_groups",
+                note: "Start here. Escalate to Step 3 if ≥2 PRN doses are needed and effective in 24 hours.",
+                groups: [
+                  {
+                    label: "Levomepromazine — for delirium/agitation",
+                    items: [
+                      "Levomepromazine **12·5mg SC** 1-hourly PRN",
+                      "Elderly: **6·25mg SC** 1-hourly PRN",
+                    ],
+                  },
+                  {
+                    label: "Add midazolam if anxiety is prominent",
+                    items: [
+                      "Midazolam **2·5–5mg SC** 1-hourly PRN alongside levomepromazine",
+                    ],
+                  },
+                  {
+                    label: "Trigger for Step 3",
+                    items: [
+                      "!!≥2 PRN doses effective in 24 hours → start CSCI (Step 3)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Step 3 — Start CSCI",
+                type: "pall_groups",
+                note: "Triggered when ≥2 PRN doses effective in 24h. Round all doses to a convenient number.",
+                groups: [
+                  {
+                    label: "Syringe driver over 24 hours",
+                    items: [
+                      "Levomepromazine **12·5–25mg/24h** CSCI",
+                      "Midazolam **10–20mg/24h** CSCI",
+                    ],
+                  },
+                  {
+                    label: "Continue PRN doses alongside CSCI",
+                    items: [
+                      "Levomepromazine **12·5mg SC** 1-hourly PRN (6·25mg in elderly)",
+                      "Midazolam **2·5–5mg SC** 1-hourly PRN",
+                      "!!bot:If symptoms persist at Step 3: contact hospital palliative care team or out-of-hours consultant advice line",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       },
       {
         id: "pall-routes",
@@ -2719,7 +3563,12 @@ const SITES = [
     label: "Electrolyte Abnormalities",
     color: "#2563a8",
     accent: "#e8f0fb",
-    icon: "🧪",
+icon: (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+    <path d="M7 2h10M8 2v6l-4 9a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 17l-4-9V2"/>
+    <line x1="6" y1="13" x2="18" y2="13"/>
+  </svg>
+),
     isParent: true,
     subsites: [
       {
@@ -3925,6 +4774,336 @@ const SITES = [
           },
         ],
       },
+      {
+        id: "electrolytes-sodium",
+        label: "Sodium",
+        guidelines: [
+          {
+            id: "elec-hyponatraemia",
+            title: "Hyponatraemia",
+            category: "Sodium",
+            version: "1",
+            authors: "Dr J Clayton",
+            evidenceBase: "NUH Guidelines for the Initial Assessment and Management of Hyponatraemia in Adults | Submission: Oct 2023 | Review: Dec 2026",
+summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually occur below 125 mmol/L. Acute hyponatraemia is less well tolerated than chronic. Aetiology is often multifactorial — take a thorough drug history. Limit Na⁺ rise to ≤10 mmol/L in first 24h and ≤8 mmol/L each subsequent 24h. Management guided by: (1) severity of symptoms, (2) chronicity (acute under 48h, chronic over 48h), (3) volume status. See drug list at bottom for medications that cause hyponatraemia.",
+            summaryCalcLink: null,
+            tags: ["Hyponatraemia", "Sodium", "SIADH", "Hypertonic saline", "Fluid restriction", "Demeclocycline", "Osmolality", "Euvolaemic", "Hypovolaemic", "Hypervolaemic"],
+            related: [],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=786cc3d7d2e296257072bbf1dcdc2ef7",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10457&query_desc=an%2Cphr%3A6198",
+            updated: "December 2026 (review)",
+            sections: [
+  {
+    heading: "⚠ SEVERE HYPONATRAEMIA — Medical Emergency",
+    type: "alert",
+    items: [
+      "!!Seizures, coma, altered GCS or encephalopathy: needs urgent Level 2/3 bed and IV hypertonic saline 2·7% 150ml over 20 minutes — see Severe Hyponatraemia in the diagnostic pathway below",
+      "See full drug list at the bottom of this guideline for medications that cause hyponatraemia",
+    ],
+  },
+  {
+    heading: "History & Assessment",
+    type: "hypo_assessment",
+    blocks: [
+      {
+        id: "history",
+        label: "History",
+        icon: "history",
+        items: [
+          "Symptoms: nausea and vomiting, headache, muscle cramps, confusion, lethargy, reduced GCS, seizures",
+          "Consider context: known cancer, polydipsia, recent surgery or IV fluids",
+          "**Accurate drug history essential** — see drug list at bottom of this guideline for common precipitants",
+          "Common precipitants: diuretics (predominantly thiazides), antidepressants, antipsychotics, anticonvulsants, PPIs",
+          "Determine chronicity: **acute <48h, chronic >48h** — treat as chronic if unclear and no severe symptoms",
+        ],
+      },
+      {
+        id: "examination",
+        label: "Examination — Assess Fluid Status",
+        icon: "management",
+        items: [
+          "**Hypovolaemic**: reduced skin turgor, dry mucous membranes, low BP or postural hypotension",
+          "**Euvolaemic**: clinically normal fluid status",
+          "**Hypervolaemic**: oedema, raised JVP, ascites",
+        ],
+      },
+      {
+        id: "investigations",
+        label: "Investigations — Screening Panel (All Patients)",
+        icon: "investigations",
+        checklist: true,
+        items: [
+          "U&Es, glucose, plasma osmolality",
+          "LFTs, TFTs, lipids, cortisol",
+          "Urine osmolality",
+          "Urine Na⁺ + K⁺",
+          "Short Synacthen test, CXR, CT head — as clinically indicated",
+        ],
+      },
+    ],
+  },
+  {
+    heading: "Diagnostic Pathway",
+    type: "hypo_diagnostic",
+  },
+  {
+    heading: "Management — All Patients",
+    type: "callouts",
+    panels: [
+      {
+        label: "Universal Measures — Apply Regardless of Cause",
+        color: "#2563a8",
+        headerBg: "#e8f0fb",
+        blocks: [
+          {
+            icon: "immediate",
+            heading: "Apply to all patients immediately",
+            color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+            items: [
+              "Ensure no sampling errors (e.g. drip arm venepuncture) — recheck sodium if in doubt",
+              "Stop non-essential offending medications and review IV fluids",
+              "Stop hypotonic fluids immediately",
+              "**Limit Na⁺ rise to ≤10 mmol/L in the first 24h and ≤8 mmol/L in each subsequent 24h**",
+              "Recheck Na⁺ at 6, 12, 24 and 48 hours",
+              "Check TFTs and cortisol — treat if abnormal",
+              "Treat the underlying cause",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Never Do",
+        color: "#742a2a",
+        headerBg: "#fff5f5",
+        blocks: [
+          {
+            icon: "avoid",
+            heading: "Absolute limits — never exceeded",
+            color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+            items: [
+              "!!Do NOT correct Na⁺ faster than 10 mmol/L per 24h — risk of osmotic demyelination syndrome (ODS/CPM)",
+              "!!Do NOT aim to normalise sodium — aim to IMPROVE SYMPTOMS only in acute severe hyponatraemia",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    heading: "Acute Hyponatraemia (<48 hours) — Without Severe Features",
+    type: "callouts",
+    note: "Treat as chronic if onset uncertain and no severe features. In haemodynamic compromise, rapid fluid resuscitation takes precedence over rate-of-rise considerations.",
+    panels: [
+      {
+        label: "Hypovolaemic",
+        color: "#742a2a",
+        headerBg: "#fff5f5",
+        blocks: [
+          {
+            icon: "immediate",
+            heading: "Restore volume — IV 0·9% NaCl",
+            color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+            items: [
+              "Restore volume with IV 0·9% sodium chloride",
+              "Stop non-essential offending medications",
+              "Treat the underlying cause",
+              "Recheck Na⁺ after 4 hours to determine trend",
+              "Limit Na⁺ rise to ≤10 mmol/L in first 24h, ≤8 mmol/L each subsequent 24h",
+              "!!Haemodynamic compromise: need for rapid resuscitation overrides risk of overly rapid Na⁺ rise",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Euvolaemic",
+        color: "#2563a8",
+        headerBg: "#e8f0fb",
+        blocks: [
+          {
+            icon: "management",
+            heading: "Diagnose cause and manage accordingly",
+            color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+            items: [
+              "Stop non-essential offending medications and review IV fluids",
+              "Stop hypotonic fluids",
+              "Check TFTs and cortisol — treat if abnormal",
+              "Recheck sodium after 4 hours to determine trend",
+              "Limit Na⁺ rise to ≤10 mmol/L in first 24h, ≤8 mmol/L each subsequent 24h",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Hypervolaemic",
+        color: "#276749",
+        headerBg: "#f0fff4",
+        blocks: [
+          {
+            icon: "management",
+            heading: "Treat underlying cause + fluid restrict",
+            color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+            items: [
+              "Treat the underlying cause: heart failure, cirrhosis, nephrotic syndrome",
+              "Consider fluid restriction to prevent further fluid overload",
+              "Stop non-essential offending medications",
+              "Monitor Na⁺ regularly",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    heading: "Chronic Euvolaemic Hyponatraemia (>48h) — Management Algorithm",
+    type: "callouts",
+    note: "Most commonly SIADH — exclude thyroid and adrenal dysfunction first.",
+    panels: [
+      {
+        label: "Step 1 — Check Urine Na⁺",
+        color: "#2563a8",
+        headerBg: "#e8f0fb",
+        blocks: [
+          {
+            icon: "investigations",
+            heading: "Interpret urine Na⁺ to confirm euvolaemia",
+            color: "#2563a8", bg: "#e8f0fb", border: "#93b4e8",
+            items: [
+              "Urine Na⁺ <30 mmol/L: reconsider — likely not truly euvolaemic",
+              "Urine Na⁺ >30 mmol/L: proceed to Step 2",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Step 2 — Thyroid & Adrenal Screen",
+        color: "#744210",
+        headerBg: "#fffff0",
+        blocks: [
+          {
+            icon: "investigations",
+            heading: "Check TFTs and cortisol ± short Synacthen test",
+            color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: [
+              "**Abnormal**: treat underlying thyroid, adrenal or pituitary disease",
+              "**Normal**: likely SIADH — investigate underlying cause",
+              "Consider CT chest/abdomen/pelvis/head to identify SIADH cause",
+            ],
+          },
+          {
+            icon: "immediate",
+            heading: "SIADH — Diagnostic Criteria",
+            color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: [
+              "Clinically euvolaemic",
+              "Serum osmolality <270 mOsm/kg",
+              "Inappropriately concentrated urine >100 mOsm/kg (usually >300 mOsm/kg)",
+              "Urine Na⁺ >30 mmol/L",
+              "Absence of adrenal, thyroid, pituitary or renal insufficiency",
+              "!!Interpret biochemistry with caution if patient is on diuretic therapy",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Step 3 — Fluid Restriction (Furst Formula)",
+        color: "#7b341e",
+        headerBg: "#fff5f0",
+        blocks: [
+          {
+            icon: "management",
+            heading: "Calculate: (Urine Na⁺ + Urine K⁺) ÷ Serum Na⁺",
+            color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
+            items: [
+              "Result **<0·5**: commence 1 litre fluid restriction",
+              "Result **0·5–1·0**: commence 500ml fluid restriction",
+              "Result **>1·0**: fluid restriction not advised",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Step 4 — Monitor and Escalate",
+        color: "#276749",
+        headerBg: "#f0fff4",
+        blocks: [
+          {
+            icon: "monitoring",
+            heading: "Assess response at 24 and 48 hours",
+            color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+            items: [
+              "Target Na⁺ ≥130 mmol/L",
+              "If poor response: consider **demeclocycline 150mg TDS** — review Na⁺ 24-hourly",
+              "Seek specialist opinion (endocrinology) if not responding",
+              "!!Do NOT correct faster than 10 mmol/L per 24h — risk of osmotic demyelination syndrome",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    heading: "Drug Causes of Hyponatraemia",
+    type: "callouts",
+    panels: [
+      {
+        label: "Drugs causing acute hyponatraemia (<48 hours)",
+        color: "#742a2a",
+        headerBg: "#fff5f5",
+        blocks: [
+          {
+            icon: "drug", heading: "High-risk — acute onset", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+            items: [
+              "Recent thiazide prescription",
+              "MDMA (3,4-methylenedioxymethamphetamine)",
+              "Colonoscopy preparation",
+              "IV cyclophosphamide",
+              "Oxytocin",
+              "Recently started desmopressin, terlipressin, or vasopressin",
+            ],
+          },
+        ],
+      },
+      {
+        label: "Drug classes associated with hyponatraemia",
+        color: "#744210",
+        headerBg: "#fffff0",
+        blocks: [
+          {
+            icon: "drug", heading: "Antidepressants & Antipsychotics", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: ["SSRIs, tricyclics, MAOIs", "Phenothiazines, butyrophenones"],
+          },
+          {
+            icon: "drug", heading: "Anticonvulsants", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: ["Carbamazepine", "Sodium valproate", "Lamotrigine"],
+          },
+          {
+            icon: "drug", heading: "Anticancer drugs", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: ["Vinca alkaloids", "Melphalan", "Cyclophosphamide", "Methotrexate", "Platinum compounds"],
+          },
+          {
+            icon: "drug", heading: "Diuretics", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: ["Thiazides (predominantly)", "Loop diuretics"],
+          },
+          {
+            icon: "drug", heading: "Vasopressin analogues", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: ["Desmopressin", "Oxytocin", "Terlipressin", "Vasopressin"],
+          },
+          {
+            icon: "drug", heading: "Miscellaneous", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+            items: [
+              "Opiates", "NSAIDs", "Amiodarone", "Clofibrate", "Interferon", "PPIs",
+              "Antidiabetic: chlorpropamide, tolbutamide",
+              "Contact Medicines Information ext 84185 or 81200 for full list",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+],
+          },
+        ],
+      },
     ],
     get guidelines() {
       return this.subsites.flatMap(ss => ss.guidelines || []);
@@ -4042,6 +5221,343 @@ const SITES = [
           },
         ],
       },
+      // ═══════════════════════════════════════════════════════════════════════════
+// CLINGUIDE PATCH — Paracentesis guideline (Gastrointestinal subsite)
+//
+// WHERE TO INSERT IN App.jsx:
+//   Find the `procedures` site near the bottom of the SITES array.
+//   Inside its `subsites` array, AFTER the closing `},` of the
+//   `proc-respiratory` subsite object, ADD a comma then paste the object below.
+//
+// The insertion point looks like this in the current file:
+//
+//       },      ← end of proc-respiratory subsite
+//     ],         ← closes subsites array
+//     get guidelines() {
+//       return this.subsites.flatMap(ss => ss.guidelines || []);
+//     },
+//   },           ← end of procedures site
+//
+// Change it to:
+//
+//       },      ← end of proc-respiratory subsite
+//       {       ← START PASTING HERE (the object below)
+//         id: "proc-gastrointestinal",
+//         ...
+//       },      ← END PASTE
+//     ],
+//     get guidelines() {
+// ═══════════════════════════════════════════════════════════════════════════
+
+      {
+        id: "proc-gastrointestinal",
+        label: "Gastrointestinal",
+        guidelines: [
+          {
+            id: "proc-paracentesis",
+            title: "Paracentesis — Malignant Ascites (SDEC)",
+            category: "Gastrointestinal",
+            version: "2",
+            authors: "Emma Beeton & Karen King, Acute Oncology ACP",
+            evidenceBase: "NUH Guideline 3654 | Oncology Governance April 2026 | Review March 2031",
+            summary: "Malignant ascites causes distressing symptoms — abdominal distension, breathlessness, nausea and pain. Paracentesis is an effective, well-established palliative procedure. This guideline is primarily designed for the CAS SDEC day-case setting but is applicable to inpatients. Patients must be mobile, self-caring, and fit to remain seated for up to 8 hours. Larger volumes requiring 'drain to dry' are likely to need inpatient admission.",
+            tags: ["Paracentesis", "Ascites", "Malignant ascites", "SDEC", "Day case", "Drain", "Anticoagulation", "Interventional radiology"],
+            related: [],
+            calculators: [],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=4b82698a3d1fcc085a89d225f4b34d06",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10547&query_desc=an%2Cphr%3A6225",
+            updated: "March 2031 (review)",
+            sections: [
+              // ── TOP ALERT ──────────────────────────────────────────────────
+              {
+                heading: "⚠ Patient Becomes Unwell During Drainage",
+                type: "alert",
+                items: [
+                  "Clamp drain immediately — contact SDEC Fellow / Registrar / ACP",
+                  "If BP drops >40 mmHg from baseline: clamp drain for 30 minutes, unclamp once BP recovered and patient feels well. Limit subsequent drainage to 1 L/hour",
+                  "NEWS2 ≥7: discuss urgent admission with Oncology SpR on call",
+                  "If patient is not fit for discharge by the time the medical team leaves SDEC: discuss with Oncology SpR on call — consider admission",
+                ],
+                note: "Do NOT wait before clamping — clamp first, then call.",
+              },
+
+              // ── INDICATIONS / CONTRAINDICATIONS ────────────────────────────
+{
+  heading: "Indications, Contraindications & SDEC Eligibility",
+  type: "pills",
+  items: [
+        {
+      label: "SDEC Eligibility",
+      type: "callout",
+      color: "#1a365d",
+      bg: "#ebf8ff",
+      border: "#63b3ed",
+      notes: [
+        "Confirmed MDT cancer diagnosis",
+        "Mobile and self-caring",
+        "Able to sit in recliner ≤8 hrs",
+        "No concurrent admission indication",
+        "No cirrhosis or decompensated liver disease",
+        "Anticoagulation reviewed",
+      ],
+      footer: "Drain slots: Tuesday AM only (2 slots, 2026).",
+    },
+
+    {
+      label: "✔  Indications",
+      color: "#276749",
+      bg: "#f0fff4",
+      border: "#9ae6b4",
+      indication: null,
+      urgent: null,
+      exclusions: null,
+      notes: [
+        "Diagnostic — fluid sampling for analysis",
+        "Therapeutic — symptom relief (distension, breathlessness, bladder or vascular compression)",
+        "Psychological benefit",
+        "Day-case: small–moderate ascites drained over 4–6 hours",
+      ],
+    },
+
+    {
+      label: "✘  Contraindications",
+      color: "#742a2a",
+      bg: "#fff5f5",
+      border: "#fc8181",
+      indication: null,
+      urgent: null,
+      exclusions: [
+        "Abnormal clotting (see lab thresholds in pre-procedure checklist below)",
+        "Multiple abdominal scars or grossly distended bowel",
+        "Localised inflammatory bowel disease",
+        "Pregnancy",
+      ],
+    },
+
+  ],
+},
+
+              // ── PRE-PROCEDURE CHECKLIST ─────────────────────────────────────
+              {
+                heading: "Pre-Procedure Baseline Checklist",
+                type: "checklist",
+                items: [
+                  "Bloods taken (Monday preceding Tuesday drain slot): FBC + clotting only — no additional bloods unless requested by parent oncology team",
+                  "Hb >80 g/L",
+                  "Platelets >50 ×10⁹/L",
+                  "APTT <35 s  and  PT <15 s",
+                  "Anticoagulation paused/reviewed per tables below — patient contacted Friday prior by SDEC nursing team",
+                  "IV access obtained",
+                  "Baseline observations recorded: BP, pulse, temperature, SpO₂",
+                  "Analgesia prescribed as required",
+                  "Patient consented by IR team on arrival in IR suite (not on SDEC)",
+                  "Drain insertion target: by 10:00",
+                ],
+              },
+
+              // ── ANTICOAG: DOACs ─────────────────────────────────────────────
+              {
+                heading: "Anticoagulation — DOACs",
+                type: "proc_equip",
+                items: [
+                  { item: "Rivaroxaban", detail: "Withhold day before and day of procedure. Withhold 2 days before if eGFR <30" },
+                  { item: "Apixaban", detail: "Withhold 2 days before procedure and on day of procedure" },
+                  { item: "Dabigatran", detail: "Withhold as per renal function — see NUH IR prep guideline (link in references)" },
+                ],
+              },
+
+              // ── ANTICOAG: LMWH ─────────────────────────────────────────────
+              {
+                heading: "Anticoagulation — LMWH & Parenteral",
+                type: "proc_equip",
+                items: [
+                  { item: "Enoxaparin ≤40 mg", detail: "✔ Continue prophylactic doses as normal" },
+                  { item: "Enoxaparin >40 mg", detail: "Hold 24 hrs pre-procedure; hold 48 hrs pre-procedure if eGFR <30" },
+                  { item: "Warfarin", detail: "See NUH Trust guidelines for peri-procedure INR management" },
+                ],
+              },
+
+              // ── ANTICOAG: ANTIPLATELETS ─────────────────────────────────────
+              {
+                heading: "Anticoagulation — Antiplatelets",
+                type: "proc_equip",
+                items: [
+                  { item: "Aspirin", detail: "✔ Continue as normal" },
+                  { item: "Clopidogrel", detail: "Stop 7 days before procedure. If coronary stent placed <1 yr ago or recent MI: discuss with cardiology before stopping" },
+                  { item: "Ticagrelor / Prasugrel", detail: "Stop 5–7 days before — discuss with cardiology if on dual antiplatelet therapy" },
+                ],
+              },
+
+              // ── PROCEDURE STEPS ─────────────────────────────────────────────
+              {
+                heading: "Procedure Steps",
+                type: "proc_steps",
+                note: "Perform in order. Drain insertion target by 10:00. Day-case drainage over 4–6 hours.",
+                groups: [
+                  {
+                    label: "Admission & Drain Insertion",
+                    steps: [
+                      {
+                        num: 1,
+                        action: "Admission to SDEC at **08:00–08:30**",
+                        rationale: "Coordinated by oncology ACP / medical team",
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 2,
+                        action: "Double-check bloods reviewed within 24h: Hb >80, Plt >50, APTT <35, PT <15. Obtain IV access. Prescribe analgesia as required.",
+                        rationale: "All thresholds must be met before proceeding to prevent placement when drain cannot safely be placed",
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 3,
+                        action: "Patient to IR suite — consent by IR team. Ascitic drain inserted by IR practitioners under imaging guidance. Target insertion by **10:00**",
+                        rationale: "IR team confirm patient and insert drain. Consent occurs in the IR suite, not on SDEC",
+                        warning: null, note: null,
+                      },
+                    ],
+                  },
+                  {
+                    label: "Drainage on SDEC",
+                    steps: [
+                      {
+                        num: 4,
+                        action: "Patient returns to SDEC — record **immediate observations** (BP, pulse, SpO₂, temperature). Begin fluid balance chart and document drain output.",
+                        rationale: "Establishes post-procedure baseline for comparison throughout drainage",
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 5,
+                        action: "Drain **1 L in the first hour** post-insertion. Monitor patient comfort and observations.",
+                        rationale: "Controlled initial drainage — 1 hour monitoring before progressing to free drainage",
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 6,
+                        action: "After first hour: **free drainage** if patient well and BP stable. Alternatively: **1 L/hour** with hourly monitoring.",
+                        rationale: "No evidence of increased complication rate with free vs slower drainage (Korpi et al 2018, Harvey et al 2023, Decruze et al 2010)",
+                        warning: "If BP drops >40 mmHg from baseline OR patient reports dizziness / lightheadedness — clamp drain immediately and contact SDEC Fellow / Registrar / ACP",
+                        note: null,
+                      },
+                      {
+                        num: 7,
+                        action: "**Hourly observations** until drain removal — unless patient becomes clinically unstable (then increase frequency). Document all drain output.",
+                        rationale: "Monitor for complications: site infection, abdominal haematoma, fluid leak, bowel perforation, spontaneous bacterial peritonitis",
+                        warning: null, note: null,
+                      },
+                    ],
+                  },
+                  {
+                    label: "Drain Removal & Post-Procedure",
+                    steps: [
+                      {
+                        num: 8,
+                        action: "Remove drain at **16:00** (or when drainage stops — whichever comes first). Unlock self-locking drains before removal; if lock does not release, catheter may be cut to bypass mechanism. Drain does **not** need to reach dry.",
+                        rationale: "Aims to drain maximum volume in shortest period while maintaining patient safety and minimising infection risk (Moore and Aithal 2006)",
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 9,
+                        action: "**Dress drain site** — stoma bag if ongoing leakage expected (ascites remains); soft-pore dressing for dry sites. A small amount of post-removal leakage is expected and manageable with a stoma bag.",
+                        rationale: "Sites with residual ascites will continue to leak after removal — stoma bag prevents soiling; community nursing may be needed for daily bag changes",
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 10,
+                        action: "**Observations at 30 minutes** post-removal (sooner if unwell). Satisfactory obs + well → discharge. Unwell but stable obs → remain on unit 30 min further.",
+                        rationale: "Ensures haemodynamic stability before discharge",
+                        warning: "NEWS2 >7: discuss with Oncology SpR on call — consider admission",
+                        note: "Give patient Rapid Response contact number and verbal safety-net before leaving",
+                      },
+                    ],
+                  },
+                ],
+              },
+
+              // ── NURSING RESPONSIBILITIES ────────────────────────────────────
+              {
+                heading: "Nursing Responsibilities",
+                type: "list",
+                groups: [
+                  {
+                    icon: "monitoring",
+                    label: "Patient monitoring",
+                    items: [
+                      "Drain inserted in IR — patient returns to SDEC for all post-procedure care",
+                      "Initiate fluid balance chart; document drain output at every observation",
+                      "Baseline observations on return from IR; hourly thereafter until drain removed",
+                      "Increase frequency of observations if patient becomes clinically unstable",
+                    ],
+                  },
+                  {
+                    icon: "drug",
+                    label: "Drainage instructions",
+                    items: [
+                      "Drain 1 L in first hour post-insertion",
+                      "After first hour: free drainage if patient well and BP stable. Alternatively: 1 L/hour with hourly monitoring",
+                      "!!If patient unwell (dizzy, lightheaded) or BP drops >40 mmHg: clamp drain immediately and contact SDEC Fellow / Registrar / ACP",
+                      "Subsequent drainage instructions directed by medical team",
+                    ],
+                  },
+                  {
+                    icon: "referral",
+                    label: "Discharge safety-netting",
+                    items: [
+                      "Ensure patient has Rapid Response contact details before leaving",
+                      "Advise patient to contact department if concerned at home",
+                    ],
+                  },
+                ],
+              },
+
+              // ── DRESSINGS ───────────────────────────────────────────────────
+              {
+                heading: "Dressings Following Drain Removal",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Dressing selection",
+                    items: [
+                      "**Ongoing leakage expected (ascites remains)**: stoma bag over site. May require daily district nursing review for bag changes. Convert to soft-pore dressing once leakage stops.",
+                      "**Dry site / no leakage**: soft-pore dressing only.",
+                    ],
+                  },
+                ],
+              },
+
+              // ── REFERENCES ──────────────────────────────────────────────────
+              {
+                heading: "References",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Evidence base",
+                    items: [
+                      "Daga et al (2022) Clinical Radiology 77:689–693",
+                      "Decruze et al (2010) J Palliative Care 13(3):251–254",
+                      "Golo et al (2025) Eur J Gastroenterol Hepatol 37(12):1390–1395",
+                      "Ha et al (2026) J Pharmacy Bioallied Sci 18:S147–9",
+                      "Harvey et al (2023) Med J Australia 218(1)",
+                      "Harding et al (2012) Br J Cancer 107:925–930",
+                      "Hill (2013) Cancer Nursing Practice 12(5):14–20",
+                      "Korpi et al (2018) J Palliative Care 21(6):836–840",
+                      "Lister et al (2020) Royal Marsden Manual, 10th edn",
+                      "Moore & Aithal (2006) Gut 55(Suppl 6):vi1–12",
+                      "NUH (2019) Patient Preparation for IR Theatres — PDF: https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=4b82698a3d1fcc085a89d225f4b34d06 | Portal: https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10547&query_desc=an%2Cphr%3A6225",
+                      "Qu et al (2016) Cardiovasc Interventional Radiol 39:711–716",
+                      "Smith & Jayson (2003) Clin Oncology 15(2):59–72",
+                      "Thomsen et al (2006) NEJM 355(19)",
+                      "Wilkinson et al (2017) Oxford Handbook of Clinical Medicine, 10th edn",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
     ],
     get guidelines() {
       return this.subsites.flatMap(ss => ss.guidelines || []);
@@ -4082,6 +5598,7 @@ const CALCULATORS = {
     label: "MASCC Risk Score",
     siteId: "oncology",
     icon: "🦠",
+    guidelineId: "onco-neutropenic-sepsis",
     whenToUse: {
       headline: "When to use the MASCC score",
       checks: [
@@ -4097,6 +5614,7 @@ const CALCULATORS = {
   "sins": {
     id: "sins",
     label: "SINS Score (Spinal Instability)",
+    guidelineId: "onco-mscc",
     siteId: "oncology",
     icon: "🦴",
     whenToUse: {
@@ -4116,6 +5634,7 @@ const CALCULATORS = {
     label: "Opioid Equianalgesic Converter",
     siteId: "palliative",
     icon: "💊",
+    guidelineId: "pall-pain",
     whenToUse: {
       headline: "When to use this calculator",
       checks: [
@@ -4133,6 +5652,7 @@ const CALCULATORS = {
     label: "Revised Tokuhashi Score",
     siteId: "oncology",
     icon: "📊",
+    guidelineId: "onco-mscc",
     whenToUse: {
       headline: "When to use the Tokuhashi score",
       checks: [
@@ -4309,7 +5829,7 @@ function GraderSection({ sec, siteColor, siteId, subsiteId }) {
     <div>
       {/* Step 1: Grade selector */}
       <div className="detail-card" style={{ marginBottom: 10 }}>
-        <h3 style={{ marginBottom: 12 }}>Step 1 — Select Grade</h3>
+        <h3 style={{ marginBottom: 12 }}>Step 1 — Presentation </h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {sec.grades.map((g) => {
             const gc = gradeColors[g.grade] || gradeColors[3];
@@ -4346,7 +5866,7 @@ function GraderSection({ sec, siteColor, siteId, subsiteId }) {
 
       {/* Step 2: Management — collapsible per grade */}
       <div className="detail-card">
-        <h3 style={{ marginBottom: 12 }}>Step 2 — Management by Grade</h3>
+        <h3 style={{ marginBottom: 12 }}>Step 2 — Management by Presentation</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {sec.management.map((mgmt) => {
             const gc = gradeColors[mgmt.grade] || gradeColors[3];
@@ -4540,20 +6060,34 @@ function CalculatorView({ calcId, onNavigate }) {
   if (!calc) return null;
   const site = SITES.find(s => s.id === calc.siteId);
 
-  const checkColors = {
-    question: { bg: "#f0f7ff", border: "#bfdbfe", color: "#1e40af", icon: "?" },
-    warning: { bg: "#fffbeb", border: "#fde68a", color: "#92400e", icon: "⚠" },
-    info: { bg: "#f0fff4", border: "#bbf7d0", color: "#166534", icon: "ℹ" },
-  };
+ const checkColors = {
+  question: { bg: "#f0f7ff", border: "#bfdbfe", color: "#1e40af", icon: "?" },
+  warning: { bg: "#fffbeb", border: "#fde68a", color: "#92400e", icon: "⚠" },
+  info: { bg: "#f0fff4", border: "#bbf7d0", color: "#166534", icon: "ℹ" },
+};
 
-  return (
-    <div style={{ maxWidth: 720 }}>
+return (
+  <div style={{ maxWidth: 720 }}>
+    <div style={{ display: "flex", alignItems: "center", marginBottom: 4 }}>
       <button className="detail-back-btn" onClick={() => onNavigate({ type: "calculators" })}>
         <IconArrowLeft />
         Back to Calculators
       </button>
+      {calc.guidelineId && (() => {
+        const linkedG = findGuideline(calc.guidelineId);
+        const linkedSite = SITES.find(s => s.id === linkedG?.siteId);
+        return linkedG ? (
+          <button className="detail-back-btn"
+            onClick={() => onNavigate({ type: "guideline", guidelineId: calc.guidelineId })}
+            style={{ marginLeft: 16, color: linkedSite?.color }}
+          >
+            <IconExternal /> View {linkedG.title} guideline
+          </button>
+        ) : null;
+      })()}
+    </div>
 
-      {/* Header */}
+    {/* Header */}
       <div style={{ marginBottom: 24 }}>
         <div className="detail-category-badge" style={{ background: site?.accent || "#f0f0f0", color: site?.color || "#555" }}>
           <span style={{ fontSize: 14 }}>{calc.icon}</span>
@@ -4807,7 +6341,6 @@ const SectionIcons = {
     </svg>
   ),
 };
-
 function PillItem({ pill }) {
   const [open, setOpen] = useState(false);
   return (
@@ -4823,27 +6356,50 @@ function PillItem({ pill }) {
       </div>
       {open && (
         <div style={{ borderTop: `1px solid ${pill.border}`, background: pill.bg, padding: "10px 14px 14px" }}>
+          {pill.indication && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 4, opacity: 0.75 }}>Indication</div>
+              <p style={{ fontSize: 13.5, color: pill.color, lineHeight: 1.55, margin: 0 }}>{pill.indication}</p>
+            </div>
+          )}
           {pill.urgent && (
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 9, padding: "8px 10px", background: pill.border, borderRadius: 6, marginBottom: 10 }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 9, padding: "8px 10px", background: pill.border, borderRadius: 6, marginBottom: pill.exclusions && pill.exclusions.length > 0 ? 10 : 0 }}>
               <span style={{ color: pill.color, fontSize: 13, flexShrink: 0, marginTop: 1 }}>⚡</span>
               <span style={{ fontSize: 13.5, fontWeight: 700, color: pill.color }}>{pill.urgent}</span>
             </div>
           )}
           {pill.exclusions && pill.exclusions.length > 0 && (
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
-              {pill.exclusions.map((ex, j) => (
-                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                  <span style={{ color: pill.color, fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
-                  {ex}
-                </li>
-              ))}
-            </ul>
+            <div style={{ marginTop: pill.urgent ? 10 : 0 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>Contraindications</div>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
+                {pill.exclusions.map((ex, j) => (
+                  <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                    <span style={{ color: pill.color, fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+                    {ex}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
+          {pill.notes && pill.notes.length > 0 && (
+  <div style={{ marginTop: pill.urgent ? 10 : 0 }}>
+    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>Notes</div>
+    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
+      {pill.notes.map((note, j) => (
+        <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+          <span style={{ color: pill.color, fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+          {note}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
         </div>
       )}
     </div>
   );
 }
+
 
 
 function CinvTierBlock({ tier, c, siteColor }) {
@@ -5086,6 +6642,337 @@ function MarkdownSection({ content, siteColor, siteAccent, onNavigate }) {
 
   return <>{elements}</>;
 }
+function HypoAssessmentSection({ sec, siteColor, siteAccent }) {
+  const iconMap = {
+    history: (
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+        <circle cx="8.5" cy="8.5" r="5.5"/><path d="M17 17l-3.5-3.5"/>
+      </svg>
+    ),
+    management: (
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+        <path d="M9 3H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M17 3l-7 7"/><path d="M13 3h4v4"/>
+      </svg>
+    ),
+    investigations: (
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+        <circle cx="8.5" cy="8.5" r="5.5"/><path d="M17 17l-3.5-3.5"/>
+      </svg>
+    ),
+  };
+
+  return (
+    <div style={{ border: `1.5px solid ${siteColor}`, borderRadius: 10, overflow: "hidden", marginBottom: 14 }}>
+      <div style={{ padding: "12px 18px 10px", background: siteAccent, borderBottom: `1px solid ${siteColor}33` }}>
+        <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: siteColor, fontFamily: "Sora, sans-serif" }}>{sec.heading}</h3>
+      </div>
+      {sec.blocks.map((block, bi) => (
+        <div key={bi} style={{ borderBottom: bi < sec.blocks.length - 1 ? `1px solid ${siteColor}22` : "none" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 18px 8px", background: bi % 2 === 0 ? "var(--surface)" : "var(--bg)" }}>
+            <span style={{ color: siteColor, display: "flex", flexShrink: 0 }}>{iconMap[block.icon] || iconMap.management}</span>
+            <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: siteColor }}>{block.label}</span>
+          </div>
+          <div style={{ height: 1, background: `${siteColor}22`, margin: "0 18px" }} />
+          <div style={{ padding: "8px 18px 12px", background: bi % 2 === 0 ? "var(--surface)" : "var(--bg)", display: "flex", flexDirection: "column", gap: block.checklist ? 5 : 6 }}>
+            {block.items.map((item, ii) => {
+              if (block.checklist) {
+                return (
+                  <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "5px 0", borderBottom: ii < block.items.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+                    <span style={{ width: 17, height: 17, border: `2px solid ${siteColor}`, borderRadius: 4, flexShrink: 0, marginTop: 2, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.5 }} />
+                    <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>{boldify(item)}</span>
+                  </div>
+                );
+              }
+              const isUrgent = item.startsWith("!!");
+              const text = isUrgent ? item.slice(2).trim() : item;
+              if (isUrgent) {
+                return (
+                  <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "5px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+                    <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{boldify(text)}</span>
+                  </div>
+                );
+              }
+              return (
+                <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                  <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>{boldify(item)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function HypoDiagnosticPathway({ siteColor, siteAccent }) {
+  const ArrowLabel = ({ text, color }) => (
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 6, padding: "4px 0" }}>
+      <svg viewBox="0 0 16 20" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="18">
+        <line x1="8" y1="0" x2="8" y2="12"/><polyline points="3 7 8 13 13 7"/>
+      </svg>
+      <span style={{ fontSize: 11, fontWeight: 700, color: color, fontFamily: "Sora, sans-serif", letterSpacing: "0.03em" }}>{text}</span>
+    </div>
+  );
+
+  return (
+    <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+      <div style={{ padding: "12px 18px 10px", background: siteAccent, borderBottom: `1px solid ${siteColor}33` }}>
+        <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: siteColor, fontFamily: "Sora, sans-serif" }}>Diagnostic Pathway</h3>
+      </div>
+      <div style={{ padding: "18px 16px", display: "flex", flexDirection: "column", gap: 0 }}>
+
+        {/* Plasma osmolality — two boxes */}
+        <div style={{ marginBottom: 6 }}>
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <span style={{ display: "inline-block", padding: "5px 16px", background: siteAccent, border: `1.5px solid ${siteColor}`, borderRadius: 99, fontSize: 12, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>
+              Measure Plasma Osmolality
+            </span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+            <div style={{ border: "1.5px solid #fc8181", borderRadius: 10, overflow: "hidden" }}>
+              <div style={{ padding: "8px 12px", background: "#fff5f5", borderBottom: "1px solid #fca5a5" }}>
+                <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: "#742a2a" }}>≥275 mOsm/kg</span>
+              </div>
+              <div style={{ padding: "10px 12px", background: "var(--surface)" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#742a2a", marginBottom: 6 }}>Not true hypotonic hyponatraemia — consider:</div>
+                {["Hyperglycaemia — glucose displaces Na⁺ osmotically", "Hyperlipidaemia / hyperproteinaemia (pseudohyponatraemia)", "Hypertonic infusion (e.g. mannitol)", "Alcohols"].map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 6, marginBottom: 3 }}>
+                    <span style={{ color: "#e53e3e", fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                    <span style={{ fontSize: 12.5, color: "#742a2a", lineHeight: 1.5 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ border: `1.5px solid ${siteColor}`, borderRadius: 10, overflow: "hidden" }}>
+              <div style={{ padding: "8px 12px", background: siteAccent, borderBottom: `1px solid ${siteColor}55` }}>
+                <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: siteColor }}>&lt;275 mOsm/kg</span>
+              </div>
+              <div style={{ padding: "10px 12px", background: "var(--surface)" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: siteColor, marginBottom: 4 }}>True hypotonic hyponatraemia</div>
+                <div style={{ fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>Proceed to urine osmolality check below</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ArrowLabel text="If plasma Osm <275" color={siteColor} />
+
+        {/* Urine osmolality */}
+        <div style={{ border: `1.5px solid ${siteColor}55`, borderRadius: 10, overflow: "hidden", marginBottom: 6 }}>
+          <div style={{ padding: "8px 14px", background: siteAccent, borderBottom: `1px solid ${siteColor}33` }}>
+            <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: siteColor }}>Check Urine Osmolality</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+            <div style={{ padding: "10px 14px", background: "var(--surface)", borderRight: "1px solid var(--border-light)" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#276749", fontFamily: "Sora, sans-serif", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>≤100 mOsm/kg</div>
+              {["Primary polydipsia", "Low solute intake ('tea and toast')"].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: 6, marginBottom: 3 }}>
+                  <span style={{ color: "#276749", fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                  <span style={{ fontSize: 12.5, color: "var(--text-secondary)" }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>&gt;100 mOsm/kg</div>
+              <div style={{ fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>Proceed to severity assessment below</div>
+            </div>
+          </div>
+        </div>
+
+        <ArrowLabel text="If urine Osm >100" color={siteColor} />
+
+        {/* Severe symptoms gate */}
+        <div style={{ border: "1.5px solid #e53e3e", borderRadius: 10, overflow: "hidden", marginBottom: 6 }}>
+          <div style={{ padding: "8px 14px", background: "#fff5f5", borderBottom: "1px solid #fca5a5", display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 14 }}>⚡</span>
+            <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: "#742a2a" }}>Severe Symptoms Present?</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+            <div style={{ padding: "10px 14px", background: "#fff5f5", borderRight: "1px solid #fca5a5" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#742a2a", fontFamily: "Sora, sans-serif", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>YES — Medical Emergency</div>
+              {[
+                { text: "Manage in Level 2/3 bed immediately", bold: true },
+                { text: "Senior input urgently", bold: true },
+                { text: "150ml IV 2·7% NaCl over 20 min via central line*", bold: false },
+                { text: "Check Na⁺ — repeat bolus until risen 5 mmol/L or given twice", bold: false },
+                { text: "Start diagnosis-specific treatment once stabilised", bold: false },
+                { text: "Limit total Na⁺ rise ≤10 mmol/L in first 24h", bold: false },
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
+                  <span style={{ color: "#e53e3e", fontSize: 8, flexShrink: 0, marginTop: 5 }}>▸</span>
+                  <span style={{ fontSize: 12.5, color: "#742a2a", lineHeight: 1.5, fontWeight: item.bold ? 700 : 400 }}>{item.text}</span>
+                </div>
+              ))}
+              <div style={{ marginTop: 6, fontSize: 11, color: "#9b2c2c", fontStyle: "italic", lineHeight: 1.4 }}>*Central line recommended. Consider large-bore peripheral if central access not immediately available — observe for extravasation.</div>
+            </div>
+            <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>NO — Subacute / Chronic</div>
+              {["Assess volume status (see table below)", "Determine chronicity — acute <48h or chronic >48h", "Manage per volume status + chronicity pathway"].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: 7, marginBottom: 4 }}>
+                  <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                  <span style={{ fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <ArrowLabel text="If no severe symptoms" color={siteColor} />
+
+        {/* Volume status 3-column table */}
+        <div style={{ border: `1.5px solid ${siteColor}55`, borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ padding: "8px 14px", background: siteAccent, borderBottom: `1px solid ${siteColor}33` }}>
+            <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: siteColor }}>Assess Volume Status</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 0 }}>
+            {[
+              { label: "Hypovolaemic", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                signs: ["Dry mucous membranes", "Reduced skin turgor", "Low BP / postural hypotension"],
+                action: "IV 0·9% NaCl — restore volume. See Acute Hyponatraemia section below." },
+              { label: "Euvolaemic", color: siteColor, bg: siteAccent, border: `${siteColor}55`,
+                signs: ["Clinically normal", "No oedema", "Normal BP"],
+                action: "Check TFTs + cortisol. Consider SIADH. See Acute / Chronic sections below." },
+              { label: "Hypervolaemic", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                signs: ["Peripheral oedema", "Raised JVP", "Ascites"],
+                action: "Treat underlying cause (HF, cirrhosis, nephrotic syndrome). Fluid restrict." },
+            ].map((col, ci) => (
+              <div key={ci} style={{ borderRight: ci < 2 ? "1px solid var(--border-light)" : "none", display: "flex", flexDirection: "column" }}>
+                <div style={{ padding: "7px 12px", background: col.bg, borderBottom: `1px solid ${col.border}` }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: col.color, fontFamily: "Sora, sans-serif" }}>{col.label}</span>
+                </div>
+                <div style={{ padding: "8px 12px", flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginBottom: 4 }}>Signs</div>
+                    {col.signs.map((s, si) => (
+                      <div key={si} style={{ display: "flex", gap: 5, marginBottom: 3 }}>
+                        <span style={{ color: col.color, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                        <span style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.4 }}>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ padding: "6px 9px", background: col.bg, border: `1px solid ${col.border}`, borderRadius: 6, fontSize: 12, color: col.color, lineHeight: 1.45, fontWeight: 500 }}>
+                    {col.action}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+function VteDrugChoicePathway({ siteColor, siteAccent }) {
+  const questions = [
+    "Patient at risk of bleeding? (recent bleeding, previous GI bleed, mucosal abnormality of GI tract, thrombocytopenia below 50x10^9, antiplatelet agents)",
+    "Active GI or urothelial tumour?",
+    "Drug interactions between DOAC and anti-cancer therapy or regular medications?",
+    "Other contraindication to DOAC? (body weight below 50kg or above 200kg, renal impairment CrCl below 30ml/min, concerns over oral intake or absorption, patient preference)",
+  ];
+
+  return (
+    <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+      <div style={{ padding: "12px 18px 10px", background: siteAccent, borderBottom: `1px solid ${siteColor}33` }}>
+        <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: siteColor, fontFamily: "Sora, sans-serif" }}>Treatment — Drug Choice</h3>
+      </div>
+      <div style={{ padding: "18px 16px", display: "flex", flexDirection: "column", gap: 8 }}>
+
+        <div style={{ textAlign: "center" }}>
+          <span style={{ display: "inline-block", padding: "5px 16px", background: siteAccent, border: `1.5px solid ${siteColor}`, borderRadius: 99, fontSize: 12, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>
+            New Diagnosis of Cancer-Associated DVT or PE
+          </span>
+        </div>
+
+        <div style={{ border: "1.5px solid #e53e3e", borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ padding: "8px 14px", background: "#fff5f5", borderBottom: "1px solid #fca5a5", display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: "#742a2a" }}>Extensive iliofemoral DVT or PE with haemodynamic instability?</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <div style={{ padding: "10px 14px", background: "#fff5f5", borderRight: "1px solid #fca5a5" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#742a2a", fontFamily: "Sora, sans-serif", marginBottom: 4 }}>YES</div>
+              <div style={{ fontSize: 13, color: "#742a2a", fontWeight: 600 }}>Consider thrombolysis if appropriate</div>
+            </div>
+            <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 4 }}>NO</div>
+              <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>Proceed to anticoagulation decision below</div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ border: `1.5px solid ${siteColor}55`, borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ padding: "8px 14px", background: siteAccent, borderBottom: `1px solid ${siteColor}33` }}>
+            <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: siteColor }}>If YES to any question below — use LMWH</span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {questions.map((q, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 80px 80px", borderBottom: i < questions.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+                <div style={{ padding: "10px 14px", fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{q}</div>
+                <div style={{ padding: "10px 8px", background: "#fff5f5", borderLeft: "1px solid var(--border-light)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#742a2a", fontFamily: "Sora, sans-serif" }}>YES</div>
+                  <div style={{ fontSize: 11, color: "#742a2a" }}>LMWH</div>
+                </div>
+                <div style={{ padding: "10px 8px", background: "#f0fff4", borderLeft: "1px solid var(--border-light)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#276749", fontFamily: "Sora, sans-serif" }}>NO</div>
+                  <div style={{ fontSize: 11, color: "#276749" }}>{i < questions.length - 1 ? "next" : "DOAC"}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+          <div style={{ border: "1.5px solid #e53e3e", borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ padding: "8px 12px", background: "#fff5f5", borderBottom: "1px solid #fca5a5" }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#742a2a", fontFamily: "Sora, sans-serif" }}>Consider Thrombolysis</div>
+            </div>
+            <div style={{ padding: "10px 12px" }}>
+              {["Extensive iliofemoral DVT", "PE with haemodynamic instability", "Discuss urgently with haematology"].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
+                  <span style={{ color: "#e53e3e", fontSize: 8, flexShrink: 0, marginTop: 4 }}>●</span>
+                  <span style={{ fontSize: 12, color: "#742a2a", lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ border: `1.5px solid ${siteColor}`, borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ padding: "8px 12px", background: siteAccent, borderBottom: `1px solid ${siteColor}55` }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>LMWH (Enoxaparin)</div>
+            </div>
+            <div style={{ padding: "10px 12px" }}>
+              {["Bleeding risk present", "Active GI or urothelial tumour", "DOAC drug interaction", "Other DOAC contraindication", "Patient preference"].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
+                  <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 4 }}>●</span>
+                  <span style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ border: "1.5px solid #276749", borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ padding: "8px 12px", background: "#f0fff4", borderBottom: "1px solid #9ae6b4" }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#276749", fontFamily: "Sora, sans-serif" }}>DOAC</div>
+            </div>
+            <div style={{ padding: "10px 12px" }}>
+              {["Apixaban", "Rivaroxaban", "Edoxaban"].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
+                  <span style={{ color: "#276749", fontSize: 8, flexShrink: 0, marginTop: 4 }}>●</span>
+                  <span style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+              <div style={{ marginTop: 8, padding: "5px 8px", background: "#f0fff4", border: "1px solid #9ae6b4", borderRadius: 6, fontSize: 11, color: "#276749", lineHeight: 1.4 }}>
+                No contraindications on pathway above
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
 
 function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedScore, setExpandedScore, onNavigate }) {
   if (sec.type === "callouts") {
@@ -5105,13 +6992,11 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
                 const blockColor = block.color || siteColor;
                 const isAlert = block.alert;
                 return (
-                  <div key={bi} style={{
-                    padding: "9px 12px",
-                    background: isAlert ? "#fff5f5" : block.bg || "var(--bg)",
-                    border: `1px solid ${isAlert ? "#fc8181" : block.border || "var(--border-light)"}`,
-                    borderLeft: `3px solid ${isAlert ? "#e53e3e" : blockColor}`,
-                    borderRadius: 6,
-                  }}>
+                  <div key={bi} style={{padding: "9px 12px",
+background: isAlert ? "#fff5f5" : "var(--surface)",
+border: `1px solid ${isAlert ? "#fc8181" : block.border || "var(--border-light)"}`,
+borderLeft: `3px solid ${isAlert ? "#e53e3e" : blockColor}`,
+borderRadius: 6,}}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
                       <span style={{ color: isAlert ? "#e53e3e" : blockColor, display: "flex", flexShrink: 0 }}>{icon}</span>
                       <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: "Sora, sans-serif", color: isAlert ? "#c53030" : blockColor }}>{block.heading}</span>
@@ -5360,6 +7245,17 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
 
 
 
+if (sec.type === "hypo_assessment") {
+    return <HypoAssessmentSection sec={sec} siteColor={siteColor} siteAccent={siteAccent} />;
+  }
+
+  if (sec.type === "hypo_diagnostic") {
+    return <HypoDiagnosticPathway siteColor={siteColor} siteAccent={siteAccent} />;
+  }
+
+  if (sec.type === "vte_drug_choice") {
+    return <VteDrugChoicePathway siteColor={siteColor} siteAccent={siteAccent} />;
+  }
 
   if (sec.type === "markdown") {
     return (
@@ -5752,6 +7648,10 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
   }
 
   if (sec.type === "table") {
+    const rowColors = {
+      "🔴": { bg: "#fff5f5", color: "#742a2a", border: "#fc8181" },
+      "🟢": { bg: "#f0fff4", color: "#276749", border: "#9ae6b4" },
+    };
     return (
       <div className="detail-card" style={{ overflowX: "auto" }}>
         <h3>{sec.heading}</h3>
@@ -5768,23 +7668,90 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
             </tr>
           </thead>
           <tbody>
-            {sec.rows.map((row, ri) => (
-              <tr key={ri} style={{ borderBottom: "1px solid var(--border-light)" }}>
-                {row.map((cell, ci) => (
-                  <td key={ci} style={{
+            {sec.rows.map((row, ri) => {
+              const firstCell = row[0] || "";
+              const emoji = firstCell.startsWith("🔴") ? "🔴" : firstCell.startsWith("🟢") ? "🟢" : null;
+              const rc = emoji ? rowColors[emoji] : null;
+              const cellText = emoji ? firstCell.slice(2).trim() : firstCell;
+              return (
+                <tr key={ri} style={{ borderBottom: "1px solid var(--border-light)" }}>
+                  <td style={{
                     padding: "9px 10px", verticalAlign: "top",
-                    color: ci === 0 ? "var(--text-primary)" : "var(--text-secondary)",
-                    fontWeight: ci === 0 ? 500 : 400,
+                    background: rc ? rc.bg : "var(--bg)",
+                    color: rc ? rc.color : "var(--text-primary)",
+                    fontWeight: 700,
+                    borderLeft: rc ? `3px solid ${rc.border}` : "none",
                     lineHeight: 1.55,
-                  }}>{cell}</td>
-                ))}
-              </tr>
-            ))}
+                    fontFamily: "Sora, sans-serif",
+                    fontSize: 12.5,
+                  }}>{cellText}</td>
+                  {row.slice(1).map((cell, ci) => (
+                    <td key={ci} style={{
+                      padding: "9px 10px", verticalAlign: "top",
+                      color: "var(--text-secondary)",
+                      fontWeight: 400,
+                      lineHeight: 1.55,
+                      background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)",
+                    }}>{cell}</td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         {sec.note && (
           <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>{sec.note}</p>
         )}
+      </div>
+    );
+  }
+
+if (sec.type === "prophylaxis_box") {
+    const panelColors = {
+      red:    { color: "#742a2a", bg: "#fff5f5", border: "#fc8181" },
+      amber:  { color: "#744210", bg: "#fffff0", border: "#f6e05e" },
+      green:  { color: "#276749", bg: "#f0fff4", border: "#9ae6b4" },
+    };
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        <div style={{ padding: "12px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
+          <h3 style={{ margin: 0 }}>{sec.heading}</h3>
+        </div>
+        {sec.panels.map((panel, pi) => {
+          const pc = panelColors[panel.color] || panelColors.amber;
+          return (
+            <div key={pi} style={{ borderBottom: pi < sec.panels.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+              <div style={{ padding: "10px 18px 8px", background: pc.bg, borderLeft: `4px solid ${pc.border}` }}>
+                <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: pc.color, letterSpacing: "-0.01em" }}>{panel.label}</span>
+              </div>
+              <div style={{ padding: "10px 18px 14px" }}>
+                {panel.groups.map((group, gi) => (
+                  <div key={gi} style={{ marginBottom: gi < panel.groups.length - 1 ? 12 : 0 }}>
+                    <div style={{ height: 1, background: "var(--border-light)", marginBottom: 8 }} />
+                    <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: "var(--text-primary)", marginBottom: 6 }}>{group.heading}</div>
+                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 5, padding: 0, margin: 0 }}>
+                      {group.items.map((item, ii) => {
+                        const isUrgent = item.startsWith("!!");
+                        const text = isUrgent ? item.slice(2).trim() : item;
+                        return isUrgent ? (
+                          <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "5px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+                            <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
+                            <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{text}</span>
+                          </li>
+                        ) : (
+                          <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                            <span style={{ color: pc.color, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                            {text}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
