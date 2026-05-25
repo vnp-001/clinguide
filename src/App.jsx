@@ -1,6 +1,210 @@
 import { useState, useEffect, useRef } from "react";
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
+const CHANGELOG = [
+  {
+    version: "0.3",
+    date: "May 2026",
+    label: "Preview",
+    changes: [
+      "Added VTE & Haemostasis guidelines — CAT, recurrent VTE, thrombocytopenia, catheter-related thrombosis",
+      "Added interactive SINS, MASCC, and Opioid Equianalgesic calculators",
+      "Calculator back-links to relevant guidelines",
+      "Improved treatment decision layout with Indication and Contraindications sections",
+    ],
+  },
+  {
+    version: "0.2",
+    date: "April 2026",
+    label: "Preview",
+    changes: [
+      "Added full Immunotherapy Toxicity (irAE) guidelines across all organ systems",
+      "Added irAE CTCAE Grade Calculator",
+      "Added Electrolyte Abnormalities — calcium, magnesium, potassium, sodium",
+      "Added Palliative Care symptom control guidelines",
+    ],
+  },
+  {
+    version: "0.1",
+    date: "March 2026",
+    label: "Preview",
+    changes: [
+      "Initial prototype — Oncology Emergencies including Neutropenic Sepsis and MSCC",
+      "Guideline favourites and search",
+      "Sidebar navigation with collapsible categories",
+    ],
+  },
+];
+
+function LoginScreen({ onLogin }) {
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [showChangelog, setShowChangelog] = useState(false);
+
+  const handleSubmit = () => {
+    if (password === "oncnuh26") {
+      sessionStorage.setItem("clinguide_auth", "true");
+      onLogin();
+    } else {
+      setError(true);
+      setPassword("");
+    }
+  };
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "var(--bg)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "24px 16px",
+      fontFamily: "DM Sans, sans-serif",
+    }}>
+      {/* Login card */}
+      <div style={{
+        width: "100%",
+        maxWidth: 400,
+        background: "var(--surface)",
+        border: "1px solid var(--border)",
+        borderRadius: 14,
+        padding: "32px 28px",
+        marginBottom: 16,
+      }}>
+        {/* Logo */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+          <div style={{
+            width: 36, height: 36,
+            background: "linear-gradient(135deg, #1a6b8a 0%, #2a9bc4 100%)",
+            borderRadius: 10,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            color: "white", fontSize: 14, fontWeight: 700, fontFamily: "Sora, sans-serif",
+            flexShrink: 0,
+          }}>CG</div>
+          <div>
+            <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 600, fontSize: 15, color: "var(--text-primary)", letterSpacing: "-0.01em" }}>ClinGuide</div>
+            <div style={{ fontSize: 11.5, color: "var(--text-muted)" }}>NUH Acute Oncology — Pilot Preview</div>
+          </div>
+        </div>
+
+        <h2 style={{ fontFamily: "Sora, sans-serif", fontWeight: 600, fontSize: 18, color: "var(--text-primary)", marginBottom: 6, letterSpacing: "-0.01em" }}>Sign in</h2>
+        <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 20, lineHeight: 1.5 }}>
+          This is a restricted pilot. Enter the access code to continue.
+        </p>
+
+        <div style={{ marginBottom: 12 }}>
+          <label style={{ fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", fontFamily: "Sora, sans-serif", display: "block", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.05em" }}>Access code</label>
+          <input
+            type="password"
+            value={password}
+            onChange={e => { setPassword(e.target.value); setError(false); }}
+            onKeyDown={e => e.key === "Enter" && handleSubmit()}
+            placeholder="Enter access code"
+            autoFocus
+            style={{
+              width: "100%",
+              padding: "10px 14px",
+              border: `1.5px solid ${error ? "#fc8181" : "var(--border)"}`,
+              borderRadius: 8,
+              fontSize: 15,
+              fontFamily: "DM Sans, sans-serif",
+              background: error ? "#fff5f5" : "var(--bg)",
+              color: "var(--text-primary)",
+              outline: "none",
+              boxSizing: "border-box",
+              transition: "border-color 0.15s",
+            }}
+          />
+          {error && <p style={{ fontSize: 12.5, color: "#e53e3e", marginTop: 6 }}>Incorrect access code. Please try again.</p>}
+        </div>
+
+        <button
+          onClick={handleSubmit}
+          style={{
+            width: "100%",
+            padding: "11px",
+            background: "#1a6b8a",
+            color: "white",
+            border: "none",
+            borderRadius: 8,
+            fontSize: 14,
+            fontWeight: 600,
+            fontFamily: "Sora, sans-serif",
+            cursor: "pointer",
+            transition: "background 0.15s",
+          }}
+          onMouseEnter={e => e.target.style.background = "#145773"}
+          onMouseLeave={e => e.target.style.background = "#1a6b8a"}
+        >
+          Continue
+        </button>
+      </div>
+
+      {/* Changelog toggle */}
+      <div style={{ width: "100%", maxWidth: 400 }}>
+        <button
+          onClick={() => setShowChangelog(o => !o)}
+          style={{
+            width: "100%",
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "11px 16px",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: showChangelog ? "10px 10px 0 0" : 10,
+            cursor: "pointer",
+            fontFamily: "Sora, sans-serif",
+            fontSize: 13,
+            fontWeight: 600,
+            color: "var(--text-secondary)",
+            transition: "all 0.15s",
+          }}
+        >
+          <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 13 }}>📋</span>
+            What's new
+          </span>
+          <span style={{ transform: showChangelog ? "rotate(180deg)" : "none", transition: "transform 0.2s", display: "flex" }}>
+            <IconChevronDown />
+          </span>
+        </button>
+
+        {showChangelog && (
+          <div style={{
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderTop: "none",
+            borderRadius: "0 0 10px 10px",
+            padding: "4px 0 8px",
+          }}>
+            {CHANGELOG.map((entry, i) => (
+              <div key={i} style={{ padding: "12px 16px", borderBottom: i < CHANGELOG.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: "var(--text-primary)" }}>v{entry.version}</span>
+                  <span style={{ fontSize: 11, padding: "2px 8px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 99, color: "#1a6b8a", fontWeight: 600, fontFamily: "Sora, sans-serif" }}>{entry.label}</span>
+                  <span style={{ fontSize: 12, color: "var(--text-muted)", marginLeft: "auto" }}>{entry.date}</span>
+                </div>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 5 }}>
+                  {entry.changes.map((c, ci) => (
+                    <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                      <span style={{ color: "#1a6b8a", fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <p style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 20, textAlign: "center", lineHeight: 1.6, maxWidth: 340 }}>
+        For access or technical issues contact the development team.<br />
+        Clinical guidelines are for use by NUH clinical staff only.
+      </p>
+    </div>
+  );
+}
 
 const SITES = [
   {
@@ -19,8 +223,149 @@ const SITES = [
       { label: "Neutropenic Sepsis Risk (MASCC)", url: "#calc-mascc" },
       { label: "Karnofsky / ECOG Score", url: "#calc-ps" },
       { label: "Calcium Correction Calculator", url: "#calc-calcium" },
+      { label: "Antibiotic Dosing (Vancomycin & Gentamicin)", calcId: "antibiotic-dosing" },
+
     ],
     subsites: [
+      
+      {
+        
+  id: "oncology-resources",
+  label: "NUH Oncology Resources",
+  guidelines: [
+    
+    {
+      id: "oncology-drug-list",
+      title: "Oncology Drug Reference",
+      category: "NUH Oncology Resources",
+      version: "1.0",
+      authors: "NUH Acute Oncology",
+      evidenceBase: "NUH Formulary | UKONS | ESMO Guidelines",
+      summary: "Quick-reference registry of commonly used oncology drugs at NUH. Covers cytotoxic chemotherapy, targeted therapies, immunotherapy, and hormonal agents with drug class, emetic risk, vesicant status, and key toxicity flags.",
+      tags: ["Chemotherapy", "SACT", "Immunotherapy", "Targeted therapy", "Drug reference", "Vesicant", "Emetic risk"],
+      related: [],
+      sections: [
+        {
+          heading: "Drug Registry",
+          type: "drug_registry",
+          entries: [
+            // ── Cytotoxic chemotherapy ──────────────────────────────────
+            { name: "Carboplatin",       brand: "Paraplatin®",  category: "chemo",        drugClass: "Platinum agent",              risks: ["mod_emetic", "nephrotox"] },
+            { name: "Cisplatin",         brand: null,           category: "chemo",        drugClass: "Platinum agent",              risks: ["high_emetic", "nephrotox", "neurotox", "irritant"] },
+            { name: "Oxaliplatin",       brand: "Eloxatin®",    category: "chemo",        drugClass: "Platinum agent",              risks: ["mod_emetic", "neurotox", "irritant"], notes: "Warm compress for extravasation — cold precipitates paraesthesia" },
+            { name: "Cyclophosphamide",  brand: "Endoxana®",    category: "chemo",        drugClass: "Alkylating agent",            risks: ["mod_emetic", "fn", "irritant"] },
+            { name: "Ifosfamide",        brand: null,           category: "chemo",        drugClass: "Alkylating agent",            risks: ["mod_emetic", "fn", "nephrotox", "neurotox", "irritant"], notes: "Requires mesna uroprotection" },
+            { name: "Chlorambucil",      brand: "Leukeran®",    category: "chemo",        drugClass: "Alkylating agent",            risks: [] },
+            { name: "Melphalan",         brand: "Alkeran®",     category: "chemo",        drugClass: "Alkylating agent",            risks: ["fn", "irritant"] },
+            { name: "Bendamustine",      brand: "Levact®",      category: "chemo",        drugClass: "Alkylating agent",            risks: ["fn", "vesicant"] },
+            { name: "Carmustine",        brand: "BiCNU®",       category: "chemo",        drugClass: "Alkylating agent (nitrosourea)", risks: ["high_emetic", "vesicant"] },
+            { name: "Dacarbazine",       brand: "DTIC",         category: "chemo",        drugClass: "Alkylating agent",            risks: ["high_emetic", "vesicant"] },
+            { name: "Temozolomide",      brand: "Temodal®",     category: "chemo",        drugClass: "Alkylating agent (oral)",     risks: ["mod_emetic", "fn"] },
+            { name: "Doxorubicin",       brand: "Adriamycin®",  category: "chemo",        drugClass: "Anthracycline",               risks: ["mod_emetic", "fn", "vesicant", "cardiotox"] },
+            { name: "Epirubicin",        brand: "Pharmorubicin®", category: "chemo",      drugClass: "Anthracycline",               risks: ["mod_emetic", "fn", "vesicant", "cardiotox"] },
+            { name: "Daunorubicin",      brand: null,           category: "chemo",        drugClass: "Anthracycline",               risks: ["fn", "vesicant", "cardiotox"] },
+            { name: "Idarubicin",        brand: null,           category: "chemo",        drugClass: "Anthracycline",               risks: ["fn", "vesicant", "cardiotox", "mod_emetic"] },
+            { name: "Liposomal doxorubicin", brand: "Caelyx®", category: "chemo",        drugClass: "Anthracycline (liposomal)",   risks: ["fn", "irritant"], notes: "Palmar-plantar erythrodysaesthesia (PPE) risk" },
+            { name: "Methotrexate",      brand: null,           category: "chemo",        drugClass: "Antimetabolite",              risks: ["nephrotox"], notes: "High-dose requires folinic acid rescue and urine alkalinisation" },
+            { name: "Fluorouracil",      brand: "5-FU",         category: "chemo",        drugClass: "Antimetabolite",              risks: ["irritant"], notes: "Cardiotoxicity with infusional 5-FU; DPD deficiency screen before use" },
+            { name: "Capecitabine",      brand: "Xeloda®",      category: "chemo",        drugClass: "Antimetabolite (oral)",       risks: [], notes: "Oral 5-FU prodrug; DPD deficiency screen before use; PPE risk" },
+            { name: "Gemcitabine",       brand: "Gemzar®",      category: "chemo",        drugClass: "Antimetabolite",              risks: [] },
+            { name: "Cytarabine",        brand: "Ara-C",        category: "chemo",        drugClass: "Antimetabolite",              risks: ["fn"], notes: "High-dose: cerebellar toxicity, conjunctivitis — requires steroid eye drops" },
+            { name: "Pemetrexed",        brand: "Alimta®",      category: "chemo",        drugClass: "Antimetabolite",              risks: [], notes: "Requires folic acid and B12 supplementation before and during treatment" },
+            { name: "Fludarabine",       brand: "Fludara®",     category: "chemo",        drugClass: "Antimetabolite",              risks: ["fn"], notes: "Causes prolonged immunosuppression — irradiated blood products required" },
+            { name: "Cladribine",        brand: "Leustatin®",   category: "chemo",        drugClass: "Antimetabolite",              risks: ["fn"] },
+            { name: "Etoposide",         brand: "Vepesid®",     category: "chemo",        drugClass: "Topoisomerase II inhibitor",  risks: ["fn", "mod_emetic"] },
+            { name: "Irinotecan",        brand: "Campto®",      category: "chemo",        drugClass: "Topoisomerase I inhibitor",   risks: ["mod_emetic", "fn"], notes: "Early cholinergic syndrome (atropine) and delayed diarrhoea (loperamide)" },
+            { name: "Topotecan",         brand: "Hycamtin®",    category: "chemo",        drugClass: "Topoisomerase I inhibitor",   risks: ["fn"] },
+            { name: "Docetaxel",         brand: "Taxotere®",    category: "chemo",        drugClass: "Taxane",                     risks: ["fn", "vesicant"], notes: "Requires dexamethasone premedication to reduce fluid retention" },
+            { name: "Paclitaxel",        brand: "Taxol®",       category: "chemo",        drugClass: "Taxane",                     risks: ["fn", "vesicant", "neurotox"], notes: "Hypersensitivity reactions — requires steroid/antihistamine premedication" },
+            { name: "Nab-paclitaxel",    brand: "Abraxane®",    category: "chemo",        drugClass: "Taxane (albumin-bound)",     risks: ["fn", "vesicant", "neurotox"], notes: "No Cremophor — reduced hypersensitivity; different dosing to paclitaxel" },
+            { name: "Cabazitaxel",       brand: "Jevtana®",     category: "chemo",        drugClass: "Taxane",                     risks: ["fn", "vesicant"] },
+            { name: "Vincristine",       brand: "Oncovin®",     category: "chemo",        drugClass: "Vinca alkaloid",             risks: ["vesicant", "neurotox"], notes: "Fatal if given intrathecally — must be administered in minibag" },
+            { name: "Vinblastine",       brand: "Velbe®",       category: "chemo",        drugClass: "Vinca alkaloid",             risks: ["fn", "vesicant"] },
+            { name: "Vinorelbine",       brand: "Navelbine®",   category: "chemo",        drugClass: "Vinca alkaloid",             risks: ["fn", "vesicant"] },
+            { name: "Eribulin",          brand: "Halaven®",     category: "chemo",        drugClass: "Halichondrin analogue",      risks: ["fn", "neurotox"] },
+            { name: "Bleomycin",         brand: null,           category: "chemo",        drugClass: "Antitumour antibiotic",      risks: [], notes: "Pulmonary toxicity — cumulative dose limit; avoid high FiO₂" },
+            { name: "Mitomycin C",       brand: null,           category: "chemo",        drugClass: "Antitumour antibiotic",      risks: ["vesicant", "fn"] },
+            { name: "Dactinomycin",      brand: "Cosmegen®",    category: "chemo",        drugClass: "Antitumour antibiotic",      risks: ["vesicant", "fn"] },
+
+            // ── Targeted therapies ──────────────────────────────────────
+            { name: "Imatinib",          brand: "Glivec®",      category: "targeted",     drugClass: "BCR-ABL / KIT TKI",          risks: ["mod_emetic"] },
+            { name: "Dasatinib",         brand: "Sprycel®",     category: "targeted",     drugClass: "BCR-ABL TKI",                risks: [], notes: "Pleural effusion risk" },
+            { name: "Nilotinib",         brand: "Tasigna®",     category: "targeted",     drugClass: "BCR-ABL TKI",                risks: ["cardiotox"], notes: "QT prolongation; take on empty stomach" },
+            { name: "Osimertinib",       brand: "Tagrisso®",    category: "targeted",     drugClass: "EGFR TKI (3rd gen)",        risks: ["cardiotox"], notes: "QT prolongation; interstitial lung disease" },
+            { name: "Erlotinib",         brand: "Tarceva®",     category: "targeted",     drugClass: "EGFR TKI",                   risks: [], notes: "Rash/diarrhoea; take on empty stomach" },
+            { name: "Gefitinib",         brand: "Iressa®",      category: "targeted",     drugClass: "EGFR TKI",                   risks: [] },
+            { name: "Afatinib",          brand: "Giotrif®",     category: "targeted",     drugClass: "EGFR TKI (2nd gen)",        risks: [], notes: "Diarrhoea; rash" },
+            { name: "Alectinib",         brand: "Alecensa®",    category: "targeted",     drugClass: "ALK inhibitor",              risks: [] },
+            { name: "Crizotinib",        brand: "Xalkori®",     category: "targeted",     drugClass: "ALK/ROS1/MET inhibitor",    risks: ["mod_emetic"], notes: "Visual disturbance; hepatotoxicity" },
+            { name: "Ceritinib",         brand: "Zykadia®",     category: "targeted",     drugClass: "ALK inhibitor",              risks: ["mod_emetic"] },
+            { name: "Dabrafenib",        brand: "Tafinlar®",    category: "targeted",     drugClass: "BRAF inhibitor",             risks: [], notes: "Pyrexia common — often used with trametinib" },
+            { name: "Vemurafenib",       brand: "Zelboraf®",    category: "targeted",     drugClass: "BRAF inhibitor",             risks: [], notes: "Photosensitivity; QT prolongation" },
+            { name: "Trametinib",        brand: "Mekinist®",    category: "targeted",     drugClass: "MEK inhibitor",              risks: ["cardiotox"] },
+            { name: "Palbociclib",       brand: "Ibrance®",     category: "targeted",     drugClass: "CDK4/6 inhibitor",           risks: ["fn"] },
+            { name: "Ribociclib",        brand: "Kisqali®",     category: "targeted",     drugClass: "CDK4/6 inhibitor",           risks: ["fn", "cardiotox"], notes: "QT prolongation" },
+            { name: "Abemaciclib",       brand: "Verzenios®",   category: "targeted",     drugClass: "CDK4/6 inhibitor",           risks: ["fn"], notes: "Diarrhoea common" },
+            { name: "Olaparib",          brand: "Lynparza®",    category: "targeted",     drugClass: "PARP inhibitor",             risks: ["fn"] },
+            { name: "Niraparib",         brand: "Zejula®",      category: "targeted",     drugClass: "PARP inhibitor",             risks: ["fn"] },
+            { name: "Rucaparib",         brand: "Rubraca®",     category: "targeted",     drugClass: "PARP inhibitor",             risks: ["fn"] },
+            { name: "Sunitinib",         brand: "Sutent®",      category: "targeted",     drugClass: "Multi-target TKI",           risks: ["cardiotox"], notes: "Hypothyroidism; hand-foot syndrome" },
+            { name: "Sorafenib",         brand: "Nexavar®",     category: "targeted",     drugClass: "Multi-target TKI",           risks: ["cardiotox"], notes: "Hand-foot syndrome" },
+            { name: "Pazopanib",         brand: "Votrient®",    category: "targeted",     drugClass: "Multi-target TKI",           risks: ["cardiotox"], notes: "Hepatotoxicity; hair colour change" },
+            { name: "Cabozantinib",      brand: "Cabometyx®",   category: "targeted",     drugClass: "Multi-target TKI",           risks: ["mod_emetic"] },
+            { name: "Lenvatinib",        brand: "Lenvima®",     category: "targeted",     drugClass: "Multi-target TKI",           risks: ["mod_emetic", "cardiotox"] },
+            { name: "Regorafenib",       brand: "Stivarga®",    category: "targeted",     drugClass: "Multi-target TKI",           risks: [] },
+            { name: "Axitinib",          brand: "Inlyta®",      category: "targeted",     drugClass: "VEGFR TKI",                  risks: [] },
+            { name: "Everolimus",        brand: "Afinitor®",    category: "targeted",     drugClass: "mTOR inhibitor",             risks: [], notes: "Non-infectious pneumonitis; stomatitis" },
+            { name: "Temsirolimus",      brand: "Torisel®",     category: "targeted",     drugClass: "mTOR inhibitor",             risks: [] },
+            { name: "Bortezomib",        brand: "Velcade®",     category: "targeted",     drugClass: "Proteasome inhibitor",       risks: ["neurotox"], notes: "Peripheral neuropathy; SC preferred over IV" },
+            { name: "Carfilzomib",       brand: "Kyprolis®",    category: "targeted",     drugClass: "Proteasome inhibitor",       risks: ["cardiotox", "fn"] },
+            { name: "Ixazomib",          brand: "Ninlaro®",     category: "targeted",     drugClass: "Proteasome inhibitor (oral)", risks: ["fn"] },
+            { name: "Venetoclax",        brand: "Venclyxto®",   category: "targeted",     drugClass: "BCL-2 inhibitor",            risks: ["fn"], notes: "Tumour lysis syndrome risk — ramp-up dosing required" },
+            { name: "Ibrutinib",         brand: "Imbruvica®",   category: "targeted",     drugClass: "BTK inhibitor",              risks: ["fn", "cardiotox"], notes: "AF risk; bleeding risk with anticoagulants" },
+            { name: "Acalabrutinib",     brand: "Calquence®",   category: "targeted",     drugClass: "BTK inhibitor",              risks: ["fn"] },
+            { name: "Trastuzumab",       brand: "Herceptin®",   category: "targeted",     drugClass: "HER2 monoclonal antibody",   risks: ["cardiotox"], notes: "LVEF monitoring required; not cytotoxic" },
+            { name: "Pertuzumab",        brand: "Perjeta®",     category: "targeted",     drugClass: "HER2 monoclonal antibody",   risks: ["cardiotox"] },
+            { name: "T-DM1",             brand: "Kadcyla®",     category: "targeted",     drugClass: "HER2 ADC",                   risks: ["fn", "neurotox"], notes: "Antibody-drug conjugate; thrombocytopenia" },
+            { name: "T-DXd",             brand: "Enhertu®",     category: "targeted",     drugClass: "HER2 ADC",                   risks: ["fn"], notes: "ILD/pneumonitis risk — monitor closely" },
+            { name: "Brentuximab vedotin", brand: "Adcetris®",  category: "targeted",     drugClass: "CD30 ADC",                   risks: ["fn", "neurotox"] },
+            { name: "Sacituzumab govitecan", brand: "Trodelvy®", category: "targeted",    drugClass: "TROP2 ADC",                  risks: ["fn"], notes: "Diarrhoea; UGT1A1 polymorphism increases toxicity" },
+            { name: "Bevacizumab",       brand: "Avastin®",     category: "targeted",     drugClass: "VEGF monoclonal antibody",   risks: [], notes: "Hypertension; proteinuria; wound healing impairment; VTE/ATE risk" },
+            { name: "Cetuximab",         brand: "Erbitux®",     category: "targeted",     drugClass: "EGFR monoclonal antibody",   risks: [], notes: "Infusion reactions; acneiform rash; hypomagnesaemia" },
+            { name: "Panitumumab",       brand: "Vectibix®",    category: "targeted",     drugClass: "EGFR monoclonal antibody",   risks: [], notes: "Rash; hypomagnesaemia; electrolyte monitoring" },
+            { name: "Daratumumab",       brand: "Darzalex®",    category: "targeted",     drugClass: "CD38 monoclonal antibody",   risks: ["fn"], notes: "Infusion reactions; interferes with blood group serology" },
+            { name: "Elotuzumab",        brand: "Empliciti®",   category: "targeted",     drugClass: "SLAMF7 monoclonal antibody", risks: [] },
+
+            // ── Immunotherapy ───────────────────────────────────────────
+            { name: "Pembrolizumab",     brand: "Keytruda®",    category: "immunotherapy", drugClass: "PD-1 inhibitor",            risks: [], notes: "irAE monitoring required — see irAE guideline" },
+            { name: "Nivolumab",         brand: "Opdivo®",      category: "immunotherapy", drugClass: "PD-1 inhibitor",            risks: [], notes: "irAE monitoring required — see irAE guideline" },
+            { name: "Atezolizumab",      brand: "Tecentriq®",   category: "immunotherapy", drugClass: "PD-L1 inhibitor",           risks: [], notes: "irAE monitoring required" },
+            { name: "Durvalumab",        brand: "Imfinzi®",     category: "immunotherapy", drugClass: "PD-L1 inhibitor",           risks: [], notes: "irAE monitoring required" },
+            { name: "Avelumab",          brand: "Bavencio®",    category: "immunotherapy", drugClass: "PD-L1 inhibitor",           risks: [] },
+            { name: "Ipilimumab",        brand: "Yervoy®",      category: "immunotherapy", drugClass: "CTLA-4 inhibitor",          risks: [], notes: "Higher irAE rate than PD-1/PD-L1; colitis/hepatitis common" },
+            { name: "Tremelimumab",      brand: "Imjudo®",      category: "immunotherapy", drugClass: "CTLA-4 inhibitor",          risks: [] },
+
+            // ── Hormonal / endocrine ────────────────────────────────────
+            { name: "Letrozole",         brand: "Femara®",      category: "hormone",       drugClass: "Aromatase inhibitor",        risks: [], notes: "Not cytotoxic; not SACT in traditional sense" },
+            { name: "Anastrozole",       brand: "Arimidex®",    category: "hormone",       drugClass: "Aromatase inhibitor",        risks: [] },
+            { name: "Exemestane",        brand: "Aromasin®",    category: "hormone",       drugClass: "Aromatase inhibitor",        risks: [] },
+            { name: "Tamoxifen",         brand: "Nolvadex®",    category: "hormone",       drugClass: "SERM",                       risks: [], notes: "VTE risk; uterine cancer risk with long-term use" },
+            { name: "Fulvestrant",       brand: "Faslodex®",    category: "hormone",       drugClass: "SERD",                       risks: [] },
+            { name: "Bicalutamide",      brand: "Casodex®",     category: "hormone",       drugClass: "Anti-androgen",              risks: [] },
+            { name: "Enzalutamide",      brand: "Xtandi®",      category: "hormone",       drugClass: "AR antagonist",              risks: [], notes: "Seizure risk; fatigue; falls risk in elderly" },
+            { name: "Apalutamide",       brand: "Erleada®",     category: "hormone",       drugClass: "AR antagonist",              risks: [], notes: "Rash; strong CYP3A4 inducer — drug interactions" },
+            { name: "Darolutamide",      brand: "Nubeqa®",      category: "hormone",       drugClass: "AR antagonist",              risks: [] },
+            { name: "Abiraterone",       brand: "Zytiga®",      category: "hormone",       drugClass: "CYP17 inhibitor",            risks: [], notes: "Requires prednisolone; mineralocorticoid excess — BP/K⁺ monitoring" },
+            { name: "Leuprorelin",       brand: "Prostap®",     category: "hormone",       drugClass: "LHRH agonist",               risks: [], notes: "Initial testosterone flare — consider anti-androgen cover" },
+            { name: "Goserelin",         brand: "Zoladex®",     category: "hormone",       drugClass: "LHRH agonist",               risks: [] },
+            { name: "Degarelix",         brand: "Firmagon®",    category: "hormone",       drugClass: "LHRH antagonist",            risks: [], notes: "No testosterone flare; injection site reactions" },
+            { name: "Megestrol",         brand: "Megace®",      category: "hormone",       drugClass: "Progestogen",                risks: [], notes: "Appetite stimulant; VTE risk" },
+          ],
+        },
+      ],
+    },
+  ],
+},
       {
         id: "onco-emergencies",
         label: "Oncology Emergencies",
@@ -37,8 +382,8 @@ const SITES = [
         related: [],
         calculators: [
           { label: "MASCC Risk Score", url: "https://www.mdcalc.com/calc/3967/mascc-risk-index-febrile-neutropenia", description: "Identifies low-risk febrile neutropenia — guides oral switch or early discharge" },
-          { label: "Vancomycin Dosing (NUH)", url: "https://clinicalportal.nuh.nhs.uk/vancomycin", description: "NUH vancomycin dosing and monitoring calculator" },
-          { label: "Gentamicin Single Dose (NUH)", url: "https://clinicalportal.nuh.nhs.uk/gentamicin", description: "Single-dose gentamicin calculator for high-risk sepsis" },
+          { label: "Vancomycin Dosing (NUH)", url: "https://nhs.sharepoint.com/sites/RX1_Antibiotics/SitePages/Calculators/IV-Vancomycin-Dosing-Calculator.aspx", description: "NUH vancomycin dosing and monitoring calculator" },
+          { label: "Gentamicin Single Dose (NUH)", url: "https://nhs.sharepoint.com/sites/RX1_Antibiotics/SitePages/Calculators/IV-Gentamicin-Dosing-Calculator-(NOT-Endocarditis).aspx", description: "Single-dose gentamicin calculator for high-risk sepsis" },
         ],
         pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=775fd63ed18bd2297398cbaab940c0cb",
         portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9727&query_desc=neutropenic",
@@ -103,19 +448,50 @@ const SITES = [
             ],
           },
           {
+  heading: "Dose Calculation",
+  type: "callouts",
+  style: { marginBottom: 8 },
+  panels: [
+    {
+      label: "Vancomycin & Gentamicin Dosing",
+      color: "#2a8aaa",
+      headerBg: "#f0f9fc",
+      blocks: [
+        {
+          icon: "drug",
+          heading: "NUH Antibiotic Dosing Calculator",
+          color: "#1a6b8a",
+          bg: "#e8f4f8",
+          border: "#90cde0",
+          items: [
+            "Use for vancomycin and gentamicin dose calculation based on renal function (Cockcroft-Gault).",
+            "Includes loading and maintenance doses, AKI adjustments, and level monitoring guidance.",
+          ],
+          calcLink: { calcId: "antibiotic-dosing", label: "Open Antibiotic Dosing Calculator" },
+        },
+      ],
+    },
+  ],
+},
+          {
             heading: "Investigations Checklist",
             type: "checklist",
             items: [
-              "FBC, U&Es, LFTs, lactate, CRP",
-              "Blood cultures × 2 sets: peripheral + central line (state line type on form)",
-              "Chest X-ray",
-              "MSU and urinalysis",
-              "Stool MC&S + CDT — if symptomatic diarrhoea",
-              "Oral swabs × 2: Candida + viral — if sore mouth",
-              "Viral throat swab or NPA — if coryzal",
-              "Sputum sample",
-              "Blood gases — if clinically indicated",
-            ],
+  "FBC, U&Es, LFTs, lactate, CRP",
+  "Chest X-ray",
+  {
+    text: "Microbiology:",
+    subitems: [
+      "Blood cultures × 2 sets: peripheral + central line (state line type on form)",
+      "MSU and urinalysis",
+      "Stool MC&S + CDT — if symptomatic diarrhoea",
+      "Oral swabs × 2: Candida + viral — if sore mouth",
+      "Viral throat swab or NPA — if coryzal",
+      "Sputum sample",
+    ],
+  },
+  "Blood gases — if clinically indicated",
+],
           },
           {
             heading: "Review & Monitoring",
@@ -208,7 +584,7 @@ const SITES = [
             tags: ["MSCC", "Dexamethasone", "Urgent RT", "MRI spine", "SINS", "Tokuhashi", "Bilsky", "Surgery"],
             related: [],
             calculators: [
-              { label: "SINS Score Calculator", calcId: "sins", url: "https://www.mdcalc.com/calc/3971/spinal-instability-neoplastic-score-sins", description: "Spinal Instability Neoplastic Score — guides surgical referral" },
+              { label: "SINS Score Calculator", calcId: "sins", url: "https://www.mdcalc.com/calc/10548/spinal-instability-neoplastic-scale-sins-score" },
               { label: "Revised Tokuhashi Score", url: "https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system", description: "Prognosis in spinal metastases — guides treatment intensity" },
               { label: "Frankel / ASIA Classification", url: "https://www.asia-spinalinjury.org/wp-content/uploads/2019/10/ASIA-ISCOS-Worksheet_10.2019_PRINT-Page-1-2.pdf", description: "ASIA Neurological injury severity classification" },
             ],
@@ -243,22 +619,9 @@ const SITES = [
                 ],
               },
               {
-                heading: "Steroid Protocol",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Known Solid Cancer + Neurological Symptoms", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Patient has known solid tumour diagnosis", "Neurological deficit present"] },
-                  { grade: 2, label: "Known Haematological Cancer", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Lymphoma, myeloma, leukaemia or other haematological malignancy", "With or without neurological symptoms"] },
-                  { grade: 3, label: "New / Unknown Malignancy", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["No confirmed cancer diagnosis", "MSCC may be first presentation", "?Haematological primary — caution required"] },
-                  { grade: 4, label: "No Neurological Symptoms", color: "#5a5a5a", bg: "#f8f8f8", border: "#d0d0d0", criteria: ["Spinal metastasis suspected or confirmed", "No neurological deficit present"] },
-                ],
-                management: [
-                  { grade: 1, icpi: null, items: ["!!Stat dexamethasone 16mg PO", "Then 8mg BD (am + noon)", "Offer PPI", "Wean steroids at start of definitive treatment", "Stop if MSCC excluded on MRI", "Oral/IV equivalence: 4mg PO ≈ 3.3mg IV/SC"] },
-                  { grade: 2, icpi: null, items: ["!!Stat dexamethasone 20mg PO", "Offer PPI", "!!Discuss continuation with Haematology before proceeding"] },
-                  { grade: 3, icpi: null, items: ["!!Discuss with oncology BEFORE starting steroids", "If ?lymphoma/myeloma: DO NOT give steroids — seek haematology advice + consider urgent biopsy first", "If approved: stat 16mg then 8mg BD as per solid cancer protocol"] },
-                  { grade: 4, icpi: null, items: ["Steroids NOT routinely indicated", "Consider if severe pain — discuss with senior clinician"] },
-                ],
-                note: "Prolonged steroids: consider PCP prophylaxis (cotrimoxazole 480mg OD), bone protection, blood glucose monitoring, and risk of adrenal insufficiency on withdrawal.",
-              },
+  heading: "Steroid Protocol",
+  type: "mscc_steroid_table",
+},
               {
                 heading: "Escalation — Who to Contact",
                 type: "steps",
@@ -2006,8 +2369,8 @@ const SITES = [
             summary: "ICI myocarditis carries 40–50% mortality — the highest of all irAEs. Highest risk: high-grade AV block, ventricular arrhythmias, severe LV dysfunction, MMM overlap syndrome (Myocarditis + Myositis + Myasthenia Gravis). 'Asymptomatic' does NOT mean low risk. Hold ICI immediately and activate cardio-oncology MDT.",
             tags: ["Myocarditis", "ICPI", "Cardiotoxicity", "Troponin", "CMR", "Steroids", "MMM", "Cardio-oncology"],
             related: ["io-steroids-guide", "io-gbs-mg"],
-            pdfUrl: "#",
-            portalUrl: "#",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=96cdf094b6a9040c6098fb2e83ba42ce",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=12587",
             updated: "2024",
             sections: [
               {
@@ -2233,127 +2596,484 @@ const SITES = [
             updated: "Jan 2024",
             sections: [
               {
-                heading: "Standard Supportive Care with Steroids",
-                type: "checklist",
-                items: [
-                  "Issue pharmacy steroid card — dose, timing, side effects",
-                  "Issue Steroid Alert Card — patient to carry at all times",
-                  "Prescribe PPI: lansoprazole 30mg OD or omeprazole 40mg OD",
-                  "If high-dose steroids anticipated >2 weeks: cotrimoxazole 480mg OD (PCP prophylaxis)",
-                  "If high-dose steroids anticipated >2 weeks: AdCal D3 1 tablet daily (osteoporosis prevention)",
-                  "Do NOT check cortisol whilst patient is on steroids",
-                  "Counsel patient: irAEs may worsen during taper — report return of symptoms promptly",
-                  "Encourage maintenance of activity levels to minimise muscle wasting",
-                  "Document all steroid dose changes in hand-held record",
-                ],
-              },
+  heading: "Standard Supportive Care with Steroids",
+  type: "checklist",
+  items: [
+    "Issue pharmacy steroid card — dose, timing, side effects",
+    "Issue Steroid Alert Card — patient to carry at all times",
+    "Prescribe PPI: lansoprazole 30mg OD or omeprazole 40mg OD",
+    {
+      text: "If high-dose steroids anticipated >2 weeks:",
+      subitems: [
+        "Cotrimoxazole 480mg OD (PCP prophylaxis)",
+        "Glucose monitoring (hyperglycaemia risk)",
+        "AdCal D3 1 tablet daily (bone protection)",
+      ],
+    },
+    "Do NOT check cortisol whilst patient is on steroids",
+    "Counsel patient: irAEs may worsen during taper — report return of symptoms promptly",
+    "Encourage maintenance of activity levels to minimise muscle wasting",
+    "Document all steroid dose changes in hand-held record",
+  ],
+},
             ],
           },
         
         ],
       },
       {
-        id: "onco-vte-haem",
-        label: "VTE & Haemostasis",
+        id: "onco-outpatient",
+        label: "Outpatient Oncology",
+        guidelines: [],
+        comingSoon: true,
+      },
+      {
+        id: "cardio-oncology",
+        label: "Cardio-Oncology",
         guidelines: [
-          {
-  id: "vte-recurrence",
-  title: "Recurrent VTE on Anticoagulation",
-  category: "VTE & Haemostasis",
-  version: "1.0",
-  authors: "NUH Non-Malignant Haematology Team",
-  evidenceBase: "ISTH Guidelines | NUH Local Guideline",
-  summary: "4–9% of cancer patients on anticoagulation develop recurrent VTE, more commonly in advanced cancer. Before escalating therapy, always review adherence and correct dosing. No routine role for anti-Xa monitoring. Management differs depending on whether recurrence occurred on LMWH or a DOAC.",
-  tags: ["Recurrent VTE", "DVT", "PE", "LMWH", "DOAC", "Anticoagulation failure", "Anti-Xa"],
-  related: ["vte-cat"],
-  pdfUrl: "#",
-  portalUrl: "#",
-  updated: "NUH Non-Malignant Haematology Team",
-  sections: [
-  ,
-    {
-      heading: "Management by Current Anticoagulant",
-      type: "callouts",
-      panels: [
         {
-          label: "Recurrent VTE on LMWH",
-          color: "#1a6b8a",
-          headerBg: "#e8f4f8",
-          blocks: [
+          id: "cardio-anthracycline",
+          title: "Anthracycline-Induced Cardiotoxicity (CTRCD)",
+          category: "SACT Cardiotoxicity",
+          version: "1",
+          authors: "Dr Navin Mathiyalagan, Dr Thomas Mathew, Dr Muhammad Adeel Sarwar — NUH. Expert review: Prof Arjun K Ghosh (Barts/UCLH)",
+          evidenceBase: "ESC Cardio-Oncology Guidelines 2022 | JACC CardioOncology 2024 | BSE/BCOS Echo Guidelines 2021 | Review: April 2029",
+          summary: "Standardised approach to early detection, risk stratification, and management of anthracycline-related cardiac dysfunction (CTRCD). All patients require baseline HFA-ICOS risk stratification before starting anthracyclines. High/very high risk patients should be referred to Cardio-Oncology clinic at baseline. CTRCD is classified as symptomatic or asymptomatic, and by severity — management ranges from close monitoring to pausing or stopping anthracyclines with HF therapy.",
+          tags: ["Anthracycline", "CTRCD", "Cardiotoxicity", "LVEF", "GLS", "Troponin", "HFA-ICOS", "Echocardiography", "HF therapy", "Doxorubicin", "Epirubicin"],
+          related: ["cardio-fluoropyrimidine", "io-myocarditis"],
+          calculators: [
+            { label: "HFA-ICOS Baseline Risk Assessment", url: "https://www.mdcalc.com/calc/10642/hfa-icos-baseline-cardio-oncology-risk-assessment-anthracycline-chemotherapy", description: "Baseline cardiovascular risk stratification before anthracycline chemotherapy" },
+          ],
+          pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=ca5b5baaec7898bf4b83c3fdff390a34",
+          portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=12680&query_desc=an%2Cphr%3A6288",
+          updated: "April 2029 (review)",
+          sections: [
             {
-              icon: "investigations",
-              heading: "Step 1 — Check adherence",
-              color: "#1a6b8a",
-              bg: "#e8f4f8",
-              border: "#90cde0",
+  heading: "Drugs Covered",
+  type: "list",
+  items: [
+    "Doxorubicin",
+    "Epirubicin",
+    "Daunorubicin",
+    "Idarubicin",
+  ],
+},
+            {
+              heading: "⚠ Key Principles",
+              type: "alert",
               items: [
-                "Review whether the patient has been taking LMWH correctly and consistently",
-                "Assess for practical barriers: injection technique, storage, carer support",
+                "ALL patients receiving anthracyclines must have baseline HFA-ICOS cardiovascular risk stratification before starting therapy",
+                "High/very high risk patients must be referred to Cardio-Oncology clinic for baseline optimisation and ongoing surveillance",
+                "Early detection of CTRCD is critical — most early-onset dysfunction is potentially reversible with prompt intervention",
+                "!!Cumulative dose threshold: repeat cardiac imaging when anthracycline dose exceeds 250mg/m² doxorubicin-equivalent (≈400mg/m² epirubicin), then after every additional 50mg/m²",
+                "BRCA1/2 germline mutation carriers receiving anthracyclines: consider closer cardio-oncology surveillance — increased susceptibility to LV dysfunction (BRCAN study)",
               ],
             },
             {
-              icon: "management",
-              heading: "Good compliance",
-              color: "#1a6b8a",
-              bg: "#e8f4f8",
-              border: "#90cde0",
-              items: [
-                "Increase LMWH dose by 25%",
-                "Alternatively, switch to a DOAC if appropriate — see Drug Choice guideline (section 3.1)",
-              ],
-            },
+  heading: "Risk Stratification & CTRCD Management",
+  type: "anthracycline_tables",
+},
             {
-              icon: "drug",
-              heading: "Poor compliance — investigate why",
-              color: "#1a6b8a",
-              bg: "#e8f4f8",
-              border: "#90cde0",
-              items: [
-                "Identify and address the reason for non-adherence before changing therapy",
-                "Continue LMWH with additional support (e.g. district nurse, carer input)",
-                "Switch to a DOAC if improved compliance is likely with oral therapy",
+              heading: "Special Considerations",
+              type: "list",
+              groups: [
+                {
+                  icon: "drug",
+                  label: "ARNI / HF Therapy Notes",
+                  items: [
+                    "ACE inhibitors must be discontinued for 48 hours prior to initiation of ARNI (sacubitril/valsartan)",
+                    "When switching from ARB to ARNI: no washout period required — can initiate directly",
+                  ],
+                },
+                {
+                  icon: "monitoring",
+                  label: "Cumulative Dose Thresholds",
+                  items: [
+                    "Repeat cardiac imaging when cumulative anthracycline dose exceeds 250mg/m² doxorubicin-equivalent (approximately 400mg/m² for epirubicin)",
+                    "Additional imaging after every 50mg/m² thereafter, where clinically appropriate",
+                    "Repeat imaging and cardiac biomarkers for any patient developing symptoms suggestive of cardiotoxicity at any point during treatment",
+                  ],
+                },
+                {
+                  icon: "management",
+                  label: "Exercise & Lifestyle",
+                  items: [
+                    "Regular aerobic exercise should be encouraged where clinically appropriate — shown to support cardiovascular function and may mitigate anthracycline-related cardiotoxicity",
+                  ],
+                },
+                {
+                  icon: "investigations",
+                  label: "BRCA1/2 Germline Mutation",
+                  items: [
+                    "In patients with early breast cancer and germline BRCA1/2 mutation receiving anthracyclines: consider closer cardio-oncology surveillance",
+                    "Recent observational data (BRCAN study) suggest increased susceptibility to anthracycline-related LV dysfunction",
+                    "Interpret alongside established clinical risk factors — evidence is observational",
+                  ],
+                },
               ],
             },
           ],
         },
         {
-          label: "Recurrent VTE on DOAC",
-          color: "#744210",
-          headerBg: "#fffff0",
+          id: "cardio-fluoropyrimidine",
+          title: "Fluoropyrimidine Cardiotoxicity (5-FU & Capecitabine)",
+          category: "SACT Cardiotoxicity",
+          version: "1",
+          authors: "Dr Navin Mathiyalagan, Dr Thomas Mathew, Dr Maryam Al-Ani, Dr Hui Xian Tan, Dr Muhammad Adeel Sarwar, Dr Rahul Eric — NUH. Expert review: Dr Suzan Hatipoglu (UCLH)",
+          evidenceBase: "ESC Cardio-Oncology Guidelines | JACC CardioOncology | ESMO Open 2022 | Review: May 2029",
+          summary: "Fluoropyrimidine cardiotoxicity occurs in 5–10% of patients receiving 5-FU or capecitabine. The predominant mechanism is coronary vasospasm. Most events occur during or shortly after the first cycle, typically within 12–48 hours of 5-FU exposure. Silent myocardial ischaemia occurs in approximately 6–7%. Absence of known cardiovascular risk factors does not exclude risk. Re-challenge carries high risk of recurrent cardiotoxicity — requires formal MDT discussion and full pre-challenge checklist.",
+          tags: ["5-FU", "Capecitabine", "Fluoropyrimidine", "Cardiotoxicity", "Vasospasm", "Chest pain", "Diltiazem", "Re-challenge", "ACS", "Raltitrexed"],
+          related: ["cardio-anthracycline", "io-myocarditis"],
+          pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3fe568f6509caccbcb7e3aa4e20ba5f2",
+          portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=12689",
+          updated: "May 2029 (review)",
+          sections: [
+            {
+  heading: "Drugs Covered",
+  type: "list",
+  items: [
+    "5-Fluorouracil",
+    "Capecitabine",
+  ],
+},
+            {
+              heading: "⚠ Key Principles",
+              type: "alert",
+              items: [
+                "Cardiotoxicity occurs in 5–10% of patients — silent myocardial ischaemia in approximately 6–7%",
+                "Predominant mechanism is coronary vasospasm, not atherosclerotic plaque rupture — management differs from standard ACS",
+                "Most events occur during or shortly after the first cycle — maintain high suspicion for at least 48 hours after infusion completion",
+                "!!Absence of known cardiovascular risk factors does NOT exclude fluoropyrimidine cardiotoxicity",
+                "Continuous infusion regimens carry higher risk than bolus dosing",
+                "Re-challenge carries high risk of recurrent and potentially life-threatening cardiotoxicity — never undertake without formal MDT discussion",
+              ],
+            },
+            {
+              heading: "Risk Factors",
+              type: "list",
+              groups: [
+                {
+                  icon: "investigations",
+                  label: "Factors associated with increased risk (evidence heterogeneous)",
+                  items: [
+                    "Pre-existing cardiovascular disease — note: not consistently predictive; many cases occur without prior CVD",
+                    "Continuous infusion regimens — higher risk than bolus dosing",
+                    "Higher cumulative dose or prolonged exposure",
+                    "Concomitant cardiotoxic therapies (e.g. cisplatin, bevacizumab)",
+                    "Prior or concurrent thoracic radiotherapy",
+                    "!!Absence of cardiovascular risk factors does not exclude risk",
+                  ],
+                },
+              ],
+            },
+            {
+              heading: "Acute Management of Fluoropyrimidine-Associated Chest Pain",
+              type: "steps",
+              items: [
+                { label: "Stop fluoropyrimidine immediately", detail: "Stop 5-FU infusion or capecitabine at first suspicion of cardiotoxicity. Do not restart without formal MDT discussion." },
+                { label: "Immediate haemodynamic assessment", detail: "If haemodynamically unstable: activate ACS pathway per local protocol. Arrange urgent transfer to monitored setting (ITU/cardiac care unit). If stable: admit to hospital." },
+                { label: "Serial ECG", detail: "Document evolution or resolution of ST changes, response to stopping the drug, and identification of arrhythmia. Transient ST changes that resolve after stopping favour vasospasm; persistent or evolving changes in a single coronary territory raise suspicion for plaque rupture/ACS." },
+                { label: "Urgent investigations", detail: "Serial hs-Troponin (0h, 3h, ±6h if clinically indicated), NT-proBNP, echocardiogram. Actively consider PE given prothrombotic nature of malignancy." },
+                { label: "Urgent cardiology review", detail: "All cases of suspected fluoropyrimidine cardiotoxicity require urgent cardiology input." },
+              ],
+            },
+            {
+              heading: "Pharmacological Management",
+              type: "callouts",
+              panels: [
+                {
+                  label: "Calcium Channel Blockers — First Line",
+                  color: "#9b1c1c",
+                  headerBg: "#fef2f2",
+                  blocks: [
+                    {
+                      icon: "drug",
+                      heading: "Preferred agents",
+                      color: "#9b1c1c",
+                      bg: "#fef2f2",
+                      border: "#fca5a5",
+                      items: [
+                        "Diltiazem — preferred first-line agent",
+                        "Verapamil — consider if concomitant hypertension",
+                        "Oral diltiazem if haemodynamically stable and able to take orally",
+                        "IV diltiazem if symptoms ongoing or severe — requires monitoring and cardiology input",
+                        "If non-dihydropyridines contraindicated: use nifedipine or amlodipine",
+                      ],
+                    },
+                    {
+                      icon: "avoid",
+                      heading: "Contraindications to non-dihydropyridine CCBs",
+                      color: "#9b1c1c",
+                      bg: "#fef2f2",
+                      border: "#fca5a5",
+                      items: [
+                        "Significant bradycardia",
+                        "AV block",
+                        "Hypotension",
+                        "Severe LV dysfunction",
+                        "!!Non-dihydropyridine CCBs are hepatically metabolised — review concomitant medications for interactions before initiating",
+                      ],
+                    },
+                  ],
+                },
+                {
+                  label: "Nitrates & Anticoagulation",
+                  color: "#744210",
+                  headerBg: "#fffff0",
+                  blocks: [
+                    {
+                      icon: "drug",
+                      heading: "Nitrates",
+                      color: "#744210",
+                      bg: "#fffff0",
+                      border: "#f6e05e",
+                      items: [
+                        "May be used as adjunct in haemodynamically stable patients",
+                        "!!Avoid if hypotensive or haemodynamically compromised",
+                      ],
+                    },
+                    {
+                      icon: "drug",
+                      heading: "Aspirin & anticoagulation",
+                      color: "#744210",
+                      bg: "#fffff0",
+                      border: "#f6e05e",
+                      items: [
+                        "Consider if concurrent ACS or plaque rupture cannot be excluded clinically",
+                        "Decision should be made in conjunction with cardiology",
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              heading: "Further Imaging",
+              type: "pills",
+              note: "Choice of imaging modality should be made in discussion with cardiology, taking into account renal function, procedural risk, and pre-test probability of obstructive disease.",
+              items: [
+                {
+                  label: "CT Coronary Angiography (CTCA)",
+                  color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                  indication: "Presentation consistent with vasospasm",
+                  urgent: "Appropriate when: symptom onset during infusion, transient ECG changes, no significant troponin elevation, full haemodynamic stability throughout",
+                  exclusions: [],
+                },
+                {
+                  label: "Invasive Coronary Angiography",
+                  color: "#9b1c1c", bg: "#fef2f2", border: "#fca5a5",
+                  indication: "Higher-risk or diagnostically uncertain presentation — per consultant cardiology opinion",
+                  urgent: null,
+                  exclusions: ["Haemodynamic compromise at any point during the episode", "High clinical suspicion of obstructive coronary artery disease", "CTCA non-diagnostic"],
+                },
+                {
+                  label: "Functional Coronary Testing",
+                  color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                  indication: "Risk stratification and to guide MDT discussion when re-challenge is being considered",
+                  urgent: null,
+                  exclusions: [],
+                },
+              ],
+            },
+            {
+              heading: "Options Following Documented Cardiotoxicity",
+              type: "pills",
+              note: "Discuss all cases with cardio-oncology MDT before any decision on re-challenge.",
+              items: [
+                {
+                  label: "Switch to non-fluoropyrimidine regimen",
+                  color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                  indication: "Preferred option where oncologically appropriate",
+                  urgent: "Safest approach — eliminates re-exposure risk",
+                  exclusions: [],
+                },
+                {
+                  label: "Switch to Raltitrexed",
+                  color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                  indication: "Alternative antimetabolite — less cardiotoxic than fluoropyrimidines",
+                  urgent: "Reasonable alternative where fluoropyrimidine is felt to be oncologically necessary",
+                  exclusions: ["Discuss with oncology team — raltitrexed is not appropriate in all settings"],
+                },
+                {
+                  label: "Re-challenge with Fluoropyrimidine",
+                  color: "#9b1c1c", bg: "#fef2f2", border: "#fca5a5",
+                  indication: "Only where oncologically essential and after full pre-challenge checklist completed",
+                  urgent: null,
+                  exclusions: [
+                    "!!Never undertake without formal cardio-oncology MDT discussion with decision recorded in notes",
+                    "Full recovery from cardiotoxicity episode confirmed — symptom resolution, ECG normalisation, troponin and echo normalisation",
+                    "Baseline ECG within 2 weeks of planned re-challenge",
+                    "Baseline echo if not done during acute episode or >3 months since acute episode",
+                    "Baseline hs-troponin and NT-proBNP",
+                    "Prophylactic CCB and/or nitrates commenced at least 48–72 hours before re-challenge",
+                    "Full patient counselling regarding recurrence risk including risk of fatal arrhythmia or cardiogenic shock — signed re-challenge consent form",
+                  ],
+                  notes: [
+                    "Re-challenge should ideally be undertaken in a monitored setting with continuous cardiac monitoring",
+                    "Bolus 5-FU may be preferred over continuous infusion in selected high cardiac risk patients — only where oncologically appropriate",
+                    "Inpatient vs ambulatory monitored re-challenge should be individualised based on prior toxicity severity, comorbidities, and oncological urgency",
+                  ],
+                },
+              ],
+            },
+          ],
+        },          // closes cardio-fluoropyrimidine guideline object
+      ],            // closes cardio-oncology guidelines array
+    },              // closes cardio-oncology subsite object
+    ],
+    get guidelines() {
+      return this.subsites.flatMap(ss => ss.guidelines || []);
+    },
+  },
+  {
+  id: "haematology",
+  label: "Haematology",
+  color: "#b91c1c",
+  accent: "#fff1f1",
+  isParent: true,
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13z"/>
+    </svg>
+  ),
+  subsites: [
+    {
+  id: "haem-periop",
+  label: "Perioperative VTE",
+  guidelines: [
+{
+  id: "periop-doac",
+  title: "Perioperative DOAC Management",
+  category: "Perioperative VTE",
+  version: "2",
+  authors: "Dr G. Swallow (Haematology)",
+  evidenceBase: "BSH Peri-Operative Anticoagulation Guidelines 2016 | PAUSE Protocol 2019",
+  summary: "Perioperative management of DOACs (rivaroxaban, apixaban, edoxaban, dabigatran) for elective, non-cardiac, non-neurosurgical procedures. Covers pre-op stopping schedules, post-op restart criteria, and VTE/bleeding risk stratification. Bridging anticoagulation is NOT required.",
+  tags: ["DOAC", "Perioperative", "Rivaroxaban", "Apixaban", "Edoxaban", "Dabigatran", "Anticoagulation", "Surgery", "VTE", "Bleeding risk"],
+  related: ["vte-cat"],
+  pdfUrl: null,
+  portalUrl: null,
+  updated: "Dr G. Swallow / Dr N. Johnstone | Review Dec 2025",
+  sections: [
+    {
+      heading: "Scope & Covered Drugs",
+      type: "scope_drugs",
+      scope: [
+        "Elective, non-cardiac, non-neurosurgical procedures",
+        "Adult patients on DOACs requiring interruption for surgery",
+        
+      ],
+      drugs: [
+        { name: "Rivaroxaban", brand: "Xarelto®", class: "Direct Xa inhibitor" },
+        { name: "Apixaban",    brand: "Eliquis®",  class: "Direct Xa inhibitor" },
+        { name: "Edoxaban",    brand: "Lixiana®",  class: "Direct Xa inhibitor" },
+        { name: "Dabigatran",  brand: "Pradaxa®",  class: "Direct thrombin inhibitor" },
+      ],
+      note: "NUH Guideline 2782 v2 | Author: Dr G. Swallow (Haematology) | Evidence: BSH 2016 + PAUSE 2019 | Review: Dec 2025",
+    },
+
+    {
+      heading: "⚠ When NOT to Use This Guideline",
+      type: "alert",
+      items: [
+        "VTE or stroke within the last 12 weeks — DO NOT follow this guideline. Discuss with Haematologist (VTE) or Stroke Physician (stroke) before any procedure.",
+        "Mechanical heart valves — DOACs are NOT licensed for this indication.",
+        "Emergency surgery or active bleeding — see NUH 2805 (Xa inhibitors) / 2173 (dabigatran).",
+        "Neurosurgical procedures — excluded from scope.",
+        "Cardiac surgery or implantable cardiac devices — discuss with cardiology/cardiothoracic team.",
+      ],
+    },
+
+    {
+      heading: "Pre-operative Checklist",
+      type: "checklist",
+      items: [
+        "FBC — if thrombocytopenia present, discuss with haematologist before surgery",
+        "U&E within 6 weeks of planned procedure",
+        "Calculate formal **Cockcroft-Gault CrCl** (NOT eGFR)an",
+        "Identify DOAC indication: non-valvular AF, VTE treatment, or secondary prevention",
+        "Assess bleeding risk of the planned procedure (see below)",      
+        "Counsel patient regarding individual thrombosis risk during DOAC interruption",
+        "Provide written stopping instructions to patient",
+        "Bridging anticoagulation is NOT required — DOACs have short half-lives; pre-operative LMWH bridging is not needed",
+      ],
+    },
+
+    {
+      heading: "Minimum Pre-operative Stopping Times",
+      type: "table",
+      note: "Day of operation: NO DOAC in all cases. Dabigatran is contraindicated if CrCl <30 ml/min; Xa inhibitors contraindicated if CrCl <15 ml/min or dialysis — seek haematology advice.",
+      columns: ["DOAC", "Creatinine Clearance", "HIGH Bleeding Risk", "LOW Bleeding Risk"],
+      rows: [
+        ["Apixaban / Rivaroxaban / Edoxaban", "Any", "48 hours", "24 hours"],
+        ["Dabigatran", "≥50 ml/min", "48 hours", "24 hours"],
+        ["Dabigatran", "<50 ml/min", "96 hours", "48 hours"],
+      ],
+    },
+
+    {
+      heading: "Post-operative Restart",
+      type: "callouts",
+      note: "DOACs reach peak concentration within 2–4 hours of restarting — therapeutic anticoagulation is re-established rapidly. Do NOT restart any anticoagulant until a Doctor has assessed the patient as safe to anticoagulate and haemostasis is secure.",
+      panels: [
+        {
+          label: "Minor / LOW Bleeding Risk Surgery",
+          color: "#276749",
+          headerBg: "#f0fff4",
           blocks: [
             {
-              icon: "investigations",
-              heading: "Step 1 — Check adherence",
-              color: "#744210",
-              bg: "#fffff0",
-              border: "#f6e05e",
-              items: [
-                "Review whether the patient has been taking the DOAC correctly and consistently",
-                "!!Rivaroxaban must be taken with food — confirm this is happening",
-                "Check for drug interactions between the DOAC and current anti-cancer or regular medications",
-              ],
-            },
-            {
               icon: "management",
-              heading: "Good compliance",
-              color: "#744210",
-              bg: "#fffff0",
-              border: "#f6e05e",
+              heading: "Restart protocol",
+              color: "#276749",
+              bg: "#f0fff4",
+              border: "#9ae6b4",
               items: [
-                "Switch to LMWH",
-                "Consider haematology advice if recurrence is confirmed despite verified adherence",
+                "Restart DOAC 24 hours post-op at patient's usual dose",
+                "If very low bleeding risk: consider restarting at 12 hours post-op",
+                "If high VTE risk: single prophylactic enoxaparin 40mg SC given 6–8 hours post-op, then restart DOAC the next day",
               ],
             },
+          ],
+        },
+        {
+          label: "Major / HIGH Bleeding Risk Surgery — or Ongoing Bleeding",
+          color: "#742a2a",
+          headerBg: "#fff5f5",
+          blocks: [
             {
-              icon: "drug",
-              heading: "Poor compliance — investigate why",
-              color: "#744210",
-              bg: "#fffff0",
-              border: "#f6e05e",
+              icon: "immediate",
+              heading: "Restart protocol",
+              color: "#742a2a",
+              bg: "#fff5f5",
+              border: "#fc8181",
               items: [
-                "Identify and address the reason for non-adherence",
-                "If oral route is a barrier: switch to LMWH",
-                "If oral adherence can be improved: continue DOAC with support",
+                "!!Do NOT restart DOAC until at least 48 hours post-procedure",
+                "Once safe to anticoagulate: start prophylactic enoxaparin (weight and renal function appropriate dose)",
+                "Assess at 48 hours post-op:",
+                "If haemostasis secure and no plans to return to theatre → restart DOAC at usual dose, 12–24 hours after last enoxaparin dose",
+                "If ongoing bleeding risk → withhold DOAC, reassess every 24 hours",
+              ],
+            },
+          ],
+        },
+        {
+          label: "All Patients — Post-operative Principles",
+          color: "#1a6b8a",
+          headerBg: "#e8f4f8",
+          blocks: [
+            {
+              icon: "monitoring",
+              heading: "General principles",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "If NBM or reduced oral absorption → continue prophylactic enoxaparin until oral route resumes",
+                "Check renal function post-op; adjust DOAC dose if CrCl has deteriorated",
+                "Check for new drug interactions before restarting DOAC (P-gp and CYP3A4 interactions)",
+                "Maintain hydration, mobilisation, and anti-embolic stockings as per standard VTE prophylaxis",
+                "!!Do NOT prescribe routine LMWH prophylaxis concurrently with a DOAC",
+                "!!Do NOT restart any anticoagulant until a Doctor has assessed the patient as safe to anticoagulate",
               ],
             },
           ],
@@ -2361,7 +3081,15 @@ const SITES = [
       ],
     },
   ],
+},  
+],
 },
+    {
+      id: "haem-vte",
+      label: "VTE & Haemostasis",
+      guidelines: [
+        
+          
           {
   id: "vte-cat",
   title: "Cancer-Associated Thrombosis (CAT)",
@@ -2372,8 +3100,8 @@ const SITES = [
   summary: "Cancer patients have a 4-fold increased VTE risk but also a 2-fold increased bleeding risk on anticoagulation. LMWH is gold standard for high bleeding risk and GI/urothelial cancers. DOACs are non-inferior alternatives in appropriate patients. Minimum treatment duration 6 months. Incidental VTE should be managed identically to symptomatic VTE.",
   tags: ["VTE", "DVT", "PE", "LMWH", "Enoxaparin", "DOAC", "Apixaban", "Rivaroxaban", "Edoxaban", "Thromboprophylaxis", "CAT"],
   related: [],
-  pdfUrl: "#",
-  portalUrl: "#",
+  pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
+  portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis",
   updated: "NUH Non-Malignant Haematology Team",
   sections: [
     {
@@ -2577,6 +3305,112 @@ const SITES = [
   ],
 },
 {
+  id: "vte-recurrence",
+  title: "Recurrent VTE on Anticoagulation",
+  category: "VTE & Haemostasis",
+  version: "1.0",
+  authors: "NUH Non-Malignant Haematology Team",
+  evidenceBase: "ISTH Guidelines | NUH Local Guideline",
+  summary: "4–9% of cancer patients on anticoagulation develop recurrent VTE, more commonly in advanced cancer. Before escalating therapy, always review adherence and correct dosing. No routine role for anti-Xa monitoring. Management differs depending on whether recurrence occurred on LMWH or a DOAC.",
+  tags: ["Recurrent VTE", "DVT", "PE", "LMWH", "DOAC", "Anticoagulation failure", "Anti-Xa"],
+  related: ["vte-cat"],
+  pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
+  portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis#",
+  updated: "NUH Non-Malignant Haematology Team",
+  sections: [
+  ,
+    {
+      heading: "Management by Current Anticoagulant",
+      type: "callouts",
+      panels: [
+        {
+          label: "Recurrent VTE on LMWH",
+          color: "#1a6b8a",
+          headerBg: "#e8f4f8",
+          blocks: [
+            {
+              icon: "investigations",
+              heading: "Step 1 — Check adherence",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "Review whether the patient has been taking LMWH correctly and consistently",
+                "Assess for practical barriers: injection technique, storage, carer support",
+              ],
+            },
+            {
+              icon: "management",
+              heading: "Good compliance",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "Increase LMWH dose by 25%",
+                "Alternatively, switch to a DOAC if appropriate — see Drug Choice guideline (section 3.1)",
+              ],
+            },
+            {
+              icon: "drug",
+              heading: "Poor compliance — investigate why",
+              color: "#1a6b8a",
+              bg: "#e8f4f8",
+              border: "#90cde0",
+              items: [
+                "Identify and address the reason for non-adherence before changing therapy",
+                "Continue LMWH with additional support (e.g. district nurse, carer input)",
+                "Switch to a DOAC if improved compliance is likely with oral therapy",
+              ],
+            },
+          ],
+        },
+        {
+          label: "Recurrent VTE on DOAC",
+          color: "#744210",
+          headerBg: "#fffff0",
+          blocks: [
+            {
+              icon: "investigations",
+              heading: "Step 1 — Check adherence",
+              color: "#744210",
+              bg: "#fffff0",
+              border: "#f6e05e",
+              items: [
+                "Review whether the patient has been taking the DOAC correctly and consistently",
+                "!!Rivaroxaban must be taken with food — confirm this is happening",
+                "Check for drug interactions between the DOAC and current anti-cancer or regular medications",
+              ],
+            },
+            {
+              icon: "management",
+              heading: "Good compliance",
+              color: "#744210",
+              bg: "#fffff0",
+              border: "#f6e05e",
+              items: [
+                "Switch to LMWH",
+                "Consider haematology advice if recurrence is confirmed despite verified adherence",
+              ],
+            },
+            {
+              icon: "drug",
+              heading: "Poor compliance — investigate why",
+              color: "#744210",
+              bg: "#fffff0",
+              border: "#f6e05e",
+              items: [
+                "Identify and address the reason for non-adherence",
+                "If oral route is a barrier: switch to LMWH",
+                "If oral adherence can be improved: continue DOAC with support",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+},
+{
   id: "vte-thrombocytopenia",
   title: "VTE & Thrombocytopenia",
   category: "VTE & Haemostasis",
@@ -2586,8 +3420,8 @@ const SITES = [
   summary: "Cancer-associated VTE with thrombocytopenia requires careful balancing of bleeding and thrombotic risk. Despite increased bleeding risk, recurrent VTE risk is also increased 4-fold. The first 30 days post-VTE carries the highest recurrence risk. DOACs should be avoided — LMWH is preferred. Patients with platelets ≥50×10⁹/L can receive full-dose anticoagulation without transfusion. Those with platelets <50×10⁹/L require management guided by thrombus progression risk and platelet count.",
   tags: ["Thrombocytopenia", "VTE", "LMWH", "Platelet transfusion", "Anticoagulation", "Bleeding risk"],
   related: ["vte-cat"],
-  pdfUrl: "#",
-  portalUrl: "#",
+  pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
+  portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis",
   updated: "NUH Non-Malignant Haematology Team",
   sections: [
     {
@@ -2693,8 +3527,8 @@ const SITES = [
   summary: "Symptomatic CRT occurs in ~3% of patients with CVADs. PE complicates up to 10–15% of cases. Treatment is individualised based on CVAD function and ongoing need. Minimum anticoagulation duration is 3 months, extended if the catheter remains in situ. Line removal is not routinely required if the CVAD is well-positioned, uninfected, and functioning.",
   tags: ["CRT", "Catheter", "CVAD", "PICC", "Hickman", "DVT", "Anticoagulation", "SVC syndrome", "Thrombolysis"],
   related: ["vte-cat"],
-  pdfUrl: "#",
-  portalUrl: "#",
+  pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
+  portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis",
   updated: "NUH Non-Malignant Haematology Team",
   sections: [
     {
@@ -2785,19 +3619,13 @@ const SITES = [
     },
   ],
 },
-        ],
-      },
-      {
-        id: "onco-outpatient",
-        label: "Outpatient Oncology",
-        guidelines: [],
-        comingSoon: true,
-      },
-    ],
-    get guidelines() {
-      return this.subsites.flatMap(ss => ss.guidelines || []);
+      ],
     },
+  ],
+  get guidelines() {
+    return this.subsites.flatMap(ss => ss.guidelines || []);
   },
+},
   {
     id: "palliative",
     label: "Palliative Care",
@@ -2815,7 +3643,45 @@ const SITES = [
       { label: "Palliative Prognostic Score", url: "#calc-pps" },
       { label: "RASS / Sedation Scale", url: "#calc-rass" },
     ],
+    contactInfo: {
+  heading: "NUH Palliative Care",
+  variant: "danger",
+  lines: [
+    "Seek advice from senior colleagues or the palliative care team if needed.",
+    "Mon–Sun 08:00–16:00: QMC ☎ 88402 | City ☎ 74977",
+    "Out of hours: Palliative consultant advice line ☎ 07595 285014",
+  ],
+},
     subsites: [
+      {
+  id: "pall-info",
+  label: "NUH Palliative Care",
+  guidelines: [
+    {
+      id: "pall-contacts",
+      title: "Contact Information",
+      category: "NUH Palliative Care",
+      authors: "NUH Palliative Care Team",
+      evidenceBase: "NUH Palliative Care Service",
+      summary: "Contact information and referral pathways for the NUH Palliative Care Team.",
+      tags: ["Contact", "Referral", "Palliative care team", "Out of hours"],
+      related: [],
+      updated: "Current",
+      sections: [
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
+      ],
+    },
+  ],
+},
       {
         id: "pall-symptom",
         label: "Symptom Control",
@@ -2834,6 +3700,17 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
+
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
               {
                 heading: "Key Principles — WHO Analgesic Ladder",
                 type: "pall_groups",
@@ -2982,6 +3859,17 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "April 2025",
             sections: [
+
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
               {
                 heading: "Non-Drug Management — Always Do These First",
                 type: "pall_groups",
@@ -3126,6 +4014,17 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "April 2025",
             sections: [
+
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
               {
                 heading: "Key Principles",
                 type: "pall_groups",
@@ -3236,6 +4135,17 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
+
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
               {
                 heading: "Key Principles",
                 type: "pall_groups",
@@ -3316,6 +4226,17 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
+
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
               {
                 heading: "General Measures — Do These First",
                 type: "pall_groups",
@@ -3384,6 +4305,17 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
+
+        {
+          heading: "Contact Information",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+          ],
+        },
               {
                 heading: "Initial Management",
                 type: "pall_groups",
@@ -3460,6 +4392,8 @@ const SITES = [
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10627",
             updated: "Current edition",
             sections: [
+
+        
               {
                 heading: "⚠ Key Principles",
                 type: "alert",
@@ -3467,6 +4401,9 @@ const SITES = [
                   "Use the **lowest effective dose** and titrate carefully to relieve distress",
                   "Review regularly — reassess response at each step",
                   "**Elderly patients: always start with the lower dose**",
+                       "**Seek advice from senior colleagues or the palliative care team if needed**",
+            "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+            "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
                 ],
               },
               {
@@ -5115,11 +6052,16 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
     label: "Procedures",
     color: "#5b4fcf",
     accent: "#f0effe",
-    icon: "🔬",
+    icon: (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+    <path d="M20 4L8.5 15.5M14.5 4.5l5 5M3 21l5-2L20 7a2 2 0 0 0-3-3L5 16l-2 5z"/>
+  </svg>
+),
     isParent: true,
     subsites: [
+      
       {
-        id: "proc-respiratory",
+            id: "proc-respiratory",
         label: "Respiratory",
         guidelines: [
           {
@@ -5558,6 +6500,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
           },
         ],
       },
+      
     ],
     get guidelines() {
       return this.subsites.flatMap(ss => ss.guidelines || []);
@@ -5565,7 +6508,142 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
   },
 
 ];
+const DIRECTORY_DATA = {
+  callouts: {},
+  entries: [
+// ── Oncology Wards ──────────────────────────────────────────
+{ name: "Oncology Triage / CAT",      category: "ward", numbers: ["71693", "76977"] },
+{ name: "SDEC",                        category: "ward", numbers: ["71755", "73819"] },
+{ name: "Oncology Day Case",           category: "ward", numbers: ["71533", "77491"],           code: "LIS1",  location: "S1 or W4" },
+{ name: "Fraser",   category: "ward", numbers: ["75333", "77153", "71528"], code: "FRAS", location: "S1, 1st floor" },
+{ name: "Gervis",   category: "ward", numbers: ["77086", "76985"], code: "GERV", location: "S3, ground floor" },
+{ name: "Hogarth",                     category: "ward", numbers: ["75152", "75164", "71732"],   code: "HOG",   location: "N10, 1st floor" },
+{ name: "SRU",                         category: "ward", numbers: ["71530", "72505", "72535"],   code: "SRU",   location: "S12, 1st floor" },
+{ name: "SRU Doctors Room",            category: "ward", numbers: ["72258"],                                    location: "S12" },
+{ name: "Oncology Reg Room",           category: "ward", numbers: ["73209"] },
+{ name: "Hayward House",               category: "ward", numbers: ["72042", "77079", "77080"],   code: "HEYH", location: "External — Green Entrance", note: "77080 = Drs office" },
+{ name: "Palliative Care City",        category: "ward", numbers: ["74977"] },
+{ name: "Palliative Care QMC",         category: "ward", numbers: ["88402"] },
+{ name: "Southwell",                   category: "ward", numbers: ["75329"],                     code: "SOU",   location: "S10, ground floor" },
+{ name: "ACU",                         category: "ward", numbers: ["73284", "76213"],            code: "ACU",   location: "W2a" },
+{ name: "Barclay",                     category: "ward", numbers: ["76295", "75684"],            code: "BARC",  location: "N16" },
+{ name: "Beeston",                     category: "ward", numbers: ["72401", "75380"],            code: "BEST",  location: "S8 — Stroke Unit" },
+{ name: "Berman 1",                    category: "ward", numbers: ["73872", "73874"],            code: "BSU1",  location: "W2 — Hyper Acute Stroke" },
+{ name: "Berman 2",                    category: "ward", numbers: ["75579", "73182"],            code: "BSU2",  location: "W2" },
+{ name: "Bramley",                     category: "ward", numbers: ["76145", "76146"],            code: "BRAM",  location: "S3" },
+{ name: "Burns Unit",                  category: "ward", numbers: ["71508", "76403"],            code: "B3",    location: "S1 or W4, ground floor" },
+{ name: "Carrell",                     category: "ward", numbers: ["76301", "76724"],            code: "CARR",  location: "S3" },
+{ name: "Chemo Ward",                  category: "ward", numbers: ["77275", "73675", "76697"],   code: "CHDC",  location: "S3 or W4, 1st floor" },
+{ name: "Edward 2",                    category: "ward", numbers: ["71545"],                     code: "ED2",   location: "N10" },
+{ name: "Fleming",                     category: "ward", numbers: ["75270", "76726"],            code: "FLE",   location: "S8, ground floor" },
+{ name: "Fletcher",                    category: "ward", numbers: ["74687", "74686"],            code: "FLET",  location: "S1/S3/W4, ground floor" },
+{ name: "Harvey 1",                    category: "ward", numbers: ["75904"],                     code: "HAR1",  location: "N10, 1st floor" },
+{ name: "Harvey 2",                    category: "ward", numbers: ["76672"],                     code: "HAR2",  location: "N10" },
+{ name: "Hotel",                       category: "ward", numbers: ["75231"],                     code: "PH1",   location: "N1, 2nd floor" },
+{ name: "Linby",                       category: "ward", numbers: ["75321", "76177"],            code: "LIN",   location: "S1, 2nd floor" },
+{ name: "Linden Lodge",                category: "ward", numbers: ["76077"],                     code: "LILO",  location: "External — Linden Way" },
+{ name: "Lister 1",                    category: "ward", numbers: ["71533", "74626"],            code: "LIS1",  location: "N11" },
+{ name: "Lister 2",                    category: "ward", numbers: ["73809", "73812"],            code: "LIST2", location: "N11" },
+{ name: "Loxley",                      category: "ward", numbers: ["75158", "74309"],            code: "LOX",   location: "N1, 1st floor" },
+{ name: "Morris",                      category: "ward", numbers: ["73136", "71549"],            code: "MORR",  location: "W2a" },
+{ name: "Nightingale",                 category: "ward", numbers: ["71553", "77107"],            code: "NG1",   location: "N16" },
+{ name: "Papplewick",                  category: "ward", numbers: ["76271", "76272"],            code: "PAPP",  location: "N5, 2nd floor" },
+{ name: "Patience 1",                  category: "ward", numbers: ["75889", "76311"],            code: "PAT",   location: "N16, 1st floor" },
+{ name: "Patience 2",                  category: "ward", numbers: ["71535", "76026"],            code: "PAT2",  location: "N16, 1st floor" },
+{ name: "Stirland", category: "ward", numbers: ["79216", "79210"], code: "STIR", location: "S11 — next to Green Entrance" },
 
+{  name: "Toghill",                     category: "ward", numbers: ["73419", "74681"],            code: "TOG",   location: "S5, 1st floor" },
+{ name: "Winifred 2",                  category: "ward", numbers: ["77605", "76457"],            code: "WIN2",  location: "N15, 1st floor" },
+{ name: "Bed Manager",                 category: "oncall", numbers: ["07595 284931"] },
+    { name: "ART Fellow",                  category: "oncall", numbers: ["07812 276334"] },
+    { name: "Haematology Assessment Line", category: "oncall", numbers: ["07812 268298"] },
+    { name: "Admissions Team / CAT",       category: "oncall", numbers: ["76977"] },
+    { name: "Rapid Response",              category: "oncall", numbers: ["0115 962 8066"] },
+    { name: "Switch",                      category: "oncall", numbers: ["56155"] },
+    { name: "Path Results",                category: "oncall", numbers: ["61168", "74436", "80184"] },
+    { name: "Clin Chem Results",           category: "oncall", numbers: ["81168"], note: "OOH: 284-1360" },
+    // ── Chemotherapy ────────────────────────────────────────────
+    { name: "Chemo Day Unit",              category: "chemo",  numbers: ["57275", "56485"] },
+    { name: "Chemo Care",                  category: "chemo",  numbers: ["79414"] },
+    { name: "Chemo Pharmacy",              category: "chemo",  numbers: ["71563"] },
+    { name: "Chemo Screening Pharmacist",  category: "chemo",  numbers: ["71563"] },
+    { name: "Inpatient Pharmacy",          category: "chemo",  numbers: ["75984"] },
+    { name: "Clinic Nurses",               category: "chemo",  numbers: ["71327"] },
+    { name: "KMH Chemo",                   category: "chemo",  numbers: ["3335"] },
+    { name: "KMH Clinic 2",               category: "chemo",  numbers: ["813917"] },
+    { name: "CT-RT",                       category: "chemo",  numbers: ["54041"] },
+    // ── Radiology & Investigations ──────────────────────────────
+    { name: "CT",                          category: "radiology", numbers: ["79400"] },
+    { name: "CT Appointments",             category: "radiology", numbers: ["75644", "75645"] },
+    { name: "MRI Appointments (Inpatient)",category: "radiology", numbers: ["71717", "71720", "71721"] },
+    { name: "MRI Appointments (Outpatient)",category: "radiology", numbers: ["86583"] },
+    { name: "Ultrasound",                  category: "radiology", numbers: ["76701"] },
+    { name: "Nuclear Medicine",            category: "radiology", numbers: ["75794"] },
+    { name: "Interventional Radiology",    category: "radiology", numbers: ["76703"] },
+    { name: "Angio Suite / IR / Fluoro",   category: "radiology", numbers: ["79779"] },
+    { name: "PACS",                        category: "radiology", numbers: ["63333", "67728"] },
+    { name: "Radiology SpR",               category: "radiology", numbers: ["80445", "80447"] },
+    { name: "Radiology OOH Bleep (City)",  category: "radiology", numbers: ["284-1331"] },
+    { name: "Radiology OOH Bleep (QMC)",   category: "radiology", numbers: ["284-1311"] },
+    { name: "RT Radiographer OC",          category: "radiology", numbers: ["07812 268366"] },
+    { name: "CT Reporting — CT",           category: "radiology", numbers: ["76615"] },
+    { name: "CT Reporting — MRI",          category: "radiology", numbers: ["71719", "71724"] },
+    { name: "CT Reporting — Ultrasound",   category: "radiology", numbers: ["77068"] },
+    { name: "CT Reporting — Nuclear Medicine", category: "radiology", numbers: ["71331"] },
+    { name: "CT Reporting — Breast",       category: "radiology", numbers: ["79075"] },
+    { name: "Haem Lab",                    category: "radiology", numbers: ["75587"] },
+    { name: "Clin Chemistry",              category: "radiology", numbers: ["74436"] },
+    { name: "PICC / Vascular Access",      category: "radiology", numbers: ["75812"] },
+    // ── Radiotherapy ────────────────────────────────────────────
+    { name: "RT Planning",                 category: "rt", numbers: ["71208", "71209"] },
+    { name: "SRS Office",                  category: "rt", numbers: ["77243"] },
+    { name: "Workbase",                    category: "rt", numbers: ["74078"] },
+    { name: "Reception North",             category: "rt", numbers: ["71193"] },
+    { name: "Reception South",             category: "rt", numbers: ["76995"] },
+    { name: "Clinic 1",                    category: "rt", numbers: ["71206", "71207"] },
+    { name: "Clinic 2",                    category: "rt", numbers: ["71204", "71205"] },
+    { name: "Clinic 3",                    category: "rt", numbers: ["71202", "71203"] },
+    { name: "Brachy Suite / Office",       category: "rt", numbers: ["72135", "72136"] },
+    { name: "Superficial / Contact",       category: "rt", numbers: ["79302"] },
+    { name: "CT Sim 1/2",                  category: "rt", numbers: ["74041", "74090"] },
+    { name: "Mould Room",                  category: "rt", numbers: ["71211"] },
+    { name: "Late Effects",                category: "rt", numbers: ["72151", "74543"] },
+    { name: "Information & Support",       category: "rt", numbers: ["71194", "0115 962 7976"] },
+    { name: "Linac Room 1",                category: "rt", numbers: ["79408"] },
+    { name: "Linac Room 2",                category: "rt", numbers: ["76932"] },
+    { name: "Linac Room 3",                category: "rt", numbers: ["77226"] },
+    { name: "Linac Room 4",                category: "rt", numbers: ["74089"] },
+    { name: "Linac Room 5",                category: "rt", numbers: ["79705"] },
+    { name: "Linac Room 6",                category: "rt", numbers: ["79706"] },
+    { name: "Linac Room 7",                category: "rt", numbers: ["74074"] },
+    // ── CNS Teams ───────────────────────────────────────────────
+    { name: "AOS / CUP CNS",              category: "cns", numbers: ["07812 268675"],             note: "nuhnt.acuteoncologyservices@nhs.net | Patient: 0115 969 1169 ext 81320" },
+    { name: "Brain & CNS Tumours CNS",    category: "cns", numbers: ["07812 268938"],             note: "nuhnt.neurooncologyspecialistnurses@nhs.net | 0115 924 9924 ext 87623" },
+    { name: "Brain Mets CNS",             category: "cns", numbers: ["07812 278591"] },
+    { name: "Breast (Advanced) CNS",      category: "cns", numbers: ["76978"],                    note: "nuhnt.abcteam@nhs.net" },
+    { name: "Breast (Early) CNS",         category: "cns", numbers: ["74227", "77538"],           note: "nuhnt.oncologyprimarybreastcnsteam@nhs.net" },
+    { name: "Colorectal CNS",             category: "cns", numbers: ["76257", "07812 268785"],    note: "nuhnt.colorectalchemotherapynursespecialists@nhs.net | Patient: ext 74588" },
+    { name: "Germ Cell CNS",              category: "cns", numbers: ["07812 268125"],             note: "nicola.wilshaw@nhs.net — also covers Sarcoma (Onc)" },
+    { name: "Gynae CNS",                  category: "cns", numbers: ["72218", "07812 276519"],    note: "nuhnt.gynaeoncmedicalcns@nhs.net" },
+    { name: "Head & Neck CNS",            category: "cns", numbers: ["72041", "07812 278273"],    note: "alisonlarge@nhs.net" },
+    { name: "HPB CNS",                    category: "cns", numbers: ["72270", "07812 276521"],    note: "nuhnt.hpboncology@nhs.net" },
+    { name: "KMH AOS / CUP CNS",         category: "cns", numbers: ["07834 150508", "07525 606352"], note: "sfh-tr.aos-cup@nhs.net" },
+    { name: "Lung CNS (Clin Onc)",        category: "cns", numbers: ["07812 275261"],             note: "nuhnt.lungcancercns@nhs.net" },
+    { name: "Lung CNS (Med Onc)",         category: "cns", numbers: ["07812 268852"],             note: "nuhnt.lungonccns@nhs.net — Mon–Fri 8–5" },
+    { name: "Renal & Melanoma CNS",       category: "cns", numbers: ["77291"],                    note: "nuhnt.renalandmelanomacancernursespecialists@nhs.net" },
+    { name: "Sarcoma CNS",                category: "cns", numbers: ["07812 278361"],             note: "charlotte.bye3@nhs.net — also covers Germ Cell" },
+    { name: "Skin (Non-melanoma) CNS",    category: "cns", numbers: ["77692"] },
+    { name: "Urology CNS",                category: "cns", numbers: ["77594", "07812 275353"],    note: "Prostate, Bladder, Urothelial only — NOT renal or testes" },
+    // ── AHP & Support ───────────────────────────────────────────
+    { name: "Dieticians",                 category: "ahp", numbers: ["74954"] },
+    { name: "Speech & Language",          category: "ahp", numbers: ["81221"] },
+    { name: "PEG / RIG",                  category: "ahp", numbers: ["76754", "77407"] },
+    { name: "Upper GI Nurses",            category: "ahp", numbers: ["74378"] },
+    { name: "Cancer Back Up",             category: "ahp", numbers: ["79650"] },
+    { name: "Learning Team",              category: "ahp", numbers: ["79595"] },
+    { name: "Outpatient Pharmacy",        category: "ahp", numbers: ["75613", "72257"] },
+    { name: "Oncology Outpatients",       category: "ahp", numbers: ["76998", "76980"], note: "nuhnt.oncologyoutpatientsappointmentrequests@nhs.net" },  ],
+};
 const ALL_GUIDELINES = SITES.flatMap(s => {
   if (s.isParent) {
     return s.subsites.flatMap(ss => (ss.guidelines || []).map(g => ({ ...g, siteId: s.id, siteLabel: s.label, siteColor: s.color, subsiteId: ss.id, subsiteLabel: ss.label })));
@@ -5576,6 +6654,23 @@ const ALL_GUIDELINES = SITES.flatMap(s => {
 // ── CALCULATORS REGISTRY ─────────────────────────────────────────────────────
 
 const CALCULATORS = {
+  "antibiotic-dosing": {
+  id: "antibiotic-dosing",
+  label: "Antibiotic Dosing Calculator",
+  siteId: "oncology",
+  icon: "💊",
+  component: "antibiotic-dosing",
+  guidelineId: "onco-neutropenic-sepsis",
+  whenToUse: {
+    headline: "When to use this calculator",
+    checks: [
+      { type: "question", text: "Is vancomycin or gentamicin being prescribed for a new indication? Use this calculator to determine the correct loading and maintenance doses based on renal function." },
+      { type: "warning", text: "Does the patient have AKI? Vancomycin: prescribe loading dose only and contact microbiology before continuing. Gentamicin: avoid unless essential (e.g. septic shock with no appropriate alternative)." },
+      { type: "warning", text: "Has the patient already received a gentamicin dose in the last 24h (A&E, theatres, critical care)? Do not re-dose until a pre-dose level taken 18–24h after that dose is confirmed <1 mg/L." },
+      { type: "info", text: "This calculator uses the NUH Antibiotic Dosing Guidelines (Vancomycin review May 2027). Always use the NUH antibiotic website calculator as the primary method — this tool is a clinical support aid. Seek pharmacist or microbiology advice for critical care, CVVH, haemodialysis, peritoneal dialysis, or morbid obesity." },
+    ],
+  },
+},
   "irae-grade": {
     id: "irae-grade",
     label: "irAE CTCAE Grade Calculator",
@@ -5665,6 +6760,22 @@ const CALCULATORS = {
     },
     component: "tokuhashi",
   },
+"hfa-icos": {
+  id: "hfa-icos",
+  label: "HFA-ICOS Baseline Risk Assessment",
+  siteId: "cardio-oncology",
+  icon: "❤️",
+  guidelineId: "cardio-anthracycline",
+  whenToUse: {
+    headline: "When to use the HFA-ICOS tool",
+    checks: [
+      { type: "question", text: "Is the patient about to start anthracycline-based chemotherapy? This tool must be used for all patients before initiating anthracyclines — it determines surveillance intensity and need for cardio-oncology referral." },
+      { type: "info", text: "Categorises patients as low, moderate, high, or very high cardiovascular risk. High/very high risk patients should be referred to the Cardio-Oncology clinic before starting treatment." },
+      { type: "warning", text: "This is an external MDCalc tool — it will open in a new tab. The risk category it generates determines which surveillance protocol to follow in the Anthracycline Cardiotoxicity guideline." },
+    ],
+  },
+  component: "hfa-icos",
+},
 };
 
 
@@ -6054,7 +7165,632 @@ function SinsCalculator() {
     </div>
   );
 }
+function MSCCSteroidTable({ siteColor, siteAccent }) {
+  const tdBase = {
+    verticalAlign: "top", padding: "10px 12px",
+    borderBottom: "1px solid var(--border-light)", fontSize: 13, lineHeight: 1.55,
+    color: "var(--text-secondary)",
+  };
 
+  const thStyle = {
+    fontSize: 11, fontWeight: 700, textAlign: "left", padding: "8px 12px",
+    background: "var(--bg)", color: "var(--text-muted)",
+    borderBottom: "1px solid var(--border-light)",
+    fontFamily: "Sora, sans-serif", textTransform: "uppercase", letterSpacing: "0.05em",
+  };
+
+  const rows = [
+    {
+      bgRow: "#f0fff4",
+      labelColor: "#276749",
+      label: "Known solid cancer + neurological symptoms",
+      sublabel: null,
+      management: [
+        { urgent: true, text: "Stat dexamethasone 16mg PO" },
+        { urgent: false, text: "Then 8mg BD (am + noon)" },
+        { urgent: false, text: "Offer PPI" },
+        { urgent: false, text: "Wean steroids at start of definitive treatment" },
+        { urgent: false, text: "Stop if MSCC excluded on MRI" },
+        { urgent: false, text: "Oral/IV equivalence: 4mg PO ≈ 3.3mg IV/SC" },
+      ],
+    },
+    {
+      bgRow: "#fffff0",
+      labelColor: "#854F0B",
+      label: "Known haematological cancer",
+      sublabel: "Lymphoma, myeloma, leukaemia",
+      management: [
+        { urgent: true, text: "Stat dexamethasone 20mg PO" },
+        { urgent: true, text: "Discuss continuation with Haematology before proceeding" },
+        { urgent: false, text: "Offer PPI" },
+      ],
+    },
+    {
+      bgRow: "#fff5f0",
+      labelColor: "#7b341e",
+      label: "New / unknown malignancy",
+      sublabel: "MSCC may be first presentation",
+      management: [
+        { urgent: true, text: "Discuss with oncology before starting steroids" },
+        { urgent: false, text: "If ?lymphoma/myeloma: do not give steroids — seek haematology advice + consider urgent biopsy first" },
+        { urgent: false, text: "If approved: stat 16mg then 8mg BD as per solid cancer protocol" },
+      ],
+    },
+    {
+      bgRow: "var(--surface)",
+      labelColor: "var(--text-secondary)",
+      label: "No neurological symptoms",
+      sublabel: "Spinal mets suspected/confirmed",
+      management: [
+        { urgent: false, text: "Steroids not routinely indicated" },
+        { urgent: false, text: "Consider if severe pain — discuss with senior clinician" },
+      ],
+      last: true,
+    },
+  ];
+
+  return (
+    <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+      <div style={{
+        padding: "10px 16px", borderBottom: "1px solid var(--border-light)",
+        display: "flex", alignItems: "center", gap: 8, background: siteAccent,
+      }}>
+        <span style={{ fontSize: 14, color: siteColor }}>💊</span>
+        <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>
+          Steroid protocol by presentation
+        </span>
+      </div>
+
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+          <colgroup>
+            <col style={{ width: "28%" }} />
+            <col style={{ width: "72%" }} />
+          </colgroup>
+          <thead>
+            <tr>
+              <th style={thStyle}>Presentation</th>
+              <th style={thStyle}>Steroid management</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, ri) => (
+              <tr key={ri}>
+                <td style={{ ...tdBase, background: row.bgRow, borderBottom: row.last ? "none" : "1px solid var(--border-light)" }}>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: row.labelColor, fontFamily: "Sora, sans-serif", marginBottom: row.sublabel ? 3 : 0 }}>
+                    {row.label}
+                  </div>
+                  {row.sublabel && (
+                    <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{row.sublabel}</div>
+                  )}
+                </td>
+                <td style={{ ...tdBase, background: row.bgRow, borderBottom: row.last ? "none" : "1px solid var(--border-light)" }}>
+                  {row.management.map((item, ii) =>
+                    item.urgent ? (
+                      <div key={ii} style={{
+                        display: "flex", alignItems: "flex-start", gap: 7,
+                        padding: "5px 9px", background: "#fff5f5",
+                        border: "1px solid #fc8181", borderRadius: 6,
+                        marginBottom: 5, fontSize: 13, fontWeight: 700,
+                        color: "#742a2a", lineHeight: 1.4,
+                      }}>
+                        <span style={{ fontSize: 11, flexShrink: 0, marginTop: 1 }}>⚡</span>
+                        {item.text}
+                      </div>
+                    ) : (
+                      <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
+                        <span style={{ color: "var(--text-muted)", fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                        <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{item.text}</span>
+                      </div>
+                    )
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div style={{
+        background: "var(--bg)", borderTop: "1px solid var(--border-light)",
+        padding: "8px 14px", fontSize: 12, color: "var(--text-muted)",
+        fontStyle: "italic", lineHeight: 1.5,
+      }}>
+        Prolonged steroids: consider PCP prophylaxis (cotrimoxazole 480mg OD), bone protection, blood glucose monitoring, and risk of adrenal insufficiency on withdrawal.
+      </div>
+    </div>
+  );
+}
+// ─── Cockcroft-Gault helpers ─────────────────────────────────────────────────
+
+function ibw(sexMale, heightCm) {
+  const h = heightCm / 2.54;
+  return sexMale ? 50 + 2.3 * (h - 60) : 45.5 + 2.3 * (h - 60);
+}
+
+function effectiveWeight(sexMale, heightCm, actualKg) {
+  const ideal = ibw(sexMale, heightCm);
+  const mbw = ideal * 1.2;
+  return actualKg > mbw ? mbw : actualKg;
+}
+
+function cockcroft(sexMale, age, weightKg, scrUmolL) {
+  const F = sexMale ? 1.23 : 1.04;
+  const scr = Math.max(scrUmolL, 60);
+  return (F * (140 - age) * weightKg) / scr;
+}
+
+// ─── Vancomycin logic ─────────────────────────────────────────────────────────
+
+function vancoLoading(actualKg) {
+  if (actualKg < 40)  return { dose: "750 mg", volume: "250 mL", duration: "90 min" };
+  if (actualKg < 60)  return { dose: "1 g",    volume: "250 mL", duration: "120 min" };
+  if (actualKg <= 90) return { dose: "1.5 g",  volume: "500 mL", duration: "180 min" };
+  return                     { dose: "2 g",    volume: "500 mL", duration: "240 min" };
+}
+
+function vancoMaintenance(crcl, actualKg) {
+  if (crcl > 110)  return { dose: actualKg < 45 ? "1.25 g" : "1.5 g", interval: "BD",         volume: "500 mL", duration: "150 min", firstLevel: "Before 4th dose", startDelay: "12h" };
+  if (crcl >= 90)  return { dose: "1.25 g", interval: "BD",         volume: "250 mL", duration: "150 min", firstLevel: "Before 4th dose", startDelay: "12h" };
+  if (crcl >= 75)  return { dose: "1 g",    interval: "BD",         volume: "250 mL", duration: "120 min", firstLevel: "Before 4th dose", startDelay: "12h" };
+  if (crcl >= 55)  return { dose: "750 mg", interval: "BD",         volume: "250 mL", duration: "90 min",  firstLevel: "Before 4th dose", startDelay: "12h" };
+  if (crcl >= 40)  return { dose: "500 mg", interval: "BD",         volume: "100 mL", duration: "60 min",  firstLevel: "Before 4th dose", startDelay: "12h" };
+  if (crcl >= 30)  return { dose: "750 mg", interval: "OD",         volume: "250 mL", duration: "90 min",  firstLevel: "Before 4th dose", startDelay: "24h" };
+  if (crcl >= 20)  return { dose: "500 mg", interval: "OD",         volume: "100 mL", duration: "60 min",  firstLevel: "Before 4th dose", startDelay: "24h" };
+  if (crcl >= 10)  return { dose: "500 mg", interval: "Every 48h",  volume: "100 mL", duration: "60 min",  firstLevel: "Before 2nd dose", startDelay: "48h" };
+  return null; // level-driven
+}
+
+// ─── Gentamicin logic ─────────────────────────────────────────────────────────
+
+function gentamicinDose(crcl, hasAki, akiStage, actualKg) {
+  let mgPerKg, maxDose, tier;
+  if (hasAki && akiStage >= 3) {
+    mgPerKg = 2; maxDose = 200; tier = "AKI stage 3 / anuric / oliguric";
+  } else if ((hasAki && akiStage >= 1) || (!hasAki && crcl < 40)) {
+    mgPerKg = 3; maxDose = 300; tier = hasAki ? "AKI stage 1–2" : "CrCl 10–40 ml/min";
+  } else {
+    mgPerKg = 5; maxDose = 500; tier = "CrCl >40 ml/min";
+  }
+  const raw = mgPerKg * actualKg;
+  const capped = Math.min(raw, maxDose);
+  const rounded = Math.round(capped / 40) * 40;
+  return { mgPerKg, maxDose, raw, rounded, tier };
+}
+
+// ─── Shared style primitives ──────────────────────────────────────────────────
+
+const S = {
+  sectionLabel: {
+    fontSize: 11, fontWeight: 600, letterSpacing: "0.06em",
+    textTransform: "uppercase", color: "var(--text-muted)",
+    fontFamily: "Sora, sans-serif", marginBottom: 8,
+  },
+  input: {
+    width: "100%", border: "1.5px solid var(--border)", borderRadius: 8,
+    padding: "8px 11px", fontSize: 13.5, color: "var(--text-primary)",
+    background: "var(--surface)", outline: "none", fontFamily: "DM Sans, sans-serif",
+    boxSizing: "border-box",
+  },
+  label: {
+    display: "block", fontSize: 12, fontWeight: 600, color: "var(--text-secondary)",
+    fontFamily: "Sora, sans-serif", marginBottom: 5,
+  },
+  resultRow: (highlight) => ({
+    display: "flex", justifyContent: "space-between", alignItems: "center",
+    padding: "8px 12px", borderRadius: 8, fontSize: 13.5,
+    background: highlight ? "var(--accent-light)" : "var(--bg)",
+    border: `1px solid ${highlight ? "#bfdbfe" : "var(--border-light)"}`,
+    color: highlight ? "var(--accent)" : "var(--text-secondary)",
+  }),
+  resultValue: (highlight) => ({
+    fontWeight: 700, fontFamily: "Sora, sans-serif",
+    color: highlight ? "var(--accent)" : "var(--text-primary)", fontSize: 14,
+  }),
+  alertBox: (type) => {
+    const map = {
+      warning: { bg: "#fffbeb", border: "#fde68a", color: "#92400e", icon: "⚠" },
+      danger:  { bg: "#fff5f5", border: "#fca5a5", color: "#991b1b", icon: "🚨" },
+      info:    { bg: "#f0fff4", border: "#bbf7d0", color: "#166534", icon: "ℹ" },
+    };
+    const c = map[type];
+    return { bg: c.bg, border: c.border, color: c.color, icon: c.icon };
+  },
+};
+
+function Field({ label, children, half }) {
+  return (
+    <div style={{ gridColumn: half ? "span 1" : "span 2" }}>
+      <label style={S.label}>{label}</label>
+      {children}
+    </div>
+  );
+}
+
+function ResultRow({ label, value, highlight }) {
+  return (
+    <div style={S.resultRow(highlight)}>
+      <span style={{ fontSize: 13 }}>{label}</span>
+      <span style={S.resultValue(highlight)}>{value}</span>
+    </div>
+  );
+}
+
+function AlertBox({ type, children }) {
+  const c = S.alertBox(type);
+  return (
+    <div style={{
+      display: "flex", gap: 10, padding: "10px 13px",
+      background: c.bg, border: `1px solid ${c.border}`,
+      borderRadius: 8, color: c.color,
+    }}>
+      <span style={{ fontSize: 15, flexShrink: 0, lineHeight: 1.5 }}>{c.icon}</span>
+      <p style={{ fontSize: 13, lineHeight: 1.55, margin: 0, color: c.color }}>{children}</p>
+    </div>
+  );
+}
+
+function SectionHead({ children }) {
+  return <div style={S.sectionLabel}>{children}</div>;
+}
+
+function Divider() {
+  return <div style={{ height: 1, background: "var(--border-light)", margin: "4px 0" }} />;
+}
+
+// ─── Vancomycin Calculator ────────────────────────────────────────────────────
+
+function VancoCalculator() {
+  const [form, setForm] = useState({ age: "", weight: "", height: "", sex: "male", scr: "", aki: false });
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  const age = parseFloat(form.age);
+  const weight = parseFloat(form.weight);
+  const height = parseFloat(form.height);
+  const scr = parseFloat(form.scr);
+  const male = form.sex === "male";
+  const valid = age > 0 && weight > 0 && height > 0 && scr > 0;
+
+  let result = null;
+  if (valid) {
+    const idealW = ibw(male, height);
+    const effW = effectiveWeight(male, height, weight);
+    const obese = weight > idealW * 1.2;
+    const scrForCalc = Math.max(scr, 60);
+    const crcl = cockcroft(male, age, effW, scrForCalc);
+    const loading = vancoLoading(weight);
+    const maint = vancoMaintenance(crcl, weight);
+    result = { crcl, loading, maint, effW, idealW, obese, scrClamped: scr < 60 };
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+
+      {/* Inputs */}
+      <div>
+        <SectionHead>Patient Details</SectionHead>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <Field label="Age (years)" half>
+            <input style={S.input} type="number" min="18" placeholder="e.g. 65"
+              value={form.age} onChange={e => set("age", e.target.value)} />
+          </Field>
+          <Field label="Sex" half>
+            <select style={S.input} value={form.sex} onChange={e => set("sex", e.target.value)}>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </Field>
+          <Field label="Actual Weight (kg)" half>
+            <input style={S.input} type="number" min="1" placeholder="e.g. 75"
+              value={form.weight} onChange={e => set("weight", e.target.value)} />
+          </Field>
+          <Field label="Height (cm)" half>
+            <input style={S.input} type="number" min="100" placeholder="e.g. 170"
+              value={form.height} onChange={e => set("height", e.target.value)} />
+          </Field>
+          <Field label="Serum Creatinine (µmol/L)" half>
+            <input style={S.input} type="number" min="1" placeholder="e.g. 85"
+              value={form.scr} onChange={e => set("scr", e.target.value)} />
+          </Field>
+          <Field label="AKI Present?" half>
+            <select style={S.input} value={form.aki ? "yes" : "no"}
+              onChange={e => set("aki", e.target.value === "yes")}>
+              <option value="no">No</option>
+              <option value="yes">Yes — any stage</option>
+            </select>
+          </Field>
+        </div>
+      </div>
+
+      {form.aki && (
+        <AlertBox type="danger">
+          AKI present — prescribe loading dose only. Repeat U&Es within 24h. Contact microbiology via MICROAD (Medway/Nervecentre) before continuing. AKI stage 3: only re-dose if level &lt;15 mg/L, max 500 mg.
+        </AlertBox>
+      )}
+
+      {/* Results */}
+      {result && (
+        <>
+          <Divider />
+          <div>
+            <SectionHead>Calculated Parameters</SectionHead>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <ResultRow label="Ideal Body Weight" value={`${result.idealW.toFixed(1)} kg`} />
+              {result.obese && (
+                <ResultRow label="Max Body Weight (MBW) — used for CrCl" value={`${result.effW.toFixed(1)} kg`} highlight />
+              )}
+              <ResultRow
+                label={`CrCl (Cockcroft-Gault)${result.scrClamped ? " — min SCr 60 µmol/L applied" : ""}`}
+                value={`${result.crcl.toFixed(0)} ml/min`}
+                highlight
+              />
+            </div>
+          </div>
+
+          <div>
+            <SectionHead>Step 1 — Loading Dose (weight-based, renal-independent)</SectionHead>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <ResultRow label="Loading Dose" value={result.loading.dose} highlight />
+              <ResultRow label="Infusion Volume" value={result.loading.volume} />
+              <ResultRow label="Infusion Duration" value={result.loading.duration} />
+            </div>
+            <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 7, lineHeight: 1.5 }}>
+              Infuse at ≤10 mg/min via Alaris GP pump (DERS). Use glucose 5% if sodium-restricted. Concentrations &gt;10 mg/mL: central line only.
+            </p>
+          </div>
+
+          {!form.aki && (
+            <div>
+              <SectionHead>Step 2 — Maintenance Dose</SectionHead>
+              {result.maint ? (
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <ResultRow label="Maintenance Dose" value={result.maint.dose} highlight />
+                  <ResultRow label="Frequency" value={result.maint.interval} />
+                  <ResultRow label="Start after loading dose" value={result.maint.startDelay} />
+                  <ResultRow label="Infusion Volume" value={result.maint.volume} />
+                  <ResultRow label="Infusion Duration" value={result.maint.duration} />
+                  <ResultRow label="First Level Timing" value={result.maint.firstLevel} />
+                </div>
+              ) :
+               
+              (<AlertBox type="danger">
+                  CrCl &lt;10 ml/min — do not prescribe regular maintenance. Check vancomycin level 48h after loading dose. Re-dose with 500 mg only when level &lt;15 mg/L. Re-check U&Es and repeat level after each dose.
+                </AlertBox>
+              )}
+              <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 7, lineHeight: 1.5 }}>
+                Target pre-dose (trough) level: 10–20 mg/L. Infuse at ≤10 mg/min via Alaris GP pump (DERS).
+              </p>
+            </div>
+          )}
+
+          <AlertBox type="info">
+            Pre-dose level target: 10–20 mg/L. If level &gt;20 mg/L: withhold and recheck before next dose. Do not take levels from the same line as the infusion.
+          </AlertBox>
+
+          <AlertBox type="warning">
+            Always confirm with the NUH Vancomycin Dosing Calculator on the antibiotic website. Seek advice for critical care, CVVH, haemodialysis, or peritoneal dialysis patients.
+          </AlertBox>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+  <a href="https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=091639d5e9d779e7c7772177f8a2d800"
+    target="_blank" rel="noopener noreferrer"
+    className="detail-btn detail-btn-secondary" style={{ display: "inline-flex", fontSize: 12 }}>
+    <IconExternal /> NUH Guideline PDF
+  </a>
+  <a href="https://nhs.sharepoint.com/sites/RX1_Antibiotics/SitePages/Calculators/IV-Vancomycin-Dosing-Calculator.aspx"
+    target="_blank" rel="noopener noreferrer"
+    className="detail-btn detail-btn-secondary" style={{ display: "inline-flex", fontSize: 12 }}>
+    <IconExternal /> NUH Portal Calculator
+  </a>
+</div>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ─── Gentamicin Calculator ────────────────────────────────────────────────────
+
+function GentaCalculator() {
+  const [form, setForm] = useState({
+    age: "", weight: "", height: "", sex: "male", scr: "", aki: "none", previousDose: false,
+  });
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  const age = parseFloat(form.age);
+  const weight = parseFloat(form.weight);
+  const height = parseFloat(form.height);
+  const scr = parseFloat(form.scr);
+  const male = form.sex === "male";
+  const hasAki = form.aki !== "none";
+  const akiStage = hasAki ? parseInt(form.aki) : 0;
+  const valid = age > 0 && weight > 0 && height > 0 && scr > 0;
+
+  let result = null;
+  if (valid && !form.previousDose) {
+    const idealW = ibw(male, height);
+    const effW = effectiveWeight(male, height, weight);
+    const obese = weight > idealW * 1.2;
+    const crcl = hasAki ? null : cockcroft(male, age, effW, Math.max(scr, 60));
+    const genta = gentamicinDose(crcl, hasAki, akiStage, weight);
+    result = { crcl, genta, effW, idealW, obese };
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+
+      {/* Inputs */}
+      <div>
+        <SectionHead>Patient Details</SectionHead>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <Field label="Age (years)" half>
+            <input style={S.input} type="number" min="18" placeholder="e.g. 65"
+              value={form.age} onChange={e => set("age", e.target.value)} />
+          </Field>
+          <Field label="Sex" half>
+            <select style={S.input} value={form.sex} onChange={e => set("sex", e.target.value)}>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </Field>
+          <Field label="Actual Weight (kg)" half>
+            <input style={S.input} type="number" min="1" placeholder="e.g. 75"
+              value={form.weight} onChange={e => set("weight", e.target.value)} />
+          </Field>
+          <Field label="Height (cm)" half>
+            <input style={S.input} type="number" min="100" placeholder="e.g. 170"
+              value={form.height} onChange={e => set("height", e.target.value)} />
+          </Field>
+          <Field label="Serum Creatinine (µmol/L)" half>
+            <input style={S.input} type="number" min="1" placeholder="e.g. 85"
+              value={form.scr} onChange={e => set("scr", e.target.value)} />
+          </Field>
+          <Field label="AKI Stage" half>
+            <select style={S.input} value={form.aki} onChange={e => set("aki", e.target.value)}>
+              <option value="none">No AKI</option>
+              <option value="1">AKI Stage 1</option>
+              <option value="2">AKI Stage 2</option>
+              <option value="3">AKI Stage 3 / anuric / oliguric</option>
+            </select>
+          </Field>
+        </div>
+
+        <label style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 10, cursor: "pointer", fontSize: 13.5, color: "var(--text-secondary)" }}>
+          <input type="checkbox" checked={form.previousDose}
+            onChange={e => set("previousDose", e.target.checked)}
+            style={{ width: 15, height: 15, cursor: "pointer", accentColor: "var(--accent)" }} />
+          Patient already received gentamicin dose in last 24h (A&E / theatres / critical care)
+        </label>
+      </div>
+
+      {form.previousDose && (
+        <AlertBox type="danger">
+          Do NOT prescribe a further dose. Take a level 18–24h after the previous dose and only prescribe once the pre-dose level is &lt;1 mg/L.
+        </AlertBox>
+      )}
+
+      {hasAki && akiStage < 3 && (
+        <AlertBox type="warning">
+          AKI stage 1–2: avoid gentamicin unless essential (e.g. septic shock with no appropriate alternative). Dose as per AKI stage — do not calculate CrCl.
+        </AlertBox>
+      )}
+
+      {hasAki && akiStage >= 3 && (
+        <AlertBox type="danger">
+          AKI stage 3 / anuric / oliguric: single 2 mg/kg dose only (max 200 mg). Re-dose only when pre-dose level &lt;1 mg/L.
+        </AlertBox>
+      )}
+
+      {/* Results */}
+      {result && (
+        <>
+          <Divider />
+          <div>
+            <SectionHead>Calculated Parameters</SectionHead>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <ResultRow label="Ideal Body Weight" value={`${result.idealW.toFixed(1)} kg`} />
+              {result.obese && (
+                <ResultRow label="Max Body Weight (MBW) — used for CrCl" value={`${result.effW.toFixed(1)} kg`} highlight />
+              )}
+              {result.crcl !== null
+                ? <ResultRow label="CrCl (Cockcroft-Gault)" value={`${result.crcl.toFixed(0)} ml/min`} highlight />
+                : <ResultRow label="CrCl" value="Not calculated — dosed by AKI stage" highlight />
+              }
+            </div>
+          </div>
+
+          <div>
+            <SectionHead>Gentamicin Dose — Once Daily (not endocarditis)</SectionHead>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <ResultRow label="Dosing Tier" value={result.genta.tier} />
+              <ResultRow
+                label={`${result.genta.mgPerKg} mg/kg × ${weight} kg`}
+                value={`${result.genta.raw.toFixed(0)} mg (raw)`}
+              />
+              {result.genta.raw > result.genta.maxDose && (
+                <ResultRow label="Maximum dose cap applied" value={`${result.genta.maxDose} mg`} />
+              )}
+              <ResultRow label="Dose (rounded to nearest 40 mg)" value={`${result.genta.rounded} mg`} highlight />
+            </div>
+            <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 7, lineHeight: 1.5 }}>
+              All doses rounded to nearest 40 mg increment per NUH guideline.
+            </p>
+          </div>
+
+          <AlertBox type="info">
+            Take pre-dose level 18–24h after each dose. Only prescribe next dose when level is &lt;1 mg/L. Levels taken too early will be falsely elevated.
+          </AlertBox>
+
+          <AlertBox type="warning">
+            Always confirm with the NUH IV Gentamicin Dosing Calculator on the antibiotic website. Seek advice for peritoneal dialysis, morbid obesity, or rapidly changing renal function.
+          </AlertBox>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+  <a href="https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=8fc689ad5cd4158ab7ea81b3cb412f40"
+    target="_blank" rel="noopener noreferrer"
+    className="detail-btn detail-btn-secondary" style={{ display: "inline-flex", fontSize: 12 }}>
+    <IconExternal /> NUH Guideline PDF
+  </a>
+  <a href="https://nhs.sharepoint.com/sites/RX1_Antibiotics/SitePages/Calculators/IV-Gentamicin-Dosing-Calculator-(NOT-Endocarditis).aspx"
+    target="_blank" rel="noopener noreferrer"
+    className="detail-btn detail-btn-secondary" style={{ display: "inline-flex", fontSize: 12 }}>
+    <IconExternal /> NUH Portal Calculator
+  </a>
+</div>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
+function AntibioticDosingCalculator() {
+  const [tab, setTab] = useState("vancomycin");
+
+  const tabs = [
+    { id: "vancomycin", label: "Vancomycin" },
+    { id: "gentamicin", label: "Gentamicin" },
+  ];
+
+  return (
+    <div style={{ marginTop: 14 }}>
+      {/* Tab switcher */}
+      <div style={{
+        display: "flex", gap: 6, marginBottom: 20,
+        background: "var(--bg)", borderRadius: 10,
+        padding: 4, border: "1px solid var(--border)",
+        width: "fit-content",
+      }}>
+        {tabs.map(t => (
+          <button key={t.id} onClick={() => setTab(t.id)} style={{
+            padding: "6px 18px", borderRadius: 7, border: "none", cursor: "pointer",
+            fontSize: 13, fontWeight: tab === t.id ? 600 : 400,
+            fontFamily: "Sora, sans-serif",
+            background: tab === t.id ? "var(--surface)" : "transparent",
+            color: tab === t.id ? "var(--text-primary)" : "var(--text-muted)",
+            boxShadow: tab === t.id ? "var(--shadow-sm)" : "none",
+            transition: "all 0.15s",
+          }}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {tab === "vancomycin" && <VancoCalculator />}
+      {tab === "gentamicin" && <GentaCalculator />}
+
+      {/* Footer */}
+      <div style={{
+        marginTop: 20, padding: "10px 14px",
+        background: "var(--bg)", borderRadius: 8,
+        border: "1px solid var(--border-light)",
+      }}>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", margin: 0, lineHeight: 1.5, textAlign: "center" }}>
+          For use in adults only · Excludes critical care, CVVH, haemodialysis · NUH Antibiotic Guidelines Committee
+        </p>
+      </div>
+    </div>
+  );
+}
 function CalculatorView({ calcId, onNavigate }) {
   const calc = CALCULATORS[calcId];
   if (!calc) return null;
@@ -6116,6 +7852,7 @@ return (
       <div className="detail-card">
         <h3 style={{ marginBottom: 14 }}>Calculator</h3>
         {calc.component === "irae" && <IraeGradeCalculator siteColor={site?.color || "#6d4c9e"} siteAccent={site?.accent || "#f3effe"} />}
+        {calc.component === "antibiotic-dosing" && (<AntibioticDosingCalculator />)}
         {calc.component === "mascc" && <MasccCalculator />}
         {calc.component === "opioid-converter" && <OpioidConverter />}
         {calc.component === "sins" && <SinsCalculator />}
@@ -6128,6 +7865,16 @@ return (
             </a>
           </div>
         )}
+      {calc.component === "hfa-icos" && (
+  <div style={{ padding: "12px", background: "var(--bg)", borderRadius: 8, border: "1px solid var(--border)" }}>
+    <p style={{ fontSize: 13.5, color: "var(--text-secondary)", marginBottom: 12 }}>The HFA-ICOS tool is an externally validated risk calculator hosted on MDCalc:</p>
+    <a href="https://www.mdcalc.com/calc/10642/hfa-icos-baseline-cardio-oncology-risk-assessment-anthracycline-chemotherapy"
+      target="_blank" rel="noopener noreferrer"
+      className="detail-btn detail-btn-primary" style={{ display: "inline-flex" }}>
+      <IconExternal /> Open HFA-ICOS Calculator on MDCalc
+    </a>
+  </div>
+)}
       </div>
     </div>
   );
@@ -6462,6 +8209,46 @@ function CinvTierBlock({ tier, c, siteColor }) {
   );
 }
 
+function renderItemWithLinks(text) {
+  if (!text) return text;
+  const parts = [];
+  const regex = /\[\[([^\]|]+)\|([^\]]+)\]\]/g;
+  let last = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > last) {
+      parts.push(text.slice(last, match.index));
+    }
+    const label = match[1].trim();
+    const url = match[2].trim();
+    parts.push(
+      <a key={match.index}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 4,
+          color: "#1a6b8a",
+          fontWeight: 600,
+          textDecoration: "underline",
+          fontStyle: "normal",
+          cursor: "pointer",
+        }}
+        onClick={e => e.stopPropagation()}
+      >
+        {label} <IconExternal />
+      </a>
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) {
+    parts.push(text.slice(last));
+  }
+  if (parts.length === 0) return text;
+  return <>{parts}</>;
+}
 
 // ── Inline renderer — supports **bold**, *italic*, `code`, [[guideline-id]] ──
 function renderInline(text, onNavigate) {
@@ -6973,7 +8760,349 @@ function VteDrugChoicePathway({ siteColor, siteAccent }) {
     </div>
   );
 }
+function AnthracyclineCTRCD({ siteColor, siteAccent }) {
+  const Ul = ({ items }) => (
+    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ padding: "2px 0 2px 14px", position: "relative", color: "var(--text-secondary)", fontSize: 13, lineHeight: 1.55 }}>
+          <span style={{ position: "absolute", left: 0, color: "var(--text-muted)" }}>•</span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
 
+  const subLabel = (text, first = false) => (
+    <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginBottom: 4, marginTop: first ? 0 : 8 }}>{text}</div>
+  );
+
+  const actionTag = (label, type) => {
+    const map = {
+      continue: { bg: "#EAF3DE", color: "#27500A" },
+      pause:    { bg: "#FAEEDA", color: "#633806" },
+      stop:     { bg: "#FCEBEB", color: "#791F1F" },
+      mdt:      { bg: "#E6F1FB", color: "#0C447C" },
+    };
+    const s = map[type] || map.mdt;
+    return (
+      <span style={{ display: "inline-block", fontSize: 11, fontWeight: 500, padding: "2px 7px", borderRadius: 4, marginBottom: 5, background: s.bg, color: s.color }}>
+        {label}
+      </span>
+    );
+  };
+
+  const thStyle = {
+    fontSize: 11, fontWeight: 700, textAlign: "left", padding: "8px 12px",
+    background: "var(--bg)", color: "var(--text-muted)",
+    borderBottom: "1px solid var(--border-light)",
+    fontFamily: "Sora, sans-serif", textTransform: "uppercase", letterSpacing: "0.05em",
+  };
+
+  const tdBase = {
+    verticalAlign: "top", padding: "10px 12px",
+    borderBottom: "1px solid var(--border-light)", fontSize: 13, lineHeight: 1.55,
+  };
+
+  const rowBg = {
+    low:      { background: "#f6fdf9" },
+    mod:      { background: "#fdf8ef" },
+    high:     { background: "#fdf2f2" },
+    mild:     { background: "#fdf8ef" },
+    moderate: { background: "#fff4f0" },
+    severe:   { background: "#fdf2f2" },
+  };
+
+  const riskLabel = (text, color) => (
+    <div style={{ fontWeight: 700, fontSize: 13, color, marginBottom: 4, fontFamily: "Sora, sans-serif" }}>{text}</div>
+  );
+
+  const riskPill = (text, bg, color) => (
+    <span style={{ display: "inline-block", fontSize: 11, fontWeight: 500, padding: "2px 8px", borderRadius: 4, marginBottom: 6, background: bg, color }}>{text}</span>
+  );
+
+  const cardStyle = {
+    background: "var(--surface)",
+    border: "1px solid var(--border)",
+    borderRadius: 10,
+    overflow: "hidden",
+    marginBottom: 0,
+  };
+
+  const cardHeader = {
+    padding: "10px 16px",
+    borderBottom: "1px solid var(--border-light)",
+    display: "flex", alignItems: "center", gap: 8,
+  };
+
+  const sectionLabel = {
+    display: "block", fontSize: 11, fontWeight: 700,
+    letterSpacing: "0.07em", textTransform: "uppercase",
+    color: "var(--text-muted)", marginBottom: 6, paddingLeft: 2,
+    fontFamily: "Sora, sans-serif",
+  };
+
+  return (
+    <div style={{ padding: "4px 0" }}>
+
+      {/* ── Step 1 callout ── */}
+      <div style={{
+        background: siteAccent, border: `1.5px solid ${siteColor}`,
+        borderRadius: 10, padding: "12px 16px",
+        display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 20,
+      }}>
+        <div style={{
+          width: 26, height: 26, borderRadius: "50%", background: siteColor,
+          color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "Sora, sans-serif",
+          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1,
+        }}>1</div>
+        <div>
+          <p style={{ fontSize: 13.5, color: siteColor, lineHeight: 1.55, margin: "0 0 6px" }}>
+            Before starting anthracyclines, stratify cardiovascular risk using the{" "}
+            <strong>HFA–ICOS baseline risk assessment tool</strong>. Risk category (low / moderate / high / very high)
+            determines surveillance intensity and need for Cardio-Oncology referral.
+          </p>
+          <a
+            href="https://www.mdcalc.com/calc/10642/hfa-icos-baseline-cardio-oncology-risk-assessment-anthracycline-chemotherapy"
+            target="_blank" rel="noopener noreferrer"
+            style={{ fontSize: 13, fontWeight: 700, color: siteColor }}
+          >
+            Open HFA–ICOS calculator ↗
+          </a>
+        </div>
+      </div>
+
+      {/* ── Table 1: Surveillance by risk ── */}
+      <span style={sectionLabel}>Table 1 — Surveillance by baseline risk</span>
+      <div style={{ ...cardStyle, marginBottom: 20 }}>
+        <div style={{ ...cardHeader, background: siteAccent }}>
+          <span style={{ fontSize: 13, color: siteColor }}>♥</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Baseline cardiovascular risk stratification &amp; surveillance</span>
+        </div>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+            <colgroup>
+              <col style={{ width: "18%" }} /><col style={{ width: "28%" }} />
+              <col style={{ width: "27%" }} /><col style={{ width: "27%" }} />
+            </colgroup>
+            <thead>
+              <tr>
+                <th style={thStyle}>Risk</th>
+                <th style={thStyle}>Baseline investigations</th>
+                <th style={thStyle}>Cardiac biomarkers</th>
+                <th style={thStyle}>Echocardiography</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Low */}
+              <tr>
+                <td style={{ ...tdBase, ...rowBg.low }}>
+                  {riskLabel("Low", "#0F6E56")}
+                  {riskPill("HFA-ICOS low", "#E1F5EE", "#085041")}
+                </td>
+                <td style={{ ...tdBase, ...rowBg.low }}><Ul items={["ECG", "Echocardiogram"]} /></td>
+                <td style={{ ...tdBase, ...rowBg.low }}><Ul items={["Routine serial measurement not required", "Consider if clinical or imaging changes suggest cardiotoxicity"]} /></td>
+                <td style={{ ...tdBase, ...rowBg.low }}><Ul items={["At completion of treatment", "12 months post-treatment"]} /></td>
+              </tr>
+              {/* Moderate */}
+              <tr>
+                <td style={{ ...tdBase, ...rowBg.mod }}>
+                  {riskLabel("Moderate", "#854F0B")}
+                  {riskPill("HFA-ICOS moderate", "#FAEEDA", "#633806")}
+                </td>
+                <td style={{ ...tdBase, ...rowBg.mod }}><Ul items={["ECG", "Echocardiogram"]} /></td>
+                <td style={{ ...tdBase, ...rowBg.mod }}>
+                  <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 4 }}>Consider at:</div>
+                  <Ul items={["Mid-therapy", "New cardiovascular symptoms", "Significant LVEF or GLS decline", "Clinical suspicion of cardiotoxicity"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.mod }}><Ul items={["Mid-treatment", "Completion of treatment", "12 months post-treatment"]} /></td>
+              </tr>
+              {/* High */}
+              <tr>
+                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
+                  {riskLabel("High / Very high", "#A32D2D")}
+                  {riskPill("HFA-ICOS high / very high", "#FCEBEB", "#791F1F")}
+                </td>
+                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {["ECG", "Echocardiogram (or CMR if suboptimal windows)", "hs-Troponin + NT-proBNP"].map((item, i) => (
+                      <li key={i} style={{ padding: "2px 0 2px 14px", position: "relative", color: "var(--text-secondary)", fontSize: 13, lineHeight: 1.55 }}>
+                        <span style={{ position: "absolute", left: 0, color: "var(--text-muted)" }}>•</span>{item}
+                      </li>
+                    ))}
+                    <li style={{ padding: "2px 0 2px 14px", position: "relative", fontWeight: 700, color: "#A32D2D", fontSize: 13 }}>
+                      <span style={{ position: "absolute", left: 0 }}>•</span>Refer to Cardio-Oncology clinic
+                    </li>
+                  </ul>
+                </td>
+                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
+                  <Ul items={["Serial measurement at baseline", "Individualised monitoring plan thereafter", "Interval may decrease if biomarkers rise"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
+                  <Ul items={["Every 3 cycles during treatment", "3 months post-treatment", "12 months post-treatment"]} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* ── Table 2: CTRCD classification ── */}
+      <span style={sectionLabel}>Table 2 — CTRCD classification &amp; management</span>
+      <div style={cardStyle}>
+        <div style={{ ...cardHeader, background: siteAccent }}>
+          <span style={{ fontSize: 13, color: siteColor }}>⚡</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Anthracycline-induced CTRCD — diagnosis &amp; management</span>
+        </div>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+            <colgroup>
+              <col style={{ width: "15%" }} /><col style={{ width: "28%" }} />
+              <col style={{ width: "28.5%" }} /><col style={{ width: "28.5%" }} />
+            </colgroup>
+            <thead>
+              <tr>
+                <th style={thStyle}>Severity</th>
+                <th style={thStyle}>Diagnostic criteria</th>
+                <th style={thStyle}>Symptomatic management</th>
+                <th style={thStyle}>Asymptomatic management</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Mild */}
+              <tr>
+                <td style={{ ...tdBase, ...rowBg.mild }}>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: "#854F0B", fontFamily: "Sora, sans-serif" }}>Mild</div>
+                </td>
+                <td style={{ ...tdBase, ...rowBg.mild }}>
+                  {subLabel("Symptomatic", true)}
+                  <Ul items={["Mild HF symptoms", "Not requiring initiation/escalation of intensive HF therapy"]} />
+                  {subLabel("Asymptomatic")}
+                  <Ul items={["EF ≥50%", "New relative GLS decline ≥15% from baseline", "And/or new rise in cardiac biomarkers"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.mild }}>
+                  {actionTag("MDT discussion", "mdt")}
+                  <Ul items={["Consider Cardio-Oncology MDT — continuation vs interruption", "Start HF therapy (ACEi/ARB/ARNI + beta-blocker + MRA + SGLT2i)"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.mild }}>
+                  {actionTag("Continue + monitor", "continue")}
+                  <Ul items={["Continue anthracyclines with close monitoring", "Initiate cardioprotective therapy — ACE inhibitor + beta-blocker", "Repeat echo + biomarkers in 4 weeks or at next cycle"]} />
+                </td>
+              </tr>
+              {/* Moderate */}
+              <tr>
+                <td style={{ ...tdBase, ...rowBg.moderate }}>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: "#A32D2D", fontFamily: "Sora, sans-serif" }}>Moderate</div>
+                </td>
+                <td style={{ ...tdBase, ...rowBg.moderate }}>
+                  {subLabel("Symptomatic", true)}
+                  <Ul items={["Outpatient intensification of diuretic and HF therapy required"]} />
+                  {subLabel("Asymptomatic")}
+                  <Ul items={["EF reduction ≥10 pp to EF 40–49%", "Or EF reduction <10 pp to EF 40–49% plus GLS decline ≥15% or new rise in biomarkers"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.moderate }}>
+                  {actionTag("MDT discussion", "mdt")}
+                  <Ul items={["Consider Cardio-Oncology MDT — continuation vs interruption", "Start HF therapy"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.moderate }}>
+                  {actionTag("Pause anthracyclines", "pause")}
+                  <Ul items={["Pause anthracyclines", "Refer to Cardio-Oncology MDT", "Start HF therapy"]} />
+                </td>
+              </tr>
+              {/* Severe */}
+              <tr>
+                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: "#791F1F", fontFamily: "Sora, sans-serif" }}>Severe / Very severe</div>
+                </td>
+                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
+                  {subLabel("Symptomatic", true)}
+                  <Ul items={["Severe — HF requiring hospitalisation", "Very severe — HF requiring inotropic/mechanical circulatory support or consideration of transplantation"]} />
+                  {subLabel("Asymptomatic")}
+                  <Ul items={["EF ≤40%"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
+                  {actionTag("Discontinue anthracyclines", "stop")}
+                  <Ul items={["Severe: pause anthracyclines + urgent Cardio-Oncology MDT referral + HF therapy", "Very severe: discontinue + urgent Cardio-Oncology MDT referral + HF therapy"]} />
+                </td>
+                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
+                  {actionTag("Pause anthracyclines", "pause")}
+                  <Ul items={["Pause anthracyclines", "Refer to Cardio-Oncology MDT", "Start HF therapy"]} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {/* Note */}
+        <div style={{
+          background: "var(--bg)", borderTop: "1px solid var(--border-light)",
+          padding: "8px 14px", fontSize: 12, color: "var(--text-muted)",
+          fontStyle: "italic", lineHeight: 1.5,
+        }}>
+          HF therapy = guideline-directed medical therapy: ACEi/ARB/ARNI + beta-blocker + MRA + SGLT2i as clinically appropriate.
+          ACE inhibitors must be discontinued for 48 hours before initiating ARNI. No washout required when switching from ARB to ARNI directly.
+        </div>
+      </div>
+
+    </div>
+  );
+}
+function ScopeDrugsSection({ sec, siteColor }) {
+  const classStyle = (cls) => {
+    if (!cls) return {};
+    const isXa = cls.toLowerCase().includes("xa");
+    return isXa
+      ? { background: "#E6F1FB", color: "#185FA5", border: "0.5px solid #85B7EB" }
+      : { background: "#EEEDFE", color: "#3C3489", border: "0.5px solid #AFA9EC" };
+  };
+
+  return (
+    <div className="detail-card">
+      <h3 style={{ marginBottom: 14 }}>{sec.heading}</h3>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+
+        <div style={{ border: "1px solid var(--border-light)", borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 14px", background: "var(--surface)", borderBottom: "1px solid var(--border-light)", fontSize: 13, fontWeight: 600, color: "var(--text-primary)" }}>
+            <span style={{ fontSize: 15, color: siteColor }}>📋</span>
+            Scope of document
+          </div>
+          <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+            {(sec.scope || []).map((item, i) => (
+              <li key={i} style={{ padding: "7px 14px 7px 28px", fontSize: 13, lineHeight: 1.55, color: "var(--text-secondary)", borderBottom: i < sec.scope.length - 1 ? "1px solid var(--border-light)" : "none", position: "relative", background: i % 2 === 0 ? "var(--bg)" : "var(--surface)" }}>
+                <span style={{ position: "absolute", left: 12, top: 8, color: siteColor, fontSize: 12, fontWeight: 700 }}>·</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div style={{ border: "1px solid var(--border-light)", borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 14px", background: "var(--surface)", borderBottom: "1px solid var(--border-light)", fontSize: 13, fontWeight: 600, color: "var(--text-primary)" }}>
+            <span style={{ fontSize: 15, color: siteColor }}>💊</span>
+            Drugs covered
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, padding: 10, background: "var(--bg)" }}>
+            {(sec.drugs || []).map((drug, i) => (
+              <div key={i} style={{ padding: "9px 11px", border: "1px solid var(--border-light)", borderRadius: 8, background: "var(--surface)", display: "flex", flexDirection: "column", gap: 3 }}>
+                <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--text-primary)", fontFamily: "Sora, sans-serif" }}>{drug.name}</span>
+                {drug.brand && <span style={{ fontSize: 11.5, color: "var(--text-muted)" }}>{drug.brand}</span>}
+                {drug.class && (
+                  <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 20, marginTop: 3, display: "inline-block", width: "fit-content", fontWeight: 500, ...classStyle(drug.class) }}>
+                    {drug.class}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+      {sec.note && (
+        <p style={{ marginTop: 10, fontSize: 12, color: "var(--text-muted)", fontStyle: "italic", lineHeight: 1.5 }}>
+          ⓘ {sec.note}
+        </p>
+      )}
+    </div>
+  );
+}
 function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedScore, setExpandedScore, onNavigate }) {
   if (sec.type === "callouts") {
     return (
@@ -7018,8 +9147,20 @@ borderRadius: 6,}}>
                         );
                       })}
                     </ul>
-                    {block.note && <p style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 6, fontStyle: "italic", lineHeight: 1.45 }}>{block.note}</p>}
-                  </div>
+                    {block.calcLink && (
+  <button
+    onClick={() => onNavigate({ type: "calculator", calcId: block.calcLink.calcId })}
+    className="detail-btn detail-btn-primary"
+    style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, fontSize: 12 }}
+  >
+    <IconExternal /> {block.calcLink.label}
+  </button>
+)}
+{block.note && (
+  <p style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 6, fontStyle: "italic", lineHeight: 1.45 }}>
+    {renderItemWithLinks(block.note)}
+  </p>
+)}                 </div>
                 );
               })}
             </div>
@@ -7029,8 +9170,13 @@ borderRadius: 6,}}>
       </div>
     );
   }
-
-  if (sec.type === "pills") {
+if (sec.type === "mscc_steroid_table") {
+  return <MSCCSteroidTable siteColor={siteColor} siteAccent={siteAccent} />;
+}
+if (sec.type === "scope_drugs") {
+    return <ScopeDrugsSection sec={sec} siteColor={siteColor} />;
+  }  
+if (sec.type === "pills") {
     return (
       <div className="detail-card">
         <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>
@@ -7292,21 +9438,37 @@ if (sec.type === "hypo_assessment") {
     );
   }
 
-  if (sec.type === "checklist") {
-    return (
-      <div className="detail-card">
-        <h3>{sec.heading}</h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 6 }}>
-          {sec.items.map((item, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13.5, color: "var(--text-secondary)", padding: "6px 0", borderBottom: "1px solid var(--border-light)" }}>
+  if (sec.type === "checklist") {return (
+  <div className="detail-card">
+    <h3>{sec.heading}</h3>
+    <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 6 }}>
+      {sec.items.map((item, i) => {
+        const hasSubitems = typeof item === "object" && item.subitems?.length;
+        const text = typeof item === "object" ? item.text : item;
+        return (
+          <div key={i} style={{ borderBottom: "1px solid var(--border-light)" }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13.5, color: "var(--text-secondary)", padding: hasSubitems ? "6px 0 4px" : "6px 0" }}>
               <span style={{ width: 18, height: 18, border: `2px solid ${siteColor}`, borderRadius: 4, flexShrink: 0, marginTop: 1, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.5 }} />
-              {item}
+              <span style={{ fontWeight: hasSubitems ? 500 : 400, color: hasSubitems ? "var(--text-primary)" : "var(--text-secondary)" }}>
+                {boldify(text)}
+              </span>
             </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+            {hasSubitems && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: 28, paddingBottom: 8 }}>
+                {item.subitems.map((sub, si) => (
+  <div key={si} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+    <span style={{ width: 13, height: 13, border: `2px solid ${siteColor}`, borderRadius: 3, flexShrink: 0, marginTop: 3, opacity: 0.5 }} />
+    {boldify(sub)}
+  </div>
+))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);}
 
   if (sec.type === "alert") {
     return (
@@ -7586,66 +9748,67 @@ if (sec.type === "hypo_assessment") {
     );
   }
 
-  if (sec.type === "list") {
-    if (sec.groups) {
-      const groupIconMap = {
-        history: SectionIcons.history,
-        immediate: SectionIcons.immediate,
-        bloods: SectionIcons.vial,
-        investigations: SectionIcons.imaging,
-        referral: SectionIcons.referral,
-        monitoring: SectionIcons.monitoring,
-        management: SectionIcons.management,
-        drug: SectionIcons.drug,
-      };
-      return (
-        <div className="detail-card">
-          <h3>{sec.heading}</h3>
-          <div style={{ marginTop: 8 }}>
-            {sec.groups.map((group, gi) => (
-              <div key={gi} className="mgmt-group">
-                <div className="mgmt-group-header">
-                  <span style={{ color: siteColor, display: "flex" }}>{groupIconMap[group.icon] || SectionIcons.management}</span>
-                  <span className="mgmt-group-label">{group.label}</span>
-                </div>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, padding: 0, margin: 0 }}>
-                  {group.items.map((item, ii) => {
-                    const isUrgent = typeof item === "string" && item.startsWith("!!");
-                    const text = isUrgent ? item.slice(2).trim() : item;
-                    return isUrgent ? (
-                      <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
-                        <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
-                        <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{boldify(text)}</span>
-                      </li>
-                    ) : (
-                      <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
-                        <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
-                        {boldify(text)}
-                      </li>
-                    );
-                  })}
-                </ul>
+  if (sec.type === "list") {if (sec.groups) {
+  const GROUP_COLORS = [
+    { header: "#E6F1FB", icon: "#B5D4F4", iconText: "#0C447C", label: "#185FA5", bullet: "#378ADD", border: "#B5D4F4" },
+    { header: "#FAEEDA", icon: "#FAC775", iconText: "#633806", label: "#854F0B", bullet: "#BA7517", border: "#FAC775" },
+    { header: "#E1F5EE", icon: "#9FE1CB", iconText: "#085041", label: "#0F6E56", bullet: "#1D9E75", border: "#9FE1CB" },
+    { header: "#EEEDFE", icon: "#CECBF6", iconText: "#3C3489", label: "#534AB7", bullet: "#7F77DD", border: "#CECBF6" },
+    { header: "#FAECE7", icon: "#F5C4B3", iconText: "#712B13", label: "#993C1D", bullet: "#D85A30", border: "#F5C4B3" },
+  ];
+
+  const groupIconMap = {
+    history: SectionIcons.history,
+    immediate: SectionIcons.immediate,
+    bloods: SectionIcons.vial,
+    investigations: SectionIcons.imaging,
+    referral: SectionIcons.referral,
+    monitoring: SectionIcons.monitoring,
+    management: SectionIcons.management,
+    drug: SectionIcons.drug,
+  };
+
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 10 }}>
+        {sec.groups.map((group, gi) => {
+          const c = GROUP_COLORS[gi % GROUP_COLORS.length];
+          return (
+            <div key={gi} style={{ border: `0.5px solid ${c.border}`, borderRadius: 10, overflow: "hidden", background: "var(--card-bg, #fff)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 14px", background: c.header }}>
+                <span style={{ width: 22, height: 22, borderRadius: 5, background: c.icon, color: c.iconText, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  {groupIconMap[group.icon] || SectionIcons.management}
+                </span>
+                <span style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", color: c.label }}>
+                  {group.label}
+                </span>
               </div>
-            ))}
-          </div>
-          {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>{sec.note}</p>}
-        </div>
-      );
-    }
-    return (
-      <div className="detail-card">
-        <h3>{sec.heading}</h3>
-        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 7, marginTop: 4 }}>
-          {(sec.items || []).map((item, i) => (
-            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)" }}>
-              <span style={{ color: siteColor, flexShrink: 0, marginTop: 3, fontSize: 10 }}>●</span>
-              {boldify(item)}
-            </li>
-          ))}
-        </ul>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, padding: "10px 14px 12px", margin: 0, borderTop: `0.5px solid ${c.border}` }}>
+                {group.items.map((item, ii) => {
+                  const isUrgent = typeof item === "string" && item.startsWith("!!");
+                  const text = isUrgent ? item.slice(2).trim() : item;
+                  return isUrgent ? (
+                    <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+                      <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
+                      <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{boldify(text)}</span>
+                    </li>
+                  ) : (
+                    <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                      <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                      {boldify(text)}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
       </div>
-    );
-  }
+      {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>{sec.note}</p>}
+    </div>
+  );
+}}
 
   if (sec.type === "table") {
     const rowColors = {
@@ -7796,7 +9959,15 @@ if (sec.type === "prophylaxis_box") {
       </div>
     );
   }
-
+  if (sec.type === "anthracycline_tables") {
+  return <AnthracyclineCTRCD siteColor={siteColor} siteAccent={siteAccent} />;
+}
+if (sec.type === "drug_registry") {
+  return <DrugRegistry entries={sec.entries} siteColor={siteColor} siteAccent={siteAccent} />;
+}
+if (sec.type === "contact_directory") {
+  return <ContactDirectory entries={sec.entries} siteColor={siteColor} siteAccent={siteAccent} />;
+}
   return null;
 }
 
@@ -8487,10 +10658,14 @@ const css = `
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 
 export default function App() {
+
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem("clinguide_auth") === "true");
+  if (!authed) return <><style>{css}</style><LoginScreen onLogin={() => setAuthed(true)} /></>;
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
-  const [expandedSections, setExpandedSections] = useState({ allSites: true, oncology: true, palliative: true, calculators: false });
+  const [expandedSections, setExpandedSections] = useState({ allSites: true, oncology: true, palliative: true, calculators: false, tools: true });
   const [expandedSidebarCats, setExpandedSidebarCats] = useState({});
+  const isSidebarCatOpen = (key) => expandedSidebarCats[key] === true; // default closed
   const [view, setView] = useState({ type: "home" }); // home | site | guideline | search
   const [favourites, setFavourites] = useState(() => {
     return [];
@@ -8524,7 +10699,6 @@ export default function App() {
   const toggleSidebarCat = (key) => {
     setExpandedSidebarCats(s => ({ ...s, [key]: s[key] === false ? true : false }));
   };
-  const isSidebarCatOpen = (key) => expandedSidebarCats[key] !== false; // default open
 
   const navigate = (v) => {
     setView(v);
@@ -8551,7 +10725,42 @@ export default function App() {
         g.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
-
+const DIRECTORY_DATA = {
+  callouts: {
+    heading: "Live Documents",
+    type: "callouts",
+    panels: [
+      {
+        label: "Live SharePoint documents — check these for up-to-date rota and contact information",
+        color: "#1a6b8a",
+        headerBg: "#e8f4f8",
+        blocks: [
+          {
+            icon: "referral",
+            heading: "Weekly Registrar & Consultant Rota",
+            color: "#742a2a",
+            bg: "#fff5f5",
+            border: "#fc8181",
+            items: ["!!Always check the live weekly rota for current registrar and consultant on-call assignments — this changes weekly"],
+            note: "[[Open Weekly Rota ↗|https://nhs.sharepoint.com/:x:/r/sites/RX1_MedicalWorkforce/_layouts/15/Doc.aspx?sourcedoc=%7BB380240E-02CE-41DB-8FFA-5DE495DEDC92%7D&file=Weekly%20Rota%20New.xlsx&action=default&mobileredirect=true]]",
+          },
+          {
+            icon: "referral",
+            heading: "Full Oncology Teams & Contacts Directory",
+            color: "#1a6b8a",
+            bg: "#e8f4f8",
+            border: "#90cde0",
+            items: ["Full contact list including consultants, SpRs, secretaries, and team-specific numbers — updated as rotas change"],
+            note: "[[Open Oncology Teams Directory ↗|https://nhs.sharepoint.com/:x:/r/sites/RX1_Oncology/_layouts/15/Doc.aspx?sourcedoc=%7B3E49A3EF-0644-49EC-A879-A12F87A7C33A%7D&file=Oncology%20Teams%20and%20links%20August%202025%20v1.xlsx&action=default&mobileredirect=true]]",
+          },
+        ],
+      },
+    ],
+  },
+    entries: [
+    // paste your full entries array here — all the ward/oncall/chemo/radiology/rt/cns/ahp entries
+  ],
+};
   const currentSite = view.type === "site" ? SITES.find(s => s.id === view.siteId) : null;
   const currentGuideline = view.type === "guideline" ? findGuideline(view.guidelineId) : null;
   const currentGuidelineSite = currentGuideline ? SITES.find(s => s.id === currentGuideline.siteId) : null;
@@ -8580,6 +10789,10 @@ export default function App() {
       { label: "Home", onClick: () => navigate({ type: "home" }) },
       { label: currentGuidelineSite?.label, onClick: () => navigate({ type: "site", siteId: currentGuidelineSite?.id }) },
       { label: currentGuideline?.title },
+    ];
+    if (view.type === "directory") return [
+      { label: "Home", onClick: () => navigate({ type: "home" }) },
+      { label: "Directory" },
     ];
     return [];
   };
@@ -8729,35 +10942,42 @@ export default function App() {
 
             <div className="sidebar-divider" />
 
-            {/* Calculators */}
+
+
+            <div className="sidebar-divider" />
+
+            {/* Tools */}
             <div className="sidebar-section">
-              <div className="sidebar-section-header" onClick={() => toggleSection("calculators")}>
-                <span className="sidebar-section-title">Calculators</span>
-                {expandedSections.calculators ? <IconChevronDown /> : <IconChevronRight />}
+              <div className="sidebar-section-header" onClick={() => toggleSection("tools")}>
+                <span className="sidebar-section-title">Tools</span>
+                {expandedSections.tools ? <IconChevronDown /> : <IconChevronRight />}
               </div>
-              {expandedSections.calculators && (
+              {expandedSections.tools && (
                 <div className="sidebar-section-body">
                   <div
                     className={`sidebar-item ${view.type === "calculators" ? "active" : ""}`}
                     onClick={() => navigate({ type: "calculators" })}
-                    style={{ fontSize: 12, color: "var(--text-muted)", paddingLeft: 10 }}
+                    style={{ fontSize: 13, paddingLeft: 10 }}
                   >
-                    <span style={{ opacity: 0.6, display: "flex" }}><IconCalc /></span>
-                    All Calculators
+                    <span style={{ display: "flex", opacity: 0.8 }}><IconCalc /></span>
+                    Calculators
                   </div>
-                  {Object.values(CALCULATORS).map(calc => (
-                    <div key={calc.id}
-                      className={`sidebar-item sidebar-sub-item ${view.type === "calculator" && view.calcId === calc.id ? "active" : ""}`}
-                      style={{ paddingLeft: 24 }}
-                      onClick={() => navigate({ type: "calculator", calcId: calc.id })}
-                    >
-                      <span style={{ fontSize: 12 }}>{calc.icon}</span>
-                      {calc.label}
-                    </div>
-                  ))}
+                  <div
+                    className={`sidebar-item ${view.type === "directory" ? "active" : ""}`}
+                    onClick={() => navigate({ type: "directory" })}
+                    style={{ fontSize: 13, paddingLeft: 10 }}
+                  >
+                    <span style={{ display: "flex", opacity: 0.8 }}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+                        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>
+                      </svg>
+                    </span>
+                    Directory
+                  </div>
                 </div>
               )}
             </div>
+
           </div>
         </aside>
 
@@ -8870,7 +11090,7 @@ export default function App() {
               />
             )}
 
-            {/* GUIDELINE */}
+{/* GUIDELINE */}
             {!searchActive && view.type === "guideline" && currentGuideline && (
               <GuidelineDetail
                 g={currentGuideline}
@@ -8880,6 +11100,12 @@ export default function App() {
                 onNavigate={navigate}
               />
             )}
+
+            {/* DIRECTORY */}
+            {!searchActive && view.type === "directory" && (
+              <DirectoryPage onNavigate={navigate} />
+            )}
+
           </div>
         </div>
       </div>
@@ -9225,12 +11451,387 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
 
       {/* Rich sections */}
       {(g.sections || []).map((sec, i) => (
-        <SectionBlock key={i} sec={sec} siteColor={site.color} siteAccent={site.accent}
-          siteId={site.id} subsiteId={g.subsiteId}
-          expandedScore={expandedScore} setExpandedScore={setExpandedScore} onNavigate={onNavigate} />
-      ))}
+  <div key={i} style={{ marginBottom: 16 }}>
+    <SectionBlock sec={sec} siteColor={site.color} siteAccent={site.accent}
+      siteId={site.id} subsiteId={g.subsiteId}
+      expandedScore={expandedScore} setExpandedScore={setExpandedScore} onNavigate={onNavigate} />
+  </div>
+))}
     </div>
   );
 }
+function ContactDirectory({ entries, siteColor, siteAccent }) {
+  const [query, setQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("all");
 
+  const CATEGORY_META = {
+    ward:      { label: "Wards",          color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0" },
+    oncall:    { label: "On-Call",        color: "#742a2a", bg: "#fff5f5", border: "#fc8181" },
+    chemo:     { label: "Chemo",          color: "#276749", bg: "#f0fff4", border: "#9ae6b4" },
+    radiology: { label: "Radiology",      color: "#553c9a", bg: "#f3effe", border: "#c4b5fd" },
+    rt:        { label: "Radiotherapy",   color: "#7b341e", bg: "#fff5f0", border: "#fbd38d" },
+    cns:       { label: "CNS",            color: "#0c4a6e", bg: "#e0f2fe", border: "#7dd3fc" },
+    ahp:       { label: "AHP & Support",  color: "#134e4a", bg: "#f0fdfa", border: "#99f6e4" },
+  };
+
+  const filters = [
+    { id: "all", label: "All" },
+    ...Object.entries(CATEGORY_META).map(([id, m]) => ({ id, label: m.label })),
+  ];
+
+  const q = query.toLowerCase().trim();
+  const filtered = entries.filter(e => {
+    const matchesFilter = activeFilter === "all" || e.category === activeFilter;
+    const matchesQuery = !q ||
+      e.name.toLowerCase().includes(q) ||
+      (e.note && e.note.toLowerCase().includes(q)) ||
+      (e.code && e.code.toLowerCase().includes(q)) ||
+      e.numbers.some(n => n.replace(/\s/g, "").includes(q.replace(/\s/g, "")));
+    return matchesFilter && matchesQuery;
+  });
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+
+      {/* Search */}
+      <div style={{ position: "relative" }}>
+        <div style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", pointerEvents: "none" }}>
+          <IconSearch />
+        </div>
+        <input
+          type="text"
+          placeholder="Search name, number, or ward code…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          style={{
+            width: "100%", padding: "10px 12px 10px 36px",
+            border: `1px solid ${query ? siteColor : "var(--border)"}`,
+            borderRadius: 8, fontSize: 14, fontFamily: "DM Sans, sans-serif",
+            background: "var(--bg)", color: "var(--text-primary)",
+            outline: "none", boxSizing: "border-box",
+            transition: "border-color 0.15s",
+          }}
+        />
+        {query && (
+          <button onClick={() => setQuery("")}
+            style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}>
+            <IconClose />
+          </button>
+        )}
+      </div>
+
+      {/* Category filter pills */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+        {filters.map(f => {
+          const meta = CATEGORY_META[f.id];
+          const active = activeFilter === f.id;
+          return (
+            <button key={f.id} onClick={() => setActiveFilter(f.id)}
+              style={{
+                padding: "4px 12px", borderRadius: 99,
+                border: `1px solid ${active && meta ? meta.border : "var(--border)"}`,
+                background: active ? (meta ? meta.bg : siteAccent) : "var(--bg)",
+                color: active ? (meta ? meta.color : siteColor) : "var(--text-muted)",
+                fontSize: 12, fontWeight: active ? 700 : 400,
+                fontFamily: "Sora, sans-serif", cursor: "pointer",
+                transition: "all 0.15s",
+              }}
+            >
+              {f.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Results count */}
+      <div style={{ fontSize: 12, color: "var(--text-muted)", fontFamily: "Sora, sans-serif" }}>
+        {filtered.length} contact{filtered.length !== 1 ? "s" : ""}{q ? ` matching "${query}"` : ""}
+      </div>
+
+      {/* Entries */}
+      {filtered.length === 0 ? (
+        <div style={{ padding: 24, textAlign: "center", color: "var(--text-muted)", fontSize: 13 }}>
+          No contacts found.
+        </div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+          {filtered.map((entry, i) => {
+            const cat = CATEGORY_META[entry.category] || CATEGORY_META.ward;
+            return (
+              <div key={i} style={{
+                display: "grid", gridTemplateColumns: "1fr auto",
+                padding: "9px 12px", background: "var(--surface)",
+                border: "1px solid var(--border)", borderLeft: `3px solid ${cat.border}`,
+                borderRadius: 7, gap: 10, alignItems: "center",
+              }}>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <span style={{ fontWeight: 600, fontSize: 13.5, fontFamily: "Sora, sans-serif", color: "var(--text-primary)" }}>
+                      {entry.name}
+                    </span>
+                    <span style={{
+                      fontSize: 11, padding: "1px 7px", borderRadius: 99,
+                      background: cat.bg, color: cat.color, border: `1px solid ${cat.border}`,
+                      fontWeight: 600, fontFamily: "Sora, sans-serif",
+                    }}>
+                      {cat.label}
+                    </span>
+                    {entry.code && (
+                      <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4, background: "var(--bg)", border: "1px solid var(--border)", color: "var(--text-muted)", fontFamily: "Sora, sans-serif" }}>
+                        {entry.code}
+                      </span>
+                    )}
+                  </div>
+                  {entry.note && (
+                    <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 3, lineHeight: 1.5 }}>
+                      {entry.note}
+                    </div>
+                  )}
+                  {entry.location && (
+  <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 2 }}>
+    📍 {entry.location}
+  </div>
+)}
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "flex-end", flexShrink: 0 }}>
+                  {entry.numbers.map((num, ni) => (
+                    <a key={ni} href={`tel:${num.replace(/\s/g, "")}`}
+                      style={{
+                        fontSize: 13, fontWeight: 700, fontFamily: "Sora, sans-serif",
+                        color: cat.color, textDecoration: "none",
+                        padding: "2px 8px", borderRadius: 5,
+                        background: cat.bg, border: `1px solid ${cat.border}`,
+                        whiteSpace: "nowrap",
+                      }}>
+                      📞 {num}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+function DirectoryPage({ onNavigate }) {
+  return (
+    <div>
+      <div className="home-greeting">
+        <h1>NUH Directory</h1>
+        <p>Wards, departments, CNS teams, radiology, radiotherapy and on-call contacts</p>
+      </div>
+      <div style={{ marginBottom: 16 }}>
+        <SectionBlock
+          sec={DIRECTORY_DATA.callouts}
+          siteColor="#1a6b8a"
+          siteAccent="#e8f4f8"
+          onNavigate={onNavigate}
+        />
+      </div>
+      <ContactDirectory
+        entries={DIRECTORY_DATA.entries}
+        siteColor="#1a6b8a"
+        siteAccent="#e8f4f8"
+      />
+    </div>
+  );
+}
+  // Drug table function
+function DrugRegistry({ entries, siteColor, siteAccent }) {
+  const [query, setQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const CATEGORY_META = {
+    chemo:        { label: "Cytotoxic chemotherapy", color: "#742a2a", bg: "#fff5f5", border: "#fc8181" },
+    targeted:     { label: "Targeted therapy",        color: "#7b341e", bg: "#fff5f0", border: "#fbd38d" },
+    immunotherapy:{ label: "Immunotherapy / ICI",     color: "#276749", bg: "#f0fff4", border: "#9ae6b4" },
+    hormone:      { label: "Hormonal / endocrine",    color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0" },
+    supportive:   { label: "Supportive / other",      color: "#553c9a", bg: "#f3effe", border: "#c4b5fd" },
+  };
+
+  const RISK_META = {
+    fn:           { label: "Febrile neutropaenia risk",   icon: "🦠" },
+    vesicant:     { label: "Vesicant",                     icon: "⚗" },
+    irritant:     { label: "Irritant",                     icon: "⚠" },
+    high_emetic:  { label: "High emetic risk",             icon: "🤢" },
+    mod_emetic:   { label: "Moderate emetic risk",         icon: "😮" },
+    cardiotox:    { label: "Cardiotoxicity risk",          icon: "♥" },
+    neurotox:     { label: "Neurotoxicity risk",           icon: "⚡" },
+    nephrotox:    { label: "Nephrotoxicity / hydration",   icon: "💧" },
+  };
+
+  const filters = [
+    { id: "all", label: "All" },
+    ...Object.entries(CATEGORY_META).map(([id, m]) => ({ id, label: m.label.split(" / ")[0].split(" ")[0] })),
+  ];
+
+  const q = query.toLowerCase().trim();
+  const filtered = entries.filter(e => {
+    const matchesFilter = activeFilter === "all" || e.category === activeFilter;
+    const matchesQuery = !q ||
+      e.name.toLowerCase().includes(q) ||
+      (e.brand && e.brand.toLowerCase().includes(q)) ||
+      (e.drugClass && e.drugClass.toLowerCase().includes(q)) ||
+      (e.notes && e.notes.toLowerCase().includes(q));
+    return matchesFilter && matchesQuery;
+  });
+
+  // Group by first letter for directory feel
+  const grouped = filtered.reduce((acc, drug) => {
+    const letter = drug.name[0].toUpperCase();
+    if (!acc[letter]) acc[letter] = [];
+    acc[letter].push(drug);
+    return acc;
+  }, {});
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+
+      {/* Search bar */}
+      <div style={{ position: "relative" }}>
+        <div style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", pointerEvents: "none" }}>
+          <IconSearch />
+        </div>
+        <input
+          type="text"
+          placeholder="Search drug name, brand, or class…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          style={{
+            width: "100%", padding: "10px 12px 10px 36px",
+            border: `1px solid ${query ? siteColor : "var(--border)"}`,
+            borderRadius: 8, fontSize: 14, fontFamily: "DM Sans, sans-serif",
+            background: "var(--bg)", color: "var(--text-primary)",
+            outline: "none", boxSizing: "border-box",
+            transition: "border-color 0.15s",
+          }}
+        />
+        {query && (
+          <button
+            onClick={() => setQuery("")}
+            style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}
+          >
+            <IconClose />
+          </button>
+        )}
+      </div>
+
+      {/* Category filter pills */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+        {filters.map(f => {
+          const meta = CATEGORY_META[f.id];
+          const active = activeFilter === f.id;
+          return (
+            <button key={f.id} onClick={() => setActiveFilter(f.id)}
+              style={{
+                padding: "4px 12px", borderRadius: 99, border: `1px solid ${active && meta ? meta.border : "var(--border)"}`,
+                background: active ? (meta ? meta.bg : siteAccent) : "var(--bg)",
+                color: active ? (meta ? meta.color : siteColor) : "var(--text-muted)",
+                fontSize: 12, fontWeight: active ? 700 : 400,
+                fontFamily: "Sora, sans-serif", cursor: "pointer",
+                transition: "all 0.15s",
+              }}
+            >
+              {f.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Results count */}
+      <div style={{ fontSize: 12, color: "var(--text-muted)", fontFamily: "Sora, sans-serif" }}>
+        {filtered.length} drug{filtered.length !== 1 ? "s" : ""}{q ? ` matching "${query}"` : ""}
+      </div>
+
+      {/* Drug list */}
+      {filtered.length === 0 ? (
+        <div style={{ padding: "24px", textAlign: "center", color: "var(--text-muted)", fontSize: 13 }}>
+          No drugs found matching your search.
+        </div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {Object.entries(grouped).sort(([a], [b]) => a.localeCompare(b)).map(([letter, drugs]) => (
+            <div key={letter}>
+              {/* Letter heading — only show when not searching */}
+              {!q && (
+                <div style={{ fontSize: 11, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6, paddingBottom: 4, borderBottom: `1px solid ${siteColor}33` }}>
+                  {letter}
+                </div>
+              )}
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                {drugs.sort((a, b) => a.name.localeCompare(b.name)).map((drug, i) => {
+                  const cat = CATEGORY_META[drug.category] || CATEGORY_META.supportive;
+                  return (
+                    <div key={i} style={{
+                      display: "grid", gridTemplateColumns: "1fr auto",
+                      padding: "10px 14px", background: "var(--surface)",
+                      border: `1px solid var(--border)`, borderLeft: `3px solid ${cat.border}`,
+                      borderRadius: 8, gap: 8,
+                    }}>
+                      {/* Left: name + class + notes */}
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+                          <span style={{ fontWeight: 700, fontSize: 14, fontFamily: "Sora, sans-serif", color: "var(--text-primary)" }}>
+                            {drug.name}
+                          </span>
+                          {drug.brand && (
+                            <span style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic" }}>
+                              {drug.brand}
+                            </span>
+                          )}
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 3, flexWrap: "wrap" }}>
+                          {/* Category pill */}
+                          <span style={{
+                            fontSize: 11, padding: "1px 7px", borderRadius: 99,
+                            background: cat.bg, color: cat.color, border: `1px solid ${cat.border}`,
+                            fontWeight: 600, fontFamily: "Sora, sans-serif",
+                          }}>
+                            {cat.label}
+                          </span>
+                          {/* Drug class */}
+                          {drug.drugClass && (
+                            <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
+                              {drug.drugClass}
+                            </span>
+                          )}
+                        </div>
+                        {drug.notes && (
+                          <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 4, lineHeight: 1.5 }}>
+                            {drug.notes}
+                          </div>
+                        )}
+                      </div>
+                      {/* Right: risk badges */}
+                      {drug.risks && drug.risks.length > 0 && (
+                        <div style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "flex-end", flexShrink: 0 }}>
+                          {drug.risks.map((risk, ri) => {
+                            const rm = RISK_META[risk];
+                            if (!rm) return null;
+                            return (
+                              <span key={ri} style={{
+                                fontSize: 11, padding: "2px 7px", borderRadius: 4,
+                                background: "var(--bg)", border: "1px solid var(--border)",
+                                color: "var(--text-secondary)", whiteSpace: "nowrap",
+                                fontFamily: "Sora, sans-serif",
+                              }}>
+                                {rm.icon} {rm.label}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 // ── CALCULATORS REGISTRY ─────────────────────────────────────────────────────
