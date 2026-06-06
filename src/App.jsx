@@ -327,92 +327,6 @@ const SITES = [
       ],
     },
     {
-      id: "new-suspected-cancer",
-      title: "New Suspected Cancer",
-      category: "NUH Oncology Resources",
-      version: "1.0",
-      authors: "NUH Acute Oncology / Inter-Specialty Working Group",
-      evidenceBase: "NUH Inter-Specialty Working Group",
-      summary: "Pathway for managing a new suspected cancer identified radiologically. Covers localised, metastatic with known primary, and metastatic with unknown primary. Includes inpatient referral guidance and AOS contact details.",
-      tags: ["New cancer", "Suspected cancer", "Radiology", "MDT referral", "AOS", "NSCP", "2WW", "Metastatic"],
-      related: [],
-      updated: "Current",
-      summaryCalcLink: {
-        url: "https://nhs.sharepoint.com/sites/RX1_InterSpecialtyWorking/SiteAssets/Forms/AllItems.aspx?id=%2Fsites%2FRX1_InterSpecialtyWorking%2FSiteAssets%2FSitePages%2FNew-suspected-cancer-identified-radiologically%2FNew-cancer-v7-CP%2Epdf&parent=%2Fsites%2FRX1_InterSpecialtyWorking%2FSiteAssets%2FSitePages%2FNew-suspected-cancer-identified-radiologically",
-        label: "View NUH PDF Pathway",
-        text: "New suspected cancer identified radiologically — NUH inter-specialty pathway (PDF)",
-      },
-      sections: [
-        {
-          heading: "Inpatient Referral Guidance",
-          type: "notice_box",
-          preamble: {
-            main: "Patients with a new radiological cancer diagnoses rarely require acute inpatient care under Oncology",
-            exception: "exceptions may include those requiring urgent oncological treatments such as radiotherapy for malignant spinal cord compression",
-          },
-          callout: {
-            subheading: "For a patient with a new diagnosis of suspected metastatic cancer requiring an inpatient stay, please contact:",
-            criticalItems: [
-              "**In-Hours (Mon–Sat 8am–4pm):** Acute Oncology Services (AOS) — NerveCentre referral",
-              { type: "tel_links", prefix: "**Urgent advice:**", links: [{ tel: "07812268675", label: "☎ 07812 268675" }, { tel: "07812276520", label: "☎ 07812 276520" }] },
-              { type: "tel", text: "**Out of Hours:** Oncology SpR via Switch", tel: "01159691122", telLabel: "☎ 0115 969 1122" },
-            ],
-            items: [
-              { type: "email", prefix: "If discharging prior to AOS input/review, email patient details to", email: "nuhnt.acuteoncologyservices@nhs.net", suffix: "for patient support and tracking" },
-              { type: "link_callout", text: "Refer to Oncology Pull Criteria for guidance regarding patients who are appropriate for admission under Oncology", guidelineId: "oncology-pull-criteria", linkLabel: "View Pull Criteria" },
-            ],
-          },
-        },
-        {
-          heading: "Pathway by Radiological Scenario",
-          type: "scenario_cards",
-          cards: [
-            {
-              label: "Localised disease — site identified",
-              detail: "e.g. bowel mass on CT, no evidence of metastases",
-              actions: [
-                "Refer to site-specific MDT and **Consultant Upgrade (ConsUp)** on Nervecentre (e.g. Lower GI)",
-                "Involve specialty team +/- CNS as needed",
-              ],
-            },
-            {
-              label: "Metastatic disease — primary site suspected",
-              detail: "e.g. bowel mass with liver metastases",
-              actions: [
-                "Refer to site-specific MDT and **ConsUp** on Nervecentre as per likely primary (e.g. Lower GI)",
-                "Involve **AOS** to support patient and assist with pathway navigation/tracking",
-              ],
-            },
-            {
-              label: "Metastatic disease — NO likely primary identified",
-              detail: "",
-              actions: [
-                "Establish **ECOG status**",
-                "Consider referring for additional diagnostic tests (e.g. staging CT, biopsy) depending on ECOG",
-                "Refer to **AOS** and **Non-Specific Symptoms of Cancer (NSCP) Clinic** via Nervecentre",
-              ],
-            },
-          ],
-        },
-        {
-          heading: "Key Principles",
-          type: "list",
-          groups: [
-            {
-              label: "Key Principles for Inpatient Management",
-              icon: "management",
-              items: [
-                "Patients with a new radiological cancer diagnoses rarely require acute inpatient care under Oncology (exceptions may include those requiring urgent oncological treatments such as radiotherapy for malignant spinal cord compression)",
-                "Patients with a new diagnosis of suspected cancer requiring admission should be referred to the most appropriate specialty to manage the acute presenting symptoms or pathology",
-                "Admission should not be used to facilitate diagnostic tests for cancer; diagnostic tests are better undertaken as an outpatient via an established 2WW diagnostic pathway",
-                "Liaise with Acute Oncology Service (AOS) for advice and support if unsure; or discuss with the Oncology SpR if urgent advice is required out of hours",
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
       id: "oncology-pull-criteria",
       title: "Oncology Pull Criteria",
       category: "NUH Oncology Resources",
@@ -638,8 +552,267 @@ const SITES = [
   ],
 },
       {
+        id: "cancer-pathways",
+        label: "Cancer Pathways",
+        guidelines: [
+          {
+            id: "new-suspected-cancer",
+            title: "New Suspected Cancer",
+            category: "Cancer Pathways",
+            version: "1.0",
+            authors: "NUH Acute Oncology / Inter-Specialty Working Group",
+            evidenceBase: "NUH Inter-Specialty Working Group",
+            summary: "Pathway for managing a new suspected cancer identified radiologically. Covers localised, metastatic with known primary, and metastatic with unknown primary. Includes inpatient referral guidance and AOS contact details.",
+            tags: ["New cancer", "Suspected cancer", "Radiology", "MDT referral", "AOS", "NSCP", "2WW", "Metastatic"],
+            related: [],
+            updated: "Current",
+            summaryCalcLink: {
+              url: "https://nhs.sharepoint.com/sites/RX1_InterSpecialtyWorking/SiteAssets/Forms/AllItems.aspx?id=%2Fsites%2FRX1_InterSpecialtyWorking%2FSiteAssets%2FSitePages%2FNew-suspected-cancer-identified-radiologically%2FNew-cancer-v7-CP%2Epdf&parent=%2Fsites%2FRX1_InterSpecialtyWorking%2FSiteAssets%2FSitePages%2FNew-suspected-cancer-identified-radiologically",
+              label: "View NUH PDF Pathway",
+              text: "New suspected cancer identified radiologically — NUH inter-specialty pathway (PDF)",
+            },
+            sections: [
+              {
+                heading: "Inpatient Referral Guidance",
+                type: "notice_box",
+                preamble: {
+                  main: "Patients with a new radiological cancer diagnoses rarely require acute inpatient care under Oncology",
+                  exception: "exceptions may include those requiring urgent oncological treatments such as radiotherapy for malignant spinal cord compression",
+                },
+                callout: {
+                  subheading: "For a patient with a new diagnosis of suspected metastatic cancer requiring an inpatient stay, please contact:",
+                  criticalItems: [
+                    "**In-Hours (Mon–Sat 8am–4pm):** Acute Oncology Services (AOS) — NerveCentre referral",
+                    { type: "tel_links", prefix: "**Urgent advice:**", links: [{ tel: "07812268675", label: "☎ 07812 268675" }, { tel: "07812276520", label: "☎ 07812 276520" }] },
+                    { type: "tel", text: "**Out of Hours:** Oncology SpR via Switch", tel: "01159691122", telLabel: "☎ 0115 969 1122" },
+                  ],
+                  items: [
+                    { type: "email", prefix: "If discharging prior to AOS input/review, email patient details to", email: "nuhnt.acuteoncologyservices@nhs.net", suffix: "for patient support and tracking" },
+                    { type: "link_callout", text: "Refer to Oncology Pull Criteria for guidance regarding patients who are appropriate for admission under Oncology", guidelineId: "oncology-pull-criteria", linkLabel: "View Pull Criteria" },
+                  ],
+                },
+              },
+              {
+                heading: "Pathway by Radiological Scenario",
+                type: "scenario_cards",
+                cards: [
+                  {
+                    label: "Localised disease — site identified",
+                    detail: "e.g. bowel mass on CT, no evidence of metastases",
+                    actions: [
+                      "Refer to site-specific MDT and **Consultant Upgrade (ConsUp)** on Nervecentre (e.g. Lower GI)",
+                      "Involve specialty team +/- CNS as needed",
+                    ],
+                  },
+                  {
+                    label: "Metastatic disease — primary site suspected",
+                    detail: "e.g. bowel mass with liver metastases",
+                    actions: [
+                      "Refer to site-specific MDT and **ConsUp** on Nervecentre as per likely primary (e.g. Lower GI)",
+                      "Involve **AOS** to support patient and assist with pathway navigation/tracking",
+                    ],
+                  },
+                  {
+                    label: "Metastatic disease — NO likely primary identified",
+                    detail: "",
+                    actions: [
+                      "Establish **ECOG status**",
+                      "Consider referring for additional diagnostic tests (e.g. staging CT, biopsy) depending on ECOG",
+                      "Refer to **AOS** and **Non-Specific Symptoms of Cancer (NSCP) Clinic** via Nervecentre",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Key Principles",
+                type: "list",
+                groups: [
+                  {
+                    label: "Key Principles for Inpatient Management",
+                    icon: "management",
+                    items: [
+                      "Patients with a new radiological cancer diagnoses rarely require acute inpatient care under Oncology (exceptions may include those requiring urgent oncological treatments such as radiotherapy for malignant spinal cord compression)",
+                      "Patients with a new diagnosis of suspected cancer requiring admission should be referred to the most appropriate specialty to manage the acute presenting symptoms or pathology",
+                      "Admission should not be used to facilitate diagnostic tests for cancer; diagnostic tests are better undertaken as an outpatient via an established 2WW diagnostic pathway",
+                      "Liaise with Acute Oncology Service (AOS) for advice and support if unsure; or discuss with the Oncology SpR if urgent advice is required out of hours",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "germ-cell-admission",
+            title: "Germ Cell Tumour: Chemotherapy Admission",
+            category: "Cancer Pathways",
+            version: "1.0",
+            authors: "Dr Ivo M Hennig / Dr L Gossage",
+            evidenceBase: "NUH Oncology Governance Forum | Target: Junior Doctors on Adult Oncology Wards",
+            summary: "Admission guidelines for germ cell tumour patients receiving chemotherapy at NUH. Covers regimens in use, admission criteria, D1 checklist, monitoring during treatment, and discharge planning.",
+            tags: ["Germ cell", "Testicular", "BEP", "TIP", "VIP", "CBOP", "Cisplatin", "Ifosfamide", "Bleomycin", "Admission", "Chemotherapy"],
+            related: ["oncology-drug-list"],
+            updated: "September 2019",
+            sections: [
+              {
+                heading: "Chemotherapy Regimens in Use",
+                type: "table",
+                preamble: "GCT systemic therapy is usually given with curative intent. These patients have admission priority over most other oncology patients and are for full active management, unless otherwise stated by their consultant.",
+                callout: {
+                  text: "For individual drug toxicity profiles, emetic risk classification, and vesicant status, refer to the Oncology Drug Reference.",
+                  guidelineId: "oncology-drug-list",
+                  linkLabel: "Drug Reference →",
+                },
+                columns: ["Regimen", "Agents"],
+                rows: [
+                  ["BEP", "Bleomycin, Etoposide, CisPlatin"],
+                  ["PEP", "Paclitaxel, Etoposide, CisPlatin"],
+                  ["CBOP / BEP", "Carboplatin, Bleomycin, Vincristine (Oncovin), CisPlatin / BEP15"],
+                  ["VbIP", "Vinblastine, Ifosfamide, CisPlatin"],
+                  ["TIP", "Paclitaxel, Ifosfamide, CisPlatin"],
+                  ["TI", "Paclitaxel, Ifosfamide — induction prior to high-dose chemotherapy (2-weekly cycle)"],
+                  ["VIP", "Etoposide (Vepesid), Ifosfamide, CisPlatin"],
+                ],
+              },
+              {
+                heading: "Admission Scheduling",
+                type: "list",
+                groups: [
+                  {
+                    label: "Tuesday Admissions",
+                    icon: "monitoring",
+                    items: [
+                      { label: "Patients are usually admitted on Tuesdays", detail: "BEP / BEP15: ensures D8 and D15 Bleomycin infusions coincide with outpatient clinic appointments" },
+                      { label: "Other regimens", detail: "Weekly tumour markers are drawn at the same clinic visit" },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Admission Checklist",
+                type: "proc_steps",
+                preAlert: "Contact the GCT **Consultant in charge** if there are **any queries** before starting chemotherapy",
+                groups: [
+                  {
+                    label: "Admission — D1 of every 21-day cycle",
+                    steps: [
+                      {
+                        num: 1,
+                        action: "**Access and bloods**",
+                        rationale: "FBC, U&Es, LFTs, Bone, Mg, AFP, HCG, LDH — send urgently (P1)",
+                        subItems: [
+                          "Cannula or PICC access — see [[proc-picc-blood-samples|PICC Blood Sampling guide]]",
+                          "Use **Germ Cell Admission** profile on Nervecentre",
+                          "Add **Glucose** and **TFTs** if clinically indicated",
+                        ],
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 2,
+                        action: "**Weight**",
+                        rationale: "Weigh on admission",
+                        subItems: [
+                          "If weight changed >5 kg from last Chemocare weight — contact Consultant before proceeding",
+                          "Fluid overload can manifest as weight change and may alter dosing and toxicity",
+                        ],
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 3,
+                        action: "**Pre-hydration**",
+                        rationale: "Can begin before patient reaches ward or results return — deferral is uncommon",
+                        subItems: ["Start as soon as possible as prescribed on Chemocare"],
+                        warning: null, note: null,
+                      },
+                      {
+                        num: 4,
+                        action: "**Antiemetics**",
+                        rationale: "Highly emetogenic regimen — be proactive with controlling nausea and vomiting",
+                        subItems: [
+                          "Prescribe from Chemocare chart onto inpatient chart",
+                          "Add **Ondansetron 8mg PO PRN** (max 16mg/24h) to chart",
+                          "Ensure Fosprepitant is prescribed — check with Consultant or Registrar if absent",
+                        ],
+                        warning: null, note: null,
+                      },
+                    ],
+                  },
+                  {
+                    label: "History & Examination — Toxicity Checklist",
+                    preAlert: "Use pre-admission form where possible",
+                    footerNote: "No further routine bloods are required during admission",
+                    steps: [
+                      { num: null, action: "Nausea and vomiting",             rationale: "All patients — especially Cisplatin and Ifosfamide regimens",                           warning: null, note: null },
+                      { num: null, action: "Lung toxicity",                    rationale: "Bleomycin Toxicity: fine inspiratory crackles, shortness of breath",                     warning: null, note: null },
+                      { num: null, action: "Skin toxicity",                    rationale: "Bleomycin Toxicity: papules/nodules on hands, hyperpigmentation or other skin changes",  warning: null, note: null },
+                      { num: null, action: "Peripheral neuropathy",            rationale: "Neurotoxicity: Cisplatin, Paclitaxel, Vinblastine, Vincristine",                         warning: null, note: null },
+                      { num: null, action: "Encephalopathy",                   rationale: "Ifosfamide Toxicity",                                                                     warning: null, note: null },
+                      { num: null, action: "Chemical / haemorrhagic cystitis", rationale: "Ifosfamide Toxicity",                                                                     warning: null, note: null },
+                      {
+                        num: null,
+                        action: "**Pre-Chemotherapy Labs**",
+                        rationale: "All criteria must be met before chemotherapy can be authorised",
+                        subItems: [
+                          "WBC >2 or **Neutrophils >1.0**",
+                          "**Platelets >100** (or as per Chemocare)",
+                          "Renal Function: Stable GFR within 10% of prior authorisation labs AND ≥60 ml/min",
+                        ],
+                        warning: "If any criterion not met — **contact Consultant before proceeding**",
+                        note: null,
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "GCT Chemotherapy — Common Issues",
+                type: "issues_table",
+                rows: [
+                  {
+                    issue: "Cisplatin — Diuresis",
+                    bullets: [
+                      "Ensure urine output **>100 ml/hr** for 2 hours prior to Cisplatin",
+                      "If not achieved: prescribe **Mannitol 10% 500 ml IV over 1 hour**",
+                    ],
+                  },
+                  {
+                    issue: "Fluid Overload — First line (Mannitol)",
+                    bullets: [
+                      "Common during chemotherapy — no intervention unless symptomatic",
+                      "If symptomatic: **Mannitol 10% 500 ml IV over 1 hour** (may repeat)",
+                    ],
+                  },
+                  {
+                    issue: "Fluid Overload — Mannitol failure (Bumetanide)",
+                    bullets: [
+                      "Use **Bumetanide 1mg IV slow bolus or PO**",
+                      "Preferred over Furosemide — **less nephrotoxic** in patients on Cisplatin",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Discharge",
+                type: "list",
+                groups: [
+                  {
+                    label: "Discharge Checklist",
+                    icon: "referral",
+                    items: [
+                      { label: "Issue blood forms for D8 and D15", detail: "FBC, U&Es, LFTs, Bone, Mg, AFP, HCG, LDH — use **GCT Tumour Markers** profile on Nervecentre" },
+                      { label: "Book outpatient clinic — code IH12C", detail: "Book chemotherapy clinic for Bleomycin infusion on the same afternoon — clinic attendance must be before Bleomycin is given" },
+                      { label: "Book next cycle admission via Admissions Team", detail: "21 days after starting the last cycle — preferably on a **Tuesday**" },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
         id: "onco-emergencies",
         label: "Oncology Emergencies",
+        dividerBefore: true,
         guidelines: [
           {
             id: "onco-neutropenic-sepsis",
@@ -10171,17 +10344,34 @@ if (sec.type === "hypo_assessment") {
 );}
 
   if (sec.type === "alert") {
+    const isWarn = sec.variant === "warning";
+    const AC = isWarn
+      ? { border: "#f6ad55", bg: "#fffbeb", heading: "#744210", bullet: "#dd6b20", text: "#7b4a00", btn: "#dd6b20" }
+      : { border: "#e53e3e", bg: "#fff5f5", heading: "#c53030", bullet: "#e53e3e", text: "#742a2a", btn: "#c53030" };
     return (
-      <div className="detail-card" style={{ borderLeft: `3px solid #e53e3e`, background: "#fff5f5" }}>
-        <h3 style={{ color: "#c53030" }}>{sec.heading}</h3>
-        {sec.note && <p style={{ fontSize: 13, color: "#742a2a", marginBottom: 10, fontStyle: "italic" }}>{sec.note}</p>}
+      <div className="detail-card" style={{ borderLeft: `3px solid ${AC.border}`, background: AC.bg }}>
+        {sec.heading && <h3 style={{ color: AC.heading }}>{sec.heading}</h3>}
+        {sec.note && <p style={{ fontSize: 13, color: AC.text, marginBottom: 10, fontStyle: "italic" }}>{sec.note}</p>}
         <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
           {sec.items.map((item, i) => {
+            if (item && typeof item === "object" && item.type === "nav") {
+              return (
+                <li key={i} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                  <span style={{ fontSize: 13, color: AC.text, lineHeight: 1.45, flex: 1 }}>{boldify(item.text)}</span>
+                  <button
+                    onClick={() => onNavigate({ type: "guideline", guidelineId: item.guidelineId })}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "6px 14px", background: AC.btn, color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, fontSize: 12.5, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0 }}
+                  >
+                    {item.linkLabel}
+                  </button>
+                </li>
+              );
+            }
             if (item && typeof item === "object" && item.tel) {
               return (
                 <li key={i} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 13.5, color: "#742a2a", lineHeight: 1.4, flex: 1 }}>{boldify(item.text)}</span>
-                  <a href={`tel:${item.tel}`} style={{ display: "inline-block", padding: "5px 14px", background: "#c53030", color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 12.5, textDecoration: "none", fontFamily: "Sora, sans-serif", flexShrink: 0, whiteSpace: "nowrap" }}>
+                  <span style={{ fontSize: 13.5, color: AC.text, lineHeight: 1.4, flex: 1 }}>{boldify(item.text)}</span>
+                  <a href={`tel:${item.tel}`} style={{ display: "inline-block", padding: "5px 14px", background: AC.btn, color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 12.5, textDecoration: "none", fontFamily: "Sora, sans-serif", flexShrink: 0, whiteSpace: "nowrap" }}>
                     {item.telLabel || `☎ ${item.tel}`}
                   </a>
                 </li>
@@ -10191,12 +10381,12 @@ if (sec.type === "hypo_assessment") {
               return (
                 <li key={i} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                    <span style={{ color: "#e53e3e", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
-                    <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.4 }}>{item.label}</span>
+                    <span style={{ color: AC.bullet, marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 700, color: AC.text, lineHeight: 1.4 }}>{item.label}</span>
                   </div>
                   {item.detail && (
-                    <div style={{ paddingLeft: 20, fontSize: 12.5, color: "#9b2c2c", lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 6 }}>
-                      <span style={{ color: "#e53e3e", flexShrink: 0, fontSize: 8, marginTop: 5 }}>●</span>
+                    <div style={{ paddingLeft: 20, fontSize: 12.5, color: AC.text, lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 6, opacity: 0.85 }}>
+                      <span style={{ color: AC.bullet, flexShrink: 0, fontSize: 8, marginTop: 5 }}>●</span>
                       <span>{boldify(item.detail)}</span>
                     </div>
                   )}
@@ -10204,8 +10394,8 @@ if (sec.type === "hypo_assessment") {
               );
             }
             return (
-              <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "#742a2a" }}>
-                <span style={{ color: "#e53e3e", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
+              <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: AC.text }}>
+                <span style={{ color: AC.bullet, marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
                 {boldify(item)}
               </li>
             );
@@ -10426,6 +10616,14 @@ if (sec.type === "hypo_assessment") {
           <h3 style={{ margin: 0 }}>{sec.heading}</h3>
           {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4, fontStyle: "italic", marginBottom: 0 }}>ⓘ {sec.note}</p>}
         </div>
+        {sec.preAlert && (
+          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 16px", background: "#fffbeb", borderBottom: "1px solid #f6d860", flexWrap: "wrap" }}>
+            <span style={{ flexShrink: 0, color: "#92700a", display: "flex" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.5 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.41 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span style={{ fontSize: 13, color: "#7b4a00", lineHeight: 1.45, fontWeight: 600 }}>{renderInline(sec.preAlert, onNavigate)}</span>
+          </div>
+        )}
         {sec.groups.map((group, gi) => (
           <div key={gi} style={{ borderBottom: gi < sec.groups.length - 1 ? "1px solid var(--border-light)" : "none" }}>
             {/* Group header */}
@@ -10433,6 +10631,14 @@ if (sec.type === "hypo_assessment") {
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: C, flexShrink: 0 }} />
               <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: C, letterSpacing: "-0.01em" }}>{group.label}</span>
             </div>
+            {group.preAlert && (
+              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 16px", background: "#fffbeb", borderBottom: "1px solid #f6d860" }}>
+                <span style={{ flexShrink: 0, color: "#92700a", display: "flex" }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="13" height="13"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </span>
+                <span style={{ fontSize: 12.5, color: "#7b4a00", lineHeight: 1.4, fontStyle: "italic" }}>{renderInline(group.preAlert, onNavigate)}</span>
+              </div>
+            )}
             {/* Step rows */}
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5, textAlign: "left" }}>
@@ -10447,10 +10653,23 @@ if (sec.type === "hypo_assessment") {
                   {group.steps.map((step, si) => (
                     <tr key={si} style={{ borderBottom: si < group.steps.length - 1 ? "1px solid var(--border-light)" : "none", background: si % 2 === 0 ? "var(--surface)" : "var(--bg)" }}>
                       <td style={{ padding: "9px 12px", verticalAlign: "top" }}>
-                        <div style={{ width: 24, height: 24, borderRadius: "50%", background: C, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{step.num}</div>
+                        {step.num != null
+                          ? <div style={{ width: 24, height: 24, borderRadius: "50%", background: C, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{step.num}</div>
+                          : <div style={{ width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center" }}><div style={{ width: 6, height: 6, borderRadius: "50%", background: C, opacity: 0.45 }} /></div>
+                        }
                       </td>
                       <td style={{ padding: "9px 12px", verticalAlign: "top", lineHeight: 1.55, color: "var(--text-secondary)" }}>
                         {renderInline(step.action, onNavigate)}
+                        {step.subItems && (
+                          <ul style={{ margin: "5px 0 2px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 2 }}>
+                            {step.subItems.map((sub, sbi) => (
+                              <li key={sbi} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.45, paddingLeft: 4 }}>
+                                <span style={{ color: C, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                {renderInline(sub, onNavigate)}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                         {step.warning && (
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 7, marginTop: 6, padding: "5px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
                             <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 1 }}>⚡</span>
@@ -10470,6 +10689,11 @@ if (sec.type === "hypo_assessment") {
                 </tbody>
               </table>
             </div>
+            {group.footerNote && (
+              <div style={{ padding: "7px 16px", background: "var(--bg)", borderTop: "1px solid var(--border-light)" }}>
+                <span style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic" }}>ⓘ {group.footerNote}</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -10635,7 +10859,14 @@ if (sec.type === "hypo_assessment") {
     };
     return (
       <div className="detail-card" style={{ overflowX: "auto" }}>
-        <h3>{sec.heading}</h3>
+        {sec.heading && <h3>{sec.heading}</h3>}
+        {sec.preamble && <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: 10, padding: "8px 12px", background: "var(--surface)", borderRadius: 6, borderLeft: "3px solid var(--border)" }}>{sec.preamble}</p>}
+        {sec.callout && (
+          <div style={{ background: "#fffbeb", border: "1px solid #f6ad55", borderRadius: 6, padding: "8px 12px", marginBottom: 10, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 12.5, color: "#7b4a00", lineHeight: 1.45, flex: 1 }}>{sec.callout.text}</span>
+            <button onClick={() => onNavigate({ type: "guideline", guidelineId: sec.callout.guidelineId })} style={{ display: "inline-flex", alignItems: "center", gap: 4, padding: "5px 12px", background: "#dd6b20", color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, fontSize: 12, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0 }}>{sec.callout.linkLabel}</button>
+          </div>
+        )}
         <table style={{ width: "100%", borderCollapse: "collapse", marginTop: 10, fontSize: 13 }}>
           <thead>
             <tr style={{ background: "var(--bg)" }}>
@@ -11067,6 +11298,45 @@ if (sec.type === "link_table") {
     </div>
   );
 }
+  if (sec.type === "issues_table") {
+    const C = siteColor;
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 18px", background: siteAccent, borderBottom: "1px solid var(--border-light)" }}>
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: C, flexShrink: 0 }} />
+          <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12.5, color: C, letterSpacing: "-0.01em" }}>{sec.heading}</span>
+        </div>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5, textAlign: "left" }}>
+            <thead>
+              <tr style={{ borderBottom: "1px solid var(--border)" }}>
+                <th style={{ padding: "7px 14px", background: "var(--bg)", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", width: "32%", whiteSpace: "nowrap" }}>Issue</th>
+                <th style={{ padding: "7px 14px", background: "var(--bg)", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif" }}>Troubleshooting</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sec.rows.map((row, ri) => (
+                <tr key={ri} style={{ borderBottom: ri < sec.rows.length - 1 ? "1px solid var(--border-light)" : "none", background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)" }}>
+                  <td style={{ padding: "10px 14px", verticalAlign: "top", fontWeight: 700, color: "var(--text-primary)", fontFamily: "Sora, sans-serif", fontSize: 12.5, lineHeight: 1.45 }}>{renderInline(row.issue, onNavigate)}</td>
+                  <td style={{ padding: "10px 14px", verticalAlign: "top" }}>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                      {row.bullets.map((bullet, bi) => (
+                        <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                          <span style={{ color: C, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                          {renderInline(bullet, onNavigate)}
+                        </li>
+                      ))}
+                    </ul>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
   return null;
 }
 
@@ -12013,6 +12283,7 @@ const DIRECTORY_DATA = {
                               const open = isSidebarCatOpen(ssKey);
                               return (
                                 <div key={ss.id}>
+                                  {ss.dividerBefore && <div style={{ height: 1, background: "var(--border-light)", margin: "6px 10px 6px 22px", opacity: 0.7 }} />}
                                   <div
                                     onClick={() => toggleSidebarCat(ssKey)}
                                     style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 10px 5px 22px", cursor: "pointer", userSelect: "none" }}
