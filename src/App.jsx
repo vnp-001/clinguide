@@ -3,6 +3,19 @@ import { useState, useEffect, useRef } from "react";
 // ── DATA ──────────────────────────────────────────────────────────────────────
 const CHANGELOG = [
   {
+    version: "0.4",
+    date: "June 2026",
+    label: "Preview",
+    changes: [
+      "Added NUH Oncology Resources section — rapid response contact, links & rotas table with direct dial button",
+      "Added New Suspected Cancer guideline — radiological pathway by scenario, inpatient referral guidance, PDF link",
+      "Added Oncology Pull Criteria guideline — BOLD/inclusion/exclusion criteria table, senior contact dial button, unsuitable pathway section with internal navigation",
+      "Added What's New page accessible from sidebar footer",
+      "Removed login screen",
+      "Added Vascular Access — PICC line procedure guidelines",
+    ],
+  },
+  {
     version: "0.3",
     date: "May 2026",
     label: "Preview",
@@ -233,7 +246,263 @@ const SITES = [
   id: "oncology-resources",
   label: "NUH Oncology Resources",
   guidelines: [
-    
+    {
+      id: "oncology-nuh-contacts",
+      title: "Oncology NUH Resources",
+      category: "NUH Oncology Resources",
+      version: "1.0",
+      authors: "NUH Acute Oncology",
+      evidenceBase: "NUH Oncology Service",
+      summary: "Key contacts and rapid response lines for the NUH Oncology Service.",
+      tags: ["Contact", "Rapid response", "Triage", "AOS", "Nervecentre"],
+      related: [],
+      sections: [
+        {
+          heading: "Key Contacts",
+          type: "alert",
+          variant: "danger",
+          items: [
+            "**Rapid Response: ☎ 0115 962 8066**",
+            "This is the 24-hour triage line for oncology patient queries.",
+            "For all non-urgent queries in hours, please refer to the AOS team via Nervecentre.",
+          ],
+        },
+        {
+          heading: "NUH Oncology Links",
+          type: "link_table",
+          items: [
+            {
+              pinned: true,
+              description: "Rapid Response — 24-hr oncology triage line",
+              label: "☎ 0115 962 8066",
+              url: "tel:01159628066",
+            },
+            {
+              label: "Oncology Homepage",
+              description: "Intranet homepage for all NUH oncology resources",
+              url: "https://nhs.sharepoint.com/sites/RX1_Oncology",
+            },
+            {
+              label: "Weekly Rota",
+              description: "Live weekly rota for ward cover & on call",
+              url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_MedicalWorkforce/Rota%20Store/CAS/Weekly%20Oncology%20Rota%20New.xlsx?d=wb380240e02ce41db8ffa5de495dedc92&csf=1&web=1&e=m1YeES&xsdata=MDV8MDJ8di5waWxsYWlAbmhzLm5ldHw5YmE2YmQ2MGJkNGE0MWZmYWM2YzA4ZGVjMzEzMjQ0NnwzN2MzNTRiMjg1YjA0N2Y1YjIyMjA3YjQ4ZDc3NGVlM3wwfDB8NjM5MTYyNjg1NTk1NjIzMjE3fFVua25vd258VFdGcGJHWnNiM2Q4ZXlKRmJYQjBlVTFoY0draU9uUnlkV1VzSWxZaU9pSXdMakF1TURBd01DSXNJbEFpT2lKWGFXNHpNaUlzSWtGT0lqb2lUV0ZwYkNJc0lsZFVJam95ZlE9PXwwfHx8&sdata=WXU3V1RHYkpkSEJjK2RFa2pvb2xyemNHMlV0RmF1aWxrcFIwdnFXQ0gxZz0%3d",
+            },
+            {
+              label: "Consultant Rota",
+              description: "Live On Call Consultant Rota [2026]",
+              url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_EstatesFacilities/_layouts/15/Doc.aspx?sourcedoc=%7B0265FCA6-6128-40B1-87BA-216545D52AD3%7D&file=Oncology%20Consultant.xlsx&action=default&mobileredirect=true",
+            },
+            {
+              label: "Teams & Links",
+              description: "Oncology teams directory and useful SharePoint links",
+              url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_Oncology/_layouts/15/Doc.aspx?sourcedoc=%7B3E49A3EF-0644-49EC-A879-A12F87A7C33A%7D&file=Oncology%20Teams%20and%20links%20August%202025%20v1.xlsx&action=default&mobileredirect=true",
+            },
+            {
+              label: "Medical Workforce",
+              description: "All NUH CAS rotas",
+              url: "https://nhs.sharepoint.com/sites/RX1_MedicalWorkforce/SitePages/Junior-Doctor-Rotas.aspx",
+            },
+            {
+              label: "Cancer MDT",
+              description: "Home page for cancer MDT referrals",
+              url: "https://nhs.sharepoint.com/sites/RX1_CancerServicesNUH/SitePages/MDTs.aspx?xsdata=MDV8MDJ8ZXdhbi5zaGF3Y3JvZnRAbmhzLm5ldHwwNmEzZmFjOTJjNWI0ZWM4NjBhMTA4ZGQxYWE5NWY3NHwzN2MzNTRiMjg1YjA0N2Y1YjIyMjA3YjQ4ZDc3NGVlM3wwfDB8NjM4Njk2MDM2OTI3MDI3MzkwfFVua25vd258VFdGcGJHWnNiM2Q4ZXlKRmJYQjBlVTFoY0draU9uUnlkV1VzSWxZaU9pSXdMakF1TURBd01DSXNJbEFpT2lKWGFXNHpNaUlzSWtGT0lqb2lUV0ZwYkNJc0lsZFVJam95ZlE9PXwwfHx8&sdata=cCtIQmJ6TnBhKytDQ3RQWFhsZnY0SmpiZW9NMFBVZktHamgzd2F0WXNiND0%3d&clickparams=eyAiWC1BcHBOYW1lIiA6ICJNaWNyb3NvZnQgT3V0bG9vayIsICJYLUFwcFZlcnNpb24iIDogIjE2LjAuMTgwMjUuMjAyMTQiLCAiT1MiIDogIldpbmRvd3MiIH0%3D",
+            },
+            {
+              label: "Casper",
+              description: "NUH Radiotherapy Referrals Portal (access required)",
+              url: "https://casper.nuh.nhs.uk/login#!",
+            },
+            {
+              label: "NUH Guidelines (Koha)",
+              description: "Web Guideline PDF Portal",
+              url: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-authorities-home.pl?op=do_search&type=opac&authtypecode=PERSO_NAME&operator=contains&value=&marclist=all&and_or=and&excluding=&orderby=HeadingAsc&resultsperpage=25",
+            },
+            {
+              label: "Oncology Digital Clinics",
+              description: "Electronic Patient Reported Outcome Measures (ePROMs) and direct messaging",
+              url: "https://nhs.sharepoint.com/sites/RX1_Oncology/SitePages/Oncology-Digital-Clinics-and-Direct-Messaging.aspx?CID=33216745-a9ff-457a-a04b-0bfe1a9e2c63",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "new-suspected-cancer",
+      title: "New Suspected Cancer",
+      category: "NUH Oncology Resources",
+      version: "1.0",
+      authors: "NUH Acute Oncology / Inter-Specialty Working Group",
+      evidenceBase: "NUH Inter-Specialty Working Group",
+      summary: "Pathway for managing a new suspected cancer identified radiologically. Covers localised, metastatic with known primary, and metastatic with unknown primary. Includes inpatient referral guidance and AOS contact details.",
+      tags: ["New cancer", "Suspected cancer", "Radiology", "MDT referral", "AOS", "NSCP", "2WW", "Metastatic"],
+      related: [],
+      updated: "Current",
+      summaryCalcLink: {
+        url: "https://nhs.sharepoint.com/sites/RX1_InterSpecialtyWorking/SiteAssets/Forms/AllItems.aspx?id=%2Fsites%2FRX1_InterSpecialtyWorking%2FSiteAssets%2FSitePages%2FNew-suspected-cancer-identified-radiologically%2FNew-cancer-v7-CP%2Epdf&parent=%2Fsites%2FRX1_InterSpecialtyWorking%2FSiteAssets%2FSitePages%2FNew-suspected-cancer-identified-radiologically",
+        label: "View NUH PDF Pathway",
+        text: "New suspected cancer identified radiologically — NUH inter-specialty pathway (PDF)",
+      },
+      sections: [
+        {
+          heading: "Inpatient Referral Guidance",
+          type: "notice_box",
+          preamble: {
+            main: "Patients with a new radiological cancer diagnoses rarely require acute inpatient care under Oncology",
+            exception: "exceptions may include those requiring urgent oncological treatments such as radiotherapy for malignant spinal cord compression",
+          },
+          callout: {
+            subheading: "For a patient with a new diagnosis of suspected metastatic cancer requiring an inpatient stay, please contact:",
+            criticalItems: [
+              "**In-Hours (Mon–Sat 8am–4pm):** Acute Oncology Services (AOS) — NerveCentre referral",
+              { type: "tel_links", prefix: "**Urgent advice:**", links: [{ tel: "07812268675", label: "☎ 07812 268675" }, { tel: "07812276520", label: "☎ 07812 276520" }] },
+              { type: "tel", text: "**Out of Hours:** Oncology SpR via Switch", tel: "01159691122", telLabel: "☎ 0115 969 1122" },
+            ],
+            items: [
+              { type: "email", prefix: "If discharging prior to AOS input/review, email patient details to", email: "nuhnt.acuteoncologyservices@nhs.net", suffix: "for patient support and tracking" },
+              { type: "link_callout", text: "Refer to Oncology Pull Criteria for guidance regarding patients who are appropriate for admission under Oncology", guidelineId: "oncology-pull-criteria", linkLabel: "View Pull Criteria" },
+            ],
+          },
+        },
+        {
+          heading: "Pathway by Radiological Scenario",
+          type: "scenario_cards",
+          cards: [
+            {
+              label: "Localised disease — site identified",
+              detail: "e.g. bowel mass on CT, no evidence of metastases",
+              actions: [
+                "Refer to site-specific MDT and **Consultant Upgrade (ConsUp)** on Nervecentre (e.g. Lower GI)",
+                "Involve specialty team +/- CNS as needed",
+              ],
+            },
+            {
+              label: "Metastatic disease — primary site suspected",
+              detail: "e.g. bowel mass with liver metastases",
+              actions: [
+                "Refer to site-specific MDT and **ConsUp** on Nervecentre as per likely primary (e.g. Lower GI)",
+                "Involve **AOS** to support patient and assist with pathway navigation/tracking",
+              ],
+            },
+            {
+              label: "Metastatic disease — NO likely primary identified",
+              detail: "",
+              actions: [
+                "Establish **ECOG status**",
+                "Consider referring for additional diagnostic tests (e.g. staging CT, biopsy) depending on ECOG",
+                "Refer to **AOS** and **Non-Specific Symptoms of Cancer (NSCP) Clinic** via Nervecentre",
+              ],
+            },
+          ],
+        },
+        {
+          heading: "Key Principles",
+          type: "list",
+          groups: [
+            {
+              label: "Key Principles for Inpatient Management",
+              icon: "management",
+              items: [
+                "Patients with a new radiological cancer diagnoses rarely require acute inpatient care under Oncology (exceptions may include those requiring urgent oncological treatments such as radiotherapy for malignant spinal cord compression)",
+                "Patients with a new diagnosis of suspected cancer requiring admission should be referred to the most appropriate specialty to manage the acute presenting symptoms or pathology",
+                "Admission should not be used to facilitate diagnostic tests for cancer; diagnostic tests are better undertaken as an outpatient via an established 2WW diagnostic pathway",
+                "Liaise with Acute Oncology Service (AOS) for advice and support if unsure; or discuss with the Oncology SpR if urgent advice is required out of hours",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "oncology-pull-criteria",
+      title: "Oncology Pull Criteria",
+      category: "NUH Oncology Resources",
+      version: "1.1",
+      authors: "Emma Beeton / Lucy Gossage",
+      evidenceBase: "NUH Inter-Specialty Working Governance and Oversight Group | Approved January 2025",
+      summary: "Criteria for direct e-referral of confirmed oncology patients to the Oncology ward via Nervecentre. Includes mandatory BOLD criteria, inclusion criteria, exclusion criteria, potential patient criteria, and guidance on unsuitable pathways.",
+      tags: ["Pull criteria", "Admission", "Oncology ward", "Nervecentre", "e-Referral", "SACT", "Neutropenic sepsis"],
+      related: ["new-suspected-cancer"],
+      updated: "January 2025",
+      summaryCalcLink: {
+        url: "https://nhs.sharepoint.com/sites/RX1_InterSpecialtyWorking/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FRX1_InterSpecialtyWorking%2FShared%20Documents%2FOncology%20Pull%20Criteria%20v1%2E1%2Epdf&parent=%2Fsites%2FRX1_InterSpecialtyWorking%2FShared%20Documents",
+        label: "View PDF: Pull Criteria v1.1",
+        text: "Oncology Pull Criteria v1.1 — NUH Inter-Specialty Working Group (January 2025)",
+      },
+      sections: [
+        {
+          heading: "Senior Clinical Contact",
+          type: "alert",
+          variant: "danger",
+          items: [
+            { text: "On call Oncology Registrar via switchboard (priority line)", tel: "01159691122", telLabel: "☎ 0115 969 1122" },
+          ],
+        },
+        {
+          heading: "Confirmed Patients — Pull Criteria",
+          type: "pull_criteria_table",
+          referralNote: "For e-Referral via Nervecentre 'Pull Criteria met'. Accompanying call only if patient is unstable and felt in need of urgent review, or if 'call mandated' by specialty.",
+          boldNote: "Must meet ALL bold criteria AND one or more of the inclusion criteria",
+          boldCriteria: [
+            "Not more appropriate for any other Specialty including critical care, particularly if the reason for admission is unrelated to their cancer",
+            "Must have a confirmed oncological diagnosis and currently under the care of an oncologist",
+            "Rapid covid swab confirms infection status",
+          ],
+          inclusionCriteria: [
+            "Symptoms or side effect of cancer",
+            "Patient completed SACT <3/12 ago",
+            "Suspected or confirmed neutropenic sepsis",
+            "Systemic Anti-cancer Therapy (SACT) side effects",
+            "Metastatic spinal cord compression",
+            "Pain secondary to cancer",
+            "Confirmed deterioration secondary to cancer progression",
+            "Acute radiotherapy SE (patient completed radiotherapy <3/12 ago)",
+          ],
+          exclusionNote: "PLUS does not meet any of the following exclusion criteria",
+          exclusionCriteria: [
+            "Unstable with NEWS2 ≥6 in the absence of a clear de-escalation decision / Requiring resus room care / Too unwell to safely transfer across campus / Requiring escort for transfer",
+            "Active chest pain",
+            "Suspected DVT",
+            "Head injury",
+            "BEFAST positive / suspected stroke awaiting imaging",
+            "Patient with new suspected cancer diagnosis awaiting diagnostics",
+            "Reason for admission is unrelated to the patient's cancer",
+          ],
+        },
+        {
+          heading: "Potential Patients",
+          type: "alert",
+          items: [
+            "For discussion with Specialty. If accepted, indicate 'Accepted after discussion' in 'e-Referral status' column",
+            "Must still meet **BOLD** criteria above",
+            "Patients discharged from oncology whereby recurrence is the most likely differential",
+            "Patients who finished SACT >3/12 ago",
+          ],
+        },
+        {
+          heading: "More Suitable for Another Admission Pathway",
+          type: "unsuitable_box",
+          calloutLink: { guidelineId: "new-suspected-cancer", label: "New Suspected Cancer Pathway" },
+          items: [
+            {
+              text: "Any patients with a new suspected cancer diagnosis who require inpatient admission should remain under the care of the diagnostic medical/surgical team. Oncology is not a diagnostic specialty — referral without a completed workup is inappropriate. Please refer to the Acute Oncology Service via Nervecentre or phone.",
+              examples: null,
+            },
+            {
+              text: "Any patients with a new suspected cancer diagnosis requiring ongoing outpatient care (but not emergency admission) should have a Consultant Upgrade referral to 'Non-Specific Cancer Symptoms consultant upgrade referral' on Careflow for outpatient investigations and follow-up on a cancer pathway. For example:",
+              examples: [
+                "Incidental finding of abnormal bone lesion on CT Trauma scan acquired for other reasons e.g. sclerotic bony lesion, pathological fracture not requiring emergency fixation",
+                "Incidental finding of abnormal liver appearance on CT acquired for other reasons e.g. multiple liver metastases of unknown primary",
+                "Incidental finding of anaemia on blood tests",
+                "Progressive rapid weight loss on history",
+              ],
+            },
+          ],
+          notes: [
+            "New suspected cancer identified radiologically — see 'New Suspected Cancer' guideline (linked above)",
+          ],
+        },
+      ],
+    },
     {
       id: "oncology-drug-list",
       title: "Oncology Drug Reference",
@@ -330,6 +599,8 @@ const SITES = [
             { name: "T-DXd",             brand: "Enhertu®",     category: "targeted",     drugClass: "HER2 ADC",                   risks: ["fn"], notes: "ILD/pneumonitis risk — monitor closely" },
             { name: "Brentuximab vedotin", brand: "Adcetris®",  category: "targeted",     drugClass: "CD30 ADC",                   risks: ["fn", "neurotox"] },
             { name: "Sacituzumab govitecan", brand: "Trodelvy®", category: "targeted",    drugClass: "TROP2 ADC",                  risks: ["fn"], notes: "Diarrhoea; UGT1A1 polymorphism increases toxicity" },
+            { name: "Enfortumab vedotin", brand: "Padcev®",    category: "targeted",    drugClass: "Nectin-4 ADC",               risks: ["skin_reaction", "neurotox", "hyperglycaemia", "pneumonitis", "fn"], notes: "Severe skin reactions including SJS/TEN — withhold and refer to dermatology promptly; monitor blood glucose; peripheral neuropathy common" },
+            { name: "Erdafitinib",        brand: "Balversa®",  category: "targeted",    drugClass: "FGFR3 inhibitor",            risks: ["hyperphosphataemia", "ppe", "ocular_tox"], notes: "Hyperphosphataemia — dietary phosphate restriction and phosphate binders required; monthly ophthalmology review for retinal toxicity; PPE — skin care prophylaxis" },
             { name: "Bevacizumab",       brand: "Avastin®",     category: "targeted",     drugClass: "VEGF monoclonal antibody",   risks: [], notes: "Hypertension; proteinuria; wound healing impairment; VTE/ATE risk" },
             { name: "Cetuximab",         brand: "Erbitux®",     category: "targeted",     drugClass: "EGFR monoclonal antibody",   risks: [], notes: "Infusion reactions; acneiform rash; hypomagnesaemia" },
             { name: "Panitumumab",       brand: "Vectibix®",    category: "targeted",     drugClass: "EGFR monoclonal antibody",   risks: [], notes: "Rash; hypomagnesaemia; electrolyte monitoring" },
@@ -6500,7 +6771,436 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
           },
         ],
       },
-      
+
+      // ── Vascular Access ─────────────────────────────────────────────────────
+      {
+        id: "proc-vascular",
+        label: "Vascular Access",
+        guidelines: [
+
+          // ── 1. Common Issues ─────────────────────────────────────────────────
+          {
+            id: "proc-picc-common-issues",
+            title: "PICC & Midlines: Common Issues",
+            category: "Vascular Access",
+            bodySite: "Vascular",
+            authors: "NUH Vascular Access Team",
+            evidenceBase: "NUH Clinical Practice Guidelines for the Management of Midlines and Peripherally Inserted Central Catheters (PICC Lines) | Ratified 11/01/2021 | INS 2011 | RCN 2010 | NMC 2010",
+            summary: "Summary reference for PICC and Midline patency problems, complications, and troubleshooting. Covers flushing technique, withdrawal occlusion, complete occlusion, mechanical phlebitis, catheter fracture, UEDVT, and sign/symptom troubleshooting. See linked guidelines for blood sampling and line removal procedures.",
+            tags: ["PICC", "Midline", "Vascular access", "Flushing", "Occlusion", "Phlebitis", "DVT", "Patency", "Fibrin sheath", "Troubleshooting"],
+            related: ["proc-picc-blood-samples", "proc-picc-removal", "vte-catheter-related-thrombosis"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=253b0b35e0485e35452f6fad836ad476",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10319&query_desc=picc%20lines",
+            updated: "Ratified Jan 2021 (review Jan 2026)",
+
+            sections: [
+                            // ── CRITICAL SAFETY ──────────────────────────────────────────────
+              {
+                heading: "⚠ Critical Safety — Read First",
+                type: "alert",
+                items: [
+                  { label: "NEVER use a syringe smaller than 10ml to establish catheter patency", detail: "Smaller syringes generate dangerously high pressures and risk catheter rupture. Once patency is confirmed, any size syringe may be used if no resistance is felt." },
+                  { label: "NEVER force a flush or infusion", detail: "If resistance is felt, stop immediately — aspirate for blood return and investigate the cause." },
+                  { label: "Always flush with ≥10ml 0.9% NaCl — pulse-pause technique", detail: "Required after every drug, IV infusion, and blood sample." },
+                  { label: "Use a positive pressure finish", detail: "Clamp the line during the last pulse of flush to prevent blood reflux and intraluminal clot formation." },
+                ],
+              },
+
+              // ── STEP 1: SIGNS & SYMPTOMS (2-col quick-ref at top) ────────────
+              {
+                heading: "Step 1 — Signs & Symptoms",
+                type: "table",
+                note: "Identify the presentation below, then follow Step 2 for management.",
+                columns: ["Sign / Symptom", "Possible Cause"],
+                rows: [
+                  [
+                    "🔴 Shortness of breath; coughing; chest pain",
+                    "Air embolism — air has entered the bloodstream",
+                  ],
+                  [
+                    "🔴 Blood leaking from catheter; visible damage to line",
+                    "Catheter fracture or cut",
+                  ],
+                  [
+                    "🔴 Arm swelling; pain in arm, shoulder, or neck",
+                    "Deep vein thrombosis (UEDVT) or severe phlebitis",
+                  ],
+                  [
+                    "Can't flush; resistance to infusion; sluggishness",
+                    "Catheter occlusion — partial or complete; kinked or clamped line",
+                  ],
+                  [
+                    "Blood inside needless connector; blood leaking from hub",
+                    "Needless connector accidentally disconnected",
+                  ],
+                  [
+                    "Fever; redness/swelling/discharge at insertion site",
+                    "Catheter-related infection",
+                  ],
+                  [
+                    "Redness; tenderness; swelling along catheter track",
+                    "Mechanical phlebitis or local infection",
+                  ],
+                  [
+                    "Pain or swelling when line used; fluid leaks from exit site on flushing",
+                    "Catheter malposition; internal fracture; fibrin sheath",
+                  ],
+                  [
+                    "Catheter line pulled out or position changed",
+                    "Catheter malposition",
+                  ],
+                ],
+              },
+
+              // ── ARROW ────────────────────────────────────────────────────────
+              { type: "flow_arrow", label: "Step 2: Management" },
+
+              // ── STEP 2: PROBLEM CARDS ─────────────────────────────────────────
+              {
+                heading: "Step 2 — Common Problems & Management",
+                type: "problem_cards",
+                cards: [
+                  {
+                    problem: "Complete Catheter Occlusion (CCO)",
+                    severity: "red",
+                    cause: "Intraluminal thrombus; lipid/drug precipitate (TPN); kinked or clamped line; blocked needle-free device",
+                    steps: [
+                      "Check basics: look for kinks, an open clamp, and a blocked needle-free device. Ask patient to raise arm, take a deep breath, or tilt bed down.",
+                      "Flush with a brisk pulse-pause technique using a 10ml+ syringe — **never force**. Aspirate for blood return.",
+                      "If thrombotic: instil **Urokinase 2500 units/ml, 2ml per lumen** via 3-way connector; leave ≥60 minutes or overnight, then withdraw and flush. **Heparin is NOT thrombolytic** — it does not dissolve clot.",
+                      "If lipid/drug precipitate (e.g. TPN): consult pharmacy for a suitable dissolving agent.",
+                      "Seek **Vascular Access Team** advice before removing the line if problems persist.",
+                    ],
+                  },
+                  {
+                    problem: "Catheter Fracture / Leak",
+                    severity: "red",
+                    cause: "Tear, pinhole, or split in polyurethane catheter — most common near exit site or external portion",
+                    steps: [
+                      "**Clamp the catheter immediately** to reduce blood loss.",
+                      "Contact the clinician.",
+                      "Damaged catheters **cannot be repaired** — remove and replace.",
+                    ],
+                  },
+                  {
+                    problem: "Deep Venous Thrombosis — UEDVT",
+                    severity: "red",
+                    cause: "Catheter-related thrombosis of subclavian, axillary vein, or SVC — patients may be asymptomatic",
+                    steps: [
+                      "Confirm with **ultrasound**.",
+                      "**Do NOT automatically remove** the line — weigh risks vs. benefits with the treating clinician and Vascular Access Practitioner.",
+                      "Anticoagulate as directed by medical team.",
+                      "Remove **immediately** only if clinical evidence of **Superior Vena Cava Obstruction** (unless no alternative access and IV treatment essential).",
+                      "If removing in context of DVT: perform in a room with **O₂ and suction** — risk of pulmonary embolus.",
+                    ],
+                  },
+                  {
+                    problem: "Air Embolism",
+                    severity: "red",
+                    cause: "Air entered the bloodstream via disconnected or damaged line",
+                    steps: [
+                      "Place patient on **left side with head down** immediately.",
+                      "Check clamp and entire line system for leaks.",
+                      "**Contact clinician urgently** and initiate oxygen.",
+                    ],
+                  },
+                  {
+                    problem: "Withdrawal Occlusion (WO)",
+                    severity: "amber",
+                    cause: "Fibrin sheath (most common) or fibrin tail occluding catheter tip; catheter malposition; tip against vein wall; internal fracture",
+                    steps: [
+                      "**Confirm blood return before any IV therapy** — WO risks extravasation of vesicant/irritant drugs.",
+                      "Try pulse-pause flush with 10ml+ syringe.",
+                      "If malpositioned: **stop using for vesicants** — seek pharmacy and Vascular Access advice. A malpositioned PICC may be usable as a peripheral line if non-irritant drugs only.",
+                    ],
+                  },
+                  {
+                    problem: "Sluggish Flow",
+                    severity: "amber",
+                    cause: "Partial fibrin sheath; lipid build-up (TPN); drug precipitate; partial mechanical obstruction",
+                    steps: [
+                      "Flush well with pulse-pause technique using a 10ml+ syringe.",
+                      "If TPN-related: consult pharmacy for a dissolving agent.",
+                      "Consider saline challenge (250ml via infusion pump) if cause unclear.",
+                      "Monitor for progression to complete occlusion (CCO).",
+                    ],
+                  },
+                  {
+                    problem: "Disconnected Needless Connector",
+                    severity: "amber",
+                    cause: "Needless connector accidentally detached — blood visible inside connector or leaking from hub",
+                    steps: [
+                      "**Clamp catheter immediately**.",
+                      "Replace with a new needless connector — clean the hub with chlorhexidine wipe before connecting.",
+                      "Flush the catheter with 0.9% NaCl.",
+                    ],
+                  },
+                  {
+                    problem: "Mechanical Phlebitis",
+                    severity: "green",
+                    cause: "Catheter movement within vein causing inflammation — typically within 10 days of insertion, presents in bicep region above PICC",
+                    steps: [
+                      "**PICC can remain in use** unless symptoms are severe.",
+                      "Exclude thrombosis and infection: check for arm swelling, difficulty flushing, blood return, pyrexia, and exit site discharge.",
+                      "Consider oral anti-inflammatory agents.",
+                      "Remove only if symptoms are severe and unresponsive to treatment.",
+                    ],
+                  },
+                  {
+                    problem: "Catheter Malposition",
+                    severity: "green",
+                    cause: "PICC migrated from SVC — tip displaced into neck or subclavian vein (e.g. accidental pull). Signs: ear gurgling, chest pain, difficulty flushing/aspirating.",
+                    steps: [
+                      "**Stop using for irritant or vesicant drugs immediately**.",
+                      "May be used as a peripheral device for non-irritant solutions — seek pharmacy advice.",
+                      "**Do not remove without advice** — catheter may be exchangeable.",
+                      "Confirm tip position with CXR.",
+                    ],
+                  },
+                  {
+                    problem: "Catheter-Related Infection",
+                    severity: "amber",
+                    cause: "Intraluminal or exit site infection — fever, redness, swelling, or discharge at insertion site",
+                    steps: [
+                      "Draw **blood cultures from catheter** and peripheral swabs from exit site.",
+                      "Check for other possible infection sources.",
+                      "Review with medical team — decision on line removal guided by clinical picture.",
+                    ],
+                  },
+                ],
+              },
+
+
+
+              // ── FLUSHING TECHNIQUE ───────────────────────────────────────────
+              {
+                heading: "Flushing Technique",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Key Principles",
+                    items: [
+                      { label: "Pulse-pause technique", detail: "Flush briskly then pause briefly after each ~1ml of saline — creates turbulent flow to clear the lumen (INS, 2011)" },
+                      { label: "Positive pressure finish", detail: "Clamp the line while flushing the final 1ml — prevents blood reflux and intraluminal clot build-up" },
+                      { label: "Volume: ≥10ml 0.9% Sodium Chloride", detail: "5ml Sodium Heparin (10 units/ml) may be added after if local policy requires" },
+                      { label: "Flush after every: drug | IV infusion | blood sample", detail: "No exceptions — failure to flush is the most common cause of preventable occlusion" },
+                      { label: "NEVER use a syringe smaller than 10ml to establish patency", detail: "High pressure risk — catheter rupture. Once patency confirmed, smaller syringes may be used only if no resistance is felt." },
+                    ],
+                  },
+                ],
+              },
+
+              // ── REFERENCES ───────────────────────────────────────────────────
+              {
+                heading: "References",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Evidence Base",
+                    items: [
+                      "NUH Clinical Practice Guidelines for the Management of Midlines and Peripherally Inserted Central Catheters (PICC Lines) — Ratified 11/01/2021, review Jan 2026",
+                      "INS (2011): Infusion Nursing Standards of Practice — pulse-pause flushing and positive pressure technique",
+                      "RCN (2010): Standards for Infusion Therapy — Urokinase instillation protocol",
+                      "NMC (2010): Standards for Records and Record Keeping",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+
+          // ── 2. Blood Samples ─────────────────────────────────────────────────
+          {
+            id: "proc-picc-blood-samples",
+            title: "PICC & Midlines: Blood Samples",
+            category: "Vascular Access",
+            bodySite: "Vascular",
+            authors: "NUH Vascular Access Team",
+            evidenceBase: "NUH Clinical Practice Guidelines for the Management of Midlines and Peripherally Inserted Central Catheters (PICC Lines) | Ratified 11/01/2021 | INS 2011 | NUH 2016 | NUH 2014 | NMC 2010",
+            summary: "Step-by-step procedure for taking blood samples via a PICC line or Midline. Includes equipment checklist, aseptic technique, discard volume, pulse-pause flushing, and labelling requirements. Blood cultures must always be taken first — do not discard the initial aspirate.",
+            tags: ["PICC", "Midline", "Blood sampling", "Vascular access", "Blood cultures", "Flushing", "Aseptic technique"],
+            related: ["proc-picc-common-issues", "proc-picc-removal"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=253b0b35e0485e35452f6fad836ad476",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10319&query_desc=picc%20lines",
+            updated: "Ratified Jan 2021 (review Jan 2026)",
+
+            sections: [
+
+              {
+  heading: "⚠ Critical Safety",
+  type: "alert",
+  items: [
+    { label: "NEVER use a syringe smaller than 10ml to establish catheter patency", detail: "Smaller syringes generate high pressures and risk catheter rupture." },
+    { label: "Blood cultures — do NOT discard the initial 10ml aspirate", detail: "It carries important microbiological data. Culture sample must always be taken first before other samples." },
+    { label: "Confirm patient identity and check for allergies before starting", detail: "Check for allergy to flush solution and chlorhexidine wipes." },
+    { label: "Check flushes with a Registered Nurse before use"},
+  ],
+},,
+
+              {
+                heading: "Equipment",
+                type: "proc_equip",
+                items: [
+                  { item: "Clean procedure tray", detail: "" },
+                  { item: "Appropriate blood bottles + request forms", detail: "Check bottles required for each test before starting" },
+                  { item: "2 × 10ml luer-lok syringes", detail: "One for 10ml discard volume; one spare" },
+                  { item: "Appropriate-sized syringe for blood collection", detail: "Sized to total volume of blood required" },
+                  { item: "10ml ampoule 0.9% Normal Saline ± 5ml Sodium Heparin (10 units/ml)", detail: "Or prefilled saline syringe. Check flush with a Registered Nurse (NUH, 2016)" },
+                  { item: "2% chlorhexidine in 70% alcohol wipes", detail: "For line decontamination" },
+                  { item: "Sterile paper towel", detail: "To place under line on patient's arm" },
+                  { item: "Blunt filter needle", detail: "For drawing up" },
+                  { item: "Non-sterile gloves + apron", detail: "Personal protection" },
+                ],
+              },
+
+              {
+                heading: "Procedure",
+                type: "proc_steps",
+                note: "Maintain aseptic technique throughout. Suspend any running infusions before sampling.",
+                groups: [
+                  {
+                    label: "Preparation — Steps 1–4",
+                    steps: [
+                      { num: 1, action: "Explain the procedure, confirm **patient identity** and check for **allergies** (flush/cleansing agents)", rationale: "Verbal consent. Confirm identity. Check allergy to flush or chlorhexidine.", warning: null, note: null },
+                      { num: 2, action: "Collect required equipment on a clean procedure tray. Check blood bottles for requested tests. **Check flushes with a Registered Nurse**", rationale: "Ensures correct bottles used. Safe checking of a medicine (NUH, 2016).", warning: null, note: null },
+                      { num: 3, action: "Take tray to bedside. Wash hands or apply alcohol gel. Apply **non-sterile gloves and apron**", rationale: "Infection prevention. Personal protection.", warning: null, note: null },
+                      { num: 4, action: "If infusions are connected, **suspend and disconnect** (if appropriate). Place a sterile cap on the infusion line end", rationale: "Prevents medication spillage. Prevents contamination of infusion line.", warning: null, note: null },
+                    ],
+                  },
+                  {
+                    label: "Decontamination & Sampling — Steps 5–8",
+                    steps: [
+                      { num: 5, action: "Place a **sterile paper towel** under the line. Clean the line from the needle-free end cap down to the clamp with an **alcoholic chlorhexidine wipe**. Allow to dry.", rationale: "Decontaminates the line and prevents infection.", warning: null, note: null },
+                      { num: 6, action: "Unclamp the line. Attach a 10ml luer-lok syringe to the needle-free cap. Withdraw **10ml of blood** (discard volume)", rationale: "Minimises contaminants that may cause blood test inaccuracies.", warning: null, note: "Exception: If obtaining blood cultures, do NOT discard this initial 10ml — it carries important microbiological data. Blood culture sample must always be taken first." },
+                      { num: 7, action: "Using an appropriate-sized syringe, collect the **blood required for tests**", rationale: "Ensures sufficient volume for each bottle.", warning: null, note: null },
+                      { num: 8, action: "Flush the line with a brisk **pulse-pause technique** using the saline syringe. Sodium heparin (10 units/ml) may be used afterwards if local policy. **Clamp immediately during the last pulse of flush**", rationale: "Pulse-pause flushing creates turbulent flow to clear blood from the lumen (INS, 2011). Clamping during last pulse prevents blood reflux as syringe is removed.", warning: null, note: null },
+                    ],
+                  },
+                  {
+                    label: "Completion — Steps 9–11",
+                    steps: [
+                      { num: 9, action: "Transfer blood to appropriate vials and **agitate** as necessary", rationale: "Prevents sample clotting.", warning: null, note: null },
+                      { num: 10, action: "Re-attach any infusions. Dispose of waste appropriately. Remove gloves and **cleanse hands**", rationale: "Safe disposal. Infection prevention.", warning: null, note: null },
+                      { num: 11, action: "Label samples **at the bedside with the patient present**. Record samples sent in patient's notes. Send to lab with appropriate request form.", rationale: "Prevents mislabelling (NUH, 2014). Accurate records (NMC, 2010).", warning: null, note: null },
+                    ],
+                  },
+                ],
+              },
+
+              {
+                heading: "References",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Evidence Base",
+                    items: [
+                      "NUH Clinical Practice Guidelines for the Management of Midlines and PICC Lines — Ratified 11/01/2021",
+                      "INS (2011): Infusion Nursing Standards of Practice — pulse-pause flushing",
+                      "NUH (2016): Safe Checking of Medicines",
+                      "NUH (2014): Patient Labelling / Sample Mislabelling Prevention Policy",
+                      "NMC (2010): Standards for Records and Record Keeping",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+
+          // ── 3. Line Removal ──────────────────────────────────────────────────
+          {
+            id: "proc-picc-removal",
+            title: "PICC & Midlines: Removal",
+            category: "Vascular Access",
+            bodySite: "Vascular",
+            authors: "NUH Vascular Access Team",
+            evidenceBase: "NUH Clinical Practice Guidelines for the Management of Midlines and Peripherally Inserted Central Catheters (PICC Lines) | Ratified 11/01/2021 | NMC 2010",
+            summary: "Procedure for safe removal of a PICC line or Midline by any registered nurse. Confirms insertion length against Notis record before removal. If resistance is met during removal, stop immediately — do not force. If removed due to infection, send a 5cm tip to microbiology.",
+            tags: ["PICC", "Midline", "Line removal", "Vascular access", "StatLock", "Catheter removal"],
+            related: ["proc-picc-common-issues", "proc-picc-blood-samples"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=253b0b35e0485e35452f6fad836ad476",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10319&query_desc=picc%20lines",
+
+            updated: "Ratified Jan 2021 (review Jan 2026)",
+
+            sections: [
+
+{
+  heading: "⚠ Critical Safety",
+  type: "alert",
+  items: [
+    { label: "Check the Notis/DHR procedural report before starting", detail: "Confirm the insertion length so you can verify the entire line has been removed on completion." },
+    { label: "Gentle traction only — do NOT pull or stretch the catheter", detail: "If resistance is met, STOP and seek advice immediately — forced removal risks catheter embolism." },
+    { label: "If removing in the context of DVT — use a room with oxygen and suction", detail: "Risk of pulmonary embolus during removal." },
+    { label: "If removed due to infection — send a 5cm tip to microbiology", detail: "Place in a sterile universal pot, labelled per Trust policy." },
+  ],
+},
+
+              {
+                heading: "Equipment",
+                type: "proc_equip",
+                items: [
+                  { item: "Universal aseptic dressing pack (or similar)", detail: "Containing gauze and materials to produce a sterile field" },
+                  { item: "Clean dressing trolley", detail: "" },
+                  { item: "Non-sterile gloves + apron", detail: "" },
+                  { item: "Sterile gloves", detail: "If not included in dressing pack" },
+                  { item: "Dressing", detail: "To apply over exit site post-removal" },
+                  { item: "Alcohol or dressing release spray", detail: "To loosen StatLock from skin if used" },
+                  { item: "Sterile universal pot (if infection suspected)", detail: "For 5cm tip sample — send to microbiology" },
+                ],
+              },
+
+              {
+                heading: "Procedure",
+                type: "proc_steps",
+                note: "Any registered nurse may perform PICC/Midline removal. The procedure is straightforward and painless for the patient.",
+                groups: [
+                  {
+                    label: "Preparation — Steps 1–5",
+                    steps: [
+                      { num: 1, action: "Check the **procedural report on Notis** to confirm the length the device was inserted to", rationale: "Allows confirmation that the entire line has been removed on completion.", warning: null, note: null },
+                      { num: 2, action: "Perform the procedure in a **private room or behind curtains**", rationale: "Maintains privacy and dignity.", warning: null, note: null },
+                      { num: 3, action: "Explain the procedure to the patient and check for **allergies** (dressings)", rationale: "Verbal consent. Allergy check.", warning: null, note: null },
+                      { num: 4, action: "Position the patient comfortably with easy access to the line", rationale: "Promotes comfort and maintains an arm position the patient can hold during removal.", warning: null, note: null },
+                      { num: 5, action: "**Wash hands**. Open dressing pack onto a clean trolley, followed by other materials required", rationale: "Infection prevention. Creates a sterile field.", warning: null, note: null },
+                    ],
+                  },
+                  {
+                    label: "Removal — Steps 6–10",
+                    steps: [
+                      { num: 6, action: "Apply alcohol hand gel. Put on **non-sterile gloves and apron**. Remove the outer dressing and discard. Apply hand gel again. Put on **non-sterile gloves from within the pack**", rationale: "Infection prevention. Protects the operator.", warning: null, note: null },
+                      { num: 7, action: "Loosen the **StatLock** from the skin using alcohol or dressing release spray if needed", rationale: "Prevents skin damage.", warning: null, note: null },
+                      { num: 8, action: "Use **gentle traction** to pull the line out steadily. Continue until fully removed. Compare removed length against the Notis report.", rationale: "Removes the line without damaging the vein. Confirms the entire line has been removed — no retained foreign body.", warning: "Do NOT excessively pull or stretch the catheter. If resistance is met, STOP and seek advice — catheter embolism may occur if an incomplete catheter is removed.", note: null },
+                      { num: 9, action: "Apply **gauze over the exit site** and apply gentle pressure until bleeding stops. Apply a suitable dressing.", rationale: "Achieves haemostasis. Prevents infection.", warning: null, note: "If removed due to infection: cut a 5cm length from the tip and send in a sterile universal pot to microbiology — label per Trust policy." },
+                      { num: 10, action: "Dispose of waste per hospital policy. Remove gloves. **Wash hands**. Document line removal, site condition, and any samples sent.", rationale: "Safe disposal. Infection prevention. Ensures continuity of care (NMC, 2010).", warning: null, note: null },
+                    ],
+                  },
+                ],
+              },
+
+              {
+                heading: "References",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Evidence Base",
+                    items: [
+                      "NUH Clinical Practice Guidelines for the Management of Midlines and PICC Lines — Ratified 11/01/2021",
+                      "NMC (2010): Standards for Records and Record Keeping",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+
+        ],
+      },
+      // ── End Vascular Access ──────────────────────────────────────────────────
+
     ],
     get guidelines() {
       return this.subsites.flatMap(ss => ss.guidelines || []);
@@ -9475,13 +10175,41 @@ if (sec.type === "hypo_assessment") {
       <div className="detail-card" style={{ borderLeft: `3px solid #e53e3e`, background: "#fff5f5" }}>
         <h3 style={{ color: "#c53030" }}>{sec.heading}</h3>
         {sec.note && <p style={{ fontSize: 13, color: "#742a2a", marginBottom: 10, fontStyle: "italic" }}>{sec.note}</p>}
-        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
-          {sec.items.map((item, i) => (
-            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "#742a2a" }}>
-              <span style={{ color: "#e53e3e", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
-              {boldify(item)}
-            </li>
-          ))}
+        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
+          {sec.items.map((item, i) => {
+            if (item && typeof item === "object" && item.tel) {
+              return (
+                <li key={i} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                  <span style={{ fontSize: 13.5, color: "#742a2a", lineHeight: 1.4, flex: 1 }}>{boldify(item.text)}</span>
+                  <a href={`tel:${item.tel}`} style={{ display: "inline-block", padding: "5px 14px", background: "#c53030", color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 12.5, textDecoration: "none", fontFamily: "Sora, sans-serif", flexShrink: 0, whiteSpace: "nowrap" }}>
+                    {item.telLabel || `☎ ${item.tel}`}
+                  </a>
+                </li>
+              );
+            }
+            if (item && typeof item === "object" && item.label) {
+              return (
+                <li key={i} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                    <span style={{ color: "#e53e3e", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.4 }}>{item.label}</span>
+                  </div>
+                  {item.detail && (
+                    <div style={{ paddingLeft: 20, fontSize: 12.5, color: "#9b2c2c", lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 6 }}>
+                      <span style={{ color: "#e53e3e", flexShrink: 0, fontSize: 8, marginTop: 5 }}>●</span>
+                      <span>{boldify(item.detail)}</span>
+                    </div>
+                  )}
+                </li>
+              );
+            }
+            return (
+              <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "#742a2a" }}>
+                <span style={{ color: "#e53e3e", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
+                {boldify(item)}
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
@@ -9784,8 +10512,24 @@ if (sec.type === "hypo_assessment") {
                   {group.label}
                 </span>
               </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, padding: "10px 14px 12px", margin: 0, borderTop: `0.5px solid ${c.border}` }}>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 7, padding: "10px 14px 12px", margin: 0, borderTop: `0.5px solid ${c.border}` }}>
                 {group.items.map((item, ii) => {
+                  if (item && typeof item === "object" && item.label) {
+                    return (
+                      <li key={ii} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                        <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                          <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                          <span style={{ fontSize: 13.5, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4 }}>{boldify(item.label)}</span>
+                        </div>
+                        {item.detail && (
+                          <div style={{ paddingLeft: 16, fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 6 }}>
+                            <span style={{ color: c.bullet, flexShrink: 0, fontSize: 8, marginTop: 5 }}>●</span>
+                            <span>{boldify(item.detail)}</span>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  }
                   const isUrgent = typeof item === "string" && item.startsWith("!!");
                   const text = isUrgent ? item.slice(2).trim() : item;
                   return isUrgent ? (
@@ -9809,6 +10553,80 @@ if (sec.type === "hypo_assessment") {
     </div>
   );
 }}
+
+  // ── Flow arrow — visual step connector ──────────────────────────────────────
+  if (sec.type === "flow_arrow") {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "2px 0" }}>
+        <span style={{ fontSize: 22, color: "var(--text-muted)", lineHeight: 1 }}>↓</span>
+        {sec.label && (
+          <span style={{
+            fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif",
+            color: "var(--text-muted)", letterSpacing: "0.06em", textTransform: "uppercase"
+          }}>{sec.label}</span>
+        )}
+      </div>
+    );
+  }
+
+  // ── Problem cards — each problem as a card with numbered action steps ────────
+  if (sec.type === "problem_cards") {
+    const severityStyle = {
+      red:   { header: "#fff5f5", border: "#fc8181", titleColor: "#742a2a", dot: "#e53e3e", stepDot: "#fc8181" },
+      amber: { header: "#fffbeb", border: "#f6d860", titleColor: "#744210", dot: "#d97706", stepDot: "#f6d860" },
+      green: { header: "#f0fff4", border: "#9ae6b4", titleColor: "#276749", dot: "#38a169", stepDot: "#9ae6b4" },
+    };
+    return (
+      <div className="detail-card">
+        <h3>{sec.heading}</h3>
+        {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 10, fontStyle: "italic", lineHeight: 1.5 }}>ⓘ {sec.note}</p>}
+        <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 10 }}>
+          {sec.cards.map((card, ci) => {
+            const s = severityStyle[card.severity] || severityStyle.amber;
+            return (
+              <div key={ci} style={{ border: `1px solid ${s.border}`, borderRadius: 10, overflow: "hidden" }}>
+                {/* Problem header */}
+                <div style={{
+                  padding: "9px 14px", background: s.header,
+                  borderBottom: `1px solid ${s.border}`,
+                  display: "flex", alignItems: "center", gap: 8
+                }}>
+                  <span style={{ width: 9, height: 9, borderRadius: "50%", background: s.dot, flexShrink: 0 }} />
+                  <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: s.titleColor }}>
+                    {card.problem}
+                  </span>
+                </div>
+                {/* Cause */}
+                {card.cause && (
+                  <div style={{ padding: "7px 14px 4px", fontSize: 12, color: "var(--text-muted)", lineHeight: 1.5, borderBottom: `1px solid var(--border-light)` }}>
+                    <span style={{ fontWeight: 700, fontStyle: "normal", color: "var(--text-secondary)", marginRight: 4 }}>Cause:</span>
+                    {card.cause}
+                  </div>
+                )}
+                {/* Numbered steps */}
+                <div style={{ padding: "8px 14px 12px", display: "flex", flexDirection: "column", gap: 7 }}>
+                  {card.steps.map((step, si) => (
+                    <div key={si} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                      <div style={{
+                        width: 22, height: 22, borderRadius: "50%",
+                        background: s.stepDot, color: s.titleColor,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif",
+                        flexShrink: 0, marginTop: 1
+                      }}>{si + 1}</div>
+                      <div style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                        {boldify(step)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   if (sec.type === "table") {
     const rowColors = {
@@ -9967,6 +10785,287 @@ if (sec.type === "drug_registry") {
 }
 if (sec.type === "contact_directory") {
   return <ContactDirectory entries={sec.entries} siteColor={siteColor} siteAccent={siteAccent} />;
+}
+if (sec.type === "notice_box") {
+  const c = { bg: "#fffbeb", border: "#f6ad55", intro: "#744210", label: "#7b3d00", bullet: "#dd6b20" };
+  const telBtn = (tel, label) => (
+    <a href={`tel:${tel}`} style={{ display: "inline-block", padding: "3px 10px", background: "#dd6b20", color: "#fff", borderRadius: 5, fontWeight: 700, fontSize: 12, textDecoration: "none", fontFamily: "Sora, sans-serif", whiteSpace: "nowrap" }}>
+      {label}
+    </a>
+  );
+  const renderNoticeItem = (item, i, small = false) => {
+    const base = { display: "flex", alignItems: "flex-start", gap: 8, fontSize: small ? 12.5 : 13, color: c.intro, lineHeight: 1.55 };
+    if (typeof item === "string") {
+      return (
+        <li key={i} style={base}>
+          <span style={{ color: c.bullet, marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
+          <span>{boldify(item)}</span>
+        </li>
+      );
+    }
+    if (item.type === "tel") {
+      return (
+        <li key={i} style={{ ...base, alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <span style={{ color: c.bullet, flexShrink: 0, fontWeight: 700 }}>▸</span>
+          <span style={{ flex: 1 }}>{boldify(item.text)}</span>
+          {telBtn(item.tel, item.telLabel || `☎ ${item.tel}`)}
+        </li>
+      );
+    }
+    if (item.type === "tel_links") {
+      return (
+        <li key={i} style={{ ...base, alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <span style={{ color: c.bullet, flexShrink: 0, fontWeight: 700 }}>▸</span>
+          <span>{boldify(item.prefix)}</span>
+          {item.links.map((l, li) => <span key={li}>{telBtn(l.tel, l.label)}</span>)}
+        </li>
+      );
+    }
+    if (item.type === "email") {
+      return (
+        <li key={i} style={base}>
+          <span style={{ color: c.bullet, marginTop: 2, flexShrink: 0, fontWeight: 700 }}>▸</span>
+          <span>
+            {item.prefix && <>{boldify(item.prefix)} </>}
+            <a href={`mailto:${item.email}`} style={{ color: "#c05621", fontWeight: 700, textDecoration: "underline", wordBreak: "break-all" }}>{item.email}</a>
+            {item.suffix && <> {item.suffix}</>}
+          </span>
+        </li>
+      );
+    }
+    if (item.type === "link_callout") {
+      return (
+        <li key={i} style={{ listStyle: "none" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.5)", border: `1px solid ${c.border}`, borderRadius: 7, padding: "8px 12px", flexWrap: "wrap", marginTop: 2 }}>
+            <span style={{ fontSize: 12.5, color: c.label, flex: 1, lineHeight: 1.4 }}>{item.text}</span>
+            <button onClick={() => onNavigate({ type: "guideline", guidelineId: item.guidelineId })}
+              style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "4px 11px", background: "#dd6b20", color: "#fff", border: "none", borderRadius: 5, fontWeight: 700, fontSize: 12, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0 }}>
+              {item.linkLabel} →
+            </button>
+          </div>
+        </li>
+      );
+    }
+    return null;
+  };
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      {/* Preamble — separate box above amber callout */}
+      {sec.preamble && (
+        <div style={{ border: "1px solid var(--border)", borderRadius: 8, padding: "11px 14px", marginBottom: 10, background: "var(--bg)" }}>
+          <p style={{ fontSize: 13.5, color: "var(--text-primary)", fontWeight: 600, lineHeight: 1.5, margin: 0 }}>
+            {sec.preamble.main}
+          </p>
+          {sec.preamble.exception && (
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 7, marginTop: 7 }}>
+              <span style={{ color: "var(--text-muted)", marginTop: 2, flexShrink: 0 }}>▸</span>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
+                ({sec.preamble.exception})
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+      {/* Amber callout — referral contacts */}
+      {sec.callout && (
+        <div style={{ background: c.bg, border: `1px solid ${c.border}`, borderRadius: 8, padding: "12px 14px" }}>
+          {sec.callout.subheading && (
+            <p style={{ fontSize: 13, color: c.label, fontWeight: 700, margin: "0 0 8px" }}>{sec.callout.subheading}</p>
+          )}
+          {sec.callout.criticalItems && (
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, margin: 0, padding: 0 }}>
+              {sec.callout.criticalItems.map((item, i) => renderNoticeItem(item, i, false))}
+            </ul>
+          )}
+          {sec.callout.items?.length > 0 && (
+            <div style={{ borderTop: `1px solid ${c.border}`, margin: "10px 0" }} />
+          )}
+          {sec.callout.items && (
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 7, margin: 0, padding: 0 }}>
+              {sec.callout.items.map((item, i) => renderNoticeItem(item, i, true))}
+            </ul>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+if (sec.type === "pull_criteria_table") {
+  const boldC = { bg: "#fffbeb", border: "#f6ad55", title: "#7b3d00", text: "#744210" };
+  const inclC = { bg: "#f0fff4", border: "#9ae6b4", title: "#276749" };
+  const exclC = { bg: "#fff5f5", border: "#fc8181", title: "#742a2a" };
+  const row = (icon, iconColor, text, weight = 400) => (
+    <li style={{ display: "flex", alignItems: "flex-start", gap: 9, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+      <span style={{ color: iconColor, flexShrink: 0, fontSize: 13, marginTop: 1, fontWeight: 700, width: 16, textAlign: "center" }}>{icon}</span>
+      <span style={{ fontWeight: weight }}>{boldify(text)}</span>
+    </li>
+  );
+  const block = (c, headerLabel, items, icon, iconColor, weight, note) => (
+    <div style={{ border: `1px solid ${c.border}`, borderRadius: 9, overflow: "hidden", marginBottom: 10 }}>
+      <div style={{ background: c.bg, padding: "8px 13px", borderBottom: `1px solid ${c.border}` }}>
+        <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 11.5, color: c.title, textTransform: "uppercase", letterSpacing: "0.05em" }}>{headerLabel}</span>
+      </div>
+      {note && <div style={{ padding: "6px 13px", fontSize: 12, color: c.title, fontStyle: "italic", borderBottom: `1px solid ${c.border}`, lineHeight: 1.4 }}>{note}</div>}
+      <ul style={{ listStyle: "none", padding: "9px 13px 11px", margin: 0, display: "flex", flexDirection: "column", gap: 7 }}>
+        {items.map((item, i) => row(icon, iconColor, item, weight))}
+      </ul>
+    </div>
+  );
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      {sec.referralNote && (
+        <div style={{ background: "#ebf8ff", border: "1px solid #90cdf4", borderRadius: 7, padding: "9px 13px", marginBottom: 12, fontSize: 12.5, color: "#2b6cb0", lineHeight: 1.5 }}>
+          ℹ {sec.referralNote}
+        </div>
+      )}
+      {block(boldC, "★ Mandatory — Must meet ALL", sec.boldCriteria, "★", "#dd6b20", 600, sec.boldNote)}
+      {block(inclC, "✓ Plus — One or more of:", sec.inclusionCriteria, "✓", "#38a169", 400, null)}
+      {block(exclC, "✕ Exclusion — Must NOT meet any", sec.exclusionCriteria, "✕", "#e53e3e", 400, sec.exclusionNote)}
+    </div>
+  );
+}
+if (sec.type === "scenario_cards") {
+  const LB = { header: "#dbeafe", border: "#93c5fd", title: "#1e40af", bullet: "#3b82f6", detail: "#1e3a8a", action: "#1e40af" };
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
+        {sec.cards.map((card, ci) => (
+          <div key={ci} style={{ border: `1px solid ${LB.border}`, borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ padding: "9px 14px", background: LB.header, borderBottom: `1px solid ${LB.border}`, display: "flex", alignItems: "flex-start", gap: 8 }}>
+              <span style={{ width: 9, height: 9, borderRadius: "50%", background: LB.bullet, flexShrink: 0, marginTop: 5 }} />
+              <div>
+                <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: LB.title }}>{card.label}</div>
+                {card.detail && <div style={{ fontSize: 12, color: LB.detail, marginTop: 2, lineHeight: 1.4 }}>{card.detail}</div>}
+              </div>
+            </div>
+            <div style={{ padding: "10px 14px 12px", display: "flex", flexDirection: "column", gap: 7 }}>
+              {card.actions.map((action, ai) => (
+                <div key={ai} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <span style={{ color: LB.bullet, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                  <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>{boldify(action)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+if (sec.type === "unsuitable_box") {
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      {sec.calloutLink && (
+        <div style={{ background: "#fffbeb", border: "1px solid #f6ad55", borderRadius: 8, padding: "10px 14px", marginBottom: 12, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 13, color: "#744210", fontWeight: 600, flex: 1, lineHeight: 1.4 }}>
+            Patients with a new suspected cancer diagnosis — see linked pathway
+          </span>
+          <button
+            onClick={() => onNavigate({ type: "guideline", guidelineId: sec.calloutLink.guidelineId })}
+            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "6px 14px", background: "#dd6b20", color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, fontSize: 12.5, fontFamily: "Sora, sans-serif", cursor: "pointer", flexShrink: 0 }}
+          >
+            {sec.calloutLink.label} →
+          </button>
+        </div>
+      )}
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+        {sec.items.map((item, i) => (
+          <li key={i}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+              <span style={{ color: "var(--text-muted)", marginTop: 3, flexShrink: 0 }}>▸</span>
+              <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>{boldify(item.text)}</span>
+            </div>
+            {item.examples && (
+              <ol style={{ listStyleType: "lower-alpha", paddingLeft: 34, margin: "5px 0 0", display: "flex", flexDirection: "column", gap: 4 }}>
+                {item.examples.map((ex, ei) => (
+                  <li key={ei} style={{ fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.5, fontStyle: "italic" }}>{ex}</li>
+                ))}
+              </ol>
+            )}
+          </li>
+        ))}
+      </ul>
+      {sec.notes && sec.notes.length > 0 && (
+        <div style={{ marginTop: 12, borderTop: "1px solid var(--border-light)", paddingTop: 10 }}>
+          <p style={{ fontSize: 11.5, color: "var(--text-muted)", fontWeight: 600, marginBottom: 5, textTransform: "uppercase", letterSpacing: "0.04em" }}>Additional Linked Pathways</p>
+          {sec.notes.map((note, i) => (
+            <p key={i} style={{ fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.5, margin: "3px 0" }}>{note}</p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+if (sec.type === "link_table") {
+  const pinnedItem = sec.items.find(item => item.pinned);
+  const tableItems = sec.items.filter(item => !item.pinned);
+  const btnStyle = {
+    display: "inline-block",
+    padding: "5px 14px",
+    borderRadius: 6,
+    fontWeight: 700,
+    fontSize: 12.5,
+    textDecoration: "none",
+    fontFamily: "Sora, sans-serif",
+    letterSpacing: "0.01em",
+  };
+  return (
+    <div className="detail-card" style={{ borderLeft: "3px solid #3182ce", background: "var(--surface)" }}>
+      <h3 style={{ color: "var(--text-primary)", marginBottom: 12 }}>{sec.heading}</h3>
+      {pinnedItem && (
+        <div style={{ background: "#fffbeb", border: "1px solid #f6ad55", borderRadius: 7, padding: "10px 14px", marginBottom: 14, display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ fontSize: 12.5, color: "#744210", fontWeight: 600, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{pinnedItem.description}</span>
+          <a href={pinnedItem.url} style={{ ...btnStyle, background: "#dd6b20", color: "#fff" }}>
+            {pinnedItem.label}
+          </a>
+        </div>
+      )}
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
+          <tr style={{ background: "var(--bg)" }}>
+            <th style={{ padding: "7px 10px", textAlign: "left", fontWeight: 600, color: "var(--text-secondary)", borderBottom: "2px solid var(--border)", fontFamily: "Sora, sans-serif", fontSize: 11.5, letterSpacing: "0.03em", width: "40%", borderRight: "1px solid var(--border)" }}>Name</th>
+            <th style={{ padding: "7px 10px", textAlign: "left", fontWeight: 600, color: "var(--text-secondary)", borderBottom: "2px solid var(--border)", fontFamily: "Sora, sans-serif", fontSize: 11.5, letterSpacing: "0.03em" }}>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableItems.map((item, i) => (
+            <tr key={i} style={{ borderBottom: "1px solid var(--border-light)" }}>
+              <td style={{ padding: "7px 10px", verticalAlign: "middle", borderRight: "1px solid var(--border-light)" }}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer" style={{
+                  ...btnStyle,
+                  display: "flex", alignItems: "center", gap: 8,
+                  background: "#ebf4ff", color: "#1a56a0",
+                  border: "1px solid #2b6cb0",
+                  width: "100%", boxSizing: "border-box",
+                  justifyContent: "flex-start",
+                }}>
+                  <span style={{
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    width: 20, height: 20, borderRadius: 4,
+                    background: "#bee3f8", flexShrink: 0,
+                  }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#1a56a0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="11" height="11">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </span>
+                  {item.label}
+                </a>
+              </td>
+              <td style={{ padding: "9px 10px", verticalAlign: "middle", fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                {item.description}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
   return null;
 }
@@ -10659,8 +11758,6 @@ const css = `
 
 export default function App() {
 
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem("clinguide_auth") === "true");
-  if (!authed) return <><style>{css}</style><LoginScreen onLogin={() => setAuthed(true)} /></>;
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [expandedSections, setExpandedSections] = useState({ allSites: true, oncology: true, palliative: true, calculators: false, tools: true });
@@ -10789,6 +11886,10 @@ const DIRECTORY_DATA = {
       { label: "Home", onClick: () => navigate({ type: "home" }) },
       { label: currentGuidelineSite?.label, onClick: () => navigate({ type: "site", siteId: currentGuidelineSite?.id }) },
       { label: currentGuideline?.title },
+    ];
+    if (view.type === "changelog") return [
+      { label: "Home", onClick: () => navigate({ type: "home" }) },
+      { label: "What's New" },
     ];
     if (view.type === "directory") return [
       { label: "Home", onClick: () => navigate({ type: "home" }) },
@@ -10969,7 +12070,7 @@ const DIRECTORY_DATA = {
                   >
                     <span style={{ display: "flex", opacity: 0.8 }}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
-                        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.5 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.41 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                       </svg>
                     </span>
                     Directory
@@ -10978,6 +12079,21 @@ const DIRECTORY_DATA = {
               )}
             </div>
 
+          </div>
+
+          {/* Pinned footer — What's New */}
+          <div style={{ borderTop: "1px solid var(--border-light)", padding: "8px 8px 10px", flexShrink: 0 }}>
+            <div
+              className={`sidebar-item ${view.type === "changelog" ? "active" : ""}`}
+              onClick={() => navigate({ type: "changelog" })}
+              style={{ fontSize: 13, color: "var(--text-muted)" }}
+            >
+              <span style={{ display: "flex", opacity: 0.75, fontSize: 13 }}>📋</span>
+              What's New
+              <span style={{ marginLeft: "auto", fontSize: 10.5, padding: "1px 7px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 99, color: "#1a6b8a", fontWeight: 600, fontFamily: "Sora, sans-serif", whiteSpace: "nowrap" }}>
+                v{CHANGELOG[0].version}
+              </span>
+            </div>
           </div>
         </aside>
 
@@ -11106,6 +12222,11 @@ const DIRECTORY_DATA = {
               <DirectoryPage onNavigate={navigate} />
             )}
 
+            {/* CHANGELOG */}
+            {!searchActive && view.type === "changelog" && (
+              <ChangelogPage onNavigate={navigate} />
+            )}
+
           </div>
         </div>
       </div>
@@ -11146,6 +12267,38 @@ function HomePage({ sites, onNavigate }) {
   );
 }
 
+
+function ChangelogPage({ onNavigate }) {
+  return (
+    <div>
+      <div className="home-greeting">
+        <h1>What's New</h1>
+        <p>Release notes and updates for ClinGuide</p>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 14, padding: "0 0 32px" }}>
+        {CHANGELOG.map((entry, i) => (
+          <div key={i} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, overflow: "hidden" }}>
+            {/* Version header */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 18px", borderBottom: "1px solid var(--border-light)", background: "var(--bg)" }}>
+              <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 16, color: "var(--text-primary)" }}>v{entry.version}</span>
+              <span style={{ fontSize: 11.5, padding: "2px 9px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 99, color: "#1a6b8a", fontWeight: 600, fontFamily: "Sora, sans-serif" }}>{entry.label}</span>
+              <span style={{ fontSize: 12.5, color: "var(--text-muted)", marginLeft: "auto" }}>{entry.date}</span>
+            </div>
+            {/* Changes list */}
+            <ul style={{ listStyle: "none", padding: "12px 18px 14px", margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+              {entry.changes.map((c, ci) => (
+                <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#3182ce", flexShrink: 0, marginTop: 6 }} />
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function FavouritesPage({ favourites, onStar, onNavigate }) {
   const favGuides = ALL_GUIDELINES.filter(g => favourites.includes(g.id));
@@ -11660,6 +12813,12 @@ function DrugRegistry({ entries, siteColor, siteAccent }) {
     cardiotox:    { label: "Cardiotoxicity risk",          icon: "♥" },
     neurotox:     { label: "Neurotoxicity risk",           icon: "⚡" },
     nephrotox:    { label: "Nephrotoxicity / hydration",   icon: "💧" },
+    skin_reaction: { label: "Severe skin reactions / SJS/TEN", icon: "🩹" },
+    hyperglycaemia: { label: "Hyperglycaemia risk",        icon: "🩸" },
+    pneumonitis:   { label: "Pneumonitis risk",            icon: "🫁" },
+    hyperphosphataemia: { label: "Hyperphosphataemia",     icon: "🧪" },
+    ppe:           { label: "Palmar-plantar erythrodysaesthesia (PPE)", icon: "✋" },
+    ocular_tox:    { label: "Ocular toxicity",             icon: "👁" },
   };
 
   const filters = [
