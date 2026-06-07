@@ -336,6 +336,7 @@ const SITES = [
       summary: "Criteria for direct e-referral of confirmed oncology patients to the Oncology ward via Nervecentre. Includes mandatory BOLD criteria, inclusion criteria, exclusion criteria, potential patient criteria, and guidance on unsuitable pathways.",
       tags: ["Pull criteria", "Admission", "Oncology ward", "Nervecentre", "e-Referral", "SACT", "Neutropenic sepsis"],
       related: ["new-suspected-cancer"],
+      pdfUrl:"https://nhs.sharepoint.com/sites/RX1_InterSpecialtyWorking/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FRX1_InterSpecialtyWorking%2FShared%20Documents%2FOncology%20Pull%20Criteria%20v1%2E1%2Epdf&parent=%2Fsites%2FRX1_InterSpecialtyWorking%2FShared%20Documents",
       updated: "January 2025",
       summaryCalcLink: {
         url: "https://nhs.sharepoint.com/sites/RX1_InterSpecialtyWorking/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FRX1_InterSpecialtyWorking%2FShared%20Documents%2FOncology%20Pull%20Criteria%20v1%2E1%2Epdf&parent=%2Fsites%2FRX1_InterSpecialtyWorking%2FShared%20Documents",
@@ -651,6 +652,8 @@ const SITES = [
             summary: "Admission guidelines for germ cell tumour patients receiving chemotherapy at NUH. Covers regimens in use, admission criteria, D1 checklist, monitoring during treatment, and discharge planning.",
             tags: ["Germ cell", "Testicular", "BEP", "TIP", "VIP", "CBOP", "Cisplatin", "Ifosfamide", "Bleomycin", "Admission", "Chemotherapy"],
             related: ["oncology-drug-list"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=2c86494ff2345d226724f866b5d3b06b",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9827&query_desc=an%2Cphr%3A6288",
             updated: "September 2019",
             sections: [
               {
@@ -4926,7 +4929,536 @@ const SITES = [
       {
         id: "pall-eol",
         label: "End of Life",
-        guidelines: [        ],
+        guidelines: [
+          {
+            id: "pall-anticipatory",
+            title: "End of Life: Anticipatory Prescribing",
+            category: "End of Life",
+            version: "1",
+            authors: "NUH Palliative Care Team",
+            evidenceBase: "NUH Palliative Care | Review: 2027",
+            pdfUrl: "https://www.nottsapc.nhs.uk/media/q3qmyzsf/palliative-care-pocketbook.pdf",
+            sections: [
+              {
+                heading: "Contact Information",
+                type: "alert",
+                variant: "danger",
+                items: [
+                  "**Seek advice from senior colleagues or the palliative care team if needed**",
+                  "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+                  "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+                ],
+              },
+              {
+                type: "table",
+                heading: "Anticipatory Medications — Opioid-Naive Patients",
+                columns: ["Drug", "Indication", "Starting Dose", "Frequency", "Max 24h", "Route"],
+                rows: [
+                  ["Morphine Sulphate", "Pain / Breathlessness", "2.5 mg–5 mg", "1-hourly PRN", "15 mg", "SC"],
+                  ["Levomepromazine", "Agitation / Nausea & Vomiting", "6.25 mg–12.5 mg", "1-hourly PRN", "37.5 mg", "SC"],
+                  ["Midazolam", "Agitation / Anxiety", "2.5 mg–5 mg", "1-hourly PRN", "15 mg", "SC"],
+                  ["Hyoscine Butylbromide", "Respiratory Secretions", "20 mg", "1-hourly PRN", "120 mg", "SC"],
+                ],
+              },
+              {
+                type: "alert",
+                variant: "warning",
+                heading: "Escalation Threshold",
+                items: [
+                  "**IF TWO CONSECUTIVE DOSES ONE HOUR APART FAIL TO CONTROL SYMPTOMS — SEEK MEDICAL ADVICE IMMEDIATELY.**",
+                ],
+              },
+              {
+                type: "markdown",
+                heading: "Patients Already on Regular Opioids",
+                content: "For patients established on regular opioids, **do not use the starting doses above**. Calculate the correct PRN dose based on their current opioid regimen using the [[calc:opioid-converter|Opioid Equianalgesic Converter]].\n\n**Example:** A patient on oral morphine 60 mg/24h:\n- CSCI (syringe driver) dose = **30 mg morphine SC/24h**\n- PRN SC dose = **5 mg morphine SC** (1/6th of 24h CSCI dose)\n\nFor further guidance on converting between opioids and CSCI calculations, refer to the [[calc:opioid-converter|Opioid Equianalgesic Converter]] or contact the Palliative Care team.",
+              },
+            ],
+          },
+          {
+            id: "pall-renal-eol",
+            title: "End of Life Prescribing in Renal Failure",
+            category: "End of Life",
+            version: "4",
+            authors: "Dr S.D. Roe, Consultant Nephrologist; Sr J. Prest, Renal Palliative Care Nurse Specialist; Ian Hogg, Renal Specialist Pharmacist; Chris Pudney, Specialist Clinical Pharmacist Palliative Care",
+            evidenceBase: "Guideline 2280 | NUH Cancer & Associated Specialities | Review: June 2029",
+            summary: "Anticipatory prescribing for patients with advanced CKD (eGFR <30 ml/min) approaching end of life. Fentanyl-based regimens are preferred — metabolites are inactive and less likely to accumulate. Covers pain, nausea, delirium, secretions, and breathlessness.",
+            tags: ["Renal failure", "CKD", "Fentanyl", "End of life", "Anticipatory prescribing", "Syringe driver", "eGFR"],
+            related: ["pall-pain", "pall-syringe"],
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=89e0a15c5be72d413129af47516d8133",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10093&query_desc=an%2Cphr%3A6326",
+            updated: "June 2029 (review)",
+            sections: [
+              {
+                heading: "Contact Information",
+                type: "alert",
+                variant: "danger",
+                items: [
+                  "**Seek advice from senior colleagues or the palliative care team if needed**",
+                  "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+                  "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+                ],
+              },
+              {
+                heading: "Symptom Management",
+                type: "symptom_decision_cards",
+                intro: "Applies to patients with **eGFR <30 ml/min** approaching end of life. Select each symptom for prescribing guidance.",
+                items: [
+                  {
+                    label: "Pain",
+                    sublabel: "Opioid selection and dose titration",
+                    color: "#b45309",
+                    bg: "#fffbeb",
+                    border: "#fde68a",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Symptom Present",
+                        scenarioNote: "Patient is in pain",
+                        question: "Is patient already taking oral opioids?",
+                        yes: [
+                          "Convert strong opioid to **24-hour SC syringe driver of Fentanyl¹**",
+                          "Prescribe **Fentanyl 25 micrograms SC PRN** 1 hourly",
+                          "Give a dose **immediately**",
+                        ],
+                        no: [
+                          "**Fentanyl 25 micrograms SC PRN** 1 hourly",
+                          "Give a dose **immediately**",
+                        ],
+                      },
+                      {
+                        type: "absent",
+                        scenario: "Symptom Absent",
+                        scenarioNote: "Pain is controlled",
+                        question: "Is patient already taking oral opioids?",
+                        yes: [
+                          "Review after 24 hours",
+                          "If **≥2 PRN doses** required over 24 hours — consider starting SC syringe driver of Fentanyl",
+                          "**Fentanyl 100–250 micrograms** in syringe driver over 24 hrs",
+                          "PRN dose = **1/6th to 1/10th** of 24-hour dose",
+                          "*Example: 100 mcg/24h → 12.5 mcg PRN | 200 mcg/24h → 25 mcg PRN*",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [
+                      "¹ If fentanyl is temporarily unavailable: **Oxycodone 1–2 mg SC PRN** or **Morphine 1.25–2.5 mg SC PRN**",
+                    ],
+                    supportingInfo: [
+                      "In patients with low eGFR it is not imperative to immediately switch opioid if symptoms are well controlled on their current regime.",
+                      "To convert from other strong opioids contact Specialist Palliative Care Team / Pharmacy for further advice. If unavailable, use conversion table in guideline document.",
+                      "Many opioid analgesics and their metabolites may accumulate in renal failure causing toxicity — myoclonic jerks, profound acidosis, and respiratory depression. Morphine and its metabolites are most likely to cause toxicity. Fentanyl and Alfentanil are less likely as metabolites are not active.",
+                      "If symptoms persist contact the Specialist Palliative Care Team.",
+                    ],
+                    calcLink: { calcId: "opioid-converter", label: "Opioid Conversion Calculator" },
+                  },
+                  {
+                    label: "Agitation",
+                    sublabel: "Terminal restlessness & agitation",
+                    color: "#553c9a",
+                    bg: "#faf5ff",
+                    border: "#d6bcfa",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Symptom Present",
+                        scenarioNote: "Terminal restlessness / agitation",
+                        question: "Can patient tolerate benzodiazepines?",
+                        yes: [
+                          "Give **Midazolam 2.5–5mg SC** stat",
+                          "Prescribe **Midazolam 2.5–5mg SC PRN** 1 hourly",
+                          "Start **Midazolam 10mg** in SC syringe driver over 24h",
+                          "Review at 24h — if breakthrough doses used, increase Midazolam by at least the total PRN amount given in the last 24h",
+                        ],
+                        no: [
+                          "**Levomepromazine 6.25mg SC** stat",
+                          "**Levomepromazine 6.25mg SC PRN** 2–4 hourly",
+                          "If ≥2 doses required in 24h — start syringe driver of **Levomepromazine 12.5mg over 24h**",
+                        ],
+                      },
+                      {
+                        type: "absent",
+                        scenario: "Symptom Absent",
+                        scenarioNote: "Anticipatory prescribing",
+                        question: "Prescribe anticipatory medication now",
+                        yes: [
+                          "**Midazolam 2.5mg SC PRN** 1 hourly",
+                          "Continue to give PRN accordingly",
+                          "If ≥2 PRN doses required in 24h — consider starting SC syringe driver of **Midazolam 5–10mg over 24h**",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [
+                      "Doses used should be proportional to current benzodiazepine medication.",
+                      "Anticipatory prescribing ensures there is no delay in responding to symptoms in the last hours and days of life.",
+                      "If symptoms persist contact the Specialist Palliative Care Team.",
+                    ],
+                  },
+                  {
+                    label: "Nausea & Vomiting",
+                    sublabel: "Antiemetic management",
+                    color: "#2c7a7b",
+                    bg: "#e6fffa",
+                    border: "#81e6d9",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Symptom Present",
+                        scenarioNote: "Nausea and/or vomiting",
+                        question: "First-line antiemetic treatment",
+                        fullWidth: true,
+                        yes: [
+                          "Give **Levomepromazine 6.25mg SC** stat",
+                          "Prescribe **Levomepromazine 6.25mg SC PRN** 2–4 hourly",
+                          "Start **Levomepromazine 12.5mg over 24h** SC via syringe driver",
+                          "Review after 24h — if still nauseated / vomiting or breakthrough doses needed, consider increasing Levomepromazine to maximum **25mg/24h** in syringe driver",
+                        ],
+                        no: null,
+                      },
+                      {
+                        type: "absent",
+                        scenario: "Symptom Absent",
+                        scenarioNote: "Anticipatory prescribing",
+                        question: "Prescribe anticipatory medication now",
+                        fullWidth: true,
+                        yes: [
+                          "**Levomepromazine 6.25mg SC PRN** 1 hourly",
+                          "Review after 24h — if ≥2 doses given, start syringe driver of **Levomepromazine 12.5–25mg over 24h** SC",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [
+                      "Cyclizine is not usually recommended in renal failure.",
+                      "**Haloperidol 1mg SC PRN** is a suitable second-line alternative. If syringe driver required: **Haloperidol 2.5–5mg SC over 24h**.",
+                      "Anticipatory prescribing ensures there is no delay in responding to symptoms in the last hours and days of life.",
+                      "If symptoms persist contact the Specialist Palliative Care Team.",
+                    ],
+                  },
+                  {
+                    label: "Breathlessness",
+                    sublabel: "Dyspnoea management",
+                    color: "#2c5282",
+                    bg: "#ebf8ff",
+                    border: "#bee3f8",
+                    preamble: {
+                      heading: "Non-Drug Management — Try First",
+                      items: [
+                        "Explanation and reassurance",
+                        "Repositioning",
+                        "Electric fan / cool draft of air",
+                        "Relaxation and breathing techniques",
+                        "**Oxygen therapy** — if SpO₂ <90%: start **2–4 L/min via nasal cannula**; evaluate benefit and titrate dose to alleviate respiratory distress",
+                      ],
+                    },
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Symptom Present",
+                        scenarioNote: "Breathlessness (dyspnoea)",
+                        question: "Is patient already taking oral opioids for breathlessness?",
+                        yes: [
+                          "Convert to **Fentanyl syringe driver**",
+                          "Contact Specialist Palliative Care Team for conversion advice",
+                          "If unavailable: use opioid conversion chart in guideline document",
+                        ],
+                        no: [
+                          "**Fentanyl 25 micrograms SC PRN** 1 hourly",
+                          "Give a dose **immediately**",
+                        ],
+                      },
+                      {
+                        type: "absent",
+                        scenario: "Symptom Absent",
+                        scenarioNote: "Anticipatory prescribing",
+                        question: "Prescribe anticipatory medication now",
+                        fullWidth: true,
+                        yes: [
+                          "**Fentanyl 25 micrograms SC PRN** 1 hourly",
+                          "If ≥2 PRN doses required in 24h — consider starting SC syringe driver of Fentanyl",
+                          "**Fentanyl 100–250 micrograms** in syringe driver over 24h",
+                          "PRN dose = **1/6th to 1/10th** of 24h dose",
+                          "*Example: 100 mcg/24h → 12.5 mcg PRN | 200 mcg/24h → 25 mcg PRN*",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [
+                      "¹ If fentanyl temporarily unavailable: **Oxycodone 1–2mg SC PRN** or **Morphine 1.25–2.5mg SC PRN**",
+                    ],
+                    supportingInfo: [
+                      "If patient is breathless **and anxious/agitated**: consider **Midazolam 2.5mg SC** stat or **5–10mg/24h** via syringe driver; prescribe Midazolam 2.5mg SC PRN 1 hourly.",
+                      "To convert from other strong opioids contact Specialist Palliative Care Team / Pharmacy for further advice.",
+                      "Opioid metabolites may accumulate in renal failure causing toxicity — myoclonic jerks, narcosis, and respiratory depression. Morphine most likely; Fentanyl and Alfentanil less likely as metabolites are not active.",
+                      "If symptoms persist contact the Specialist Palliative Care Team.",
+                    ],
+                    calcLink: { calcId: "opioid-converter", label: "Opioid Conversion Calculator" },
+                  },
+                  {
+                    label: "Secretions",
+                    sublabel: "Excessive respiratory tract secretions",
+                    color: "#276749",
+                    bg: "#f0fff4",
+                    border: "#9ae6b4",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Symptom Present",
+                        scenarioNote: "Excessive secretions",
+                        question: "Initiate and titrate treatment",
+                        fullWidth: true,
+                        yes: [
+                          "Give **Hyoscine butylbromide 20mg SC** stat",
+                          "Prescribe **Hyoscine butylbromide 20mg SC PRN** 1 hourly",
+                          "Start **Hyoscine butylbromide 20mg/24h SC** via syringe driver",
+                          "If ≥2 PRN doses required — increase syringe driver to **60–120mg over 24h** (guided by PRN doses used in previous 24h)",
+                        ],
+                        no: null,
+                      },
+                      {
+                        type: "absent",
+                        scenario: "Symptom Absent",
+                        scenarioNote: "Anticipatory prescribing",
+                        question: "Prescribe anticipatory medication now",
+                        fullWidth: true,
+                        yes: [
+                          "**Hyoscine butylbromide 20mg SC PRN** 2–4 hourly",
+                          "If ≥2 PRN doses required — start syringe driver of **Hyoscine butylbromide 20mg SC over 24h**",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [
+                      "Treatment is effective in approximately 50% of patients. Explain that noisy breathing is due to secretions in the airways and throat which the patient can no longer clear effectively through coughing or swallowing.",
+                      "Repositioning the patient can sometimes alleviate the symptoms.",
+                      "**Hyoscine Hydrobromide is not usually recommended.**",
+                      "Anticipatory prescribing ensures there is no delay in responding to symptoms in the last hours and days of life.",
+                      "If symptoms persist contact the Specialist Palliative Care Team.",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "References",
+                type: "references",
+                items: [
+                  "Bunn R, Ashley A, (eds). The Renal Handbook. Oxford: Radcliffe Medical Press; 2004.",
+                  "Chambers EJ, Germain M, Brown E, (eds). Supportive Care for the Renal Patient. Oxford: Oxford University Press; 2004.",
+                  "Davison S. Chronic Pain in End Stage Renal Disease. Adv Chronic Kidney Dis 2005; 12(13): 326–334.",
+                  "Dean M. Opioids in Renal Failure and Dialysis Patients. J Pain Symptom Manage 2004; 28(5): 407–504.",
+                  "Humphreys BD, Soiffer RF, Magee CC. Renal Failure associated with cancer and its treatment: An update. J Am Soc Nephrol 2005; 16: 151–161.",
+                  "Kurella M, Bennett WM, Chertow GM. Analgesia in Patients with End Stage Renal Disease: A Review of Available Evidence. Am J Kidney Dis 2003; 42(2): 217–228.",
+                  "Mercadante S, Arcuri E. Opioids and Renal Function. J Pain 2004; 5(1): 2–19.",
+                  "Murtagh F, Addlington-Hall J, Higginson I. The Prevalence of Symptoms in End-Stage Renal Disease: A Systematic Review. Advances in Chronic Kidney Disease 2007; 14(1): 82–99.",
+                  "Nottinghamshire Palliative Care Pocketbook version 5. palliative-care-pocketbook.pdf (nottsapc.nhs.uk). Accessed June 2024.",
+                  "Scholz J, Steinfath M. Clinical Pharmacokinetics of Alfentanil, Fentanyl and Sufentanil. An Update. Clin Pharmacokinetics 1996; 31(4): 275–292.",
+                  "Urch CE, Carr S, Minton O. A retrospective review of the use of alfentanil in a hospital palliative care setting. Palliat Med 2004; 18(6): 385–387.",
+                  "Wilcock A, Howard P and Charlesworth S. Palliative Care Formulary (8th ed.). Pharmaceutical Press; 2022.",
+                ],
+              },
+            ],
+          },
+          {
+            id: "pall-eol-diabetes",
+            title: "End of Life Prescribing: Diabetes",
+            category: "End of Life",
+            version: "1",
+            authors: "NUH Diabetes & Palliative Care Teams",
+            evidenceBase: "NUH End of Life Diabetes Guidelines | Diabetes UK End of Life Guidelines",
+            summary: "Guidance for managing diabetes in patients approaching end of life. Focuses on minimising invasive testing, relaxing glucose targets (aim 6–15 mmol/L), and adapting insulin regimens to maintain comfort rather than strict control.",
+            tags: ["Diabetes", "End of life", "Insulin", "Type 1", "Type 2", "Glucose", "Palliative", "GLP-1", "Metformin"],
+            related: ["pall-renal-eol"],
+            updated: "Current",
+            sections: [
+              {
+                heading: "Contact Information",
+                type: "alert",
+                variant: "danger",
+                items: [
+                  "**Seek advice from senior colleagues or the palliative care team if needed**",
+                  "**Mon–Sun 08:00–16:00:** QMC ☎ 88402 | City ☎ 74977",
+                  "**Out of hours:** Palliative consultant advice line ☎ 07595 285014",
+                ],
+              },
+              {
+                heading: "Prognosis Stage",
+                type: "symptom_decision_cards",
+                intro: "Consider which prognosis stage applies — this guides how actively to manage diabetes.",
+                items: [
+                  {
+                    label: "Continuing Care",
+                    sublabel: "Deteriorating — weeks prognosis",
+                    color: "#b45309",
+                    bg: "#fffbeb",
+                    border: "#fde68a",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Weeks Prognosis",
+                        scenarioNote: "Deteriorating, continuing care phase",
+                        question: "Context and considerations",
+                        fullWidth: true,
+                        yes: [
+                          "Individuals may be referred to the diabetes team — all suggested changes should be considered with the understanding there may be little time to adjust to a new regimen",
+                          "Intensive support can be needed as well-being, activity, and appetite can change day to day",
+                          "Managing diabetes may be an added stress at an emotional time for individuals and carers",
+                          "Relaxing targets may feel like 'giving up' for some, while others may see ongoing intensive management as 'pointless' — explore this with the patient and family",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [],
+                  },
+                  {
+                    label: "Terminal Care",
+                    sublabel: "Days prognosis",
+                    color: "#c53030",
+                    bg: "#fff5f5",
+                    border: "#feb2b2",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Days Prognosis",
+                        scenarioNote: "Terminal phase — dying individual",
+                        question: "Context and approach",
+                        fullWidth: true,
+                        yes: [
+                          "Ideally by this stage diabetes treatment has been minimised so that few changes are needed in the last days of life",
+                          "If the individual is bed-bound, semi-comatose, no longer able to take tablets, and only able to take sips of fluid — use the management guidance below",
+                          "The plan is devised to **minimise symptoms** and keep invasive testing to the minimum needed to achieve that aim",
+                          "It can be reassuring for relatives and carers to know that diabetes is being managed differently rather than being 'ignored'",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [],
+                  },
+                ],
+              },
+              {
+                heading: "Family & Specialist Involvement",
+                type: "alert",
+                items: [
+                  "Discuss changing the approach to diabetes management with the individual and/or family if not already explored",
+                  "If the person remains on insulin, ensure the **Diabetes Specialist Nurses (DSN)** or GP are involved and agree a monitoring strategy",
+                ],
+              },
+              {
+                heading: "Management by Diabetes Type",
+                type: "symptom_decision_cards",
+                items: [
+                  {
+                    label: "Type 2: Diet controlled or Metformin treated",
+                    sublabel: "Lowest risk — minimal intervention needed",
+                    color: "#276749",
+                    bg: "#f0fff4",
+                    border: "#9ae6b4",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Management",
+                        question: "End of life management",
+                        fullWidth: true,
+                        yes: [
+                          "**Stop Metformin** if prescribed",
+                          "No insulin initiation required",
+                          "No routine glucose monitoring necessary unless symptomatic",
+                          "If symptomatic — test blood glucose and manage accordingly",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [],
+                  },
+                  {
+                    label: "Type 2: On tablets / insulin / GLP-1 RA",
+                    sublabel: "Requires active insulin review",
+                    color: "#b45309",
+                    bg: "#fffbeb",
+                    border: "#fde68a",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Step 1 — All Patients",
+                        question: "Initial steps",
+                        fullWidth: true,
+                        yes: [
+                          "**Stop all oral tablets, GLP-1 RAs and GLP-RA-GIPs**",
+                          "Consider stopping insulin if: **small dose only** AND glucose readings **<10 mmol/L**",
+                        ],
+                        no: null,
+                      },
+                      {
+                        type: "absent",
+                        scenario: "Step 2 — Insulin Decision",
+                        question: "Is insulin to be continued?",
+                        yes: [
+                          "Prescribe **once daily morning dose** of isophane (Humulin I), Glargine (Lantus / Toujeo), or Degludec (Tresiba)",
+                          "Use **75% of total previous daily insulin dose**",
+                          "Check glucose **once daily at teatime**:",
+                          "If <8 mmol/L → **reduce dose by 10–20%**",
+                          "If >20 mmol/L → **increase dose by 10–20%** to reduce risk of symptoms or ketosis",
+                        ],
+                        no: [
+                          "If glucose >20 mmol/L → give **6 units rapid-acting insulin** (Aspart / Lispro / Apidra)",
+                          "Re-check glucose after **2 hours**",
+                          "Monitor glucose before meals and before bed",
+                          "Consider **rtCGMS or isCGMS** to avoid repeated finger-prick testing",
+                          "If rapid-acting insulin needed **more than twice daily** → consider once daily isophane or long-acting analogue (Glargine / Degludec)",
+                        ],
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [],
+                  },
+                  {
+                    label: "Type 1 Diabetes",
+                    sublabel: "Basal insulin must always continue",
+                    color: "#2c5282",
+                    bg: "#ebf8ff",
+                    border: "#bee3f8",
+                    scenarios: [
+                      {
+                        type: "present",
+                        scenario: "Management",
+                        question: "Insulin management",
+                        fullWidth: true,
+                        yes: [
+                          "Continue **once daily morning dose** of Glargine (Lantus) or Degludec (Tresiba) — reduce dose",
+                          "Check glucose **once daily at teatime**:",
+                          "If <8 mmol/L → **reduce dose by 10–20%**",
+                          "If >20 mmol/L → **increase dose by 10–20%** to reduce risk of symptoms or ketosis",
+                        ],
+                        no: null,
+                      },
+                    ],
+                    footnotes: [],
+                    supportingInfo: [],
+                  },
+                ],
+              },
+              {
+                heading: "Important Information",
+                type: "alert",
+                items: [
+                  "**Aim for glucose readings of 6–15 mmol/L**",
+                  "Observe for symptoms in previously insulin-treated individuals — keep tests to a minimum",
+                  "**rtCGMS or isCGM** monitoring may be useful to avoid finger-prick testing",
+                  "It is difficult to identify symptoms due to hypoglycaemia or hyperglycaemia in a dying person — if symptoms are observed, consider abnormal glucose levels as the cause",
+                  "Be aware of increased insulin sensitivity in individuals with CKD, cancer, or frailty — dose adjustment must reflect specific clinical needs",
+                  "Test blood glucose if the person is symptomatic",
+                ],
+              },
+            ],
+          },
+        ],
       },
       {
         id: "pall-emergencies",
@@ -8785,6 +9317,9 @@ function OpioidConverter() {
   const bupPatch       = morphinePO ? getPatch(bupTable, morphinePO) : null;
   const diamorphineSC  = morphinePO ? morphinePO / 3 : null;
   const morphineSC     = morphinePO ? morphinePO / 2 : null;
+  const fentanylSC     = morphinePO ? morphinePO * 6.25 : null;   // mcg: 4mg PO → 25mcg SC
+  const alfentanilSC   = morphinePO ? morphinePO * 31.25 : null;  // mcg: 4mg PO → 125mcg SC
+  const oxycodoneSC    = morphinePO ? morphinePO / 4 : null;      // mg: 4mg PO → 1mg SC
   const btMin          = morphinePO ? morphinePO / 10 : null;
   const btMax          = morphinePO ? morphinePO / 6 : null;
 
@@ -8827,6 +9362,9 @@ function OpioidConverter() {
           <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginTop: 4 }}>SC conversions</div>
           <R label="Diamorphine SC /24h" value={diamorphineSC} unit="mg" note="÷ 3 from morphine PO" />
           <R label="Morphine SC /24h" value={morphineSC} unit="mg" note="÷ 2 from morphine PO" />
+          <R label="Fentanyl SC /24h" value={fentanylSC} unit="mcg" note="÷ 160 from morphine PO (mcg). Preferred in renal failure" highlight />
+          <R label="Alfentanil SC /24h" value={alfentanilSC} unit="mcg" note="÷ 32 from morphine PO (mcg). Use in renal failure when fentanyl unavailable" />
+          <R label="Oxycodone SC /24h" value={oxycodoneSC} unit="mg" note="÷ 4 from morphine PO. Caution: accumulation risk in renal failure" />
           <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginTop: 4 }}>Transdermal equivalents</div>
           <R label="Fentanyl patch" value={fentPatch} unit="mcg/h" note="72h patch — nearest standard dose. Ratio 100:1 (morphine PO : fentanyl TD)" />
           <R label="Buprenorphine patch" value={bupPatch} unit="mcg/h" note="Nearest standard dose. Ratio 100:1 (morphine PO : buprenorphine TD)" />
@@ -8835,6 +9373,39 @@ function OpioidConverter() {
           </div>
         </div>
       )}
+
+      {/* Renal failure CSCI reference table */}
+      <div style={{ marginTop: 4 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginBottom: 8 }}>Renal Failure — CSCI Starting Doses</div>
+        <div style={{ padding: "9px 12px", background: "#fffbeb", border: "1px solid #fde68a", borderRadius: 8, fontSize: 12.5, color: "#92700a", lineHeight: 1.5, marginBottom: 8 }}>
+          ⚠ Do <strong>not</strong> use morphine or diamorphine in continuous infusion in renal failure — high risk of accumulation and adverse effects.
+        </div>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5, textAlign: "left", border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden" }}>
+            <thead>
+              <tr style={{ background: C, color: "white" }}>
+                {["Oral Morphine", "Fentanyl SC", "Alfentanil SC", "Oxycodone SC"].map(h => (
+                  <th key={h} style={{ padding: "7px 10px", fontFamily: "Sora, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.03em" }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["4 mg", "25 mcg", "125 mcg", "1 mg"],
+                ["8 mg", "50 mcg", "250 mcg", "2 mg"],
+                ["CSCI starting doses", "100–200 mcg / 24h", "500 mcg – 1 mg / 24h", "4–8 mg / 24h"],
+              ].map((row, ri) => (
+                <tr key={ri} style={{ background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)", borderTop: "1px solid var(--border-light)" }}>
+                  {row.map((cell, ci) => (
+                    <td key={ci} style={{ padding: "7px 10px", fontWeight: ri === 2 && ci === 0 ? 600 : 400, color: ri === 2 && ci === 0 ? "var(--text-primary)" : "var(--text-secondary)", fontStyle: ri === 2 && ci === 0 ? "italic" : "normal", fontSize: ri === 2 && ci === 0 ? 11.5 : 12.5 }}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 6, lineHeight: 1.5 }}>Single PRN dose = 1/10th to 1/6th of 24h CSCI dose. Most patients with renal failure require only low doses — if dose is escalating, seek palliative care advice.</p>
+      </div>
     </div>
   );
 }
@@ -9022,6 +9593,148 @@ function PillItem({ pill }) {
 
 
 
+function SymptomDecisionCard({ item, siteColor, onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const C = item.color || siteColor;
+  const BG = item.bg || "#f7fafc";
+  const BD = item.border || "#e2e8f0";
+  return (
+    <div style={{ border: `1.5px solid ${open ? C : BD}`, borderRadius: 8, overflow: "hidden", transition: "border-color 0.15s" }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 14px", background: open ? BG : "var(--bg)", cursor: "pointer", transition: "background 0.15s" }}
+      >
+        <div style={{ width: 8, height: 8, borderRadius: "50%", background: C, flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: open ? C : "var(--text-primary)" }}>{item.label}</div>
+          {item.sublabel && <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>{item.sublabel}</div>}
+        </div>
+        <span style={{ color: open ? C : "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+      </div>
+
+      {open && (
+        <div style={{ borderTop: `1px solid ${BD}` }}>
+          {/* Preamble — non-drug / context section */}
+          {item.preamble && (
+            <div style={{ padding: "10px 14px", borderBottom: "1px solid var(--border-light)", background: "var(--bg)" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: C, fontFamily: "Sora, sans-serif", marginBottom: 7 }}>{item.preamble.heading}</div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                {item.preamble.items.map((info, ii) => (
+                  <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                    <span style={{ color: C, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                    <span>{renderInline(info, onNavigate)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {item.scenarios.map((sc, si) => {
+            const isPresent = sc.type === "present";
+            const scBg = isPresent ? "#fffbeb" : "#f0fdf4";
+            const scColor = isPresent ? "#92700a" : "#276749";
+            const scBorder = isPresent ? "#fef3c7" : "#bbf7d0";
+            return (
+              <div key={si}>
+                {si > 0 && <div style={{ height: 1, background: "var(--border)", margin: 0 }} />}
+
+                {/* Scenario header */}
+                <div style={{ padding: "7px 14px", background: scBg, borderBottom: `1px solid ${scBorder}`, display: "flex", alignItems: "center", gap: 7 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: scColor, fontFamily: "Sora, sans-serif" }}>
+                    {sc.scenario}
+                  </span>
+                  {sc.scenarioNote && <span style={{ fontSize: 12, color: scColor, opacity: 0.8 }}>— {sc.scenarioNote}</span>}
+                </div>
+
+                {/* Question row */}
+                <div style={{ padding: "8px 14px 6px", background: "var(--surface)", borderBottom: "1px solid var(--border-light)" }}>
+                  <span style={{ fontSize: 12.5, fontWeight: 600, color: "var(--text-primary)", fontFamily: "Sora, sans-serif" }}>{sc.question}</span>
+                </div>
+
+                {/* YES / NO columns — or single full-width column */}
+                {sc.fullWidth ? (
+                  <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
+                    {sc.yes && sc.yes.length > 0 ? (
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                        {sc.yes.map((line, li) => (
+                          <li key={li} style={{ display: "flex", alignItems: "flex-start", gap: 6 }}>
+                            <span style={{ color: C, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                            <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{renderInline(line, onNavigate)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span style={{ fontSize: 12.5, color: "var(--text-muted)", fontStyle: "italic" }}>No action required</span>
+                    )}
+                  </div>
+                ) : (
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+                  {[
+                    { key: "yes", label: "YES", lines: sc.yes, filled: true },
+                    { key: "no",  label: "NO",  lines: sc.no,  filled: false },
+                  ].map((col, ci) => (
+                    <div key={col.key} style={{ padding: "10px 12px", borderRight: ci === 0 ? "1px solid var(--border-light)" : "none", background: "var(--surface)" }}>
+                      <div style={{ display: "inline-flex", alignItems: "center", padding: "2px 10px", background: col.filled ? C : "var(--border-light)", borderRadius: 99, marginBottom: 8 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: col.filled ? "white" : "var(--text-muted)", fontFamily: "Sora, sans-serif", letterSpacing: "0.04em" }}>{col.label}</span>
+                      </div>
+                      {col.lines && col.lines.length > 0 ? (
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                          {col.lines.map((line, li) => (
+                            <li key={li} style={{ display: "flex", alignItems: "flex-start", gap: 6 }}>
+                              <span style={{ color: C, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                              <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{renderInline(line, onNavigate)}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <span style={{ fontSize: 12.5, color: "var(--text-muted)", fontStyle: "italic" }}>No action required</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                )}
+              </div>
+            );
+          })}
+
+          {/* Footnotes */}
+          {item.footnotes && item.footnotes.length > 0 && (
+            <div style={{ padding: "8px 14px", borderTop: "1px solid var(--border-light)", background: "var(--bg)" }}>
+              {item.footnotes.map((fn, fi) => (
+                <p key={fi} style={{ fontSize: 12, color: "var(--text-muted)", lineHeight: 1.55, margin: fi > 0 ? "4px 0 0" : 0, fontStyle: "italic" }}>{renderInline(fn, onNavigate)}</p>
+              ))}
+            </div>
+          )}
+
+          {/* Supporting info */}
+          {item.supportingInfo && item.supportingInfo.length > 0 && (
+            <div style={{ borderTop: "1px solid #fde68a", padding: "10px 14px", background: "#fffbeb" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: "#92700a", fontFamily: "Sora, sans-serif", marginBottom: 7 }}>Supporting Information</div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                {item.supportingInfo.map((info, ii) => (
+                  <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12.5, color: "#7b4a00", lineHeight: 1.55 }}>
+                    <span style={{ color: "#92700a", fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                    <span>{renderInline(info, onNavigate)}</span>
+                  </li>
+                ))}
+              </ul>
+              {item.calcLink && (
+                <div style={{ marginTop: 10, paddingTop: 8, borderTop: "1px solid #fde68a" }}>
+                  <span style={{ fontSize: 12.5, color: "#7b4a00" }}>To convert between opioids use the internal tool: </span>
+                  <button
+                    onClick={() => onNavigate && onNavigate({ type: "calculator", calcId: item.calcLink.calcId })}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: "#b45309", color: "white", border: "none", borderRadius: 99, fontSize: 12, fontWeight: 700, fontFamily: "Sora, sans-serif", cursor: "pointer", marginLeft: 2 }}
+                  >
+                    {item.calcLink.label}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function CinvTierBlock({ tier, c, siteColor }) {
   const [open, setOpen] = useState(false);
   return (
@@ -9139,8 +9852,16 @@ function renderInline(text, onNavigate) {
     if (part.startsWith("[[") && part.endsWith("]]")) {
       const inner = part.slice(2,-2);
       const [id, label] = inner.includes("|") ? inner.split("|") : [inner, inner];
+      const idTrimmed = id.trim();
+      if (idTrimmed.startsWith("calc:")) {
+        const calcId = idTrimmed.slice(5);
+        return onNavigate
+          ? <span key={i} onClick={() => onNavigate({ type: "calculator", calcId })}
+              style={{ color: "var(--accent)", textDecoration: "underline", cursor: "pointer", fontWeight: 500 }}>{label.trim()}</span>
+          : <span key={i} style={{ color: "var(--accent)", fontWeight: 500 }}>{label.trim()}</span>;
+      }
       return onNavigate
-        ? <span key={i} onClick={() => onNavigate({ type: "guideline", guidelineId: id.trim() })}
+        ? <span key={i} onClick={() => onNavigate({ type: "guideline", guidelineId: idTrimmed })}
             style={{ color: "var(--accent)", textDecoration: "underline", cursor: "pointer", fontWeight: 500 }}>{label.trim()}</span>
         : <span key={i} style={{ color: "var(--accent)", fontWeight: 500 }}>{label.trim()}</span>;
     }
@@ -11333,6 +12054,38 @@ if (sec.type === "link_table") {
             </tbody>
           </table>
         </div>
+      </div>
+    );
+  }
+
+  if (sec.type === "symptom_decision_cards") {
+    return (
+      <div className="detail-card">
+        {sec.heading && <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>}
+        {sec.intro && <p style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: 12 }}>{renderInline(sec.intro, onNavigate)}</p>}
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {sec.items.map((item, i) => (
+            <SymptomDecisionCard key={i} item={item} siteColor={siteColor} onNavigate={onNavigate} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (sec.type === "references") {
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 16px", background: "var(--surface)", borderBottom: "1px solid var(--border-light)" }}>
+          <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12, color: "var(--text-muted)", letterSpacing: "0.04em", textTransform: "uppercase" }}>{sec.heading || "References"}</span>
+        </div>
+        <ul style={{ listStyle: "none", padding: "10px 16px 12px", margin: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+          {sec.items.map((ref, ri) => (
+            <li key={ri} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+              <span style={{ fontSize: 11, color: "var(--text-muted)", flexShrink: 0, marginTop: 3, fontFamily: "Sora, sans-serif", fontWeight: 700 }}>{ri + 1}.</span>
+              <span style={{ fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.55, fontStyle: "italic" }}>{renderInline(ref, onNavigate)}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
