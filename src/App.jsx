@@ -3,6 +3,16 @@ import { useState, useEffect, useRef } from "react";
 // ── DATA ──────────────────────────────────────────────────────────────────────
 const CHANGELOG = [
   {
+    version: "0.42",
+    date: "June 2026",
+    label: "Preview",
+    changes: [
+      "Updated Oncology Clinic Timetable — refreshed clinic details, contact numbers and emails for consultants and middle grades",
+      "Added Grade and Tumour Group filter dropdowns to the clinic timetable",
+      "Colour-coded cards by grade (clin onc, med onc, registrar, SAS, fellow) with CO/MO tags",
+    ],
+  },
+  {
     version: "0.41",
     date: "June 2026",
     label: "Preview",
@@ -250,6 +260,7 @@ const SITES = [
       { label: "Karnofsky / ECOG Score", url: "#calc-ps" },
       { label: "Calcium Correction Calculator", url: "#calc-calcium" },
       { label: "Antibiotic Dosing (Vancomycin & Gentamicin)", calcId: "antibiotic-dosing" },
+      { label: "Endocrinology Calculators", calcId: "endocrinology" },
 
     ],
     subsites: [
@@ -295,6 +306,7 @@ const SITES = [
                 { label: "Weekly Rota", description: "Live weekly rota for ward cover & on call", url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_MedicalWorkforce/Rota%20Store/CAS/Weekly%20Oncology%20Rota%20New.xlsx?d=wb380240e02ce41db8ffa5de495dedc92&csf=1&web=1&e=m1YeES&xsdata=MDV8MDJ8di5waWxsYWlAbmhzLm5ldHw5YmE2YmQ2MGJkNGE0MWZmYWM2YzA4ZGVjMzEzMjQ0NnwzN2MzNTRiMjg1YjA0N2Y1YjIyMjA3YjQ4ZDc3NGVlM3wwfDB8NjM5MTYyNjg1NTk1NjIzMjE3fFVua25vd258VFdGcGJHWnNiM2Q4ZXlKRmJYQjBlVTFoY0draU9uUnlkV1VzSWxZaU9pSXdMakF1TURBd01DSXNJbEFpT2lKWGFXNHpNaUlzSWtGT0lqb2lUV0ZwYkNJc0lsZFVJam95ZlE9PXwwfHx8&sdata=WXU3V1RHYkpkSEJjK2RFa2pvb2xyemNHMlV0RmF1aWxrcFIwdnFXQ0gxZz0%3d" },
                 { label: "Consultant Rota", description: "Live On Call Consultant Rota [2026]", url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_EstatesFacilities/_layouts/15/Doc.aspx?sourcedoc=%7B0265FCA6-6128-40B1-87BA-216545D52AD3%7D&file=Oncology%20Consultant.xlsx&action=default&mobileredirect=true" },
                 { label: "Teams & Links", description: "Oncology teams directory and useful SharePoint links", url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_Oncology/_layouts/15/Doc.aspx?sourcedoc=%7B3E49A3EF-0644-49EC-A879-A12F87A7C33A%7D&file=Oncology%20Teams%20and%20links%20August%202025%20v1.xlsx&action=default&mobileredirect=true" },
+                { label: "Onc Clinic Timetable", description: "Oncology Timetable", guidelineId: "nuh-onc-rotations" },
                 { label: "Medical Workforce", description: "All NUH CAS rotas", url: "https://nhs.sharepoint.com/sites/RX1_MedicalWorkforce/SitePages/Junior-Doctor-Rotas.aspx" },
               ],
             },
@@ -347,6 +359,7 @@ const SITES = [
               bg: "#e6fffa",
               border: "#81e6d9",
               items: [
+                { label: "Intranet Onc SpR Resources", description: "Training & Educational Resources on NUH Intranet", url: "https://nhs.sharepoint.com/sites/RX1_Oncology/SitePages/SPR-Inductions.aspx" },
                 { label: "Accent — Study Leave", description: "Study leave manager (Hicom)", url: "https://accent.hicom.co.uk/Pro/Live/web/" },
                 { label: "EASY Expenses", description: "NUH expense claim manager", url: "https://nuh.easy.giltbyte.com/user/login/" },
               ],
@@ -415,6 +428,109 @@ const SITES = [
         },
       ],
     },
+    {
+      id: "nuh-onc-rotations",
+      title: "NUH Oncology Clinic Timetable",
+      category: "NUH Oncology Resources",
+      version: "1.0",
+      authors: "NUH Oncology",
+      updated: "July 2026",
+      summary: "Clin Onc Rotations July – December 2026. Searchable clinic timetable for NUH Oncology SpRs, Clinical Fellows, and Consultants.",
+      tags: ["Rotations", "SpR", "Clinical Fellow", "Schedule", "July 2026", "Rota"],
+      related: ["ward-cover-sop"],
+      sections: [
+        {
+          type: "standout_card",
+          variant: "blue",
+          content: "Please check for updated Ward Cover, On Call, and Annual Leave:",
+          link: { label: "Weekly Oncology Rota", url: "https://nhs.sharepoint.com/:x:/r/sites/RX1_MedicalWorkforce/_layouts/15/Doc.aspx?sourcedoc=%7BB380240E-02CE-41DB-8FFA-5DE495DEDC92%7D&file=Weekly%20Oncology%20Rota%20New.xlsx&action=default&mobileredirect=true" },
+        },
+        {
+          type: "rotation_table",
+          entries: [
+            { name: "Abdulla, Eman", email: "eman.abdulla1@nhs.net", ntn: true, focus: "CNS / UGI", consultants: "Dr Foweraker / Dr James", cs: "Dr Foweraker", es: "Dr Pascoe", schedule: { mon: { am: "Upper GI (EJJ1A/C)", pm: "RT planning" }, tue: { am: "RT clinic (KLF2R)", pm: "Clinic CNS (KLF2D)" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "Admin / meetings", pm: "Clinic chemo (KLF4C)" }, fri: { am: "Neuro MDT", pm: "RT planning" } } },
+            { name: "Asma, Fiz", tel: "07812 277174", email: "fiz.asma@nhs.net", ntn: true, focus: "Skin / Lung", consultants: "Dr Sivanandan", cs: "Dr Sivanandan", es: "Dr Mills", schedule: { mon: { am: "Clinic KMH (MAS1A)", pm: "Skin Clinic KMH (MAS1P)" }, tue: { am: "RT clinic (MS52R)", pm: "RT planning" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "Clinic TC (MS54A)", pm: "Admin" }, fri: { am: "Chemo Clinic (CC65C)", pm: "RT planning" } } },
+            { name: "Beadman, Tom", email: "tom.beadman1@nhs.net", ntn: true, focus: "CRC / UGI", consultants: "Dr Silverman", cs: "Dr Silverman", es: "TBC", schedule: { mon: { am: "RT on treat (RS71R)", pm: "RT planning" }, tue: { am: "Admin", pm: "Germ cell clinic" }, wed: { am: "CRC F/U (RS73A)", pm: "CRC New, UGI F/U (RS73B)" }, thu: { am: "Meetings / WR", pm: "Clinic (RS74B)" }, fri: { am: "Chemo clinic (RS75A/C)", pm: "RT planning" } } },
+            { name: "Elniema, Mohamed", tel: "07812 269954", email: "m.elniema@nhs.net", ntn: true, focus: "AOS / HPB / SABR", consultants: "Dr Moore / Dr Aznar / Dr James", cs: "Dr Aznar", es: "Dr Griffin", schedule: { mon: { am: "RT planning", pm: "Admin / CUP MDT" }, tue: { am: "NRLEJ (NSCP clinic)", pm: "New / F/U (LA32H)" }, wed: { am: "AOS round (TOM) QMC", pm: "Clinic (CC63B)" }, thu: { am: "RT planning", pm: "New patient (LA34RT)" }, fri: { am: "AOS ward round", pm: "Admin" } } },
+            { name: "Elzawahry, Mohamed", email: "mohamed.elzawahry2@nhs.net", ntn: true, focus: "Sarcoma / Early breast", consultants: "Dr Esler / Dr Shawcroft", cs: "Dr Esler", es: "Dr Hosni", schedule: { mon: { am: "RT clinic (Dr Esler)", pm: "Sarcoma MDT / Admin" }, tue: { am: "Breast NACT", pm: "RT planning" }, wed: { am: "Clinic (CPE33)", pm: "RT planning" }, thu: { am: "Admin", pm: "Early breast RT (EAS4B)" }, fri: { am: "Clinic oncology (CPE5L)", pm: "RT planning" } } },
+            { name: "Jonny, Sameh", ntn: true, focus: "Gynae / Breast", consultants: "Dr Anand / Dr Shawcroft", cs: "Dr Anand", es: "Dr Ho", schedule: { mon: { am: "RT planning", pm: "Early breast clinic KMH (CLK1P/Q)" }, tue: { am: "RT planning", pm: "RT clinic (4AA2R)" }, wed: { am: "Chemo ABC Clinic (EAS3A)", pm: "Gynae clinic (4AAC3)" }, thu: { am: "Brachy / admin", pm: "RT planning / wards / admin" }, fri: { am: "Gynae new / F/U (4AA5N)", pm: "RT planning / RT clinic (EAS5R)" } } },
+            { name: "Ling, Michelle", tel: "07812 269182", email: "michelle.ling3@nhs.net", ntn: true, focus: "Sarcoma / Uro / CRC", consultants: "Dr Sangary / Dr Brookes", cs: "Dr Brookes", es: "Dr Sangary", schedule: { mon: { am: "RT clinic (LB)", pm: "Sarcoma MDT / WR / Admin" }, tue: { am: "RT planning", pm: "Clinic (3JM2B/2N)" }, wed: { am: "Clinic (3JM3C)", pm: "Clinic (3JM3B)" }, thu: { am: "RT planning / RT clinic (3JM4R)", pm: "Sarcoma clinic (LB34B)" }, fri: { am: "Admin", pm: "RT planning" } } },
+            { name: "Noor, Masab", email: "muhammad.noor5@nhs.net", ntn: true, focus: "Gynae / CRC / Breast", consultants: "Dr Hosni / Dr Kamlow", cs: "Dr Hosni", es: "Dr Walker", schedule: { mon: { am: "Gynae clinic KMH (SUH1P)", pm: "Admin / RT planning / Gynae MDT" }, tue: { am: "RT planning / RT clinic (CLK2B)", pm: "Clinic breast (SUH2A)" }, wed: { am: "CRC clinic (CLK3B)", pm: "Chemo clinic (CLK3C)" }, thu: { am: "RT planning", pm: "Meetings / admin / brachy" }, fri: { am: "NWD", pm: "NWD" } } },
+            { name: "Paul, Anice", email: "anice.paul@nhs.net", ntn: true, focus: "Thyroid / H&N", consultants: "Dr Griffin", cs: "Dr Griffin", es: "Dr Sivanandan", schedule: { mon: { am: "H&N / thyroid (1MG1A)", pm: "WR / RT planning" }, tue: { am: "H&N NP clinic (ONC2N, 1MG2N)", pm: "RT planning" }, wed: { am: "H&N RT clinics", pm: "RT planning" }, thu: { am: "Admin", pm: "Thyroid & H&N MDT / FU Clinic (1MG4B)" }, fri: { am: "NWD", pm: "NWD" } } },
+            { name: "Pillai, Vishnu", tel: "07812 276072", email: "v.pillai@nhs.net", ntn: true, focus: "UGI / Breast / Lung", consultants: "Dr Tiwari / Dr Sangary", cs: "Dr Tiwari", es: "Dr Mills", schedule: { mon: { am: "Breast RT (RT31A)", pm: "RT planning" }, tue: { am: "HPB clinic (RT3HC)", pm: "Lung (SK72B)" }, wed: { am: "RT planning", pm: "Chemo (SK73B/C)" }, thu: { am: "KMH UGI Clinic (EJCH)", pm: "Admin" }, fri: { am: "NWD", pm: "NWD" } } },
+            { name: "Sayed, Mehwish", tel: "07812 275757", email: "mehwish.sayed@nhs.net", ntn: true, focus: "Skin / CNS", consultants: "Dr Moore / Dr Sivanandan / Dr Ho", cs: "Dr Sivanandan", es: "Dr Foweraker", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "Brain Mets MDT / clinic", pm: "Neuro clinic (JWH2B)" }, wed: { am: "Skin (MS53A)", pm: "RT clinic (TOM3R/JWH3R)" }, thu: { am: "Skin at TC (TOM4A) wks 3-4 / Admin", pm: "Admin / RT planning" }, fri: { am: "RT planning", pm: "Admin / RT planning" } } },
+            { name: "Stoneley, Francesca", email: "francesca.stoneley@nhs.net", ntn: true, focus: "Lung / Thyroid / H&N", consultants: "Dr Pascoe / Dr Christian / Dr McCabe", cs: "Dr Pascoe", es: "Dr Aznar", schedule: { mon: { am: "Thyroid (ACP1A)", pm: "Lung RT on-treat (ACP1R) / Admin" }, tue: { am: "H&N NP clinic (ONC2N, JC52N, ALM2A)", pm: "RT planning" }, wed: { am: "H&N RT clinic", pm: "RT planning" }, thu: { am: "Admin / meetings", pm: "H&N MDT / Admin / Optional FU (JC54B/ALM4B)" }, fri: { am: "Lung MDT / Clinic lung (ACP5A)", pm: "Thyroid SACT (ACP5T)" } } },
+            { name: "Tang, Jia-Wei", tel: "07812 278800", email: "jia-wei.tang@nhs.net", ntn: true, focus: "Early Breast / Lung / CRC", consultants: "Dr Johnson / Dr Chin-Hiong", cs: "Dr Johnson", es: "Dr Johnson", schedule: { mon: { am: "RT planning", pm: "RT planning / RT clinic (KJ31R)" }, tue: { am: "Breast clinic (KJ32A)", pm: "RT clinic (CC62R)" }, wed: { am: "Admin", pm: "Lung clinics (KJ33B/C)" }, thu: { am: "RT planning", pm: "Clinic (CC64B)" }, fri: { am: "NWD", pm: "NWD" } } },
+            { name: "Umar, Sumbal", tel: "07812 268879", email: "sumbal.umar@nhs.net", ntn: true, focus: "Urology", consultants: "Dr Sundar / Dr Brookes", cs: "Dr Sundar", es: "Dr Silverman", schedule: { mon: { am: "RT planning", pm: "Urology clinic Dr Sundar (2SS1A)" }, tue: { am: "RT planning", pm: "Clinic (2SS2N)" }, wed: { am: "KMH (LBR3A/CH)", pm: "Admin" }, thu: { am: "Admin / meetings", pm: "Clinic (2SS4C) 11am-5pm" }, fri: { am: "NWD", pm: "NWD" } } },
+            { name: "Webb, Rebekah", email: "rebekah.webb@nhs.net", ntn: true, focus: "CRC", consultants: "Dr Wai Hou", cs: "Dr Wai Hou", es: "Dr Johnson", schedule: { mon: { am: "RT planning", pm: "RT planning" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "CRC clinic (WS44A)", pm: "CRC Clinic (WS44B)" }, fri: { am: "Chemo clinic (WS45C)", pm: "Admin" } } },
+            { name: "Ahmed, Salma", email: "salma.ahme1@nhs.net", ntn: false, focus: "Urology / CRC", consultants: null, cs: null, es: null, schedule: { mon: { am: "Urology clinic Dr Sundar (2SS1A)", pm: "Urology clinic Dr Sundar (2SS1A)" }, tue: { am: "RT planning / Ward Support", pm: "Admin / Ward Support" }, wed: { am: "KMH (GAW3A & GAWCH)", pm: "KMH Urology clinic (Dr Wai Hou)" }, thu: { am: "Admin / meetings", pm: "F/U + some new (GW24B)" }, fri: { am: "NWD", pm: "NWD" } } },
+            { name: "Kilingdat, Emmanuel", tel: "07812 278839", email: "emmanuel.kilingdat@nhs.net", ntn: false, focus: "Breast / Germ Cell / Gynae / Lung", consultants: null, cs: null, es: null, schedule: { mon: { am: "Ward Support", pm: "Ward Support" }, tue: { am: "Breast NACT", pm: "Germ cell clinic support" }, wed: { am: "KMH Ovarian Clinic (SUNCH & SUN3A)", pm: "KMH Ovarian Clinic (SUNCH & SUN3A)" }, thu: { am: "Ward Support", pm: "Ward Support" }, fri: { am: "Lung clinic (TOM5A)", pm: "Admin / meetings" } } },
+            { name: "Saxena, Aaruni", tel: "07812 268819", email: "aaruni.saxena2@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { role: "consultant", onc: "med", name: "Yeo, Daniel", tel: "07812 268878", email: "daniel.yeo2@nhs.net", focus: "", schedule: {} },
+            { role: "consultant", onc: "med", name: "Farooq, Omar", tel: "07812 269949", email: "mohammed.farooq7@nhs.net", focus: "", schedule: {} },
+            { role: "consultant", onc: "med", name: "Mathiyalagan, Navin", tel: "07404 101313", email: "n.mathiyalagan@nhs.net", focus: "", schedule: {} },
+            { role: "consultant", onc: "med", name: "Al-Ani, Maryam", tel: "07770 072180", email: "maryam.alani@nhs.net", focus: "", schedule: {} },
+            { name: "Scotto, Daniele (OOP PhD)", email: "d.scotto@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Miah, Jamal", tel: "07812 268328", email: "jamal.miah6@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Sawar, Muhammad Adeel", tel: "07812 269907", email: "muhammadadeel.sarwar@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Chaudhry, Sabba (Mat Leave)", tel: "07812 268998", email: "sabba.chaudhry@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Kanwal, Saima", tel: "07812 278831", email: "saima.kanwal1@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Tan, Hui Xian", tel: "07812 269197", email: "hui.tan4@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Masih, Asif", tel: "07812 269283", email: "asif.masih@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Tahir, Ramsha (Mat Leave)", tel: "07812 275780", email: "ramsha.tahir4@nhs.net", ntn: true, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Brownlie, Juliette (Mat Leave)", tel: "07812 276844", email: "juliette.brownlie@nhs.net", ntn: true, onc: "med", focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Quinlan, Marie", tel: "07812 276962", email: "marie.quinlan2@nhs.net", ntn: false, sas: true, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Segaran, Avinash", tel: "07812 269323", email: "a.segaran@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Eric, Rahul", email: "r.eric@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Ho, Michael", tel: "07812 269162", email: "michael.ho10@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Hassan, Sani", email: "sani.hassan@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Syeda, Tasmia", tel: "07812 278829", email: "s.tasmia@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { name: "Taqi, Zara (Mat Leave)", email: "zara.taqi@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
+            { role: "consultant", onc: "med", name: "Adhikaree, Jason (JA4)", tel: "07903460583", focus: "Lung", schedule: { mon: { am: "UoN", pm: "Ward Round / SPA Admin" }, tue: { am: "UoN", pm: "UoN / SACT Prescribing" }, wed: { am: "UoN", pm: "UoN / SACT Prescribing" }, thu: { am: "SPA Admin / Ward Round", pm: "Ward Round / DCC Admin" }, fri: { am: "NUH Lung MDT / Lung Clinic (JA45A/JA45C)", pm: "Lung Clinic (JA45A/JA45C)" } } },
+            { role: "consultant", onc: "clin", name: "Anand, Anjana (4AA)", tel: "07812269240", focus: "Gynae", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "RT Planning", pm: "Ward Round / SPA Admin" }, wed: { am: "—", pm: "Chemo Clinic" }, thu: { am: "Brachytherapy Planning (1 in 2 wks) / Dept Meetings", pm: "RT Planning / Prescribing / RT On-Treatment Review Clinic" }, fri: { am: "Gynae Clinic (4AA5N)", pm: "NWD" } } },
+            { role: "consultant", onc: "med", name: "Arora, Arvind (AA8)", tel: "07812268727", focus: "HPB / NET", schedule: { mon: { am: "HPB/NET Clinic (AA81A)", pm: "Ward Round / DCC Admin" }, tue: { am: "KMH HPB/NET Clinic", pm: "Extended HPB clinic / Admin" }, wed: { am: "HPB NET tele clinic / Admin", pm: "HPB Clinical Trials admin / SACT admin" }, thu: { am: "HPB Net Clinic", pm: "Ward Round / DCC Admin" }, fri: { am: "NET MDT / HPB MDT", pm: "CS for Med Oncs / Admin" } } },
+            { role: "consultant", onc: "med", name: "Atabani, Suha (9SA)", tel: "07812278835", focus: "Lung / Melanoma", schedule: { mon: { am: "Lung Clinic (9SA1C)", pm: "DCC Admin / Ward Round" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "SACT Prescribing / DCC Admin", pm: "Med Onc & CNS Melanoma Mtg / Lung MDT / SPA Admin" }, thu: { am: "Lung Clinic (9SA4A)", pm: "Skin MDT / DCC Admin" }, fri: { am: "Melanoma Clinic (MEL5A/MEL5C)", pm: "Melanoma Clinic (MEL5A/MEL5C) / Ward Round" } } },
+            { role: "consultant", onc: "clin", name: "Aznar-Garcia, Luis (LA3)", tel: "07812276256", focus: "HPB / SABR / Brain Mets", schedule: { mon: { am: "NWD", pm: "RT, HPB & SABR Peer Reviews" }, tue: { am: "RT Planning / Brain Mets MDT", pm: "RT Planning / HPB & SABR Clinic (LA32H)" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "SABR MDT / RT Planning / RT, HPB & SABR Peer Reviews", pm: "RT Planning / RT Review Clinic" }, fri: { am: "SPA Admin / HPB MDT", pm: "RT Technical Planning / Brain Mets & SRS Clinic (LA35P)" } } },
+            { role: "consultant", onc: "med", name: "Baraka, Baha (BEB)", focus: "HPB / Breast (KMH)", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "Ward Round / DCC Admin", pm: "HPB Clinic" }, wed: { am: "SACT Prescribing / DCC Admin / SPA", pm: "HPB Clinic" }, thu: { am: "Ward Round / DCC Admin / SPA", pm: "KMH Breast Tele Clinic" }, fri: { am: "KMH Breast MDT / NUH HPB/NET MDT", pm: "KMH Breast Clinic" } } },
+            { role: "consultant", onc: "clin", name: "Brookes, Louise (LB3)", tel: "07812268851", focus: "Sarcoma / Urology / Paediatric", schedule: { mon: { am: "Radiotherapy Review Clinic / Sarcoma MDT", pm: "WR / Paediatric Solid Tumour MDT / SPA Admin" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "Urology Clinic", pm: "DCC & SPA Admin" }, thu: { am: "WR / Departmental Meetings", pm: "SACT Prescribing / Sarcoma Clinic / RT Planning" }, fri: { am: "DCC Admin / Urology MDT / RT Peer Review", pm: "Paediatric CNS MDT / Paediatric RT Clinic / RT Planning" } } },
+            { role: "consultant", onc: "clin", name: "Chong, Chin Hiong (CC6)", focus: "Urology / Colorectal", schedule: { mon: { am: "WR / RT Planning / SACT Prescribing", pm: "SPA Admin" }, tue: { am: "WR / RT Planning", pm: "RT Clinic / DCC Admin / SACT Prescribing" }, wed: { am: "SACT Prescribing / Urology Clinic", pm: "DCC Admin / Urology FUP Clinic" }, thu: { am: "WR / SPA Admin", pm: "Colorectal Clinic" }, fri: { am: "Urology MDT / Colorectal MDT / Colorectal Team Meeting", pm: "Urology & Colorectal SACT Clinic / DCC Admin" } } },
+            { role: "consultant", onc: "clin", name: "Christian, Judith (JC5)", tel: "07812276289", focus: "H&N", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "DCC Admin / Head & Neck Clinic (ONC2N/JC52F)", pm: "WR / RT Planning / SPA RT Admin" }, wed: { am: "DCC Admin / RT Peer Review / RT Clinic", pm: "Leadership Role Admin / RT Planning / SPA Admin" }, thu: { am: "SACT & RT Prescribing / Leadership Role / Dept Meetings / WR", pm: "MDT / ENT Clinic (JC54B)" }, fri: { am: "HoS (RT/job planning) flexible time", pm: "HoS (RT/job planning) flexible time" } } },
+            { role: "consultant", onc: "clin", name: "Esler, Claire (CPE)", tel: "07971092556", focus: "Sarcoma / Lymphoma / Paediatric", schedule: { mon: { am: "RT Clinic", pm: "WR / Paediatric Solid Tumour MDT / DCC Admin" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "Lymphoma Clinic with Haematology", pm: "DCC Admin / WR / Lymphoma MDT" }, thu: { am: "MDT / RT Planning / Dept Meetings / Sarcoma & Paeds Peer Review", pm: "RT Planning" }, fri: { am: "Sarcoma Clinic / SACT Prescribing / Paediatric CNS MDT", pm: "Paediatric RT Clinic / RT Planning / DCC Admin" } } },
+            { role: "consultant", onc: "clin", name: "Foweraker, Karen (KLF)", tel: "07812276194", focus: "Lung / CNS", schedule: { mon: { am: "KMH MDT / Lung Clinic", pm: "RT Planning / WR" }, tue: { am: "RT Clinic", pm: "RT Planning / Adult CNS, Pituitary & Skullbase Clinic" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "SABR MDT / RT Clinic / Dept Meetings / WR", pm: "Lung Peer Review / RT Planning / Adult CNS, Pituitary & Skullbase Clinic" }, fri: { am: "MDT / Clinical Reviews / Admin", pm: "DCC Admin" } } },
+            { role: "consultant", onc: "med", name: "Franks, Hester (HF1)", tel: "07812268942", focus: "Melanoma / Skin", schedule: { mon: { am: "DCC Admin", pm: "UoN" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "SPA Admin", pm: "Ward Round / DCC Admin / SACT Prescribing" }, thu: { am: "DCC & SPA Admin", pm: "Skin MDT / Ward Round" }, fri: { am: "Melanoma Clinic (MEL5A/MEL5C)", pm: "Melanoma Clinic (MEL5A/MEL5C) / Ward Round / DCC Admin" } } },
+            { role: "consultant", onc: "med", name: "Gossage, Lucy (LMG)", tel: "07812268768", focus: "Sarcoma / Germ Cell", schedule: { mon: { am: "Ward Round / Retroperitoneal & Main Sarcoma MDT", pm: "DCC Admin / Germ Cell MDT" }, tue: { am: "Ward Round / DCC Admin", pm: "Germ Cell Clinic (IH12B/IH12C)" }, wed: { am: "NWD (HoS flexible work)", pm: "NWD (HoS flexible work)" }, thu: { am: "SPA Admin / Ward Round", pm: "Sarcoma Clinic (IH14B/IH14C)" }, fri: { am: "NWD (HoS flexible work)", pm: "NWD (HoS flexible work)" } } },
+            { role: "consultant", onc: "clin", name: "Griffin, Matthew (1MG)", tel: "07812276254", focus: "H&N / Thyroid", schedule: { mon: { am: "DCC Admin / Thyroid Clinic", pm: "DCC Admin / WR / RT Planning / SPA Admin" }, tue: { am: "Head & Neck Clinic", pm: "DCC Admin / Appraisal SPA Admin / RT Planning" }, wed: { am: "Head & Neck Peer Review / RT Peer Review / RT Clinic", pm: "RT Planning / Clinical Supervisor Work" }, thu: { am: "RT Planning / Dept Meetings / WR", pm: "Thyroid MDT / Head & Neck MDT / Head & Neck FUP Clinic" }, fri: { am: "DCC Admin / Lead Appraiser Work", pm: "Lead Appraiser Work / SPA Admin" } } },
+            { role: "consultant", onc: "clin", name: "Ho, Joon Wee (JWH5)", tel: "07812279474", focus: "CNS / Breast (KMH)", schedule: { mon: { am: "WR / Medical Student Work", pm: "DCC Admin / KMH Clinic" }, tue: { am: "Brain Mets Clinic / Brain Mets MDT", pm: "Neuro Oncology Clinic" }, wed: { am: "OP Clinic", pm: "SPA Admin" }, thu: { am: "RT Clinic / SPA Admin", pm: "DCC Admin" }, fri: { am: "KMH Breast MDT / Neuro Oncology MDT / WR", pm: "Medical Student Work / RT Planning & RT Peer Review" } } },
+            { role: "consultant", onc: "clin", name: "Hosni, Shaymaa (SUH)", tel: "07812269362", focus: "Gynae / Breast", schedule: { mon: { am: "Gynae MDT / DCC Admin", pm: "WR / Gynae Clinic / DCC Admin" }, tue: { am: "Breast MDT / Breast RT Clinic", pm: "Clinical Supervisor / Research SPA Admin / RT Planning" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "Cervical Brachytherapy / SABR MDT / SPA Admin / RT Planning / Breast Peer Review", pm: "Breast Endocrine MDT / RT Planning / WR / Admin" }, fri: { am: "RT Clinic", pm: "Cervical Brachytherapy MDT / Gynae RT Peer Review / DCC Admin" } } },
+            { role: "consultant", onc: "clin", name: "James, Eleanor (EJJ)", tel: "07812278833", focus: "UGI / Lymphoma", schedule: { mon: { am: "Upper GI Clinic (EJJ5A)", pm: "Education Supervisor Work / SPA/DCC Admin / UGI MDT" }, tue: { am: "SPA Admin / SRU DLT", pm: "RT Planning / RT Clinic / WR" }, wed: { am: "Haematology Clinic", pm: "SPA Admin / Lymphoma MDT" }, thu: { am: "RT Planning / Dept Meetings / DCC Admin", pm: "—" }, fri: { am: "DCC Admin / WR", pm: "—" } } },
+            { role: "consultant", onc: "clin", name: "Johnson, Kerstie (KJ3)", tel: "07812269884", focus: "Breast / Lung", schedule: { mon: { am: "WR / DCC Admin / SACT Prescribing", pm: "RT Planning / RT Clinic" }, tue: { am: "Breast MDT / RT Lung Peer Review / Breast Clinic", pm: "DCC Admin / SACT Prescribing / SPA Datix Investigator Work" }, wed: { am: "RT Planning", pm: "Lung MDT / Lung Clinic" }, thu: { am: "SABR MDT / Dept Meetings / WR", pm: "—" }, fri: { am: "NWD", pm: "NWD" } } },
+            { role: "consultant", onc: "clin", name: "Kamlow, Charlotte (CLK)", focus: "Colorectal / Breast (KMH)", schedule: { mon: { am: "WR / admin / meetings / RT planning", pm: "KMH breast clinic" }, tue: { am: "Admin / RT planning", pm: "RT clinic" }, wed: { am: "CRC chemo clinic", pm: "CRC new / follow-up clinic" }, thu: { am: "NWD", pm: "NWD" }, fri: { am: "MDTs / WR", pm: "Admin / RT planning" } } },
+            { role: "consultant", onc: "clin", name: "Kathirgamakarthigeyan, Sangary (SK7)", tel: "07812275645", focus: "Lung", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "RT Peer Review / WR / RT Planning", pm: "SACT Prescribing / Lung Clinic" }, wed: { am: "SPA Admin", pm: "Lung MDT / Lung Clinic" }, thu: { am: "SABR MDT / RT Peer Review / Dept Meetings", pm: "Medical School Teaching & Admin / RT Planning" }, fri: { am: "DCC Admin / RT Clinic", pm: "WR / Medical School Teaching & Admin" } } },
+            { role: "consultant", onc: "med", name: "Khan, Sarah (2SK)", tel: "07812269052", focus: "Breast / Lung", schedule: { mon: { am: "DCC Admin / Research/Trial Management", pm: "Educational Supervisor SPA" }, tue: { am: "DCC Admin / MDT / Breast Clinic (2SK2A/2SK2C)", pm: "Breast Clinic (2SK2A/2SK2C) / Ward Round" }, wed: { am: "DCC Admin / MDT / Advanced Breast Clinic (2SK3A/2SK3C)", pm: "Advanced Breast Clinic (2SK3A/2SK3C) / DCC Admin" }, thu: { am: "DCC Admin / Lung Clinic (2SK4C/2SK4L)", pm: "Ward Round" }, fri: { am: "NWD", pm: "NWD" } } },
+            { role: "consultant", onc: "clin", name: "Lim, JunHao (On Long Term Leave)", focus: "Urology / CUP", schedule: { mon: { am: "RT Planning / AOS Lead Admin", pm: "DCC Admin / CUP MDT" }, tue: { am: "Urology Clinic", pm: "WR / DCC Admin / RT Planning" }, wed: { am: "ABC MDT / WR", pm: "SPA Admin" }, thu: { am: "SABR MDT / RT Peer Review / Dept Meetings", pm: "WR / RT Urology & CUP Clinic" }, fri: { am: "Urology MDT / WR", pm: "RT Planning / WR" } } },
+            { role: "consultant", onc: "med", name: "Madhusudan, Srinivasan (2SM)", focus: "UGI / Breast / ABC", schedule: { mon: { am: "SACT Prescribing / DCC & SPA Admin", pm: "—" }, tue: { am: "Upper GI & Breast Clinic (ONCUG/2SM1B)", pm: "WR / Admin" }, wed: { am: "ABC MDT / ABC Clinic (2SM3A)", pm: "SACT Prescribing / DCC & SPA Admin" }, thu: { am: "Meetings / core SPA", pm: "Medical School Teaching" }, fri: { am: "Medical School Teaching", pm: "Medical School Teaching" } } },
+            { role: "consultant", onc: "med", name: "Maynard, Alec (A4M) LOCUM", tel: "07812278830", focus: "Colorectal / Renal", schedule: { mon: { am: "Admin", pm: "Admin" }, tue: { am: "WR / Admin", pm: "WR / Admin" }, wed: { am: "Colorectal - CLK mat cover", pm: "Colorectal - CLK mat cover" }, thu: { am: "KMH CRC Clinic", pm: "KMH CRC Clinic / MDT" }, fri: { am: "Renal MDT / KMH Renal Clinic", pm: "Admin" } } },
+            { role: "consultant", onc: "clin", name: "McCabe, Alastair (ALM)", tel: "07812278834", focus: "H&N / CNS", schedule: { mon: { am: "WR / Adult CNS, Pituitary & Skull Base Clinic / SPA Admin", pm: "DCC Admin / SPA Research/Trials Work" }, tue: { am: "Skull Base MDT / Head & Neck Clinic", pm: "SACT Prescribing / RT Planning" }, wed: { am: "RT MDT / Head & Neck Peer Review / RT Clinic", pm: "Peer Review Meetings / RT Planning / Pituitary MDT" }, thu: { am: "WR / Dept Meetings / SPA Admin", pm: "Head & Neck MDT / Head & Neck Clinic / Admin" }, fri: { am: "Research / Clinical Trials Work", pm: "Research / Clinical Trials Work" } } },
+            { role: "consultant", onc: "med", name: "Mehmood, Tahir LOCUM", tel: "07812277029", focus: "Lung / Breast", schedule: { mon: { am: "Admin", pm: "Admin" }, tue: { am: "KMH Lung Clinic", pm: "KMH Lung Clinic" }, wed: { am: "ABC MDT / Advanced Breast Clinic", pm: "Clinic finished 2pm / Admin" }, thu: { am: "WR", pm: "Admin" }, fri: { am: "KMH Breast Clinic", pm: "KMH Breast Clinic" } } },
+            { role: "consultant", onc: "clin", name: "Mills, Jamie (3JM)", tel: "07812276251", focus: "Urology / CRC", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "SLIM MDT / DCC Admin / WR", pm: "WR / Urology Clinic (3JM2N/3JM2B)" }, wed: { am: "Urology/CRC Clinic (3JM3C)", pm: "CRC Clinic" }, thu: { am: "SABR MDT / SPA Admin / RT Clinic", pm: "Urology/CRC RT Planning" }, fri: { am: "CRC MDT / Urology MDT / DCC Admin", pm: "WR / SPA Admin" } } },
+            { role: "consultant", onc: "med", name: "Mohindru, Gaurav", focus: "Early Breast / Colorectal (KMH)", schedule: { mon: { am: "Ward Round", pm: "Admin / SPA" }, tue: { am: "Early Breast MDT 0800-0930 / Early Breast Clinic 0930-1330", pm: "Early Breast Clinic Tele 1330-1530 / Clinic Admin 1530-1630" }, wed: { am: "ABC MDT 0800-0930 / ABC Clinic 0930-1330", pm: "Ward Round" }, thu: { am: "KMH Colorectal Clinic", pm: "KMH Colorectal Clinic" }, fri: { am: "Admin / SPA", pm: "—" } } },
+            { role: "consultant", onc: "clin", name: "Moore, Tom (TOM)", focus: "Lung / Skin / AOS", schedule: { mon: { am: "AOS WR / DCC Admin", pm: "RT Planning / WR / CUP MDT" }, tue: { am: "SPA Admin", pm: "Lung & Skin SACT Clinic" }, wed: { am: "RT Planning / Skin Peer Review", pm: "RT Review Clinic" }, thu: { am: "SABR MDT / SPA Admin / Wk 3&4 Skin Clinic", pm: "Skin MDT / Admin" }, fri: { am: "Lung MDT / Lung Clinic", pm: "WR / Admin" } } },
+            { role: "consultant", onc: "clin", name: "Pascoe, Abigail (ACP)", tel: "07812276255", focus: "Lung / Thyroid", schedule: { mon: { am: "Thyroid Clinic", pm: "DCC Admin / RT Clinic / SACT Prescribing" }, tue: { am: "RT Planning / RT Peer Review / WR", pm: "SPA Admin / Thyroid Chemo Clinic" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "SABR MDT / Dept Meetings", pm: "Lung RT Peer Review / Thyroid MDT / DCC Admin" }, fri: { am: "MDT / Lung Clinic", pm: "Lung Chemo Clinic / WR / SACT Prescribing / DCC Admin / Bone Mets MDT" } } },
+            { role: "consultant", onc: "med", name: "Patel, Poulam (PMP)", focus: "Renal / Melanoma", schedule: { mon: { am: "UoN", pm: "UoN" }, tue: { am: "DCC & SPA Admin", pm: "Renal Clinic (PMP2B/PMP2C) / Renal APA" }, wed: { am: "SPA Admin / UoN / Research/Trial Management", pm: "Melanoma Clinic (MEL3B/MEL3C)" }, thu: { am: "UoN", pm: "MDT / UoN" }, fri: { am: "NWD", pm: "NWD" } } },
+            { role: "consultant", onc: "med", name: "Seneviratne, Lalith (LS2)", tel: "07812276252", focus: "Gynae / Breast", schedule: { mon: { am: "Gynae MDT / Gynae Clinic", pm: "Gynae Clinic" }, tue: { am: "WR / SPA Admin", pm: "DCC Admin" }, wed: { am: "ABC MDT / Admin", pm: "SPA Admin" }, thu: { am: "SPA Admin / Ward Round", pm: "Breast Clinic" }, fri: { am: "KMH Breast MDT / KMH Breast Clinic", pm: "KMH Breast Clinic" } } },
+            { role: "consultant", onc: "med", name: "Shafiq, Tahir (TS4)", tel: "07812275502", focus: "Breast / Colorectal (KMH)", schedule: { mon: { am: "DCC Admin", pm: "WR / DCC Admin" }, tue: { am: "Early Breast MDT / Breast Clinic", pm: "Early Breast MDT / Breast Clinic" }, wed: { am: "Adjuvant Breast MDT / ABC Clinic", pm: "SPA Admin" }, thu: { am: "Dept Meetings / KMH Colorectal Clinic", pm: "KMH Colorectal MDT / KMH Colorectal Clinic" }, fri: { am: "NWD", pm: "NWD" } } },
+            { role: "consultant", onc: "clin", name: "Shawcroft, Ewan (EAS)", tel: "07812268822", focus: "Breast", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "Breast MDT / SPA Admin", pm: "WR / RT Planning / RT Peer Review" }, wed: { am: "ABC MDT / ABC Clinic", pm: "DCC Admin / RT Planning" }, thu: { am: "SABR MDT / Dept Meetings", pm: "Early Breast RT Clinic" }, fri: { am: "WR / Medical School Teaching & Admin", pm: "RT Clinic" } } },
+            { role: "consultant", onc: "clin", name: "Silverman, Rafael (RS7)", tel: "07812276188", focus: "CRC / UGI", schedule: { mon: { am: "RT Clinic", pm: "DCC Admin / RT Planning / UGI MDT" }, tue: { am: "SLIM MDT / RT Planning / Rectal RT Clinic", pm: "WR / SPA & DCC Admin" }, wed: { am: "Colorectal & UGI Chemo Clinic", pm: "SACT Prescribing / CRC & UGI Clinic" }, thu: { am: "SABR MDT / Dept Meetings / RT Planning", pm: "KMH CRC MDT / KMH CRC RT Clinic" }, fri: { am: "NUH CRC MDT / RT Planning / Colorectal MDT", pm: "CRC & UGI Chemo Clinic / WR" } } },
+            { role: "consultant", onc: "clin", name: "Sivanandan, Ananth (MS5)", tel: "07713097003", focus: "Lung / Skin (KMH)", schedule: { mon: { am: "DCC Admin / KMH Lung MDT / KMH Lung Clinic", pm: "SACT Prescribing / KMH Skin Clinic" }, tue: { am: "Lung RT Peer Review / RT Clinic", pm: "KMH Skin MDT / WR / Admin" }, wed: { am: "Elizabeth Suite Clinic", pm: "WR / RT Planning" }, thu: { am: "SABR MDT / Non-Melanoma Skin Clinic", pm: "Skin MDT / Admin" }, fri: { am: "NWD", pm: "NWD" } } },
+            { role: "consultant", onc: "clin", name: "Sundar, Santhanam (2SS)", tel: "07812276298", focus: "Urology / Gynae", schedule: { mon: { am: "MDT / Urology Clinic", pm: "Urology/Gynae Clinic / RT Review Clinic" }, tue: { am: "DCC Admin / WR / SACT Prescribing", pm: "Urology Clinic / SPA Admin" }, wed: { am: "KMH Gynae Clinic", pm: "KMH Gynae Clinic / DCC Admin" }, thu: { am: "DCC Admin / WR", pm: "Urology Clinic" }, fri: { am: "Urology MDT", pm: "—" } } },
+            { role: "consultant", onc: "clin", name: "Tiwari, Richa (RT3)", tel: "07812275506", focus: "Breast / UGI", schedule: { mon: { am: "DCC Admin / Early Breast RT Clinic", pm: "WR / Upper GI MDT" }, tue: { am: "—", pm: "RT Planning / RT Peer Review" }, wed: { am: "SPA Admin", pm: "DCC Admin / WR / RT Planning" }, thu: { am: "RT Planning / RT Peer Review / SPA Admin", pm: "KMH Upper GI Clinic" }, fri: { am: "RT Planning / RT Clinic", pm: "WR / SACT Prescribing" } } },
+            { role: "consultant", onc: "clin", name: "Wai Hou, Sam (GW2/EC4)", focus: "Urology / Colorectal", schedule: { mon: { am: "SPA Admin / RT Planning / Urology Peer Review", pm: "RT Clinic / SACT Prescribing" }, tue: { am: "RT Planning / SPA Admin", pm: "WR / DCC Admin / SACT Prescribing" }, wed: { am: "KMH Urology Clinic", pm: "KMH Urology Clinic" }, thu: { am: "SPA Admin", pm: "WR / Colorectal Clinic" }, fri: { am: "Urology MDT / Colorectal MDT / RT Planning / Colorectal Peer Review", pm: "Colorectal Chemo Clinic / SACT Prescribing" } } },
+            { role: "consultant", onc: "clin", name: "Walker, Georgina (GW2)", tel: "07812276092", focus: "Colorectal / Urology", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "SPA Admin / RT Clinic", pm: "Advanced / Metastatic Colorectal MDT / WR / RT Planning" }, wed: { am: "KMH Urology Clinic / DCC Admin", pm: "KMH Urology Clinic / DCC Admin" }, thu: { am: "SABR MDT / Dept Meetings / WR", pm: "Colorectal & Urology Clinic / Admin" }, fri: { am: "Colorectal MDT / Urology MDT", pm: "Colorectal Chemo Clinic / DCC Admin / RT Planning" } } },
+          ],
+        },
+      ],
+    },
+    
     {
       id: "oncology-pull-criteria",
       title: "Oncology Pull Criteria",
@@ -4171,6 +4287,345 @@ const SITES = [
     },
   ],
 },
+      ],
+    },
+    {
+      id: "haem-emergencies",
+      label: "Haematological Emergencies",
+      guidelines: [
+        {
+          id: "tls",
+          title: "Tumour Lysis Syndrome",
+          category: "Haematological Emergencies",
+          version: "3",
+          authors: "Dr G Errico, Dr N Martinez-Calle, Dr J Addada (Haematology Consultants) | Nicola Nicoll (Advanced Pharmacist)",
+          evidenceBase: "NUH Guideline 1879 | Cairo-Bishop Criteria | BSH Updated Guideline for TLS 2025 | NatPSA/2025/005/NHSPS",
+          summary: "TLS occurs when rapid destruction of malignant cells releases intracellular contents, causing hyperuricaemia, hyperphosphataemia, hyperkalaemia, uraemia and hypocalcaemia. Most common in Burkitt lymphoma, ALL, AML. Can be spontaneous or treatment-induced. Risk assessment must be documented before every new line of therapy. Rasburicase administration is time-critical — delays beyond 1 hour must be escalated.",
+          tags: ["TLS", "Tumour Lysis", "Hyperuricaemia", "Hyperkalaemia", "Hyperphosphataemia", "Hypocalcaemia", "Rasburicase", "Allopurinol", "Cairo-Bishop", "Venetoclax", "Oncological Emergency"],
+          related: [],
+          pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=75d5a8211023c4927b530b21459f0faa",
+          portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9847&query_desc=lysis",
+          updated: "Dr G Errico / Dr N Martinez-Calle / Dr J Addada | Review 30/04/2029",
+          sections: [
+            {
+              heading: "⚠ Key Principles",
+              type: "alert",
+              items: [
+                "Risk assessment must be documented in the medical notes and EPR before every new line of therapy",
+                "!!Rasburicase is TIME-CRITICAL — if administration is likely to be delayed beyond 1 hour, escalate immediately to the senior medical team",
+                "Rasburicase is contraindicated in G6PD deficiency — high risk of haemolysis. G6PD deficiency is common in patients from the Mediterranean, Africa, Asia and the Middle East",
+                "Do NOT use urinary alkalinisation once chemotherapy has started — risk of xanthine and calcium phosphate precipitation",
+                "Avoid potassium-containing IV fluids (e.g. Hartmann's, Plasma-Lyte) in established TLS",
+                "Detectable uric acid levels (even within normal range) may indicate TLS in the context of rasburicase — seek senior advice",
+              ],
+            },
+            {
+              heading: "Step 1: History & Investigations",
+              type: "list",
+              groups: [
+                {
+                  icon: "note",
+                  label: "TLS Clinical Features",
+                  items: [
+                    "Acute TLS occurs when malignant cells are rapidly destroyed, releasing intracellular contents and electrolytes",
+                    "Biochemical disturbances: hyperuricaemia, hyperphosphataemia, hyperkalaemia, uraemia and/or renal failure, and hypocalcaemia",
+                    "Clinical features: nausea, diarrhoea, muscle weakness, tetany, arrhythmias, seizures and sudden death",
+                    "Can occur spontaneously (high proliferation tumours) or — more commonly — following systemic anti-cancer therapy (SACT)",
+                  ],
+                },
+                {
+                  icon: "bloods",
+                  label: "Laboratory TLS — 2 or more of the following, within 3 days before or 7 days after initiating treatment",
+                  tableData: {
+                    headers: ["Parameter", "Threshold", "Change"],
+                    rows: [
+                      { category: "Urate", examples: ["> 476 µmol/L, or a 25% increase"] },
+                      { category: "Potassium", examples: ["> 6.0 mmol/L, or a 25% increase"] },
+                      { category: "Phosphate", examples: ["> 1.45 mmol/L, or a 25% increase"] },
+                      { category: "Calcium", examples: ["< 1.75 mmol/L, or a 25% decrease"] },
+                      { category: "LDH", examples: ["> 2× normal range"] },
+                    ],
+                  },
+                },
+                {
+                  icon: "note",
+                  label: "Clinical TLS",
+                  items: [
+                    "Laboratory TLS plus at least ONE of the following:",
+                    "Creatinine > 1.5 × ULN",
+                    "Cardiac arrhythmia",
+                    "Sudden death",
+                    "Seizure",
+                  ],
+                },
+              ],
+            },
+            {
+              heading: "Risk Stratification",
+              type: "grouped_items",
+              groups: [
+                {
+                  label: "High Risk",
+                  color: "#e53e3e",
+                  border: "#fc8181",
+                  items: [
+                    "AML with WBC > 100 × 10⁹/L",
+                    "ALL with WBC > 100, mediastinal mass, or LDH > 2× ULN",
+                    "Burkitt's lymphoma/leukaemia (regardless of stage and LDH) ± bulky",
+                    "Lymphoblastic lymphoma",
+                    "Lymphoma with LDH > 2× ULN and/or bulky (late stage)",
+                    "CLL receiving venetoclax",
+                    "Pre-existing uric acid, phosphate or potassium above ULN — automatically high risk",
+                    "Renal dysfunction or renal involvement by disease",
+                  ],
+                },
+                {
+                  label: "Intermediate Risk",
+                  color: "#d69e2e",
+                  border: "#f6e05e",
+                  items: [
+                    "AML with WBC < 100 or LDH > 2× ULN",
+                    "ALL with WBC < 100 or LDH < 2× ULN",
+                    "Lymphoma with LDH > ULN and/or bulky (early stage)",
+                    "Late-stage lymphoma with normal LDH and non-bulky",
+                    "Myeloma receiving CAR-T or novel therapies, including bispecific antibodies",
+                  ],
+                },
+                {
+                  label: "Low Risk",
+                  color: "#276749",
+                  border: "#9ae6b4",
+                  items: [
+                    "Myeloma receiving conventional treatment",
+                    "CML",
+                    "CLL (non-venetoclax treatment)",
+                    "Hodgkin's, small lymphocytic, follicular, marginal zone, MALT, mantle cell, or cutaneous T-cell lymphoma",
+                    "Lymphoma with normal LDH and non-bulky",
+                  ],
+                },
+              ],
+            },
+            {
+              heading: "Prevention Pathway",
+              type: "stepped_pathway",
+              cardGap: 10,
+              steps: [
+                {
+                  color: { header: "#f5f3ff", icon: "#6d28d9", iconText: "#ffffff", label: "#4c1d95", bullet: "#7c3aed", border: "#c4b5fd" },
+                  icon: "bloods",
+                  label: "All Patients — Before Starting Any New Line of Therapy",
+                  items: [
+                    { label: "RISK ASSESSMENT (document in notes and EPR)" },
+                    "Disease histology and burden (bulky disease, WBC, LDH)",
+                    "Patient factors: renal dysfunction, renal involvement, frailty, oral fluid compliance",
+                    "Pre-existing spontaneous laboratory or clinical TLS",
+                    "Treatment-specific factors (venetoclax, CAR-T — see Appendix)",
+                    { divider: true },
+                    { label: "BASELINE INVESTIGATIONS (intermediate and high risk)" },
+                    { checklist: ["U&E", "Calcium", "Phosphate", "Urate", "LDH", "FBC", "Clotting including D-dimer", "ECG"] },
+                  ],
+                  table: {
+                    columns: ["Risk Level", "Criteria"],
+                    coloredRows: [
+                      {
+                        rc: { bg: "transparent", border: "#c4b5fd", label: "#14532d", bullet: "#16a34a" },
+                        cells: ["🟢 Low Risk", [
+                          "Myeloma receiving conventional treatment",
+                          "CML",
+                          "CLL (non-venetoclax treatment)",
+                          "Hodgkin's, SLL, follicular, MZL, MALT, mantle cell, cutaneous T-cell lymphoma",
+                          "Lymphoma with normal LDH and non-bulky",
+                        ]],
+                      },
+                      {
+                        rc: { bg: "transparent", border: "#c4b5fd", label: "#713f12", bullet: "#ca8a04" },
+                        cells: ["🟡 Intermediate Risk", [
+                          "AML with WBC < 100 or LDH > 2× ULN",
+                          "ALL with WBC < 100 or LDH < 2× ULN",
+                          "Lymphoma with LDH > ULN and/or bulky (early stage)",
+                          "Late-stage lymphoma with normal LDH and non-bulky",
+                          "Myeloma receiving CAR-T or novel therapies / bispecific antibodies",
+                        ]],
+                      },
+                      {
+                        rc: { bg: "transparent", border: "#c4b5fd", label: "#7f1d1d", bullet: "#dc2626" },
+                        cells: ["🔴 High Risk", [
+                          "AML with WBC > 100 × 10⁹/L",
+                          "ALL with WBC > 100, mediastinal mass, or LDH > 2× ULN",
+                          "Burkitt's lymphoma/leukaemia (any stage) ± bulky",
+                          "Lymphoblastic lymphoma",
+                          "Lymphoma with LDH > 2× ULN and/or bulky (late stage)",
+                          "CLL receiving venetoclax",
+                          "Pre-existing uric acid, phosphate or K⁺ above ULN",
+                          "Renal dysfunction or renal involvement by disease",
+                        ]],
+                      },
+                    ],
+                  },
+                },
+                {
+                  color: { header: "#f0fdf4", icon: "#15803d", iconText: "#ffffff", label: "#14532d", bullet: "#16a34a", border: "#86efac" },
+                  icon: "management",
+                  label: "Low Risk — Outpatient Prophylaxis",
+                  items: [
+                    "Start allopurinol prior to IV chemotherapy (consider for oral chemotherapy)",
+                    "Advise plenty of oral fluids (2–3 L/day, if possible and depending on renal function)",
+                    "No special monitoring required",
+                  ],
+                },
+                {
+                  color: { header: "#fefce8", icon: "#a16207", iconText: "#ffffff", label: "#713f12", bullet: "#ca8a04", border: "#fcd34d" },
+                  icon: "management",
+                  label: "Intermediate Risk — Consider Admission",
+                  items: [
+                    "Strongly consider admission for first course of SACT",
+                    "Allopurinol 300 mg PO daily — start 24 hours prior to chemotherapy, continue minimum 7 days",
+                    "Dose-adjust for renal function",
+                    "Adequate oral hydration",
+                    { divider: true },
+                    { label: "MONITORING" },
+                    "Baseline bloods as above",
+                    "Switch to rasburicase if uric acid rises despite allopurinol — discuss with haematology",
+                  ],
+                },
+                {
+                  color: { header: "#fff1f2", icon: "#991b1b", iconText: "#ffffff", label: "#7f1d1d", bullet: "#dc2626", border: "#fca5a5" },
+                  icon: "immediate",
+                  label: "High Risk — Admit + Rasburicase",
+                  items: [
+                    { label: "ADMIT FOR FIRST COURSE OF SACT" },
+                    { rx: [
+                      "Rasburicase — fixed dose 3 mg or 6 mg in 50 mL NaCl 0.9%, IV over 30 min, 4 hours pre-chemotherapy",
+                      "Alternative: 0.2 mg/kg/day following consultant discussion. Stop allopurinol (reduces rasburicase efficacy)",
+                    ], title: "Rasburicase" },
+                    "In patients at risk of spontaneous TLS: rasburicase can be given as soon as risk is identified",
+                    "G6PD deficiency: rasburicase decision must be made by a consultant only, weighing risks vs. benefits",
+                    { divider: true },
+                    { label: "IV HYDRATION" },
+                    "NaCl 0.9% at 3 L/m²/day — alternating bags of NaCl 0.9% and 5% glucose (no electrolytes where possible)",
+                    "Target urine output > 100 mL/m²/hr. If inadequate: furosemide 0.5–1 mg/kg IV",
+                    "Hold potassium supplementation before chemotherapy starts (only add if K⁺ < 3.0 mmol/L)",
+                    { divider: true },
+                    { label: "MONITORING" },
+                    "Repeat bloods at 2 and 6 hours after start of chemotherapy",
+                    "Post-rasburicase urate samples must be sent ON ICE",
+                    "If no abnormality at 6 h: repeat at 18 h, then daily for up to 5 days",
+                    "If abnormalities at 6 h: repeat bloods every 2–6 hours depending on severity",
+                    "Rasburicase can be repeated daily for 3–5 days; full course rarely needed",
+                    "Document management plan in notes; ensure out-of-hours team has instructions",
+                  ],
+                },
+              ],
+            },
+            {
+              heading: "Emergency Management Pathway — Established TLS",
+
+              type: "stepped_pathway",
+              steps: [
+                {
+                  icon: "immediate",
+                  label: "Step 1 — Immediate Actions",
+                  items: [
+                    { rx: [
+                      "Aggressive IV hydration: NaCl 0.9% at 3 L/m²/day — NO urinary alkalinisation",
+                      "Avoid potassium-containing IV fluids (Hartmann's, Plasma-Lyte)",
+                    ], title: "IV Hydration" },
+                    "Insert urinary catheter — strict fluid balance and urine output monitoring (target > 100 mL/m²/hr)",
+                    "Continuous cardiac monitoring (ECG)",
+                    "Bloods: U&E, calcium, phosphate, urate every 2–6 hours",
+                    { divider: true },
+                    "Inform patient's Consultant or Consultant on call",
+                    "Inform Renal Specialist Trainee on call",
+                    "Consider transfer to HDU",
+                    "Discuss chemotherapy with consultant — usually suspend until TLS resolves",
+                  ],
+                  alerts: ["Rasburicase must be prescribed and administered within 1 hour of decision — if delay anticipated, escalate immediately"],
+                  pill: { label: "Prescribe rasburicase immediately" },
+                },
+                {
+                  icon: "drug",
+                  label: "Step 2 — Rasburicase (Time-Critical)",
+                  items: [
+                    { rx: ["Rasburicase 0.2 mg/kg IV stat — prescribe using ePMA dose order sentence (flagged as fridge-stored and critical medicine)"], title: "Rasburicase" },
+                    "Ensure nursing staff are made aware as soon as prescribed",
+                    "In a very unwell, acutely presenting patient: consider giving rasburicase without waiting for G6PD result",
+                    "Post-rasburicase urate samples MUST be sent on ice (rasburicase is an active enzyme)",
+                    "Rasburicase can be given daily for up to 5 days; full course rarely needed",
+                    "Restart allopurinol 24 hours after the last rasburicase dose, once urate stable",
+                    { divider: true },
+                    { label: "RASBURICASE STOCK LOCATIONS" },
+                    "City Campus: Fletcher ward, Toghill ward, SRU, Hogarth, CCD (Omnicell fridge)",
+                    "QMC Campus: Contact Pharmacy 9am–8pm. Outside hours: on-call pharmacist",
+                    "If stock likely delayed > 1 hour at any time: escalate immediately to parent team or on-call haematologist",
+                  ],
+                  alerts: ["Rasburicase is a HIGH-COST drug — complete patient data form for every vial used from ward stock"],
+                  pill: { label: "Manage electrolyte complications" },
+                },
+                {
+                  icon: "management",
+                  label: "Step 3 — Electrolyte Complications",
+                  items: [
+                    { label: "HYPERPHOSPHATAEMIA (> 1.45 mmol/L)" },
+                    "> 2.1 mmol/L: oral chelation with sevelamer 800 mg tablets (2.4–4.8 g/day in 3 doses) — first line; seek renal advice if needed",
+                    "> 4 mmol/L: requires aggressive therapy (haemodialysis or haemofiltration) — discuss urgently with renal team",
+                    { divider: true },
+                    { label: "HYPOCALCAEMIA" },
+                    "If asymptomatic: do NOT treat — calcium corrects as other abnormalities improve. Treatment risks calcium phosphate precipitation",
+                    "If < 1.75 mmol/L AND symptomatic (severe tetany, seizures, prolonged QT, hyperkalaemia): 10 mL calcium gluconate 10% IV",
+                    { divider: true },
+                    { label: "HYPERKALAEMIA" },
+                    "K⁺ > 6 mmol/L but < 7 mmol/L, asymptomatic: ECG monitoring + Lokelma 10 g TDS PO (up to 72 h). Rectal calcium resonium if oral not possible",
+                    "K⁺ > 7 mmol/L: 10 units soluble insulin + 50 mL 50% glucose over 30 min. Monitor on HDU; discuss haemodialysis with renal team",
+                    "Also refer to Trust hyperkalaemia guideline",
+                  ],
+                  pill: { label: "Manage urine output" },
+                },
+                {
+                  icon: "monitoring",
+                  label: "Step 4 — Poor Urine Output / Renal Escalation",
+                  items: [
+                    "If urine output poor: discuss with ST3 or above before administering furosemide",
+                    "If anuric: furosemide bolus 2–4 mg/kg. Discuss urgently with renal team",
+                    "CVP monitoring may be required",
+                    "If intra-abdominal nodal disease: ultrasound to exclude hydronephrosis",
+                    { divider: true },
+                    { label: "CONSIDER RENAL REPLACEMENT THERAPY (RRT)" },
+                    "Indications: volume overload, uncontrolled acidosis, refractory hyperkalaemia, severe metabolic disturbance",
+                    "Haemodialysis preferred over haemofiltration for rapid uric acid and phosphate clearance",
+                    { rx: ["Early haematology + renal co-management essential"], title: "MDT Management" },
+                  ],
+                },
+              ],
+            },
+            {
+              heading: "Appendix — Venetoclax Ramp-Up: CLL",
+              type: "table",
+              note: "All patients: oral hydration 1.5–2 L/day from 2 days before initiation. Start allopurinol (or other xanthine oxidase inhibitor) 2–3 days prior to venetoclax. Correct pre-existing electrolyte abnormalities. ALC = absolute lymphocyte count; LN = lymph node.",
+              columns: ["Tumour Burden", "Definition", "Hydration", "Anti-hyperuricaemic", "Monitoring (Setting & Frequency)"],
+              rows: [
+                ["Low", "All LN < 5 cm AND ALC < 25 × 10⁹/L", "Oral (1.5–2 L)", "Allopurinol", "Outpatient. First doses (20 mg & 50 mg): pre-dose, 6–8 h, 24 h. Subsequent increases: pre-dose only."],
+                ["Medium", "Any LN 5–< 10 cm OR ALC ≥ 25 × 10⁹/L", "Oral (1.5–2 L) ± IV", "Allopurinol", "Outpatient. First doses: pre-dose, 6–8 h, 24 h. Consider hospitalisation if CrCl < 80 mL/min (use High protocol)."],
+                ["High", "Any LN ≥ 10 cm OR (ALC ≥ 25 × 10⁹/L AND any LN ≥ 5 cm)", "Oral (1.5–2 L) + IV 150–200 mL/hr as tolerated", "Allopurinol; consider rasburicase if baseline uric acid elevated", "In hospital / outpatient. First doses: pre-dose, 4, 8, 12, 24 h. Subsequent increases (outpatient): pre-dose, 6–8 h, 24 h."],
+              ],
+            },
+            {
+              heading: "Appendix — Venetoclax Ramp-Up: AML",
+              type: "list",
+              groups: [
+                {
+                  icon: "note",
+                  label: "Prophylaxis requirements before venetoclax initiation (AML)",
+                  items: [
+                    "WBC must be < 25 × 10⁹/L prior to venetoclax — cytoreduction beforehand may be required",
+                    "All patients: adequate hydration and anti-hyperuricaemic agents prior to first dose and throughout dose-titration",
+                    "Correct pre-existing electrolyte abnormalities (potassium, uric acid, phosphate, calcium, creatinine) before starting",
+                    "Monitor blood chemistries for TLS: pre-dose, 6–8 hours after each new dose during titration, and 24 hours after reaching the final dose",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],
@@ -8055,6 +8510,914 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
   },
   // ── End Neurology ──────────────────────────────────────────────────────────
 
+  {
+    id: "diabetes-endocrinology",
+    label: "Diabetes & Endocrinology",
+    color: "#0f766e",
+    accent: "#f0fdfa",
+    isParent: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+        <path d="M12 2a5 5 0 0 1 5 5c0 5-5 11-5 11S7 12 7 7a5 5 0 0 1 5-5z"/>
+        <circle cx="12" cy="7" r="2"/>
+      </svg>
+    ),
+    subsites: [
+      {
+        id: "endocrine-emergencies",
+        label: "Endocrine Emergencies",
+        dividerBefore: false,
+        guidelines: [
+          {
+            id: "endocrine-hhs",
+            title: "Hyperosmolar Hyperglycaemic State (HHS)",
+            category: "Endocrine Emergencies",
+            version: "1.0",
+            authors: "NUH Diabetes & Endocrinology",
+            evidenceBase: "NUH Local Guideline | JBDS-IP HHS Guidelines",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10131&query_desc=an%3D6323",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=4b845a58dbcf828a2fd7e75b17622217",
+            summary: "HHS is a medical emergency characterised by severe hyperglycaemia, hyperosmolality, and dehydration without significant ketoacidosis. Mainstay of treatment is rehydration followed by glucose management — recovery can take up to 72 hours.",
+            tags: ["HHS", "Hyperosmolar", "Hyperglycaemia", "Diabetes", "Osmolality", "FRIII"],
+            related: ["endocrine-dka"],
+            summaryCalcLink: { calcId: "endocrinology", label: "Osmolality & Corrected Na Calculator", text: "Calculate corrected sodium and serum osmolality to confirm HHS threshold (≥320 mOsm/kg)" },
+            sections: [
+              {
+                heading: "⚠ Key Principles",
+                type: "alert",
+                items: [
+                  "!!HHS IS A MEDICAL EMERGENCY — patient MUST be managed in an acute medical bed, specialist diabetes ward, or Critical Care (HDU/ITU)",
+                  "Refer to the diabetes team on admission: Nervecentre | SpR via Switchboard",
+                  "A mixed DKA/HHS picture can be seen — if pH <7.3, ketones >3 mmol/L, bicarbonate <15 mmol/L, manage as per NUH DKA protocol",
+                  "Calculated osmolality = 2×Na⁺ + glucose + urea",
+                  "Use this guideline for patients aged 16 years and above on adult wards",
+                ],
+              },
+              {
+                heading: "Step 1: Diagnosis",
+                type: "list",
+                groups: [
+                  {
+                    icon: "bloods",
+                    label: "Diagnostic criteria — all five features",
+                    tableData: {
+                      headers: ["Criterion", "Threshold", "Notes"],
+                      rows: [
+                        { category: "1. Hypovolaemia", examples: ["Clinically evident"] },
+                        { category: "2. Marked hyperglycaemia", examples: ["≥ 30 mmol/L"] },
+                        { category: "3. Ketonaemia", examples: ["Absent — capillary ketones < 3 mmol/L"] },
+                        { category: "4. Acidosis", examples: ["Absent — pH ≥ 7.3 AND venous bicarbonate > 15 mmol/L", "Lactic acidosis may still be a feature"] },
+                        { category: "5. Serum osmolality", examples: ["≥ 320 mOsm/kg", "Calculated: 2×Na⁺ + glucose + urea"] },
+                      ],
+                    },
+                  },
+                  {
+                    icon: "note",
+                    label: "Important",
+                    items: [
+                      "A mixed DKA/HHS picture can be seen — if criteria overlap, manage as DKA",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "stepped_pathway",
+                showArrows: true,
+                stepColor: { header: "#fee2e2", icon: "#991B1B", iconText: "#ffffff", label: "#7F1D1D", bullet: "#DC2626", border: "#fca5a5" },
+                steps: [
+                  {
+                    icon: "alert",
+                    label: "Critical Care / HDU Referral — Check BEFORE Proceeding",
+                    items: [
+                      { label: "Refer to Critical Care / HDU if ANY of the following" },
+                      { checklist: [
+                        "pH < 7.1",
+                        "Osmolality > 350 mOsm/kg",
+                        "Sodium > 160 mmol/L",
+                        "GCS < 12 or abnormal AVPU",
+                        "NEWS2 ≥ 5",
+                        "Fluid balance difficulties",
+                        "O₂ saturation < 92% on air (if normal baseline respiratory function)",
+                        "Urine output < 0.5 mL/kg/hour",
+                        "Serum creatinine > 200 µmol/L and/or AKI",
+                        "Hypokalaemia (< 3.5 mmol/L) or hyperkalaemia (> 6 mmol/L) on admission",
+                      ]},
+                    ],
+                  },
+                  {
+                    icon: "drug",
+                    label: "Step 1 — Intravenous Fluids",
+                    items: [
+                      "Use IV 0.9% sodium chloride as principal fluid — give 1 litre over the first hour",
+                      { divider: true },
+                      { label: "TARGET FLUID BALANCE" },
+                      "Positive 2–3 litres by 6 hours",
+                      "Positive 3–6 litres by 12 hours",
+                      "Continue gradual replacement over the next 48 hours",
+                      { divider: true },
+                      "Allow the patient to drink as soon as it is safe to do so",
+                      "An initial rise in sodium is expected — only a concern if osmolality is NOT declining",
+                      "Only use hypotonic fluids (0.45% sodium chloride) if osmolality is not declining — sodium fall must be < 10 mmol/L in 24 hours",
+                      { divider: true },
+                      { inset_table: {
+                        title: "Potassium Replacement per 1 Litre Infusion Fluid",
+                        items: [
+                          "Review co-morbidities and medication in all patients",
+                          "**Continuous ECG monitoring** required for K⁺ administration rates > 20 mmol/hr",
+                        ],
+                        table: {
+                          columns: ["Potassium level (mmol/L)", "Potassium replacement"],
+                          coloredRows: [
+                            { rc: { bg: "transparent", border: "#fca5a5", label: "#7f1d1d", bullet: "#dc2626" }, cells: ["More than 5.5", "Nil"] },
+                            { rc: { bg: "transparent", border: "#fca5a5", label: "#7f1d1d", bullet: "#dc2626" }, cells: ["3.5 – 5.5", "40 mmol"] },
+                            { rc: { bg: "transparent", border: "#fca5a5", label: "#7f1d1d", bullet: "#dc2626" }, cells: ["Less than 3.5", "Senior review: additional potassium may be needed (via central line)"] },
+                          ],
+                        },
+                      }},
+                    ],
+                  },
+                  {
+                    icon: "drug",
+                    label: "Step 2 — IV Low Dose Fixed Rate Insulin Infusion (FRIII)",
+                    items: [
+                      { label: "Assess for Insulin Infusion (FRIII)" },
+                      { split_cols: [
+                        {
+                          header: "No significant ketones",
+                          headerColor: "#276749",
+                          bulletColor: "#276749",
+                          items: [
+                            "< 1 mmol/L or + — NOT acidotic",
+                            "Fluid replacement alone initially",
+                            "Once glucose plateaus: start FRIII at 0.05 units/kg/hour",
+                          ],
+                        },
+                        {
+                          header: "Some ketones",
+                          headerColor: "#b7791f",
+                          bulletColor: "#b7791f",
+                          items: [
+                            "> 1 mmol/L or > ++ — NOT acidotic",
+                            "Start IV insulin infusion IMMEDIATELY",
+                            "Give FRIII at 0.05 units/kg/hour",
+                          ],
+                        },
+                        {
+                          header: "Mixed DKA/HHS",
+                          headerColor: "#c53030",
+                          bulletColor: "#c53030",
+                          items: [
+                            "pH < 7.3, ketones > 3 mmol/L, bicarbonate < 15 mmol/L",
+                            "Manage as per NUH DKA protocol and pathway of care",
+                          ],
+                        },
+                      ]},
+                      { divider: true },
+                      { label: "Insulin Infusion" },
+                      { rx: [
+                        "Give FRIII at 0.05 units/kg/hour (e.g. 80 kg = 4 units/hour)",
+                        "Prescribe on fixed rate IV insulin prescription chart for HHS — printable version on NUH intranet",
+                        "IV insulin infusion rate can be adjusted by 1 unit/hour to maintain CBG 10–15 mmol/L",
+                      ], title: "FRIII — Immediate Start" },
+                    ],
+                  },
+                  {
+                    icon: "management",
+                    label: "Adjunct Measures — All Patients",
+                    items: [
+                      { bullet: "Look for underlying cause (e.g. infection, cardiac event) and treat as appropriate" },
+                      { bullet: "Give prophylactic LMW heparin (unless contraindicated)" },
+                      { bullet: "Assess for treatment complications 1–2 hourly:", sub_items: ["Fluid overload", "Cerebral oedema", "Osmotic demyelination"] },
+                      { bullet: "Provide foot care:", sub_items: ["Heel protection", "Daily foot checks"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Monitoring & Treatment Adjustment",
+                type: "list",
+                groups: [
+                  {
+                    icon: "monitoring",
+                    label: "Monitoring Schedule",
+                    items: [
+                      "Hourly for first 6 hours, then 2-hourly if satisfactory clinical response",
+                      "Monitor vital signs and chart NEWS2",
+                      "Record strict fluid balance on Nervecentre — hourly urine output (catheter usually required)",
+                      "Check ketones, glucose, urea, Na⁺, K⁺ and calculated osmolality hourly for first 6 hours",
+                      "Reassess cardiovascular status at 12 hours — further fluid may be required",
+                    ],
+                  },
+                  {
+                    icon: "note",
+                    label: "Treatment Targets",
+                    items: [
+                      "Fall in glucose ≤ 5 mmol/L/hour",
+                      "Fall in calculated osmolality of 3–8 mOsm/kg/hour",
+                      "Sodium fall must be < 10 mmol/L in 24 hours",
+                      "Aim for glucose 10–15 mmol/L",
+                    ],
+                  },
+                ],
+                footer_callouts: [
+                  {
+                    type: "purple",
+                    title: "When glucose < 14 mmol/L:",
+                    items: [
+                      "ADD 10% glucose at 125 mL/hour AND CONTINUE 0.9% sodium chloride",
+                      "Complete normalisation of biochemistry and volume status may take 72 hours",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Assessing Response",
+                type: "decision_flow",
+                charts: [
+                  {
+                    heading: "Managing Osmolality",
+                    themeColor: "purple",
+                    layout: "vertical",
+                    note_alert: "If parameters are not met, seek specialist input early to help tailor management to the individual's need",
+                    cards: [
+                      {
+                        label: "Osmolality Increasing",
+                        icon: "↑",
+                        steps: [
+                          {
+                            step: "Check fluid status",
+                            branches: [
+                              { label: "Negative balance — no signs of overload", color: "red", action: "Increase rate of infusion of 0.9% saline" },
+                              { label: "Adequate fluid balance", color: "amber", action: "Consider switching to 0.45% saline at same rate" },
+                            ],
+                          },
+                          {
+                            step: "Check sodium",
+                            branches: [
+                              { label: "Sodium increasing", color: "amber", action: "Expected finding in HHS — monitor osmolality trends" },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        label: "Osmolality Decreasing",
+                        icon: "↓",
+                        steps: [
+                          {
+                            step: "Check fluid status",
+                            branches: [
+                              { label: "Negative balance — no signs of overload", color: "red", action: "May support increasing infusion rate — see step 3" },
+                              { label: "Adequate fluid balance", color: "green", action: "No immediate fluid change required — see step 3 for rate-based action" },
+                            ],
+                          },
+                          {
+                            step: "Check sodium",
+                            branches: [
+                              { label: "Sodium increasing", color: "amber", action: "Expected — continue monitoring" },
+                              { label: "Sodium stable or decreasing", color: "red", action: "Reassess fluid type — consider 0.45% saline if osmolality still declining and sodium not rising" },
+                            ],
+                          },
+                          {
+                            step: "Action by rate of decrease",
+                            branches: [
+                              { label: "< 3 mOsm/kg/hour — too slow", color: "red", action: "Increase rate of infusion of 0.9% saline" },
+                              { label: "3–8 mOsm/kg/hour — ideal", color: "green", action: "Continue same rate of fluids" },
+                              { label: "> 8 mOsm/kg/hour — too fast", color: "amber", action: "Consider reducing IV fluid rate and/or insulin (if commenced)" },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    heading: "Managing Glucose",
+                    themeColor: "teal",
+                    layout: "vertical",
+                    cards: [
+                      {
+                        label: "Blood Glucose Falling",
+                        icon: "↓",
+                        steps: [
+                          {
+                            step: "Check fluid status",
+                            branches: [
+                              { label: "Negative balance — no signs of overload", color: "red", action: "Increase rate of infusion of 0.9% saline" },
+                              { label: "Adequate fluid balance", color: "green", action: "Maintain current fluid rate; adjust insulin as per rate of fall below" },
+                            ],
+                          },
+                          {
+                            step: "Action by rate of fall",
+                            branches: [
+                              { label: "≤ 5 mmol/L/hour — ideal", color: "green", action: "Increase 0.9% saline if negative fluid balance; continue current management if adequate" },
+                              { label: "< 5 mmol/L/hour — too slow", color: "amber", action: "Commence FRIII at 0.05 units/kg/hour OR increase to 0.1 units/kg/hour if already commenced. Convert to VRIII or S/C insulin once HHS resolved" },
+                              { label: "> 5 mmol/L/hour — too fast", color: "red", action: "Check rate of change of osmolality and consider reducing rate of fluid replacement and/or IV insulin infusion rate" },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Recovery Phase",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Transition from IV to subcutaneous insulin",
+                    items: [
+                      "Switch to Variable Rate IV Insulin (VRIII) once biochemically stable if not eating and drinking",
+                      "Transfer to subcutaneous (S/C) insulin when eating and drinking — seek advice from the diabetes team about the insulin regimen",
+                      "Stop IV insulin infusion 1 hour after first S/C dose",
+                      "Initial outpatient follow-up in secondary care advised",
+                    ],
+                  },
+                  {
+                    icon: "smile",
+                    colorIndex: 2,
+                    label: "Criteria for Resolution of HHS",
+                    items: [
+                      "Clinical and cognitive status has returned to the pre-morbid state",
+                      "Osmolality < 300 mOsm/kg",
+                      "Hypovolaemia has been corrected — urine output ≥ 0.5 mL/kg/hour",
+                      "Blood glucose < 15 mmol/L",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "endocrine-dka",
+            title: "Diabetic Ketoacidosis (DKA)",
+            category: "Endocrine Emergencies",
+            version: "8",
+            authors: "Dr Jenny Clayton | NUH Diabetes & Endocrinology",
+            evidenceBase: "NUH Local Guideline | JBDS-IP DKA Guidelines | Review: April 2028",
+            updated: "Dr Jenny Clayton | April 2025 | Review April 2028",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=146b5d409d070349c43b0453ba2ce627",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9851&query_desc=an%2Cphr%3A6225",
+            summary: "DKA is a life-threatening emergency defined by the triad of raised blood glucose (>11 mmol/L or known diabetes), capillary ketones ≥3 mmol/L, and venous pH <7.3 or bicarbonate <15 mmol/L. Treatment must begin immediately in the patient's current location — delay may be fatal. Blood glucose is NOT a guide to severity.",
+            tags: ["DKA", "Diabetic ketoacidosis", "Diabetes", "Ketones", "Insulin", "FRIII", "Hyperglycaemia", "Acidosis", "SGLT2"],
+            related: [],
+            sections: [
+              {
+                heading: "⚠ Key Principles",
+                type: "alert",
+                items: [
+                  "!!KETOACIDOSIS CAN KILL. If in doubt, call someone more senior.",
+                  "START TREATMENT IN THE PATIENT'S CURRENT LOCATION — delay in starting treatment may be fatal",
+                  "Blood glucose is NOT a guide to severity — use venous bicarbonate or pH",
+                  "Euglycaemic DKA can occur with SGLT-2 inhibitors or in pregnancy — glucose may be normal",
+                  "This guideline should be used alongside the NUH Pathway of Care for DKA in Adults (insulin prescription, administration and monitoring chart)",
+                ],
+              },
+              {
+                heading: "Step 1: Diagnosis",
+                type: "list",
+                groups: [
+                  {
+                    icon: "note",
+                    label: "Inclusion Criteria",
+                    items: [
+                      "Patients aged 16 years and above on an adult ward at NUH who meet all three diagnostic criteria below",
+                    ],
+                  },
+                  {
+                    icon: "note",
+                    label: "Exclusion Criteria",
+                    items: [
+                      "Age < 16 years — see separate paediatric guideline",
+                    ],
+                  },
+                  {
+                    icon: "bloods",
+                    label: "All three criteria required for diagnosis",
+                    tableData: {
+                      headers: ["Criterion", "Threshold", "Notes"],
+                      rows: [
+                        { category: "1. Blood glucose", examples: ["> 11 mmol/L or known diabetes", "Euglycaemic DKA possible with SGLT-2 inhibitors or in pregnancy"] },
+                        { category: "2. Capillary ketones", examples: ["≥ 3 mmol/L (or urine ketones > 2+)", "Urine ketones only if capillary unavailable"] },
+                        { category: "3. Venous pH / bicarbonate", examples: ["pH < 7.3 OR bicarbonate < 15 mmol/L", "Venous blood gas — analyse on B3, ED, HDU, or ITU machine"] },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "Step 2: Essential Investigations",
+                type: "list",
+                groups: [
+                  {
+                    icon: "bloods",
+                    label: "Essential — All Patients",
+                    items: [
+                      "U&E, creatinine, blood glucose",
+                      "Venous blood gas: bicarbonate, potassium, pH — analyse on machine (B3, ED, HDU, ITU)",
+                      "ECG, CXR, MSU, blood cultures, pregnancy test — as clinically indicated",
+                    ],
+                  },
+                  {
+                    icon: "note",
+                    label: "Interpretation Notes",
+                    items: [
+                      "Arterial puncture is NOT routinely needed",
+                      "Raised WCC and serum amylase are common in DKA and do not usually suggest pancreatitis",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Severity Classification",
+                type: "grouped_items",
+                note: "Blood glucose is NOT a guide to severity — use venous bicarbonate or pH",
+                groups: [
+                  {
+                    label: "Mild",
+                    color: "#276749",
+                    border: "#9ae6b4",
+                    items: [
+                      "Venous bicarbonate > 14 mmol/L OR pH > 7.3",
+                    ],
+                  },
+                  {
+                    label: "Moderate",
+                    color: "#d69e2e",
+                    border: "#f6e05e",
+                    items: [
+                      "Venous bicarbonate 10–14 mmol/L OR pH 7.1–7.3",
+                    ],
+                  },
+                  {
+                    label: "Severe",
+                    color: "#e53e3e",
+                    border: "#fc8181",
+                    items: [
+                      "Venous bicarbonate < 10 mmol/L OR pH < 7.1",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "stepped_pathway",
+                showArrows: true,
+                stepColor: { header: "#fee2e2", icon: "#991B1B", iconText: "#ffffff", label: "#7F1D1D", bullet: "#DC2626", border: "#fca5a5" },
+                steps: [
+                  {
+                    icon: "immediate",
+                    label: "Step 1 — Immediate Treatment (Start in Current Location)",
+                    items: [
+                      "Insert venflon",
+                      "1L 0.9% sodium chloride IV over 1 hour if systolic BP > 90 mmHg",
+                      "If systolic BP < 90 mmHg: repeated boluses of 500 mL 0.9% sodium chloride over 10–15 minutes",
+                      { divider: true },
+                      { rx: [
+                        "50 units human soluble insulin (Actrapid® or Humulin S®) in 49.5 mL 0.9% sodium chloride = 1 unit/mL solution",
+                        "Administer via syringe driver at 0.1 units/kg/hour (estimated or actual weight)",
+                      ], title: "Start IV Insulin Infusion (FRIII)" },
+                      "ESRD/dialysis patients: see page 3 of NUH Pathway of Care document for IV fluid replacement",
+                    ],
+                    alerts: ["No patient with DKA should be transferred between hospitals"],
+                  },
+                  {
+                    icon: "management",
+                    label: "Step 2 — Transfer / Escalation",
+                    items: [
+                      { label: "URGENT CRITICAL CARE / LEVEL 1 REVIEW if any of:" },
+                      "Venous bicarbonate < 10 mmol/L or pH < 7.1",
+                      "Drowsy (P or U on AVPU)",
+                      "Fluid balance problems",
+                      "Pregnancy — also arrange urgent obstetric review",
+                      "SpO₂ < 94% on 40% O₂",
+                      "Persistent hypotension (systolic < 90 mmHg after 2L fluid)",
+                      { divider: true },
+                      { label: "ACUTE MEDICINE BED or DIABETES WARD if:" },
+                      "pH > 7.1 or venous bicarbonate > 10 mmol/L and not too unwell or drowsy",
+                    ],
+                  },
+                  {
+                    icon: "drug",
+                    label: "Step 3 — Fixed Rate IV Insulin Infusion (FRIII)",
+                    items: [
+                      "Run FRIII at 0.1 units/kg/hour (written on paper chart)",
+                      "CONTINUE long-acting subcutaneous insulin on EPMA throughout: Levemir® (detemir), Lantus®/Semglee®/Abasaglar®/Toujeo® (glargine), Tresiba® (degludec), Humulin I®, Insulatard® (Isophane)",
+                      "If blood glucose drops to < 14 mmol/L: consider reducing FRIII to 0.05 units/kg/hour",
+                      { divider: true },
+                      { label: "TREATMENT TARGETS" },
+                      "Blood glucose fall > 3 mmol/L/hour until < 14 mmol/L",
+                      "Capillary ketones fall > 0.5 mmol/L/hour",
+                      "Venous bicarbonate rise > 3 mmol/L/hour",
+                      { divider: true },
+                      { label: "NOT IMPROVING?" },
+                      "Check: pump operation, insulin addition, cannula patency, patient weight",
+                      "Reassess for concomitant illness; consider lactic acidosis",
+                      "Increase rate of insulin infusion by 1 unit/hour every hour",
+                    ],
+                  },
+                  {
+                    icon: "drug",
+                    label: "Step 4 — IV Fluid Replacement",
+                    items: [
+                      { seq: [
+                        "1L 0.9% sodium chloride over 1 hour",
+                        "1L 0.9% sodium chloride* over 2 hours",
+                        "1L 0.9% sodium chloride* over 2 hours",
+                        "1L 0.9% sodium chloride* over 4 hours",
+                      ]},
+                      { inset_table: {
+                        title: "Potassium Replacement — *add from bag 2 onwards",
+                        items: [
+                          "Do NOT add to the first bag unless K⁺ < 3.5 mmol/L and precautions for rapid IV potassium are followed",
+                          "Use VBG results to allow early potassium replacement",
+                          "Renal patients (ESRD/dialysis): discuss with renal team",
+                        ],
+                        table: {
+                          columns: ["Plasma K⁺", "KCl addition per litre of sodium chloride"],
+                          coloredRows: [
+                            { rc: { bg: "transparent", border: "#86efac", label: "#14532d", bullet: "#16a34a" }, cells: ["< 5.4 mmol/L", "Add 40 mmol KCl"] },
+                            { rc: { bg: "transparent", border: "#fca5a5", label: "#7f1d1d", bullet: "#dc2626" }, cells: ["≥ 5.5 mmol/L", "Do NOT add potassium"] },
+                          ],
+                        },
+                      }},
+                      { divider: true },
+                      "Continue 0.9% sodium chloride (+KCl) as needed to restore circulating volume",
+                      "When glucose < 14 mmol/L: continue 0.9% sodium chloride (+KCl) AND add 10% glucose 125 mL/hour",
+                      "Adjust 10% glucose in 50 mL increments to maintain glucose 8–14 mmol/L",
+                      "Check chloride if acidosis persists; seek consultant advice",
+                      { divider: true },
+                      { label: "CAUTION — FLUID OVERLOAD" },
+                      "Take care in elderly patients, adolescents, and those with cardiac or renal dysfunction",
+                      { divider: true },
+                      { label: "RENAL PATIENTS (ESRD/Dialysis)" },
+                      "May not need fluid replacement unless hypovolaemic",
+                      "If hypovolaemic: aliquots of 250 mL 0.9% sodium chloride with frequent clinical assessments",
+                      "Contact renal SpR/AKI team for advice",
+                      "When glucose < 14 mmol/L: commence 10% glucose at 50–125 mL/hour depending on fluid status",
+                    ],
+                  },
+                  {
+                    icon: "note",
+                    label: "Step 6 — Bicarbonate (ITU Only)",
+                    items: [
+                      "Rarely required",
+                      "Give only as directed by a Consultant or Intensivist",
+                      "Consider only in patients with pH < 7.0 not responding to optimal treatment",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Clinical Monitoring",
+                type: "list",
+                groups: [
+                  {
+                    icon: "monitoring",
+                    label: "All patients — reassess hourly for first 4–6 hours, then frequently thereafter",
+                    items: [
+                      "Vital signs: NEWS2 or at least hourly (BP, pulse, urine output)",
+                      "Capillary glucose and ketones: hourly",
+                      "Consider CVP / urinary catheter if clinical evidence of poor LV or renal function",
+                      "Consider NG tube if drowsy or vomiting",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Laboratory Monitoring Schedule",
+                type: "table",
+                note: "*Take venous blood in a gas syringe and analyse on machine (B3, ED, HDU, ITU)",
+                columns: ["Parameter", "0 hr", "1 hr", "2 hr", "4 hr", "6 hr", "12 hr", "24 hr"],
+                rows: [
+                  ["Glucose",       "✓", "✓", "✓", "✓", "✓", "✓", "✓"],
+                  ["Potassium*",    "✓", "✓", "✓", "✓", "✓", "✓", "✓"],
+                  ["Creatinine",    "✓", "–", "–", "✓", "–", "✓", "✓"],
+                  ["Bicarbonate*",  "✓", "✓", "✓", "✓", "✓", "✓", "✓"],
+                ],
+                insetCallouts: [
+                  {
+                    title: "Ketone Monitoring",
+                    items: [
+                      "Capillary ketones: hourly for 24 hours (preferred)",
+                      "If capillary ketones unavailable: urine ketones twice daily",
+                    ],
+                  },
+                  {
+                    title: "Arterial Gas",
+                    items: [
+                      "Only if SpO₂ < 92% or arterial line in situ — arterial puncture not routinely required",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "After Recovery",
+                type: "list",
+                groups: [
+                  {
+                    icon: "management",
+                    label: "Criteria for Transfer to Subcutaneous Insulin",
+                    items: [
+                      "Blood ketones < 0.6 mmol/L OR venous pH > 7.3",
+                      "Patient is eating and drinking (if not — switch to variable rate IV insulin infusion)",
+                    ],
+                  },
+                  {
+                    icon: "drug",
+                    label: "How to Transfer to Subcutaneous Insulin",
+                    items: [
+                      "Stop IV insulin infusion 1 hour AFTER next subcutaneous insulin injection",
+                      "BD mixed insulin: give prior to breakfast or evening meal",
+                      "QDS insulin: give soluble insulin prior to next meal",
+                      "OD insulin: give extra dose of soluble insulin prior to first meal",
+                    ],
+                  },
+                  {
+                    icon: "note",
+                    label: "Diabetes Team Referral — All Patients",
+                    items: [
+                      "Refer all patients on Nervecentre at time of admission",
+                      "Diabetes Nurses: via Nervecentre",
+                      "Diabetes SpR: via switchboard",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "endocrine-hypoglycaemia",
+            title: "Hypoglycaemia",
+            category: "Endocrine Emergencies",
+            version: "5",
+            authors: "Dr Jenny Clayton (Consultant Diabetes & Endocrinology) | Rosamund Bell (Specialist Pharmacist)",
+            evidenceBase: "NUH Guideline 2363 | JBDS Hospital Management of Hypoglycaemia in Adults 2023 | Review: May 2029",
+            updated: "Dr Jenny Clayton | Version 5 | Review May 2029",
+            pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=7e30034de644eb97674b2fab088fb019",
+            portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10149&query_desc=hypoglycaemia",
+            summary: "Hypoglycaemia (blood glucose < 4 mmol/L) is a common and potentially life-threatening complication of anti-diabetic therapy affecting 1 in 5 inpatients with diabetes. Two pathways apply: co-operative patients who can swallow, and unconscious or aggressive patients requiring IV or IM treatment. Prompt treatment is essential — untreated hypoglycaemia can result in brain damage and death.",
+            tags: ["Hypoglycaemia", "Low blood sugar", "BG < 4", "Glucose", "Glucagon", "Insulin", "Type 1 diabetes", "Type 2 diabetes", "Gliclazide", "Sulphonylurea"],
+            related: [],
+            sections: [
+              {
+                heading: "⚠ Key Principles",
+                type: "alert",
+                items: [
+                  "!!Hypoglycaemia is an emergency — blood glucose < 4 mmol/L requires immediate treatment",
+                  "Untreated hypoglycaemia can result in brain damage and death",
+                  "NEVER omit insulin in Type 1 DM, even after hypoglycaemia — the dose may need reducing but omission risks DKA",
+                  "If the patient is on IV insulin: hold the infusion during treatment; restart once BG > 4 mmol/L",
+                  "Sulphonylurea or long-acting insulin: risk of recurrent hypoglycaemia may persist 24–36 hours, especially in renal impairment",
+                ],
+              },
+              {
+                heading: "Background",
+                type: "list",
+                groups: [
+                  {
+                    icon: "note",
+                    label: "Definition & Scope",
+                    items: [
+                      "Hypoglycaemia: capillary/fingerprick or laboratory blood glucose < 4 mmol/L",
+                      "Applies to all adult patients > 18 years with diabetes admitted to NUH wards",
+                      "1 in 5 inpatients with diabetes experiences at least one episode of hypoglycaemia (NaDIA audit)",
+                    ],
+                  },
+                  {
+                    icon: "bloods",
+                    label: "Blood Glucose Targets in Hospital",
+                    items: [
+                      "Acceptable inpatient range: 6–11 mmol/L",
+                      "BG 4–6 mmol/L may indicate 'looming hypoglycaemia' — consider intervening at < 6 mmol/L in patients on insulin or insulin secretagogues (e.g. gliclazide)",
+                      "An individualised approach should be taken — ideally a joint decision between patient and clinical team",
+                      "Patients with insulin pumps or continuous glucose monitors (CGM) may prefer to maintain BG 4–6 mmol/L",
+                    ],
+                  },
+                  {
+                    icon: "note",
+                    label: "After Any Episode",
+                    items: [
+                      "Investigate the cause and review the usual diabetes regimen",
+                      "Insulin or oral medication doses may need reducing to prevent recurrence",
+                      "Document using a hypoglycaemia sticker and increase BG monitoring frequency",
+                      "DO NOT omit insulin if due — dose review may be required",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Pathway 1 — Co-operative Patient (Able to Swallow)",
+                type: "stepped_pathway",
+                showArrows: true,
+                stepColor: { header: "#fee2e2", icon: "#991B1B", iconText: "#ffffff", label: "#7F1D1D", bullet: "#DC2626", border: "#fca5a5" },
+                steps: [
+                  {
+                    icon: "immediate",
+                    label: "Step 1 — Give Quick-Acting Carbohydrate",
+                    items: [
+                      "Stop IV insulin if running",
+                      { rx: [
+                        "60 mL Lift® Glucose Shot",
+                        "OR 2 tubes Glucose 40% oral gel",
+                        "OR other quick-acting carbohydrate (15–20 g) of patient's choice",
+                      ], title: "Quick-Acting Carbohydrate (choose one)" },
+                      "Repeat capillary BG after 10–15 minutes",
+                    ],
+                  },
+                  {
+                    icon: "monitoring",
+                    label: "Step 2 — Recheck BG at 10–15 Minutes",
+                    items: [
+                      { split_cols: [
+                        {
+                          header: "BG > 4 mmol/L",
+                          headerColor: "#16a34a",
+                          bulletColor: "#16a34a",
+                          items: ["Proceed to Step 3 — give long-acting carbohydrate"],
+                        },
+                        {
+                          header: "BG < 4 mmol/L",
+                          headerColor: "#dc2626",
+                          bulletColor: "#dc2626",
+                          items: [
+                            "Repeat Step 1 — up to 3 cycles total",
+                            "If BG still < 4 mmol/L after 3 cycles: contact the doctor",
+                          ],
+                        },
+                      ]},
+                    ],
+                  },
+                  {
+                    icon: "management",
+                    label: "Step 3 — Give Long-Acting Carbohydrate & Review",
+                    items: [
+                      { rx: [
+                        "20 g long-acting carbohydrate: 2 biscuits or 1 slice of toast",
+                        "OR a meal with carbohydrate if due",
+                        "If the patient received glucagon: give a larger (double) carbohydrate portion",
+                      ], title: "Long-Acting Carbohydrate" },
+                      "Review IV insulin regimen and restart if previously running",
+                      "Investigate cause; review the usual diabetes regimen",
+                      "Document in patient notes using a hypoglycaemia sticker; increase BG monitoring",
+                      "Refer to the diabetes team if hypoglycaemia is severe (requiring IV or IM treatment) or frequent",
+                    ],
+                    alerts: ["NEVER OMIT INSULIN IN TYPE 1 DM — dose review may be required"],
+                  },
+                ],
+              },
+              {
+                heading: "Pathway 2 — Unconscious or Aggressive Patient",
+                type: "stepped_pathway",
+                showArrows: true,
+                stepColor: { header: "#fee2e2", icon: "#991B1B", iconText: "#ffffff", label: "#7F1D1D", bullet: "#DC2626", border: "#fca5a5" },
+                steps: [
+                  {
+                    icon: "immediate",
+                    label: "Step 1 — Immediate Actions",
+                    items: [
+                      "Check ABCDE",
+                      "Stop IV insulin if running",
+                      "Arrange urgent medical review",
+                      { rx: [
+                        "100 mL IV 20% glucose over 10–15 minutes — administer via volumetric pump if available",
+                        "OR Glucagon 1 mg IM if no IV access (can be given by PGD)",
+                      ], title: "Treatment (choose one)" },
+                      "Some wards have Severe Hypo Boxes containing IV glucose, IM glucagon and cannulation packs",
+                    ],
+                    alerts: ["Do NOT repeat glucagon — if BG remains < 4 mmol/L after glucagon, switch to IV 20% glucose"],
+                  },
+                  {
+                    icon: "monitoring",
+                    label: "Step 2 — Recheck BG at 10–15 Minutes",
+                    items: [
+                      { split_cols: [
+                        {
+                          header: "BG > 4 mmol/L and patient recovered",
+                          headerColor: "#16a34a",
+                          bulletColor: "#16a34a",
+                          items: ["Proceed to Step 3 — give long-acting carbohydrate"],
+                        },
+                        {
+                          header: "BG < 4 mmol/L",
+                          headerColor: "#dc2626",
+                          bulletColor: "#dc2626",
+                          items: [
+                            "Repeat IV 20% glucose — do NOT repeat glucagon — up to 3 cycles",
+                            "If BG still < 4 mmol/L after 3 cycles: contact the diabetes team or on-call medical registrar",
+                          ],
+                        },
+                      ]},
+                    ],
+                  },
+                  {
+                    icon: "management",
+                    label: "Step 3 — After Recovery",
+                    items: [
+                      { rx: [
+                        "20 g long-acting carbohydrate: 2 biscuits or 1 slice of toast",
+                        "OR a meal with carbohydrate if due",
+                        "If glucagon was given: give a larger (double) carbohydrate portion",
+                      ], title: "Long-Acting Carbohydrate" },
+                      "Review IV insulin regimen and restart if previously running",
+                      "Investigate cause; review the usual diabetes regimen",
+                      "Document in patient notes using a hypoglycaemia sticker; increase BG monitoring",
+                      "Refer to the diabetes team for all cases of severe hypoglycaemia requiring IV or IM treatment",
+                    ],
+                    alerts: ["NEVER OMIT INSULIN IN TYPE 1 DM — dose review may be required"],
+                  },
+                ],
+              },
+              {
+                heading: "Referral Pathway for Hypoglycaemia",
+                type: "stepped_pathway",
+                cardGap: 10,
+                topCallout: {
+                  text: "To see Intranet PDF flow chart:",
+                  label: "Referral Pathway for Hypoglycaemia",
+                  url: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=ea0a92664620e1274e94f3a5c45456ae",
+                },
+                stepColor: { header: "#f5f3ff", icon: "#6d28d9", iconText: "#ffffff", label: "#4c1d95", bullet: "#7c3aed", border: "#c4b5fd" },
+                steps: [
+                  {
+                    icon: "tick",
+                    label: "Known Diabetic",
+                    items: [
+                      "Admit & Clerk",
+                      "Send bloods: U+E, LFT, HbA1c, glucose",
+                      "Send blood for laboratory glucose, insulin and C-peptide if hypoglycaemic at any time",
+                      { divider: true },
+                      { label: "9am–4pm Mon–Fri" },
+                      "Complete referral on Nervecentre (Inpatient DIABETES referral)",
+                      { divider: true },
+                      { label: "Out of Hours" },
+                      "DSN contact x81215",
+                      "On-call Specialist Diabetes Registrar: Mon–Fri 9am–5pm via switchboard",
+                    ],
+                    alerts: ["Patient unwell — URGENT MEDICAL REVIEW"],
+                  },
+                  {
+                    icon: "question",
+                    label: "Diabetes Unknown",
+                    items: [
+                      "Send blood for laboratory glucose, insulin and C-peptide if hypoglycaemic at any time",
+                      "Refer to Endocrinology via Nervecentre (Inpatient ENDOCRINE referral)",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Recovery",
+                type: "stepped_pathway",
+                cardGap: 10,
+                stepColor: { header: "#f5f3ff", icon: "#6d28d9", iconText: "#ffffff", label: "#4c1d95", bullet: "#7c3aed", border: "#c4b5fd" },
+                steps: [
+                  {
+                    icon: "management",
+                    label: "Under GP Care for Diabetes",
+                    items: [
+                      "Inform GP surgery of discharge",
+                      "Advise not to drive",
+                      "Provide driving & hypo leaflet",
+                    ],
+                  },
+                  {
+                    icon: "management",
+                    label: "Under NUH Care for Diabetes",
+                    items: [
+                      "Leave a message on x81215 with details and need for review",
+                      "Inform patient to expect a phone call on the next working day",
+                      "Advise not to drive",
+                      "Provide driving & hypo leaflet",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Quick-Acting Carbohydrate Examples (15–20 g)",
+                type: "table",
+                columns: ["Product", "Quantity"],
+                rows: [
+                  ["Lift® Glucose Shot", "60 mL"],
+                  ["Glucose 40% oral gel", "2 tubes"],
+                  ["Dextrosol tablets", "5–7 tablets"],
+                  ["Glucose tabs", "4–5 tablets"],
+                  ["Pure fruit juice", "150–200 mL (do not use if on a low-potassium diet)"],
+                  ["Sugar dissolved in water", "3–4 heaped teaspoons"],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    get guidelines() {
+      return this.subsites.flatMap(ss => ss.guidelines || []);
+    },
+  },
+  // ── End Diabetes & Endocrinology ───────────────────────────────────────────
+
 ];
 const DIRECTORY_DATA = {
   callouts: {},
@@ -8110,6 +9473,156 @@ const DIRECTORY_DATA = {
 { name: "Rapid Response",              category: "oncall", drsOffice: "0115 962 8066" },
     { name: "Switch",                      category: "oncall", numbers: ["56155"] },
     { name: "Pathology Results",           category: "oncall", numbers: ["81168", "74436", "80184"], note: "OOH: 284-1360" },
+    // ── Specialty On-Call Contacts ────────────────────────────────
+    { name: "Acute Medicine", category: "oncall", note: "OOH: NC referrals for gastro, neuro, diabetes/endocrine & rheumatology tagged to specialty → auto-diverted to AMRAT. Non-pull criteria presentations → refer with Acute Med tag to AMRAT.", numbers: [
+      { label: "AMRAT Reg", num: "07812 269350" },
+      { label: "ACPs / Medical Middle Grades", num: "07812 269350" },
+    ]},
+    { name: "Level 1 GIM", category: "oncall", numbers: [
+      { label: "Med Reg", num: "284-4071" },
+    ]},
+    { name: "Critical Care", category: "oncall", numbers: [
+      { label: "AICU Baton Phone Holder", num: "07812 270097" },
+    ]},
+    { name: "Geriatric Medicine", category: "oncall", numbers: [
+      { label: "Consultant Silver Phone (8:30–16:30 M–F)", num: "07812 275392" },
+      { label: "On-Call Reg (9–20:00)", num: "07812 268111" },
+      { label: "NIC GAU (OOH after 20:00)", num: "07812 268111" },
+    ]},
+    { name: "Infectious Diseases", category: "oncall", note: "OOH: Pyelonephritis can be referred to City Med Reg (284-2301). See guide on KOHA.", numbers: [
+      { label: "Consultant / Registrar (via switch)", num: "56155" },
+    ]},
+    { name: "Major Trauma", category: "oncall", numbers: [
+      { label: "Fellow", num: "07812 277336" },
+      { label: "Consultant (OOH, via switch)", num: "56155" },
+    ]},
+    { name: "Palliative Care", category: "oncall", numbers: [
+      { label: "Consultant", num: "07595 285014" },
+    ]},
+    { name: "Cardiology", category: "oncall", numbers: [
+      { label: "QMC Consultant On-Call (9–17, via switch)", num: "56155" },
+      { label: "CATS Team (9–17)", num: "07713 096989" },
+      { label: "City Cardiology Reg (17–21)", num: "07713 097021" },
+    ]},
+    { name: "Respiratory — RAU", category: "oncall", numbers: [
+      { label: "Respiratory ACPs (9–20)", num: "07812 270092" },
+      { label: "Resp Consultant (OOH 20–22, via switch)", num: "56155" },
+      { label: "Resp Reg (OOH 22–9)", num: "07484 535262" },
+      { label: "RAU Nurse In Charge (OOH 20–9)", num: "07812 275761" },
+    ]},
+    { name: "Respiratory — ARCU", category: "oncall", numbers: [
+      { label: "ARCU Reg (9–17 M–F, via switch)", num: "56155" },
+      { label: "Respiratory Reg (OOH)", num: "07484 535262" },
+      { label: "H24 Reg C (OOH bleep)", num: "284-2194" },
+    ]},
+    { name: "Stroke", category: "oncall", numbers: [
+      { label: "Stroke Registrar — Telephone (24hrs)", num: "07812 284034" },
+      { label: "Stroke Registrar — NC / eReferral (24hrs)", num: "07812 279329" },
+      { label: "Specialist Nurses (24hrs)", num: "07812 278035" },
+      { label: "Stroke Consultant", num: "07812 278042" },
+    ]},
+    { name: "Gastroenterology", category: "oncall", note: "OOH (after 7pm): diverted to Med Reg A automatically. Gastro team contactable for urgent advice and emergencies only.", numbers: [
+      { label: "ACPs", num: "07812 275826" },
+      { label: "Gastro Reg", num: "07812 275386" },
+      { label: "Med Reg A (OOH)", num: "284-4071" },
+    ]},
+    { name: "Endocrine / Diabetes", category: "oncall", note: "OOH: auto-diverted to Medical Reg A. No OOH endocrine cover.", numbers: [
+      { label: "Consultant (13–17)", num: "07812 268817" },
+      { label: "Registrar (9–17)", num: "07812 276963" },
+      { label: "Medical Reg A (OOH)", num: "284-4071" },
+    ]},
+    { name: "Neurology", category: "oncall", note: "OOH: diverted to Reg A automatically. Neurology reg for urgent advice only (non-resident) OOH.", numbers: [
+      { label: "On-Call Registrar (9–17, via switch)", num: "56155" },
+      { label: "Med Reg A (OOH)", num: "284-4071" },
+    ]},
+    { name: "Neurology — HANU", category: "oncall", numbers: [
+      { label: "HANU Consultant (M–F 8:00–16:00)", num: "07812 276949" },
+    ]},
+    { name: "Neurosurgery", category: "oncall", numbers: [
+      { label: "Registrar On-Call", num: "07812 275352" },
+    ]},
+    { name: "Rheumatology", category: "oncall", note: "OOH: diverted automatically to Reg A. No rheumatology cover OOH.", numbers: [
+      { label: "Consultant / Reg Baton (9–17 M–F, 10–12 weekends & BH)", num: "07812 269495" },
+      { label: "Med Reg A (OOH)", num: "284-4071" },
+    ]},
+    { name: "Renal & Transplant", category: "oncall", numbers: [
+      { label: "QMC Consultant (9–16)", num: "07812 284049" },
+      { label: "City Registrar (OOH after 16:00)", num: "07812 275756" },
+      { label: "AKI Nurses (M–F 9–16)", num: "07812 269057" },
+    ]},
+    { name: "Oncology", category: "oncall", numbers: [
+      { label: "Registrar On-Call (via switch)", num: "56155" },
+      { label: "AOS Specialist Nurses", num: "07812 268675" },
+    ]},
+    { name: "Haematology", category: "oncall", numbers: [
+      { label: "Reg On-Call — City (9–17)", num: "07812 268940" },
+      { label: "Reg On-Call — QMC (9–17, if review needed pre-transfer)", num: "07812 275348" },
+      { label: "On-Call Registrar (OOH, via switch)", num: "56155" },
+    ]},
+    { name: "General Surgery", category: "oncall", numbers: [
+      { label: "Consultant STU Phone (handed to reg OOH)", num: "07812 269454" },
+      { label: "Junior Reg (OOH)", num: "07812 276638" },
+      { label: "Senior Reg (OOH)", num: "07812 276639" },
+    ]},
+    { name: "Thoracic Surgery", category: "oncall", numbers: [
+      { label: "On-Call Registrar", num: "07812 268901" },
+    ]},
+    { name: "Cardiac Surgery", category: "oncall", numbers: [
+      { label: "Reg / Consultant On-Call (via switch)", num: "56155" },
+    ]},
+    { name: "Vascular", category: "oncall", numbers: [
+      { label: "Registrar On-Call", num: "07812 268567" },
+    ]},
+    { name: "Urology", category: "oncall", numbers: [
+      { label: "Junior Clinical Fellow", num: "07812 284076" },
+      { label: "On-Call Registrar (NEWS >5, via switch)", num: "56155" },
+    ]},
+    { name: "Spinal", category: "oncall", numbers: [
+      { label: "Fellow", num: "07812 275378" },
+    ]},
+    { name: "Trauma & Orthopaedics", category: "oncall", numbers: [
+      { label: "On-Call Registrar", num: "07812 269389" },
+    ]},
+    { name: "Elective Orthopaedics", category: "oncall", numbers: [
+      { label: "Registrars On-Call (via switch)", num: "56155" },
+    ]},
+    { name: "Hands", category: "oncall", note: "T&O covers Mon, Tue, alternate Fri–Sun. Plastics covers Wed, Thu, alternate Fri–Sun.", numbers: [
+      { label: "T&O Reg (Mon/Tue/alt Fri–Sun)", num: "07812 269389" },
+      { label: "Plastics Reg (Wed/Thu/alt Fri–Sun, via switch)", num: "56155" },
+    ]},
+    { name: "Burns / Plastics", category: "oncall", numbers: [
+      { label: "Hot Week Reg / Consultant (via switch)", num: "56155" },
+      { label: "SHO On-Call (OOH)", num: "284-2310" },
+    ]},
+    { name: "Max Fax", category: "oncall", numbers: [
+      { label: "On-Call Reg (via switch)", num: "56155" },
+      { label: "Daytime SHO", num: "07812 276820" },
+      { label: "ENT SHO On-Call (OOH 23:00–07:00)", num: "07812 268351" },
+    ]},
+    { name: "ENT", category: "oncall", numbers: [
+      { label: "SHO On-Call", num: "07812 268351" },
+      { label: "Registrar On-Call (9–17)", num: "07812 275386" },
+      { label: "Registrar On-Call (OOH, via switch)", num: "56155" },
+    ]},
+    { name: "Breast", category: "oncall", numbers: [
+      { label: "Consultant On-Call (via switch)", num: "56155" },
+    ]},
+    { name: "Ophthalmology", category: "oncall", numbers: [
+      { label: "Registrar On-Call (via switch)", num: "56155" },
+    ]},
+    { name: "Dermatology", category: "oncall", numbers: [
+      { label: "Registrar — Treatment Centre (via switch)", num: "56155" },
+    ]},
+    { name: "Gynaecology", category: "oncall", numbers: [
+      { label: "On-Call Registrar", num: "07812 284230" },
+      { label: "Hot Week Consultant (M–F 8–19, Sat–Sun 8–13)", num: "07812 269284" },
+      { label: "Hot Week Consultant (OOH, via switch)", num: "56155" },
+    ]},
+    { name: "Obstetrics", category: "oncall", numbers: [
+      { label: "On-Call Registrar (via switch)", num: "56155" },
+      { label: "Maternity Triage", num: "89125" },
+      { label: "Labour Suite", num: "81032" },
+    ]},
     // ── Palliative Care ─────────────────────────────────────────
     { name: "Palliative Care Symptom Hotline", category: "palliative", numbers: [{ label: "QMC Tel", num: "88402" }, { label: "City Tel", num: "74977" }], note: "Mon–Sun 08:00–16:00" },
     { name: "Palliative Consultant Advice Line", category: "palliative", numbers: ["07595 285014"], note: "Out of hours" },
@@ -8195,7 +9708,7 @@ const DIRECTORY_DATA = {
     // ── Secretaries / PAs ───────────────────────────────────────
     { name: "Sarah Doubleday", category: "pa", numbers: ["77856"], consultants: [
       { name: "Dr A Arora", code: "AA8", specialty: "Hepatobiliary / Neuroendocrine" },
-      { name: "Dr B Greef", code: "BG6", specialty: "HPB / Upper GI" },
+      { name: "Dr B Greef", code: "BG6", specialty: "HPB / UGI" },
       { name: "Dr B Baraka", code: "BEB", specialty: "HPB" },
       { name: "Dr E Shawcroft", code: "EAS", specialty: "Metastatic Breast / Breast RT (NUH)" },
       { name: "Dr A Maynard", code: "A4M", specialty: "Lung / HPB / Renal" },
@@ -8226,7 +9739,7 @@ const DIRECTORY_DATA = {
     ]},
     { name: "Jade Foster-White", category: "pa", numbers: ["77300"], consultants: [
       { name: "Dr A Anand", code: "4AA", specialty: "Primary Gynae" },
-      { name: "Professor S Madhusudan", code: "2SM", specialty: "Metastatic Breast / Upper GI" },
+      { name: "Professor S Madhusudan", code: "2SM", specialty: "Metastatic Breast / UGI" },
       { name: "Dr C Chong", code: "CC6", specialty: "Colorectal / Urology" },
       { name: "Dr W Sam", code: "WS4", specialty: "Colorectal / Urology" },
       { name: "Dr S Sundar", code: "2SS", specialty: "Prostate & Bladder / Gynae" },
@@ -8234,7 +9747,7 @@ const DIRECTORY_DATA = {
     { name: "Naomi Knapp", category: "pa", numbers: ["72149"], consultants: [
       { name: "Dr A Sivanandan", code: "MS5", specialty: "Lung (KMH) / Skin" },
       { name: "Dr J Lim", code: "JHL", specialty: "Prostate & Bladder / AOS" },
-      { name: "Dr R Tiwari", code: "RT3", specialty: "Upper GI / Breast" },
+      { name: "Dr R Tiwari", code: "RT3", specialty: "UGI / Breast" },
       { name: "Dr T Moore", code: "TOM", specialty: "Lung / Skin / AOS" },
     ]},
     { name: "Jane Shepherd", category: "pa", numbers: ["79816"], consultants: [
@@ -8247,7 +9760,7 @@ const DIRECTORY_DATA = {
       { name: "Dr L Gossage", code: "LMG", specialty: "Germ Cell / Sarcoma" },
       { name: "Dr Masood", code: "AM1", specialty: "Germ Cell / Sarcoma / Melanoma" },
       { name: "Dr L Brookes", code: "LB3", specialty: "Sarcoma / Prostate KMH / Paediatric" },
-      { name: "Dr R Silverman", code: "RS7", specialty: "Colorectal / Upper GI" },
+      { name: "Dr R Silverman", code: "RS7", specialty: "Colorectal / UGI" },
       { name: "Dr C Esler", code: "CPE", specialty: "Paediatric / Sarcoma / Lymphoma" },
     ]},
     { name: "Kirsty Brown", category: "pa", numbers: ["71226"], consultants: [
@@ -8417,6 +9930,22 @@ const CALCULATORS = {
     ],
   },
   component: "hfa-icos",
+},
+"endocrinology": {
+  id: "endocrinology",
+  label: "Endocrinology Calculators",
+  siteId: "oncology",
+  icon: "🧪",
+  whenToUse: {
+    headline: "When to use these calculators",
+    checks: [
+      { type: "question", text: "Suspected HHS or significant hyperglycaemia? Use the Serum Osmolality tab to calculate corrected sodium and confirm osmolality threshold for HHS (≥320 mOsm/kg)." },
+      { type: "question", text: "Hyponatraemia requiring fluid restriction guidance? Use the Furst Formula tab — a spot urine Na⁺ + K⁺ alongside serum Na⁺ determines appropriate restriction volume." },
+      { type: "warning", text: "Corrected sodium uses the Hillier formula (×1.6 if glucose <400 mg/dL; ×2.4 if ≥400 mg/dL). Always verify with the clinical picture and discuss with endocrinology for complex cases." },
+      { type: "info", text: "The Furst formula guides fluid restriction in SIADH and dilutional hyponatraemia. It does not replace clinical assessment of volume status and underlying aetiology." },
+    ],
+  },
+  component: "endocrinology",
 },
 };
 
@@ -9433,6 +10962,171 @@ function AntibioticDosingCalculator() {
     </div>
   );
 }
+// ─── Endocrinology Calculators ───────────────────────────────────────────────
+
+function EndoInputRow({ label, value, onChange, placeholder, unit, optional }) {
+  return (
+    <div>
+      <label style={{ fontSize: 12, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", display: "block", marginBottom: 6 }}>
+        {label} <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0, fontSize: 11 }}>({unit || "mmol/L"}{optional ? " — optional" : ""})</span>
+      </label>
+      <input type="number" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
+        style={{ width: "100%", padding: "10px 12px", border: "1px solid var(--border)", borderRadius: 8, fontSize: 15, fontFamily: "Sora, sans-serif", fontWeight: 600, color: "var(--text-primary)", background: "var(--bg)", boxSizing: "border-box" }} />
+    </div>
+  );
+}
+
+function SerumOsmolalityTab({ C }) {
+  const [na, setNa] = useState("");
+  const [glucose, setGlucose] = useState("");
+  const [urea, setUrea] = useState("");
+
+  const naV = parseFloat(na);
+  const gluV = parseFloat(glucose);
+  const ureV = parseFloat(urea);
+  const valid = !isNaN(naV) && !isNaN(gluV) && naV > 0 && gluV > 0;
+  const hasUrea = urea !== "" && !isNaN(ureV) && ureV >= 0;
+
+  const gluMgdl = gluV * 18;
+  const multiplier = gluMgdl > 400 ? 2.4 : 1.6;
+  const correctedNa = valid ? naV + ((gluMgdl - 100) / 100) * multiplier : null;
+  const osmolality = valid && hasUrea ? 2 * naV + gluV + ureV : null;
+
+  let osmInterp = null;
+  if (osmolality !== null) {
+    if (osmolality >= 320) osmInterp = { label: "HHS range (≥320 mOsm/kg)", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", icon: "⚠", detail: "Meets osmolality threshold for HHS. Some sources define HHS as >350 mOsm/kg — clinical context and glucose level are key." };
+    else if (osmolality > 310) osmInterp = { label: "Hyperosmolar (>310 mOsm/kg)", color: "#744210", bg: "#fffff0", border: "#f6e05e", icon: "⚠", detail: "Hyperosmolar but below HHS diagnostic threshold. Monitor closely and treat underlying cause." };
+    else if (osmolality >= 285) osmInterp = { label: "Normal range (285–310 mOsm/kg)", color: "#166534", bg: "#f0fff4", border: "#bbf7d0", icon: "✓", detail: "Plasma osmolality within normal limits." };
+    else osmInterp = { label: "Low (<285 mOsm/kg)", color: "#1e40af", bg: "#f0f7ff", border: "#bfdbfe", icon: "ℹ", detail: "Hypoosmolar. Consider SIADH, dilutional hyponatraemia, or overhydration." };
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{ padding: "9px 12px", background: "#f0f7ff", border: "1px solid #bfdbfe", borderRadius: 8, fontSize: 13, color: "#1e40af", lineHeight: 1.5 }}>
+        ℹ Corrected Na uses the Hillier formula (×1.6 if glucose &lt;400 mg/dL; ×2.4 if ≥400 mg/dL). Serum osmolality = 2×Na + Glucose + Urea (SI units). Add urea to calculate osmolality.
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <EndoInputRow label="Measured Sodium" value={na} onChange={setNa} placeholder="e.g. 128" />
+        <EndoInputRow label="Blood Glucose" value={glucose} onChange={setGlucose} placeholder="e.g. 22" />
+        <EndoInputRow label="Urea" value={urea} onChange={setUrea} placeholder="e.g. 8" optional />
+      </div>
+      {valid && (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>Results</div>
+          <div style={{ padding: "10px 14px", background: "#eef6ff", border: `1px solid ${C}`, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>Corrected Sodium</div>
+              <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 2 }}>Glucose {gluMgdl.toFixed(0)} mg/dL — using ×{multiplier} correction</div>
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: C, fontFamily: "Sora, sans-serif", flexShrink: 0, marginLeft: 12 }}>
+              {correctedNa != null ? `${(Math.round(correctedNa * 10) / 10)} mmol/L` : "—"}
+            </div>
+          </div>
+          {hasUrea && osmolality !== null && (
+            <div style={{ padding: "10px 14px", background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>Calculated Osmolality</div>
+                <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 2 }}>2×Na + Glucose + Urea (SI units)</div>
+              </div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: C, fontFamily: "Sora, sans-serif", flexShrink: 0, marginLeft: 12 }}>
+                {Math.round(osmolality)} mOsm/kg
+              </div>
+            </div>
+          )}
+          {osmInterp && hasUrea && (
+            <div style={{ padding: "10px 14px", background: osmInterp.bg, border: `1px solid ${osmInterp.border}`, borderRadius: 8, color: osmInterp.color }}>
+              <div style={{ fontWeight: 700, fontSize: 14, fontFamily: "Sora, sans-serif", marginBottom: 4 }}>{osmInterp.icon} {osmInterp.label}</div>
+              <div style={{ fontSize: 13, lineHeight: 1.5 }}>{osmInterp.detail}</div>
+            </div>
+          )}
+          <div style={{ padding: "9px 12px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.6 }}>
+            <strong>Reference:</strong> Normal osmolality ~290 mOsm/kg · Hyperosmolar &gt;310 · HHS ≥320 (some sources &gt;350)
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function FurstFormulaTab({ C }) {
+  const [urineNa, setUrineNa] = useState("");
+  const [urineK, setUrineK] = useState("");
+  const [serumNa, setSerumNa] = useState("");
+
+  const uNaV = parseFloat(urineNa);
+  const uKV = parseFloat(urineK);
+  const sNaV = parseFloat(serumNa);
+  const valid = !isNaN(uNaV) && !isNaN(uKV) && !isNaN(sNaV) && sNaV > 0;
+
+  const ratio = valid ? (uNaV + uKV) / sNaV : null;
+
+  let interp = null;
+  if (ratio !== null) {
+    if (ratio < 0.5) interp = { label: "< 0.5 — Commence 1 litre fluid restriction", color: "#166534", bg: "#f0fff4", border: "#bbf7d0", icon: "✓", detail: "Urine electrolyte concentration is low relative to serum — free water excretion likely. A 1 litre/day fluid restriction is recommended." };
+    else if (ratio <= 1.0) interp = { label: "0.5–1.0 — Commence 500 ml fluid restriction", color: "#744210", bg: "#fffff0", border: "#f6e05e", icon: "⚠", detail: "Urine electrolyte concentration approaches serum — moderate fluid restriction of 500 ml/day is recommended." };
+    else interp = { label: "> 1.0 — Fluid restriction not advised", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", icon: "✗", detail: "Urine electrolyte concentration exceeds serum — fluid restriction will not correct hyponatraemia and may be harmful. Consider alternative management." };
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{ padding: "9px 12px", background: "#f0f7ff", border: "1px solid #bfdbfe", borderRadius: 8, fontSize: 13, color: "#1e40af", lineHeight: 1.5 }}>
+        ℹ The Furst formula guides fluid restriction in hyponatraemia. Obtain a spot urine sample (Na⁺ + K⁺) alongside a serum Na⁺. Formula: (Urine Na⁺ + Urine K⁺) ÷ Serum Na⁺
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <EndoInputRow label="Urine Sodium (Na⁺)" value={urineNa} onChange={setUrineNa} placeholder="e.g. 55" />
+        <EndoInputRow label="Urine Potassium (K⁺)" value={urineK} onChange={setUrineK} placeholder="e.g. 30" />
+        <EndoInputRow label="Serum Sodium (Na⁺)" value={serumNa} onChange={setSerumNa} placeholder="e.g. 128" />
+      </div>
+      {valid && ratio !== null && (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>Result</div>
+          <div style={{ padding: "10px 14px", background: "#eef6ff", border: `1px solid ${C}`, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif" }}>Furst Ratio</div>
+              <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 2 }}>(Urine Na⁺ + Urine K⁺) ÷ Serum Na⁺</div>
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: C, fontFamily: "Sora, sans-serif" }}>
+              {ratio.toFixed(2)}
+            </div>
+          </div>
+          {interp && (
+            <div style={{ padding: "10px 14px", background: interp.bg, border: `1px solid ${interp.border}`, borderRadius: 8, color: interp.color }}>
+              <div style={{ fontWeight: 700, fontSize: 14, fontFamily: "Sora, sans-serif", marginBottom: 4 }}>{interp.icon} {interp.label}</div>
+              <div style={{ fontSize: 13, lineHeight: 1.5 }}>{interp.detail}</div>
+            </div>
+          )}
+          <div style={{ padding: "9px 12px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, fontSize: 12.5, color: "var(--text-muted)", lineHeight: 1.6 }}>
+            <strong>Reference:</strong> &lt;0.5 → 1L restriction · 0.5–1.0 → 500ml restriction · &gt;1.0 → fluid restriction not advised
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function EndocrinologyCalculator() {
+  const C = "#2563a8";
+  const [tab, setTab] = useState("osmolality");
+  const tabs = [
+    { id: "osmolality", label: "Serum Osmolality" },
+    { id: "furst", label: "Furst Formula" },
+  ];
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 0, marginBottom: 20, borderBottom: "2px solid var(--border)" }}>
+        {tabs.map(t => (
+          <button key={t.id} onClick={() => setTab(t.id)}
+            style={{ padding: "9px 18px", border: "none", background: "none", cursor: "pointer", fontFamily: "Sora, sans-serif", fontSize: 13, fontWeight: 600, color: tab === t.id ? C : "var(--text-muted)", borderBottom: `2px solid ${tab === t.id ? C : "transparent"}`, marginBottom: -2, transition: "color 0.15s" }}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+      {tab === "osmolality" && <SerumOsmolalityTab C={C} />}
+      {tab === "furst" && <FurstFormulaTab C={C} />}
+    </div>
+  );
+}
+
 function CalculatorView({ calcId, onNavigate }) {
   const calc = CALCULATORS[calcId];
   if (!calc) return null;
@@ -9498,6 +11192,7 @@ return (
         {calc.component === "mascc" && <MasccCalculator />}
         {calc.component === "opioid-converter" && <OpioidConverter />}
         {calc.component === "sins" && <SinsCalculator />}
+        {calc.component === "endocrinology" && <EndocrinologyCalculator />}
         {calc.component === "tokuhashi" && (
           <div style={{ padding: "12px", background: "var(--bg)", borderRadius: 8, border: "1px solid var(--border)" }}>
             <p style={{ fontSize: 13.5, color: "var(--text-secondary)", marginBottom: 12 }}>The Revised Tokuhashi Score is best calculated using the validated MDCalc tool which includes full scoring tables:</p>
@@ -9792,6 +11487,11 @@ const SectionIcons = {
       <circle cx="10" cy="15.5" r=".6" fill="currentColor" stroke="none"/>
     </svg>
   ),
+  tick: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M3 10.5l5 5L17 5"/>
+    </svg>
+  ),
   magnify: (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
       <circle cx="8.5" cy="8.5" r="5.5"/><path d="M17 17l-3.5-3.5"/>
@@ -9809,6 +11509,14 @@ const SectionIcons = {
       <line x1="7" y1="7" x2="13" y2="7"/>
       <line x1="7" y1="10" x2="13" y2="10"/>
       <line x1="7" y1="13" x2="11" y2="13"/>
+    </svg>
+  ),
+  smile: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <circle cx="10" cy="10" r="8"/>
+      <path d="M7 12s1 2 3 2 3-2 3-2"/>
+      <circle cx="7.5" cy="8.5" r=".8" fill="currentColor" stroke="none"/>
+      <circle cx="12.5" cy="8.5" r=".8" fill="currentColor" stroke="none"/>
     </svg>
   ),
 };
@@ -9844,33 +11552,37 @@ function LinkTableGroup({ group, onNavigate }) {
         <div style={{ borderTop: `1px solid ${BD}` }}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <tbody>
-              {group.items.map((item, i) => (
-                <tr key={i} style={{ borderBottom: "1px solid var(--border-light)", background: item.highlight || "transparent" }}>
-                  <td style={{ padding: "7px 10px", verticalAlign: "middle", borderRight: "1px solid var(--border-light)", width: "38%" }}>
-                    {item.guidelineId ? (
-                      <button
-                        onClick={() => onNavigate && onNavigate({ type: "guideline", guidelineId: item.guidelineId })}
-                        style={{ ...linkBtnStyle, textAlign: "left", textDecoration: "none", border: `1px solid ${BD}` }}
-                      >
-                        <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 20, height: 20, borderRadius: 4, background: BD, flexShrink: 0 }}>
-                          <LinkIcon internal={true} />
-                        </span>
-                        {item.label}
-                      </button>
-                    ) : (
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ ...linkBtnStyle, textDecoration: "none" }}>
-                        <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 20, height: 20, borderRadius: 4, background: BD, flexShrink: 0 }}>
-                          <LinkIcon internal={false} />
-                        </span>
-                        {item.label}
-                      </a>
-                    )}
-                  </td>
-                  <td style={{ padding: "9px 10px", verticalAlign: "middle", fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                    {item.description}
-                  </td>
-                </tr>
-              ))}
+              {[...group.items].sort((a, b) => (a.guidelineId ? 1 : 0) - (b.guidelineId ? 1 : 0)).map((item, i) => {
+                const isInternal = !!item.guidelineId;
+                const OINT = { bg: "#fff7ed", color: "#c2410c", border: "#fed7aa" };
+                return (
+                  <tr key={i} style={{ borderBottom: "1px solid var(--border-light)", background: isInternal ? "#fff7ed" : (item.highlight || "transparent") }}>
+                    <td style={{ padding: "7px 10px", verticalAlign: "middle", borderRight: "1px solid var(--border-light)", width: "38%" }}>
+                      {isInternal ? (
+                        <button
+                          onClick={() => onNavigate && onNavigate({ type: "guideline", guidelineId: item.guidelineId })}
+                          style={{ ...linkBtnStyle, textAlign: "left", textDecoration: "none", background: OINT.bg, color: OINT.color, border: `1px solid ${OINT.border}` }}
+                        >
+                          <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 20, height: 20, borderRadius: 4, background: OINT.border, flexShrink: 0 }}>
+                            <svg viewBox="0 0 24 24" fill="none" stroke={OINT.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="11" height="11"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                          </span>
+                          {item.label}
+                        </button>
+                      ) : (
+                        <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ ...linkBtnStyle, textDecoration: "none" }}>
+                          <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 20, height: 20, borderRadius: 4, background: BD, flexShrink: 0 }}>
+                            <LinkIcon internal={false} />
+                          </span>
+                          {item.label}
+                        </a>
+                      )}
+                    </td>
+                    <td style={{ padding: "9px 10px", verticalAlign: "middle", fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                      {item.description}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -9890,14 +11602,26 @@ function StandoutCard({ section, siteColor, siteAccent, onNavigate }) {
   const c = VARIANTS[section.variant] || VARIANTS.blue;
   return (
     <div style={{ border: `1.5px solid ${c.border}`, borderRadius: 10, overflow: "hidden", marginBottom: 16 }}>
-      <div style={{ background: c.header, padding: "11px 16px" }}>
-        <span style={{ color: "#fff", fontWeight: 700, fontSize: 15, fontFamily: "Sora, sans-serif", letterSpacing: "0.01em" }}>
-          {section.heading}
-        </span>
-      </div>
-      <div style={{ height: 1, background: c.border }} />
-      <div style={{ background: c.bg, padding: "14px 16px" }}>
-        <MarkdownSection content={section.content} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />
+      {section.heading && (
+        <>
+          <div style={{ background: c.header, padding: "11px 16px" }}>
+            <span style={{ color: "#fff", fontWeight: 700, fontSize: 15, fontFamily: "Sora, sans-serif", letterSpacing: "0.01em" }}>
+              {section.heading}
+            </span>
+          </div>
+          <div style={{ height: 1, background: c.border }} />
+        </>
+      )}
+      <div style={{ background: c.bg, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+        {section.content && <span style={{ fontSize: 13.5, color: c.header, fontWeight: 500 }}>{section.content}</span>}
+        {section.link && (
+          <a href={section.link.url} target="_blank" rel="noopener noreferrer"
+            style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "5px 12px", background: "#ebf8ff", color: "#2b6cb0", border: "1px solid #90cdf4", borderRadius: 6, fontWeight: 700, fontSize: 12.5, fontFamily: "Sora, sans-serif", textDecoration: "none", cursor: "pointer", flexShrink: 0 }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2b6cb0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            {section.link.label}
+          </a>
+        )}
+        {!section.link && !section.content && <MarkdownSection content={section.content} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />}
       </div>
     </div>
   );
@@ -11668,37 +13392,92 @@ if (sec.type === "hypo_assessment") {
     );
   }
 
-  if (sec.type === "checklist") {return (
-  <div className="detail-card">
-    <h3>{sec.heading}</h3>
-    <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 6 }}>
-      {sec.items.map((item, i) => {
-        const hasSubitems = typeof item === "object" && item.subitems?.length;
-        const text = typeof item === "object" ? item.text : item;
-        return (
-          <div key={i} style={{ borderBottom: "1px solid var(--border-light)" }}>
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13.5, color: "var(--text-secondary)", padding: hasSubitems ? "6px 0 4px" : "6px 0" }}>
-              <span style={{ width: 18, height: 18, border: `2px solid ${siteColor}`, borderRadius: 4, flexShrink: 0, marginTop: 1, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.5 }} />
-              <span style={{ fontWeight: hasSubitems ? 500 : 400, color: hasSubitems ? "var(--text-primary)" : "var(--text-secondary)" }}>
-                {boldify(text)}
-              </span>
-            </div>
-            {hasSubitems && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: 28, paddingBottom: 8 }}>
-                {item.subitems.map((sub, si) => (
-  <div key={si} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
-    <span style={{ width: 13, height: 13, border: `2px solid ${siteColor}`, borderRadius: 3, flexShrink: 0, marginTop: 3, opacity: 0.5 }} />
-    {boldify(sub)}
-  </div>
-))}
+  if (sec.type === "checklist") {
+  const renderCheckItem = (item, i) => {
+    const hasSubitems = typeof item === "object" && item.subitems?.length;
+    const text = typeof item === "object" ? item.text : item;
+    return (
+      <div key={i} style={{ borderBottom: "1px solid var(--border-light)" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13.5, color: "var(--text-secondary)", padding: hasSubitems ? "6px 0 4px" : "6px 0" }}>
+          <span style={{ width: 18, height: 18, border: `2px solid ${siteColor}`, borderRadius: 4, flexShrink: 0, marginTop: 1, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.5 }} />
+          <span style={{ fontWeight: hasSubitems ? 500 : 400, color: hasSubitems ? "var(--text-primary)" : "var(--text-secondary)" }}>
+            {boldify(text)}
+          </span>
+        </div>
+        {hasSubitems && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: 28, paddingBottom: 8 }}>
+            {item.subitems.map((sub, si) => (
+              <div key={si} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                <span style={{ width: 13, height: 13, border: `2px solid ${siteColor}`, borderRadius: 3, flexShrink: 0, marginTop: 3, opacity: 0.5 }} />
+                {boldify(sub)}
               </div>
-            )}
+            ))}
           </div>
-        );
-      })}
+        )}
+      </div>
+    );
+  };
+  const renderFooterCallout = (callout, ci) => {
+    const isRx = callout.type === "rx";
+    const isPurple = callout.type === "purple";
+    const CC = isRx
+      ? { border: "#fca5a5", header: "#fee2e2", icon: "#991B1B", label: "#7F1D1D", bullet: "#DC2626", iconEl: SectionIcons.pill }
+      : isPurple
+      ? { border: "#b794f4", header: "#f5f0ff", icon: "#553c9a", label: "#553c9a", bullet: "#7c3aed", iconEl: SectionIcons.note }
+      : { border: "#fca5a5", header: "#fee2e2", icon: "#991B1B", label: "#7F1D1D", bullet: "#DC2626", iconEl: SectionIcons.pill };
+    return (
+      <div key={ci} style={{ border: `0.5px solid ${CC.border}`, borderRadius: 7, overflow: "hidden" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: CC.header, borderBottom: `0.5px solid ${CC.border}` }}>
+          <span style={{ color: CC.icon, display: "flex", alignItems: "center" }}>{CC.iconEl}</span>
+          {callout.title && <span style={{ fontSize: 11, fontWeight: 700, color: CC.label, fontFamily: "Sora, sans-serif", letterSpacing: "0.04em", textTransform: "uppercase" }}>{callout.title}</span>}
+        </div>
+        <ul style={{ listStyle: "none", padding: "7px 10px 8px", margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+          {callout.items.map((txt, bi) => (
+            <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              <span style={{ color: CC.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+              <span>{boldify(txt)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      {sec.preamble_list && (
+        <div style={{ marginBottom: 12, paddingBottom: 12, borderBottom: "1px solid var(--border-light)" }}>
+          {sec.preamble_list.label && (
+            <div style={{ fontSize: 11, fontWeight: 700, color: siteColor, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginBottom: 7 }}>
+              {sec.preamble_list.label}
+            </div>
+          )}
+          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+            {sec.preamble_list.items.map((txt, i) => (
+              <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                <span style={{ color: siteColor, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                {boldify(txt)}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {sec.checklist_label && (
+        <div style={{ fontSize: 11, fontWeight: 700, color: siteColor, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginBottom: 6 }}>
+          {sec.checklist_label}
+        </div>
+      )}
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        {sec.items.map((item, i) => renderCheckItem(item, i))}
+      </div>
+      {sec.footer_callouts && (
+        <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8, borderTop: "1px solid var(--border-light)", paddingTop: 10 }}>
+          {sec.footer_callouts.map((callout, ci) => renderFooterCallout(callout, ci))}
+        </div>
+      )}
     </div>
-  </div>
-);}
+  );
+}
 
   if (sec.type === "alert") {
     const isWarn = sec.variant === "warning";
@@ -12090,6 +13869,7 @@ if (sec.type === "hypo_assessment") {
     magnify: SectionIcons.magnify,
     camera: SectionIcons.camera,
     note: SectionIcons.note,
+    smile: SectionIcons.smile,
   };
 
   return (
@@ -12277,6 +14057,32 @@ if (sec.type === "hypo_assessment") {
           );
         })}
       </div>
+      {sec.footer_callouts && sec.footer_callouts.length > 0 && (
+        <div style={{ marginTop: 12, borderTop: "1px solid var(--border-light)", paddingTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
+          {sec.footer_callouts.map((callout, ci) => {
+            const isRx = callout.type === "rx";
+            const CC = isRx
+              ? { border: "#fca5a5", header: "#fee2e2", icon: "#991B1B", label: "#7F1D1D", bullet: "#DC2626", iconEl: SectionIcons.pill }
+              : { border: "#b794f4", header: "#f5f0ff", icon: "#553c9a", label: "#553c9a", bullet: "#7c3aed", iconEl: SectionIcons.note };
+            return (
+              <div key={ci} style={{ border: `0.5px solid ${CC.border}`, borderRadius: 7, overflow: "hidden" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: CC.header, borderBottom: `0.5px solid ${CC.border}` }}>
+                  <span style={{ color: CC.icon, display: "flex", alignItems: "center" }}>{CC.iconEl}</span>
+                  {callout.title && <span style={{ fontSize: 11, fontWeight: 700, color: CC.label, fontFamily: "Sora, sans-serif", letterSpacing: "0.04em", textTransform: "uppercase" }}>{callout.title}</span>}
+                </div>
+                <ul style={{ listStyle: "none", padding: "7px 10px 8px", margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                  {callout.items.map((txt, bi) => (
+                    <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                      <span style={{ color: CC.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                      <span>{boldify(txt)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      )}
       {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>{sec.note}</p>}
     </div>
   );
@@ -12297,13 +14103,20 @@ if (sec.type === "hypo_assessment") {
       management: SectionIcons.management, drug: SectionIcons.drug,
       surgery: SectionIcons.surgery, pill: SectionIcons.pill,
       heart: SectionIcons.heart, note: SectionIcons.note,
+      tick: SectionIcons.tick, question: SectionIcons.question,
     };
     return (
       <div className="detail-card">
         {sec.heading && <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>}
-        <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+        {sec.topCallout && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "9px 12px", background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 7, marginBottom: 12, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 13, color: "#14532d", lineHeight: 1.4, flex: 1 }}>{sec.topCallout.text}</span>
+            <a href={sec.topCallout.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "6px 14px", background: "#16a34a", color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 12.5, fontFamily: "Sora, sans-serif", flexShrink: 0, textDecoration: "none" }}>{sec.topCallout.label}</a>
+          </div>
+        )}
+        <div style={{ display: "flex", flexDirection: "column", gap: sec.cardGap || 0 }}>
           {sec.steps.map((step, si) => {
-            const c = SP_COLORS[si % SP_COLORS.length];
+            const c = step.color || sec.stepColor || SP_COLORS[si % SP_COLORS.length];
             return (
               <div key={si}>
                 <div style={{ border: `0.5px solid ${c.border}`, borderRadius: 10, overflow: "hidden" }}>
@@ -12322,9 +14135,176 @@ if (sec.type === "hypo_assessment") {
                       }
                       if (item && typeof item === "object" && item.label) {
                         return (
-                          <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, listStyle: "none" }}>
-                            <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
-                            <span style={{ fontSize: 13.5, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4 }}>{boldify(item.label)}</span>
+                          <li key={ii} style={{ listStyle: "none", marginTop: ii === 0 ? 2 : 8, marginBottom: 2 }}>
+                            <span style={{ fontSize: 10.5, fontWeight: 700, color: c.label, letterSpacing: "0.07em", textTransform: "uppercase", fontFamily: "Sora, sans-serif" }}>{item.label}</span>
+                          </li>
+                        );
+                      }
+                      // { rx: ["text", ...] } — multi-bullet Rx callout
+                      if (item && typeof item === "object" && item.rx) {
+                        const rxItems = Array.isArray(item.rx) ? item.rx : [item.rx];
+                        return (
+                          <li key={ii} style={{ listStyle: "none", margin: "3px 0" }}>
+                            <div style={{ border: `0.5px solid ${c.border}`, borderRadius: 7, overflow: "hidden" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: c.header, borderBottom: `0.5px solid ${c.border}` }}>
+                                <span style={{ color: c.label, display: "flex", alignItems: "center" }}>{SectionIcons.pill}</span>
+                                {item.title && <span style={{ fontSize: 11, fontWeight: 700, color: c.label, fontFamily: "Sora, sans-serif", letterSpacing: "0.04em", textTransform: "uppercase" }}>{item.title}</span>}
+                              </div>
+                              <ul style={{ listStyle: "none", padding: "7px 10px 8px", margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                                {rxItems.map((txt, bi) => (
+                                  <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                    <span style={{ color: c.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                    <span>{boldify(txt)}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </li>
+                        );
+                      }
+                      // { split_cols: [...] } — two-column split with hairline divider
+                      if (item && typeof item === "object" && item.split_cols) {
+                        return (
+                          <li key={ii} style={{ listStyle: "none", margin: "4px 0" }}>
+                            <div style={{ display: "flex" }}>
+                              {item.split_cols.map((col, ci) => [
+                                ci > 0 ? <div key={`d${ci}`} style={{ width: 1, background: c.border, alignSelf: "stretch", flexShrink: 0, margin: "0 12px" }} /> : null,
+                                <div key={`c${ci}`} style={{ flex: 1 }}>
+                                  <div style={{ fontSize: 10.5, fontWeight: 700, color: col.headerColor || c.label, letterSpacing: "0.07em", textTransform: "uppercase", fontFamily: "Sora, sans-serif", marginBottom: 6 }}>{col.header}</div>
+                                  <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                                    {col.items.map((txt, bi) => (
+                                      <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                        <span style={{ color: col.bulletColor || c.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                        <span>{boldify(txt)}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>,
+                              ])}
+                            </div>
+                          </li>
+                        );
+                      }
+                      // { seq: [...] } — numbered list with red circle badges
+                      if (item && typeof item === "object" && item.seq) {
+                        return (
+                          <li key={ii} style={{ listStyle: "none", margin: "3px 0" }}>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                              {item.seq.map((txt, si) => (
+                                <div key={si} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                                  <span style={{ width: 20, height: 20, borderRadius: "50%", background: c.icon, color: c.iconText, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 10, fontWeight: 700, fontFamily: "Sora, sans-serif", marginTop: 1 }}>{si + 1}</span>
+                                  <span style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>{boldify(txt)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </li>
+                        );
+                      }
+                      // { inset_table: { title, items, table } } — inset callout with optional table
+                      if (item && typeof item === "object" && item.inset_table) {
+                        const it = item.inset_table;
+                        return (
+                          <li key={ii} style={{ listStyle: "none", margin: "6px 0" }}>
+                            <div style={{ border: `0.5px solid ${c.border}`, borderRadius: 7, overflow: "hidden" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: c.header, borderBottom: `0.5px solid ${c.border}` }}>
+                                <span style={{ color: c.label, display: "flex", alignItems: "center" }}>{SectionIcons.vial}</span>
+                                {it.title && <span style={{ fontSize: 11, fontWeight: 700, color: c.label, fontFamily: "Sora, sans-serif", letterSpacing: "0.04em", textTransform: "uppercase" }}>{it.title}</span>}
+                              </div>
+                              {it.items && it.items.length > 0 && (
+                                <ul style={{ listStyle: "none", padding: "7px 10px 6px", margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                                  {it.items.map((txt, bi) => (
+                                    <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                      <span style={{ color: c.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                      <span>{boldify(txt)}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                              {it.table && (
+                                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5, borderTop: `0.5px solid ${c.border}` }}>
+                                  <thead>
+                                    <tr style={{ background: c.header }}>
+                                      {it.table.columns.map((col, ci) => (
+                                        <th key={ci} style={{ padding: "6px 10px", textAlign: "left", fontWeight: 600, color: c.label, borderBottom: `1px solid ${c.border}`, fontFamily: "Sora, sans-serif", fontSize: 11, letterSpacing: "0.03em" }}>{col}</th>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {it.table.coloredRows
+                                      ? it.table.coloredRows.map((row, ri) => (
+                                          <tr key={ri} style={{ borderBottom: `1px solid ${row.rc?.border || c.border}`, background: row.rc?.bg || "var(--surface)" }}>
+                                            {row.cells.map((cell, ci) => (
+                                              <td key={ci} style={{ padding: "7px 10px", verticalAlign: "top", lineHeight: 1.5, fontWeight: ci === 0 ? 700 : 400, color: ci === 0 ? (row.rc?.label || c.label) : "var(--text-secondary)", fontFamily: ci === 0 ? "Sora, sans-serif" : "inherit", fontSize: ci === 0 ? 12 : 12.5 }}>{cell}</td>
+                                            ))}
+                                          </tr>
+                                        ))
+                                      : it.table.rows.map((row, ri) => (
+                                          <tr key={ri} style={{ borderBottom: `1px solid ${c.border}` }}>
+                                            {row.map((cell, ci) => (
+                                              <td key={ci} style={{ padding: "7px 10px", color: ci === 0 ? c.label : "var(--text-secondary)", fontWeight: ci === 0 ? 600 : 400, background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)", lineHeight: 1.5 }}>{cell}</td>
+                                            ))}
+                                          </tr>
+                                        ))
+                                    }
+                                  </tbody>
+                                </table>
+                              )}
+                            </div>
+                          </li>
+                        );
+                      }
+                      // { checklist: [...] } — checkbox list
+                      if (item && typeof item === "object" && item.checklist) {
+                        return (
+                          <li key={ii} style={{ listStyle: "none", margin: "3px 0" }}>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                              {item.checklist.map((chk, ci) => (
+                                <div key={ci} style={{ display: "flex", alignItems: "center", gap: 9, padding: "5px 2px", borderBottom: ci < item.checklist.length - 1 ? `1px solid ${c.border}` : "none" }}>
+                                  <span style={{ width: 16, height: 16, border: `2px solid ${c.label}`, borderRadius: 3, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.5 }} />
+                                  <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{boldify(chk)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </li>
+                        );
+                      }
+                      // { bullet: "text", sub_items: [...] } — bullet with indented sub-bullets
+                      if (item && typeof item === "object" && item.bullet) {
+                        return (
+                          <li key={ii} style={{ listStyle: "none" }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                              <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                              <div style={{ flex: 1 }}>
+                                <span>{boldify(item.bullet)}</span>
+                                {item.sub_items && item.sub_items.length > 0 && (
+                                  <ul style={{ listStyle: "none", margin: "4px 0 0", padding: 0, display: "flex", flexDirection: "column", gap: 3 }}>
+                                    {item.sub_items.map((sub, si) => (
+                                      <li key={si} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5, paddingLeft: 2 }}>
+                                        <span style={{ color: c.bullet, fontSize: 6, flexShrink: 0, marginTop: 6, opacity: 0.7 }}>◦</span>
+                                        <span>{boldify(sub)}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      }
+                      // "!!text" string — single-bullet Rx callout
+                      if (typeof item === "string" && item.startsWith("!!")) {
+                        const txt = item.slice(2).trim();
+                        return (
+                          <li key={ii} style={{ listStyle: "none", margin: "3px 0" }}>
+                            <div style={{ border: `0.5px solid ${c.border}`, borderRadius: 7, overflow: "hidden" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: c.header, borderBottom: `0.5px solid ${c.border}` }}>
+                                <span style={{ color: c.label, display: "flex", alignItems: "center" }}>{SectionIcons.pill}</span>
+                              </div>
+                              <div style={{ display: "flex", alignItems: "flex-start", gap: 7, padding: "7px 10px 8px", fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                <span style={{ color: c.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                <span>{boldify(txt)}</span>
+                              </div>
+                            </div>
                           </li>
                         );
                       }
@@ -12347,13 +14327,37 @@ if (sec.type === "hypo_assessment") {
                           </tr>
                         </thead>
                         <tbody>
-                          {step.table.rows.map((row, ri) => (
-                            <tr key={ri} style={{ borderBottom: `1px solid ${c.border}` }}>
-                              {row.map((cell, ci) => (
-                                <td key={ci} style={{ padding: "8px 12px", verticalAlign: "top", color: ci === 0 ? c.label : "var(--text-secondary)", fontWeight: ci === 0 ? 600 : 400, background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)", lineHeight: 1.5 }}>{cell}</td>
-                              ))}
-                            </tr>
-                          ))}
+                          {step.table.coloredRows
+                            ? step.table.coloredRows.map((row, ri) => (
+                                <tr key={ri} style={{ borderBottom: `1px solid ${row.rc?.border || c.border}`, background: row.rc?.bg || "var(--surface)" }}>
+                                  {row.cells.map((cell, ci) => (
+                                    <td key={ci} style={{ padding: "8px 12px", verticalAlign: "top", lineHeight: 1.5 }}>
+                                      {ci === 0 ? (
+                                        <span style={{ fontWeight: 700, color: row.rc?.label || c.label, fontSize: 12, fontFamily: "Sora, sans-serif" }}>{cell}</span>
+                                      ) : Array.isArray(cell) ? (
+                                        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                                          {cell.map((item, bi) => (
+                                            <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: "var(--text-secondary)" }}>
+                                              <span style={{ color: row.rc?.bullet || c.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                              {item}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      ) : (
+                                        <span style={{ fontSize: 12.5, color: "var(--text-secondary)" }}>{cell}</span>
+                                      )}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))
+                            : step.table.rows.map((row, ri) => (
+                                <tr key={ri} style={{ borderBottom: `1px solid ${c.border}` }}>
+                                  {row.map((cell, ci) => (
+                                    <td key={ci} style={{ padding: "8px 12px", verticalAlign: "top", color: ci === 0 ? c.label : "var(--text-secondary)", fontWeight: ci === 0 ? 600 : 400, background: ri % 2 === 0 ? "var(--surface)" : "var(--bg)", lineHeight: 1.5 }}>{cell}</td>
+                                  ))}
+                                </tr>
+                              ))
+                          }
                         </tbody>
                       </table>
                     </div>
@@ -12382,6 +14386,13 @@ if (sec.type === "hypo_assessment") {
                         {step.pill.timing}
                       </span>
                     )}
+                  </div>
+                )}
+                {!step.pill && sec.showArrows && si < sec.steps.length - 1 && (
+                  <div style={{ display: "flex", justifyContent: "center", padding: "5px 0" }}>
+                    <svg viewBox="0 0 16 20" fill="none" stroke="#991B1B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="13" height="17">
+                      <line x1="8" y1="0" x2="8" y2="12"/><polyline points="3 7 8 13 13 7"/>
+                    </svg>
                   </div>
                 )}
               </div>
@@ -12488,6 +14499,110 @@ if (sec.type === "hypo_assessment") {
     );
   }
 
+  // ── Decision flow — branching flowchart with collapsible branch dropdowns ────
+  if (sec.type === "decision_flow") {
+    const THEMES = {
+      purple: { header: "#f5f0ff", border: "#b794f4", label: "#553c9a", iconBg: "#6b46c1" },
+      teal:   { header: "#e6fffa", border: "#81e6d9", label: "#234e52", iconBg: "#2c7a7b" },
+      blue:   { header: "#ebf8ff", border: "#90cdf4", label: "#2a4365", iconBg: "#3182ce" },
+    };
+    const BC = {
+      red:   { pill: "#fff5f5", border: "#fc8181", text: "#742a2a", dot: "#e53e3e" },
+      green: { pill: "#f0fff4", border: "#9ae6b4", text: "#276749", dot: "#38a169" },
+      amber: { pill: "#fffff0", border: "#f6e05e", text: "#744210", dot: "#d69e2e" },
+      blue:  { pill: "#ebf8ff", border: "#90cdf4", text: "#2a4365", dot: "#3182ce" },
+    };
+    const renderFlowCards = (cards, tc, layout) => (
+      <div style={layout === "vertical"
+        ? { display: "flex", flexDirection: "column" }
+        : { display: "grid", gridTemplateColumns: `repeat(${cards.length}, 1fr)` }
+      }>
+        {cards.map((card, ci) => (
+          <div key={ci} style={{
+            padding: "14px 12px",
+            borderRight: layout !== "vertical" && ci < cards.length - 1 ? `1px solid ${tc.border}` : "none",
+            borderBottom: layout === "vertical" && ci < cards.length - 1 ? `1px solid ${tc.border}` : "none",
+          }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: tc.iconBg, borderRadius: 99, color: "#fff", fontSize: 11.5, fontWeight: 700, fontFamily: "Sora, sans-serif", marginBottom: 12, letterSpacing: "0.02em" }}>
+              {card.icon && <span>{card.icon}</span>}
+              <span>{card.label}</span>
+            </div>
+            {card.steps.map((step, si) => (
+              <div key={si} style={{ marginBottom: si < card.steps.length - 1 ? 12 : 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                  <span style={{ background: tc.iconBg, color: "#fff", borderRadius: "50%", width: 16, height: 16, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{si + 1}</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: tc.label, textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif" }}>{step.step}</span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 5, paddingLeft: 4 }}>
+                  {step.branches.map((branch, bi) => {
+                    const bc = BC[branch.color] || BC.red;
+                    return (
+                      <details key={bi} style={{ borderRadius: 6, border: `1px solid ${bc.border}`, overflow: "hidden" }}>
+                        <summary style={{ padding: "6px 10px", background: bc.pill, cursor: "pointer", display: "flex", alignItems: "center", gap: 7, listStyle: "none", WebkitListStyle: "none" }}>
+                          <span style={{ color: bc.dot, fontSize: 7, flexShrink: 0 }}>●</span>
+                          <span style={{ fontSize: 12.5, fontWeight: 700, color: bc.text, fontFamily: "Sora, sans-serif", flex: 1, lineHeight: 1.3 }}>{branch.label}</span>
+                          <span style={{ color: bc.text, fontSize: 10, flexShrink: 0, opacity: 0.6 }}>▾</span>
+                        </summary>
+                        <div style={{ padding: "8px 12px", borderTop: `1px solid ${bc.border}`, background: "var(--surface)", display: "flex", flexDirection: "column", gap: 4 }}>
+                          {(Array.isArray(branch.action) ? branch.action : [branch.action]).map((act, ai) => (
+                            <div key={ai} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                              <span style={{ color: bc.dot, flexShrink: 0, marginTop: 2 }}>→</span>
+                              <span>{boldify(act)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+    // Multi-chart wrapper (white card containing themed sub-charts)
+    if (sec.charts) {
+      return (
+        <div className="detail-card">
+          {sec.heading && <h3>{sec.heading}</h3>}
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {sec.charts.map((chart, chi) => {
+              const tc = THEMES[chart.themeColor] || THEMES.purple;
+              return (
+                <div key={chi} style={{ border: `1.5px solid ${tc.border}`, borderRadius: 10, overflow: "hidden" }}>
+                  <div style={{ background: tc.header, padding: "9px 14px", borderBottom: `1px solid ${tc.border}` }}>
+                    <span style={{ fontWeight: 700, color: tc.label, fontSize: 13, fontFamily: "Sora, sans-serif" }}>{chart.heading}</span>
+                  </div>
+                  {renderFlowCards(chart.cards, tc, chart.layout || "horizontal")}
+                  {chart.note_alert && (
+                    <div style={{ borderTop: `1px solid ${tc.border}`, background: "#fff5f5", borderBottom: "none", display: "flex", alignItems: "flex-start", gap: 8, padding: "8px 14px" }}>
+                      <span style={{ color: "#e53e3e", fontSize: 14, flexShrink: 0, marginTop: 1 }}>⚠</span>
+                      <span style={{ fontSize: 12.5, color: "#742a2a", lineHeight: 1.5, fontStyle: "italic" }}>{chart.note_alert}</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+    // Legacy single-chart format
+    const tc = THEMES.purple;
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden", border: `1.5px solid ${tc.border}`, borderRadius: 10 }}>
+        <div style={{ background: tc.header, padding: "9px 14px", borderBottom: `1px solid ${tc.border}` }}>
+          <h3 style={{ margin: 0, color: tc.label, fontFamily: "Sora, sans-serif", fontSize: 13.5 }}>{sec.heading}</h3>
+        </div>
+        {renderFlowCards(sec.cards, tc, "horizontal")}
+        {sec.note && (
+          <p style={{ fontSize: 12, color: "var(--text-muted)", margin: 0, padding: "8px 14px 10px", fontStyle: "italic", lineHeight: 1.5, borderTop: `1px solid ${tc.border}` }}>{sec.note}</p>
+        )}
+      </div>
+    );
+  }
+
   if (sec.type === "table") {
     const rowColors = {
       "🔴": { bg: "#fff5f5", color: "#742a2a", border: "#fc8181" },
@@ -12547,6 +14662,22 @@ if (sec.type === "hypo_assessment") {
             })}
           </tbody>
         </table>
+        {(sec.insetCallouts || (sec.insetCallout ? [sec.insetCallout] : [])).map((callout, ci) => (
+          <div key={ci} style={{ margin: "12px 0 4px", border: "0.5px solid #fca5a5", borderRadius: 7, overflow: "hidden" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: "#fee2e2", borderBottom: "0.5px solid #fca5a5" }}>
+              <span style={{ color: "#991B1B", display: "flex", alignItems: "center" }}>{SectionIcons.vial}</span>
+              {callout.title && <span style={{ fontSize: 11, fontWeight: 700, color: "#7F1D1D", fontFamily: "Sora, sans-serif", letterSpacing: "0.04em", textTransform: "uppercase" }}>{callout.title}</span>}
+            </div>
+            <ul style={{ listStyle: "none", padding: "7px 10px 8px", margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+              {callout.items.map((txt, bi) => (
+                <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                  <span style={{ color: "#DC2626", fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                  <span>{boldify(txt)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
         {sec.note && (
           <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>{sec.note}</p>
         )}
@@ -12694,6 +14825,9 @@ if (sec.type === "drug_registry") {
 }
 if (sec.type === "contact_directory") {
   return <ContactDirectory entries={sec.entries} siteColor={siteColor} siteAccent={siteAccent} />;
+}
+if (sec.type === "rotation_table") {
+  return <RotationTable entries={sec.entries} siteColor={siteColor} siteAccent={siteAccent} />;
 }
 if (sec.type === "notice_box") {
   const c = { bg: "#fffbeb", border: "#f6ad55", intro: "#744210", label: "#7b3d00", bullet: "#dd6b20" };
@@ -13892,7 +16026,7 @@ const DIRECTORY_DATA = {
     entries: [
     { name: "Sarah Doubleday", category: "pa", numbers: ["77856"], consultants: [
       { name: "Dr A Arora", code: "AA8", specialty: "Hepatobiliary / Neuroendocrine" },
-      { name: "Dr B Greef", code: "BG6", specialty: "HPB / Upper GI" },
+      { name: "Dr B Greef", code: "BG6", specialty: "HPB / UGI" },
       { name: "Dr B Baraka", code: "BEB", specialty: "HPB" },
       { name: "Dr E Shawcroft", code: "EAS", specialty: "Metastatic Breast / Breast RT (NUH)" },
       { name: "Dr A Maynard", code: "A4M", specialty: "Lung / HPB / Renal" },
@@ -13923,7 +16057,7 @@ const DIRECTORY_DATA = {
     ]},
     { name: "Jade Foster-White", category: "pa", numbers: ["77300"], consultants: [
       { name: "Dr A Anand", code: "4AA", specialty: "Primary Gynae" },
-      { name: "Professor S Madhusudan", code: "2SM", specialty: "Metastatic Breast / Upper GI" },
+      { name: "Professor S Madhusudan", code: "2SM", specialty: "Metastatic Breast / UGI" },
       { name: "Dr C Chong", code: "CC6", specialty: "Colorectal / Urology" },
       { name: "Dr W Sam", code: "WS4", specialty: "Colorectal / Urology" },
       { name: "Dr S Sundar", code: "2SS", specialty: "Prostate & Bladder / Gynae" },
@@ -13931,7 +16065,7 @@ const DIRECTORY_DATA = {
     { name: "Naomi Knapp", category: "pa", numbers: ["72149"], consultants: [
       { name: "Dr A Sivanandan", code: "MS5", specialty: "Lung (KMH) / Skin" },
       { name: "Dr J Lim", code: "JHL", specialty: "Prostate & Bladder / AOS" },
-      { name: "Dr R Tiwari", code: "RT3", specialty: "Upper GI / Breast" },
+      { name: "Dr R Tiwari", code: "RT3", specialty: "UGI / Breast" },
       { name: "Dr T Moore", code: "TOM", specialty: "Lung / Skin / AOS" },
     ]},
     { name: "Jane Shepherd", category: "pa", numbers: ["79816"], consultants: [
@@ -13944,7 +16078,7 @@ const DIRECTORY_DATA = {
       { name: "Dr L Gossage", code: "LMG", specialty: "Germ Cell / Sarcoma" },
       { name: "Dr Masood", code: "AM1", specialty: "Germ Cell / Sarcoma / Melanoma" },
       { name: "Dr L Brookes", code: "LB3", specialty: "Sarcoma / Prostate KMH / Paediatric" },
-      { name: "Dr R Silverman", code: "RS7", specialty: "Colorectal / Upper GI" },
+      { name: "Dr R Silverman", code: "RS7", specialty: "Colorectal / UGI" },
       { name: "Dr C Esler", code: "CPE", specialty: "Paediatric / Sarcoma / Lymphoma" },
     ]},
     { name: "Kirsty Brown", category: "pa", numbers: ["71226"], consultants: [
@@ -14708,6 +16842,214 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
       expandedScore={expandedScore} setExpandedScore={setExpandedScore} onNavigate={onNavigate} />
   </div>
 ))}
+    </div>
+  );
+}
+// Canonical tumour-group list shown in the timetable dropdown, plus a map from
+// the messy `focus` tokens to those canonical sites. Synonyms are normalised so
+// e.g. "CRC"/"Colorectal" collapse to one option and combined foci ("Lung / Melanoma")
+// list a person under every site they cover.
+const TUMOR_SITES = [
+  "AOS / CUP", "Brain Mets", "Breast", "CNS", "Colorectal", "Germ Cell", "Gynae",
+  "Head & Neck", "HPB", "Lung", "Lymphoma", "Melanoma / Skin", "NET", "Paediatric",
+  "Renal", "Sarcoma", "SBRT", "Thyroid", "UGI", "Urology",
+];
+const TUMOR_SITE_MAP = {
+  "lung": "Lung",
+  "breast": "Breast", "early breast": "Breast", "metastatic breast": "Breast", "breast rt": "Breast", "abc": "Breast",
+  "melanoma": "Melanoma / Skin", "skin": "Melanoma / Skin",
+  "crc": "Colorectal", "colorectal": "Colorectal",
+  "urology": "Urology", "uro": "Urology",
+  "gynae": "Gynae",
+  "hpb": "HPB", "hepatobiliary": "HPB",
+  "net": "NET", "neuroendocrine": "NET",
+  "ugi": "UGI", "upper gi": "UGI",
+  "cns": "CNS",
+  "brain mets": "Brain Mets",
+  "sarcoma": "Sarcoma",
+  "h&n": "Head & Neck", "head & neck": "Head & Neck",
+  "thyroid": "Thyroid",
+  "renal": "Renal",
+  "lymphoma": "Lymphoma",
+  "germ cell": "Germ Cell",
+  "paediatric": "Paediatric",
+  "aos": "AOS / CUP", "cup": "AOS / CUP",
+  "sabr": "SBRT", "sbrt": "SBRT",
+};
+function entrySites(focus) {
+  if (!focus) return [];
+  return [...new Set(
+    focus.split("/")
+      .map(tok => TUMOR_SITE_MAP[tok.replace(/\([^)]*\)/g, "").trim().toLowerCase()] || null)
+      .filter(Boolean)
+  )];
+}
+function RotationTable({ entries, siteColor, siteAccent }) {
+  const [query, setQuery] = useState("");
+  const [gradeFilter, setGradeFilter] = useState("all");
+  const [tumorFilter, setTumorFilter] = useState("all");
+  const q = query.toLowerCase().trim();
+  // Default & search ordering: Consultants (clin onc, then med onc), then NTN SpRs,
+  // then SAS, then Fellows — alphabetical by surname within each tier.
+  const gradeRank = (e) => {
+    if (e.role === "consultant") return e.onc === "med" ? 1 : 0;
+    if (e.ntn) return 2;
+    if (e.sas) return 3;
+    return 4;
+  };
+  const filtered = entries.filter(e => {
+    const matchesQuery = !q || e.name.toLowerCase().includes(q) || (e.focus && e.focus.toLowerCase().includes(q));
+    let matchesGrade = true;
+    if (gradeFilter === "cons-clin") matchesGrade = e.role === "consultant" && (e.onc || "clin") === "clin";
+    else if (gradeFilter === "cons-med") matchesGrade = e.role === "consultant" && e.onc === "med";
+    else if (gradeFilter === "registrar") matchesGrade = e.role !== "consultant" && e.ntn === true;
+    else if (gradeFilter === "sas") matchesGrade = e.sas === true;
+    else if (gradeFilter === "fellow") matchesGrade = e.role !== "consultant" && e.ntn === false && !e.sas;
+    const matchesTumor = tumorFilter === "all" || entrySites(e.focus).includes(tumorFilter);
+    return matchesQuery && matchesGrade && matchesTumor;
+  }).sort((a, b) => gradeRank(a) - gradeRank(b) || a.name.localeCompare(b.name));
+  const days = ["mon", "tue", "wed", "thu", "fri"];
+  const dayLabels = { mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri" };
+  const selectStyle = (active) => ({
+    padding: "8px 12px", borderRadius: 8, fontSize: 13, fontWeight: 600,
+    fontFamily: "DM Sans, sans-serif",
+    border: `1px solid ${active ? siteColor : "var(--border)"}`,
+    background: active ? siteAccent : "var(--bg)",
+    color: active ? siteColor : "var(--text-primary)",
+    cursor: "pointer", outline: "none", flex: "1 1 200px", minWidth: 0,
+  });
+  // Grade badge — the role only (Consultant / NTN SpR / Fellow). Clin/med onc is
+  // shown separately via the CO/MO pill so grade stays a clean, standalone label.
+  const getBadge = (entry) => {
+    if (entry.role === "consultant") return { text: "Consultant", bg: "#edf2f7", color: "#2d3748", border: "#cbd5e0" };
+    if (entry.ntn) return { text: "NTN SpR", bg: "#edf2f7", color: "#2d3748", border: "#cbd5e0" };
+    if (entry.sas) return { text: "SAS", bg: "#edf2f7", color: "#2d3748", border: "#cbd5e0" };
+    return { text: "Fellow", bg: "#edf2f7", color: "#2d3748", border: "#cbd5e0" };
+  };
+  // CO = clinical oncology, MO = medical oncology. All current NTN SpRs are clin onc,
+  // so registrars default to CO; set onc:"med" on an SpR entry to flip them to MO.
+  // Fellows carry no CO/MO designation.
+  const getOncPill = (entry) => {
+    const t = entry.onc || (entry.ntn ? "clin" : null);
+    if (t === "clin") return { text: "CO", bg: "#bfdbfe", color: "#1e3a8a", border: "#93c5fd" };
+    if (t === "med") return { text: "MO", bg: "#fbcfe8", color: "#831843", border: "#f9a8d4" };
+    return null;
+  };
+  // Card header tint by category. NTN registrars (all clin onc) get a paler blue than
+  // clin onc consultants; med onc gets pink; fellows are amber-highlighted as a visual
+  // cue they have no RT prescribing competency.
+  const getCardStyle = (entry) => {
+    if (entry.role === "consultant") {
+      if (entry.onc === "med") return { headerBg: "#fbcfe8", text: "#831843" }; // med onc — pastel pink
+      return { headerBg: "#bfdbfe", text: "#1e3a8a" }; // clin onc consultant — darker blue
+    }
+    if (entry.ntn) {
+      if (entry.onc === "med") return { headerBg: "#fce7f3", text: "#9d174d" }; // med onc registrar — paler pink
+      return { headerBg: "#dbeafe", text: "#1e40af" }; // clin onc registrar — paler blue
+    }
+    if (entry.sas) return { headerBg: "#cffafe", text: "#155e75" }; // SAS — teal
+    return { headerBg: "#fde68a", text: "#92400e" }; // fellow — amber highlight (no RT competency)
+  };
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <div style={{ position: "relative" }}>
+        <div style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", pointerEvents: "none" }}><IconSearch /></div>
+        <input
+          type="text"
+          placeholder="Search by name or focus area…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          style={{ width: "100%", padding: "10px 12px 10px 36px", border: `1px solid ${query ? siteColor : "var(--border)"}`, borderRadius: 8, fontSize: 14, fontFamily: "DM Sans, sans-serif", background: "var(--bg)", color: "var(--text-primary)", outline: "none", boxSizing: "border-box", transition: "border-color 0.15s" }}
+        />
+        {query && (
+          <button onClick={() => setQuery("")} style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}><IconClose /></button>
+        )}
+      </div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+        <select value={gradeFilter} onChange={e => setGradeFilter(e.target.value)} style={selectStyle(gradeFilter !== "all")}>
+          <option value="all">All grades</option>
+          <option value="cons-clin">Consultant — Clinical Oncology</option>
+          <option value="cons-med">Consultant — Medical Oncology</option>
+          <option value="registrar">Registrar (NTN SpR)</option>
+          <option value="sas">SAS</option>
+          <option value="fellow">Fellow</option>
+        </select>
+        <select value={tumorFilter} onChange={e => setTumorFilter(e.target.value)} style={selectStyle(tumorFilter !== "all")}>
+          <option value="all">All tumour groups</option>
+          {TUMOR_SITES.map(s => <option key={s} value={s}>{s}</option>)}
+        </select>
+        {(gradeFilter !== "all" || tumorFilter !== "all") && (
+          <button onClick={() => { setGradeFilter("all"); setTumorFilter("all"); }}
+            style={{ padding: "8px 12px", borderRadius: 8, fontSize: 12, fontWeight: 600, fontFamily: "Sora, sans-serif", cursor: "pointer", border: "1px solid var(--border)", background: "var(--bg)", color: "var(--text-muted)" }}>
+            Clear
+          </button>
+        )}
+      </div>
+      <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Showing {filtered.length} of {entries.length}</div>
+      {filtered.map((entry, i) => {
+        const badge = getBadge(entry);
+        const oncPill = getOncPill(entry);
+        const cardStyle = getCardStyle(entry);
+        return (
+          <div key={i} style={{ border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden", background: "var(--surface)" }}>
+            <div style={{ padding: "10px 14px", background: cardStyle.headerBg, borderBottom: "1px solid var(--text-secondary)", display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+              {oncPill && (
+                <span style={{ padding: "2px 8px", borderRadius: 99, fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif", background: oncPill.bg, color: oncPill.color, border: `1px solid ${oncPill.border}` }}>{oncPill.text}</span>
+              )}
+              <span style={{ fontWeight: 700, fontSize: 14, fontFamily: "Sora, sans-serif", color: cardStyle.text, flex: 1 }}>{entry.name}</span>
+              <span style={{ padding: "2px 8px", borderRadius: 99, fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif", background: badge.bg, color: badge.color, border: `1px solid ${badge.border}` }}>{badge.text}</span>
+              {entry.tel && (
+                <a href={`tel:${entry.tel.replace(/\s/g, "")}`} style={{ padding: "2px 8px", borderRadius: 99, fontSize: 11, fontWeight: 600, background: "#fffbeb", color: "#744210", border: "1px solid #f6d860", fontFamily: "Sora, sans-serif", textDecoration: "none" }}>☎ {entry.tel}</a>
+              )}
+              {entry.focus && entry.focus !== "Clinical Fellow" && (
+                <span style={{ padding: "2px 8px", borderRadius: 99, fontSize: 11, fontWeight: 600, background: "#f0fff4", color: "#276749", border: "1px solid #9ae6b4", fontFamily: "Sora, sans-serif" }}>{entry.focus}</span>
+              )}
+            </div>
+            {entry.consultants && (
+              <div style={{ padding: "6px 14px", borderBottom: "1px solid var(--border-light)", display: "flex", gap: 16, flexWrap: "wrap", background: "var(--bg)" }}>
+                <span style={{ fontSize: 12, color: "var(--text-secondary)" }}><span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Consultants:</span> {entry.consultants}</span>
+                {entry.cs && <span style={{ fontSize: 12, color: "var(--text-secondary)" }}><span style={{ fontWeight: 600, color: "var(--text-primary)" }}>CS:</span> {entry.cs}</span>}
+                {entry.es && <span style={{ fontSize: 12, color: "var(--text-secondary)" }}><span style={{ fontWeight: 600, color: "var(--text-primary)" }}>ES:</span> {entry.es}</span>}
+              </div>
+            )}
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 500 }}>
+                <thead>
+                  <tr style={{ background: "var(--bg)" }}>
+                    <th style={{ padding: "4px 10px", fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", width: 32, borderRight: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }} />
+                    {days.map(d => (
+                      <th key={d} style={{ padding: "4px 8px", fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", textAlign: "left", borderRight: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }}>{dayLabels[d]}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {["am", "pm"].map((period, pi) => (
+                    <tr key={period} style={{ borderBottom: pi === 0 ? "1px solid var(--border-light)" : "none" }}>
+                      <td style={{ padding: "5px 10px", fontSize: 10, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", textTransform: "uppercase", borderRight: "1px solid var(--border-light)", verticalAlign: "middle", background: "var(--bg)", whiteSpace: "nowrap" }}>{period.toUpperCase()}</td>
+                      {days.map(d => {
+                        const text = entry.schedule?.[d]?.[period] || "—";
+                        const isNwd = text === "NWD";
+                        return (
+                          <td key={d} style={{ padding: "5px 8px", fontSize: 11.5, color: isNwd ? "var(--text-muted)" : "var(--text-secondary)", background: isNwd ? "var(--bg)" : "transparent", fontStyle: isNwd ? "italic" : "normal", verticalAlign: "top", borderRight: "1px solid var(--border-light)", lineHeight: 1.4 }}>{text}</td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {entry.email && (
+              <div style={{ padding: "7px 14px", borderTop: "1px solid var(--border-light)", background: "var(--bg)", display: "flex", alignItems: "center", gap: 6, fontSize: 12 }}>
+                <span style={{ fontWeight: 600, color: "var(--text-muted)", fontFamily: "Sora, sans-serif", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em" }}>Email</span>
+                <a href={`mailto:${entry.email}`} style={{ color: siteColor, textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>{entry.email}</a>
+              </div>
+            )}
+          </div>
+        );
+      })}
+      {filtered.length === 0 && (
+        <div style={{ textAlign: "center", padding: "30px 20px", color: "var(--text-muted)", fontSize: 14 }}>No results for "{query}"</div>
+      )}
     </div>
   );
 }
