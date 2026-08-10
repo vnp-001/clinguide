@@ -454,7 +454,7 @@ const SITES = [
             { name: "Elniema, Mohamed", tel: "07812 269954", email: "m.elniema@nhs.net", ntn: true, focus: "AOS / HPB / SABR", consultants: "Dr Moore / Dr Aznar / Dr James", cs: "Dr Aznar", es: "Dr Griffin", schedule: { mon: { am: "RT planning", pm: "Admin / CUP MDT" }, tue: { am: "NRLEJ (NSCP clinic)", pm: "New / F/U (LA32H)" }, wed: { am: "AOS round (TOM) QMC", pm: "Clinic (CC63B)" }, thu: { am: "RT planning", pm: "New patient (LA34RT)" }, fri: { am: "AOS ward round", pm: "Admin" } } },
             { name: "Elzawahry, Mohamed", email: "mohamed.elzawahry2@nhs.net", ntn: true, focus: "Sarcoma / Early breast", consultants: "Dr Esler / Dr Shawcroft", cs: "Dr Esler", es: "Dr Hosni", schedule: { mon: { am: "RT clinic (Dr Esler)", pm: "Sarcoma MDT / Admin" }, tue: { am: "Breast NACT", pm: "RT planning" }, wed: { am: "Clinic (CPE33)", pm: "RT planning" }, thu: { am: "Admin", pm: "Early breast RT (EAS4B)" }, fri: { am: "Clinic oncology (CPE5L)", pm: "RT planning" } } },
             { name: "Jonny, Sameh", ntn: true, focus: "Gynae / Breast", consultants: "Dr Anand / Dr Shawcroft", cs: "Dr Anand", es: "Dr Ho", schedule: { mon: { am: "RT planning", pm: "Early breast clinic KMH (CLK1P/Q)" }, tue: { am: "RT planning", pm: "RT clinic (4AA2R)" }, wed: { am: "Chemo ABC Clinic (EAS3A)", pm: "Gynae clinic (4AAC3)" }, thu: { am: "Brachy / admin", pm: "RT planning / wards / admin" }, fri: { am: "Gynae new / F/U (4AA5N)", pm: "RT planning / RT clinic (EAS5R)" } } },
-            { name: "Ling, Michelle", tel: "07812 269182", email: "michelle.ling3@nhs.net", ntn: true, focus: "Sarcoma / Uro / CRC", consultants: "Dr Sangary / Dr Brookes", cs: "Dr Brookes", es: "Dr Sangary", schedule: { mon: { am: "RT clinic (LB)", pm: "Sarcoma MDT / WR / Admin" }, tue: { am: "RT planning", pm: "Clinic (3JM2B/2N)" }, wed: { am: "Clinic (3JM3C)", pm: "Clinic (3JM3B)" }, thu: { am: "RT planning / RT clinic (3JM4R)", pm: "Sarcoma clinic (LB34B)" }, fri: { am: "Admin", pm: "RT planning" } } },
+            { name: "Ling, Michelle", tel: "07812 269182", email: "michelle.ling3@nhs.net", ntn: true, focus: "Sarcoma / Uro / CRC", consultants: "Dr Mills / Dr Brookes", cs: "Dr Brookes", es: "Dr Mills", schedule: { mon: { am: "RT clinic (LB)", pm: "Sarcoma MDT / WR / Admin" }, tue: { am: "RT planning", pm: "Clinic (3JM2B/2N)" }, wed: { am: "Clinic (3JM3C)", pm: "Clinic (3JM3B)" }, thu: { am: "RT planning / RT clinic (3JM4R)", pm: "Sarcoma clinic (LB34B)" }, fri: { am: "Admin", pm: "RT planning" } } },
             { name: "Noor, Masab", email: "muhammad.noor5@nhs.net", ntn: true, focus: "Gynae / CRC / Breast", consultants: "Dr Hosni / Dr Kamlow", cs: "Dr Hosni", es: "Dr Walker", schedule: { mon: { am: "Gynae clinic KMH (SUH1P)", pm: "Admin / RT planning / Gynae MDT" }, tue: { am: "RT planning / RT clinic (CLK2B)", pm: "Clinic breast (SUH2A)" }, wed: { am: "CRC clinic (CLK3B)", pm: "Chemo clinic (CLK3C)" }, thu: { am: "RT planning", pm: "Meetings / admin / brachy" }, fri: { am: "NWD", pm: "NWD" } } },
             { name: "Paul, Anice", email: "anice.paul@nhs.net", ntn: true, focus: "Thyroid / H&N", consultants: "Dr Griffin", cs: "Dr Griffin", es: "Dr Sivanandan", schedule: { mon: { am: "H&N / thyroid (1MG1A)", pm: "WR / RT planning" }, tue: { am: "H&N NP clinic (ONC2N, 1MG2N)", pm: "RT planning" }, wed: { am: "H&N RT clinics", pm: "RT planning" }, thu: { am: "Admin", pm: "Thyroid & H&N MDT / FU Clinic (1MG4B)" }, fri: { am: "NWD", pm: "NWD" } } },
             { name: "Pillai, Vishnu", tel: "07812 276072", email: "v.pillai@nhs.net", ntn: true, focus: "UGI / Breast / Lung", consultants: "Dr Tiwari / Dr Sangary", cs: "Dr Tiwari", es: "Dr Mills", schedule: { mon: { am: "Breast RT (RT31A)", pm: "RT planning" }, tue: { am: "HPB clinic (RT3HC)", pm: "Lung (SK72B)" }, wed: { am: "RT planning", pm: "Chemo (SK73B/C)" }, thu: { am: "KMH UGI Clinic (EJCH)", pm: "Admin" }, fri: { am: "NWD", pm: "NWD" } } },
@@ -487,12 +487,12 @@ const SITES = [
             { name: "Syeda, Tasmia", tel: "07812 278829", email: "s.tasmia@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
             { name: "Taqi, Zara (Mat Leave)", email: "zara.taqi@nhs.net", ntn: false, focus: "", consultants: null, cs: null, es: null, schedule: {} },
             { role: "consultant", onc: "med", name: "Adhikaree, Jason (JA4)", tel: "07903460583", focus: "Lung", schedule: { mon: { am: "UoN", pm: "Ward Round / SPA Admin" }, tue: { am: "UoN", pm: "UoN / SACT Prescribing" }, wed: { am: "UoN", pm: "UoN / SACT Prescribing" }, thu: { am: "SPA Admin / Ward Round", pm: "Ward Round / DCC Admin" }, fri: { am: "NUH Lung MDT / Lung Clinic (JA45A/JA45C)", pm: "Lung Clinic (JA45A/JA45C)" } } },
-            { role: "consultant", onc: "clin", name: "Anand, Anjana (4AA)", tel: "07812269240", focus: "Gynae", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "RT Planning", pm: "Ward Round / SPA Admin" }, wed: { am: "—", pm: "Chemo Clinic" }, thu: { am: "Brachytherapy Planning (1 in 2 wks) / Dept Meetings", pm: "RT Planning / Prescribing / RT On-Treatment Review Clinic" }, fri: { am: "Gynae Clinic (4AA5N)", pm: "NWD" } } },
+            { role: "consultant", onc: "clin", name: "Anand, Anjana (4AA)", tel: "07812269240", focus: "Gynae", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "RT Planning", pm: "Ward Round / SPA Admin" }, wed: { am: "—", pm: "Chemo Clinic" }, thu: { am: "Brachy Planning (1 in 2 wks) / Dept Meetings", pm: "RT Planning / Prescribing / RT On-Treatment Review Clinic" }, fri: { am: "Gynae Clinic (4AA5N)", pm: "NWD" } } },
             { role: "consultant", onc: "med", name: "Arora, Arvind (AA8)", tel: "07812268727", focus: "HPB / NET", schedule: { mon: { am: "HPB/NET Clinic (AA81A)", pm: "Ward Round / DCC Admin" }, tue: { am: "KMH HPB/NET Clinic", pm: "Extended HPB clinic / Admin" }, wed: { am: "HPB NET tele clinic / Admin", pm: "HPB Clinical Trials admin / SACT admin" }, thu: { am: "HPB Net Clinic", pm: "Ward Round / DCC Admin" }, fri: { am: "NET MDT / HPB MDT", pm: "CS for Med Oncs / Admin" } } },
             { role: "consultant", onc: "med", name: "Atabani, Suha (9SA)", tel: "07812278835", focus: "Lung / Melanoma", schedule: { mon: { am: "Lung Clinic (9SA1C)", pm: "DCC Admin / Ward Round" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "SACT Prescribing / DCC Admin", pm: "Med Onc & CNS Melanoma Mtg / Lung MDT / SPA Admin" }, thu: { am: "Lung Clinic (9SA4A)", pm: "Skin MDT / DCC Admin" }, fri: { am: "Melanoma Clinic (MEL5A/MEL5C)", pm: "Melanoma Clinic (MEL5A/MEL5C) / Ward Round" } } },
             { role: "consultant", onc: "clin", name: "Aznar-Garcia, Luis (LA3)", tel: "07812276256", focus: "HPB / SABR / Brain Mets", schedule: { mon: { am: "NWD", pm: "RT, HPB & SABR Peer Reviews" }, tue: { am: "RT Planning / Brain Mets MDT", pm: "RT Planning / HPB & SABR Clinic (LA32H)" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "SABR MDT / RT Planning / RT, HPB & SABR Peer Reviews", pm: "RT Planning / RT Review Clinic" }, fri: { am: "SPA Admin / HPB MDT", pm: "RT Technical Planning / Brain Mets & SRS Clinic (LA35P)" } } },
             { role: "consultant", onc: "med", name: "Baraka, Baha (BEB)", focus: "HPB / Breast (KMH)", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "Ward Round / DCC Admin", pm: "HPB Clinic" }, wed: { am: "SACT Prescribing / DCC Admin / SPA", pm: "HPB Clinic" }, thu: { am: "Ward Round / DCC Admin / SPA", pm: "KMH Breast Tele Clinic" }, fri: { am: "KMH Breast MDT / NUH HPB/NET MDT", pm: "KMH Breast Clinic" } } },
-            { role: "consultant", onc: "clin", name: "Brookes, Louise (LB3)", tel: "07812268851", focus: "Sarcoma / Urology / Paediatric", schedule: { mon: { am: "Radiotherapy Review Clinic / Sarcoma MDT", pm: "WR / Paediatric Solid Tumour MDT / SPA Admin" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "Urology Clinic", pm: "DCC & SPA Admin" }, thu: { am: "WR / Departmental Meetings", pm: "SACT Prescribing / Sarcoma Clinic / RT Planning" }, fri: { am: "DCC Admin / Urology MDT / RT Peer Review", pm: "Paediatric CNS MDT / Paediatric RT Clinic / RT Planning" } } },
+            { role: "consultant", onc: "clin", name: "Brookes, Louise (LB3)", tel: "07812268851", focus: "Sarcoma / Urology / Paediatric", schedule: { mon: { am: "RT Review Clinic / Sarcoma MDT", pm: "WR / Paediatric Solid Tumour MDT / SPA Admin" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "Urology Clinic", pm: "DCC & SPA Admin" }, thu: { am: "WR / Departmental Meetings", pm: "SACT Prescribing / Sarcoma Clinic / RT Planning" }, fri: { am: "DCC Admin / Urology MDT / RT Peer Review", pm: "Paediatric CNS MDT / Paediatric RT Clinic / RT Planning" } } },
             { role: "consultant", onc: "clin", name: "Chong, Chin Hiong (CC6)", focus: "Urology / Colorectal", schedule: { mon: { am: "WR / RT Planning / SACT Prescribing", pm: "SPA Admin" }, tue: { am: "WR / RT Planning", pm: "RT Clinic / DCC Admin / SACT Prescribing" }, wed: { am: "SACT Prescribing / Urology Clinic", pm: "DCC Admin / Urology FUP Clinic" }, thu: { am: "WR / SPA Admin", pm: "Colorectal Clinic" }, fri: { am: "Urology MDT / Colorectal MDT / Colorectal Team Meeting", pm: "Urology & Colorectal SACT Clinic / DCC Admin" } } },
             { role: "consultant", onc: "clin", name: "Christian, Judith (JC5)", tel: "07812276289", focus: "H&N", schedule: { mon: { am: "NWD", pm: "NWD" }, tue: { am: "DCC Admin / Head & Neck Clinic (ONC2N/JC52F)", pm: "WR / RT Planning / SPA RT Admin" }, wed: { am: "DCC Admin / RT Peer Review / RT Clinic", pm: "Leadership Role Admin / RT Planning / SPA Admin" }, thu: { am: "SACT & RT Prescribing / Leadership Role / Dept Meetings / WR", pm: "MDT / ENT Clinic (JC54B)" }, fri: { am: "HoS (RT/job planning) flexible time", pm: "HoS (RT/job planning) flexible time" } } },
             { role: "consultant", onc: "clin", name: "Esler, Claire (CPE)", tel: "07971092556", focus: "Sarcoma / Lymphoma / Paediatric", schedule: { mon: { am: "RT Clinic", pm: "WR / Paediatric Solid Tumour MDT / DCC Admin" }, tue: { am: "NWD", pm: "NWD" }, wed: { am: "Lymphoma Clinic with Haematology", pm: "DCC Admin / WR / Lymphoma MDT" }, thu: { am: "MDT / RT Planning / Dept Meetings / Sarcoma & Paeds Peer Review", pm: "RT Planning" }, fri: { am: "Sarcoma Clinic / SACT Prescribing / Paediatric CNS MDT", pm: "Paediatric RT Clinic / RT Planning / DCC Admin" } } },
@@ -501,7 +501,7 @@ const SITES = [
             { role: "consultant", onc: "med", name: "Gossage, Lucy (LMG)", tel: "07812268768", focus: "Sarcoma / Germ Cell", schedule: { mon: { am: "Ward Round / Retroperitoneal & Main Sarcoma MDT", pm: "DCC Admin / Germ Cell MDT" }, tue: { am: "Ward Round / DCC Admin", pm: "Germ Cell Clinic (IH12B/IH12C)" }, wed: { am: "NWD (HoS flexible work)", pm: "NWD (HoS flexible work)" }, thu: { am: "SPA Admin / Ward Round", pm: "Sarcoma Clinic (IH14B/IH14C)" }, fri: { am: "NWD (HoS flexible work)", pm: "NWD (HoS flexible work)" } } },
             { role: "consultant", onc: "clin", name: "Griffin, Matthew (1MG)", tel: "07812276254", focus: "H&N / Thyroid", schedule: { mon: { am: "DCC Admin / Thyroid Clinic", pm: "DCC Admin / WR / RT Planning / SPA Admin" }, tue: { am: "Head & Neck Clinic", pm: "DCC Admin / Appraisal SPA Admin / RT Planning" }, wed: { am: "Head & Neck Peer Review / RT Peer Review / RT Clinic", pm: "RT Planning / Clinical Supervisor Work" }, thu: { am: "RT Planning / Dept Meetings / WR", pm: "Thyroid MDT / Head & Neck MDT / Head & Neck FUP Clinic" }, fri: { am: "DCC Admin / Lead Appraiser Work", pm: "Lead Appraiser Work / SPA Admin" } } },
             { role: "consultant", onc: "clin", name: "Ho, Joon Wee (JWH5)", tel: "07812279474", focus: "CNS / Breast (KMH)", schedule: { mon: { am: "WR / Medical Student Work", pm: "DCC Admin / KMH Clinic" }, tue: { am: "Brain Mets Clinic / Brain Mets MDT", pm: "Neuro Oncology Clinic" }, wed: { am: "OP Clinic", pm: "SPA Admin" }, thu: { am: "RT Clinic / SPA Admin", pm: "DCC Admin" }, fri: { am: "KMH Breast MDT / Neuro Oncology MDT / WR", pm: "Medical Student Work / RT Planning & RT Peer Review" } } },
-            { role: "consultant", onc: "clin", name: "Hosni, Shaymaa (SUH)", tel: "07812269362", focus: "Gynae / Breast", schedule: { mon: { am: "Gynae MDT / DCC Admin", pm: "WR / Gynae Clinic / DCC Admin" }, tue: { am: "Breast MDT / Breast RT Clinic", pm: "Clinical Supervisor / Research SPA Admin / RT Planning" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "Cervical Brachytherapy / SABR MDT / SPA Admin / RT Planning / Breast Peer Review", pm: "Breast Endocrine MDT / RT Planning / WR / Admin" }, fri: { am: "RT Clinic", pm: "Cervical Brachytherapy MDT / Gynae RT Peer Review / DCC Admin" } } },
+            { role: "consultant", onc: "clin", name: "Hosni, Shaymaa (SUH)", tel: "07812269362", focus: "Gynae / Breast", schedule: { mon: { am: "Gynae MDT / DCC Admin", pm: "WR / Gynae Clinic / DCC Admin" }, tue: { am: "Breast MDT / Breast RT Clinic", pm: "Clinical Supervisor / Research SPA Admin / RT Planning" }, wed: { am: "NWD", pm: "NWD" }, thu: { am: "Cervical Brachy / SABR MDT / SPA Admin / RT Planning / Breast Peer Review", pm: "Breast Endocrine MDT / RT Planning / WR / Admin" }, fri: { am: "RT Clinic", pm: "Cervical Brachy MDT / Gynae RT Peer Review / DCC Admin" } } },
             { role: "consultant", onc: "clin", name: "James, Eleanor (EJJ)", tel: "07812278833", focus: "UGI / Lymphoma", schedule: { mon: { am: "Upper GI Clinic (EJJ5A)", pm: "Education Supervisor Work / SPA/DCC Admin / UGI MDT" }, tue: { am: "SPA Admin / SRU DLT", pm: "RT Planning / RT Clinic / WR" }, wed: { am: "Haematology Clinic", pm: "SPA Admin / Lymphoma MDT" }, thu: { am: "RT Planning / Dept Meetings / DCC Admin", pm: "—" }, fri: { am: "DCC Admin / WR", pm: "—" } } },
             { role: "consultant", onc: "clin", name: "Johnson, Kerstie (KJ3)", tel: "07812269884", focus: "Breast / Lung", schedule: { mon: { am: "WR / DCC Admin / SACT Prescribing", pm: "RT Planning / RT Clinic" }, tue: { am: "Breast MDT / RT Lung Peer Review / Breast Clinic", pm: "DCC Admin / SACT Prescribing / SPA Datix Investigator Work" }, wed: { am: "RT Planning", pm: "Lung MDT / Lung Clinic" }, thu: { am: "SABR MDT / Dept Meetings / WR", pm: "—" }, fri: { am: "NWD", pm: "NWD" } } },
             { role: "consultant", onc: "clin", name: "Kamlow, Charlotte (CLK)", focus: "Colorectal / Breast (KMH)", schedule: { mon: { am: "WR / admin / meetings / RT planning", pm: "KMH breast clinic" }, tue: { am: "Admin / RT planning", pm: "RT clinic" }, wed: { am: "CRC chemo clinic", pm: "CRC new / follow-up clinic" }, thu: { am: "NWD", pm: "NWD" }, fri: { am: "MDTs / WR", pm: "Admin / RT planning" } } },
@@ -626,12 +626,10 @@ const SITES = [
     {
       id: "oncology-drug-list",
       title: "Oncology Drug Reference",
-      category: "NUH Oncology Resources",
-      version: "1.0",
-      authors: "NUH Acute Oncology",
-      evidenceBase: "NUH Formulary | UKONS | ESMO Guidelines",
-      summary: "Quick-reference registry of commonly used oncology drugs at NUH. Covers cytotoxic chemotherapy, targeted therapies, immunotherapy, and hormonal agents with drug class, emetic risk, vesicant status, and key toxicity flags.",
-      tags: ["Chemotherapy", "SACT", "Immunotherapy", "Targeted therapy", "Drug reference", "Vesicant", "Emetic risk"],
+      category: "Tools",
+      toolsOnly: true,
+      summary: "Quick-reference registry of commonly used oncology drugs at NUH. Covers cytotoxic chemotherapy, targeted therapies, immunotherapy, hormonal agents and CINV antiemetics with drug class, emetic risk, vesicant status, and key toxicity flags.",
+      tags: ["Chemotherapy", "SACT", "Immunotherapy", "Targeted therapy", "Drug reference", "Vesicant", "Emetic risk", "Antiemetics", "CINV"],
       related: [],
       sections: [
         {
@@ -751,6 +749,21 @@ const SITES = [
             { name: "Goserelin",         brand: "Zoladex®",     category: "hormone",       drugClass: "LHRH agonist",               risks: [] },
             { name: "Degarelix",         brand: "Firmagon®",    category: "hormone",       drugClass: "LHRH antagonist",            risks: [], notes: "No testosterone flare; injection site reactions" },
             { name: "Megestrol",         brand: "Megace®",      category: "hormone",       drugClass: "Progestogen",                risks: [], notes: "Appetite stimulant; VTE risk" },
+
+            // ── Antiemetics (chemotherapy-induced nausea & vomiting) ────
+            { name: "Ondansetron",       brand: "Zofran®",      category: "antiemetic",   drugClass: "5-HT3 receptor antagonist",  risks: ["cardiotox"], notes: "First-line for acute CINV; QT prolongation — caution with other QT-prolonging drugs or electrolyte abnormalities" },
+            { name: "Granisetron",       brand: "Kytril®",      category: "antiemetic",   drugClass: "5-HT3 receptor antagonist",  risks: ["cardiotox"], notes: "Longer half-life than ondansetron; transdermal patch (Sancuso®) available for multi-day regimens" },
+            { name: "Palonosetron",      brand: "Aloxi®",       category: "antiemetic",   drugClass: "5-HT3 receptor antagonist (2nd gen)", risks: [], notes: "Higher receptor affinity and longer half-life — preferred agent for delayed CINV; single IV dose covers 3–5 days" },
+            { name: "Aprepitant",        brand: "Emend®",       category: "antiemetic",   drugClass: "NK1 receptor antagonist",    risks: [], notes: "3-day oral regimen; moderate CYP3A4 inhibitor — reduces required dexamethasone dose; interacts with warfarin" },
+            { name: "Fosaprepitant",     brand: "Ivemend®",     category: "antiemetic",   drugClass: "NK1 receptor antagonist (IV prodrug)", risks: ["irritant"], notes: "IV prodrug of aprepitant — single-dose alternative to the 3-day oral course; infusion site reactions" },
+            { name: "Rolapitant",        brand: "Varubi®",      category: "antiemetic",   drugClass: "NK1 receptor antagonist",    risks: [], notes: "Long half-life (~7 days); does not inhibit CYP3A4 — fewer drug interactions than aprepitant" },
+            { name: "Netupitant/Palonosetron", brand: "Akynzeo®", category: "antiemetic", drugClass: "NK1 / 5-HT3 combination",   risks: ["cardiotox"], notes: "Fixed-dose combination capsule — single oral dose covers both acute and delayed CINV" },
+            { name: "Dexamethasone",     brand: null,           category: "antiemetic",   drugClass: "Corticosteroid",             risks: [], notes: "Adjunct antiemetic across all emetic-risk levels; caution with diabetic control and insomnia" },
+            { name: "Metoclopramide",    brand: "Maxolon®",     category: "antiemetic",   drugClass: "Dopamine (D2) antagonist / prokinetic", risks: ["extrapyramidal"], notes: "Extrapyramidal/dystonic reactions — restrict to max 5 days use; caution in Parkinson's disease" },
+            { name: "Domperidone",       brand: "Motilium®",    category: "antiemetic",   drugClass: "Dopamine (D2) antagonist",   risks: ["cardiotox"], notes: "QT prolongation — MHRA advice restricts use to ≤1 week; avoid in cardiac disease" },
+            { name: "Olanzapine",        brand: "Zyprexa®",     category: "antiemetic",   drugClass: "Atypical antipsychotic",     risks: ["sedation"], notes: "Effective for refractory/breakthrough CINV and high-emetic-risk regimens per MASCC/ESMO guidance; sedation common at higher doses" },
+            { name: "Levomepromazine",   brand: "Nozinan®",     category: "antiemetic",   drugClass: "Broad-spectrum antiemetic (phenothiazine)", risks: ["sedation"], notes: "Broad receptor antagonism — useful in refractory nausea; sedating, typically 2nd-line or palliative setting" },
+            { name: "Lorazepam",         brand: "Ativan®",      category: "antiemetic",   drugClass: "Benzodiazepine",             risks: ["sedation"], notes: "Adjunct for anticipatory nausea and anxiety-related CINV; not effective as monotherapy for established CINV" },
           ],
         },
       ],
@@ -1039,7 +1052,7 @@ const SITES = [
         ],
         pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=775fd63ed18bd2297398cbaab940c0cb",
         portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9727&query_desc=neutropenic",
-        updated: "July 2027 (review)",
+        updated: "July 2027",
         summaryCalcLink: { calcId: "mascc", label: "MASCC Risk Score", text: "Use the MASCC risk score calculator once diagnosis established" },
         sections: [
           {
@@ -1057,16 +1070,61 @@ const SITES = [
           {
             heading: "Treatment Criteria",
             type: "criteria",
-            intro: "Must meet Criteria 1 AND (Criteria 2 OR 3):",
-            items: [
-              { label: "Criteria 1 — Neutropenia (REQUIRED)", detail: "Neutrophils <1.0 × 10^9/L OR suspected neutropenia. Any SACT with neutropenia potential in last 4 weeks — treat without waiting for FBC. G-CSF recipients still at risk.", warning: "Pure immunotherapy regimens (pembrolizumab, nivolumab, ipilimumab, atezolizumab etc.) RARELY cause neutropenia — use High Risk Red Sepsis pathway instead if on these agents only." },
-              { label: "Criteria 2 — Fever (if no Criteria 3)", detail: "Temp >38°C on one occasion (before or during admission) OR rigors / feeling cold or shivery. Patient-reported fever before admission counts. Temp 37–38°C: repeat after 1 hour." },
-              { label: "Criteria 3 — Sepsis Signs (alternative to Criteria 2)", detail: "Tachycardia, hypotension, tachypnoea, or obvious infection focus (line site erythema, chest signs). Refer to High Risk Red Sepsis criteria on intranet antibiotic website." },
+            intro: "Must meet Criteria 1. Neutropenia AND either Criteria 2 AND/OR Criteria 3.",
+            columns: ["Criteria", "Parameter", "Notes"],
+            tables: [
+              {
+                subheading: "Required",
+                rows: [
+                  {
+                    criteria: "1. Neutropenia",
+                    highlight: "red",
+                    parameter: [
+                      "Neuts <1.0 ×10⁹/L",
+                      { text: "Neutropaenia suspected", bold: true },
+                    ],
+                    notes: [
+                      "Includes any SACT* with neutropenia potential in the last 4 weeks",
+                      "Treat without waiting for FBC",
+                      "G-CSF recipients still at risk",
+                    ],
+                  },
+                ],
+              },
+              {
+                subheading: "Criteria 2 & 3:",
+                rows: [
+                  {
+                    criteria: "2. Fever",
+                    parameter: [
+                      "Temp >38°C (at least ×1 reading)",
+                    ],
+                    notes: [
+                      "Patient-reported fever before admission counts",
+                      "Rigors / chills counts",
+                      "Repeat if 37–38°C after 1 hour",
+                    ],
+                  },
+                  {
+                    criteria: "3. Sepsis Signs",
+                    parameter: ["Tachycardia", "Hypotension", "Tachypnoea"],
+                    notes: ["or obvious infection focus (line site erythema, chest signs)"],
+                  },
+                ],
+                footerCallout: {
+                  label: "High Risk Red Sepsis*",
+                  items: [
+                    { text: "Pure immunotherapy alone rarely causes neutropenia — use {{LINK}} pathway instead", link: { label: "High Risk Red Sepsis", url: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=f70a80c8ace1b9e0de4cfb0f817194b1" } },
+                    { text: "If any doubt about drugs use {{LINK}}", link: { label: "Onc Drug Reference", guidelineId: "oncology-drug-list" } },
+                  ],
+                },
+              },
             ],
           },
           {
             heading: "Antibiotic Selection by Allergy",
             type: "pills",
+            indicationStyle: "pill",
             items: [
               {
                 label: "No Penicillin Allergy",
@@ -1144,6 +1202,7 @@ const SITES = [
           {
             heading: "Investigations Checklist",
             type: "checklist",
+            note: "All investigations are ordered in one set: Select '**Neutropaenia investigation bundle**' on Nervecentre.",
             items: [
   "FBC, U&Es, LFTs, lactate, CRP",
   "Chest X-ray",
@@ -1208,8 +1267,8 @@ const SITES = [
                   "Continue IV antibiotics",
                   "Repeat blood cultures if spiking",
                   "At 48h: review all microbiology",
-                  "!!Do NOT change empiric regimen without clinical deterioration or microbiological indication",
-                  "!!If no response by 48–72h → see No Response section below",
+                  "!!**Do NOT** change empiric regimen without clinical deterioration or microbiological indication",
+                  "!!If no response by **48–72h** → see No Response section below",
                 ],
               },
             ],
@@ -1217,9 +1276,9 @@ const SITES = [
               trigger: "Beyond 48 hours — No Response",
               instruction: "Discuss with experienced registrar or consultant. Review factors for non-response:",
               factors: [
-                { icon: "🔍", label: "Review Diagnosis", items: ["Non-infective pyrexia: disease activity, drug reaction", "Has the empiric regimen been appropriate for the clinical picture?"] },
-                { icon: "🧫", label: "Microbiology Review", items: ["Multi-resistant organism: review all previous microbiology; discuss with microbiology team", "Atypical pathogens: Legionella, PCP, disseminated viral infection"] },
-                { icon: "🔗", label: "Source Control", items: ["Ongoing focus: suspected line infection → consider line removal", "Invasive fungal infection: consider if neutropenia >10 days, steroids >3 weeks, or T-cell immunosuppressants"] },
+                { icon: "search", label: "Review Diagnosis", items: ["Non-infective pyrexia: disease activity, drug reaction", "Has the empiric regimen been appropriate for the clinical picture?"] },
+                { icon: "phone", label: "Microbiology Review", items: ["Multi-resistant organism: review all previous microbiology; discuss with microbiology team", "Atypical pathogens: Legionella, PCP, disseminated viral infection"] },
+                { icon: "flame", label: "Source Control", items: ["Ongoing focus: suspected line infection → consider line removal", "Invasive fungal infection: consider if neutropenia >10 days, steroids >3 weeks, or T-cell immunosuppressants"] },
               ],
             },
             oralSwitch: {
@@ -1258,7 +1317,7 @@ const SITES = [
             ],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=64b1c0f07b8b8d13e4e9c6b664d0f7f5",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10504&query_desc=spinal%20cord%20compression",
-            updated: "Mar 2028 (review)",
+            updated: "March 2028",
             summaryCalcLink: { calcId: "sins", label: "SINS Score Calculator", text: "Use the SINS risk score for spinal instability to guide surgical referral" },
             sections: [
               {
@@ -1278,13 +1337,43 @@ const SITES = [
                 heading: "Immediate Management Steps",
                 type: "steps",
                 items: [
-                  { label: "Immobilise", detail: "Neurological symptoms OR SINS ≥7 / mechanical pain → immobilise immediately. Hard collar if cervical MSCC. Head-hold log roll C1–T4; standard log roll T5+." },
-                  { label: "Analgesia", detail: "Adequate analgesia promptly — including during transfer. Consider palliative care referral if difficult pain." },
-                  { label: "Bladder scan", detail: "Post-void bladder scan. Catheterise if in retention." },
-                  { label: "Neurological exam", detail: "Full UL/LL power + sensory. Perineal sensation + anal tone. Repeat daily while awaiting treatment." },
-                  { label: "Steroids", detail: "Dependent on cancer type — see steroid panel below. Never start steroids in suspected haematological malignancy without haematology advice first." },
-                  { label: "MRI whole spine", detail: "Within 24 hours. Out-of-hours: discuss with on-call radiologist. Protocol: T1 + STIR sagittal, T1 + T2 axial through level. T2 DIXON if available. Report must include SINS + Bilsky scores." },
+                  { label: "Immobilise", detail: [
+                    "Neurological symptoms OR SINS ≥7 / mechanical pain → **immobilise immediately**.",
+                    "Hard collar if cervical MSCC. Head-hold log roll C1–T4; standard log roll T5+.",
+                  ] },
+                  { label: "Analgesia", detail: [
+                    { text: "Adequate analgesia promptly", children: ["**including** during transfer."] },
+                    "Consider palliative care referral if difficult pain.",
+                  ] },
+                  { label: "Bladder scan", detail: [
+                    "Post-void bladder scan.",
+                    "Catheterise if in retention.",
+                  ] },
+                  { label: "Neurological exam", detail: [
+                    "Full UL/LL power + sensory.",
+                    "Perineal sensation + anal tone.",
+                    "Repeat daily while awaiting treatment.",
+                  ] },
+                  { label: "Steroids", detail: [
+                    "Dependent on cancer type — see steroid panel below.",
+                    "Never start steroids in suspected haematological malignancy without haematology advice first.",
+                  ] },
+                  { label: "MRI whole spine", detail: [
+                    "Within 24 hours.",
+                    "Out-of-hours: discuss with on-call radiologist.",
+                    "Protocol: T1 + STIR sagittal, T1 + T2 axial through level. T2 DIXON if available.",
+                    "Report must include SINS + Bilsky scores.",
+                  ] },
                 ],
+                infoCallout: {
+                  items: [
+                    "No role of plain X-ray of the spine in MSCC diagnosis",
+                    { text: "CT whole spine can be carried out if MRI is contraindicated.", children: [
+                      "Myelogram: if additional info required (discuss with radiology).",
+                      "Multiplanar view or 3-plane reconstruction of CT to assess stability if surgery planned",
+                    ] },
+                  ],
+                },
               },
               {
   heading: "Steroid Protocol",
@@ -1294,11 +1383,28 @@ const SITES = [
                 heading: "Escalation — Who to Contact",
                 type: "steps",
                 items: [
-                  { label: "Oncology SpR On-Call (24h)", detail: "First contact for all confirmed MSCC. Via Switchboard (NCH-based). New malignancy → also involve on-call oncology consultant." },
-                  { label: "Acute Oncology Service (AOS)", detail: "QMC support: Mon–Sat 8am–4pm. Via Nervecentre → Medical Referrals → Oncology, or ext. 6103 KMH." },
-                  { label: "Spinal Fellow", detail: "Via Switchboard for surgery/stability advice. Refer via [Referapatient](https://www.referapatient.org/new-referral) — add the referral link to Nervecentre and ensure it is checked daily. Especially for: de novo cancer, deteriorating neurology, spinal instability." },
-                  { label: "Haematology", detail: "If suspected haematological primary. Do not start steroids until haematology has advised." },
-                  { label: "Physiotherapy + OT", detail: "Nervecentre referral: PT within 24h, OT within 48h. Include spinal stability status in referral." },
+                  { label: "Oncology SpR On-Call (24h)", detail: [
+                    "First contact for all confirmed MSCC.",
+                    "Via Switchboard (NCH-based).",
+                    "New malignancy → also involve **on-call oncology consultant.**",
+                  ] },
+                  { label: "Acute Oncology Service (AOS)", detail: [
+                    "QMC support: Mon–Sat 8am–4pm.",
+                    "Via Nervecentre → Medical Referrals → Oncology, or ext. 6103 KMH.",
+                  ] },
+                  { label: "Spinal Fellow", detail: [
+                    "Via Switchboard for surgery/stability advice.",
+                    { text: "Refer via [Referapatient](https://www.referapatient.org/new-referral):", children: ["Add the referral link to Nervecentre", "Ensure it is checked **daily**."] },
+                    { text: "Especially for:", children: ["De novo cancer", "Deteriorating neurology", "Spinal instability"] },
+                  ] },
+                  { label: "Haematology", detail: [
+                    "If suspected haematological primary.",
+                    "**Do not start steroids** until haematology has advised.",
+                  ] },
+                  { label: "Physiotherapy + OT", detail: [
+                    "Nervecentre referral: PT within 24h, OT within 48h.",
+                    "Include **spinal stability status** in referral (see SINS Score below).",
+                  ] },
                 ],
               },
               {
@@ -1307,33 +1413,204 @@ const SITES = [
                 note: "Use SINS, Revised Tokuhashi, Bilsky (ESCC), and NOMS framework to guide decision. All cases must be discussed with appropriate specialists before treatment.",
                 items: [
                   {
-                    label: "Surgery + Post-op RT",
+                    label: "Surgery (Decompression/Stabilisation) ± Post Op RT",
                     color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0",
-                    indication: "Fit patient (ECOG 0–2), prognosis ≥3 months, solitary level, radio-resistant tumour",
-                    urgent: "Surgery + post-op RT is superior to RT alone for preserving function and survival",
-                    exclusions: ["ECOG PS >2 or significant comorbidity", "Prognosis <3 months", "Multiple levels of cord compression", "Radiosensitive malignancy (lymphoma, myeloma, SCLC, seminoma) — unless spinal instability present"],
+                    icon: "scalpel",
+                    hideSubtitle: true,
+                    subtitle: "Fit patient, diagnosis or primary treatment, stabilisation for pain management.",
+                    blocks: [
+                      {
+                        calloutLabel: "Primary Decompression Surgery",
+                        indication: ["Fit Patient: ECOG PS 0–2", "Prognosis: >3 months", "Extent: Solitary level", "Tumour: Radio-resistant"],
+                        exclusionsLabel: "Contraindications",
+                        exclusions: ["ECOG PS >2 or significant comorbidity", "Prognosis <3 months", "Multiple levels of cord compression", "Radiosensitive malignancy (lymphoma, myeloma, SCLC, seminoma) — unless spinal instability present"],
+                      },
+                      {
+                        calloutLabel: "Spinal Stabilisation Surgery",
+                        indicationLabel: "Indications",
+                        indication: ["Spinal instability", "Mechanical back pain not controlled by analgesia", "Patient is able to have surgery"],
+                        notesLabel: "Notes",
+                        notes: [
+                          { text: "Less invasive surgical approaches and techniques", children: ["Vertebroplasty", "Radiofrequency ablation"] },
+                          "Not suitable for surgery: spinal supports (such as orthosis) to aid with pain",
+                        ],
+                      },
+                    ],
                   },
                   {
                     label: "Urgent Radiotherapy",
                     color: "#6d4c9e", bg: "#f3effe", border: "#c4a8f0",
-                    indication: "Not surgical per above criteria. Aim to treat within 24h of MSCC confirmation.",
+                    icon: "radiation",
+                    hideSubtitle: true,
+                    indication: ["Not surgical per above criteria", "Aim to treat within 24h of MSCC confirmation"],
                     urgent: "Default: 8Gy single fraction",
+                    exclusionsLabel: "Contraindications",
                     exclusions: ["Complete paraplegia ≥2 weeks + pain already controlled", "Poor overall prognosis"],
                   },
                   {
                     label: "Systemic Therapy",
                     color: "#4a7c6b", bg: "#eaf3f0", border: "#90c4b0",
-                    indication: "Chemosensitive histology: high-grade lymphoma, plasma cell tumours, germ cell tumours, untreated SCLC",
+                    icon: "ivbag",
+                    hideSubtitle: true,
+                    indication: [{ text: "Chemosensitive histology:", children: ["High-grade lymphoma", "Plasma cell tumours", "Germ cell tumours", "Untreated SCLC"] }],
                     urgent: "Preferred over RT in these tumour types",
+                    exclusionsLabel: "Contraindications",
                     exclusions: [],
                   },
                   {
   label: "Best Supportive Care",
   color: "#5a6474", bg: "#f5f6f8", border: "#c8cdd6",
-  indication: "Prognosis <1 month, established paralysis without pain, unfit or declining treatment",
-  urgent: null,
-  notes: ["Early MDT input essential: palliative care, PT/OT, orthotics", "Document spinal stability for nursing"],
-},,
+  icon: "heart",
+  hideSubtitle: true,
+  subtitle: "Not fit for above, symptom control as primary treatment.",
+  infoBox: {
+    items: [
+      { text: "For patients not appropriate for surgery or radiotherapy, supportive care should be the primary management strategy", children: ["Aiming to control the patient's symptoms and maintaining dignity."] },
+    ],
+  },
+  blocks: [
+    {
+      indicationLabel: "Indications",
+      indication: [
+        "Prognosis <1 month",
+        "Are unable to tolerate any treatment",
+        "Decline investigation or treatment (after a clearly documented discussion)",
+        "Established paralysis in absence of pain",
+        "Acutely unwell or too ill",
+        "Approaching end of life",
+      ],
+      notesLabel: "Notes",
+      notes: ["Early MDT input essential: palliative care, PT/OT, orthotics", "Document spinal stability for nursing"],
+    },
+  ],
+},
+                ],
+              },
+              {
+                heading: "Holistic Care",
+                type: "expand_groups",
+                subheadings: [
+                  {
+                    label: "Mobilisation",
+                    groups: [
+                      {
+                        icon: "wheelchair",
+                        heading: "Physiotherapy & Mobilisation",
+                        items: [
+                          "Perform an initial assessment using the Therapy Initial Assessment paperwork.",
+                          "If assessment/imaging suggests stability is likely, start graded sitting then weight bearing.",
+                          "Monitor neurological symptoms and pain continuously during mobilisation.",
+                          { text: "Continue sitting, transfers and mobilisation if there is:", children: ["No orthostatic hypotension", "No significant increase in pain", "No deterioration in neurological symptoms"] },
+                          { text: "If pain or neurological symptoms significantly worsen during mobilisation:", children: ["Return to supine (or a position where the changes reverse)", "Inform the MDT to reassess spinal stability"] },
+                          "If surgery, radiotherapy or other oncology treatments aren't appropriate, mobilisation should still continue if possible.",
+                        ],
+                      },
+                      {
+                        icon: "bone",
+                        heading: "Immobilisation & Orthoses",
+                        items: [
+                          "If advised by the spinal team or relevant clinicians, refer to Orthotics via Nervecentre.",
+                          "Referral should list diagnosis, orthosis required, reason, and planned follow-up (see Appendix 14.9).",
+                          "Fit a hard collar/spinal brace for suspected cervical cord compression or spinal instability, by an appropriately trained staff member.",
+                          { text: "Consider spinal orthosis for:", children: ["Suspected unstable MSCC", "Patients awaiting surgery / post-surgery", "Patients not suitable for surgery", "To help reduce mechanical pain"] },
+                          "If provided, give written documentation: who to contact for issues or part replacement, wearing regime, risks, and when it's no longer needed.",
+                        ],
+                        table: {
+                          headers: ["Spinal Level", "Orthosis"],
+                          rows: [
+                            ["C2–C5", "Cervical collar"],
+                            ["C6–T5", "CTO (cervicothoracic orthosis)"],
+                            ["T6–L5", "TLSO (thoracolumbar spinal orthosis)"],
+                            ["L2–L5", "LSO (lumbar spinal orthosis)"],
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    label: "Systems Support",
+                    groups: [
+                      {
+                        icon: "toilet",
+                        heading: "Bowel & Bladder Care",
+                        items: [
+                          "MSCC can cause neurogenic bowel and/or bladder dysfunction from loss of sensory/motor nerve supply.",
+                          "These are late signs of MSCC — presenting as incontinence or voiding disorders.",
+                          "Consider a long-term indwelling urinary catheter.",
+                          "Refer to the local bowel care protocol for bowel dysfunction (EMSN Bowel Care Pathway).",
+                          "Patients with neurogenic bowel/bladder are also at risk of autonomic dysreflexia.",
+                        ],
+                      },
+                      {
+                        icon: "brain",
+                        heading: "Autonomic Dysreflexia",
+                        items: [
+                          "An uninhibited sympathetic nervous system response to stimuli, in spinal cord injury at T6 and above.",
+                          { text: "Signs and symptoms:", children: [
+                            "Pounding frontal headache (almost always present)",
+                            "Respiratory distress / bronchospasm / shortness of breath with anxiety",
+                            "Diaphoresis and profuse sweating",
+                            "Raised BP (20–40mmHg above baseline)",
+                            "Bradycardia (or tachycardia) and arrhythmias",
+                            "Nasal congestion",
+                            "Metallic taste in the mouth",
+                            "Blotched skin or redness above the level of the lesion",
+                            "Pallor or goose-bumps below the level of the lesion",
+                            "Signs of stroke or seizure (speech, facial expression, tremors, twitching)",
+                            "Altered consciousness or behavioural changes",
+                          ] },
+                          "Refer to the local autonomic dysreflexia document for further details.",
+                          "See Appendix 14.11 for the autonomic dysreflexia management flow chart.",
+                        ],
+                      },
+                      {
+                        icon: "lungs",
+                        heading: "Cardiovascular or Respiratory Effects",
+                        items: [
+                          "Patients may be at risk of postural hypotension.",
+                          "Manage short-term with positioning and/or anti-embolic stockings / pneumatic foot pumps.",
+                          "Avoid over-hydration — risk of pulmonary oedema.",
+                          "Pneumonia is a common complication.",
+                          { text: "Prophylactic measures to reduce respiratory tract infection risk:", children: ["Secretion clearing", "Breathing exercises", "Assisted coughing/suction", "Deep breathing and repositioning", "Supplemental IPPV or BiPAP if appropriate"] },
+                        ],
+                      },
+                      {
+                        icon: "heart",
+                        heading: "Palliative Care",
+                        items: [
+                          "**Poor Prognosis & End of Life**",
+                          "Life expectancy <1 month or established paralysis without pain symptoms will not benefit from urgent investigation.",
+                          "Patients who are clearly in the last few days of life should receive local palliative and supportive care.",
+                          "Liaison with the hospital and community palliative care teams is advised.",
+                          { text: "Supportive care should consider:", children: ["Patient wishes", "Preferred places of care", "Analgesia", "Bowel and bladder function", "Any other self-care needs"] },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    label: "Rehabilitation & Discharge",
+                    groups: [
+                      {
+                        icon: "bloods",
+                        heading: "VTE & Pressure Care",
+                        items: [
+                          "Prophylactic LMWH + anti-embolism stockings / IPC throughout admission",
+                          "Turn every 2–3h if bed-bound",
+                          "High-grade pressure-relieving mattress",
+                        ],
+                      },
+                      {
+                        icon: "dischargeArrow",
+                        heading: "Discharge Planning",
+                        items: [
+                          "PT referral via Nervecentre within 24h; OT within 48h",
+                          "SMART goal-setting from day 1",
+                          "Discharge planning starts on admission — led by named individual",
+                          "Community nursing, rehabilitation, social services referrals as needed before discharge",
+                        ],
+                      },
+                    ],
+                  },
                 ],
               },
               {
@@ -1342,18 +1619,54 @@ const SITES = [
                 items: [
                   {
                     name: "SINS Score (Spinal Instability)",
-                    interpretation: "0–6: Stable | 7–12: Indeterminate — surgical consult | 13–18: Unstable",
-                    criteria: ["Location: Junctional (3), Mobile (2), Semi-rigid (1), Rigid (0)", "Mechanical pain: Yes (3), Occasional (1), None (0)", "Bone lesion: Lytic (2), Mixed (1), Blastic (0)", "Alignment: Subluxation (4), De novo deformity (2), Normal (0)", "Vertebral collapse: >50% (3), <50% (2), >50% involved no collapse (1), None (0)", "Posterolateral involvement: Bilateral (3), Unilateral (1), None (0)"],
+                    interpretation: "0–6: Stable | 7–12: Potentially unstable | ≥13: Unstable",
+                    role: [
+                      "Determining spinal stability in **confirmed MSCC**",
+                      "**Stable spine:** patient may be able to mobilise — role of surgery is variable",
+                      "**Unstable spine: patient must be supine and have a spinal surgical consult urgently**",
+                      { text: "Does not supersede medical judgement", children: ["If patient in severe pain, with low SINS, treat as unstable"] },
+                    ],
+                    interpretationTable: {
+                      headers: ["Score", "Meaning", "Interpretation"],
+                      rows: [
+                        ["0–6", "Stable", "Patient can mobilise potentially"],
+                        ["7–12", "Potentially unstable", "Advise surgical input, caution with mobilisation"],
+                        ["≥13", "Unstable", "Do not mobilise, urgent surgical referral"],
+                      ],
+                    },
+                    calculatorLink: { calcId: "sins", label: "SINS Calculator" },
                   },
                   {
                     name: "Revised Tokuhashi (Prognosis)",
                     interpretation: "0–8: <6 months (conservative) | 9–11: >6 months (palliative surgery) | 12–15: >1 year (excisional surgery)",
-                    criteria: ["General condition (PS): Poor=0, Moderate=1, Good=2", "Extraspinal bone mets: ≥3=0, 2=1, 1=2", "Vertebral body mets: ≥3=0, 2=1, 1=2", "Mets to major organs: Unremovable=0, Removable=1, None=2", "Primary site: Lung/osteosarcoma/stomach/bladder=0 … Thyroid/breast/prostate/carcinoid=5", "Frankel palsy: Complete A/B=0, Incomplete C/D=1, None E=2"],
+                    role: [
+                      "Use to estimate survival in patients with symptomatic metastatic spinal disease — during preoperative planning for spinal surgery or other interventions",
+                    ],
+                    interpretationTable: {
+                      headers: ["Score", "Meaning", "Interpretation"],
+                      rows: [
+                        ["0–8", "<6 months prognosis", "Conservative management"],
+                        ["9–11", ">6 months prognosis", "Consider palliative surgery"],
+                        ["12–15", ">1 year prognosis", "Consider excisional surgery"],
+                      ],
+                    },
+                    calculatorLink: { url: "https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system", label: "Tokuhashi Calculator" },
                   },
                   {
                     name: "Bilsky / ESCC Scale (Cord Compression)",
                     interpretation: "Grade 0–1: Bone/epidural only | Grade 2–3: Cord compression",
-                    criteria: ["0: Bone-only, no epidural involvement", "1a: Epidural extension, no thecal deformation", "1b: Thecal deformation, no cord abutment", "1c: Cord abutment", "2: Cord compression — CSF visible", "3: Cord compression — no CSF visible"],
+                    imageLink: { url: "https://prod-images-static.radiopaedia.org/images/55097084/0._big_gallery.jpeg", label: "Bilsky / ESCC Grading Reference Image" },
+                    interpretationTable: {
+                      headers: ["Grade", "Finding", "Interpretation"],
+                      rows: [
+                        ["0", "Bone-only, no epidural involvement", "No cord compression"],
+                        ["1a", "Epidural extension, no thecal deformation", "No cord compression"],
+                        ["1b", "Thecal deformation, no cord abutment", "No cord compression"],
+                        ["1c", "Cord abutment", "No cord compression"],
+                        ["2", "Cord compression — CSF visible", "Cord compression present"],
+                        ["3", "Cord compression — no CSF visible", "Cord compression present (severe)"],
+                      ],
+                    },
                   },
                   {
                     name: "Frankel Classification",
@@ -1363,14 +1676,25 @@ const SITES = [
                 ],
               },
               {
-                heading: "Supportive Care",
-                type: "list",
-                groups: [
-                  { icon: "immediate", label: "Mobilisation", items: ["Graded sitting → weight-bearing once stability confirmed", "Return to supine immediately if neurology or pain deteriorates", "Minimise duration of flat bed rest — stop once spine declared stable"] },
-                  { icon: "management", label: "Orthoses", items: ["C2–C5 → cervical collar", "C6–T5 → cervicothoracic orthosis (CTO)", "T6–L5 → thoracolumbar spinal orthosis (TLSO)", "L2–L5 → lumbar spinal orthosis (LSO)", "Refer via Nervecentre — include stability info and reason"] },
-                  { icon: "monitoring", label: "Bladder & Bowel", items: ["Consider long-term indwelling urinary catheter", "Follow EMSN neurogenic bowel pathway", "Monitor for autonomic dysreflexia (T6 and above): pounding headache + BP ↑20–40mmHg — sit up, loosen clothing, BP q15min. SBP >150: GTN 2 sprays SL or captopril 25mg SL"] },
-                  { icon: "bloods", label: "VTE & Pressure Care", items: ["Prophylactic LMWH + anti-embolism stockings / IPC throughout admission", "Turn every 2–3h if bed-bound", "High-grade pressure-relieving mattress"] },
-                  { icon: "referral", label: "Rehabilitation & Discharge", items: ["PT referral via Nervecentre within 24h; OT within 48h", "SMART goal-setting from day 1", "Discharge planning starts on admission — led by named individual", "Community nursing, rehabilitation, social services referrals as needed before discharge"] },
+                heading: "References",
+                type: "reference_table",
+                items: [
+                  { name: "NICE (2023) 'Overview: Spinal metastases and metastatic spinal cord compression'. Guidance, published 06 September 2023.", url: "https://www.nice.org.uk/guidance/ng234" },
+                  { name: "East Midlands Spinal Network Pathway, September 2020, v1.0.", url: "" },
+                  { name: "NHS England (2018) 'Referral of patients with spinal metastatic disease and suspected metastatic spinal cord compression'.", url: "https://www.england.nhs.uk/mids-east/wp-content/uploads/sites/7/2018/08/guidelines-for-the-referral-of-patients-spinal-metastatic-disease-v2.pdf" },
+                  { name: "Royal College of Radiologists. 'Radiotherapy dose fractionation', 4th edition.", url: "https://www.rcr.ac.uk/our-services/all-our-publications/clinical-oncology-publications/radiotherapy-dose-fractionation-fourth-edition/" },
+                  { name: "NICE (2023) 'Overview: Metastatic malignant disease of unknown primary origin in adults — diagnosis and management'. Guidance, updated 26 April 2023.", url: "https://www.nice.org.uk/guidance/cg104" },
+                  { name: "Loblaw, D.A. et al. (2005) 'Systematic review of the diagnosis and management of malignant extradural spinal cord compression: the Cancer Care Ontario Practice Guidelines Initiative's Neuro-Oncology Disease Site Group', Journal of Clinical Oncology, 23(9), pp. 2028–2037.", url: "https://doi.org/10.1200/jco.2005.00.067" },
+                  { name: "Hoskin, P.J. et al. (2019) 'Effect of single-fraction vs multifraction radiotherapy on ambulatory status among patients with spinal canal compression from metastatic cancer', JAMA, 322(21), p. 2084.", url: "https://doi.org/10.1001/jama.2019.17913" },
+                  { name: "NICE CKS. 'Corticosteroids — Oral'.", url: "https://cks.nice.org.uk/topics/corticosteroids-oral/" },
+                  { name: "NICE BNF. 'Dexamethasone'.", url: "https://bnf.nice.org.uk/drugs/dexamethasone/" },
+                  { name: "East Midlands Spinal Network QSIEG. 'Neurogenic Bowel Care Pathway', July 2022, v1.5.", url: "https://www.eastmidlandsodn.org/uploads/1/4/5/6/145629613/emsn-bowel-pathway-july-2022-v-1-5-ratified.pdf" },
+                  { name: "East Midlands Spinal Network QSIEG. 'Autonomic Dysreflexia Care Pathway', July 2022, v1.3.", url: "https://www.eastmidlandsodn.org/uploads/1/4/5/6/145629613/emsn-ad-pathway-july-2022-v-1-3-ratified.pdf" },
+                  { name: "Tokuhashi, Y. et al. (2005) 'A revised scoring system for preoperative evaluation of metastatic spine tumor prognosis', Spine, 30(19), pp. 2186–2191.", url: "https://doi.org/10.1097/01.brs.0000180401.06919.a5" },
+                  { name: "Quraishi, N.A. et al. (2013) 'Accuracy of the revised Tokuhashi score in predicting survival in patients with metastatic spinal cord compression (MSCC)', European Spine Journal, 22(S1), pp. 21–26.", url: "https://doi.org/10.1007/s00586-012-2649-5" },
+                  { name: "Fisher, C.G. et al. (2010) 'A novel classification system for spinal instability in neoplastic disease', Spine, 35(22).", url: "https://doi.org/10.1097/brs.0b013e3181e16ae2" },
+                  { name: "Laufer, I. et al. (2013) 'The NOMS framework: approach to the treatment of spinal metastatic tumors', The Oncologist, 18(6), pp. 744–751.", url: "https://doi.org/10.1634/theoncologist.2012-0293" },
+                  { name: "Lee, S.H. et al. (2015) 'Positioning and spinal bracing for pain relief in metastatic spinal cord compression in adults', Cochrane Database of Systematic Reviews, 2015(9).", url: "https://doi.org/10.1002/14651858.cd007609.pub3" },
                 ],
               },
             ],
@@ -1393,7 +1717,7 @@ const SITES = [
             calculators: [],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=06a07ac9af7cd720d38a9e0c02fe22d8",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9726&query_desc=mucositis",
-            updated: "Feb 2028 (review)",
+            updated: "February 2028",
             sections: [
               {
                 heading: "⚠ Risk Factors for Severe Mucositis",
@@ -1409,85 +1733,26 @@ const SITES = [
                 note: "Identify and address modifiable risk factors at treatment initiation.",
               },
               {
-                heading: "CTCAE Grading",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Grade 1 — Mild", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Asymptomatic or mild symptoms", "Normal diet maintained", "Erythema only on examination"] },
-                  { grade: 2, label: "Grade 2 — Moderate", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Moderate pain", "Not interfering with oral intake", "Modified diet indicated"] },
-                  { grade: 3, label: "Grade 3 — Severe", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["Severe pain", "Interfering with oral intake", "Ulceration present"] },
-                  { grade: 4, label: "Grade 4 — Life-threatening", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Life-threatening consequences", "Urgent intervention required", "Unable to maintain nutrition/hydration"] },
-                ],
-                management: [
-                  {
-                    grade: 1,
-                    icpi: "Continue treatment — monitor closely",
-                    items: [
-                      "Normal saline or water mouthwash 10ml QDS — vigorous 'ballooning and sucking' motion for ≥30 seconds",
-                      "Avoid chlorhexidine mouthwash — no evidence of superiority over saline and may increase mucosal irritation",
-                      "Bonjela PRN or Orabase applied to mouth ulcers (if not contraindicated)",
-                      "Paracetamol 1g QDS regularly — add oral opioid if needed",
-                      "Consider benzydamine mouthwash 15ml QDS or antacid + oxetacaine suspension 5–10ml sipped slowly QDS before meals",
-                      "Advise patient: oxetacaine contains local anaesthetic — avoid hot food immediately after use",
-                      "Consider benzydamine 0.15% oromucosal spray if specific areas affected",
-                      "Monitor nutritional status and hydration — consider admission if worsening",
-                    ],
-                  },
-                  {
-                    grade: 2,
-                    icpi: "Continue — consider admission if unable to maintain oral intake",
-                    items: [
-                      "All measures from Grade 1 above",
-                      "!!Caphosol 4–10 times daily: mix 15ml phosphate solution (A) + 15ml calcium solution (B), rinse 1 minute and spit. OR dispersible tablet in 50ml water, swish half then half, spit each.",
-                      "Gelclair one sachet TDS or as needed: mix with 40ml water and rinse, or apply neat to mucosa — forms bioprotective barrier over exposed nerve endings",
-                      "Episil spray 2–3 times daily to affected areas — adheres to mucosa, forms mechanical barrier for pain relief",
-                      "Instillagel® (lidocaine + chlorhexidine gel) to anterior oral cavity — head and neck patients, consultant recommendation only (unlicensed indication)",
-                      "Apply barrier preparations after mouthwashes — leave 30 minutes between different mouthwashes and before food/drink",
-                      "Gelclair may be started at Grade 1 for H&N radiotherapy patients if mucositis expected to rapidly progress",
-                    ],
-                  },
-                  {
-                    grade: 3,
-                    icpi: "Consider dose reduction or treatment delay — discuss with registrar/consultant",
-                    items: [
-                      "!!Consider hospital admission if pain, hydration, or nutritional needs cannot be managed as outpatient",
-                      "!!Assess for oral candidiasis — high risk at Grade 3. If present: systemic antifungals only (topical not effective at this grade)",
-                      "Review oral medication compliance — switch to liquid/soluble/topical preparations where possible",
-                      "All Grade 1–2 mouthcare measures continue — benzydamine frequency may be increased to up to 10 times/day (dilute if causing irritation)",
-                      "!!Discuss with senior regarding enteral or parenteral feeding — refer to dietician",
-                      "Discuss dose reduction for next cycle with registrar or consultant",
-                    ],
-                  },
-                  {
-                    grade: 4,
-                    icpi: "Treatment delay/hold — urgent consultant review",
-                    items: [
-                      "!!Admit to hospital",
-                      "!!Urgent intervention — nutritional and hydration support",
-                      "All Grade 3 measures apply",
-                      "Manage oral infection as per infection section",
-                    ],
-                  },
-                ],
-              },
-              {
                 heading: "Prevention",
-                type: "list",
+                type: "expand_groups",
                 groups: [
                   {
-                    icon: "management", label: "General Oral Hygiene — All Patients",
+                    icon: "management",
+                    heading: "General Oral Hygiene — All Patients",
                     items: [
-                      "Dental review before chemotherapy starts — address any oral hygiene issues",
-                      "Soft toothbrush + fluoride toothpaste twice daily — replace toothbrush monthly",
+                      { text: "Dental review before chemotherapy starts", children: ["Address any oral hygiene issues"] },
+                      { text: "Soft toothbrush + fluoride toothpaste twice daily", children: ["Replace toothbrush monthly"] },
                       "If brushing too painful: children's 6+ fluoride toothpaste/gel with baby toothbrush",
                       "Rinse mouth with water after meals",
-                      "Saline or water mouthwash from day 1 of treatment — use at different time to brushing",
+                      { text: "Saline or water mouthwash from day 1 of treatment", children: ["Use at different time to brushing"] },
                       "Dentures: clean after each meal, soak overnight in usual solution in closed container",
-                      "Maintain good nutrition and hydration — avoid hot, rough, sharp, hard foods",
+                      { text: "Maintain good nutrition and hydration", children: ["Avoid hot, rough, sharp, hard foods"] },
                       "Stop smoking and reduce alcohol intake during treatment",
                     ],
                   },
                   {
-                    icon: "drug", label: "5-FU Bolus — Cryotherapy",
+                    icon: "drug",
+                    heading: "5-FU Bolus — Cryotherapy",
                     items: [
                       "Chew ice cubes/chips for 30 minutes, starting 5 minutes before 5-FU administration",
                       "Reduces vascular delivery of cytotoxic to oral epithelium",
@@ -1495,81 +1760,246 @@ const SITES = [
                     ],
                   },
                   {
-                    icon: "drug", label: "Head & Neck Radiotherapy — Additional Prevention",
+                    icon: "drug",
+                    heading: "Head & Neck Radiotherapy — Additional Prevention",
                     items: [
-                      "Caphosol QDS: 15ml solution A + 15ml solution B, rinse 1 minute and spit — lubricates mucosa and promotes mucosal repair",
+                      { text: "Caphosol QDS: 15ml solution A + 15ml solution B, rinse 1 minute and spit", children: ["Lubricates mucosa and promotes mucosal repair"] },
                       "Benzydamine mouthwash: recommended for prevention in H&N patients receiving chemo-RT",
                     ],
                   },
                 ],
               },
               {
-                heading: "Oral Infection Management",
-                type: "callouts",
-                panels: [
+                heading: "Presentation",
+                type: "grader",
+                grades: [
+                  { grade: 1, label: "Grade 1 — Mild", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Asymptomatic or mild symptoms", "Normal diet maintained", "Erythema only on examination"] },
+                  { grade: 2, label: "Grade 2 — Moderate", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Moderate pain", "Not interfering with oral intake", "Modified diet indicated"] },
+                  { grade: 3, label: "Grade 3 — Severe", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["Severe pain", "Interfering with oral intake", "Ulceration present"] },
+                  { grade: 4, label: "Grade 4 — Life-threatening", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Life-threatening consequences", "Urgent intervention required", "Unable to maintain nutrition/hydration"] },
+                ],
+              },
+              {
+                heading: "Management by Grade",
+                type: "grader",
+                management: [
                   {
-                    label: "Fungal Infection (Candidiasis)",
-                    color: "#744210",
-                    headerBg: "#fffff0",
-                    blocks: [
+                    grade: 1,
+                    icpi: "Continue treatment — monitor closely",
+                    items: [
                       {
-                        icon: "drug", heading: "Treatment — Grade 1/2", color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                        header: "Normal saline or water mouthwash 10ml QDS",
+                        children: [
+                          "Vigorous 'ballooning and sucking' motion for ≥30 seconds",
+                          "**Avoid** chlorhexidine mouthwash (no evidence of benefit vs saline, may increase irritation)",
+                        ],
+                      },
+                      {
+                        header: "Bonjela PRN",
+                        children: [
+                          "Or Orabase applied to mouth ulcers (if not contraindicated)",
+                        ],
+                      },
+                      {
+                        header: "Paracetamol 1g QDS",
+                        children: [
+                          "Add oral opioid if needed",
+                        ],
+                      },
+                      { subheading: "Consider" },
+                      {
+                        text: "**Benzydamine mouthwash 15ml QDS**",
+                        children: [
+                          "Consider benzydamine 0.15% oromucosal spray if specific areas affected",
+                        ],
+                      },
+                      {
+                        text: "or **antacid + oxetacaine suspension 5–10ml** sipped slowly QDS before meals",
+                        children: [
+                          "Advise patient: oxetacaine contains local anaesthetic; **avoid hot food** immediately after use",
+                        ],
+                      },
+                      "Monitor nutritional status and hydration — consider admission if worsening",
+                      { info: true, text: "**Gelclair** may be started at Grade 1 for H&N radiotherapy patients if mucositis expected to rapidly progress" },
+                    ],
+                  },
+                  {
+                    grade: 2,
+                    icpi: "Continue — consider admission if unable to maintain oral intake",
+                    items: [
+                      { alert: true, text: "All measures from Grade 1 above" },
+                      {
+                        header: "Caphosol 4–10 times daily",
+                        children: [
+                          "Mix 15ml phosphate solution (A) + 15ml calcium solution (B)",
+                          "Rinse 1 minute and spit. OR dispersible tablet in 50ml water",
+                          "Swish half then half, spit each",
+                        ],
+                      },
+                      {
+                        header: "Gelclair one sachet TDS",
+                        children: [
+                          "Or as needed",
+                          "Mix with 40ml water and rinse",
+                          "Or apply neat to mucosa",
+                          "Forms bioprotective barrier over exposed nerve endings",
+                        ],
+                      },
+                      {
+                        header: "Episil spray 2–3 times daily",
+                        children: [
+                          "Only to affected areas",
+                          "Adheres to mucosa, forms mechanical barrier for pain relief",
+                        ],
+                      },
+                      {
+                        header: "Instillagel®",
+                        children: [
+                          "(Lidocaine + chlorhexidine gel) to anterior oral cavity",
+                          "Head and neck patients, consultant recommendation only (unlicensed indication)",
+                        ],
+                      },
+                      {
+                        info: true,
+                        text: "Barrier Preparations (Gelclair/Episil)",
+                        children: [
+                          "Apply barrier preparations after mouthwashes",
+                          "Leave 30 minutes between different mouthwashes and before food/drink",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    grade: 3,
+                    icpi: "Consider dose reduction or treatment delay — discuss with registrar/consultant",
+                    items: [
+                      {
+                        alert: true,
+                        text: "All Grade 1–2 mouthcare measures continue",
+                        children: [
+                          "Benzydamine frequency may be increased to up to 10 times/day",
+                          "Dilute if causing irritation",
+                        ],
+                      },
+                      {
+                        header: "Review compliance",
+                        children: [
+                          "Switch to liquid/soluble/topical preparations where possible",
+                        ],
+                      },
+                      {
+                        header: "Consider hospital admission",
+                        children: [
+                          "If pain, hydration, or nutritional needs cannot be managed as outpatient",
+                        ],
+                      },
+                      "Discuss with senior regarding enteral or parenteral feeding — refer to dietician",
+                      {
+                        header: "Assess for oral candidiasis",
+                        children: [
+                          "**High risk** at Grade 3",
+                          "If present: systemic antifungals only (topical not effective at this grade)",
+                        ],
+                      },
+                      {
+                        header: "SACT",
+                        children: [
+                          "Discuss dose reduction for next cycle with registrar or consultant",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    grade: 4,
+                    icpi: "Treatment delay/hold — urgent consultant review",
+                    items: [
+                      {
+                        info: true,
+                        text: "Admit to hospital",
+                        children: [
+                          "Urgent intervention — nutritional and hydration support",
+                        ],
+                      },
+                      { alert: true, text: "All Grade 3 measures apply" },
+                      "Manage oral infection as per infection section",
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Oromucosal Infections",
+                type: "expand_groups",
+                groups: [
+                  {
+                    icon: "drug",
+                    heading: "Fungal Infection (Candidiasis)",
+                    subsections: [
+                      {
+                        label: "Treatment — Grade 1/2",
                         items: [
-                          "Fluconazole 50mg OD orally for 7–14 days",
+                          { callout: true, icon: "pill", text: "Fluconazole 50mg OD PO for 7–14 days" },
                           "Increase to 100mg OD if immunocompromised",
-                          "Consider syrup formulation if unable to swallow capsules",
-                          "Monitor LFTs during fluconazole treatment",
+                          "Consider syrup formulation if patient unable to swallow capsules",
                           "Seek microbiology advice if fluconazole not effective",
                           "Consider prophylactic antifungals if repeated oral candidiasis",
+                          "Monitor liver function tests while patient on fluconazole",
                         ],
                       },
                       {
-                        icon: "drug", heading: "Treatment — Grade 3", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
+                        label: "Treatment — Grade 3",
                         items: [
-                          "!!Fluconazole 100mg OD orally or 100mg OD IV",
-                          "Resistant candidiasis: seek microbiology advice",
-                          "Continue mouthwashes and analgesia throughout",
+                          { callout: true, icon: "pill", text: "Fluconazole 100mg OD PO (or 100mg OD IV)" },
+                          "For resistant oral candidiasis, seek advice from microbiology",
                         ],
                       },
                     ],
                   },
                   {
-                    label: "Herpes Simplex (HSV) Infection",
-                    color: "#742a2a",
-                    headerBg: "#fff5f5",
-                    blocks: [
+                    icon: "drug",
+                    heading: "Herpes Simplex (HSV) Infection",
+                    subsections: [
                       {
-                        icon: "drug", heading: "Treatment — Grade 1/2", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        label: "Treatment — Grade 1/2",
                         items: [
-                          "Aciclovir 200mg 5 times daily orally for 5 days",
-                          "Increase to 400mg 5 times daily if immunocompromised",
-                          "Consider prophylactic antivirals for repeated herpes infection",
+                          { callout: true, icon: "pill", text: "Aciclovir 200mg five times a day PO for 5 days" },
+                          "Increase dose to 400mg five times a day if immunocompromised",
+                          "Consider prophylactic antivirals in repeated herpes infection",
                         ],
                       },
                       {
-                        icon: "drug", heading: "Treatment — Grade 3", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                        label: "Treatment — Grade 3",
                         items: [
-                          "!!Aciclovir 200mg 5 times daily orally (or 5mg/kg TDS IV)",
-                          "Immunocompromised: increase to 400mg 5 times daily orally (or 10mg/kg TDS IV)",
-                          "Continue mouthwashes and analgesia",
+                          { callout: true, icon: "pill", text: "Aciclovir 200mg five times a day PO (or 5mg/kg TDS IV)" },
+                          "Increase to 400mg five times a day PO (or 10mg/kg TDS IV) if immunocompromised",
                         ],
                       },
                     ],
                   },
                   {
-                    label: "Anaerobic Bacterial Infection",
-                    color: "#1a6b8a",
-                    headerBg: "#e8f4f8",
-                    blocks: [
+                    icon: "drug",
+                    heading: "Anaerobic Bacterial Infection",
+                    subsections: [
                       {
-                        icon: "drug", heading: "Treatment — Grade 3", color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0",
+                        label: "Treatment — Grade 3",
                         items: [
-                          "Metronidazole 400mg TDS orally (or 500mg TDS IV)",
-                          "Continue mouthwashes and analgesia",
+                          { callout: true, icon: "pill", text: "Metronidazole 400mg TDS PO (or 500mg TDS IV)" },
                         ],
                       },
                     ],
                   },
+                ],
+              },
+              {
+                heading: "References",
+                type: "references",
+                items: [
+                  "NUH Nottingham University Hospitals. [Guidelines for the management of mucositis associated with chemotherapy and/or radiotherapy](https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9726&query_desc=mucositis). V5.0. December 2018.",
+                  "Elad S, Cheng KKF, Lalla RV, et al. [MASCC/ISOO clinical practice guidelines for the management of mucositis secondary to cancer therapy](https://doi.org/10.1002/cncr.33100). Cancer 2020; 126: 4423–4431.",
+                  "Worthington HV, Clarkson JE, Bryan G, et al. [Interventions for preventing oral mucositis for patients with cancer receiving treatment](https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD000978.pub5/full). The Cochrane Library, 2011, Issue 4.",
+                  "UK Oral Management in Cancer Care Group (UKOMiC). [Oral care guidance and support in cancer and palliative care](https://ukomic.com/documents/UKOMiC-Guidance-3rd-Edition.pdf). Third Edition. June 2019.",
+                  "[Nottinghamshire Joint Formulary](https://www.nottsapc.nhs.uk/joint-formulary/). Accessed April 2022.",
+                  "[Summary of product characteristics](https://www.medicines.org.uk/emc) for individual medicines — electronic Medicines Compendium (emc).",
+                  "Recommended best practice based on clinical experience of guideline developers.",
                 ],
               },
             ],
@@ -1586,7 +2016,7 @@ const SITES = [
             related: ["onco-neutropenic-sepsis", "onco-mucositis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3691c5877f67bbf1d519fe66515e3bc6",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9824&query_desc=diarrhoea",
-            updated: "May 2023 (review)",
+            updated: "May 2023",
             sections: [
               {
                 heading: "CTCAE Grading (NCI v5)",
@@ -1711,55 +2141,8 @@ const SITES = [
             related: ["onco-chemo-rt-diarrhoea", "onco-mucositis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=d8886b7660342320c8e4ad7cf4de2c1b",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9712&query_desc=nausea",
-            updated: "February 2028 (review)",
+            updated: "February 2028",
             sections: [
-              {
-                heading: "Types of CINV — Identify Before Treating",
-                type: "cinv_types",
-                types: [
-                  {
-                    key: "acute",
-                    label: "Acute",
-                    timing: "Within 24 hours of chemotherapy",
-                    definition: "Occurs within 24h of chemotherapy administration, normally peaking at 5–6 hours. Antiemetic therapy must be started BEFORE chemotherapy and cover the full first 24 hours.",
-                    notes: [
-                      "!!Start antiemetics before chemotherapy — pre-emptive dosing is essential",
-                      "Cover must extend through the first 24 hours post-administration",
-                    ],
-                  },
-                  {
-                    key: "delayed",
-                    label: "Delayed",
-                    timing: "24 hours to 7 days post-chemotherapy",
-                    definition: "Begins at least 24 hours after chemotherapy and can last up to 7 days. Most commonly associated with cisplatin (peak intensity 48–72h), carboplatin, cyclophosphamide, and anthracyclines.",
-                    notes: [
-                      "Prophylactic oral antiemetics given regularly — dexamethasone is particularly effective for delayed CINV",
-                      "Ensure patients are discharged with adequate post-chemo antiemetics prescribed",
-                    ],
-                  },
-                  {
-                    key: "anticipatory",
-                    label: "Anticipatory",
-                    timing: "Hours to days before chemotherapy",
-                    definition: "A conditioned response occurring before chemotherapy begins. More common following poor emesis control with previous cycles — prevention of acute and delayed CINV is the best way to reduce anticipatory CINV.",
-                    notes: [
-                      "Lorazepam 1–2mg at night on the day before chemo — can be added to any regimen",
-                      "!!Do not use lorazepam as a single agent for emesis control",
-                    ],
-                  },
-                  {
-                    key: "breakthrough",
-                    label: "Breakthrough & Refractory",
-                    timing: "Despite standard antiemetic therapy",
-                    definition: "Breakthrough: nausea/vomiting occurring despite standard prophylaxis, requiring additional rescue antiemetic. Refractory: occurs despite both standard and rescue antiemetic treatment.",
-                    notes: [
-                      "Assess and document CTCAE grade after every chemotherapy cycle",
-                      "Adjust antiemetic regimen before the next cycle based on prior experience",
-                      "Consider patient-specific risk factors when escalating (see Risk Factors section)",
-                    ],
-                  },
-                ],
-              },
               {
                 heading: "Patient Risk Factors",
                 type: "list",
@@ -1790,370 +2173,424 @@ const SITES = [
                 ],
               },
               {
-                heading: "Antiemetic Regimens by Emetogenic Risk",
-                type: "cinv_regimens",
-                note: "Choose regimen based on the highest-risk agent in the regimen. Common causative agents shown — for full drug lists see Emetogenic Risk Reference below. If drug not listed, consult Pharmacy.",
-                tiers: [
+                heading: "Types of CINV",
+                intro: "Identify before treating.",
+                type: "cinv_types",
+                types: [
                   {
-                    key: "high",
-                    label: "High Emetic Risk — >90% without prophylaxis",
-                    agents: "cisplatin, AC/EC/FEC regimens, ABVD, dacarbazine, carmustine, cyclophosphamide ≥1500mg/m²",
-                    pre: [
-                      "Dexamethasone 8mg IV",
-                      "Ondansetron‡ 8mg PO or IV",
-                      "NK1 antagonist 60 min prior — standard for cisplatin ≥70mg/m², anthracycline/cyclophosphamide combinations, ABVD, BEP, T-BEP, PEP:",
-                      "  · Akynzeo® (netupitant 300mg/palonosetron 0.5mg) — single PO dose",
-                      "  · Aprepitant 125mg PO",
-                      "  · Fosaprepitant 150mg IV",
+                    key: "acute",
+                    label: "Acute",
+                    timing: "≤24h of chemo",
+                    definition: "Occurs within 24h of chemotherapy administration, normally peaking at 5–6 hours. Antiemetic therapy must be started BEFORE chemotherapy and cover the full first 24 hours.",
+                    notes: [
+                      "!!Start antiemetics before chemotherapy — pre-emptive dosing is essential",
+                      "Cover must extend through the first 24 hours post-administration",
                     ],
-                    post: [
-                      "Metoclopramide 10mg TDS PO for 5 days  OR  Domperidone 10mg TDS PO for 7 days (if <40 years)",
-                      "Dexamethasone 4mg BD (morning + lunchtime) PO for 3 days",
-                    ],
-                    second: [
-                      "Add ondansetron 8mg BD PO × 3 days post-chemo",
-                      "Increase pre-chemo ondansetron to 16mg IV (if <75 years), or add second 8mg IV dose on day of chemo",
-                      "Increase dexamethasone IV to 16mg (max 12mg if combined with NK1); extend PO course to 5 days",
-                      "Add olanzapine 10mg PO day of chemo + days 2–4; consider 5mg if sedation is a concern — substitute for metoclopramide",
-                      "Alternatives to metoclopramide: cyclizine 50mg TDS PO, levomepromazine up to 6mg QDS PO — do not duplicate dopaminergic cover",
-                      "Granisetron 1mg BD PO PRN up to 7 days in place of ondansetron",
-                      "SC via syringe driver: cyclizine 150mg/24hr or levomepromazine 12.5–25mg/24hr",
-                    ],
-                    notes: "‡ Omit ondansetron and all 5-HT3 antagonists for 5 days following Akynzeo® administration (contains palonosetron). NK1 antagonist not yet added — consider if vomiting not controlled.",
                   },
                   {
-                    key: "moderate",
-                    label: "Moderate Emetic Risk — 30–90% without prophylaxis",
-                    agents: "carboplatin, oxaliplatin, irinotecan, epirubicin, doxorubicin, cyclophosphamide <1500mg/m², temozolomide",
-                    pre: [
-                      "Dexamethasone 8mg IV",
-                      "Ondansetron 8mg IV or PO",
+                    key: "delayed",
+                    label: "Delayed",
+                    timing: "24h-7d post chemo",
+                    definition: "Begins at least 24 hours after chemotherapy and can last up to 7 days. Most commonly associated with cisplatin (peak intensity 48–72h), carboplatin, cyclophosphamide, and anthracyclines.",
+                    notes: [
+                      "Prophylactic oral antiemetics given regularly — dexamethasone is particularly effective for delayed CINV",
+                      "Ensure patients are discharged with adequate post-chemo antiemetics prescribed",
                     ],
-                    post: [
-                      "Metoclopramide 10mg TDS PO × 3 days, then 10mg TDS PRN up to 5 days total  OR  Domperidone 10mg TDS PO × 3 days then PRN up to 7 days total (if <40 years)",
-                      "Dexamethasone 4mg BD (morning + lunchtime) PO × 3 days",
-                    ],
-                    second: [
-                      "Consider NK1 antagonist addition for carboplatin ≥AUC 4",
-                      "See high emetic risk second-line options above",
-                      "!!Olanzapine NOT recommended for moderate emetogenic risk regimens — insufficient evidence",
-                    ],
-                    notes: "For carboplatin ≥AUC 4: consider treating as high risk tier and adding NK1 antagonist upfront if patient has prior CINV history or multiple risk factors.",
                   },
                   {
-                    key: "low",
-                    label: "Low Emetic Risk — 10–30% without prophylaxis",
-                    agents: "docetaxel, paclitaxel, gemcitabine, fluorouracil, pemetrexed, capecitabine (oral), etoposide",
-                    pre: [
-                      "Dexamethasone 8mg IV",
-                      "No 5-HT3 antagonist routinely required",
+                    key: "anticipatory",
+                    label: "Anticipatory",
+                    timing: "Hours-Days pre chemo",
+                    definition: "A conditioned response occurring before chemotherapy begins. More common following poor emesis control with previous cycles — prevention of acute and delayed CINV is the best way to reduce anticipatory CINV.",
+                    notes: [
+                      "Lorazepam 1–2mg at night on the day before chemo — can be added to any regimen",
+                      "!!Do not use lorazepam as a single agent for emesis control",
                     ],
-                    post: [
-                      "Metoclopramide 10mg TDS PRN PO up to 5 days  OR  Domperidone 10mg TDS PRN PO up to 7 days (if <40 years)",
-                    ],
-                    second: [
-                      "Add ondansetron 8mg PO or IV to pre-chemo",
-                      "Switch from PRN to regular metoclopramide or domperidone post-chemo",
-                      "Add dexamethasone 4mg BD PO × 3 days post-chemo",
-                      "Alternatives to metoclopramide: cyclizine 50mg TDS PO, levomepromazine up to 6mg QDS PO",
-                      "Granisetron 1mg BD PO PRN up to 7 days instead of ondansetron",
-                    ],
-                    notes: "Pre-chemo dexamethasone is the only routine pre-medication for low-risk regimens. Escalate promptly if PRN post-chemo antiemetics are being used regularly.",
                   },
                   {
-                    key: "minimal",
-                    label: "Minimal Emetic Risk — <10% without prophylaxis",
-                    agents: "trastuzumab, checkpoint inhibitors (pembrolizumab, nivolumab), rituximab, vincristine, vinorelbine IV, bleomycin",
-                    pre: [
-                      "No prophylactic antiemetics required for patients without prior history of nausea/vomiting",
+                    key: "breakthrough",
+                    label: "Breakthrough & Refractory",
+                    timing: "Despite 1L antiemetics",
+                    definition: "Breakthrough: nausea/vomiting occurring despite standard prophylaxis, requiring additional rescue antiemetic. Refractory: occurs despite both standard and rescue antiemetic treatment.",
+                    notes: [
+                      "Assess and document CTCAE grade after every chemotherapy cycle",
+                      "Adjust antiemetic regimen before the next cycle based on prior experience",
+                      "Consider patient-specific risk factors when escalating (see Risk Factors section)",
                     ],
-                    post: [
-                      "Metoclopramide 10mg TDS PRN PO up to 5 days  OR  Domperidone 10mg TDS PRN PO up to 7 days (if <40 years)",
-                    ],
-                    second: [
-                      "Add dexamethasone 8mg PO or IV pre-chemo",
-                      "Switch from PRN to regular metoclopramide or domperidone",
-                    ],
-                    notes: "If patient has prior CINV history or multiple patient-specific risk factors, consider stepping up to low-risk regimen at first cycle.",
                   },
                 ],
               },
               {
-                heading: "Individual Antiemetic Drug Notes",
-                type: "callouts",
-                panels: [
+                heading: "High Emetogenic Risk",
+                type: "cinv_risk_tier",
+                note: "Expand Chemo Agents for causative drugs/regimens. Expand Premedication, Post Medications or Second Line under Management for the antiemetic protocol.",
+                tier: {
+                  key: "high",
+                  label: "High Emetogenic Risk",
+                  color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                  agentGroups: [
+                    { heading: "Platinum agents", items: ["Cisplatin (all doses)", "Cyclophosphamide ≥1500mg/m²"] },
+                    { heading: "Alkylating agents", items: ["Carmustine", "Dacarbazine", "Procarbazine (oral)", "Streptozocin"] },
+                  ],
+                  comboTable: [
+                    { agent: "ABVD (doxorubicin, bleomycin, vinblastine, dacarbazine)", management: "NK1 standard" },
+                    { agent: "BEP, CBOP-BEP, T-BEP, PEP", management: "NK1 standard" },
+                    { agent: "AC/EC/FEC, CHOP, CAV (anthracycline/cyclophosphamide combinations)", management: "NK1 standard" },
+                    { agent: "ECF/ECX (epirubicin, cisplatin, fluorouracil/capecitabine)", management: "" },
+                    { agent: "MVAC (methotrexate, vinblastine, doxorubicin, cisplatin)", management: "" },
+                    { agent: "TPF (docetaxel, cisplatin, fluorouracil)", management: "" },
+                    { agent: "TIP (paclitaxel, ifosfamide, cisplatin)", management: "Consider NK1" },
+                    { agent: "VIDE (vincristine, ifosfamide, doxorubicin, etoposide)", management: "Consider NK1" },
+                    { agent: "Ifosfamide-containing regimens ≥3g/m²/day", management: "Consider NK1" },
+                    { agent: "Topotecan/cyclophosphamide", management: "" },
+                  ],
+                  managementTier: {
+                    label: "High Emetic Risk — >90% without prophylaxis",
+                    agents: "cisplatin, AC/EC/FEC regimens, ABVD, dacarbazine, carmustine, cyclophosphamide ≥1500mg/m²",
+                    pre: [
+                      { drug: "Dexamethasone", dose: "8mg", route: "IV", notes: "" },
+                      { drug: "Ondansetron‡", dose: "8mg", route: "PO or IV", notes: "" },
+                      { drug: "Akynzeo® (netupitant/palonosetron)", dose: "300mg/0.5mg", route: "PO", notes: "Single dose, 60 min prior — NK1 antagonist, standard for cisplatin ≥70mg/m², anthracycline/cyclophosphamide combinations, ABVD, BEP, T-BEP, PEP" },
+                      { drug: "Aprepitant", dose: "125mg", route: "PO", notes: "60 min prior — NK1 antagonist, standard for cisplatin ≥70mg/m², anthracycline/cyclophosphamide combinations, ABVD, BEP, T-BEP, PEP" },
+                      { drug: "Fosaprepitant", dose: "150mg", route: "IV", notes: "60 min prior — NK1 antagonist, standard for cisplatin ≥70mg/m², anthracycline/cyclophosphamide combinations, ABVD, BEP, T-BEP, PEP" },
+                    ],
+                    post: [
+                      { drug: "Metoclopramide", dose: "10mg", route: "PO", notes: "TDS for 5 days" },
+                      { drug: "Domperidone", dose: "10mg", route: "PO", notes: "TDS for 7 days (if <40 years) — alternative to metoclopramide" },
+                      { drug: "Dexamethasone", dose: "4mg", route: "PO", notes: "BD (morning + lunchtime) for 3 days" },
+                    ],
+                    second: [
+                      { drug: "Ondansetron", dose: "8mg", route: "PO", notes: "Add BD × 3 days post-chemo" },
+                      { drug: "Ondansetron", dose: "16mg", route: "IV", notes: "Increase pre-chemo dose (if <75 years), or add second 8mg IV dose on day of chemo" },
+                      { drug: "Dexamethasone", dose: "16mg (max 12mg if combined with NK1)", route: "IV", notes: "Increase IV dose; extend PO course to 5 days" },
+                      { drug: "Olanzapine", dose: "10mg (5mg if sedation is a concern)", route: "PO", notes: "Day of chemo + days 2–4 — substitute for metoclopramide" },
+                      { drug: "Cyclizine", dose: "50mg", route: "PO", notes: "TDS — alternative to metoclopramide, do not duplicate dopaminergic cover" },
+                      { drug: "Levomepromazine", dose: "up to 6mg", route: "PO", notes: "QDS — alternative to metoclopramide, do not duplicate dopaminergic cover" },
+                      { drug: "Granisetron", dose: "1mg", route: "PO", notes: "BD PRN up to 7 days, in place of ondansetron" },
+                      { drug: "Cyclizine", dose: "150mg/24hr", route: "SC (syringe driver)", notes: "" },
+                      { drug: "Levomepromazine", dose: "12.5–25mg/24hr", route: "SC (syringe driver)", notes: "" },
+                    ],
+                    notes: "‡ Omit ondansetron and all 5-HT3 antagonists for 5 days following Akynzeo® administration (contains palonosetron). NK1 antagonist not yet added — consider if vomiting not controlled.",
+                  },
+                },
+              },
+              {
+                heading: "Moderate Emetogenic Risk",
+                type: "cinv_risk_tier",
+                note: "Expand Chemo Agents for causative drugs/regimens. Expand Premedication, Post Medications or Second Line under Management for the antiemetic protocol.",
+                tier: {
+                  key: "moderate",
+                  label: "Moderate Emetogenic Risk",
+                  color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
+                  agentGroups: [
+                    { heading: "Platinum agents", items: ["Carboplatin × (≥AUC 4 — consider highest risk in group)", "Oxaliplatin"] },
+                    { heading: "Anthracyclines & antitumour antibiotics", items: ["Doxorubicin", "Epirubicin", "Dactinomycin", "Idarubicin"] },
+                    { heading: "Alkylating agents", items: ["Cyclophosphamide (oral & IV <1500mg/m²)", "Ifosfamide", "Lomustine (oral)", "Temozolomide (oral)"] },
+                    { heading: "Topoisomerase inhibitors & others", items: ["Irinotecan", "Cytarabine >1g/m²", "Methotrexate >250mg/m²", "Etoposide (oral)", "Trabectedin", "Raltitrexed", "Trifluridine-tipiracil", "Vinorelbine (oral)"] },
+                    { heading: "Targeted agents", items: ["Cabozantinib", "Ceritinib", "Crizotinib", "Imatinib", "Lenvatinib"] },
+                  ],
+                  comboTable: [
+                    { agent: "CMF (cyclophosphamide, methotrexate, fluorouracil)", management: "" },
+                    { agent: "CVP", management: "" },
+                    { agent: "EOX/EOF (epirubicin, oxaliplatin, capecitabine/fluorouracil)", management: "" },
+                    { agent: "Gemcitabine/oxaliplatin, Gemcitabine/paclitaxel, Gemcitabine/nab-paclitaxel", management: "" },
+                    { agent: "TC (docetaxel/cyclophosphamide)", management: "" },
+                    { agent: "Topotecan/carboplatin", management: "" },
+                  ],
+                  managementTier: {
+                    label: "Moderate Emetic Risk — 30–90% without prophylaxis",
+                    agents: "carboplatin, oxaliplatin, irinotecan, epirubicin, doxorubicin, cyclophosphamide <1500mg/m², temozolomide",
+                    pre: [
+                      { drug: "Dexamethasone", dose: "8mg", route: "IV", notes: "" },
+                      { drug: "Ondansetron", dose: "8mg", route: "IV or PO", notes: "" },
+                    ],
+                    post: [
+                      { drug: "Metoclopramide", dose: "10mg", route: "PO", notes: "TDS × 3 days, then TDS PRN up to 5 days total" },
+                      { drug: "Domperidone", dose: "10mg", route: "PO", notes: "TDS × 3 days, then PRN up to 7 days total (if <40 years) — alternative to metoclopramide" },
+                      { drug: "Dexamethasone", dose: "4mg", route: "PO", notes: "BD (morning + lunchtime) × 3 days" },
+                    ],
+                    second: [
+                      { drug: "NK1 antagonist", dose: "—", route: "—", notes: "Consider addition for carboplatin ≥AUC 4" },
+                      { drug: "—", dose: "—", route: "—", notes: "See High Emetogenic Risk second-line options above" },
+                      { drug: "Olanzapine", dose: "—", route: "—", notes: "NOT recommended for moderate emetogenic risk regimens — insufficient evidence", urgent: true },
+                    ],
+                    notes: "For carboplatin ≥AUC 4: consider treating as high risk tier and adding NK1 antagonist upfront if patient has prior CINV history or multiple risk factors.",
+                  },
+                },
+              },
+              {
+                heading: "Low Emetogenic Risk",
+                type: "cinv_risk_tier",
+                note: "Expand Chemo Agents for causative drugs/regimens. Expand Premedication, Post Medications or Second Line under Management for the antiemetic protocol.",
+                tier: {
+                  key: "low",
+                  label: "Low Emetogenic Risk",
+                  color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                  agentGroups: [
+                    { heading: "Taxanes & vinca alkaloids", items: ["Docetaxel", "Paclitaxel", "Nab-paclitaxel (Abraxane®)", "Cabazitaxel", "Eribulin"] },
+                    { heading: "Antimetabolites", items: ["Fluorouracil", "Capecitabine (oral)", "Cytarabine ≤1g/m²", "Methotrexate 50–250mg/m²", "Gemcitabine", "Pemetrexed", "Tegafur uracil (oral)"] },
+                    { heading: "Topoisomerase inhibitors & others", items: ["Etoposide (IV)", "Topotecan", "Mitomycin", "Mitoxantrone", "Liposomal daunorubicin", "Liposomal doxorubicin"] },
+                    { heading: "Targeted & biological agents", items: ["Brentuximab vedotin", "Trastuzumab emtansine (Kadcyla®)", "Cetuximab", "Panitumumab", "Pertuzumab", "Lapatinib", "Olaparib", "Palbociclib", "Sunitinib", "Pazopanib", "Regorafenib", "Axitinib", "Vandetinib", "Trametinib", "Dabrafenib", "Osimertinib", "Alectinib", "Afatinib", "Nilotinib", "Everolimus"] },
+                    { heading: "Immunotherapy (low risk)", items: ["Atezolizumab", "Ipilimumab"] },
+                  ],
+                  comboTable: [],
+                  managementTier: {
+                    label: "Low Emetic Risk — 10–30% without prophylaxis",
+                    agents: "docetaxel, paclitaxel, gemcitabine, fluorouracil, pemetrexed, capecitabine (oral), etoposide",
+                    pre: [
+                      { drug: "Dexamethasone", dose: "8mg", route: "IV", notes: "" },
+                      { drug: "5-HT3 antagonist", dose: "—", route: "—", notes: "Not routinely required" },
+                    ],
+                    post: [
+                      { drug: "Metoclopramide", dose: "10mg", route: "PO", notes: "TDS PRN up to 5 days" },
+                      { drug: "Domperidone", dose: "10mg", route: "PO", notes: "TDS PRN up to 7 days (if <40 years) — alternative to metoclopramide" },
+                    ],
+                    second: [
+                      { drug: "Ondansetron", dose: "8mg", route: "PO or IV", notes: "Add to pre-chemo regimen" },
+                      { drug: "Metoclopramide / Domperidone", dose: "—", route: "—", notes: "Switch from PRN to regular dosing post-chemo" },
+                      { drug: "Dexamethasone", dose: "4mg", route: "PO", notes: "BD × 3 days post-chemo" },
+                      { drug: "Cyclizine", dose: "50mg", route: "PO", notes: "TDS — alternative to metoclopramide" },
+                      { drug: "Levomepromazine", dose: "up to 6mg", route: "PO", notes: "QDS — alternative to metoclopramide" },
+                      { drug: "Granisetron", dose: "1mg", route: "PO", notes: "BD PRN up to 7 days, instead of ondansetron" },
+                    ],
+                    notes: "Pre-chemo dexamethasone is the only routine pre-medication for low-risk regimens. Escalate promptly if PRN post-chemo antiemetics are being used regularly.",
+                  },
+                },
+              },
+              {
+                heading: "Minimal Emetogenic Risk",
+                type: "cinv_risk_tier",
+                note: "Expand Chemo Agents for causative drugs. Expand Premedication, Post Medications or Second Line under Management for the antiemetic protocol.",
+                tier: {
+                  key: "minimal",
+                  label: "Minimal Emetogenic Risk",
+                  color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                  agentGroups: [
+                    { heading: "Monoclonal antibodies & immunotherapy", items: ["Trastuzumab", "Rituximab", "Bevacizumab", "Nivolumab", "Pembrolizumab", "Temsirolimus"] },
+                    { heading: "Vinca alkaloids", items: ["Vincristine", "Vinblastine", "Vinorelbine (IV)"] },
+                    { heading: "Antimetabolites", items: ["Fludarabine", "Chlorambucil (oral)"] },
+                    { heading: "Targeted agents", items: ["Erlotinib", "Gefitinib", "Sorafenib", "Vemurafenib", "Vismodegib"] },
+                    { heading: "Other", items: ["Bleomycin", "Dabrafenib", "Everolimus", "Pazopanib"] },
+                  ],
+                  comboTable: [],
+                  managementTier: {
+                    label: "Minimal Emetic Risk — <10% without prophylaxis",
+                    agents: "trastuzumab, checkpoint inhibitors (pembrolizumab, nivolumab), rituximab, vincristine, vinorelbine IV, bleomycin",
+                    pre: [
+                      { drug: "—", dose: "—", route: "—", notes: "No prophylactic antiemetics required for patients without prior history of nausea/vomiting" },
+                    ],
+                    post: [
+                      { drug: "Metoclopramide", dose: "10mg", route: "PO", notes: "TDS PRN up to 5 days" },
+                      { drug: "Domperidone", dose: "10mg", route: "PO", notes: "TDS PRN up to 7 days (if <40 years) — alternative to metoclopramide" },
+                    ],
+                    second: [
+                      { drug: "Dexamethasone", dose: "8mg", route: "PO or IV", notes: "Add pre-chemo" },
+                      { drug: "Metoclopramide / Domperidone", dose: "—", route: "—", notes: "Switch from PRN to regular dosing" },
+                    ],
+                    notes: "If patient has prior CINV history or multiple patient-specific risk factors, consider stepping up to low-risk regimen at first cycle.",
+                  },
+                },
+              },
+              {
+                heading: "Antiemetic Drugs",
+                type: "antiemetic_drugs",
+                note: "Tap a drug for mechanism of action, indications, dosing, cautions, risks and contraindications.",
+                drugs: [
                   {
                     label: "NK1 Antagonists (Aprepitant / Fosaprepitant / Akynzeo®)",
-                    color: "#742a2a",
-                    headerBg: "#fff5f5",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "When to use", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
-                        items: [
-                          "Standard: cisplatin-containing regimens ≥70mg/m², anthracycline/cyclophosphamide combinations",
-                          "Consider adding: regimens marked * in high-risk table, carboplatin ≥AUC 4",
-                          "Akynzeo® (netupitant 300mg/palonosetron 0.5mg): single oral dose pre-chemo",
-                          "Aprepitant: 125mg PO day 1, 80mg PO days 2–3",
-                          "Fosaprepitant: 150mg IV day 1 (pro-drug); if chemo >3 days add aprepitant 80mg from day 4 — consultant request only",
-                          "!!Omit ondansetron/5-HT3 antagonists for 5 days after Akynzeo® (palonosetron content)",
-                        ],
-                      },
-                      {
-                        icon: "avoid", heading: "Key interactions & cautions", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
-                        items: [
-                          "Dexamethasone dose reduction: reduce oral dex by ~50% on days 1–2 when co-prescribed (not routinely needed at doses in this guideline — caution with high-dose pre-medication e.g. paclitaxel)",
-                          "Methylprednisolone: reduce IV dose ~25%, oral dose ~50%",
-                          "Contraindicated with: pimozide, terfenadine, astemizole, cisapride",
-                          "Caution with CYP3A4 substrates with narrow therapeutic index: ciclosporin, tacrolimus, fentanyl, alfentanil, everolimus, quinidine",
-                          "Oral cytotoxics metabolised by CYP3A4 (etoposide, vinorelbine) — interaction cannot be excluded; monitor",
-                          "Avoid grapefruit with aprepitant",
-                        ],
-                      },
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
+                    moa: [
+                      "Neurokinin-1 (NK1) receptor antagonist — blocks substance P binding in the CNS; most effective against delayed-phase emesis, complementing 5-HT3 antagonist coverage of the acute phase.",
+                    ],
+                    scenarios: [
+                      "Standard: cisplatin-containing regimens ≥70mg/m², anthracycline/cyclophosphamide combinations, ABVD, BEP, T-BEP, PEP",
+                      "Consider adding: regimens marked * in high-risk table, carboplatin ≥AUC 4",
+                    ],
+                    uses: [
+                      "Akynzeo® (netupitant 300mg/palonosetron 0.5mg): single oral dose pre-chemo",
+                      "Aprepitant: 125mg PO day 1, 80mg PO days 2–3",
+                      "Fosaprepitant: 150mg IV day 1 (pro-drug); if chemo >3 days add aprepitant 80mg from day 4 — consultant request only",
+                    ],
+                    cautions: [
+                      "Dexamethasone dose reduction: reduce oral dex by ~50% on days 1–2 when co-prescribed (not routinely needed at doses in this guideline — caution with high-dose pre-medication e.g. paclitaxel)",
+                      "Methylprednisolone: reduce IV dose ~25%, oral dose ~50%",
+                      "Caution with CYP3A4 substrates with narrow therapeutic index: ciclosporin, tacrolimus, fentanyl, alfentanil, everolimus, quinidine",
+                      "Oral cytotoxics metabolised by CYP3A4 (etoposide, vinorelbine) — interaction cannot be excluded; monitor",
+                      "Avoid grapefruit with aprepitant",
+                    ],
+                    risks: [
+                      "Omit ondansetron/5-HT3 antagonists for 5 days after Akynzeo® (palonosetron content)",
+                    ],
+                    contraindications: [
+                      "Contraindicated with: pimozide, terfenadine, astemizole, cisapride",
                     ],
                   },
                   {
                     label: "Ondansetron (5-HT3 antagonist)",
-                    color: "#7b341e",
-                    headerBg: "#fff5f0",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Dosing & administration", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: [
-                          "IV: dilute to 50ml with NaCl 0.9% or glucose 5%, infuse over 15 minutes",
-                          "Oral and IV routes are therapeutically equivalent",
-                          "!!Age ≥75 years: single IV dose must NOT exceed 8mg",
-                          "Max daily dose 8mg in moderate–severe hepatic impairment",
-                        ],
-                      },
-                      {
-                        icon: "avoid", heading: "Cautions", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: [
-                          "QT prolongation — caution in cardiac rhythm/conduction disturbances, anti-arrhythmics, beta-blockers, significant electrolyte disturbances",
-                          "Increases large bowel transit time — caution in sub-acute intestinal obstruction; may cause constipation",
-                          "Contraindicated with apomorphine",
-                          "CYP3A4 inducers (phenytoin, carbamazepine, rifampicin) reduce ondansetron levels",
-                        ],
-                      },
+                    color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
+                    moa: [
+                      "5-HT3 (serotonin) receptor antagonist — blocks serotonin centrally at the chemoreceptor trigger zone and peripherally at vagal afferents; most effective against acute-phase emesis.",
+                    ],
+                    scenarios: [
+                      "Pre-chemotherapy antiemetic across high and moderate emetic risk tiers",
+                      "Omit for 5 days after Akynzeo® administration",
+                    ],
+                    uses: [
+                      "IV: dilute to 50ml with NaCl 0.9% or glucose 5%, infuse over 15 minutes",
+                      "Oral and IV routes are therapeutically equivalent",
+                      "Max daily dose 8mg in moderate–severe hepatic impairment",
+                    ],
+                    cautions: [
+                      "QT prolongation — caution in cardiac rhythm/conduction disturbances, anti-arrhythmics, beta-blockers, significant electrolyte disturbances",
+                      "Increases large bowel transit time — caution in sub-acute intestinal obstruction; may cause constipation",
+                      "CYP3A4 inducers (phenytoin, carbamazepine, rifampicin) reduce ondansetron levels",
+                    ],
+                    risks: [
+                      "Age ≥75 years: single IV dose must NOT exceed 8mg",
+                    ],
+                    contraindications: [
+                      "Contraindicated with apomorphine",
                     ],
                   },
                   {
                     label: "Dexamethasone",
-                    color: "#744210",
-                    headerBg: "#fffff0",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Prescribing notes", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: [
-                          "Take orally AFTER food — reduces GI side effects",
-                          "Dose oral dexamethasone in morning and lunchtime only — reduces sleep disturbance",
-                          "Can be given IV or SC",
-                          "Interaction with NK1 antagonists: reduce dose by ~50% if total daily oral dose >16mg (not routinely needed at standard antiemetic doses)",
-                        ],
-                      },
-                      {
-                        icon: "avoid", heading: "Cautions", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: [
-                          "Monitor blood sugars — causes hyperglycaemia; care in diabetic patients",
-                          "Long-term side effects rare with short courses at these doses",
-                          "Rifampicin, carbamazepine, phenobarbital, phenytoin reduce dexamethasone efficacy",
-                          "Reduces plasma levels of indinavir, saquinavir, possibly darunavir",
-                        ],
-                      },
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e",
+                    moa: [
+                      "Corticosteroid — exact antiemetic mechanism is not fully understood; proposed effects include inhibition of prostaglandin synthesis and modulation of central serotonin/substance P pathways, with synergy alongside 5-HT3 and NK1 antagonists.",
                     ],
+                    scenarios: [
+                      "Standard pre-medication across all emetic risk tiers",
+                      "Mainstay of delayed-phase antiemetic coverage post-chemo",
+                    ],
+                    uses: [
+                      "Take orally AFTER food — reduces GI side effects",
+                      "Dose oral dexamethasone in morning and lunchtime only — reduces sleep disturbance",
+                      "Can be given IV or SC",
+                    ],
+                    cautions: [
+                      "Monitor blood sugars — causes hyperglycaemia; care in diabetic patients",
+                      "Long-term side effects rare with short courses at these doses",
+                      "Rifampicin, carbamazepine, phenobarbital, phenytoin reduce dexamethasone efficacy",
+                      "Reduces plasma levels of indinavir, saquinavir, possibly darunavir",
+                    ],
+                    risks: [
+                      "Interaction with NK1 antagonists: reduce dose by ~50% if total daily oral dose >16mg (not routinely needed at standard antiemetic doses)",
+                    ],
+                    contraindications: [],
                   },
                   {
                     label: "Olanzapine",
-                    color: "#1a6b8a",
-                    headerBg: "#e8f4f8",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Use & dosing", color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0",
-                        items: [
-                          "Unlicensed as antiemetic but well supported by trial data",
-                          "High emetic risk only — NOT recommended for moderate risk (insufficient evidence)",
-                          "10mg PO on day of chemo; 10mg OD PO days 2–4 (substitute for metoclopramide)",
-                          "Consider 5mg if sedation is an issue (day 2 sedation higher than placebo in trials)",
-                          "Available as orodispersible and standard tablets",
-                        ],
-                      },
-                      {
-                        icon: "avoid", heading: "Cautions", color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0",
-                        items: [
-                          "Hyperglycaemia risk — increased when co-prescribed with dexamethasone; monitor glucose",
-                          "QTc prolongation — caution in elderly, pre-existing QT prolongation, heart failure, hypokalaemia, hypomagnesaemia",
-                          "Metabolised by CYP1A2 — inducers/inhibitors affect levels",
-                          "Not recommended with anti-Parkinsonian drugs in patients with Parkinson's disease or dementia",
-                        ],
-                      },
+                    color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0",
+                    moa: [
+                      "Atypical antipsychotic — broad receptor antagonism (dopamine D2, serotonin 5-HT2A/5-HT3, histamine H1, muscarinic) thought to underlie its broad-spectrum antiemetic effect.",
+                    ],
+                    scenarios: [
+                      "High emetic risk only — NOT recommended for moderate risk (insufficient evidence)",
+                      "Second-line/step-up option, substituted for metoclopramide",
+                    ],
+                    uses: [
+                      "10mg PO on day of chemo; 10mg OD PO days 2–4 (substitute for metoclopramide)",
+                      "Consider 5mg if sedation is an issue (day 2 sedation higher than placebo in trials)",
+                      "Available as orodispersible and standard tablets",
+                      "Unlicensed as antiemetic but well supported by trial data",
+                    ],
+                    cautions: [
+                      "Hyperglycaemia risk — increased when co-prescribed with dexamethasone; monitor glucose",
+                      "QTc prolongation — caution in elderly, pre-existing QT prolongation, heart failure, hypokalaemia, hypomagnesaemia",
+                      "Metabolised by CYP1A2 — inducers/inhibitors affect levels",
+                    ],
+                    risks: [],
+                    contraindications: [
+                      "Not recommended with anti-Parkinsonian drugs in patients with Parkinson's disease or dementia",
                     ],
                   },
                   {
-                    label: "Metoclopramide / Domperidone / Cyclizine / Levomepromazine",
-                    color: "#276749",
-                    headerBg: "#f0fff4",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Metoclopramide", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: [
-                          "MHRA: max 30mg/24hr, max 5 days (may extend on consultant request)",
-                          "Avoid in young patients — increased dystonic reaction risk",
-                          "Avoid in Parkinson's disease",
-                          "Avoid when gastric motility stimulation is harmful (GI haemorrhage, obstruction, perforation)",
-                          "Avoid in phaeochromocytoma",
-                          "!!Do not combine with other dopamine antagonists without reviewing receptor overlap (see Appendix)",
-                        ],
-                      },
-                      {
-                        icon: "drug", heading: "Domperidone", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: [
-                          "Peripheral dopamine antagonist — less central side effects than metoclopramide (does not cross BBB readily)",
-                          "MHRA: max 30mg/24hr, 7 days (may extend or increase to max 20mg QDS on consultant request)",
-                          "Risk of serious ventricular arrhythmia/sudden cardiac death — higher in patients >60 years or at daily doses >30mg",
-                          "QT prolongation — avoid with ketoconazole, erythromycin, other potent CYP3A4 inhibitors that prolong QT",
-                          "Use at lowest effective dose; caution in patients >60 years",
-                          "Restricted to patients <40 years in this guideline (standard first-line use)",
-                        ],
-                      },
-                      {
-                        icon: "drug", heading: "Cyclizine", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: [
-                          "H1 antihistamine — 50mg TDS PO or IV/SC",
-                          "Can counteract prokinetic effect of metoclopramide (but not its central antiemetic effect) — avoid combination where prokinesis is needed",
-                          "Caution: glaucoma, GI obstruction, hepatic disease, epilepsy, prostatic hypertrophy",
-                          "Additive sedation with alcohol, opioids, other CNS depressants",
-                        ],
-                      },
-                      {
-                        icon: "drug", heading: "Levomepromazine", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: [
-                          "Phenothiazine — dopamine antagonist + antihistamine + anticholinergic",
-                          "Up to 6mg QDS PO or 12.5–25mg/24hr SC via syringe driver",
-                          "Causes drowsiness, disorientation, hypotension (especially elderly) — advise not to drive",
-                          "QT prolongation risk — avoid with other QT-prolonging drugs and hypokalaemia-causing diuretics",
-                        ],
-                      },
+                    label: "Metoclopramide",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                    moa: [
+                      "Dopamine D2 receptor antagonist with prokinetic activity — blocks D2 receptors at the chemoreceptor trigger zone and promotes gastric emptying; crosses the blood-brain barrier.",
                     ],
-                  },
-                ],
-              },
-              {
-                heading: "Emetogenic Risk Reference — Full Drug Lists by Class",
-                type: "callouts",
-                panels: [
-                  {
-                    label: "High Emetic Risk >90% — DMSO equivalent: Dex + 5-HT3 + NK1",
-                    color: "#742a2a",
-                    headerBg: "#fff5f5",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Platinum agents", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
-                        items: ["Cisplatin (all doses)", "Cyclophosphamide ≥1500mg/m²"],
-                      },
-                      {
-                        icon: "drug", heading: "Alkylating agents", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
-                        items: ["Carmustine", "Dacarbazine", "Procarbazine (oral)", "Streptozocin"],
-                      },
-                      {
-                        icon: "drug", heading: "Key combination regimens", color: "#742a2a", bg: "#fff5f5", border: "#fc8181",
-                        items: [
-                          "ABVD (doxorubicin, bleomycin, vinblastine, dacarbazine) — NK1 standard",
-                          "BEP, CBOP-BEP, T-BEP, PEP — NK1 standard",
-                          "AC/EC/FEC, CHOP, CAV — anthracycline/cyclophosphamide combinations — NK1 standard",
-                          "ECF/ECX (epirubicin, cisplatin, fluorouracil/capecitabine)",
-                          "MVAC (methotrexate, vinblastine, doxorubicin, cisplatin)",
-                          "TPF (docetaxel, cisplatin, fluorouracil)",
-                          "TIP (paclitaxel, ifosfamide, cisplatin) — consider NK1",
-                          "VIDE (vincristine, ifosfamide, doxorubicin, etoposide) — consider NK1",
-                          "Ifosfamide-containing regimens ≥3g/m²/day — consider NK1",
-                          "Topotecan/cyclophosphamide",
-                        ],
-                      },
+                    scenarios: [
+                      "First-line post-chemo prokinetic antiemetic across risk tiers",
+                    ],
+                    uses: [
+                      "MHRA: max 30mg/24hr, max 5 days (may extend on consultant request)",
+                    ],
+                    cautions: [
+                      "Avoid in young patients — increased dystonic reaction risk",
+                    ],
+                    risks: [
+                      "Do not combine with other dopamine antagonists without reviewing receptor overlap (see Appendix)",
+                    ],
+                    contraindications: [
+                      "Avoid in Parkinson's disease",
+                      "Avoid when gastric motility stimulation is harmful (GI haemorrhage, obstruction, perforation)",
+                      "Avoid in phaeochromocytoma",
                     ],
                   },
                   {
-                    label: "Moderate Emetic Risk 30–90% — Dex + 5-HT3 (± NK1 for carboplatin ≥AUC 4)",
-                    color: "#7b341e",
-                    headerBg: "#fff5f0",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Platinum agents", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: ["Carboplatin × (≥AUC 4 — consider highest risk in group)", "Oxaliplatin"],
-                      },
-                      {
-                        icon: "drug", heading: "Anthracyclines & antitumour antibiotics", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: ["Doxorubicin", "Epirubicin", "Dactinomycin", "Idarubicin"],
-                      },
-                      {
-                        icon: "drug", heading: "Alkylating agents", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: ["Cyclophosphamide (oral & IV <1500mg/m²)", "Ifosfamide", "Lomustine (oral)", "Temozolomide (oral)"],
-                      },
-                      {
-                        icon: "drug", heading: "Topoisomerase inhibitors & others", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: ["Irinotecan", "Cytarabine >1g/m²", "Methotrexate >250mg/m²", "Etoposide (oral)", "Trabectedin", "Raltitrexed", "Trifluridine-tipiracil", "Vinorelbine (oral)"],
-                      },
-                      {
-                        icon: "drug", heading: "Targeted agents", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: ["Cabozantinib", "Ceritinib", "Crizotinib", "Imatinib", "Lenvatinib"],
-                      },
-                      {
-                        icon: "drug", heading: "Key combination regimens", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d",
-                        items: ["CMF (cyclophosphamide, methotrexate, fluorouracil)", "CVP", "EOX/EOF (epirubicin, oxaliplatin, capecitabine/fluorouracil)", "Gemcitabine/oxaliplatin, Gemcitabine/paclitaxel, Gemcitabine/nab-paclitaxel", "TC (docetaxel/cyclophosphamide)", "Topotecan/carboplatin"],
-                      },
+                    label: "Domperidone",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                    moa: [
+                      "Peripheral dopamine D2 receptor antagonist — prokinetic effect at the chemoreceptor trigger zone with minimal blood-brain barrier penetration, giving fewer central (extrapyramidal) side effects than metoclopramide.",
+                    ],
+                    scenarios: [
+                      "Alternative to metoclopramide",
+                      "Restricted to patients <40 years in this guideline (standard first-line use)",
+                    ],
+                    uses: [
+                      "MHRA: max 30mg/24hr, 7 days (may extend or increase to max 20mg QDS on consultant request)",
+                      "Use at lowest effective dose; caution in patients >60 years",
+                    ],
+                    cautions: [
+                      "Caution in patients >60 years",
+                    ],
+                    risks: [
+                      "Risk of serious ventricular arrhythmia/sudden cardiac death — higher in patients >60 years or at daily doses >30mg",
+                    ],
+                    contraindications: [
+                      "QT prolongation — avoid with ketoconazole, erythromycin, other potent CYP3A4 inhibitors that prolong QT",
                     ],
                   },
                   {
-                    label: "Low Emetic Risk 10–30% — Dex pre-chemo only",
-                    color: "#744210",
-                    headerBg: "#fffff0",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Taxanes & vinca alkaloids", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: ["Docetaxel", "Paclitaxel", "Nab-paclitaxel (Abraxane®)", "Cabazitaxel", "Eribulin"],
-                      },
-                      {
-                        icon: "drug", heading: "Antimetabolites", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: ["Fluorouracil", "Capecitabine (oral)", "Cytarabine ≤1g/m²", "Methotrexate 50–250mg/m²", "Gemcitabine", "Pemetrexed", "Tegafur uracil (oral)"],
-                      },
-                      {
-                        icon: "drug", heading: "Topoisomerase inhibitors & others", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: ["Etoposide (IV)", "Topotecan", "Mitomycin", "Mitoxantrone", "Liposomal daunorubicin", "Liposomal doxorubicin"],
-                      },
-                      {
-                        icon: "drug", heading: "Targeted & biological agents", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: ["Brentuximab vedotin", "Trastuzumab emtansine (Kadcyla®)", "Cetuximab", "Panitumumab", "Pertuzumab", "Lapatinib", "Olaparib", "Palbociclib", "Sunitinib", "Pazopanib", "Regorafenib", "Axitinib", "Vandetinib", "Trametinib", "Dabrafenib", "Osimertinib", "Alectinib", "Afatinib", "Nilotinib", "Everolimus"],
-                      },
-                      {
-                        icon: "drug", heading: "Immunotherapy (low risk)", color: "#744210", bg: "#fffff0", border: "#f6e05e",
-                        items: ["Atezolizumab", "Ipilimumab"],
-                      },
+                    label: "Cyclizine",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                    moa: [
+                      "H1 antihistamine with anticholinergic activity — acts centrally on the vomiting centre and vestibular pathways.",
                     ],
+                    scenarios: [
+                      "Alternative post-chemo antiemetic — avoid combination where prokinesis is needed (counteracts metoclopramide's prokinetic effect, though not its central antiemetic effect)",
+                    ],
+                    uses: [
+                      "50mg TDS PO or IV/SC",
+                    ],
+                    cautions: [
+                      "Caution: glaucoma, GI obstruction, hepatic disease, epilepsy, prostatic hypertrophy",
+                      "Additive sedation with alcohol, opioids, other CNS depressants",
+                    ],
+                    risks: [],
+                    contraindications: [],
                   },
                   {
-                    label: "Minimal Emetic Risk <10% — No routine prophylaxis needed",
-                    color: "#276749",
-                    headerBg: "#f0fff4",
-                    blocks: [
-                      {
-                        icon: "drug", heading: "Monoclonal antibodies & immunotherapy", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: ["Trastuzumab", "Rituximab", "Bevacizumab", "Nivolumab", "Pembrolizumab", "Temsirolimus"],
-                      },
-                      {
-                        icon: "drug", heading: "Vinca alkaloids", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: ["Vincristine", "Vinblastine", "Vinorelbine (IV)"],
-                      },
-                      {
-                        icon: "drug", heading: "Antimetabolites", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: ["Fludarabine", "Chlorambucil (oral)"],
-                      },
-                      {
-                        icon: "drug", heading: "Targeted agents", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: ["Erlotinib", "Gefitinib", "Sorafenib", "Vemurafenib", "Vismodegib"],
-                      },
-                      {
-                        icon: "drug", heading: "Other", color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
-                        items: ["Bleomycin", "Dabrafenib", "Everolimus", "Pazopanib"],
-                      },
+                    label: "Levomepromazine",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4",
+                    moa: [
+                      "Phenothiazine — dopamine antagonist with additional antihistamine and anticholinergic activity, acting centrally at the chemoreceptor trigger zone and vomiting centre.",
                     ],
+                    scenarios: [
+                      "Breakthrough/refractory CINV rescue option",
+                      "Can be given via syringe driver",
+                    ],
+                    uses: [
+                      "Up to 6mg QDS PO or 12.5–25mg/24hr SC via syringe driver",
+                    ],
+                    cautions: [
+                      "Causes drowsiness, disorientation, hypotension (especially elderly) — advise not to drive",
+                    ],
+                    risks: [
+                      "QT prolongation risk — avoid with other QT-prolonging drugs and hypokalaemia-causing diuretics",
+                    ],
+                    contraindications: [],
                   },
                 ],
               },
@@ -2172,7 +2609,7 @@ const SITES = [
             related: ["onco-line-infection", "onco-neutropenic-sepsis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=5cbe18a5cdb5536252a9433b96d8e448",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9813&query_desc=extravasation",
-            updated: "June 2024 (review)",
+            updated: "June 2024",
             sections: [
               {
                 heading: "⚠ Immediate Steps — Do This First",
@@ -2394,7 +2831,7 @@ const SITES = [
             related: ["io-peripheral-neuro", "io-colitis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -2424,7 +2861,7 @@ const SITES = [
             related: ["io-central-neuro", "io-gbs-mg"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -2451,7 +2888,7 @@ const SITES = [
             related: ["io-peripheral-neuro", "io-central-neuro"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "GBS & Myasthenia Gravis — Side-by-Side",
@@ -2558,7 +2995,7 @@ const SITES = [
             related: ["io-peripheral-neuro", "io-gbs-mg"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Central Neurotoxicity Syndromes",
@@ -2684,7 +3121,7 @@ const SITES = [
             related: ["io-hepatitis", "io-peripheral-neuro"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -2713,7 +3150,7 @@ const SITES = [
             related: ["io-colitis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -2743,7 +3180,7 @@ const SITES = [
             related: ["io-hypophysitis", "io-adrenal"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "TSH Decision Algorithm",
@@ -2834,7 +3271,7 @@ const SITES = [
             related: ["io-thyroid", "io-adrenal"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -2862,7 +3299,7 @@ const SITES = [
             related: ["io-hypophysitis", "io-thyroid"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Incidental Low Cortisol — Decision Pathway",
@@ -2895,7 +3332,7 @@ const SITES = [
             related: ["io-hypophysitis", "io-adrenal"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Management by Clinical Context",
@@ -2980,7 +3417,7 @@ const SITES = [
             related: ["io-colitis", "io-hepatitis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -3007,7 +3444,7 @@ const SITES = [
             related: ["io-pneumonitis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
                 heading: "Grade & Manage",
@@ -3261,7 +3698,7 @@ const SITES = [
             related: ["io-hypophysitis", "io-adrenal", "io-pneumonitis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=a0e61c913bb70e1b68f28baed308bd21",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10508&query_desc=immunotherapy",
-            updated: "Jan 2024",
+            updated: "January 2024",
             sections: [
               {
   heading: "Standard Supportive Care with Steroids",
@@ -3314,8 +3751,18 @@ const SITES = [
           ],
           pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=ca5b5baaec7898bf4b83c3fdff390a34",
           portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=12680&query_desc=an%2Cphr%3A6288",
-          updated: "April 2029 (review)",
+          updated: "April 2029",
           sections: [
+            {
+              heading: "⚠ Key Principles",
+              type: "alert",
+              items: [
+                "ALL patients receiving anthracyclines must have baseline HFA-ICOS cardiovascular risk stratification before starting therapy",
+                "High/very high risk patients must be referred to Cardio-Oncology clinic for baseline optimisation and ongoing surveillance",
+                "Early detection of CTRCD is critical — most early-onset dysfunction is potentially reversible with prompt intervention",
+                "BRCA1/2 germline mutation carriers receiving anthracyclines: consider closer cardio-oncology surveillance — increased susceptibility to LV dysfunction (BRCAN study)",
+              ],
+            },
             {
   heading: "Drugs Covered",
   type: "list",
@@ -3327,18 +3774,7 @@ const SITES = [
   ],
 },
             {
-              heading: "⚠ Key Principles",
-              type: "alert",
-              items: [
-                "ALL patients receiving anthracyclines must have baseline HFA-ICOS cardiovascular risk stratification before starting therapy",
-                "High/very high risk patients must be referred to Cardio-Oncology clinic for baseline optimisation and ongoing surveillance",
-                "Early detection of CTRCD is critical — most early-onset dysfunction is potentially reversible with prompt intervention",
-                "!!Cumulative dose threshold: repeat cardiac imaging when anthracycline dose exceeds 250mg/m² doxorubicin-equivalent (≈400mg/m² epirubicin), then after every additional 50mg/m²",
-                "BRCA1/2 germline mutation carriers receiving anthracyclines: consider closer cardio-oncology surveillance — increased susceptibility to LV dysfunction (BRCAN study)",
-              ],
-            },
-            {
-  heading: "Risk Stratification & CTRCD Management",
+  heading: "Risk Stratification, Surveillance & Cardiotoxicity Management",
   type: "anthracycline_tables",
 },
             {
@@ -3394,7 +3830,7 @@ const SITES = [
           related: ["cardio-anthracycline", "io-myocarditis"],
           pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3fe568f6509caccbcb7e3aa4e20ba5f2",
           portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=12689",
-          updated: "May 2029 (review)",
+          updated: "May 2029",
           sections: [
             {
   heading: "Drugs Covered",
@@ -3590,7 +4026,7 @@ const SITES = [
     },              // closes cardio-oncology subsite object
     ],
     get guidelines() {
-      return this.subsites.flatMap(ss => ss.guidelines || []);
+      return this.subsites.flatMap(ss => ss.guidelines || []).filter(g => !g.toolsOnly);
     },
   },
   {
@@ -3621,7 +4057,7 @@ const SITES = [
   related: ["vte-cat"],
   pdfUrl: null,
   portalUrl: null,
-  updated: "Dr G. Swallow / Dr N. Johnstone | Review Dec 2025",
+  updated: "December 2025",
   sections: [
     {
       heading: "Scope & Covered Drugs",
@@ -3770,7 +4206,7 @@ const SITES = [
   related: [],
   pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
   portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis",
-  updated: "NUH Non-Malignant Haematology Team",
+  updated: null,
   sections: [
     {
       heading: "⚠ Key Principles",
@@ -3984,7 +4420,7 @@ const SITES = [
   related: ["vte-cat"],
   pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
   portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis#",
-  updated: "NUH Non-Malignant Haematology Team",
+  updated: null,
   sections: [
   ,
     {
@@ -4090,7 +4526,7 @@ const SITES = [
   related: ["vte-cat"],
   pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
   portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis",
-  updated: "NUH Non-Malignant Haematology Team",
+  updated: null,
   sections: [
     {
       heading: "⚠ Key Principles",
@@ -4197,7 +4633,7 @@ const SITES = [
   related: ["vte-cat"],
   pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=3c6a506878205aadfe70913c5547910f",
   portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10883&query_desc=cancer%20associated%20thrombosis",
-  updated: "NUH Non-Malignant Haematology Team",
+  updated: null,
   sections: [
     {
       heading: "⚠ Key Principles",
@@ -4305,7 +4741,7 @@ const SITES = [
           related: [],
           pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=75d5a8211023c4927b530b21459f0faa",
           portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9847&query_desc=lysis",
-          updated: "Dr G Errico / Dr N Martinez-Calle / Dr J Addada | Review 30/04/2029",
+          updated: "April 2029",
           sections: [
             {
               heading: "⚠ Key Principles",
@@ -5581,7 +6017,7 @@ const SITES = [
             related: ["pall-pain", "pall-syringe"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=89e0a15c5be72d413129af47516d8133",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10093&query_desc=an%2Cphr%3A6326",
-            updated: "June 2029 (review)",
+            updated: "June 2029",
             sections: [
               {
                 heading: "Contact Information",
@@ -6095,40 +6531,56 @@ icon: (
             summaryCalcLink: null,
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=c17cf4cb43ce09621a1129564e7e12a2",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=11200&query_desc=hypercalcaemia",
-            updated: "June 2026 (review)",
+            updated: "June 2026",
             sections: [
               {
-                heading: "1 Assess severity",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Mild", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Corrected calcium <3·0 mmol/L", "Often asymptomatic", "Does not usually require urgent correction"] },
-                  { grade: 2, label: "Moderate", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Corrected calcium 3·0–3·5 mmol/L", "May be well tolerated if risen slowly", "May be symptomatic — prompt treatment usually indicated"] },
-                  { grade: 3, label: "Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Corrected calcium >3·5 mmol/L", "!!Requires URGENT correction", "Risk of dysrhythmia and coma"] },
-                ],
-                management: [
-                  { grade: 1, icpi: null, items: ["Monitor — does not usually require urgent correction", "Investigate underlying cause (see Investigations section)", "Review medications contributing to hypercalcaemia", "then proceed to Step 3: History & Investigations"] },
-                  { grade: 2, icpi: null, items: ["Prompt treatment usually indicated", "IV rehydration with 0·9% saline", "Investigate underlying cause", "Consider IV bisphosphonate if not responding to fluids", "then proceed to Step 3: History & Investigations"] },
-                  { grade: 3, icpi: null, items: ["!!URGENT correction required", "IV rehydration immediately — 0·9% saline 4–6L/24h", "IV bisphosphonate once adequately rehydrated", "ECG monitoring", "Consider ITU/HDU if obtunded or dysrhythmia present"] },
+                heading: "Quick Reference Management",
+                type: "quickref",
+                items: [
+                  {
+                    grade: 1, label: "Mild", pill: "cCa <3·0",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4", badge: "#c6f6d5",
+                    groups: [
+                      { title: "Features", items: ["Corrected calcium <3·0 mmol/L", "Often asymptomatic", "Does not usually require urgent correction"] },
+                      { title: "Management", items: ["Monitor — does not usually require urgent correction", "Investigate underlying cause (see Investigations section)", "Review medications contributing to hypercalcaemia"] },
+                    ],
+                  },
+                  {
+                    grade: 2, label: "Moderate", pill: "cCa 3·0–3·5",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e", badge: "#fefcbf",
+                    groups: [
+                      { title: "Features", items: ["Corrected calcium 3·0–3·5 mmol/L", "May be well tolerated if risen slowly", "May be symptomatic — prompt treatment usually indicated"] },
+                      { title: "Management", items: ["Prompt treatment usually indicated", "IV rehydration with 0·9% saline", "Investigate underlying cause", "Consider IV bisphosphonate if not responding to fluids"] },
+                    ],
+                  },
+                  {
+                    grade: 3, label: "Severe", pill: "cCa >3·5",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["Corrected calcium >3·5 mmol/L", "Risk of dysrhythmia and coma"] },
+                      { title: "Management", items: ["!!URGENT correction required", "IV rehydration immediately — 0·9% saline 4–6L/24h", "IV bisphosphonate once adequately rehydrated", "ECG monitoring", "Consider ITU/HDU if obtunded or dysrhythmia present"] },
+                    ],
+                  },
                 ],
               },
               {
-                heading: "Step 3: History & Investigation",
-                type: "list",
+                heading: "Aetiology & Presentation",
+                type: "accordion",
                 groups: [
                   {
-                    icon: "management", label: "Clinical Features",
-                    tableData: {
-                      rows: [
-                        { category: "Constitutional", examples: ["Polyuria and thirst"] },
-                        { category: "Neuromuscular", examples: ["Mood disturbance, cognitive dysfunction, confusion, coma", "Band keratopathy", "Muscle weakness"] },
-                        { category: "GI", examples: ["Anorexia, nausea, and constipation", "Pancreatitis", "Peptic ulceration"] },
-                        { category: "Cardiac", examples: ["Shortened QT interval and dysrhythmias", "Hypertension, cardiomyopathy"] },
-                        { category: "Renal", examples: ["Renal impairment", "Nephrolithiasis, nephrocalcinosis"] },
-                      ],
-                    },
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    subheadings: [
+                      { title: "Constitutional", icon: "droplet", items: ["Polyuria and thirst"] },
+                      { title: "Neuromuscular", icon: "brain", items: ["Mood disturbance, cognitive dysfunction, confusion, coma", "Band keratopathy", "Muscle weakness"] },
+                      { title: "GI", icon: "hexagonDot", items: ["Anorexia, nausea, and constipation", "Pancreatitis", "Peptic ulceration"] },
+                      { title: "Cardiac", icon: "heart", items: ["Shortened QT interval and dysrhythmias", "Hypertension, cardiomyopathy"] },
+                      { title: "Renal", icon: "kidney", items: ["Renal impairment", "Nephrolithiasis, nephrocalcinosis"] },
+                    ],
                   },
                   {
-                    icon: "drug", label: "Causes",
+                    id: "causes",
+                    label: "Causes",
                     topCallout: {
                       label: "90% of cases",
                       items: [
@@ -6136,118 +6588,166 @@ icon: (
                         "Malignancy (PTHrP, osteolytic metastases, 1,25-OHD production)",
                       ],
                     },
-                    tableData: {
-                      rows: [
-                        { category: "Drugs", examples: ["Thiazide diuretics", "Lithium", "Theophylline toxicity"] },
-                        { category: "Genetic", examples: ["Familial hypocalciuric hypercalcaemia"] },
-                        { category: "Nutritional", examples: ["Hypervitaminosis D or A", "Milk-alkali syndrome"] },
-                        { category: "Neuroendocrine", examples: ["Thyrotoxicosis", "Tertiary hyperparathyroidism", "Phaeochromocytoma"] },
-                        { category: "Granulomatous disease", examples: ["Sarcoidosis", "TB"] },
-                        { category: "MSK injury", examples: ["Rhabdomyolysis", "Immobilisation"] },
-                      ],
-                    },
-                  },
-                  {
-                    icon: "history", label: "History",
-                    items: [
-                      "Symptoms of hypercalcaemia and duration",
-                      "Symptoms of underlying causes (weight loss, night sweats, cough, bone pain)",
-                      "Family history of hypercalcaemia or hyperparathyroidism",
-                      "All medications including supplements and over-the-counter preparations",
-                    ],
-                  },
-                  {
-                    icon: "investigations", label: "Examination",
-                    items: [
-                      "Assess for cognitive impairment",
-                      "Fluid balance status",
-                      "Signs of underlying cause: neck (goitre/parathyroid), respiratory, abdomen, breasts, lymph nodes",
-                    ],
-                  },
-                  {
-                    icon: "investigations", label: "Investigations",
-                    items: [
-                      "Calcium corrected for albumin",
-                      "Phosphate, urea and electrolytes, creatinine",
-                      "PTH (essential — guides aetiology)",
-                      "ECG: look for shortened QT interval and other conduction abnormalities",
-                      "Consider: 25-OHD, 1,25-OHD, PTHrP, TFTs, urine calcium:creatinine ratio",
-                    ],
-                  },
-                  {
-                    icon: "immediate", label: "PTH Interpretation",
-                    items: [
-                      "High calcium + High PTH → Primary or tertiary hyperparathyroidism",
-                      "High calcium + Low PTH → Malignancy or other less common causes",
-                      "Note: Familial hypocalciuric hypercalcaemia may be misdiagnosed as primary hyperparathyroidism (inappropriately normal/raised PTH) — usually not severe, less likely to present as emergency",
+                    subheadings: [
+                      { title: "Drugs", icon: "pill", items: ["Thiazide diuretics", "Lithium", "Theophylline toxicity"] },
+                      { title: "Genetic", icon: "dna", items: ["Familial hypocalciuric hypercalcaemia"] },
+                      { title: "Nutritional", icon: "apple", items: ["Hypervitaminosis D or A", "Milk-alkali syndrome"] },
+                      { title: "Neuroendocrine", icon: "tsh", items: ["Thyrotoxicosis", "Tertiary hyperparathyroidism", "Phaeochromocytoma"] },
+                      { title: "Granulomatous disease", icon: "lungs", items: ["Sarcoidosis", "TB"] },
+                      { title: "MSK injury", icon: "bone", items: ["Rhabdomyolysis", "Immobilisation"] },
                     ],
                   },
                 ],
               },
               {
-                heading: "Step 4: Management",
-                type: "list",
+                heading: "History & Investigations",
+                type: "accordion",
                 groups: [
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 1 — Rehydration",
-                    footerCallout: [
-                      "Rehydration: IV 0·9% Saline — 4–6L in 24 hours",
-                    ],
-                    items: [
-                      "Start immediately — rehydration is the most important first step",
-                      "Monitor closely for fluid overload — especially in renal impairment or elderly patients",
-                      "Loop diuretics (furosemide): rarely used — only if fluid overload develops. NOT effective for reducing serum calcium",
-                      "Consider dialysis if severe renal failure present",
-                    ],
-                  },
-                  {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 2 — IV Bisphosphonate",
-                    footerCallout: [
-                      "Zoledronic acid 4mg IV over 15 minutes (eGFR >60)",
-                    ],
-                    items: [
-                      "Give more slowly and consider dose reduction in renal impairment (eGFR <60)",
-                      "Monitor serum calcium — nadir reached at 2–4 days",
-                      { label: "Alternatives" },
-                      "Pamidronate 30–90mg IV at 20mg/h (dose depends on severity)",
-                      "Ibandronic acid 2–4mg IV",
-                      "Dose reduce in renal impairment for all agents",
-                    ],
-                    alerts: [
-                      "Can cause hypocalcaemia if vitamin D deficiency or suppressed PTH is present — check before giving",
-                    ],
-                  },
-                  {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 3 — Second-Line Treatments",
-                    doseSections: [
+                    id: "history-examination",
+                    label: "History & Examination",
+                    theme: "green",
+                    subheadings: [
                       {
-                        dose: "Glucocorticoids: Prednisolone 40mg OD PO",
+                        title: "History",
+                        items: [
+                          "Symptoms of hypercalcaemia and duration",
+                          "Symptoms of underlying causes (weight loss, night sweats, cough, bone pain)",
+                          "Family history of hypercalcaemia or hyperparathyroidism",
+                          "All medications including supplements and over-the-counter preparations",
+                        ],
+                      },
+                      {
+                        title: "Examination",
+                        items: [
+                          "Assess for cognitive impairment",
+                          "Fluid balance status",
+                          "Signs of underlying cause: neck (goitre/parathyroid), respiratory, abdomen, breasts, lymph nodes",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    id: "investigations",
+                    label: "Investigations",
+                    theme: "green",
+                    subheadings: [
+                      {
+                        title: "Biochemistry",
+                        items: [
+                          "Calcium corrected for albumin",
+                          "Phosphate, urea and electrolytes, creatinine",
+                          "PTH (essential — guides aetiology)",
+                          { label: "Consider", children: ["25-OHD", "1,25-OHD", "PTHrP", "TFTs", "urine calcium:creatinine ratio"] },
+                        ],
+                      },
+                      {
+                        title: "ECG",
+                        items: [
+                          "look for **shortened** QT interval and other conduction abnormalities",
+                        ],
+                      },
+                      {
+                        title: "PTH Interpretation",
+                        table: {
+                          headers: ["cCa", "PTH", "Likely Diagnosis"],
+                          rows: [
+                            ["High", "High", "Primary or tertiary hyperparathyroidism"],
+                            ["High", "Low", "Malignancy or other less common causes"],
+                          ],
+                        },
+                      },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Familial hypocalciuric hypercalcaemia",
+                          items: [
+                            { label: "may be misdiagnosed as primary hyperparathyroidism", bold: false, children: ["inappropriately normal/raised PTH"] },
+                            "usually not severe, less likely to present as emergency",
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "step1-rehydration",
+                    label: "Rehydration",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Rehydration: IV 0·9% Saline — 4–6L in 24 hours",
+                        icon: "pill",
+                        items: [
+                          "Start immediately — rehydration is the most important first step",
+                          "Monitor closely for fluid overload — especially in renal impairment or elderly patients",
+                          "Loop diuretics (furosemide): rarely used — only if fluid overload develops. NOT effective for reducing serum calcium",
+                          "Consider dialysis if severe renal failure present",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    id: "step2-bisphosphonate",
+                    label: "IV Bisphosphonate",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Zoledronic acid 4mg IV over 15 minutes (eGFR >60)",
+                        icon: "pill",
+                        items: [
+                          "Give more slowly and consider dose reduction in renal impairment (eGFR <60)",
+                          "Monitor serum calcium — nadir reached at 2–4 days",
+                          { label: "Alternatives", noBullet: true, color: "#534AB7", plainBullets: true, children: ["Pamidronate 30–90mg IV at 20mg/h (dose depends on severity)", "Ibandronic acid 2–4mg IV", "Dose reduce in renal impairment for all agents"] },
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution! Hypocalcaemia risk",
+                            items: [
+                              "Can cause hypocalcaemia if vitamin D deficiency or suppressed PTH is present",
+                              "**Always** check before giving",
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    id: "step3-second-line",
+                    label: "Second-Line Treatments",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Glucocorticoids: Prednisolone 40mg OD PO",
+                        icon: "pill",
                         items: [
                           "Inhibit 1,25-OHD production",
                           "Indicated for: lymphoma, granulomatous disease, 25-OHD poisoning",
                           "Usually effective within 2–4 days",
                         ],
-                        alerts: [],
                       },
                       {
-                        dose: "Calcimimetics: Denosumab / Calcitonin",
+                        title: "Calcimimetics: Denosumab / Calcitonin",
+                        icon: "pill",
                         items: [
                           "Under specialist supervision only",
                           "Consider if poor response to other measures",
                         ],
-                        alerts: [],
                       },
                       {
-                        dose: "Parathyroidectomy",
+                        title: "Parathyroidectomy",
+                        icon: "surgery",
                         items: [
                           "Consider in acute presentation of primary hyperparathyroidism",
                           "Severe hypercalcaemia with poor response to other measures",
                           "Refer to endocrine surgery",
                         ],
-                        alerts: [],
                       },
                     ],
                   },
@@ -6267,7 +6767,7 @@ icon: (
             related: ["elec-hypercalcaemia"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=83cab27a4dd0e5d6e8c8bd3e8a004ecd",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9722&query_desc=hypocalcaemia",
-            updated: "October 2023 (review)",
+            updated: "October 2023",
             sections: [
               {
                 heading: "⚠ Key Principles Before Treating",
@@ -6283,177 +6783,205 @@ icon: (
                 ],
               },
               {
-                heading: "Severity Classification",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Normal", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Adjusted calcium 2·20–2·60 mmol/L", "No treatment required"] },
-                  { grade: 2, label: "Mild Hypocalcaemia", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Adjusted calcium 1·90–<2·20 mmol/L", "May be symptomatic or asymptomatic"] },
-                  { grade: 3, label: "Severe Hypocalcaemia", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Adjusted calcium <1·90 mmol/L", "Medical emergency", "!!Symptoms may occur at HIGHER levels if calcium dropped suddenly — rate and magnitude matter, not just absolute level"] },
-                ],
-                management: [
-                  { grade: 2, icpi: null, items: ["Check Vitamin D, Magnesium, PTH, calcium intake", "If low magnesium: correct FIRST — calcium may normalise within 2 days", "Asymptomatic: oral calcium supplementation", "Symptomatic: IV calcium gluconate required"] },
-                  { grade: 3, icpi: null, items: ["!!IV calcium gluconate required regardless of symptoms", "Continuous cardiac monitoring if ECG changes or on digoxin", "Correct magnesium if low — without this, calcium increase may be transient", "Check PTH, phosphate, magnesium, Vit D, LFTs, U&Es"] },
-                ],
-              },
-              {
-                heading: "Step 3: History & Investigation",
-                type: "list",
-                groups: [
+                heading: "Quick Reference Management",
+                type: "quickref",
+                items: [
                   {
-                    icon: "heart", label: "Clinical Features",
-                    tableData: {
-                      rows: [
-                        { category: "Neuromuscular", examples: ["Perioral paraesthesia", "Muscle twitching and cramps", "Tremor, tetany", "Trousseau's sign (carpal spasm with BP cuff inflation)", "Chvostek's sign (facial twitch on tapping)"] },
-                        { category: "Neuropsychiatric", examples: ["Laryngospasm", "Fatigue, confusion, anxiety, depression, irritability", "Seizures", "Dyspnoea"] },
-                        { category: "Cardiovascular", examples: ["Cardiac arrhythmia, bradycardia, hypotension", "Congestive cardiac failure"] },
-                      ],
-                    },
-                    warnings: [
-                      { text: "ECG: prolonged QT interval — risk of ", linkText: "torsades de pointes", url: "https://litfl.com/polymorphic-vt-and-torsades-de-pointes-tdp/" },
+                    grade: 1, label: "Normal", pill: "cCa 2·20–2·60",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4", badge: "#c6f6d5",
+                    groups: [
+                      { title: "Features", items: ["Adjusted calcium 2·20–2·60 mmol/L"] },
+                      { title: "Management", items: ["No treatment required"] },
                     ],
                   },
                   {
-                    icon: "question", label: "Causes",
+                    grade: 2, label: "Mild Hypocalcaemia", pill: "cCa 1·90–<2·20",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e", badge: "#fefcbf",
+                    groups: [
+                      { title: "Features", items: ["Adjusted calcium 1·90–<2·20 mmol/L", "May be symptomatic or asymptomatic"] },
+                      { title: "Management", items: ["Check Vitamin D, Magnesium, PTH, calcium intake", "If low magnesium: correct FIRST — calcium may normalise within 2 days", "Asymptomatic: oral calcium supplementation", "Symptomatic: IV calcium gluconate required"] },
+                    ],
+                  },
+                  {
+                    grade: 3, label: "Severe Hypocalcaemia", pill: "cCa <1·90",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["Adjusted calcium <1·90 mmol/L", "Medical emergency", "!!Symptoms may occur at HIGHER levels if calcium dropped suddenly — rate and magnitude matter, not just absolute level"] },
+                      { title: "Management", items: ["!!IV calcium gluconate required regardless of symptoms", "Continuous cardiac monitoring if ECG changes or on digoxin", "Correct magnesium if low — without this, calcium increase may be transient", "Check PTH, phosphate, magnesium, Vit D, LFTs, U&Es"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Aetiology & Presentation",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    subheadings: [
+                      { title: "Neuromuscular", icon: "brain", items: ["Perioral paraesthesia", "Muscle twitching and cramps", "Tremor, tetany", "Trousseau's sign (carpal spasm with BP cuff inflation)", "Chvostek's sign (facial twitch on tapping)"] },
+                      { title: "Neuropsychiatric", icon: "smile", items: ["Laryngospasm", "Fatigue, confusion, anxiety, depression, irritability", "Seizures", "Dyspnoea"] },
+                      { title: "Cardiovascular", icon: "heart", items: ["Cardiac arrhythmia, bradycardia, hypotension", "Congestive cardiac failure", "ECG: prolonged QT interval — risk of [torsades de pointes](https://litfl.com/polymorphic-vt-and-torsades-de-pointes-tdp/)"] },
+                    ],
+                  },
+                  {
+                    id: "causes",
+                    label: "Causes",
                     topCallout: {
-                      label: "Most Common",
+                      label: "Most Common: Post Op Thyroid/Parathyroid Surgery",
                       items: [
-                        "!!Post-thyroidectomy/parathyroidectomy hypoparathyroidism — may be temporary or permanent",
+                        "may be temporary or permanent",
                         "Hypocalcaemia occurs in 20–25% after total thyroidectomy",
                         "Permanent hypoparathyroidism: 0·8–3·0% of patients",
-                        "Hypoparathyroidism (autoimmune)",
                       ],
                     },
-                    tableData: {
-                      rows: [
-                        { category: "Nutritional Deficiency", examples: ["Magnesium deficiency (PPIs)", "Severe vitamin D deficiency / osteomalacia", "Malabsorption"] },
-                        { category: "Acute / Emergency", examples: ["Acute pancreatitis", "Rhabdomyolysis", "Toxic shock syndrome"] },
-                        { category: "Iatrogenic", examples: ["Large volume blood transfusion (citrate chelation)", "Plasmapheresis"] },
-                        { category: "Drug-induced", examples: ["Bisphosphonates, denosumab (Prolia/Xgeva)", "Aminoglycosides, foscarnet", "Phenytoin, glucocorticoids, furosemide", "Cinacalcet, calcitonin, phosphates", "Antineoplastic agents, citrated blood transfusions", "Contact Pharmacy Medicines Information (ext 64185) for full list"] },
-                      ],
-                    },
-                  },
-                  {
-                    icon: "magnify", label: "Required bloods",
-                    items: ["Adjusted calcium", "Phosphate", "PTH — ESSENTIAL", "Urea and electrolytes", "Magnesium", "LFTs including albumin", "Vitamin D (25-OHD)"],
-                  },
-                  {
-                    icon: "immediate", label: "Special considerations",
-                    items: ["Low magnesium: correct FIRST — calcium may normalise within 2 days", "Renal insufficiency: seek renal team advice before treating", "Consider tumour lysis in haematology/oncology patients"],
+                    subheadings: [
+                      { title: "Autoimmune", icon: "thunderbolt", items: ["Hypoparathyroidism (autoimmune)"] },
+                      { title: "Nutritional Deficiency", icon: "apple", items: ["Magnesium deficiency (PPIs)", "Severe vitamin D deficiency / osteomalacia", "Malabsorption"] },
+                      { title: "Acute / Emergency", icon: "immediate", items: ["Acute pancreatitis", "Rhabdomyolysis", "Toxic shock syndrome"] },
+                      { title: "Iatrogenic", icon: "ivbag", items: ["Large volume blood transfusion (citrate chelation)", "Plasmapheresis"] },
+                      { title: "Drug-induced", icon: "pill", items: ["Bisphosphonates, denosumab (Prolia/Xgeva)", "Aminoglycosides, foscarnet", "Phenytoin, glucocorticoids, furosemide", "Cinacalcet, calcitonin, phosphates", "Antineoplastic agents, citrated blood transfusions", "Contact Pharmacy Medicines Information (ext 64185) for full list"] },
+                    ],
                   },
                 ],
               },
               {
-                heading: "Step 4: Management",
-                type: "list",
+                heading: "History & Investigations",
+                type: "accordion",
                 groups: [
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 1 — Initial IV Bolus",
-                    footerCallout: [
-                      "IV Calcium Gluconate: 10ml 10% in 100ml 0·9% NaCl or 5% glucose — over 10 minutes",
-                    ],
-                    items: [
-                      "10ml of 10% calcium gluconate = 2·23 mmol calcium",
-                      "Give into large peripheral or central vein",
-                      "NEVER exceed 0·5 mmol per minute",
-                      "Emergency (life-threatening): undiluted 10ml as slow IV bolus over minimum 5 minutes",
-                      "STOP or SLOW if bradycardia or hypotension develops",
-                      "Obs 4-hourly: Temp, BP, HR, RR, SpO₂, fluid balance",
-                    ],
-                    alerts: [
-                      "Continuous ECG monitoring if cardiac disease, arrhythmia risk, or on digoxin",
+                    id: "investigations",
+                    label: "Investigations",
+                    theme: "green",
+                    items: ["Adjusted calcium", "Phosphate", "PTH — ESSENTIAL", "Urea and electrolytes", "Magnesium", "LFTs including albumin", "Vitamin D (25-OHD)"],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Special Considerations",
+                          items: [
+                            "Low magnesium: correct FIRST — calcium may normalise within 2 days",
+                            "Renal insufficiency: seek renal team advice before treating",
+                            "Consider tumour lysis in haematology/oncology patients",
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "initial-iv-bolus",
+                    label: "Initial IV Bolus",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "IV Calcium Gluconate: 10ml 10% in 100ml 0·9% NaCl or 5% glucose — over 10 minutes",
+                        icon: "ivbag",
+                        items: [
+                          "10ml of 10% calcium gluconate = 2·23 mmol calcium",
+                          "Give into large peripheral or central vein",
+                          "NEVER exceed 0·5 mmol per minute",
+                          "Emergency (life-threatening): undiluted 10ml as slow IV bolus over minimum 5 minutes",
+                          "STOP or SLOW if bradycardia or hypotension develops",
+                          "Obs 4-hourly: Temp, BP, HR, RR, SpO₂, fluid balance",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution! Cardiac monitoring",
+                            items: ["Continuous ECG monitoring if cardiac disease, arrhythmia risk, or on digoxin"],
+                          },
+                        ],
+                      },
                     ],
                   },
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 2 — Repeat or Proceed to Continuous Infusion",
+                    id: "repeat-or-infusion",
+                    label: "Repeat or Proceed to Continuous Infusion",
+                    theme: "purple",
                     items: [
                       "Still symptomatic: repeat the bolus",
-                      "Temporary improvement: proceed to continuous infusion (Step 3)",
+                      "Temporary improvement: proceed to continuous infusion",
                     ],
                   },
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 3 — Continuous Infusion",
-                    footerCallout: [
-                      "IV Calcium Gluconate: 100ml (22·3 mmol) 10% in 1000ml NaCl 0·9% — over 12–24 hours",
-                    ],
-                    items: [
-                      "Also compatible with glucose 5% and glucose/NaCl 0·9%",
-                      "Very severe cases: can give over 6 hours with cardiac monitoring",
-                      "Check calcium 2 hours after infusion completion",
-                      "Start oral supplements ± alfacalcidol/calcitriol once IV complete",
-                      "Hypoparathyroidism: give at 50% rate — 50ml (11·3 mmol) in 1000ml NaCl 0·9% over 12–24 hours",
-                      "CKD stages 4–5 / AKI: consult renal team",
+                    id: "continuous-infusion",
+                    label: "Continuous Infusion",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "IV Calcium Gluconate: 100ml (22·3 mmol) 10% in 1000ml NaCl 0·9% — over 12–24 hours",
+                        icon: "ivbag",
+                        items: [
+                          "Also compatible with glucose 5% and glucose/NaCl 0·9%",
+                          "Very severe cases: can give over 6 hours with cardiac monitoring",
+                          "Check calcium 2 hours after infusion completion",
+                          "Start oral supplements ± alfacalcidol/calcitriol once IV complete",
+                          "Hypoparathyroidism: give at 50% rate — 50ml (11·3 mmol) in 1000ml NaCl 0·9% over 12–24 hours",
+                          "CKD stages 4–5 / AKI: consult renal team",
+                        ],
+                      },
                     ],
                   },
-                ],
-              },
-              {
-                heading: "Step 5: Oral Replacement Therapy",
-                type: "list",
-                groups: [
                   {
-                    colorIndex: 2,
-                    icon: "pill", label: "Oral Calcium Replacement",
-                    footerCallout: [
-                      "For mild asymptomatic hypocalcaemia (1·90–2·20 mmol/L) — typical dose 500–2000mg/day",
+                    id: "oral-calcium",
+                    label: "Oral Calcium Replacement",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "For mild asymptomatic hypocalcaemia (1·90–2·20 mmol/L) — typical dose 500–2000mg/day",
+                        icon: "pill",
+                        items: [
+                          "Calvive® 1000 effervescent: 1000mg — 1–2 tablets daily",
+                          "Calcichew® chewable: 500mg — 2–3 tablets daily",
+                          "Cacit® effervescent (calcium citrate): 500mg — 2–5 tablets daily",
+                          "Adcal D3® chewable (+ Vit D 400 units): 600mg — 1 tablet twice daily",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution! Absorption interactions",
+                            items: [
+                              "Post-gastric bypass or PPI use: use calcium CITRATE (Cacit®) — needs acidic environment for absorption",
+                              "Do NOT give at same time as tetracyclines, ciprofloxacin, or bisphosphonates — reduces absorption",
+                            ],
+                          },
+                        ],
+                      },
                     ],
-                    items: [
-                      "Calvive® 1000 effervescent: 1000mg — 1–2 tablets daily",
-                      "Calcichew® chewable: 500mg — 2–3 tablets daily",
-                      "Cacit® effervescent (calcium citrate): 500mg — 2–5 tablets daily",
-                      "Adcal D3® chewable (+ Vit D 400 units): 600mg — 1 tablet twice daily",
+                  },
+                  {
+                    id: "oral-vitamin-d",
+                    label: "Oral Vitamin D Replacement",
+                    theme: "purple",
+                    subheadings: [
+                      { title: "Normal PTH", items: ["Use standard colecalciferol", "PTH drives liver/kidney activation. Use oral colecalciferol — see Notts APC Vitamin D guideline"] },
+                      { title: "Low PTH or renal impairment", items: ["Use ACTIVE Vit D: kidney cannot activate colecalciferol — must use pre-activated form", "Alfacalcidol: onset 2–5 days. Effective in renal failure. NOT in liver failure", "Calcitriol: onset 1–2 days. Effective in renal AND liver failure"] },
+                      { title: "Chronic hypoparathyroidism (post-surgical, autoimmune)", items: ["Alfacalcidol 250–1000 nanograms daily OR Calcitriol 250–1000 nanograms daily", "PLUS Calvive® 1000mg 2–3 times daily", "Monitor daily until calcium stable", "!!Long-term: refer to Metabolic Bone Service (City ext 77271 / Treatment Centre Gateway E)"] },
                     ],
                     alerts: [
-                      "Post-gastric bypass or PPI use: use calcium CITRATE (Cacit®) — needs acidic environment for absorption",
-                      "Do NOT give at same time as tetracyclines, ciprofloxacin, or bisphosphonates — reduces absorption",
-                    ],
-                  },
-                  {
-                    colorIndex: 2,
-                    icon: "pill", label: "Oral Vitamin D Replacement",
-                    tableData: {
-                      rows: [
-                        {
-                          category: "Normal PTH",
-                          examples: [
-                            "Use standard colecalciferol",
-                            "PTH drives liver/kidney activation. Use oral colecalciferol — see Notts APC Vitamin D guideline",
-                          ],
-                        },
-                        {
-                          category: "Low PTH or renal impairment",
-                          examples: [
-                            "Use ACTIVE Vit D: kidney cannot activate colecalciferol — must use pre-activated form",
-                            "Alfacalcidol: onset 2–5 days. Effective in renal failure. NOT in liver failure",
-                            "Calcitriol: onset 1–2 days. Effective in renal AND liver failure",
-                          ],
-                        },
-                        {
-                          category: "Chronic hypoparathyroidism (post-surgical, autoimmune)",
-                          examples: [
-                            "Alfacalcidol 250–1000 nanograms daily OR Calcitriol 250–1000 nanograms daily",
-                            "PLUS Calvive® 1000mg 2–3 times daily",
-                            "Monitor daily until calcium stable",
-                            "!!Long-term: refer to Metabolic Bone Service (City ext 77271 / Treatment Centre Gateway E)",
-                          ],
-                        },
-                      ],
-                    },
-                    warnings: [
-                      "Active Vit D has NO effect without adequate calcium intake — always co-prescribe oral calcium",
-                      "Lifelong use: monitor for hypercalcaemia, hypercalciuria, renal impairment, nephrocalcinosis, kidney stones",
+                      {
+                        title: "Caution!",
+                        items: [
+                          "Active Vit D has NO effect without adequate calcium intake — always co-prescribe oral calcium",
+                          "Lifelong use: monitor for hypercalcaemia, hypercalciuria, renal impairment, nephrocalcinosis, kidney stones",
+                        ],
+                      },
                     ],
                   },
                 ],
               },
               {
                 heading: "Special Scenarios",
-                type: "list",
+                type: "accordion",
                 groups: [
                   {
-                    icon: "drug", label: "Chronic renal impairment / PTH deficiency or resistance",
+                    id: "renal-pth",
+                    label: "Chronic Renal Impairment / PTH Deficiency or Resistance",
+                    theme: "purple",
                     items: [
                       "CRI: REFER TO RENAL TEAM",
                       "PTH deficiency/resistance: alfacalcidol 500–1000 nanograms daily",
@@ -6461,15 +6989,26 @@ icon: (
                     ],
                   },
                   {
-                    icon: "immediate", label: "Post-Operative: Day 1 Adjusted Calcium",
-                    items: [
-                      { callout: true, icon: "immediate", text: "!!Severe <1·80 or severe symptoms: START URGENT TREATMENT — IV: 10ml 10% calcium gluconate in 100ml NaCl 0·9% over 10 min + ECG monitoring" },
-                      { divider: true },
-                      "Then oral: Calvive® 2000mg STAT then 1000mg TDS",
-                      "Plus Alfacalcidol 1000 nanograms daily",
-                      "Check and replace magnesium",
-                      "**Repeat adjusted calcium 6-hourly**",
-                      "Monitor with GP at **2 and 6 weeks**",
+                    id: "post-op-day1",
+                    label: "Post-Operative: Day 1 Adjusted Calcium",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Urgent IV Treatment",
+                        items: [
+                          "!!Severe <1·80 or severe symptoms: START URGENT TREATMENT — IV: 10ml 10% calcium gluconate in 100ml NaCl 0·9% over 10 min + ECG monitoring",
+                        ],
+                      },
+                      {
+                        title: "Oral Follow-On",
+                        items: [
+                          "Then oral: Calvive® 2000mg STAT then 1000mg TDS",
+                          "Plus Alfacalcidol 1000 nanograms daily",
+                          "Check and replace magnesium",
+                          "**Repeat adjusted calcium 6-hourly**",
+                          "Monitor with GP at **2 and 6 weeks**",
+                        ],
+                      },
                     ],
                   },
                 ],
@@ -6509,76 +7048,155 @@ icon: (
                 ],
               },
               {
-                heading: "Step 1: Assess Severity",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Mild: Asymptomatic", color: "#276749", bg: "#f0fff4", border: "#9ae6b4", criteria: ["Serum magnesium 0·5–0·7 mmol/L", "No symptoms"] },
-                  { grade: 2, label: "Mild-Moderate", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Mg 0·5–0·7 mmol/L with symptoms", "Mg <0·5 mmol/L without symptoms"] },
-                  { grade: 3, label: "Moderate-Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Serum magnesium <0·5 mmol/L", "Symptomatic", "Symptoms usually occur below 0·5 mmol/L"] },
-                ],
-                management: [
-                  { grade: 1, icpi: null, items: ["Treatment may not be required, but should be considered following a clinical risk-benefit decision", "Review medications and address underlying cause", "Check calcium and potassium"] },
-                  { grade: 2, icpi: null, items: ["Oral Magnaspartate® 1–2 sachets/day (10 mmol/sachet)", "Review medications and address underlying cause", "Check calcium and potassium"] },
-                  { grade: 3, icpi: null, items: ["Clinical judgement required if Asymptomatic Mg significantly <0·5: contact team SpR for advice", "Day 1: magnesium sulphate 40mmol in 500ml NaCl 0·9% over 12 hours", "Days 2–5: magnesium sulphate 20mmol in 500ml NaCl 0·9% over 6 hours", "Check magnesium 6h after infusion then daily", "Complete full 5-day course — do not stop early based on serum levels alone", "Check calcium and potassium throughout"] },
-                ],
+                heading: "Quick Reference Management",
+                type: "quickref",
                 note: "Treat for minimum 5 days. Plasma levels may appear artificially normal while magnesium redistributes into the intracellular compartment.",
-              },
-              {
-                heading: "Step 3: History & Investigation",
-                type: "list",
-                groups: [
+                items: [
                   {
-                    icon: "heart", label: "Clinical Features",
-                    tableData: {
-                      rows: [
-                        { category: "Neuromuscular", examples: ["Muscle weakness, tremor, ataxia", "Carpopedal spasm, tetany", "Seizures"] },
-                        { category: "Cardiovascular", examples: ["Ventricular arrhythmias", "Prolonged QT interval", "Tachycardia"] },
-                        { category: "Neuropsychiatric", examples: ["Depression, psychosis", "Vertigo"] },
-                        { category: "Metabolic", examples: ["Secondary hypocalcaemia", "Hypokalaemia, hyponatraemia", "Hyperinsulinism"] },
-                      ],
-                    },
-                    warnings: [
-                      "Symptoms usually occur when serum magnesium falls below 0·5 mmol/L",
+                    grade: 1, label: "Mild: Asymptomatic", pill: "Mg 0·5–0·7",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4", badge: "#c6f6d5",
+                    groups: [
+                      { title: "Features", items: ["Serum magnesium 0·5–0·7 mmol/L", "No symptoms"] },
+                      { title: "Management", items: ["Treatment may not be required, but should be considered following a clinical risk-benefit decision", "Review medications and address underlying cause", "Check calcium and potassium"] },
                     ],
                   },
                   {
-                    icon: "question", label: "Causes",
-                    tableData: {
-                      rows: [
-                        { category: "Gastrointestinal", examples: ["Diarrhoea, malabsorption, malnutrition", "Acute pancreatitis"] },
-                        { category: "Renal", examples: ["Tubular reabsorption defects"] },
-                        { category: "Endocrine", examples: ["Hyperaldosteronism", "Diabetic ketoacidosis", "Refeeding syndrome"] },
-                        { category: "Other", examples: ["Chronic alcoholism", "Lactation", "Long-term IV nutrition or fluid therapy"] },
-                        { category: "Drug-induced", examples: ["PPIs (lansoprazole, omeprazole) — common cause", "Cisplatin and other chemotherapy", "Antimicrobials: foscarnet, amphotericin B, aminoglycosides", "Diuretics: thiazides, loop diuretics", "Immunosuppressants: ciclosporin, tacrolimus", "EGF-receptor antagonists: cetuximab", "Contact Medicines Information (ext 84185) for full list"] },
-                      ],
-                    },
+                    grade: 2, label: "Mild-Moderate", pill: "Mg <0·7",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e", badge: "#fefcbf",
+                    groups: [
+                      { title: "Features", items: ["Mg 0·5–0·7 mmol/L with symptoms", "Mg <0·5 mmol/L without symptoms"] },
+                      { title: "Management", items: ["Oral Magnaspartate® 1–2 sachets/day (10 mmol/sachet)", "Review medications and address underlying cause", "Check calcium and potassium"] },
+                    ],
                   },
                   {
-                    icon: "magnify", label: "Investigations",
+                    grade: 3, label: "Moderate-Severe", pill: "Mg <0·5",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["Serum magnesium <0·5 mmol/L", "Symptomatic", "Symptoms usually occur below 0·5 mmol/L"] },
+                      { title: "Management", items: ["Clinical judgement required if Asymptomatic Mg significantly <0·5: contact team SpR for advice", "Day 1: magnesium sulphate 40mmol in 500ml NaCl 0·9% over 12 hours", "Days 2–5: magnesium sulphate 20mmol in 500ml NaCl 0·9% over 6 hours", "Check magnesium 6h after infusion then daily", "Complete full 5-day course — do not stop early based on serum levels alone", "Check calcium and potassium throughout"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Aetiology & Presentation",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    topCallout: {
+                      label: "Symptom Threshold",
+                      items: ["Symptoms usually occur when serum magnesium falls below 0·5 mmol/L"],
+                    },
+                    subheadings: [
+                      { title: "Neuromuscular", icon: "brain", items: ["Muscle weakness, tremor, ataxia", "Carpopedal spasm, tetany", "Seizures"] },
+                      { title: "Cardiovascular", icon: "heart", items: ["Ventricular arrhythmias", "Prolonged QT interval", "Tachycardia"] },
+                      { title: "Neuropsychiatric", icon: "smile", items: ["Depression, psychosis", "Vertigo"] },
+                      { title: "Metabolic", icon: "glucose", items: ["Secondary hypocalcaemia", "Hypokalaemia, hyponatraemia", "Hyperinsulinism"] },
+                    ],
+                  },
+                  {
+                    id: "causes",
+                    label: "Causes",
+                    subheadings: [
+                      { title: "Gastrointestinal", icon: "hexagonDot", items: ["Diarrhoea, malabsorption, malnutrition", "Acute pancreatitis"] },
+                      { title: "Renal", icon: "kidney", items: ["Tubular reabsorption defects"] },
+                      { title: "Endocrine", icon: "tsh", items: ["Hyperaldosteronism", "Diabetic ketoacidosis", "Refeeding syndrome"] },
+                      { title: "Other", icon: "note", items: ["Chronic alcoholism", "Lactation", "Long-term IV nutrition or fluid therapy"] },
+                      { title: "Drug-induced", icon: "pill", items: ["PPIs (lansoprazole, omeprazole) — common cause", "Cisplatin and other chemotherapy", "Antimicrobials: foscarnet, amphotericin B, aminoglycosides", "Diuretics: thiazides, loop diuretics", "Immunosuppressants: ciclosporin, tacrolimus", "EGF-receptor antagonists: cetuximab", "Contact Medicines Information (ext 84185) for full list"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "History & Investigations",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "history",
+                    label: "History",
+                    theme: "green",
                     items: [
-                      "12-lead ECG — check for prolonged QT interval, ventricular arrhythmias",
-                      "Serum magnesium — confirm; note levels may be misleadingly normal during intracellular redistribution",
-                      "Serum calcium — hypomagnesaemia commonly causes secondary hypocalcaemia",
-                      "Serum potassium — hypomagnesaemia commonly causes hypokalaemia",
-                      "Renal function (U&Es, creatinine, eGFR) — assess for renal wasting",
-                      "Urine magnesium:creatinine ratio — if renal loss suspected",
-                      "Blood glucose — DKA is a recognised precipitant",
-                      "Review medication list — especially PPIs, loop/thiazide diuretics, cisplatin, aminoglycosides",
+                      { label: "Review medication list; especially:", children: ["PPIs", "Diuretics", "Cisplatin", "Aminoglycosides"] },
+                    ],
+                  },
+                  {
+                    id: "investigations",
+                    label: "Investigations",
+                    theme: "green",
+                    subheadings: [
+                      {
+                        title: "Biochemistry",
+                        items: [
+                          { label: "Serum magnesium", children: ["Confirm", "Note levels may be misleadingly normal during intracellular redistribution"] },
+                          { label: "Serum calcium", children: ["Hypomagnesaemia commonly causes secondary hypocalcaemia"] },
+                          { label: "Serum potassium", children: ["Hypomagnesaemia commonly causes hypokalaemia"] },
+                          { label: "Renal function (U&Es, creatinine, eGFR)", children: ["Assess for renal wasting"] },
+                          { label: "Urine magnesium:creatinine ratio", children: ["If renal loss suspected"] },
+                          { label: "Blood glucose", children: ["DKA is a recognised precipitant"] },
+                        ],
+                      },
+                      {
+                        title: "ECG",
+                        items: [
+                          { label: "12-lead ECG", children: ["Check for prolonged QT interval, ventricular arrhythmias"] },
+                        ],
+                      },
                     ],
                   },
                 ],
               },
 
               {
-                heading: "Step 4: Management",
-                type: "list",
+                heading: "Management",
+                type: "accordion",
                 groups: [
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "IV Magnesium",
-                    doseSections: [
+                    id: "considerations-precautions",
+                    label: "Considerations & Precautions",
+                    theme: "purple",
+                    topAlerts: [
                       {
-                        dose: "Day 1: Magnesium sulphate 40mmol in 500ml NaCl 0·9% over 12 hours",
+                        title: "Caution",
+                        items: [
+                          "Review patient factors & medications before commencing IV replacement",
+                          "Further advice on magnesium replacement can be obtained from the **Clinical Chemistry Physicians**",
+                        ],
+                      },
+                    ],
+                    subheadings: [
+                      {
+                        title: "Patient Factors",
+                        items: [
+                          { label: "Renal Impairment", children: ["Mg renally excreted", "Higher risk of adverse effects", "Use with caution, reduce dose, close monitoring"] },
+                          { label: "Myasthenia Gravis", children: ["Risk of renal impairment or respiratory insufficiency", "Use with caution"] },
+                          { label: "Hepatic Impairment", children: ["Risk of renal impairment or respiratory insufficiency", "Use with caution"] },
+                          { label: "Cardiac Conduction Defects", children: ["Heart block, myocardial damage, bradycardia", "Avoid parenteral and oral magnesium"] },
+                          { label: "Older Patients", children: ["Increased sensitivity", "Exercise caution with all replacement"] },
+                          { label: "Intolerance/Malabsorption", children: ["Magnaspartate® contains sucrose", "Do NOT use in fructose intolerance, glucose-galactose malabsorption, or sucrase-isomaltase insufficiency"] },
+                        ],
+                      },
+                      {
+                        title: "Medication Interactions",
+                        items: [
+                          { label: "Digoxin", children: ["Interaction risk", "Administer with caution"] },
+                          { label: "Barbiturates / Opioids / Hypnotics (IV)", children: ["Risk of respiratory depression", "Do NOT co-administer with IV MgSO₄"] },
+                          { label: "Nifedipine", children: ["Profound hypotension reported", "Avoid concurrent use"] },
+                          { label: "Fluorides / Tetracyclines", children: ["Chelation in gut", "Separate doses by ≥2–3 hours"] },
+                          { label: "Aminoquinolines, Quinidine, Iron, Bisphosphonates, Eltrombopag, Nitroxoline, Penicillamine, Nitrofurantoin", children: ["Reduced absorption", "Take Mg 3–4 hours before or after"] },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    id: "iv-magnesium",
+                    label: "IV Magnesium",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Day 1: Magnesium sulphate 40mmol in 500ml NaCl 0·9% over 12 hours",
+                        icon: "ivbag",
                         items: [
                           "Maximum 40mmol/day",
                           "Compatible fluids: NaCl 0·9% preferred; glucose 5% or glucose 4%/NaCl 0·18% also acceptable",
@@ -6589,55 +7207,71 @@ icon: (
                           "Fluid restricted: max concentration 20% peripherally (20mmol in 25ml = 0·8 mmol/ml)",
                         ],
                         alerts: [
-                          "Total course: patients may require up to 160mmol over 5 days — up to 50% of infused dose is renally excreted",
+                          {
+                            title: "Caution! Renal excretion",
+                            items: ["Total course: patients may require up to 160mmol over 5 days — up to 50% of infused dose is renally excreted"],
+                          },
                         ],
                       },
                       {
-                        dose: "Days 2–5: Magnesium sulphate 20mmol in 500ml NaCl 0·9% over 6 hours",
+                        title: "Days 2–5: Magnesium sulphate 20mmol in 500ml NaCl 0·9% over 6 hours",
+                        icon: "ivbag",
                         items: [
                           "Maximum 20mmol/day",
                           "Ampoules: 2ml = 1g MgSO₄ = 4mmol | 10ml = 5g = 20mmol | 20ml = 10g = 40mmol",
                         ],
                         alerts: [
-                          "50% solution — requires dilution before administration",
+                          {
+                            title: "Caution! Dilution required",
+                            items: ["50% solution — requires dilution before administration"],
+                          },
+                        ],
+                      },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Monitoring",
+                          items: [
+                            "Monitor: blood pressure, heart rate, respiratory rate, urine output",
+                            "Watch for signs of [[elec-hypermagnesaemia|Hypermagnesaemia]]",
+                            "Hypocalcaemia, hypotension, and phlebitis can occur with rapid administration",
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: "oral-replacement",
+                    label: "Oral Replacement",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Magnaspartate® 1–2 sachets daily (10mmol/sachet)",
+                        icon: "pill",
+                        items: [
+                          "Standard total daily dose: 24mmol/day in divided doses",
+                          "Dissolve in 50–200ml water, tea, or orange juice — take immediately after preparation",
+                          "Can be given enterally — note jejunal route reduces bioavailability (requires gastric acid for absorption)",
+                          "Alternative: Magnesium citrate 150mg tablets — 6·2mmol Mg/tablet",
+                          "Alternative: Magnesium glycerophosphate (Neomag® 4mmol/tab) — restricted; consultant gastroenterologist initiation only; for short bowel patients",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution!",
+                            items: [
+                              "If discharged before completing oral course: state stop date on discharge prescription and instruct GP on monitoring",
+                              "Magnaspartate® contains sucrose — do NOT use in fructose intolerance, glucose-galactose malabsorption, or sucrase-isomaltase insufficiency",
+                            ],
+                          },
                         ],
                       },
                     ],
                   },
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Oral Replacement",
-                    footerCallout: [
-                      "Magnaspartate® 1–2 sachets daily (10mmol/sachet)",
-                    ],
-                    items: [
-                      "Standard total daily dose: 24mmol/day in divided doses",
-                      "Dissolve in 50–200ml water, tea, or orange juice — take immediately after preparation",
-                      "Can be given enterally — note jejunal route reduces bioavailability (requires gastric acid for absorption)",
-                      "Alternative: Magnesium citrate 150mg tablets — 6·2mmol Mg/tablet",
-                      "Alternative: Magnesium glycerophosphate (Neomag® 4mmol/tab) — restricted; consultant gastroenterologist initiation only; for short bowel patients",
-                    ],
-                    alerts: [
-                      "If discharged before completing oral course: state stop date on discharge prescription and instruct GP on monitoring",
-                      "Magnaspartate® contains sucrose — do NOT use in fructose intolerance, glucose-galactose malabsorption, or sucrase-isomaltase insufficiency",
-                    ],
-                  },
-                ],
-              },
-              {
-                heading: "Monitoring",
-                type: "list",
-                groups: [
-                  {
-                    icon: "monitoring", label: "During IV infusion",
-                    items: [
-                      "Monitor: blood pressure, heart rate, respiratory rate, urine output",
-                      "Watch for signs of hypermagnesaemia (see below)",
-                      "Hypocalcaemia, hypotension, and phlebitis can occur with rapid administration",
-                    ],
-                  },
-                  {
-                    icon: "investigations", label: "Electrolyte checks",
+                    id: "electrolyte-checks",
+                    label: "Electrolyte Checks",
+                    theme: "purple",
                     items: [
                       "Magnesium: 6h after end of IV infusion, then daily",
                       "Calcium: check — hypomagnesaemia commonly causes hypocalcaemia",
@@ -6656,7 +7290,7 @@ icon: (
             version: "1.0",
             authors: "NUH NHS Trust",
             evidenceBase: "NUH Hypomagnesaemia Treatment Guideline v4·0 | Reviewed December 2023",
-            summary: "Hypermagnesaemia most commonly occurs with excessive magnesium replacement, particularly in renal impairment. Clinical features are level-dependent: flushing and ECG changes at 2·0–3·5, drowsiness and absent reflexes at 4·0–5·0, respiratory depression above 6·0, cardiac arrest above 8·0. Antidote: IV calcium gluconate 10ml 10%.",
+            summary: "",
             tags: ["Hypermagnesaemia", "Magnesium toxicity", "Calcium gluconate", "ECG", "Respiratory depression", "Electrolytes"],
             related: ["elec-hypomagnesaemia"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=264c8cb81dbd4129a7831ce423360731",
@@ -6664,43 +7298,177 @@ icon: (
             updated: "December 2023",
             sections: [
               {
-                heading: "Clinical Features by Level",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "2·0–3·5 mmol/L", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["Flushing", "ECG changes"] },
-                  { grade: 2, label: "4·0–5·0 mmol/L", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["Drowsiness", "Slurred speech", "Absent deep tendon reflexes"] },
-                  { grade: 3, label: ">6·0 mmol/L", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["Muscle paralysis", "Respiratory depression"] },
-                  { grade: 4, label: ">8·0 mmol/L", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["!!Cardiac arrest"] },
-                ],
-                management: [
-                  { grade: 1, icpi: null, items: ["Slow or stop infusion", "Monitor ECG", "Check renal function"] },
-                  { grade: 2, icpi: null, items: ["Stop infusion", "Monitor closely", "Consider IV calcium gluconate if severe symptoms"] },
-                  { grade: 3, icpi: null, items: ["!!Stop infusion immediately", "IV calcium gluconate 10ml 10% as antidote", "Supportive care", "Consider dialysis in renal failure"] },
-                  { grade: 4, icpi: null, items: ["!!Cardiac arrest protocol", "IV calcium gluconate immediately", "Advanced life support", "Emergency dialysis"] },
-                ],
-                note: "Other features at any level: thirst, hypotension, nausea/vomiting, diplopia, confusion, bradycardia, AV block, coma.",
-              },
-              {
-                heading: "Special Precautions",
-                type: "proc_equip",
-                items: [
-                  { item: "Renal impairment", detail: "Mg renally excreted — higher risk of adverse effects. Use with caution, reduce dose, close monitoring" },
-                  { item: "Myasthenia gravis / Hepatic impairment", detail: "Risk of renal impairment or respiratory insufficiency — use with caution" },
-                  { item: "Cardiac conduction defects", detail: "Heart block, myocardial damage, bradycardia — avoid parenteral and oral magnesium" },
-                  { item: "Older patients", detail: "Increased sensitivity — exercise caution with all replacement" },
-                  { item: "Digoxin", detail: "Interaction risk — administer with caution" },
-                  { item: "Barbiturates / opioids / hypnotics (IV)", detail: "Risk of respiratory depression — do NOT co-administer with IV MgSO₄" },
-                  { item: "Nifedipine", detail: "Profound hypotension reported — avoid concurrent use" },
-                  { item: "Fluorides / tetracyclines", detail: "Chelation in gut — separate doses by ≥2–3 hours" },
-                  { item: "Aminoquinolines, quinidine, iron, bisphosphonates, eltrombopag, nitroxoline, penicillamine, nitrofurantoin", detail: "Reduced absorption — take Mg 3–4 hours before or after" },
-                  { item: "Magnaspartate® (sucrose content)", detail: "Do NOT use in fructose intolerance, glucose-galactose malabsorption, or sucrase-isomaltase insufficiency" },
-                ],
-              },
-              {
-                heading: "Further Advice",
+                heading: "⚠ Key Points",
                 type: "alert",
+                note: "Hypermagnesaemia most commonly occurs with excessive magnesium replacement, particularly in renal impairment.",
                 items: [
-                  "Further advice on magnesium replacement can be obtained from the Clinical Chemistry Physicians",
+                  { label: "Clinical features are level-dependent:", children: ["Flushing and ECG changes at 2·0–3·5", "Drowsiness and absent reflexes at 4·0–5·0", "Respiratory depression above 6·0", "Cardiac arrest above 8·0"] },
+                  "Antidote: **IV calcium gluconate 10ml 10%**",
+                  "Further advice can be obtained from the **Clinical Chemistry Physicians**",
+                ],
+              },
+              {
+                heading: "Quick Reference Guide",
+                type: "quickref",
+                note: { label: "Other features at any level:", items: ["Thirst", "Hypotension", "Nausea/vomiting", "Diplopia", "Confusion", "Bradycardia", "AV block", "Coma"] },
+                items: [
+                  {
+                    grade: 1, label: "Mild", pill: "Mg 2·0–3·5",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e", badge: "#fefcbf",
+                    groups: [
+                      { title: "Features", items: ["Flushing", "ECG changes"] },
+                      { title: "Management", items: ["Slow or stop infusion", "Monitor ECG", "Check renal function"] },
+                    ],
+                  },
+                  {
+                    grade: 2, label: "Moderate", pill: "Mg 4·0–5·0",
+                    color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", badge: "#feebc8",
+                    groups: [
+                      { title: "Features", items: ["Drowsiness", "Slurred speech", "Absent deep tendon reflexes"] },
+                      { title: "Management", items: ["Stop infusion", "Monitor closely", "Consider IV calcium gluconate if severe symptoms"] },
+                    ],
+                  },
+                  {
+                    grade: 3, label: "Severe", pill: "Mg >6·0",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["Muscle paralysis", "Respiratory depression"] },
+                      { title: "Management", items: ["!!Stop infusion immediately", "IV calcium gluconate 10ml 10% as antidote", "Supportive care", "Consider dialysis in renal failure"] },
+                    ],
+                  },
+                  {
+                    grade: 4, label: "Very Severe", pill: "Mg >8·0",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["!!Cardiac arrest"] },
+                      { title: "Management", items: ["!!Cardiac arrest protocol", "IV calcium gluconate immediately", "Advanced life support", "Emergency dialysis"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Causes & Clinical Features",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    topCallout: {
+                      label: "Symptom Threshold",
+                      items: ["Diminished deep tendon reflexes are usually the earliest sign, typically appearing at plasma Mg 4–6 mEq/L (2–3 mmol/L)"],
+                    },
+                    subheadings: [
+                      { title: "Neuromuscular", icon: "brain", items: ["Progressive loss of deep tendon reflexes", "Flaccid paralysis", "Respiratory depression", "Fixed, dilated pupils (can mimic brainstem herniation)"] },
+                      { title: "Cardiovascular", icon: "heart", items: ["Hypotension", "Bradycardia", "Conduction defects; ECG shows prolonged PR/QRS/QT", "Heart block", "Cardiac arrest"] },
+                      { title: "Metabolic", icon: "glucose", items: ["Hypocalcaemia (from PTH suppression)", "Usually transient and asymptomatic"] },
+                      { title: "Gastrointestinal", icon: "hexagonDot", items: ["Nausea", "Vomiting"] },
+                      { title: "Constitutional", icon: "droplet", items: ["Flushing"] },
+                      { title: "Renal/Electrolyte", icon: "kidney", items: ["Hyperkalaemia", "Pruritus (in dialysis patients)"] },
+                    ],
+                  },
+                  {
+                    id: "causes",
+                    label: "Causes",
+                    subheadings: [
+                      { title: "Kidney Function Impairment", icon: "kidney", items: [{ label: "Reduced kidney function", children: ["No regulation other than renal excretion"] }, "ESKD: typical plasma Mg 2–3 mEq/L (1–1.5 mmol/L)", "Plasma Mg correlates strongly with dietary intake in dialysis patients"] },
+                      { title: "Increased Magnesium Intake", icon: "pill", items: ["IV magnesium infusion (e.g. pre-eclampsia/eclampsia)", { label: "Oral overdose", children: ["Epsom salts", "Laxatives", "Antacids"] }, { label: "Magnesium enema", children: ["Can be fatal in kidney failure"] }, "Dead Sea water ingestion (with hypercalcaemia)"] },
+                      { title: "Gastrointestinal", icon: "hexagonDot", items: ["Constipation", "Colitis", "Gastritis", "Gastric ulcer disease"] },
+                      { title: "Other Causes", icon: "note", items: ["Primary hyperparathyroidism", "Familial hypocalciuric hypercalcaemia", "Diabetic ketoacidosis", "Tumour lysis syndrome", "Lithium ingestion", "Milk-alkali syndrome", "Adrenal insufficiency", "Dialysate contamination", "HELIX syndrome (CLDN10 mutation)"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "History & Investigations",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "history",
+                    label: "History",
+                    theme: "green",
+                    topAlerts: [
+                      {
+                        title: "Risk Factors",
+                        items: ["Risk is higher with magnesium supplementation or impaired kidney function", "Impaired kidney function can be masked by low muscle mass, which reduces serum creatinine"],
+                      },
+                    ],
+                    items: [
+                      { label: "Renal disease", children: ["CKD or ESKD"] },
+                      { label: "Magnesium supplementation history", children: ["Including OTC products (milk of magnesia, Epsom salts, magnesium hydroxide)"] },
+                      { label: "Arrhythmia history", children: ["Bradycardia", "Heart block", "Ventricular tachycardia"] },
+                      { label: "Constipation", children: ["Chronic or severe"] },
+                      { label: "Pregnancy", children: ["Pre-eclampsia or eclampsia", "IV magnesium sulfate (seizure prophylaxis)"] },
+                    ],
+                  },
+                  { id: "investigations", label: "Investigations", theme: "green", items: [] },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "immediate-steps",
+                    label: "Immediate Steps",
+                    theme: "purple",
+                    items: [
+                      "Stop all magnesium-containing medications and supplements",
+                      { label: "Assess for symptoms attributable to hypermagnesaemia", children: ["Lethargy or somnolence", "Diminished or absent deep tendon reflexes", "Muscle paralysis", "Hypotension", "Bradycardia", "ECG changes", "Apnoea or respiratory failure", "Complete heart block", "Cardiac arrest"] },
+                    ],
+                  },
+                  {
+                    id: "iv-calcium",
+                    label: "IV Calcium (if Symptomatic)",
+                    theme: "purple",
+                    topAlerts: [
+                      {
+                        title: "Cardiac or Respiratory Arrest",
+                        items: ["Initiate ACLS", "Calcium chloride 0·5–1g IV over 2–5 minutes"],
+                      },
+                    ],
+                    items: [
+                      { label: "Other neuromuscular or cardiovascular manifestations", children: ["Calcium gluconate 1–2g (or calcium chloride 0·5–1g) IV over 5–10 minutes", "Continuous cardiac monitoring", "Repeat every 5 minutes as needed until symptoms resolve", "If no improvement after 2–3 doses, investigate other causes"] },
+                    ],
+                  },
+                  {
+                    id: "kidney-function",
+                    label: "Management by Kidney Function",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Normal / Near-Normal Kidney Function",
+                        icon: "kidney",
+                        items: [
+                          { label: "Symptomatic", children: ["Loop or thiazide diuretic", "Isotonic saline if not volume overloaded (increases Mg elimination)"] },
+                          { label: "Asymptomatic", children: ["No additional therapy required", "Monitor for symptoms and plasma Mg levels"] },
+                        ],
+                      },
+                      {
+                        title: "Moderate Impairment (eGFR 15–45 or mild AKI)",
+                        icon: "kidney",
+                        items: [
+                          { label: "Symptomatic", children: ["Loop diuretic", "Isotonic saline if not volume overloaded", "If Mg does not improve, consult nephrology for haemodialysis"] },
+                          { label: "Asymptomatic", children: ["No additional therapy required", "Monitor for symptoms and plasma Mg levels"] },
+                        ],
+                      },
+                      {
+                        title: "Severe Impairment (eGFR <15, chronic dialysis, or moderate–severe AKI)",
+                        icon: "kidney",
+                        items: [
+                          { label: "Symptomatic", children: ["Consult nephrology for haemodialysis"] },
+                          { label: "Asymptomatic", children: ["Monitor for symptoms and plasma Mg levels"] },
+                        ],
+                      },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Dialysis Threshold",
+                          items: ["Some experts dialyse for severe hypermagnesaemia (e.g. plasma Mg >5 mEq/L / >2·5 mmol/L)", { label: "No evidence-based threshold exists for asymptomatic patients", children: ["Clinical judgement required"] }],
+                        },
+                      ],
+                    },
+                  },
                 ],
               },
             ],
@@ -6718,7 +7486,8 @@ icon: (
             version: "4",
             authors: "E Snow / S Cartwright (Pharmacists NUH) — Diagnostics & Clinical Support",
             evidenceBase: "NUH Hypokalaemia Treatment Guideline v4 | Updated March 2023",
-            summary: "Normal K⁺: 3·5–5·3 mmol/L. Mild (3·0–3·5): oral Sando® K 2 tabs TDS. Moderate (2·5–2·9): oral Sando® K 2 tabs QDS or IV KCl 20–40 mmol/L if not tolerating oral. Severe (<2·5): IV KCl 40 mmol/L in NaCl 0·9% — contact CCOT immediately if ECG changes. Check magnesium first — hypomagnesaemia impairs K⁺ correction.",
+            summary: "Mild (3·0–3·5): oral Sando® K 2 tabs TDS. Moderate (2·5–2·9): oral Sando® K 2 tabs QDS or IV KCl 20–40 mmol/L if not tolerating oral. Severe (<2·5): IV KCl 40 mmol/L in NaCl 0·9% — contact CCOT immediately if ECG changes. Check magnesium first — hypomagnesaemia impairs K⁺ correction.",
+            summaryBullets: [],
             tags: ["Hypokalaemia", "Potassium", "Sando K", "KCl", "IV potassium", "CCOT", "ECG", "Magnesium", "Digoxin"],
             related: ["elec-hypomagnesaemia", "elec-hyperkalaemia"],
             pdfUrl: "https://www.nuh.nhs.uk/guidelines/hypokalaemia",
@@ -6726,155 +7495,303 @@ icon: (
             updated: "March 2023",
             sections: [
               {
-                heading: "⚠ Universal Principles",
+                heading: "⚠ Key Points",
                 type: "alert",
                 items: [
-                  "Review history for underlying cause and treat appropriately",
-                  "Review medications — especially diuretics. Check digoxin levels if on digoxin",
-                  "**Check Magnesium** — Low Mg impairs K⁺ correction, replace FIRST",
-                  "If acidotic: correct K⁺ before treating acidosis — alkali causes intracellular K⁺ shift",
-                  "**Never use glucose infusions** as initial replacement vehicle — glucose lowers K⁺ further",
+                  { label: "Severity:", children: ["Mild (3·0–3·5): Oral Replacement", "Moderate (2·5–2·9): Oral or IV if not tolerating", "Severe (<2·5): IV Replacement"] },
+                  "Treat as Severe (ring CCOT) if ECG changes",
+                  { label: "Review History & Medications:", children: ["Review history for underlying cause and treat appropriately", "Review medications — especially diuretics", "Check digoxin levels if on digoxin"] },
+                  { label: "Treatment:", children: ["**Check Magnesium** — Low Mg impairs K⁺ correction, replace FIRST", "If **acidotic**: correct K⁺ before treating acidosis", "Alkali causes intracellular K⁺ shift", "**Never use glucose infusions** as initial replacement vehicle — glucose lowers K⁺ further"] },
                   "Account for K⁺ from all sources (IV fluids, TPN) in dose calculations",
                   "Chronic hypokalaemia = profound total body deficit; replacement may take several days",
                   "!!ECG changes (U waves, T wave flattening, ST depression) + hypokalaemia → contact CCOT immediately",
                 ],
               },
               {
-                heading: "Severity & First-Line Treatment",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Mild", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["K⁺ 3·0–3·5 mmol/L", "Usually asymptomatic", "*Arrhythmia risk (see below)"] },
-                  { grade: 2, label: "Moderate", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["K⁺ 2·5–2·9 mmol/L", "Generalised weakness, lassitude, constipation", "*Arrhythmia risk"] },
-                  { grade: 3, label: "Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["K⁺ <2·5 mmol/L", "Muscle weakness and necrosis", "Paralysis and respiratory impairment if <2·0", "!!*Arrhythmia risk — contact CCOT immediately if ECG changes"] },
-                ],
-                management: [
-                  { grade: 1, icpi: null, items: ["Oral: Sando® K 2 tabs TDS = 72 mmol/day", "Kay-Cee-L® 25ml TDS = 75 mmol/day (alternative)", "If NBM or ECG changes → treat as severe", "Monitor K⁺ daily until in range (~3 days)"] },
-                  { grade: 2, icpi: null, items: ["Oral: Sando® K 2 tabs QDS = 96 mmol/day", "Kay-Cee-L® 25ml QDS = 100 mmol/day (alternative)", "IV if not tolerating oral: KCl 20–40 mmol/L in NaCl 0·9%", "If symptomatic or ECG changes → treat as severe"] },
-                  { grade: 3, icpi: null, items: ["!!Contact CCOT immediately if ECG changes — CCOT QMC: Bleep 284 1049 | CCOT City: Bleep 284 1069 (24h)", "IV: KCl 40 mmol/L in NaCl 0·9% — standard preparation, repeated as required", "Max total daily dose: 2–3 mmol K⁺/kg body weight in 24 hours", "Continuous ECG monitoring if rate >20 mmol/hour", "Do NOT use glucose as infusion vehicle — glucose lowers K⁺ further", "Check K⁺ after every 40–80 mmol; minimum once daily", "Step down to oral once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved"] },
+                heading: "Quick Reference Guide",
+                type: "quickref",
+                items: [
+                  {
+                    grade: 1, label: "Mild", pill: "K⁺ 3·0–3·5",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e", badge: "#fefcbf",
+                    groups: [
+                      { title: "Features", items: ["K⁺ 3·0–3·5 mmol/L", "Usually asymptomatic", "Arrhythmia risk in IHD, heart failure, LV hypertrophy, or digoxin use"] },
+                      { title: "Management", items: ["Oral: Sando® K 2 tabs TDS = 72 mmol/day (Kay-Cee-L® 25ml TDS = 75 mmol/day alternative)", "If NBM or ECG changes → treat as severe", "Monitor K⁺ daily until in range (~3 days)"] },
+                    ],
+                  },
+                  {
+                    grade: 2, label: "Moderate", pill: "K⁺ 2·5–2·9",
+                    color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", badge: "#feebc8",
+                    groups: [
+                      { title: "Features", items: ["K⁺ 2·5–2·9 mmol/L", "Generalised weakness, lassitude, constipation", "Arrhythmia risk"] },
+                      { title: "Management", items: ["Oral: Sando® K 2 tabs QDS = 96 mmol/day (Kay-Cee-L® 25ml QDS = 100 mmol/day alternative)", "IV if not tolerating oral: KCl 20–40 mmol/L in NaCl 0·9%", "If symptomatic or ECG changes → treat as severe"] },
+                    ],
+                  },
+                  {
+                    grade: 3, label: "Severe", pill: "K⁺ 2·0–2·4",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["K⁺ 2·0–2·4 mmol/L", "Muscle weakness and necrosis", "!!Arrhythmia risk — contact CCOT immediately if ECG changes"] },
+                      { title: "Management", items: [
+                        "IV: KCl 40 mmol/L in NaCl 0·9% — standard preparation, repeated as required",
+                        "Max total daily dose: 2–3 mmol K⁺/kg body weight in 24 hours",
+                        "Continuous ECG monitoring if rate >20 mmol/hour",
+                        "Do NOT use glucose as infusion vehicle — glucose lowers K⁺ further",
+                        "Check K⁺ after every 40–80 mmol; minimum once daily",
+                        "Step down to oral once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved",
+                      ], alerts: [
+                        { title: "Contact CCOT immediately if ECG changes", items: ["CCOT QMC: Bleep 284 1049", "CCOT City: Bleep 284 1069 (24h)"] },
+                      ] },
+                    ],
+                  },
+                  {
+                    grade: 4, label: "Very Severe", pill: "K⁺ <2·0",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["K⁺ <2·0 mmol/L", "!!Paralysis and respiratory impairment", "!!Life-threatening arrhythmia risk"] },
+                      { title: "Management", items: [
+                        "IV: KCl 40 mmol/L in NaCl 0·9% — standard preparation, repeated as required",
+                        "Continuous ECG monitoring mandatory",
+                        "Consider HDU/ICU-level monitoring given risk of respiratory failure",
+                        "Check K⁺ after every 40–80 mmol; minimum once daily",
+                        "Step down to oral once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved",
+                      ], alerts: [
+                        { title: "Contact CCOT immediately regardless of ECG changes", items: ["CCOT QMC: Bleep 284 1049", "CCOT City: Bleep 284 1069 (24h)"] },
+                      ] },
+                    ],
+                  },
                 ],
                 note: "Approximate deficit: 1 mmol/L drop in K⁺ ≈ 100–200 mmol total body loss. Chronic hypokalaemia may take several days to correct.",
               },
               {
-                heading: "Step 3: History & Investigation",
-                type: "list",
+                heading: "Aetiology & Presentation",
+                type: "accordion",
                 groups: [
                   {
-                    icon: "heart", label: "Clinical Features",
-                    tableData: {
-                      rows: [
-                        { category: "Neuromuscular", examples: ["Generalised weakness, lassitude", "Muscle weakness and necrosis", "Paralysis and respiratory impairment (K⁺ <2·0 mmol/L)", "Constipation (smooth muscle)"] },
-                        { category: "Cardiovascular / ECG", examples: ["U waves, T wave flattening, ST depression", "Ventricular arrhythmias, palpitations"] },
-                        { category: "At-risk groups", examples: ["IHD, heart failure, LV hypertrophy — arrhythmia risk even with mild hypokalaemia", "Liver cirrhosis — hypokalaemia increases ammonia and hepatic encephalopathy risk", "Digoxin use — increased toxicity and arrhythmogenic potential"] },
-                      ],
-                    },
-                    warnings: [
-                      "Digoxin: hypokalaemia increases digoxin toxicity and arrhythmogenic potential — treat as severe hypokalaemia and check digoxin levels",
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    subheadings: [
+                      { title: "Neuromuscular", icon: "brain", items: ["Generalised weakness, lassitude", "Muscle weakness and necrosis", "Paralysis and respiratory impairment (K⁺ <2·0 mmol/L)", "Constipation (smooth muscle)"] },
+                      { title: "Cardiovascular / ECG", icon: "heart", items: ["U waves, T wave flattening, ST depression", "Ventricular arrhythmias, palpitations"] },
+                    ],
+                    alerts: [
+                      { title: "Caution! Digoxin", items: ["Hypokalaemia increases digoxin toxicity and arrhythmogenic potential — treat as severe hypokalaemia and check digoxin levels"] },
                     ],
                   },
                   {
-                    icon: "question", label: "Causes",
-                    tableData: {
-                      rows: [
-                        { category: "Dietary", examples: ["Inadequate intake: anorexia, malnutrition, bulimia", "High dietary sodium intake"] },
-                        { category: "Gastrointestinal", examples: ["Diarrhoea, vomiting, ileostomy, intestinal fistulae", "Laxative abuse"] },
-                        { category: "Renal", examples: ["Tubular renal losses", "Dialysis", "Urinary loss in congestive heart failure"] },
-                        { category: "Endocrine", examples: ["Hyperaldosteronism, Cushing's syndrome, ectopic ACTH (e.g. small cell lung cancer)", "Metabolic alkalosis"] },
-                        { category: "Other", examples: ["Hypomagnesaemia", "Transcellular shift (K⁺ movement from serum into cells)"] },
-                        { category: "Drug-induced", examples: ["Transcellular shift: beta-agonists, aminophylline, theophylline, insulin (esp. DKA treatment), caffeine", "Increased renal K⁺ loss: loop diuretics, thiazides, corticosteroids, cisplatin, AmBisome, aminoglycosides, foscarnet", "GI loss: laxative abuse", "Contact Pharmacy Medicines Information (ext 84185) for full list"] },
+                    id: "causes",
+                    label: "Causes",
+                    topCallout: {
+                      label: "At-Risk Groups",
+                      items: ["IHD, heart failure, LV hypertrophy — arrhythmia risk even with mild hypokalaemia", "Liver cirrhosis — hypokalaemia increases ammonia and hepatic encephalopathy risk", "Digoxin use — increased toxicity and arrhythmogenic potential"],
+                    },
+                    subheadings: [
+                      { title: "Dietary", icon: "apple", items: [
+                        { label: "Inadequate intake:", children: ["Anorexia", "Malnutrition", "Bulimia"] },
+                        "High dietary sodium intake",
+                      ] },
+                      { title: "Gastrointestinal", icon: "hexagonDot", items: [
+                        { label: "GI losses:", children: ["Diarrhoea", "Vomiting", "Ileostomy", "Intestinal fistulae"] },
+                        "Laxative abuse",
+                      ] },
+                      { title: "Renal", icon: "kidney", items: ["Tubular renal losses", "Dialysis", "Urinary loss in congestive heart failure"] },
+                      { title: "Endocrine", icon: "tsh", items: [
+                        { label: "Endocrine disorders:", children: ["Hyperaldosteronism", "Cushing's syndrome", "Ectopic ACTH (e.g. small cell lung cancer)"] },
+                        "Metabolic alkalosis",
+                      ] },
+                      { title: "Other", icon: "note", items: ["Hypomagnesaemia", "Transcellular shift (K⁺ movement from serum into cells)"] },
+                      { title: "Drug-induced", icon: "pill", items: [
+                        { label: "Transcellular shift:", children: ["Beta-agonists (e.g. Salbutamol)", "Aminophylline & Theophylline", "Insulin (esp. DKA treatment)", "Caffeine"] },
+                        { label: "Increased renal K⁺ loss:", children: ["Loop diuretics (e.g. Furosemide)", "Thiazides (e.g. Bendroflumethiazide)", "Corticosteroids (e.g. Prednisolone)", "Cisplatin", "AmBisome", "Aminoglycosides (e.g. Gentamicin)", "Foscarnet"] },
+                        { label: "GI loss:", children: ["Laxative abuse"] },
+                      ] },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        { note: "Contact Pharmacy Medicines Information (ext 84185) for full list" },
                       ],
                     },
-                  },
-                  {
-                    icon: "magnify", label: "Investigations",
-                    items: [
-                      "ECG — strongly recommended in severe/symptomatic hypokalaemia, cardiac disease, or renal impairment",
-                      "U&Es, bicarbonate, chloride, glucose",
-                      "**Magnesium levels** — failure to correct K⁺ despite treatment may be due to hypomagnesaemia",
-                      "Spot urine K⁺ if cause unclear: >15–20 mmol/L suggests renal loss",
-                      "Unexplained renal loss ± hypertension: refer to investigate for Bartter's or Liddle's syndromes",
-                      "Hypertensive patients: consider Endocrinology referral to exclude Conn's and Cushing's syndrome",
-                    ],
                   },
                 ],
               },
               {
-                heading: "Step 4: Management",
-                type: "list",
+                heading: "History & Investigations",
+                type: "accordion",
                 groups: [
                   {
-                    icon: "immediate", label: "IV K⁺ Replacement",
+                    id: "history",
+                    label: "History & Examination",
+                    theme: "green",
                     items: [
-                      { callout: true, icon: "pill", text: "KCl 40 mmol/L in NaCl 0·9% — standard preparation, repeated as required" },
-                      "Give over 4–6 hours per bag",
-                      "Max total daily dose: 2–3 mmol K⁺/kg body weight in 24 hours",
-                      "Repeat venous blood gas and serum K⁺ at end of initial treatment",
-                      "Step down once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved",
-                      "!!A rate-controlled infusion pump (volumetric or syringe pump) MUST be used for ALL potassium infusions — use DERS guardrails on Alaris pumps",
-                      "!!Do NOT use glucose as infusion vehicle",
-                      { label: "Peripheral line limits" },
-                      "Standard max rate: 20 mmol/hour",
-                      "Exceptional max rate: 40 mmol/hour — continuous ECG monitoring required",
-                      "Standard concentration: 40 mmol/L; Exceptional: 80 mmol/L — senior staff authorisation only",
-                      "Concentrations >40 mmol/L are painful — use largest suitable vein",
-                      { label: "Central venous (concentrated K⁺ areas only)" },
-                      "Standard max rate: 20 mmol/hour; Exceptional: 40 mmol/hour — continuous ECG monitoring required",
-                      "20 mmol in 20ml or 50 mmol in 50ml — treated as CD, restricted areas only",
-                      "!!Concentrated potassium: refer to NUH Code of Practice (Medicines Code Chapter 25) for approved stock-holding areas",
-                      { label: "Available pre-mixed solutions" },
-                      "Standard: 10 mmol/500ml, 20 mmol/500ml, 20 mmol/1L, 40 mmol/1L — NaCl 0·9%, Glucose 5%, or combined bags",
-                      "!!High concentration (40 mmol/500ml = 80 mmol/L; 60 mmol/1L) — senior medical staff authorisation required; NaCl 0·9% only",
+                      { label: "Medication review", children: ["Diuretics, laxatives, corticosteroids, insulin, beta-agonists, theophylline, aminoglycosides"] },
+                      { label: "GI losses", children: ["Vomiting, diarrhoea, ileostomy/fistula output, laxative use"] },
+                      { label: "Dietary intake", children: ["Inadequate intake, anorexia, malnutrition, bulimia"] },
+                      { label: "Endocrine features", children: ["Hypertension, weight change — consider Conn's or Cushing's syndrome"] },
+                      { label: "Cardiac history", children: ["IHD, heart failure, arrhythmia, digoxin use — increased arrhythmia risk"] },
+                      { label: "Renal history", children: ["CKD, dialysis, tubular losses"] },
                     ],
                   },
                   {
-                    icon: "drug", label: "Oral K⁺ Replacement",
-                    items: [
-                      { callout: true, icon: "pill", text: "1st line — Sando® K effervescent tablets: 12 mmol/tablet" },
-                      "Dissolves in water; can be given via enteral feeding tubes. Take with or after food",
-                      { divider: true },
-                      { callout: true, icon: "pill", text: "2nd line — Kay-Cee-L® syrup: 5 mmol/5ml" },
-                      "Use if Sando® K not tolerated",
-                      { divider: true },
-                      { callout: true, icon: "pill", text: "3rd line — KCl 600mg MR tablets (unlicensed): 8 mmol/tablet" },
-                      "Swallow whole with fluid during meals, sitting upright. Risk of intestinal ulceration — follow Trust unlicensed medicines policy",
-                      "Jejunal route: Sando® K preferred; jejunal bioavailability may be reduced",
-                      { label: "When to use IV instead of oral" },
-                      "Patient cannot tolerate oral/enteral therapy",
-                      "Not achieving adequate rise in K⁺ in a clinically acceptable time",
-                      "!!Do NOT use glucose infusions as initial vehicle — glucose lowers K⁺",
+                    id: "investigations",
+                    label: "Investigations",
+                    theme: "green",
+                    subheadings: [
+                      {
+                        title: "Biochemistry",
+                        items: [
+                          "U&Es, bicarbonate, chloride, glucose",
+                          "**Magnesium levels** — failure to correct K⁺ despite treatment may be due to hypomagnesaemia",
+                          "Spot urine K⁺ if cause unclear: >15–20 mmol/L suggests renal loss",
+                        ],
+                      },
+                      {
+                        title: "ECG",
+                        items: [
+                          "12-lead ECG — strongly recommended in severe/symptomatic hypokalaemia, cardiac disease, or renal impairment",
+                        ],
+                      },
                     ],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Special Considerations",
+                          items: [
+                            "Unexplained renal loss ± hypertension: refer to investigate for Bartter's or Liddle's syndromes",
+                            "Hypertensive patients: consider Endocrinology referral to exclude Conn's and Cushing's syndrome",
+                          ],
+                        },
+                      ],
+                    },
                   },
                 ],
               },
               {
-                heading: "Monitoring & Adverse Effects",
-                type: "list",
+                heading: "Management",
+                type: "accordion",
                 groups: [
                   {
-                    icon: "monitoring", label: "Monitoring during replacement",
-                    items: [
-                      "Oral: daily serum K⁺ until in range (~3 days)",
-                      "IV routine: check K⁺ after every 40–80 mmol; minimum once daily",
-                      "Check Mg²⁺ — correct if low",
-                      "Infusion site: check regularly for pain, redness, inflammation — avoid extravasation",
-                      "Digoxin patients: check digoxin levels",
-                      "Account for K⁺ from all IV fluids and TPN in calculations",
+                    id: "iv-replacement",
+                    label: "IV K⁺ Replacement",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "KCl 40 mmol/L in NaCl 0·9% — standard preparation, repeated as required",
+                        icon: "ivbag",
+                        items: [
+                          "Give over 4–6 hours per bag",
+                          "Max total daily dose: 2–3 mmol K⁺/kg body weight in 24 hours",
+                          "Repeat venous blood gas and serum K⁺ at end of initial treatment",
+                          "Step down once K⁺ persistently >3·0–3·5 mmol/L and symptoms resolved",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution! Administration",
+                            items: ["A rate-controlled infusion pump (volumetric or syringe pump) MUST be used for ALL potassium infusions — use DERS guardrails on Alaris pumps", "Do NOT use glucose as infusion vehicle — glucose lowers K⁺ further"],
+                          },
+                        ],
+                      },
+                      {
+                        title: "Peripheral Line Limits",
+                        icon: "ivbag",
+                        items: [
+                          "Standard max rate: 20 mmol/hour",
+                          "Exceptional max rate: 40 mmol/hour — continuous ECG monitoring required",
+                          "Standard concentration: 40 mmol/L; Exceptional: 80 mmol/L — senior staff authorisation only",
+                          "Concentrations >40 mmol/L are painful — use largest suitable vein",
+                        ],
+                      },
+                      {
+                        title: "Central Venous (Concentrated K⁺ Areas Only)",
+                        icon: "ivbag",
+                        items: [
+                          "Standard max rate: 20 mmol/hour; Exceptional: 40 mmol/hour — continuous ECG monitoring required",
+                          "20 mmol in 20ml or 50 mmol in 50ml — treated as CD, restricted areas only",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution! Restricted Stock",
+                            items: ["Concentrated potassium: refer to NUH Code of Practice (Medicines Code Chapter 25) for approved stock-holding areas"],
+                          },
+                        ],
+                      },
+                      {
+                        title: "Available Pre-Mixed Solutions",
+                        icon: "ivbag",
+                        items: [
+                          "Standard: 10 mmol/500ml, 20 mmol/500ml, 20 mmol/1L, 40 mmol/1L — NaCl 0·9%, Glucose 5%, or combined bags",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution! High Concentration",
+                            items: ["40 mmol/500ml = 80 mmol/L; 60 mmol/1L — senior medical staff authorisation required; NaCl 0·9% only"],
+                          },
+                        ],
+                      },
                     ],
                   },
                   {
-                    icon: "avoid", label: "Adverse effects of IV potassium",
-                    items: [
-                      "Hyperkalaemia — especially in renal impairment",
-                      "Fluid overload from rapid infusions — high risk in heart failure or IHD",
-                      "!!Cardiac arrhythmias / sudden cardiac death — risk increased with rapid IV replacement; continuous ECG required if rate >20 mmol/hr",
-                      "Phlebitis — concentrations >40 mmol/L are painful; use largest suitable vein",
-                      "Extravasation and tissue damage — more likely with higher concentrations",
+                    id: "oral-replacement",
+                    label: "Oral K⁺ Replacement",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "1st line — Sando® K effervescent tablets: 12 mmol/tablet",
+                        icon: "pill",
+                        items: ["Dissolves in water; can be given via enteral feeding tubes. Take with or after food"],
+                      },
+                      {
+                        title: "2nd line — Kay-Cee-L® syrup: 5 mmol/5ml",
+                        icon: "pill",
+                        items: ["Use if Sando® K not tolerated"],
+                      },
+                      {
+                        title: "3rd line — KCl 600mg MR tablets (unlicensed): 8 mmol/tablet",
+                        icon: "pill",
+                        items: ["Swallow whole with fluid during meals, sitting upright. Risk of intestinal ulceration — follow Trust unlicensed medicines policy", "Jejunal route: Sando® K preferred; jejunal bioavailability may be reduced"],
+                      },
+                      {
+                        title: "When to Use IV Instead of Oral",
+                        items: ["Patient cannot tolerate oral/enteral therapy", "Not achieving adequate rise in K⁺ in a clinically acceptable time"],
+                        alerts: [
+                          { title: "Caution!", items: ["Do NOT use glucose infusions as initial vehicle — glucose lowers K⁺"] },
+                        ],
+                      },
                     ],
                   },
                   {
-                    icon: "referral", label: "Renal impairment caution",
-                    items: [
-                      "Replace K⁺ cautiously in renal impairment — risk of hyperkalaemia due to impaired excretion",
-                      "!!Contact renal team if patient is on dialysis, CKD stage 4/5 (GFR <30), or AKI stage 2/3",
+                    id: "monitoring",
+                    label: "Monitoring",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "During Replacement",
+                        icon: "monitoring",
+                        items: [
+                          "Oral: daily serum K⁺ until in range (~3 days)",
+                          "IV routine: check K⁺ after every 40–80 mmol; minimum once daily",
+                          "Check Mg²⁺ — correct if low",
+                          "Infusion site: check regularly for pain, redness, inflammation — avoid extravasation",
+                          "Digoxin patients: check digoxin levels",
+                          "Account for K⁺ from all IV fluids and TPN in calculations",
+                        ],
+                      },
+                      {
+                        title: "Adverse Effects of IV Potassium",
+                        icon: "avoid",
+                        items: [
+                          "Hyperkalaemia — especially in renal impairment",
+                          "Fluid overload from rapid infusions — high risk in heart failure or IHD",
+                          "!!Cardiac arrhythmias / sudden cardiac death — risk increased with rapid IV replacement; continuous ECG required if rate >20 mmol/hr",
+                          "Phlebitis — concentrations >40 mmol/L are painful; use largest suitable vein",
+                          "Extravasation and tissue damage — more likely with higher concentrations",
+                        ],
+                      },
+                    ],
+                    alerts: [
+                      {
+                        title: "Caution! Renal Impairment",
+                        items: ["Replace K⁺ cautiously in renal impairment — risk of hyperkalaemia due to impaired excretion", "!!Contact renal team if patient is on dialysis, CKD stage 4/5 (GFR <30), or AKI stage 2/3"],
+                      },
                     ],
                   },
                 ],
@@ -6893,7 +7810,7 @@ icon: (
             related: ["elec-hypokalaemia", "elec-hypomagnesaemia"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=758ca78e4708c7d0b87b6209446c66d0",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9682&query_desc=hyperkalaemia",
-            updated: "September 2027 (review)",
+            updated: "September 2027",
             sections: [
               {
                 heading: "⚠ Initial Assessment & Escalation",
@@ -6901,229 +7818,569 @@ icon: (
                 items: [
                   "Assess patient using the ABCDE approach",
                   "12-lead ECG and monitor cardiac rhythm if K⁺ ≥6·0 mmol/L",
-                  "Exclude pseudohyperkalaemia — send Whole Blood Potassium (WBK) in green Lithium-Heparin tube",
-                  "Dialysis patients: hyperkalaemia defined as K⁺ ≥6·5 mmol/L — refer to renal team, request continuous 3-lead ECG",
+                  { label: "Exclude pseudohyperkalaemia", children: ["Send Whole Blood Potassium (WBK) in green Lithium-Heparin tube"] },
+                  { label: "Dialysis patients: hyperkalaemia defined as K⁺ ≥6·5 mmol/L", children: ["Refer to renal team, request continuous 3-lead ECG"] },
                   "!!If significant hyperkalaemia or ECG changes: DO NOT delay treatment awaiting repeat result or specialist review",
                   "Out of hours: lab escalates to H24 who will alert prescriber and escalate to CCOT if required",
                   "!!Use the Hyperkalaemia prescription chart for calcium gluconate and insulin-glucose treatment (available on ward or print from intranet)",
                 ],
               },
               {
-                heading: "Step 1: Assess Severity",
-                type: "grader",
-                grades: [
-                  { grade: 1, label: "Mild", color: "#744210", bg: "#fffff0", border: "#f6e05e", criteria: ["K⁺ 5·5–5·9 mmol/L", "Consider cause and need for treatment"] },
-                  { grade: 2, label: "Moderate", color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", criteria: ["K⁺ 6·0–6·4 mmol/L", "Management guided by clinical condition, ECG, and rate of rise"] },
-                  { grade: 3, label: "Severe", color: "#742a2a", bg: "#fff5f5", border: "#fc8181", criteria: ["K⁺ ≥6·5 mmol/L", "!!Emergency treatment indicated", "ECG changes at any level = treat as severe"] },
-                ],
-                management: [
-                  { grade: 1, icpi: null, items: ["Consider cause and need for treatment", "Stop potassium-containing/sparing drugs", "Review diet and medications", "Monitor K⁺ and renal function"] },
-                  { grade: 2, icpi: null, items: ["Request urgent 12-lead ECG", "Repeat K⁺ + Whole Blood Potassium (green Lithium-Heparin tube)", "Repeat K⁺ can be confirmed by venous blood gas to avoid delay", "If ECG changes: treat as severe immediately", "If no ECG changes: reduce total body K⁺ (diet, stop offending drugs, Lokelma® if cause not identified/corrected)", "Consider insulin-glucose if severe AKI, persistent high K⁺, or unwell", "Recheck K⁺ after 4–6 hours then daily"] },
-                  { grade: 3, icpi: null, items: ["!!Do NOT delay treatment awaiting repeat results or specialist review", "Request urgent 12-lead ECG + continuous cardiac monitoring", "Repeat K⁺ + Whole Blood Potassium (green tube)", "Step 1: Calcium gluconate 10% 30ml over 10 min — protect heart", "Step 2: Actrapid® 10 units in 50ml glucose 50% over 30 min — shift K⁺ into cells", "Step 3: Lokelma® 10g TDS PO up to 72h — remove K⁺", "Monitor blood glucose for 12 hours post insulin-glucose", "Recheck K⁺ at 2h via VBG, then 4–6h, then daily", "If K⁺ ≥6·5 despite treatment or patient anuric: contact Renal SpR on-call urgently"] },
-                ],
-                note: "ECG changes in hyperkalaemia: tall peaked T waves, flattening/loss of P waves, broadening of QRS complexes, bradycardia, sine wave, VT.",
-              },
-              {
-                heading: "Step 3: History & Investigation",
-                type: "list",
-                groups: [
+                heading: "Quick Reference Guide",
+                type: "quickref",
+                items: [
                   {
-                    icon: "heart", label: "Clinical Features",
-                    tableData: {
-                      rows: [
-                        { category: "Neuromuscular", examples: ["Weakness, fatigue, lethargy", "Ascending flaccid paralysis", "Paraesthesia (perioral, fingers, toes)", "Respiratory muscle weakness (severe)"] },
-                        { category: "Cardiovascular / ECG", examples: ["Tall peaked/tented T waves (earliest sign)", "Flattening or loss of P waves", "Prolonged PR interval", "Widening of QRS complexes", "Sine wave pattern, bradycardia, VT/VF, asystole"] },
-                        { category: "Gastrointestinal", examples: ["Nausea, vomiting", "Diarrhoea, abdominal cramps"] },
-                        { category: "At-risk groups", examples: ["CKD/ESRD and dialysis patients — impaired renal excretion", "AKI — rapid K⁺ accumulation", "Diabetes — hyperosmolality and insulin deficiency promote K⁺ shift", "Adrenal insufficiency (Addison's) — mineralocorticoid deficiency"] },
-                      ],
-                    },
-                    warnings: [
-                      "ECG changes at any K⁺ level = treat as severe hyperkalaemia — do NOT delay treatment to await repeat results",
-                      { text: "Neuromuscular symptoms may be absent even with life-threatening ECG changes — always perform ECG if K⁺ ≥6·0 mmol/L. ", url: "https://litfl.com/hyperkalaemia-ecg-library/", linkText: "ECG changes reference →" },
+                    grade: 1, label: "Mild", pill: "K⁺ 5·5–5·9",
+                    color: "#744210", bg: "#fffff0", border: "#f6e05e", badge: "#fefcbf",
+                    groups: [
+                      { title: "Features", items: ["K⁺ 5·5–5·9 mmol/L", "Usually asymptomatic", "12-lead ECG recommended to exclude changes"] },
+                      { title: "Management", items: ["Consider cause and need for treatment", "Stop potassium-containing/sparing drugs", "Review diet and medications", "Monitor K⁺ and renal function"] },
                     ],
                   },
                   {
-                    icon: "question", label: "Causes",
-                    tableData: {
-                      rows: [
-                        { category: "Spurious (Pseudohyperkalaemia)", examples: ["Haemolysis — samples must arrive at lab within 5h, NEVER refrigerate", "EDTA contamination from adjacent tube", "Prolonged tourniquet use", "Marked leucocytosis or thrombocytosis — use whole blood K⁺ in green Lithium-Heparin tube", "Sample taken from drip arm"] },
-                        { category: "Reduced renal excretion", examples: ["Acute kidney injury (AKI)", "Chronic kidney disease (CKD) stage 4/5 (GFR <30)", "End-stage renal disease / dialysis", "Mineralocorticoid deficiency: Addison's disease, hypoaldosteronism"] },
-                        { category: "Transcellular shift (K⁺ out of cells)", examples: ["Acidosis (metabolic or respiratory — excluding DKA)", "Insulin deficiency / hyperglycaemia", "Rhabdomyolysis, haemolysis", "Tumour lysis syndrome", "Succinylcholine use", "Severe exercise"] },
-                        { category: "Increased K⁺ load", examples: ["IV potassium administration", "Blood transfusion (stored blood)", "High dietary potassium intake (rarely sole cause)", "Burns and major trauma — tissue breakdown"] },
-                        { category: "Drug-induced", examples: ["ACE inhibitors, ARBs (reduce aldosterone-driven K⁺ excretion)", "Mineralocorticoid receptor antagonists: spironolactone, eplerenone", "Potassium-sparing diuretics: amiloride", "NSAIDs (reduce renal K⁺ excretion)", "Trimethoprim / co-trimoxazole", "Non-selective beta-blockers (block Na-K ATPase)", "Heparins (reduce aldosterone synthesis)", "Ciclosporin, tacrolimus", "Contact Pharmacy Medicines Information (ext 84185) for full list"] },
-                      ],
-                    },
+                    grade: 2, label: "Moderate", pill: "K⁺ 6·0–6·4",
+                    color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", badge: "#feebc8",
+                    groups: [
+                      { title: "Features", items: ["K⁺ 6·0–6·4 mmol/L", "Management guided by clinical condition, ECG, and rate of rise", "!!ECG changes at any level → treat as Very Severe"] },
+                      { title: "Management", items: ["Request urgent 12-lead ECG", { label: "Repeat K⁺ + Whole Blood Potassium (green Lithium-Heparin tube)", children: ["Venous blood gas can confirm to avoid delay"] }, "If no ECG changes: reduce total body K⁺ (diet, stop offending drugs, Lokelma® if cause not identified/corrected)", "Consider insulin-glucose if severe AKI, persistent high K⁺, or unwell", "Recheck K⁺ after 4–6 hours then daily"] },
+                    ],
                   },
                   {
-                    icon: "magnify", label: "Investigations",
-                    items: [
-                      "12-lead ECG — mandatory if K⁺ ≥6·0 mmol/L; repeat after treatment",
-                      "Whole Blood Potassium (WBK) in green Lithium-Heparin tube — to exclude pseudohyperkalaemia",
-                      "Venous blood gas — for rapid K⁺ confirmation and pH (exclude acidosis)",
-                      "U&Es, creatinine, eGFR — assess renal function",
-                      "Glucose — hyperglycaemia can cause transcellular K⁺ shift",
-                      "Bicarbonate — acidosis worsens hyperkalaemia",
-                      "Calcium — needed before giving calcium gluconate; low Ca²⁺ increases cardiac risk",
-                      "Urine output and fluid balance — oliguria/anuria = contact Renal SpR urgently",
-                      "CK if rhabdomyolysis suspected; LDH/urate/phosphate if tumour lysis syndrome suspected",
-                      "Short Synacthen test if Addison's disease possible",
+                    grade: 3, label: "Severe", pill: "K⁺ 6·5–6·9",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["K⁺ 6·5–6·9 mmol/L", "!!Emergency treatment indicated", "Treat as Very Severe immediately if ECG changes develop"] },
+                      { title: "Management", items: ["!!Do NOT delay treatment awaiting repeat results or specialist review", "Request urgent 12-lead ECG + continuous cardiac monitoring", "Repeat K⁺ + Whole Blood Potassium (green tube)", { label: "Step 1: Calcium gluconate 10% 30ml over 10 min", children: ["Protect heart"] }, { label: "Step 2: Actrapid® 10 units in 50ml glucose 50% over 30 min", children: ["Shift K⁺ into cells"] }, { label: "Step 3: Lokelma® 10g TDS PO up to 72h", children: ["Remove K⁺"] }, "Monitor blood glucose for 12 hours post insulin-glucose", "Recheck K⁺ at 2h via VBG, then 4–6h, then daily", "If K⁺ ≥6·5 despite treatment or patient anuric: contact Renal SpR on-call urgently"] },
+                    ],
+                  },
+                  {
+                    grade: 4, label: "Very Severe", pill: "K⁺ ≥7·0",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["K⁺ ≥7·0 mmol/L OR ECG changes present at any K⁺ level", "!!Life-threatening — medical emergency", "!!Do NOT delay treatment awaiting repeat results or specialist review"] },
+                      { title: "Management", items: ["Continuous cardiac monitoring + urgent 12-lead ECG", { label: "Step 1: Calcium gluconate 10% 30ml over 10 min", children: ["Protect heart (repeat if ECG changes persist)"] }, "Step 2: Actrapid® 10 units in 50ml glucose 50% over 30 min ± salbutamol 10–20mg nebulised", { label: "Step 3: Lokelma® 10g TDS PO up to 72h", children: ["Remove K⁺"] }, "Recheck K⁺ at 2h via VBG, then 4–6h, then daily", "!!Contact Renal SpR on-call urgently — consider dialysis if refractory or patient anuric"] },
                     ],
                   },
                 ],
               },
               {
-                heading: "Step 4: Management",
-                type: "list",
+                heading: "Aetiology & Presentation",
+                type: "accordion",
                 groups: [
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 1 — Protect the Heart: Calcium Gluconate 10%",
-                    footerCallout: [
-                      "Calcium gluconate 10% — 30ml IV over 10 minutes, undiluted via syringe pump",
-                    ],
-                    items: [
-                      "Give if K⁺ ≥6·5 mmol/L **or** ECG changes present at any K⁺ level",
-                      "Does NOT lower serum K⁺ — stabilises cardiac membrane only",
-                      "ECG changes should improve within 1–3 minutes; effect lasts ~30 minutes",
-                      "If no syringe pump: give as 3 × 10ml boluses over 10 minutes",
-                      "Doctor must stay near patient during administration",
-                      "Cardiac arrest only: calcium chloride 10% 10ml (6·8 mmol) from cardiac arrest box — more irritant peripherally",
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    subheadings: [
+                      { title: "Neuromuscular", icon: "brain", items: ["Weakness, fatigue, lethargy", "Ascending flaccid paralysis", "Paraesthesia (perioral, fingers, toes)", "Respiratory muscle weakness (severe)"] },
+                      { title: "Cardiovascular / ECG", icon: "heart", items: ["Tall peaked/tented T waves (earliest sign)", "Flattening or loss of P waves", "Prolonged PR interval", "Widening of QRS complexes", "Sine wave pattern, bradycardia, VT/VF, asystole"] },
+                      { title: "Gastrointestinal", icon: "toilet", items: ["Nausea, vomiting", "Diarrhoea, abdominal cramps"] },
                     ],
                     alerts: [
-                      "Digoxin: give slowly — mix with 100ml 5% glucose and give over 60 minutes (rapid calcium may precipitate digoxin toxicity)",
-                      "Never give calcium gluconate at the same time as sodium bicarbonate or insulin-glucose via the same access site — precipitation risk",
+                      { title: "ECG changes at any K⁺ level = treat as Very Severe hyperkalaemia", items: ["Do NOT delay treatment to await repeat results"] },
+                      { title: "Neuromuscular symptoms may be absent even with life-threatening ECG changes", items: ["Always perform ECG if K⁺ ≥6·0 mmol/L. See the [ECG changes reference](https://litfl.com/hyperkalaemia-ecg-library/)"] },
                     ],
                   },
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Step 2 — Shift K⁺ Into Cells: Actrapid® + Glucose",
-                    footerCallout: [
-                      "Actrapid® 10 units in 50ml glucose 50% — IV over 30 minutes via syringe pump",
+                    id: "causes",
+                    label: "Causes",
+                    topCallout: {
+                      label: "At-Risk Groups",
+                      items: ["CKD/ESRD and dialysis patients — impaired renal excretion", "AKI — rapid K⁺ accumulation", "Diabetes — hyperosmolality and insulin deficiency promote K⁺ shift", "Adrenal insufficiency (Addison's) — mineralocorticoid deficiency"],
+                    },
+                    subheadings: [
+                      { title: "Spurious (Pseudohyperkalaemia)", icon: "vial", items: [
+                        { label: "Haemolysis", children: ["Samples must arrive at lab within 5h, NEVER refrigerate"] },
+                        "EDTA contamination from adjacent tube",
+                        "Prolonged tourniquet use",
+                        { label: "Marked leucocytosis or thrombocytosis", children: ["Use whole blood K⁺ in green Lithium-Heparin tube"] },
+                        "Sample taken from drip arm",
+                      ] },
+                      { title: "Reduced Renal Excretion", icon: "kidney", items: ["Acute kidney injury (AKI)", "Chronic kidney disease (CKD) stage 4/5 (GFR <30)", "End-stage renal disease / dialysis", "Mineralocorticoid deficiency: Addison's disease, hypoaldosteronism"] },
+                      { title: "Transcellular Shift (K⁺ out of cells)", icon: "thunderbolt", items: ["Acidosis (metabolic or respiratory — excluding DKA)", "Insulin deficiency / hyperglycaemia", "Rhabdomyolysis, haemolysis", "Tumour lysis syndrome", "Succinylcholine use", "Severe exercise"] },
+                      { title: "Increased K⁺ Load", icon: "droplet", items: ["IV potassium administration", "Blood transfusion (stored blood)", "High dietary potassium intake (rarely sole cause)", { label: "Burns and major trauma", children: ["Tissue breakdown"] }] },
+                      { title: "Drug-induced", icon: "pill", items: [
+                        { label: "Reduce aldosterone-driven K⁺ excretion:", children: ["ACE inhibitors (e.g. Ramipril)", "ARBs (e.g. Losartan)"] },
+                        { label: "Mineralocorticoid receptor antagonists:", children: ["Spironolactone", "Eplerenone"] },
+                        { label: "Potassium-sparing diuretics:", children: ["Amiloride"] },
+                        { label: "NSAIDs (e.g. Ibuprofen)", children: ["Reduce renal K⁺ excretion"] },
+                        { label: "Trimethoprim & co-trimoxazole:", children: ["Trimethoprim", "Co-trimoxazole"] },
+                        { label: "Non-selective beta-blockers (e.g. Propranolol)", children: ["Block Na-K ATPase"] },
+                        { label: "Heparins (e.g. Enoxaparin)", children: ["Reduce aldosterone synthesis"] },
+                        { label: "Calcineurin inhibitors:", children: ["Ciclosporin", "Tacrolimus"] },
+                      ] },
                     ],
-                    items: [
-                      "Give into a large vein — irritant; monitor for phlebitis if 50% glucose given peripherally",
-                      "Reduces serum K⁺ by 0·65–1·0 mmol/L",
-                      "If pre-treatment blood glucose <7 mmol/L: also give 250ml glucose 10% at 50ml/hour for 5 hours to prevent hypoglycaemia",
-                      "Monitor blood glucose before and after infusion, every 15–30 minutes and hourly for up to 12 hours — risk of late hypoglycaemia",
-                      "If BM <4 mmol/L: treat per NUH hypoglycaemia guideline",
-                    ],
-                    alerts: [
-                      "Two-person check required for preparation",
-                      "Insulin-glucose is a HOLDING MEASURE only — does not treat the underlying cause",
+                    insetCard: {
+                      boxes: [
+                        { note: "Contact Pharmacy Medicines Information (ext 84185) for full list" },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "History & Investigations",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "history",
+                    label: "History & Examination",
+                    theme: "green",
+                    subheadings: [
+                      { title: "ABCDE Assessment", icon: "warning", items: ["Assess airway", "Breathing", "Circulation", "Disability", "Exposure"] },
+                      { title: "Medication Review", icon: "pill", items: ["ACE inhibitors", "ARBs", "Spironolactone/eplerenone", "Amiloride", "NSAIDs", "Trimethoprim", "Non-selective beta-blockers", "Heparins", "Ciclosporin/tacrolimus"] },
+                      { title: "Renal History", icon: "kidney", items: ["AKI", "CKD stage", "Dialysis status and last dialysis session", "Renal transplant"] },
+                      { title: "Endocrine History", icon: "tsh", items: ["Diabetes", "Known or suspected Addison's disease/adrenal insufficiency"] },
+                      { title: "Other Risk Factors", icon: "thunderbolt", items: ["Rhabdomyolysis", "Tumour lysis syndrome risk", "Recent blood transfusion", "Burns/trauma", "High dietary potassium intake"] },
+                      { title: "Sample Quality Check", icon: "vial", items: ["Haemolysis", "EDTA contamination", "Tourniquet time", "Sample taken from drip arm", "!!Exclude pseudohyperkalaemia before treating"] },
                     ],
                   },
                   {
-                    colorIndex: 3,
-                    icon: "immediate", label: "Adjuncts — Salbutamol & Sodium Bicarbonate",
-                    doseSections: [
+                    id: "investigations",
+                    label: "Investigations",
+                    theme: "green",
+                    subheadings: [
+                      { title: "Biochemistry", icon: "bloods", items: [
+                        { label: "Whole Blood Potassium (WBK) in green Lithium-Heparin tube", children: ["To exclude pseudohyperkalaemia"] },
+                        { label: "Venous blood gas", children: ["For rapid K⁺ confirmation and pH (exclude acidosis)"] },
+                        { label: "U&Es, creatinine, eGFR", children: ["Assess renal function"] },
+                        { label: "Glucose", children: ["Hyperglycaemia can cause transcellular K⁺ shift"] },
+                        { label: "Bicarbonate", children: ["Acidosis worsens hyperkalaemia"] },
+                        { label: "Calcium", children: ["Needed before giving calcium gluconate; low Ca²⁺ increases cardiac risk"] },
+                      ] },
+                      { title: "ECG", icon: "heart", items: [
+                        { label: "12-lead ECG", children: ["Mandatory if K⁺ ≥6·0 mmol/L; repeat after treatment"] },
+                      ] },
+                      { title: "Special Tests", icon: "magnify", items: [
+                        "CK if rhabdomyolysis suspected",
+                        "LDH/urate/phosphate if tumour lysis syndrome suspected",
+                        "Short Synacthen test if Addison's disease possible",
+                      ] },
+                      { title: "Bedside / Fluid Balance", icon: "droplet", items: [
+                        { label: "Urine output and fluid balance", children: ["Oliguria/anuria = contact Renal SpR urgently"] },
+                      ] },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Special Considerations",
+                          items: [
+                            { label: "Dialysis patients: hyperkalaemia defined as K⁺ ≥6·5 mmol/L", children: ["Refer to renal team, request continuous 3-lead ECG"] },
+                            "Out of hours: lab escalates to H24 who will alert prescriber and escalate to CCOT if required",
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "assess-severity",
+                    label: "Assess Severity",
+                    theme: "purple",
+                    topAlerts: [
                       {
-                        dose: "Salbutamol 10–20mg nebulised",
+                        title: "Any ECG changes: Treat as Severe — Commence Actrapid, do not delay",
                         items: [
-                          "Additive effect to insulin-glucose — optional, must NOT be used as single agent",
+                          { label: "ECG changes in hyperkalaemia:", children: ["Tall peaked T waves", "Flattening/loss of P waves", "Broadening of QRS complexes", "Bradycardia", "Sine wave"] },
+                          "!!ECG changes at ANY K⁺ level = treat as Very Severe — do NOT delay treatment.",
+                        ],
+                      },
+                    ],
+                    items: [
+                      "Assess patient using the ABCDE approach",
+                      "12-lead ECG and monitor cardiac rhythm if serum K⁺ ≥6·0 mmol/L",
+                      { label: "Exclude pseudohyperkalaemia", children: ["Send WBK (Green Top Lithium Heparin tube)"] },
+                      "Give empirical treatment for arrhythmia",
+                    ],
+                    insetCard: {
+                      heading: "Severity Grading",
+                      boxes: [
+                        {
+                          table: {
+                            headers: ["Severity", "K⁺ Level", "Action"],
+                            boldFirstColumnOnly: true,
+                            rows: [
+                              ["Mild", "5·5–5·9 mmol/L", "Consider cause and need for treatment"],
+                              ["Moderate", "6·0–6·4 mmol/L", "Management guided by clinical condition, ECG and rate of rise"],
+                              ["Severe", "≥6·5 mmol/L", "Emergency treatment indicated"],
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: "protect-heart",
+                    label: "Protect the Heart",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Calcium gluconate 10% — 30ml IV over 10 minutes, undiluted via syringe pump",
+                        icon: "ivbag",
+                        items: [
+                          "Give if K⁺ ≥6·5 mmol/L **or** ECG changes present at any K⁺ level",
+                          { label: "Does NOT lower serum K⁺", children: ["Stabilises cardiac membrane only"] },
+                          "ECG changes should improve within 1–3 minutes; effect lasts ~30 minutes",
+                          "If no syringe pump: give as 3 × 10ml boluses over 10 minutes",
+                          "Doctor must stay near patient during administration",
+                        ],
+                        alerts: [
+                          {
+                            title: "Cardiac Arrest",
+                            items: [
+                              "Calcium chloride 10% 10ml (6·8 mmol)",
+                              "More irritant peripherally",
+                              "Location: cardiac arrest trolley",
+                            ],
+                          },
+                          {
+                            title: "Caution!",
+                            items: [
+                              { label: "Never give calcium gluconate at the same time as sodium bicarbonate or insulin-glucose via the same access site", children: ["Precipitation risk"] },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "Digoxin",
+                          items: [
+                            "If the patient is taking digoxin, the calcium gluconate should be given slowly",
+                            "Mix with 100mL 5% glucose and give over 60 minutes",
+                            "Rapid calcium administration may precipitate **myocardial digoxin toxicity**",
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: "shift-into-cells",
+                    label: "Shift K⁺ into Cells",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Actrapid® 10 units in 50ml glucose 50% — IV over 30 minutes via syringe pump",
+                        icon: "ivbag",
+                        items: [
+                          { label: "Give into a large vein", children: ["Irritant; monitor for phlebitis if 50% glucose given peripherally"] },
+                          "Reduces serum K⁺ by 0·65–1·0 mmol/L",
+                          "If pre-treatment blood glucose <7 mmol/L: also give 250ml glucose 10% at 50ml/hour for 5 hours to prevent hypoglycaemia",
+                          { label: "Monitor blood glucose before and after infusion, every 15–30 minutes and hourly for up to 12 hours", children: ["Risk of late hypoglycaemia"] },
+                          "If BM <4 mmol/L: treat per NUH hypoglycaemia guideline",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution!",
+                            items: [
+                              { label: "Insulin-glucose is a HOLDING MEASURE only", children: ["Does not treat the underlying cause"] },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        title: "Salbutamol 10–20mg nebulised",
+                        icon: "pill",
+                        items: [
+                          { label: "Additive effect to insulin-glucose", children: ["Optional, must NOT be used as single agent"] },
                           "Reduces K⁺ by 0·53–0·88 mmol/L (inconsistent response)",
                           "Caution: ischaemic heart disease, cardiac arrhythmias (avoid or use lower dose)",
                           "Response reduced in patients on β-blockers or digoxin",
                         ],
-                        alerts: [],
                       },
                       {
-                        dose: "Sodium bicarbonate 1·4% 500ml IV over 2 hours",
+                        title: "Sodium bicarbonate 1·4% 500ml IV over 2 hours",
+                        icon: "pill",
                         items: [
                           "Risk of sodium/fluid overload (pulmonary oedema)",
                           "Risk of tetany in chronic renal failure with underlying hypocalcaemia",
                           "CKD with HCO₃⁻ <22 mmol/L: consider sodium bicarbonate 1g PO BD (caution in fluid overload/hypertension — seek Renal advice)",
                         ],
                         alerts: [
-                          "Only if pH <7·2 AND on advice of Renal Registrar or Critical Care — do not use routinely",
-                          "Never give via same access site as IV calcium — precipitation risk",
+                          {
+                            title: "Caution!",
+                            items: [
+                              { label: "Only if pH <7·2 AND on advice of Renal Registrar or Critical Care", children: ["Do not use routinely"] },
+                              { label: "Never give via same access site as IV calcium", children: ["Precipitation risk"] },
+                            ],
+                          },
                         ],
                       },
                     ],
                   },
                   {
-                    colorIndex: 3,
-                    icon: "camera", label: "Notes: Treatment Monitoring",
-                    items: [
-                      "Recheck K⁺ after 2 hours via VBG — confirm with lab results",
-                      "K⁺ <6·0 mmol/L: repeat K⁺ and renal function after 4–6 hours then daily",
-                      "K⁺ 6·0–6·4 mmol/L: consider repeating insulin-glucose",
-                      "K⁺ ≥6·5 mmol/L despite medical therapy: contact Renal SpR on-call urgently — consider dialysis",
-                      "Blood glucose: monitor regularly for 12 hours after insulin-glucose infusion",
-                      "Ensure adequate hydration and monitor urine output",
-                      "Stop all potassium-containing/sparing drugs; ensure low K⁺ diet",
+                    id: "remove-potassium",
+                    label: "Remove K⁺ from Body",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Lokelma® (sodium zirconium cyclosilicate) 10g PO TDS",
+                        icon: "pill",
+                        items: [
+                          { label: "Up to 72 hours", children: ["NICE TA599. Onset 1 hour, median resolution 2·2 hours. Reduces K⁺ by 0·81–1·10 mmol/L"] },
+                          "Empty sachet into ~45ml water, stir well (powder will not dissolve), drink while cloudy. If settles, stir again",
+                          "Consider stopping Lokelma® when K⁺ <6·0 mmol/L. Stop when K⁺ ≤5·5 mmol/L or after 72 hours",
+                          "Caution: separate anti-retrovirals, tyrosine kinase inhibitors, and azole antifungals by 2 hours before and after Lokelma®",
+                        ],
+                        alerts: [
+                          {
+                            title: "Caution!",
+                            items: [
+                              "Indication: life-threatening hyperkalaemia",
+                              "Potassium binders may not be necessary if the obvious cause has been identified and corrected",
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        title: "Promote Urinary K⁺ Loss",
+                        icon: "droplet",
+                        items: [
+                          { label: "Monitor fluid balance and encourage good urine output", children: ["Ensure adequate hydration"] },
+                          { label: "Treat hypotension", children: ["Review antihypertensives on drug chart"] },
+                          "If well hydrated: consider starting or increasing a loop diuretic",
+                        ],
+                      },
+                      {
+                        title: "Dialysis",
+                        icon: "kidney",
+                        items: [
+                          "Required if patient does not respond to above measures",
+                          "Contact Renal Registrar/Consultant on-call urgently",
+                        ],
+                        alerts: [
+                          { title: "Likely Needed If", items: ["K⁺ very high", "Patient oligo/anuric", "Already on long-term dialysis", "Advanced CKD"] },
+                        ],
+                      },
                     ],
-                  },
-                ],
-              },
-              {
-                heading: "Step 5: Adjuncts & Oral Therapy",
-                type: "list",
-                groups: [
-                  {
-                    colorIndex: 2,
-                    icon: "pill", label: "Reduce K⁺ intake",
-                    items: [
-                      "Low potassium diet — order appropriate renal diet. City: ext 77139 | QMC: ext 81628",
-                      "Stop all potassium-containing/sparing drugs",
-                      "Avoid fluids containing potassium (e.g. Hartmann's) — use NaCl 0·9% preferably",
-                    ],
-                  },
-                  {
-                    colorIndex: 2,
-                    icon: "pill", label: "Promote urinary K⁺ loss",
-                    items: [
-                      "Monitor fluid balance and encourage good urine output — ensure adequate hydration",
-                      "Treat hypotension — review antihypertensives on drug chart",
-                      "If well hydrated: consider starting or increasing a loop diuretic",
-                    ],
-                  },
-                  {
-                    colorIndex: 2,
-                    icon: "pill", label: "Potassium binders",
-                    footerCallout: [
-                      "Lokelma® (sodium zirconium cyclosilicate) 10g PO TDS",
-                    ],
-                    items: [
-                      "Up to 72 hours — NICE TA599. Onset 1 hour, median resolution 2·2 hours. Reduces K⁺ by 0·81–1·10 mmol/L",
-                      "Empty sachet into ~45ml water, stir well (powder will not dissolve), drink while cloudy. If settles, stir again",
-                      "Consider stopping Lokelma® when K⁺ <6·0 mmol/L. Stop when K⁺ ≤5·5 mmol/L or after 72 hours",
-                      "Caution: separate anti-retrovirals, tyrosine kinase inhibitors, and azole antifungals by 2 hours before and after Lokelma®",
-                      "If unable to take orally: Calcium Resonium® 30g BD rectally — contact ward/on-call pharmacist for guidance",
-                    ],
-                    alerts: [
-                      "Potassium binders may not be necessary if the obvious cause has been identified and corrected",
-                    ],
-                  },
-                  {
-                    colorIndex: 2,
-                    icon: "pill", label: "Dialysis",
-                    items: [
-                      "Required if patient does not respond to above measures",
-                      "Contact Renal Registrar/Consultant on-call urgently",
-                    ],
-                    alerts: [
-                      "LIKELY NEEDED IF: K⁺ very high, patient oligo/anuric, already on long-term dialysis, or advanced CKD",
-                    ],
-                  },
-                ],
-              },
-              {
-                heading: "Additional Information",
-                type: "list",
-                groups: [
-                  {
-                    icon: "note", label: "Drug Mechanisms & Onset of Action",
-                    tableData: {
-                      headers: ["Drug", "Notes"],
-                      rows: [
-                        { category: "Calcium gluconate", examples: ["Antagonises cardiac membrane excitability", "Onset 1–3 min, duration 30–60 min"] },
-                        { category: "Actrapid® + glucose", examples: ["Intracellular K⁺ uptake via Na-K ATPase", "Onset within 15 min (peak 30–60 min), duration 2–6h, reduces K⁺ by 0·65–1·0 mmol/L"] },
-                        { category: "Nebulised salbutamol", examples: ["Na-K ATPase pump stimulation", "Onset within 30 min (max 60 min), duration 1–3h, reduces K⁺ by 0·53–0·88 mmol/L"] },
-                        { category: "Lokelma® (sodium zirconium cyclosilicate)", examples: ["Selective K⁺ binding in gastrointestinal tract", "Onset 1h, reduces K⁺ by 0·81–1·10 mmol/L"] },
-                        { category: "Calcium Resonium®", examples: ["Ion exchange resin — exchanges Na⁺ for K⁺ in gut", "Onset 2–6h, duration 4–6h"] },
-                        { category: "Sodium bicarbonate", examples: ["Corrects acidosis, promotes intracellular K⁺ shift", "Onset after 60 min (variable)"] },
+                    insetCard: {
+                      boxes: [
+                        { title: "PR Calcium Resonium", items: ["Calcium Resonium® 30g BD rectally if unable to take orally", "Contact ward/on-call pharmacist for guidance"] },
                       ],
                     },
+                  },
+                  {
+                    id: "monitoring",
+                    label: "Monitoring",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Monitoring Schedule",
+                        icon: "monitoring",
+                        table: {
+                          headers: ["Parameter", "Time"],
+                          rows: [
+                            ["Blood glucose", "Before & after insulin-glucose, then every 15–30 min, then hourly for up to 12h"],
+                            ["K⁺", "2h post-treatment (VBG), then 4–6h, then daily"],
+                            ["Renal function (U&Es)", "With each repeat K⁺ — 4–6h then daily"],
+                          ],
+                        },
+                      },
+                    ],
+                    alerts: [
+                      { title: "Caution!", items: ["K⁺ 6·0–6·4 mmol/L: repeat insulin-glucose", "K⁺ ≥6·5 mmol/L: consider dialysis"] },
+                    ],
+                  },
+                  {
+                    id: "prevention",
+                    label: "Prevention",
+                    theme: "purple",
+                    items: [
+                      { label: "Low potassium diet", children: ["Order appropriate renal diet. City: ext 77139 | QMC: ext 81628"] },
+                      "Stop all potassium-containing/sparing drugs",
+                      { label: "Avoid fluids containing potassium (e.g. Hartmann's)", children: ["Use NaCl 0·9% preferably"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Notes & Appendices",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "drug-reference",
+                    label: "Drug Mechanisms & Onset of Action",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Reference Table",
+                        table: {
+                          headers: ["Drug", "Mechanism of Action", "Onset", "Duration"],
+                          boldFirstColumnOnly: true,
+                          rows: [
+                            ["Calcium gluconate", "Antagonises cardiac membrane excitability", "1–3 min", "30–60 min"],
+                            ["Actrapid® + glucose", "Intracellular K⁺ uptake via Na-K ATPase; reduces K⁺ by 0·65–1·0 mmol/L", "Within 15 min (peak 30–60 min)", "2–6 hrs"],
+                            ["Nebulised salbutamol", "Na-K ATPase pump stimulation; reduces K⁺ by 0·53–0·88 mmol/L", "Within 30 min (max 60 min)", "1–3 hrs"],
+                            ["Lokelma® (sodium zirconium cyclosilicate)", "Selective K⁺ binding in gastrointestinal tract; reduces K⁺ by 0·81–1·10 mmol/L", "1 hr", "—"],
+                            ["Sodium bicarbonate", "Corrects acidosis, promotes intracellular K⁺ shift", "After 60 min (variable)", "—"],
+                            ["Calcium Resonium®", "Ion exchange resin — exchanges Na⁺ for K⁺ in gut", "2–6 hrs", "4–6 hrs"],
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    id: "actrapid-protocol",
+                    label: "Actrapid Infusion Protocol",
+                    theme: "purple",
+                    checklist: {
+                      intro: "Obtain the following:",
+                      items: [
+                        "50mL glucose 50% glass bottle",
+                        "Human soluble (Actrapid®) insulin",
+                        "Insulin syringe",
+                        "Red blunt fill needle",
+                        "50mL syringe",
+                      ],
+                    },
+                    stepsHeading: "Protocol Steps",
+                    stepsIntroCard: {
+                      title: "Protocol Safety",
+                      items: ["The whole process should have a two-person check.", "Use DERS where available."],
+                    },
+                    steps: [
+                      { number: 1, label: "Blood glucose monitoring is essential — measure before starting the infusion." },
+                      { number: 2, label: "Measure 10 units of insulin using an insulin syringe", detail: ["Draw the plunger back to the 10 unit mark on the insulin syringe", "Two-person check by second practitioner"] },
+                      { number: 3, label: "Inject the 10 units of insulin into the 50mL Glucose 50% glass bottle", detail: "Rotate the bottle slowly to mix." },
+                      { number: 4, label: "Draw up the entire contents of the Glucose bottle into the 50mL syringe using a red blunt fill needle." },
+                      { number: 5, label: "Fill in an intravenous infusion sticker and attach to the syringe." },
+                      { number: 6, label: "Set up a syringe pump to administer the contents of the syringe over 30 minutes." },
+                      { number: 7, label: "Measure blood glucose after infusion", detail: ["Then regularly for 12 hours", "Risk of late hypoglycaemia", "Record BMs on prescription chart"] },
+                    ],
+                    alerts: [
+                      "If pre-treatment blood glucose <7mmol/L: treat with intravenous glucose infusion (see [full guideline, page 10](https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=758ca78e4708c7d0b87b6209446c66d0)).",
+                      "If BM <4mmol/L: treat as per NUH hypoglycaemia guideline.",
+                    ],
+                  },
+                  {
+                    id: "drugs-increase-k",
+                    label: "Drugs Associated with K⁺ Increase",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Drugs that increase potassium",
+                        icon: "pill",
+                        items: [
+                          "Potassium supplements",
+                          "ACE inhibitors",
+                          "Angiotensin II receptor blockers",
+                          "Mineralocorticoid receptor antagonists",
+                          "Entresto (Sacubitril/Valsartan)",
+                          "Potassium sparing diuretics",
+                          "Trimethoprim/Co-trimoxazole",
+                          "Non-selective beta-blockers",
+                          "NSAIDs",
+                          "Salt substitutes (Lo-Salt)",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    id: "low-k-diet",
+                    label: "Low Potassium Diet",
+                    theme: "purple",
+                    insetCard: {
+                      boxes: [
+                        {
+                          title: "For every inpatient requiring a low potassium diet",
+                          items: [
+                            { label: "Liaise with the hospital kitchen/ward waitress and arrange a low potassium/renal diet by ringing:", children: ["City Campus: extension 71809", "QMC Campus: extension 83221"] },
+                            { label: "Refer the patient to your ward dietitian using Nervecentre or contacting the Department of Dietetics and Nutrition:", children: ["City Campus: extension 77139", "QMC Campus: extension 81628"] },
+                          ],
+                        },
+                      ],
+                    },
+                    subheadings: [
+                      {
+                        title: "Fruit",
+                        table: {
+                          headers: ["Category", "High K⁺: reduce intake", "Low K⁺: alternatives"],
+                          rows: [
+                            [
+                              "Fruit",
+                              ["Bananas", "Avocado", "Currants (black, red or white)", "Dried fruit (raisins, sultanas, dates, dried apricots)"],
+                              ["Apple", "Pear", "Satsuma", "Clementine", "10 grapes", "Tinned fruit"],
+                            ],
+                          ],
+                        },
+                      },
+                      {
+                        title: "Starchy Foods",
+                        table: {
+                          headers: ["Category", "High K⁺: reduce intake", "Low K⁺: alternatives"],
+                          rows: [
+                            [
+                              "Starchy Foods",
+                              ["Jacket or baked potatoes", "Oven chips", "Microwave chips", "Retail chips", "Manufactured potato products (hash browns, potato waffles, frozen roast potatoes, potato wedges)", "Fried cassava", "Fried yam", "Fried sweet potato", "Taro", "Plantain", "Parsnip", "Breakfast cereals containing lots of dried fruit, nuts or chocolate (e.g. muesli, granola, fruit and fibre)"],
+                              ["Boiled potatoes", "Potatoes par-boiled before roasting or frying", "Pasta", "Rice", "Noodles", "Couscous", "Breads (all much lower in potassium than potato)", "Boiled cassava, yam or sweet potato", "Rice or corn based cereals", "Wheat biscuits", "Shredded Wheat®", "Special K®", "Porridge oats"],
+                            ],
+                          ],
+                        },
+                      },
+                      {
+                        title: "Snacks",
+                        table: {
+                          headers: ["Category", "High K⁺: reduce intake", "Low K⁺: alternatives"],
+                          rows: [
+                            [
+                              "Snacks",
+                              ["Potato crisps", "Chocolate", "Fudge", "Nuts", "Biscuits and cakes containing lots of dried fruit, nuts or chocolate"],
+                              ["Corn, rice, wheat or maize based snacks", "Popcorn", "Boiled or jelly sweets", "Marshmallows", "Mints", "Plain biscuits and cakes (rich tea, digestives, shortbread, custard creams, sponge cake, madeira cake, angel cake)"],
+                            ],
+                          ],
+                        },
+                      },
+                      {
+                        title: "Drinks",
+                        table: {
+                          headers: ["Category", "High K⁺: reduce intake", "Low K⁺: alternatives"],
+                          rows: [
+                            [
+                              "Drinks",
+                              ["Coffee (limit to 1 cup a day)", "Malted milk drinks (e.g. Ovaltine®, Horlicks®)", "Hot chocolate", "Fruit and vegetable juices", "Smoothies"],
+                              ["Tea", "Herbal tea", "Squash or cordial", "Water", "Fizzy drinks"],
+                            ],
+                          ],
+                        },
+                      },
+                      {
+                        title: "Milk and Dairy Products",
+                        items: [
+                          "Limit milk to ½ pint (300mL) per day and yogurt to 3 small pots per week — even from the lower-potassium choices below",
+                        ],
+                        table: {
+                          headers: ["Category", "High K⁺: reduce intake", "Low K⁺: alternatives"],
+                          rows: [
+                            [
+                              "Milk and Dairy Products",
+                              ["Condensed milk", "Evaporated milk", "Milk powders"],
+                              ["Cheese, crème fraîche or cream", "Rice or oat milk"],
+                            ],
+                          ],
+                        },
+                      },
+                      {
+                        title: "Salt Substitutes",
+                        table: {
+                          headers: ["Category", "High K⁺: reduce intake", "Low K⁺: alternatives"],
+                          rows: [
+                            [
+                              "Salt Substitutes",
+                              ["Lo-Salt", "So-Low", "Reduced sodium salt"],
+                              ["Pepper", "Fresh or dried herbs", "Spices", "Chilli", "Garlic"],
+                            ],
+                          ],
+                        },
+                      },
+                    ],
+                    alerts: [
+                      "Please discuss with your dietitian if you have diabetes and/or if you have been advised to follow this diet long term",
+                    ],
                   },
                 ],
               },
@@ -7148,101 +8405,440 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             related: [],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=786cc3d7d2e296257072bbf1dcdc2ef7",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10457&query_desc=an%2Cphr%3A6198",
-            updated: "December 2026 (review)",
+            updated: "December 2026",
             sections: [
-  {
-    heading: "⚠ SEVERE HYPONATRAEMIA — Medical Emergency",
-    type: "alert",
-    items: [
-      "!!Seizures, coma, altered GCS or encephalopathy: needs urgent Level 2/3 bed and IV hypertonic saline 2·7% 150ml over 20 minutes — see Severe Hyponatraemia in the diagnostic pathway below",
-      "See full drug list at the bottom of this guideline for medications that cause hyponatraemia",
-    ],
-  },
-  {
-    heading: "History & Assessment",
-    type: "hypo_assessment",
-    blocks: [
-      {
-        id: "history",
-        label: "History",
-        icon: "history",
-        items: [
-          "Symptoms: nausea and vomiting, headache, muscle cramps, confusion, lethargy, reduced GCS, seizures",
-          "Consider context: known cancer, polydipsia, recent surgery or IV fluids",
-          "**Accurate drug history essential** — see drug list at bottom of this guideline for common precipitants",
-          "Common precipitants: diuretics (predominantly thiazides), antidepressants, antipsychotics, anticonvulsants, PPIs",
-          "Determine chronicity: **acute <48h, chronic >48h** — treat as chronic if unclear and no severe symptoms",
-        ],
-      },
-      {
-        id: "examination",
-        label: "Examination — Assess Fluid Status",
-        icon: "management",
-        items: [
-          "**Hypovolaemic**: reduced skin turgor, dry mucous membranes, low BP or postural hypotension",
-          "**Euvolaemic**: clinically normal fluid status",
-          "**Hypervolaemic**: oedema, raised JVP, ascites",
-        ],
-      },
-      {
-        id: "investigations",
-        label: "Investigations — Screening Panel (All Patients)",
-        icon: "investigations",
-        checklist: true,
-        items: [
-          "U&Es, glucose, plasma osmolality",
-          "LFTs, TFTs, lipids, cortisol",
-          "Urine osmolality",
-          "Urine Na⁺ + K⁺",
-          "Short Synacthen test, CXR, CT head — as clinically indicated",
-        ],
-      },
-    ],
-  },
-  {
-    heading: "Diagnostic Pathway",
-    type: "hypo_diagnostic",
-  },
-  {
-    heading: "Management Pathway",
-    type: "hypo_management",
-  },
-  {
-    heading: "Additional Information",
-    type: "list",
-    groups: [
-      {
-        colorIndex: 4,
-        icon: "drug",
-        label: "Drugs causing acute hyponatraemia (<48 hours)",
-        items: [
-          "Recent thiazide prescription",
-          "MDMA (3,4-methylenedioxymethamphetamine)",
-          "Colonoscopy preparation",
-          "IV cyclophosphamide",
-          "Oxytocin",
-          "Recently started desmopressin, terlipressin, or vasopressin",
-        ],
-      },
-      {
-        colorIndex: 1,
-        icon: "drug",
-        label: "Drug classes associated with hyponatraemia",
-        tableData: {
-          headers: ["Drug Class", "Examples"],
-          rows: [
-            { category: "Antidepressants & Antipsychotics", examples: ["SSRIs, tricyclics, MAOIs", "Phenothiazines, butyrophenones"] },
-            { category: "Anticonvulsants", examples: ["Carbamazepine", "Sodium valproate", "Lamotrigine"] },
-            { category: "Anticancer drugs", examples: ["Vinca alkaloids", "Melphalan", "Cyclophosphamide", "Methotrexate", "Platinum compounds"] },
-            { category: "Diuretics", examples: ["Thiazides (predominantly)", "Loop diuretics"] },
-            { category: "Vasopressin analogues", examples: ["Desmopressin", "Oxytocin", "Terlipressin", "Vasopressin"] },
-            { category: "Miscellaneous", examples: ["Opiates", "NSAIDs", "Amiodarone", "Clofibrate", "Interferon", "PPIs", "Antidiabetic: chlorpropamide, tolbutamide", "Contact Medicines Information ext 84185 or 81200 for full list"] },
-          ],
-        },
-      },
-    ],
-  },
-],
+              {
+                heading: "⚠ Initial Assessment & Escalation",
+                type: "alert",
+                items: [
+                  "Assess for severe symptoms: seizures, coma, altered GCS or encephalopathy",
+                  { label: "Severe symptoms present = medical emergency", children: ["Urgent Level 2/3 bed", "Senior input urgently", "IV hypertonic saline 2·7% 150ml over 20 minutes via central line"] },
+                  "!!Do NOT delay treatment awaiting specialist review if severe symptoms present",
+                  "See Quick Reference Guide below for management by clinical category",
+                  "See Notes & Appendices for the full drug list of medications causing hyponatraemia",
+                ],
+              },
+              {
+                heading: "Quick Reference Guide",
+                type: "quickref",
+                items: [
+                  {
+                    grade: 1, label: "Severe", pill: "Emergency",
+                    color: "#742a2a", bg: "#fff5f5", border: "#fc8181", badge: "#fed7d7",
+                    groups: [
+                      { title: "Features", items: ["Seizures, coma, altered GCS or encephalopathy", "!!Life-threatening — medical emergency", "!!Do NOT delay treatment awaiting specialist review"] },
+                      { title: "Management", items: ["Manage in Level 2/3 bed immediately", "Senior input urgently", "IV hypertonic saline 2·7% 150ml over 20 minutes via central line*", "Recheck Na⁺ — repeat bolus until risen 5 mmol/L or given twice", "Start diagnosis-specific treatment once stabilised", "Limit total Na⁺ rise ≤10 mmol/L in first 24h", "*Central line recommended. Consider large-bore peripheral if central access not immediately available — observe for extravasation."] },
+                    ],
+                  },
+                  {
+                    grade: 2, label: "Hypovolaemic", pill: "Depleted",
+                    color: "#7b341e", bg: "#fff5f0", border: "#fbd38d", badge: "#feebc8",
+                    groups: [
+                      { title: "Features", items: ["Dry mucous membranes", "Reduced skin turgor", "Low BP / postural hypotension"] },
+                      { title: "Management", items: ["IV 0·9% sodium chloride — restore volume", "Stop non-essential offending medications", "Treat the underlying cause", "Recheck Na⁺ after 4 hours to determine trend", "Limit Na⁺ rise to ≤10 mmol/L in first 24h, ≤8 mmol/L each subsequent 24h", "!!Haemodynamic compromise: need for rapid resuscitation overrides risk of overly rapid Na⁺ rise"] },
+                    ],
+                  },
+                  {
+                    grade: 3, label: "Euvolaemic", pill: "SIADH",
+                    color: "#2c5282", bg: "#ebf8ff", border: "#90cdf4", badge: "#bee3f8",
+                    groups: [
+                      { title: "Features", items: ["Clinically normal fluid status", "No oedema", "Normal BP"] },
+                      { title: "Management", items: ["Interpret urine Na⁺ to confirm euvolaemia — see Management below for the full stepwise approach", "Check TFTs and cortisol ± short Synacthen test", "Most commonly SIADH — exclude thyroid and adrenal dysfunction first", "Confirm SIADH: serum Osm <270, urine Osm >100, urine Na⁺ >30, clinically euvolaemic", "Fluid restrict per Furst Formula — see Management below"] },
+                    ],
+                  },
+                  {
+                    grade: 4, label: "Hypervolaemic", pill: "Overload",
+                    color: "#276749", bg: "#f0fff4", border: "#9ae6b4", badge: "#c6f6d5",
+                    groups: [
+                      { title: "Features", items: ["Peripheral oedema", "Raised JVP", "Ascites"] },
+                      { title: "Management", items: ["Treat the underlying cause: heart failure, cirrhosis, nephrotic syndrome", "Consider fluid restriction to prevent further fluid overload", "Stop non-essential offending medications", "Monitor Na⁺ regularly"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Aetiology & Presentation",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "clinical-features",
+                    label: "Clinical Features",
+                    subheadings: [
+                      { title: "Neurological", icon: "brain", items: ["Headache", "Confusion, lethargy, reduced GCS", "Seizures"] },
+                      { title: "Gastrointestinal", icon: "toilet", items: ["Nausea and vomiting"] },
+                      { title: "Musculoskeletal", icon: "thunderbolt", items: ["Muscle cramps"] },
+                    ],
+                    alerts: [
+                      { title: "Severe symptoms = medical emergency", items: ["Seizures, coma, altered GCS or encephalopathy — needs urgent Level 2/3 bed and IV hypertonic saline **2·7% 150ml over 20 minutes**", "See Quick Reference Guide above"] },
+                    ],
+                  },
+                  {
+                    id: "causes",
+                    label: "Causes",
+                    topCallout: {
+                      label: "Common Precipitants",
+                      items: ["Diuretics (predominantly thiazides)", "Antidepressants", "Antipsychotics", "Anticonvulsants", "PPIs"],
+                    },
+                    subheadings: [
+                      { title: "Hypovolaemic", icon: "droplet", items: ["Reduced skin turgor", "Dry mucous membranes", "Low BP or postural hypotension"],
+                        table: {
+                          headers: ["Urine Na⁺ >30 mmol/L — Renal Losses", "Urine Na⁺ <30 mmol/L — Extra-Renal Losses"],
+                          rows: [
+                            [
+                              ["Osmotic diuresis", "Diuretic therapy", "Addison's disease", "Salt-losing nephropathy", "Cerebral salt wasting"],
+                              ["Diarrhoea", "Vomiting", "Burns", "Fistulae", "Pancreatitis"],
+                            ],
+                          ],
+                        },
+                      },
+                      { title: "Euvolaemic", icon: "droplet", items: ["Clinically normal fluid status", "No oedema", "Normal BP"],
+                        table: {
+                          headers: ["Urine Na⁺ >30 mmol/L"],
+                          rows: [
+                            [
+                              ["SIADH", "Secondary adrenal insufficiency", "Addison's disease (with secondary ADH response)", "Hypothyroidism", "Diuretic therapy", "Drugs"],
+                            ],
+                          ],
+                        },
+                      },
+                      { title: "Hypervolaemic", icon: "droplet", items: ["Peripheral oedema", "Raised JVP", "Ascites"],
+                        table: {
+                          headers: ["Urine Na⁺ >30 mmol/L", "Urine Na⁺ <30 mmol/L"],
+                          rows: [
+                            [
+                              ["Acute or chronic renal failure"],
+                              ["Diuretic therapy for heart failure", "Pregnancy", "Nephrotic syndrome", "Cirrhosis", "Cardiac failure"],
+                            ],
+                          ],
+                        },
+                      },
+                      { title: "Drug-Induced — Acute (<48 hours)", icon: "pill", items: [
+                        "Recent thiazide prescription",
+                        "MDMA (3,4-methylenedioxymethamphetamine)",
+                        "Colonoscopy preparation",
+                        "IV cyclophosphamide",
+                        "Oxytocin",
+                        "Recently started desmopressin, terlipressin, or vasopressin",
+                      ] },
+                      { title: "Drug Classes Associated with Hyponatraemia", icon: "pill", items: [
+                        "Antidepressants & antipsychotics (SSRIs, tricyclics, MAOIs, phenothiazines, butyrophenones)",
+                        "Anticonvulsants (carbamazepine, sodium valproate, lamotrigine)",
+                        "Anticancer drugs (vinca alkaloids, melphalan, cyclophosphamide, methotrexate, platinum compounds)",
+                        "Diuretics (thiazides predominantly; loop diuretics)",
+                        "Vasopressin analogues (desmopressin, oxytocin, terlipressin, vasopressin)",
+                        "Miscellaneous: opiates, NSAIDs, amiodarone, clofibrate, interferon, PPIs, antidiabetics (chlorpropamide, tolbutamide)",
+                        "See Notes & Appendices for the full drug class reference table",
+                      ] },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        { note: "Aetiology is often multifactorial — take a thorough drug history." },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "History & Investigations",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "history",
+                    label: "History & Examination",
+                    theme: "green",
+                    subheadings: [
+                      { title: "Symptoms", icon: "warning", items: ["Nausea and vomiting", "Headache", "Muscle cramps", "Confusion", "Lethargy", "Reduced GCS", "Seizures"] },
+                      { title: "Context", icon: "history", items: ["Known cancer", "Polydipsia", "Recent surgery or IV fluids"] },
+                      { title: "Drug History", icon: "pill", items: ["!!Accurate drug history essential — see Notes & Appendices for common precipitants", "Common precipitants: diuretics (predominantly thiazides), antidepressants, antipsychotics, anticonvulsants, PPIs"] },
+                      { title: "Chronicity", icon: "history", items: ["Determine chronicity: acute <48h, chronic >48h", "Treat as chronic if unclear and no severe symptoms"] },
+                      { title: "Examination — Fluid Status", icon: "management", items: ["Hypovolaemic: reduced skin turgor, dry mucous membranes, low BP or postural hypotension", "Euvolaemic: clinically normal fluid status", "Hypervolaemic: oedema, raised JVP, ascites"] },
+                    ],
+                  },
+                  {
+                    id: "investigations",
+                    label: "Investigations",
+                    theme: "green",
+                    subheadings: [
+                      { title: "Serum Biochemistry", icon: "bloods", items: ["U&Es", "Glucose", "Plasma osmolality", "LFTs", "Lipids"] },
+                      { title: "Endocrine", icon: "tsh", items: ["TFTs", "Cortisol", "Short Synacthen test — as clinically indicated"] },
+                      { title: "Urine Studies", icon: "droplet", items: ["Urine osmolality", "Urine Na⁺ + K⁺"] },
+                      { title: "Imaging", icon: "magnify", items: ["CXR — as clinically indicated", "CT head — as clinically indicated"] },
+                    ],
+                  },
+                  {
+                    id: "diagnostic-algorithm",
+                    label: "Diagnostic Algorithm",
+                    theme: "green",
+                    stepsHeading: "Initial Diagnostic Algorithm",
+                    steps: [
+                      {
+                        number: 1,
+                        label: "Plasma osmolality <275 mOsm/kg?",
+                        detail: [
+                          "Yes — hypotonic hyponatraemia: proceed to Step 2",
+                          { text: "No — not true hypotonic hyponatraemia. Consider:", children: ["Hyperglycaemia", "Hyperlipidaemia", "Hyperproteinaemia", "Hypertonic infusion (e.g. mannitol)", "Alcohols"] },
+                        ],
+                      },
+                      {
+                        number: 2,
+                        label: "Severe symptoms present? (seizures, coma, altered GCS or encephalopathy)",
+                        detail: [
+                          "**Yes — Medical Emergency**: see Management → Severe Symptoms above",
+                          "No — proceed to Step 3",
+                        ],
+                      },
+                      {
+                        number: 3,
+                        label: "Urine osmolality?",
+                        detail: [
+                          { text: "≤100 mOsm/kg", children: ["Consider primary polydipsia", "Low solute intake"] },
+                          { text: ">100 mOsm/kg", children: ["Check urine sodium concentration", "Proceed to Step 5"] },
+                        ],
+                      },
+                      {
+                        number: 5,
+                        label: "Assess Fluid Status",
+                        detail: [
+                          { text: "Hypovolaemic", children: ["Reduced skin turgor", "Dry mucous membranes", "Low BP or postural hypotension"] },
+                          { text: "Euvolaemic", children: ["Clinically normal fluid status", "No oedema", "Normal BP"] },
+                          { text: "Hypervolaemic", children: ["Peripheral oedema", "Raised JVP", "Ascites"] },
+                        ],
+                      },
+                      {
+                        number: 6,
+                        label: "Consider Differentials by Volume Status and Urine Sodium",
+                        detail: "See Causes above for the full differential diagnosis table by volume status and urine sodium concentration",
+                      },
+                    ],
+                    alerts: [
+                      { title: "If Step 2 = Yes", items: ["Medical Emergency — do NOT delay treatment. See Management → Severe Symptoms above."] },
+                      { title: "Caution!", items: ["Interpret biochemistry with caution if patient is on diuretic therapy."] },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        { title: "Diagnostic Criteria for SIADH", items: ["Clinically euvolaemic", "Serum osmolality <270 mOsm/kg", "Inappropriately concentrated urine >100 mOsm/kg, usually >300 mOsm/kg", "Increased urine Na⁺ (>30 mmol/L)", "Absence of adrenal, thyroid, pituitary or renal insufficiency"] },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                heading: "Management",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "universal-measures",
+                    label: "Universal Measures — Apply to All Patients",
+                    theme: "purple",
+                    topAlerts: [
+                      { title: "Never Do", items: ["Do NOT correct Na⁺ faster than 10 mmol/L per 24h — risk of osmotic demyelination syndrome (ODS/CPM)", "Do NOT aim to normalise sodium — aim to IMPROVE SYMPTOMS only in acute severe hyponatraemia"] },
+                    ],
+                    subheadings: [
+                      {
+                        title: "Management Is Determined By",
+                        icon: "management",
+                        items: [
+                          "Severity of symptoms",
+                          { label: "Chronicity of the hyponatraemia", children: ["Acute <24 hours", "Chronic >48 hours", "Treat as chronic if unclear and no severe symptoms"] },
+                          "Patient's volume status",
+                        ],
+                      },
+                      {
+                        title: "In All Patients",
+                        icon: "tick",
+                        items: [
+                          "Stop any non-essential offending medications — see Notes & Appendices",
+                          "Review any IV fluids",
+                          "Treat the underlying cause",
+                          "Transfer to a Level 2 or ICU bed if severe symptoms are present",
+                          "**Limit rise in sodium in first 24 hours to ≤10 mmol/L and ≤8 mmol/L in each following 24 hours**",
+                        ],
+                      },
+                      {
+                        title: "Additional Measures",
+                        icon: "monitoring",
+                        items: [
+                          "Ensure no sampling errors (e.g. drip arm venepuncture) — recheck sodium if in doubt",
+                          "Stop hypotonic fluids immediately",
+                          "Recheck Na⁺ at 6, 12, 24 and 48 hours",
+                          "Check TFTs and cortisol — treat if abnormal",
+                        ],
+                      },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        { note: "Treat as chronic if onset uncertain and no severe features. In haemodynamic compromise, rapid fluid resuscitation takes precedence over rate-of-rise considerations." },
+                      ],
+                    },
+                  },
+                  {
+                    id: "severe-management",
+                    label: "Management of Severe Hyponatraemia",
+                    theme: "purple",
+                    topAlerts: [
+                      { title: "If seizures, coma, altered GCS or encephalopathy", items: ["Start urgent treatment below regardless of chronicity"] },
+                    ],
+                    topCallout: {
+                      label: "Key Principles",
+                      items: [
+                        "Severe hyponatraemia is a medical emergency",
+                        "Severe features usually only occur when Na⁺ <120 mmol/L — consider other causes for the symptoms",
+                        "The aim of treatment is to IMPROVE symptoms and NOT to correct the sodium to normal",
+                      ],
+                    },
+                    subheadings: [
+                      {
+                        title: "First Hour Management",
+                        icon: "management",
+                        steps: [
+                          { number: 1, label: "Manage in level 2/3 bed" },
+                          { number: 2, label: "Senior input" },
+                          { number: 3, label: "**Give 150ml IV 2·7% sodium chloride (hypertonic saline) over 20 minutes**", detail: "Administration via central venous line recommended*" },
+                          { number: 4, label: "Check sodium concentration", detail: "Continue treatment below while awaiting result" },
+                          { number: 5, label: "**Give 150ml IV 2·7% sodium chloride over 20 minutes**", detail: "Repeat until sodium risen by 5 mmol/L, or repeated twice" },
+                        ],
+                      },
+                      {
+                        title: "Subsequent Management",
+                        icon: "monitoring",
+                        steps: [
+                          { number: 1, label: "Stop 2·7% sodium chloride" },
+                          { number: 2, label: "Slow IV infusion 0·9% sodium chloride" },
+                          { number: 3, label: "Start diagnosis-specific treatment" },
+                          { number: 4, label: "**Limit rise in sodium**", detail: "≤10 mmol/L in first 24 hours and ≤8 mmol/L in each following 24 hours" },
+                          { number: 5, label: "Recheck sodium at 6, 12, 24 and 48 hours" },
+                        ],
+                      },
+                    ],
+                    alerts: [
+                      { title: "*Vascular Access", items: ["It is recommended that 2·7% sodium chloride (hypertonic saline) is given via a central line due to the risk of extravasation injury", "Consider peripheral administration through a large-bore cannula when timely administration is necessary or central access isn't clinically appropriate", "Observe carefully for signs of extravasation"] },
+                    ],
+                  },
+                  {
+                    id: "acute-nonsevere-management",
+                    label: "Management of Acute (<48h) Hyponatraemia",
+                    theme: "purple",
+                    topCallout: {
+                      label: "Definition",
+                      items: ["Acute: <48 hours, without severe features"],
+                    },
+                    items: [
+                      "Ensure there are no sampling or sample handling errors (e.g. drip arm venepuncture) — recheck sodium",
+                      "Stop any non-essential fluids or medication that could be contributing or provoking — see Notes & Appendices",
+                      "Make diagnostic assessment and treat the underlying cause",
+                      "If hypovolaemic: start IV 0·9% sodium chloride",
+                      "Recheck sodium after 4 hours to determine trend",
+                      "**Limit rise in sodium in first 24 hours to ≤10 mmol/L and ≤8 mmol/L in each following 24 hours**",
+                    ],
+                  },
+                  {
+                    id: "chronic-management",
+                    label: "Management of Chronic (>48h) Hyponatraemia",
+                    theme: "purple",
+                    topCallout: {
+                      label: "Definition",
+                      items: ["Chronic: >48 hours, or unclear duration with no severe symptoms"],
+                    },
+                    subheadings: [
+                      {
+                        title: "Hypovolaemic",
+                        icon: "minus",
+                        items: [
+                          "IV 0·9% sodium chloride — restore volume",
+                          "Stop non-essential offending medications",
+                          "Treat the underlying cause",
+                          "Recheck Na⁺ after 4 hours to determine trend",
+                          "Limit Na⁺ rise to ≤10 mmol/L in first 24h, ≤8 mmol/L each subsequent 24h",
+                        ],
+                        alerts: [
+                          { title: "Caution!", items: ["Haemodynamic compromise: need for rapid resuscitation overrides risk of overly rapid Na⁺ rise"] },
+                        ],
+                      },
+                      {
+                        title: "Euvolaemic",
+                        icon: "equals",
+                        items: ["Most commonly SIADH — exclude thyroid and adrenal dysfunction first."],
+                        steps: [
+                          { number: 1, label: "Interpret Urine Na⁺ to confirm euvolaemia", detail: ["Urine Na⁺ <30 mmol/L: reconsider — likely not truly euvolaemic", "Urine Na⁺ >30 mmol/L: proceed to Step 2"] },
+                          { number: 2, label: "Thyroid & Adrenal Screen", detail: ["Check TFTs and cortisol ± short Synacthen test", "Abnormal: treat underlying thyroid, adrenal or pituitary disease", "Normal: likely SIADH — proceed to Step 3"] },
+                          { number: 3, label: "SIADH Diagnosis → Fluid Restriction", detail: ["Confirm SIADH: serum Osm <270, urine Osm >100, urine Na⁺ >30, clinically euvolaemic", "Calculate Furst Formula: (Urine Na⁺ + Urine K⁺) ÷ Serum Na⁺", "<0·5: commence 1 litre fluid restriction", "0·5–1·0: commence 500 ml fluid restriction", ">1·0: fluid restriction not advised"] },
+                        ],
+                      },
+                      {
+                        title: "Hypervolaemic",
+                        icon: "plus",
+                        items: [
+                          "Treat the underlying cause: heart failure, cirrhosis, nephrotic syndrome",
+                          "Consider fluid restriction to prevent further fluid overload",
+                          "Stop non-essential offending medications",
+                          "Monitor Na⁺ regularly",
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    id: "monitoring-escalation",
+                    label: "Monitor & Escalate",
+                    theme: "purple",
+                    items: [
+                      "Assess response at 24 and 48 hours",
+                      "Target Na⁺ ≥130 mmol/L",
+                      "If poor response: consider **demeclocycline 150mg TDS** — review Na⁺ 24-hourly",
+                      "Seek specialist opinion (endocrinology) if not responding",
+                    ],
+                    alerts: [
+                      { title: "Caution!", items: ["Do NOT correct faster than 10 mmol/L per 24h — risk of osmotic demyelination syndrome"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                heading: "Notes & Appendices",
+                type: "accordion",
+                groups: [
+                  {
+                    id: "drug-reference-acute",
+                    label: "Drugs Causing Acute Hyponatraemia (<48 hours)",
+                    theme: "purple",
+                    items: [
+                      "Recent thiazide prescription",
+                      "MDMA (3,4-methylenedioxymethamphetamine)",
+                      "Colonoscopy preparation",
+                      "IV cyclophosphamide",
+                      "Oxytocin",
+                      "Recently started desmopressin, terlipressin, or vasopressin",
+                    ],
+                  },
+                  {
+                    id: "drug-classes",
+                    label: "Drug Classes Associated with Hyponatraemia",
+                    theme: "purple",
+                    subheadings: [
+                      {
+                        title: "Reference Table",
+                        table: {
+                          headers: ["Drug Class", "Examples"],
+                          boldFirstColumnOnly: true,
+                          rows: [
+                            ["Antidepressants & Antipsychotics", ["SSRIs, tricyclics, MAOIs", "Phenothiazines, butyrophenones"]],
+                            ["Anticonvulsants", ["Carbamazepine", "Sodium valproate", "Lamotrigine"]],
+                            ["Anticancer drugs", ["Vinca alkaloids", "Melphalan", "Cyclophosphamide", "Methotrexate", "Platinum compounds"]],
+                            ["Diuretics", ["Thiazides (predominantly)", "Loop diuretics"]],
+                            ["Vasopressin analogues", ["Desmopressin", "Oxytocin", "Terlipressin", "Vasopressin"]],
+                            ["Miscellaneous", ["Opiates", "NSAIDs", "Amiodarone", "Clofibrate", "Interferon", "PPIs", "Antidiabetic: chlorpropamide, tolbutamide"]],
+                          ],
+                        },
+                      },
+                    ],
+                    insetCard: {
+                      boxes: [
+                        { note: "Contact Medicines Information ext 84185 or 81200 for full list." },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
@@ -7413,7 +9009,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             calculators: [],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=4b82698a3d1fcc085a89d225f4b34d06",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10547&query_desc=an%2Cphr%3A6225",
-            updated: "March 2031 (review)",
+            updated: "March 2031",
             sections: [
               // ── TOP ALERT ──────────────────────────────────────────────────
               {
@@ -7725,7 +9321,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             related: ["proc-picc-blood-samples", "proc-picc-removal", "vte-catheter-related-thrombosis"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=253b0b35e0485e35452f6fad836ad476",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10319&query_desc=picc%20lines",
-            updated: "Ratified Jan 2021 (review Jan 2026)",
+            updated: "January 2026",
 
             sections: [
                             // ── CRITICAL SAFETY ──────────────────────────────────────────────
@@ -7958,7 +9554,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             related: ["proc-picc-common-issues", "proc-picc-removal"],
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=253b0b35e0485e35452f6fad836ad476",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10319&query_desc=picc%20lines",
-            updated: "Ratified Jan 2021 (review Jan 2026)",
+            updated: "January 2026",
 
             sections: [
 
@@ -8057,7 +9653,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=253b0b35e0485e35452f6fad836ad476",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10319&query_desc=picc%20lines",
 
-            updated: "Ratified Jan 2021 (review Jan 2026)",
+            updated: "January 2026",
 
             sections: [
 
@@ -8856,7 +10452,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             version: "8",
             authors: "Dr Jenny Clayton | NUH Diabetes & Endocrinology",
             evidenceBase: "NUH Local Guideline | JBDS-IP DKA Guidelines | Review: April 2028",
-            updated: "Dr Jenny Clayton | April 2025 | Review April 2028",
+            updated: "April 2028",
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=146b5d409d070349c43b0453ba2ce627",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=9851&query_desc=an%2Cphr%3A6225",
             summary: "DKA is a life-threatening emergency defined by the triad of raised blood glucose (>11 mmol/L or known diabetes), capillary ketones ≥3 mmol/L, and venous pH <7.3 or bicarbonate <15 mmol/L. Treatment must begin immediately in the patient's current location — delay may be fatal. Blood glucose is NOT a guide to severity.",
@@ -9154,7 +10750,7 @@ summary: "Significant hyponatraemia: Na⁺ below 130 mmol/L. Symptoms usually oc
             version: "5",
             authors: "Dr Jenny Clayton (Consultant Diabetes & Endocrinology) | Rosamund Bell (Specialist Pharmacist)",
             evidenceBase: "NUH Guideline 2363 | JBDS Hospital Management of Hypoglycaemia in Adults 2023 | Review: May 2029",
-            updated: "Dr Jenny Clayton | Version 5 | Review May 2029",
+            updated: "May 2029",
             pdfUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-retrieve-file.pl?id=7e30034de644eb97674b2fab088fb019",
             portalUrl: "https://nuhp.koha-ptfs.co.uk/cgi-bin/koha/opac-detail.pl?biblionumber=10149&query_desc=hypoglycaemia",
             summary: "Hypoglycaemia (blood glucose < 4 mmol/L) is a common and potentially life-threatening complication of anti-diabetic therapy affecting 1 in 5 inpatients with diabetes. Two pathways apply: co-operative patients who can swallow, and unconscious or aggressive patients requiring IV or IM treatment. Prompt treatment is essential — untreated hypoglycaemia can result in brain damage and death.",
@@ -9897,24 +11493,6 @@ const CALCULATORS = {
     },
     component: "opioid-converter",
   },
-  "tokuhashi": {
-    id: "tokuhashi",
-    label: "Revised Tokuhashi Score",
-    siteId: "oncology",
-    icon: "📊",
-    guidelineId: "onco-mscc",
-    whenToUse: {
-      headline: "When to use the Tokuhashi score",
-      checks: [
-        { type: "question", text: "Has MSCC been confirmed? The Tokuhashi score is used after MSCC is established on imaging to estimate prognosis and guide treatment intensity — surgery vs RT vs supportive care." },
-        { type: "warning", text: "Tokuhashi is a guide, not a verdict. A score <8 suggests prognosis <6 months and favours conservative management, but this must be discussed with the patient, their oncologist, and the MDT. Do not withhold surgery on score alone." },
-        { type: "info", text: "Score 0–8: <6 months prognosis — conservative or palliative management. Score 9–11: >6 months — consider palliative surgery. Score 12–15: >1 year — consider excisional surgery." },
-        { type: "question", text: "Has the primary tumour site been confirmed histologically? The primary tumour heavily influences the score — prostate, thyroid, and breast score highest (5 points). Unknown primary scores 2. Ensure pathology is confirmed before scoring." },
-        { type: "info", text: "Use alongside Frankel classification (neurological function), Bilsky scale (cord compression degree), and SINS score (spinal instability) as part of the NOMS framework." },
-      ],
-    },
-    component: "tokuhashi",
-  },
 "hfa-icos": {
   id: "hfa-icos",
   label: "HFA-ICOS Baseline Risk Assessment",
@@ -10109,9 +11687,10 @@ function GraderSection({ sec, siteColor, siteId, subsiteId }) {
 
   return (
     <div>
-      {/* Step 1: Grade selector */}
-      <div className="detail-card" style={{ marginBottom: 10 }}>
-        <h3 style={{ marginBottom: 12 }}>Step 1 — Presentation </h3>
+      {/* Presentation — grade selector */}
+      {sec.grades && (
+      <div className="detail-card" style={{ marginBottom: sec.management ? 10 : 0 }}>
+        <h3 style={{ marginBottom: 12 }}>{sec.presentationLabel || "Presentation"}</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {sec.grades.map((g) => {
             const gc = gradeColors[g.grade] || gradeColors[3];
@@ -10145,10 +11724,12 @@ function GraderSection({ sec, siteColor, siteId, subsiteId }) {
           })}
         </div>
       </div>
+      )}
 
-      {/* Step 2: Management — collapsible per grade */}
+      {/* Management by Grade — collapsible per grade */}
+      {sec.management && (
       <div className="detail-card">
-        <h3 style={{ marginBottom: 12 }}>Step 2 — Management by Presentation</h3>
+        <h3 style={{ marginBottom: 12 }}>Management by Grade</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {sec.management.map((mgmt) => {
             const gc = gradeColors[mgmt.grade] || gradeColors[3];
@@ -10198,20 +11779,153 @@ function GraderSection({ sec, siteColor, siteId, subsiteId }) {
                     {/* Management items */}
                     <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, padding: "10px 14px 14px" }}>
                       {mgmt.items.map((item, i) => {
+                        if (typeof item === "object" && item !== null && item.subheading) {
+                          return (
+                            <li key={i} style={{ marginTop: 4 }}>
+                              <span style={{ fontSize: 12.5, fontWeight: 700, color: "#185FA5", fontFamily: "Sora, sans-serif" }}>{boldify(item.subheading)}</span>
+                            </li>
+                          );
+                        }
+                        if (typeof item === "object" && item !== null && item.alert) {
+                          // Yellow warning callout with triangle icon — used for "all measures
+                          // from the previous grade(s) continue" style cross-references.
+                          return (
+                            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 9, padding: "9px 12px", background: "#fffbeb", border: "1px solid #f6ad55", borderRadius: 8 }}>
+                              <span style={{ color: "#dd6b20", fontSize: 15, flexShrink: 0, lineHeight: 1.3, marginTop: 1, display: "flex" }}>{SectionIcons.warning}</span>
+                              <div style={{ display: "flex", flexDirection: "column", gap: 5, flex: 1 }}>
+                                <span style={{ fontSize: 13.5, fontWeight: 700, color: "#744210", lineHeight: 1.5 }}>{boldify(item.text)}</span>
+                                {item.children && item.children.length > 0 && (
+                                  <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                                    {item.children.map((c, ci) => (
+                                      <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: "#7b4a00", lineHeight: 1.5 }}>
+                                        <span style={{ color: "#dd6b20", fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                        <span>{boldify(c)}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            </li>
+                          );
+                        }
+                        if (typeof item === "object" && item !== null && item.header) {
+                          // Bold blue drug/section header (no bullet, no box) — same styling
+                          // as the "Consider" subheading — followed by unbolded, bulleted detail lines.
+                          return (
+                            <li key={i} style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
+                              <span style={{ fontSize: 12.5, fontWeight: 700, color: "#185FA5", fontFamily: "Sora, sans-serif" }}>{boldify(item.header)}</span>
+                              {item.children && item.children.length > 0 && (
+                                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                                  {item.children.map((c, ci) => (
+                                    <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                      <span style={{ color: isHighlighted ? gc.color : siteColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                                      <span>{boldify(c)}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          );
+                        }
+                        if (typeof item === "object" && item !== null && item.info && item.groups) {
+                          // Multi-drug info callout — each group has a bold header line (no
+                          // bullet) followed by its own unbolded, bulleted detail lines.
+                          return (
+                            <li key={i} style={{ display: "flex", flexDirection: "column", gap: 10, padding: "10px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8 }}>
+                              {item.groups.map((grp, gi) => (
+                                <div key={gi} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                                  <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                                    {gi === 0 ? (
+                                      <span style={{ color: "#1a6b8a", fontSize: 14, flexShrink: 0, lineHeight: 1.3, marginTop: 1 }}>ⓘ</span>
+                                    ) : (
+                                      <span style={{ width: 14, flexShrink: 0 }} />
+                                    )}
+                                    <span style={{ fontSize: 13.5, fontWeight: 700, color: "#0d4a63", lineHeight: 1.5 }}>{boldify(grp.header)}</span>
+                                  </div>
+                                  {grp.children && grp.children.length > 0 && (
+                                    <ul style={{ listStyle: "none", margin: 0, padding: "0 0 0 22px", display: "flex", flexDirection: "column", gap: 3 }}>
+                                      {grp.children.map((c, ci) => (
+                                        <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: "#0d4a63", lineHeight: 1.5 }}>
+                                          <span style={{ color: "#1a6b8a", fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                          <span>{boldify(c)}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+                              ))}
+                            </li>
+                          );
+                        }
+                        if (typeof item === "object" && item !== null && item.info && item.items) {
+                          // Flat multi-bullet info callout — no single header line, used when
+                          // 2+ primary-management actions are pinned/merged into one info box.
+                          return (
+                            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8 }}>
+                              <span style={{ color: "#1a6b8a", fontSize: 14, flexShrink: 0, lineHeight: 1.3, marginTop: 1 }}>ⓘ</span>
+                              <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 5, flex: 1 }}>
+                                {item.items.map((it, ii) => (
+                                  <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 13, fontWeight: 600, color: "#0d4a63", lineHeight: 1.5 }}>
+                                    <span style={{ color: "#1a6b8a", fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                                    <span>{boldify(it)}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          );
+                        }
+                        if (typeof item === "object" && item !== null && item.info) {
+                          return (
+                            <li key={i} style={{ display: "flex", flexDirection: "column", gap: 6, padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8 }}>
+                              <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                                <span style={{ color: "#1a6b8a", fontSize: 14, flexShrink: 0, lineHeight: 1.3 }}>ⓘ</span>
+                                <span style={{ fontSize: 13.5, fontWeight: 700, color: "#0d4a63", lineHeight: 1.5 }}>{boldify(item.text)}</span>
+                              </div>
+                              {item.children && item.children.length > 0 && (
+                                <ul style={{ listStyle: "none", margin: 0, padding: "0 0 0 22px", display: "flex", flexDirection: "column", gap: 4 }}>
+                                  {item.children.map((c, ci) => (
+                                    <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: "#0d4a63", lineHeight: 1.5 }}>
+                                      <span style={{ color: "#1a6b8a", fontSize: 7, flexShrink: 0, marginTop: 5 }}>●</span>
+                                      <span>{boldify(c)}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          );
+                        }
+                        if (typeof item === "object" && item !== null && item.text && item.children) {
+                          return (
+                            <li key={i} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                              <div style={{ display: "flex", alignItems: "flex-start", gap: 9, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                                <span style={{ color: isHighlighted ? gc.color : siteColor, flexShrink: 0, fontSize: 9, marginTop: 5 }}>●</span>
+                                <span>{boldify(item.text)}</span>
+                              </div>
+                              <ul style={{ listStyle: "none", margin: 0, padding: "0 0 0 17px", display: "flex", flexDirection: "column", gap: 4 }}>
+                                {item.children.map((c, ci) => (
+                                  <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12.5, color: "var(--text-secondary)", opacity: 0.9, lineHeight: 1.5 }}>
+                                    <span style={{ color: isHighlighted ? gc.color : siteColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>○</span>
+                                    <span>{boldify(c)}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          );
+                        }
                         const isUrgent = item.startsWith("!!");
                         const text = isUrgent ? item.slice(2).trim() : item;
                         if (isUrgent) {
                           return (
                             <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 9, padding: "7px 10px", background: gc.badge, border: `1px solid ${gc.border}`, borderRadius: 6, lineHeight: 1.5 }}>
                               <span style={{ color: gc.color, flexShrink: 0, fontSize: 13, marginTop: 1 }}>⚡</span>
-                              <span style={{ fontSize: 13.5, fontWeight: 700, color: gc.color }}>{text}</span>
+                              <span style={{ fontSize: 13.5, fontWeight: 700, color: gc.color }}>{boldify(text)}</span>
                             </li>
                           );
                         }
                         return (
                           <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 9, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
                             <span style={{ color: isHighlighted ? gc.color : siteColor, flexShrink: 0, fontSize: 9, marginTop: 5 }}>●</span>
-                            {text}
+                            {boldify(text)}
                           </li>
                         );
                       })}
@@ -10225,6 +11939,427 @@ function GraderSection({ sec, siteColor, siteId, subsiteId }) {
         </div>
         {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 12, fontStyle: "italic", lineHeight: 1.5 }}>ⓘ {sec.note}</p>}
       </div>
+      )}
+    </div>
+  );
+}
+
+// Collapsible "action card" accordion — used for e.g. Aetiology & Presentation.
+// Each group is a click-to-expand blue pastel card; body content is bold
+// subheadings followed by plain bullet lists (no tables), plus an optional
+// highlighted topCallout (e.g. "90% of cases").
+// Bullet list shared by accordion subheadings, flat group items, and info
+// box items. An item is either a plain string (boldify()'d for **bold**
+// markdown), or { label, children } for a bold sub-label with its own
+// indented, hollow-bullet sub-list underneath.
+function BulletList({ items, bulletColor, textColor = "var(--text-secondary)", onNavigate }) {
+  return (
+    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+      {items.map((item, ii) => {
+        if (item && typeof item === "object" && item.label) {
+          return (
+            <li key={ii} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: item.noBullet ? 0 : 8, fontSize: 13, color: item.color || textColor, lineHeight: 1.5 }}>
+                {!item.noBullet && <span style={{ color: bulletColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>}
+                <span style={{ fontWeight: item.bold === false ? 400 : 700 }}>{renderInline(item.label, onNavigate)}</span>
+              </div>
+              {item.children && item.children.length > 0 && (
+                item.plainBullets ? (
+                  <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                    {item.children.map((c, ci) => (
+                      <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: textColor, lineHeight: 1.5 }}>
+                        <span style={{ color: bulletColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                        <span>{renderInline(c, onNavigate)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul style={{ listStyle: "none", margin: 0, padding: item.noBullet ? 0 : "0 0 0 16px", display: "flex", flexDirection: "column", gap: 3 }}>
+                    {item.children.map((c, ci) => (
+                      <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: textColor, opacity: 0.9, lineHeight: 1.45 }}>
+                        <span style={{ color: bulletColor, fontSize: 7, flexShrink: 0, marginTop: 5 }}>○</span>
+                        <span>{renderInline(c, onNavigate)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )
+              )}
+            </li>
+          );
+        }
+        const isUrgent = typeof item === "string" && item.startsWith("!!");
+        if (isUrgent) {
+          const text = item.slice(2).trim();
+          return (
+            <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+              <span style={{ color: "#742a2a", fontSize: 13, flexShrink: 0, marginTop: 1, display: "flex" }}>{SectionIcons.warning}</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{renderInline(text, onNavigate)}</span>
+            </li>
+          );
+        }
+        return (
+          <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: textColor, lineHeight: 1.5 }}>
+            <span style={{ color: bulletColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+            <span>{renderInline(item, onNavigate)}</span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+const ACCORDION_THEMES = {
+  blue: { header: "#e8f0fb", label: "#185FA5", border: "#b8d4f0", bullet: "#378ADD", iconBg: "#B5D4F4", iconText: "#0C447C" },
+  green: { header: "#E1F5EE", label: "#0F6E56", border: "#9FE1CB", bullet: "#1D9E75", iconBg: "#9FE1CB", iconText: "#085041" },
+  purple: { header: "#EEEDFE", label: "#534AB7", border: "#CECBF6", bullet: "#7F77DD", iconBg: "#CECBF6", iconText: "#3C3489" },
+};
+
+function AccordionSection({ sec, onNavigate }) {
+  const [openGroups, setOpenGroups] = useState(() => {
+    const initial = {};
+    (sec.groups || []).forEach((g, i) => { initial[g.id || i] = i === 0; });
+    return initial;
+  });
+  const toggle = (key) => setOpenGroups((s) => ({ ...s, [key]: !s[key] }));
+
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 8 }}>
+        {(sec.groups || []).map((group, gi) => {
+          const key = group.id || gi;
+          const isOpen = !!openGroups[key];
+          const t = ACCORDION_THEMES[group.theme] || ACCORDION_THEMES.blue;
+          return (
+            <div key={key} style={{ border: `1px solid ${t.border}`, borderRadius: 10, overflow: "hidden", background: "var(--card-bg, #fff)" }}>
+              <div
+                onClick={() => toggle(key)}
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, padding: "10px 14px", background: t.header, cursor: "pointer" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 22, height: 22, borderRadius: "50%", background: t.iconBg, color: t.iconText, fontSize: 11.5, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{gi + 1}</span>
+                  <span style={{ fontSize: 13.5, fontWeight: 700, color: t.label, fontFamily: "Sora, sans-serif" }}>{group.label}</span>
+                </div>
+                <span style={{ color: t.label, opacity: 0.7, transform: isOpen ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+              </div>
+              {isOpen && (
+                <div style={{ padding: "12px 14px 14px", display: "flex", flexDirection: "column", gap: 12, borderTop: `1px solid ${t.border}` }}>
+                  {group.topAlerts && group.topAlerts.length > 0 && <AlertBoxes alerts={group.topAlerts} onNavigate={onNavigate} />}
+                  {group.topCallout && (
+                    <div style={{ padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8, display: "flex", flexDirection: "column", gap: 5 }}>
+                      <span style={{ fontSize: 10.5, fontWeight: 700, color: "#0d4a63", textTransform: "uppercase", letterSpacing: "0.05em" }}>{group.topCallout.label}</span>
+                      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                        {group.topCallout.items.map((item, i) => (
+                          <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "#0d4a63", lineHeight: 1.5 }}>
+                            <span style={{ color: "#1a6b8a", fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                            <span>{renderInline(item, onNavigate)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {(group.subheadings || []).map((sh, shi) => (
+                    <div key={shi} style={{ display: "flex", flexDirection: "column", gap: shi > 0 ? 12 : 5 }}>
+                      {shi > 0 && <div style={{ borderTop: `1px solid ${t.border}` }} />}
+                      <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          {sh.icon && (
+                            <span style={{ width: 18, height: 18, borderRadius: 5, background: t.iconBg, color: t.iconText, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                              {SectionIcons[sh.icon]}
+                            </span>
+                          )}
+                          <span style={{ fontSize: 12.5, fontWeight: 700, color: t.label, fontFamily: "Sora, sans-serif" }}>{sh.title}</span>
+                        </div>
+                        {sh.items && <BulletList items={sh.items} bulletColor={t.bullet} onNavigate={onNavigate} />}
+                        {sh.table && (
+                          <div style={{ border: "1px solid #90cde0", borderRadius: 8, overflow: "hidden" }}>
+                            <InfoTable table={sh.table} />
+                          </div>
+                        )}
+                        {sh.alerts && sh.alerts.length > 0 && <AlertBoxes alerts={sh.alerts} onNavigate={onNavigate} />}
+                        {sh.checklist && (
+                          <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 2 }}>
+                            {sh.checklist.intro && <span style={{ fontSize: 12.5, fontWeight: 700, color: t.label, fontFamily: "Sora, sans-serif" }}>{sh.checklist.intro}</span>}
+                            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                              {sh.checklist.items.map((it, ii) => (
+                                <li key={ii} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                  <span style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${t.bullet}`, flexShrink: 0 }} />
+                                  <span>{renderInline(it, onNavigate)}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {sh.steps && sh.steps.length > 0 && (
+                          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 2 }}>
+                            {sh.steps.map((st, si) => (
+                              <div key={si} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                                <div style={{ width: 22, height: 22, borderRadius: "50%", background: t.iconBg, color: t.iconText, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0, marginTop: 1 }}>{st.number != null ? st.number : si + 1}</div>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.5 }}>{renderInline(st.label, onNavigate)}</div>
+                                  {st.detail && (
+                                    <div style={{ marginTop: 3, fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                                      {Array.isArray(st.detail) ? (
+                                        <StepDetailBullets items={st.detail} onNavigate={onNavigate} siteColor={t.bullet} />
+                                      ) : (
+                                        renderInline(st.detail, onNavigate)
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                  {group.items && (
+                    <BulletList items={group.items} bulletColor={t.bullet} onNavigate={onNavigate} />
+                  )}
+                  {group.checklist && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                      {group.checklist.intro && <span style={{ fontSize: 12.5, fontWeight: 700, color: t.label, fontFamily: "Sora, sans-serif" }}>{group.checklist.intro}</span>}
+                      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+                        {group.checklist.items.map((it, ii) => (
+                          <li key={ii} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                            <span style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${t.bullet}`, flexShrink: 0 }} />
+                            <span>{renderInline(it, onNavigate)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {group.checklist && group.steps && group.steps.length > 0 && (
+                    <div style={{ borderTop: `1px solid ${t.border}` }} />
+                  )}
+                  {group.steps && group.steps.length > 0 && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                      {group.stepsHeading && <span style={{ fontSize: 12.5, fontWeight: 700, color: t.label, fontFamily: "Sora, sans-serif" }}>{group.stepsHeading}</span>}
+                      {group.stepsIntroCard && (
+                        <div style={{ padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                            <span style={{ color: "#1a6b8a", fontSize: 15, flexShrink: 0, lineHeight: 1.3, marginTop: 1 }}>ⓘ</span>
+                            {group.stepsIntroCard.title && <span style={{ fontSize: 13.5, fontWeight: 700, color: "#0d4a63", lineHeight: 1.5 }}>{group.stepsIntroCard.title}</span>}
+                          </div>
+                          <div style={{ paddingLeft: 23 }}>
+                            <BulletList items={group.stepsIntroCard.items} bulletColor="#1a6b8a" textColor="#0d4a63" onNavigate={onNavigate} />
+                          </div>
+                        </div>
+                      )}
+                      {group.steps.map((st, si) => (
+                        <div key={si} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                          <div style={{ width: 22, height: 22, borderRadius: "50%", background: t.iconBg, color: t.iconText, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0, marginTop: 1 }}>{st.number != null ? st.number : si + 1}</div>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.5 }}>{renderInline(st.label, onNavigate)}</div>
+                            {st.detail && (
+                              <div style={{ marginTop: 3, fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                                {Array.isArray(st.detail) ? (
+                                  <StepDetailBullets items={st.detail} onNavigate={onNavigate} siteColor={t.bullet} />
+                                ) : (
+                                  renderInline(st.detail, onNavigate)
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {group.insetCard && group.insetCardBeforeAlerts && (
+                    group.insetCard.heading ? (
+                      <div style={{ border: "1px solid var(--border)", borderRadius: 10, padding: "10px 12px", background: "var(--bg)", display: "flex", flexDirection: "column", gap: 8 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.04em", fontFamily: "Sora, sans-serif" }}>{group.insetCard.heading}</span>
+                        <InfoBoxes boxes={group.insetCard.boxes} onNavigate={onNavigate} />
+                      </div>
+                    ) : (
+                      <InfoBoxes boxes={group.insetCard.boxes} onNavigate={onNavigate} />
+                    )
+                  )}
+                  {group.alerts && group.alerts.length > 0 && <AlertBoxes alerts={group.alerts} onNavigate={onNavigate} />}
+                  {group.insetCard && !group.insetCardBeforeAlerts && (
+                    group.insetCard.heading ? (
+                      <div style={{ border: "1px solid var(--border)", borderRadius: 10, padding: "10px 12px", background: "var(--bg)", display: "flex", flexDirection: "column", gap: 8 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.04em", fontFamily: "Sora, sans-serif" }}>{group.insetCard.heading}</span>
+                        <InfoBoxes boxes={group.insetCard.boxes} onNavigate={onNavigate} />
+                      </div>
+                    ) : (
+                      <InfoBoxes boxes={group.insetCard.boxes} onNavigate={onNavigate} />
+                    )
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// Red "caution" callouts (warning triangle icon) — shared by AccordionSection's
+// sh.alerts (tied to one subheading) and group.alerts (applies to the whole
+// dropdown group, e.g. a caveat spanning several subheadings).
+function AlertBoxes({ alerts, onNavigate }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 2 }}>
+      {alerts.map((alert, ai) => {
+        const isStructured = alert && typeof alert === "object";
+        return (
+          <div key={ai} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 8 }}>
+            <span style={{ color: "#742a2a", fontSize: 15, flexShrink: 0, lineHeight: 1.3, marginTop: 1, display: "flex" }}>{SectionIcons.warning}</span>
+            {isStructured ? (
+              <div style={{ display: "flex", flexDirection: "column", gap: 5, flex: 1 }}>
+                {alert.title && <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.4 }}>{renderInline(alert.title, onNavigate)}</span>}
+                {alert.items && <BulletList items={alert.items} bulletColor="#e53e3e" textColor="#742a2a" onNavigate={onNavigate} />}
+              </div>
+            ) : (
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{renderInline(alert, onNavigate)}</span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Stack of blue "info box" callouts (ⓘ, light blue tint) — shared by
+// InfoboxSection (top-level) and AccordionSection's insetCard (nested inside
+// a dropdown group). A box is either a lookup table or a plain caveat note.
+// Light-blue lookup table — shared by InfoBoxes (box.table) and accordion
+// subheadings (sh.table), e.g. the cCa/PTH/Likely Diagnosis reference.
+function InfoTable({ table }) {
+  return (
+    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <thead>
+        <tr>
+          {table.headers.map((h, hi) => (
+            <th key={hi} style={{ padding: "8px 12px", fontSize: 11, fontWeight: 700, color: "#0d4a63", textAlign: "left", background: "#d8ecf3", borderBottom: "1px solid #90cde0", borderRight: hi < table.headers.length - 1 ? "1px solid #90cde0" : "none", textTransform: "uppercase", letterSpacing: "0.04em" }}>{h}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {table.rows.map((row, ri) => (
+          <tr key={ri} style={{ borderTop: ri > 0 ? "1px solid #90cde0" : "none" }}>
+            {row.map((cell, ci) => (
+              <td key={ci} style={{ padding: "8px 12px", fontSize: 13, fontWeight: table.boldFirstColumnOnly ? (ci === 0 ? 700 : 400) : (ci === row.length - 1 ? 400 : 700), color: "#0d4a63", borderRight: ci < row.length - 1 ? "1px solid #90cde0" : "none", lineHeight: 1.4, verticalAlign: "top" }}>
+                {Array.isArray(cell) ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                    {cell.map((line, li) => <div key={li}>{line}</div>)}
+                  </div>
+                ) : cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function InfoBoxes({ boxes, onNavigate }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      {(boxes || []).map((box, bi) => (
+        <div key={bi} style={{ padding: box.table ? 0 : "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8, overflow: "hidden", display: "flex", flexDirection: box.table ? "column" : "row", alignItems: box.table ? "stretch" : "flex-start", gap: box.table ? 0 : 8 }}>
+          {box.table ? (
+            <InfoTable table={box.table} />
+          ) : box.items ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                <span style={{ color: "#1a6b8a", fontSize: 15, flexShrink: 0, lineHeight: 1.3, marginTop: 1 }}>ⓘ</span>
+                {box.title && <span style={{ fontSize: 13.5, fontWeight: 700, color: "#0d4a63", lineHeight: 1.5 }}>{renderInline(box.title, onNavigate)}</span>}
+              </div>
+              <div style={{ paddingLeft: 23 }}>
+                <BulletList items={box.items} bulletColor="#1a6b8a" textColor="#0d4a63" onNavigate={onNavigate} />
+              </div>
+            </div>
+          ) : (
+            <>
+              <span style={{ color: "#1a6b8a", fontSize: 15, flexShrink: 0, lineHeight: 1.4 }}>ⓘ</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: "#0d4a63", lineHeight: 1.5 }}>{renderInline(box.note, onNavigate)}</span>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function InfoboxSection({ sec, onNavigate }) {
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      <div style={{ marginTop: 8 }}>
+        <InfoBoxes boxes={sec.boxes} onNavigate={onNavigate} />
+      </div>
+    </div>
+  );
+}
+
+// Merged severity + at-a-glance management — one collapsible row per grade
+// (grade badge, label, cCa pill), body split into "Features"/"Management"
+// (or whatever titled groups are supplied) with a divider between, bold
+// subheadings, bullets. Colour comes from the grade item itself so callers
+// can reuse the standard green/yellow/red grade palette.
+function QuickRefSection({ sec, onNavigate }) {
+  const [openGrade, setOpenGrade] = useState(0);
+  const toggle = (i) => setOpenGrade((o) => (o === i ? -1 : i));
+
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 8 }}>
+        {(sec.items || []).map((g, gi) => {
+          const isOpen = openGrade === gi;
+          return (
+            <div key={gi} style={{ border: `1.5px solid ${isOpen ? g.color : g.border}`, borderRadius: 8, overflow: "hidden", background: isOpen ? g.bg : "var(--surface)", transition: "border-color 0.15s, background 0.15s" }}>
+              <div
+                onClick={() => toggle(gi)}
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "10px 14px", background: isOpen ? g.bg : "var(--bg)", cursor: "pointer", borderBottom: isOpen ? `1px solid ${g.border}` : "none", transition: "background 0.15s" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 26, height: 26, borderRadius: "50%", background: g.badge, color: g.color, fontSize: 12, fontWeight: 700, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{g.grade}</span>
+                  <span style={{ fontWeight: 600, fontSize: 13.5, fontFamily: "Sora, sans-serif", color: g.color }}>{g.label}</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+                  {g.pill && (
+                    <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 92, padding: "3px 6px", background: g.badge, border: `1px solid ${g.border}`, borderRadius: 5, fontSize: 11, fontWeight: 700, color: g.color, fontFamily: "Sora, sans-serif", whiteSpace: "nowrap", textAlign: "center" }}>{g.pill}</span>
+                  )}
+                  <span style={{ color: g.color, opacity: 0.7, transform: isOpen ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+                </div>
+              </div>
+              {isOpen && (
+                <div style={{ padding: "12px 14px 14px", display: "flex", flexDirection: "column", gap: 12 }}>
+                  {(g.groups || []).map((grp, grpi) => (
+                    <div key={grpi} style={{ display: "flex", flexDirection: "column", gap: grpi > 0 ? 12 : 5 }}>
+                      {grpi > 0 && <div style={{ borderTop: `1px solid ${g.border}` }} />}
+                      <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                        <span style={{ fontSize: 12.5, fontWeight: 700, color: g.color, fontFamily: "Sora, sans-serif" }}>{grp.title}</span>
+                        {grp.items && <BulletList items={grp.items} bulletColor={g.color} onNavigate={onNavigate} />}
+                        {grp.alerts && grp.alerts.length > 0 && <AlertBoxes alerts={grp.alerts} onNavigate={onNavigate} />}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      {sec.note && (
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8, marginTop: 12 }}>
+          <span style={{ color: "#1a6b8a", fontSize: 15, flexShrink: 0, lineHeight: 1.4 }}>ⓘ</span>
+          {typeof sec.note === "string" ? (
+            <span style={{ fontSize: 13, color: "#0d4a63", fontWeight: 600, lineHeight: 1.5 }}>{sec.note}</span>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
+              {sec.note.label && <span style={{ fontSize: 13, color: "#0d4a63", fontWeight: 600, lineHeight: 1.5 }}>{sec.note.label}</span>}
+              <BulletList items={sec.note.items} bulletColor="#1a6b8a" textColor="#0d4a63" onNavigate={onNavigate} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -10372,7 +12507,7 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
       sublabel: "Lymphoma, myeloma, leukaemia",
       management: [
         { urgent: true, text: "Stat dexamethasone 20mg PO" },
-        { urgent: true, text: "Discuss continuation with Haematology before proceeding" },
+        { urgent: false, text: "Discuss continuation with Haematology before proceeding" },
         { urgent: false, text: "Offer PPI" },
       ],
     },
@@ -10383,7 +12518,7 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
       sublabel: "MSCC may be first presentation",
       management: [
         { urgent: true, text: "Discuss with oncology before starting steroids" },
-        { urgent: false, text: "If ?lymphoma/myeloma: do not give steroids — seek haematology advice + consider urgent biopsy first" },
+        { urgent: false, text: "If ?lymphoma/myeloma: do not give steroids", children: ["Seek haematology advice + consider urgent biopsy first"] },
         { urgent: false, text: "If approved: stat 16mg then 8mg BD as per solid cancer protocol" },
       ],
     },
@@ -10393,11 +12528,18 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
       label: "No neurological symptoms",
       sublabel: "Spinal mets suspected/confirmed",
       management: [
-        { urgent: false, text: "Steroids not routinely indicated" },
+        { urgent: true, text: "Steroids not routinely indicated" },
         { urgent: false, text: "Consider if severe pain — discuss with senior clinician" },
       ],
       last: true,
     },
+  ];
+
+  const prolongedSteroidItems = [
+    "Consider PCP prophylaxis (cotrimoxazole 480mg OD)",
+    "Bone protection",
+    "Blood glucose monitoring",
+    "Steroid Alert card: risk of adrenal insufficiency on withdrawal",
   ];
 
   return (
@@ -10406,7 +12548,6 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
         padding: "10px 16px", borderBottom: "1px solid var(--border-light)",
         display: "flex", alignItems: "center", gap: 8, background: siteAccent,
       }}>
-        <span style={{ fontSize: 14, color: siteColor }}>💊</span>
         <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>
           Steroid protocol by presentation
         </span>
@@ -10420,14 +12561,14 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
           </colgroup>
           <thead>
             <tr>
-              <th style={thStyle}>Presentation</th>
+              <th style={{ ...thStyle, borderRight: "1px solid var(--border-light)" }}>Presentation</th>
               <th style={thStyle}>Steroid management</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row, ri) => (
               <tr key={ri}>
-                <td style={{ ...tdBase, background: row.bgRow, borderBottom: row.last ? "none" : "1px solid var(--border-light)" }}>
+                <td style={{ ...tdBase, borderRight: "1px solid var(--border-light)", borderBottom: row.last ? "none" : "1px solid var(--border-light)" }}>
                   <div style={{ fontWeight: 700, fontSize: 13, color: row.labelColor, fontFamily: "Sora, sans-serif", marginBottom: row.sublabel ? 3 : 0 }}>
                     {row.label}
                   </div>
@@ -10435,7 +12576,7 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
                     <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{row.sublabel}</div>
                   )}
                 </td>
-                <td style={{ ...tdBase, background: row.bgRow, borderBottom: row.last ? "none" : "1px solid var(--border-light)" }}>
+                <td style={{ ...tdBase, borderBottom: row.last ? "none" : "1px solid var(--border-light)" }}>
                   {row.management.map((item, ii) =>
                     item.urgent ? (
                       <div key={ii} style={{
@@ -10445,13 +12586,25 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
                         marginBottom: 5, fontSize: 13, fontWeight: 700,
                         color: "#742a2a", lineHeight: 1.4,
                       }}>
-                        <span style={{ fontSize: 11, flexShrink: 0, marginTop: 1 }}>⚡</span>
+                        <span style={{ fontSize: 11, flexShrink: 0, marginTop: 1 }}><IconAlertTriangle /></span>
                         {item.text}
                       </div>
                     ) : (
-                      <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
-                        <span style={{ color: "var(--text-muted)", fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
-                        <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{item.text}</span>
+                      <div key={ii} style={{ marginBottom: 4 }}>
+                        <div style={{ display: "flex", alignItems: "flex-start", gap: 7 }}>
+                          <span style={{ color: "var(--text-muted)", fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                          <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{item.text}</span>
+                        </div>
+                        {item.children && item.children.length > 0 && (
+                          <div style={{ marginLeft: 17, marginTop: 3, display: "flex", flexDirection: "column", gap: 3 }}>
+                            {item.children.map((child, ci) => (
+                              <div key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 7 }}>
+                                <span style={{ color: "var(--text-muted)", fontSize: 7, flexShrink: 0, marginTop: 5 }}>○</span>
+                                <span style={{ fontSize: 12.5, color: "var(--text-secondary)", opacity: 0.9, lineHeight: 1.55 }}>{child}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )
                   )}
@@ -10462,12 +12615,24 @@ function MSCCSteroidTable({ siteColor, siteAccent }) {
         </table>
       </div>
 
-      <div style={{
-        background: "var(--bg)", borderTop: "1px solid var(--border-light)",
-        padding: "8px 14px", fontSize: 12, color: "var(--text-muted)",
-        fontStyle: "italic", lineHeight: 1.5,
-      }}>
-        Prolonged steroids: consider PCP prophylaxis (cotrimoxazole 480mg OD), bone protection, blood glucose monitoring, and risk of adrenal insufficiency on withdrawal.
+      {/* Prolonged steroids — blue info callout */}
+      <div style={{ padding: "12px 16px", borderTop: "1px solid var(--border-light)", background: "#eff6ff" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+          <span style={{ color: "#1d4ed8", fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#1d4ed8", fontFamily: "Sora, sans-serif", marginBottom: 5 }}>
+              Prolonged Steroids
+            </div>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+              {prolongedSteroidItems.map((it, ii) => (
+                <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "#1e40af", lineHeight: 1.5 }}>
+                  <span style={{ fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                  <span>{it}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -11193,15 +13358,6 @@ return (
         {calc.component === "opioid-converter" && <OpioidConverter />}
         {calc.component === "sins" && <SinsCalculator />}
         {calc.component === "endocrinology" && <EndocrinologyCalculator />}
-        {calc.component === "tokuhashi" && (
-          <div style={{ padding: "12px", background: "var(--bg)", borderRadius: 8, border: "1px solid var(--border)" }}>
-            <p style={{ fontSize: 13.5, color: "var(--text-secondary)", marginBottom: 12 }}>The Revised Tokuhashi Score is best calculated using the validated MDCalc tool which includes full scoring tables:</p>
-            <a href="https://www.mdcalc.com/calc/10475/revised-tokuhashi-scoring-system" target="_blank" rel="noopener noreferrer"
-              className="detail-btn detail-btn-primary" style={{ display: "inline-flex" }}>
-              <IconExternal /> Open Tokuhashi Calculator on MDCalc
-            </a>
-          </div>
-        )}
       {calc.component === "hfa-icos" && (
   <div style={{ padding: "12px", background: "var(--bg)", borderRadius: 8, border: "1px solid var(--border)" }}>
     <p style={{ fontSize: 13.5, color: "var(--text-secondary)", marginBottom: 12 }}>The HFA-ICOS tool is an externally validated risk calculator hosted on MDCalc:</p>
@@ -11481,6 +13637,24 @@ const SectionIcons = {
       <path d="M10 17c-.4-.3-8-5.8-8-10a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.2-7.6 9.7-8 10z"/>
     </svg>
   ),
+  dischargeArrow: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <circle cx="8" cy="10" r="6.3"/>
+      <path d="M8 10h9"/>
+      <path d="M14 6.8l3.2 3.2-3.2 3.2"/>
+    </svg>
+  ),
+  lungs: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M12 3v9.5"/>
+      <path d="M12 12.5c0-1.2.9-2 2-2h1c1.4 0 2.5 1.1 2.5 2.5v3c0 1.9-1.1 3.5-2.8 4.3-1 .5-2.2-.3-2.2-1.4v-6.4Z"/>
+      <path d="M12 12.5c0-1.2-.9-2-2-2H9c-1.4 0-2.5 1.1-2.5 2.5v3c0 1.9 1.1 3.5 2.8 4.3 1 .5 2.2-.3 2.2-1.4v-6.4Z"/>
+      <path d="M9 5.5c-1.5 0-2.5 1.2-2.5 2.5v1"/>
+      <path d="M15 5.5c1.5 0 2.5 1.2 2.5 2.5v1"/>
+      <path d="M17.5 15.5c1 0 2-.8 2-2"/>
+      <path d="M6.5 15.5c-1 0-2-.8-2-2"/>
+    </svg>
+  ),
   question: (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
       <path d="M7 7.5a3 3 0 0 1 5.9.8c0 1.8-1.9 2.5-2.9 3.5v.7"/>
@@ -11490,6 +13664,21 @@ const SectionIcons = {
   tick: (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
       <path d="M3 10.5l5 5L17 5"/>
+    </svg>
+  ),
+  plus: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+    </svg>
+  ),
+  minus: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <line x1="4" y1="10" x2="16" y2="10"/>
+    </svg>
+  ),
+  equals: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <line x1="4" y1="7.5" x2="16" y2="7.5"/><line x1="4" y1="12.5" x2="16" y2="12.5"/>
     </svg>
   ),
   magnify: (
@@ -11517,6 +13706,97 @@ const SectionIcons = {
       <path d="M7 12s1 2 3 2 3-2 3-2"/>
       <circle cx="7.5" cy="8.5" r=".8" fill="currentColor" stroke="none"/>
       <circle cx="12.5" cy="8.5" r=".8" fill="currentColor" stroke="none"/>
+    </svg>
+  ),
+  wheelchair: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <circle cx="7.5" cy="13.5" r="4"/>
+      <circle cx="13" cy="4" r="1.2" fill="currentColor" stroke="none"/>
+      <path d="M9.5 6.5v4h4.5"/>
+      <path d="M9.5 10.5l2.5 5h3"/>
+      <path d="M7 10.5h2.5"/>
+    </svg>
+  ),
+  bone: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z"/>
+    </svg>
+  ),
+  toilet: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <rect x="6" y="2" width="9" height="4" rx="1"/>
+      <path d="M5 7v2.5a5.5 5.5 0 0 0 11 0V7"/>
+      <path d="M8 15c0 1.7.9 3 2.5 3s2.5-1.3 2.5-3"/>
+      <path d="M6.5 15h7"/>
+    </svg>
+  ),
+  brain: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M9 3a2.5 2.5 0 0 0-2.5 2.5c0 .3.1.6.2.9A2.5 2.5 0 0 0 5 8.7a2.5 2.5 0 0 0 .6 4.7A2.5 2.5 0 0 0 8 16a2.5 2.5 0 0 0 1-2V5.5A2.5 2.5 0 0 0 9 3Z"/>
+      <path d="M11 3a2.5 2.5 0 0 1 2.5 2.5c0 .3-.1.6-.2.9A2.5 2.5 0 0 1 15 8.7a2.5 2.5 0 0 1-.6 4.7A2.5 2.5 0 0 1 12 16a2.5 2.5 0 0 1-1-2V5.5A2.5 2.5 0 0 1 11 3Z"/>
+    </svg>
+  ),
+  scalpel: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M3.5 16.5l6.3-6.3"/>
+      <path d="M9.8 10.2l3-3c.9-.9.9-2.4 0-3.3l-1.3-1.3-4 4c-.7.7-.7 1.9 0 2.6l2.3 2.3Z"/>
+    </svg>
+  ),
+  radiation: (
+    <svg viewBox="0 0 20 20" width="15" height="15">
+      <circle cx="10" cy="10" r="8.3" fill="none" stroke="currentColor" strokeWidth="1.3"/>
+      <circle cx="10" cy="10" r="1.6" fill="currentColor"/>
+      <path d="M10 10 L7.5 3.8 A7 7 0 0 1 12.5 3.8 Z" fill="currentColor"/>
+      <path d="M10 10 L7.5 3.8 A7 7 0 0 1 12.5 3.8 Z" fill="currentColor" transform="rotate(120 10 10)"/>
+      <path d="M10 10 L7.5 3.8 A7 7 0 0 1 12.5 3.8 Z" fill="currentColor" transform="rotate(240 10 10)"/>
+    </svg>
+  ),
+  ivbag: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M8.5 2h3"/>
+      <path d="M10 2v2"/>
+      <rect x="5.5" y="4" width="9" height="10" rx="2"/>
+      <line x1="7.5" y1="7.5" x2="12.5" y2="7.5"/>
+      <path d="M10 14v2.2"/>
+      <path d="M10 17.3v.7"/>
+    </svg>
+  ),
+  hexagonDot: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M10 2l7 4v8l-7 4-7-4V6z"/>
+      <circle cx="10" cy="10" r="1.4" fill="currentColor" stroke="none"/>
+    </svg>
+  ),
+  kidney: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M8 2.5c-2.8 0-4.5 2.4-4.5 5.5 0 2 .8 3 .8 5 0 2.8 1.7 4.5 3.7 4.5 2 0 2.7-1.6 2.7-3.3 0-1.3-.9-1.9-.9-3.2 0-1.5 1.4-1.9 1.4-3.5C11.2 4.8 10 2.5 8 2.5z"/>
+    </svg>
+  ),
+  droplet: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M10 2.5S4.5 8.8 4.5 12.5a5.5 5.5 0 0 0 11 0C15.5 8.8 10 2.5 10 2.5z"/>
+    </svg>
+  ),
+  dna: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M6 2.5c0 5 8 5.5 8 10.5"/>
+      <path d="M14 2.5c0 5-8 5.5-8 10.5"/>
+      <line x1="6.6" y1="5.2" x2="13.4" y2="5.2"/>
+      <line x1="6.3" y1="8" x2="13.7" y2="8"/>
+      <line x1="6.3" y1="10.8" x2="13.7" y2="10.8"/>
+      <line x1="6.6" y1="13.6" x2="13.4" y2="13.6"/>
+    </svg>
+  ),
+  apple: (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+      <path d="M10 6.3c-1-1.4-2.7-1.8-4-1.1C4.3 6 3.5 8.3 4.2 10.5c.7 2.3 2.6 5 4.4 5.9.5.2 1.1.3 1.6.1.5.2 1.1.1 1.6-.1 1.8-.9 3.7-3.6 4.4-5.9.7-2.2-.1-4.5-1.8-5.3-1.3-.7-3-.3-4 1.1z"/>
+      <path d="M10 6.3V4"/>
+      <path d="M10 4c.4-.9 1.3-1.5 2.3-1.4"/>
+    </svg>
+  ),
+  thunderbolt: (
+    <svg viewBox="0 0 20 20" fill="currentColor" stroke="none" width="15" height="15">
+      <path d="M11 2 4 11.5h4.3L8.2 18l7.8-10.5h-4.6L11 2z"/>
     </svg>
   ),
 };
@@ -11600,6 +13880,13 @@ function StandoutCard({ section, siteColor, siteAccent, onNavigate }) {
     slate:  { header: "#374151", bg: "#f9fafb", border: "#d1d5db" },
   };
   const c = VARIANTS[section.variant] || VARIANTS.blue;
+  // "Rich" content (multi-line, or opening with block-level markdown syntax like
+  // headings/tables/lists/callouts) needs the real markdown parser. Short one-line
+  // labels — typically paired with a "link" pill — keep the simple inline treatment.
+  const isRichContent = !!section.content && (
+    section.content.includes("\n") ||
+    /^(#{1,6}\s|\|| {0,3}>|[-*]\s|\d+\.\s|:::)/.test(section.content.trim())
+  );
   return (
     <div style={{ border: `1.5px solid ${c.border}`, borderRadius: 10, overflow: "hidden", marginBottom: 16 }}>
       {section.heading && (
@@ -11612,8 +13899,8 @@ function StandoutCard({ section, siteColor, siteAccent, onNavigate }) {
           <div style={{ height: 1, background: c.border }} />
         </>
       )}
-      <div style={{ background: c.bg, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-        {section.content && <span style={{ fontSize: 13.5, color: c.header, fontWeight: 500 }}>{section.content}</span>}
+      <div style={{ background: c.bg, padding: "12px 16px", display: isRichContent ? "block" : "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+        {section.content && !isRichContent && <span style={{ fontSize: 13.5, color: c.header, fontWeight: 500 }}>{section.content}</span>}
         {section.link && (
           <a href={section.link.url} target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "5px 12px", background: "#ebf8ff", color: "#2b6cb0", border: "1px solid #90cdf4", borderRadius: 6, fontWeight: 700, fontSize: 12.5, fontFamily: "Sora, sans-serif", textDecoration: "none", cursor: "pointer", flexShrink: 0 }}>
@@ -11621,37 +13908,239 @@ function StandoutCard({ section, siteColor, siteAccent, onNavigate }) {
             {section.link.label}
           </a>
         )}
-        {!section.link && !section.content && <MarkdownSection content={section.content} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />}
+        {isRichContent && <MarkdownSection content={section.content} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />}
       </div>
     </div>
   );
 }
 
-function PillItem({ pill, onNavigate }) {
+// Recursive bullet list for "steps" item.detail arrays — items may be plain strings
+// (flat bullets) or { text, children } objects (indented sub-bullets, any depth).
+function StepDetailBullets({ items, onNavigate, siteColor, level = 0 }) {
+  return (
+    <ul style={{ listStyle: "none", padding: 0, margin: level === 0 ? 0 : "3px 0 0 17px", display: "flex", flexDirection: "column", gap: level === 0 ? 4 : 3 }}>
+      {items.map((it, j) => {
+        const isObj = typeof it === "object" && it !== null;
+        const text = isObj ? it.text : it;
+        const children = isObj ? it.children : null;
+        return (
+          <li key={j} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: level === 0 ? 13 : 12.5, color: "var(--text-secondary)", lineHeight: 1.55, opacity: level === 0 ? 1 : 0.9 }}>
+              <span style={{ color: siteColor, fontSize: level === 0 ? 9 : 8, flexShrink: 0, marginTop: 5 }}>{level === 0 ? "●" : "○"}</span>
+              <span>{renderInline(text, onNavigate)}</span>
+            </div>
+            {children && children.length > 0 && (
+              <StepDetailBullets items={children} onNavigate={onNavigate} siteColor={siteColor} level={level + 1} />
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function PillItem({ pill, onNavigate, indicationStyle }) {
   const [open, setOpen] = useState(false);
+  const pillBadge = indicationStyle === "pill";
+  // Collapsed-row preview: use an explicit subtitle if given, otherwise flatten
+  // indication (which may be a string, or an array of strings/{text,children} objects)
+  // into a single summary line — the full breakdown is rendered once the row is expanded.
+  const indicationPreview = pill.subtitle
+    ? pill.subtitle
+    : Array.isArray(pill.indication)
+      ? pill.indication.map(ind => (typeof ind === "object" && ind !== null ? ind.text : ind)).join(" · ")
+      : pill.indication;
   return (
     <div style={{ border: `1.5px solid ${open ? pill.color : pill.border}`, borderRadius: 8, overflow: "hidden", transition: "border-color 0.15s" }}>
       <div onClick={() => setOpen(o => !o)}
         style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", background: open ? pill.bg : "var(--bg)", cursor: "pointer", transition: "background 0.15s" }}
       >
+        {pill.icon && SectionIcons[pill.icon] && (
+          <span style={{
+            width: 26, height: 26, borderRadius: "50%", flexShrink: 0,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: pill.bg, color: pill.color, border: `1px solid ${pill.border}`,
+          }}>
+            {SectionIcons[pill.icon]}
+          </span>
+        )}
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontWeight: 600, fontSize: 13.5, fontFamily: "Sora, sans-serif", color: open ? pill.color : "var(--text-primary)" }}>{pill.label}</div>
-          <div style={{ fontSize: 12.5, color: "var(--text-muted)", marginTop: 2 }}>{pill.indication}</div>
+          {!pill.hideSubtitle && indicationPreview && (
+            pillBadge ? (
+              <span style={{ display: "inline-flex", alignItems: "center", marginTop: 5, padding: "2px 9px", background: pill.bg, border: `1px solid ${pill.border}`, borderRadius: 6, fontSize: 11, fontWeight: 600, color: pill.color, lineHeight: 1.5 }}>
+                {indicationPreview}
+              </span>
+            ) : (
+              <div style={{ fontSize: 12.5, color: "var(--text-muted)", marginTop: 2 }}>{indicationPreview}</div>
+            )
+          )}
         </div>
         <span style={{ color: open ? pill.color : "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
       </div>
       {open && (
         <div style={{ borderTop: `1px solid ${pill.border}`, background: pill.bg, padding: "10px 14px 14px" }}>
-          {pill.indication && (
-            <div style={{ marginBottom: 10 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 4, opacity: 0.75 }}>Indication</div>
-              <p style={{ fontSize: 13.5, color: pill.color, lineHeight: 1.55, margin: 0 }}>{pill.indication}</p>
+          {pill.infoBox && pill.infoBox.items && pill.infoBox.items.length > 0 && (
+            <div style={{ marginBottom: 12, display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 12px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 8 }}>
+              <span style={{ color: "#1d4ed8", fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                {pill.infoBox.items.map((it, ii) => {
+                  const isObj = typeof it === "object" && it !== null;
+                  const text = isObj ? it.text : it;
+                  const children = isObj ? it.children : null;
+                  return (
+                    <li key={ii} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                      <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "#1e40af", lineHeight: 1.5 }}>
+                        <span style={{ fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                        <span>{boldify(text)}</span>
+                      </div>
+                      {children && children.length > 0 && (
+                        <ul style={{ listStyle: "none", padding: 0, margin: "0 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                          {children.map((c, ci) => (
+                            <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12.5, color: "#1e40af", opacity: 0.9, lineHeight: 1.5 }}>
+                              <span style={{ fontSize: 7, flexShrink: 0, marginTop: 5 }}>○</span>
+                              <span>{boldify(c)}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           )}
+          {pill.blocks ? (
+            pill.blocks.map((block, bi) => (
+              <div key={bi}>
+                {bi > 0 && <div style={{ height: 1, background: pill.border, margin: "14px 0" }} />}
+                {block.calloutLabel && (
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 9, padding: "8px 10px", background: pill.border, borderRadius: 6, marginBottom: 10 }}>
+                    <span style={{ color: pill.color, fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 700, color: pill.color }}>{block.calloutLabel}</span>
+                  </div>
+                )}
+                {block.indication && block.indication.length > 0 && (
+                  <div style={{ marginBottom: ((block.exclusions && block.exclusions.length) || (block.notes && block.notes.length)) ? 10 : 0 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 4, opacity: 0.75 }}>
+                      {block.indicationLabel || "Indications"}
+                    </div>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                      {block.indication.map((ind, j) => {
+                        const isObj = typeof ind === "object" && ind !== null;
+                        const text = isObj ? ind.text : ind;
+                        const children = isObj ? ind.children : null;
+                        return (
+                          <li key={j} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: pill.color, lineHeight: 1.5 }}>
+                              <span style={{ fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+                              <span>{boldify(text)}</span>
+                            </div>
+                            {children && children.length > 0 && (
+                              <ul style={{ listStyle: "none", padding: 0, margin: "1px 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                                {children.map((c, k) => (
+                                  <li key={k} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: pill.color, opacity: 0.85, lineHeight: 1.5 }}>
+                                    <span style={{ fontSize: 8, flexShrink: 0, marginTop: 5 }}>○</span>
+                                    <span>{boldify(c)}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
+                {block.exclusions && block.exclusions.length > 0 && (
+                  <div style={{ marginBottom: (block.notes && block.notes.length) ? 10 : 0 }}>
+                    {block.exclusionsLabel && (
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>{block.exclusionsLabel}</div>
+                    )}
+                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
+                      {block.exclusions.map((ex, j) => (
+                        <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                          <span style={{ color: pill.color, fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+                          <span>{boldify(ex)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {block.notes && block.notes.length > 0 && (
+                  <div>
+                    {block.notesLabel && (
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>{block.notesLabel}</div>
+                    )}
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+                      {block.notes.map((n, j) => {
+                        const isObj = typeof n === "object" && n !== null;
+                        const text = isObj ? n.text : n;
+                        const children = isObj ? n.children : null;
+                        return (
+                          <li key={j} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                              <span style={{ color: pill.color, fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+                              <span>{boldify(text)}</span>
+                            </div>
+                            {children && children.length > 0 && (
+                              <ul style={{ listStyle: "none", padding: 0, margin: "1px 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                                {children.map((c, k) => (
+                                  <li key={k} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", opacity: 0.85, lineHeight: 1.5 }}>
+                                    <span style={{ color: pill.color, fontSize: 8, flexShrink: 0, marginTop: 5 }}>○</span>
+                                    <span>{boldify(c)}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <>
           {pill.urgent && (
             <div style={{ display: "flex", alignItems: "flex-start", gap: 9, padding: "8px 10px", background: pill.border, borderRadius: 6, marginBottom: 10 }}>
-              <span style={{ color: pill.color, fontSize: 13, flexShrink: 0, marginTop: 1 }}>⚡</span>
+              <span style={{ color: pill.color, fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
               <span style={{ fontSize: 13.5, fontWeight: 700, color: pill.color }}>{pill.urgent}</span>
+            </div>
+          )}
+          {pill.indication && !pillBadge && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 4, opacity: 0.75 }}>{Array.isArray(pill.indication) ? "Indications" : "Indication"}</div>
+              {Array.isArray(pill.indication) ? (
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                  {pill.indication.map((ind, j) => {
+                    const isObj = typeof ind === "object" && ind !== null;
+                    const text = isObj ? ind.text : ind;
+                    const children = isObj ? ind.children : null;
+                    return (
+                      <li key={j} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                        <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: pill.color, lineHeight: 1.5 }}>
+                          <span style={{ fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+                          <span>{boldify(text)}</span>
+                        </div>
+                        {children && children.length > 0 && (
+                          <ul style={{ listStyle: "none", padding: 0, margin: "1px 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                            {children.map((c, k) => (
+                              <li key={k} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: pill.color, opacity: 0.85, lineHeight: 1.5 }}>
+                                <span style={{ fontSize: 8, flexShrink: 0, marginTop: 5 }}>○</span>
+                                <span>{boldify(c)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p style={{ fontSize: 13.5, color: pill.color, lineHeight: 1.55, margin: 0 }}>{pill.indication}</p>
+              )}
             </div>
           )}
           {pill.additions && pill.additions.length > 0 && (
@@ -11676,6 +14165,9 @@ function PillItem({ pill, onNavigate }) {
           )}
           {pill.exclusions && pill.exclusions.length > 0 && (
             <div>
+              {pill.exclusionsLabel && (
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: pill.color, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>{pill.exclusionsLabel}</div>
+              )}
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
                 {pill.exclusions.map((ex, j) => {
                   const isAlert = ex.startsWith("!!");
@@ -11708,6 +14200,8 @@ function PillItem({ pill, onNavigate }) {
               </ul>
             </div>
           )}
+            </>
+          )}
         </div>
       )}
     </div>
@@ -11715,6 +14209,111 @@ function PillItem({ pill, onNavigate }) {
 }
 
 
+
+// Accordion card with multiple labeled sub-sections (bulleted text, optionally nested,
+// and/or a simple table) — used for dense supportive-care guidance broken into topics.
+function ExpandBulletList({ items, siteColor, onNavigate }) {
+  return (
+    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+      {items.map((it, ii) => {
+        const isObj = typeof it === "object" && it !== null;
+        if (isObj && it.callout) {
+          return (
+            <li key={ii} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 10px", background: "#FAEEDA", border: "0.5px solid #FAC775", borderRadius: 7, margin: "2px 0" }}>
+              <span style={{ width: 20, height: 20, borderRadius: 4, background: "#FAC775", color: "#633806", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                {SectionIcons[it.icon] || SectionIcons.pill}
+              </span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#854F0B", lineHeight: 1.4 }}>{renderInline(it.text, onNavigate)}</span>
+            </li>
+          );
+        }
+        const text = isObj ? it.text : it;
+        const children = isObj ? it.children : null;
+        return (
+          <li key={ii} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              <span style={{ color: siteColor, fontSize: 9, flexShrink: 0, marginTop: 5 }}>●</span>
+              <span>{renderInline(text, onNavigate)}</span>
+            </div>
+            {children && children.length > 0 && (
+              <ul style={{ listStyle: "none", padding: 0, margin: "1px 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                {children.map((c, ci) => (
+                  <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12.5, color: "var(--text-secondary)", opacity: 0.9, lineHeight: 1.5 }}>
+                    <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>○</span>
+                    <span>{renderInline(c, onNavigate)}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function ExpandTable({ table, siteColor, siteAccent, marginTop }) {
+  return (
+    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5, border: "1px solid var(--border)", borderRadius: 6, overflow: "hidden", marginTop }}>
+      <thead>
+        <tr style={{ background: siteAccent }}>
+          {table.headers.map((h, hi) => (
+            <th key={hi} style={{ textAlign: "left", padding: "6px 9px", color: siteColor, fontWeight: 700, fontSize: 11, borderBottom: "1px solid var(--border)" }}>{h}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {table.rows.map((row, ri) => (
+          <tr key={ri} style={{ borderTop: ri > 0 ? "1px solid var(--border)" : "none" }}>
+            {row.map((cell, ci) => (
+              <td key={ci} style={{ padding: "6px 9px", color: "var(--text-secondary)", verticalAlign: "top" }}>{cell}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+// Accordion card — supports either a flat { icon, heading, items, table } single-topic
+// dropdown, or { icon, heading, subsections: [{ label, items, table }] } for multiple
+// labeled parts within one dropdown.
+function ExpandGroupCard({ group, siteColor, siteAccent, onNavigate }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ border: `1.5px solid ${open ? siteColor : "var(--border)"}`, borderRadius: 8, overflow: "hidden", transition: "border-color 0.15s" }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", background: open ? siteAccent : "var(--bg)", cursor: "pointer", transition: "background 0.15s" }}
+      >
+        {group.icon && SectionIcons[group.icon] && (
+          <span style={{ color: open ? siteColor : "var(--text-muted)", display: "flex", flexShrink: 0 }}>{SectionIcons[group.icon]}</span>
+        )}
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: open ? siteColor : "var(--text-primary)" }}>{group.heading}</div>
+        </div>
+        <span style={{ color: open ? siteColor : "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+      </div>
+      {open && (
+        <div style={{ borderTop: "1px solid var(--border-light)", padding: "12px 14px 14px", display: "flex", flexDirection: "column", gap: 14 }}>
+          {group.subsections ? (
+            group.subsections.map((sub, si) => (
+              <div key={si}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 6 }}>{sub.label}</div>
+                {sub.items && sub.items.length > 0 && <ExpandBulletList items={sub.items} siteColor={siteColor} onNavigate={onNavigate} />}
+                {sub.table && <ExpandTable table={sub.table} siteColor={siteColor} siteAccent={siteAccent} marginTop={(sub.items && sub.items.length) ? 8 : 0} />}
+              </div>
+            ))
+          ) : (
+            <div>
+              {group.items && group.items.length > 0 && <ExpandBulletList items={group.items} siteColor={siteColor} onNavigate={onNavigate} />}
+              {group.table && <ExpandTable table={group.table} siteColor={siteColor} siteAccent={siteAccent} marginTop={(group.items && group.items.length) ? 8 : 0} />}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function SymptomDecisionCard({ item, siteColor, onNavigate }) {
   const [open, setOpen] = useState(false);
@@ -11873,47 +14472,303 @@ function CinvTierBlock({ tier, c, siteColor }) {
       </div>
       {open && (
         <div style={{ borderTop: `1px solid ${c.border}`, background: "var(--surface)" }}>
-          {[
-            { key: "pre",    label: "Pre-chemotherapy",               icon: "→", color: c.color,   bg: c.bg,       border: c.border   },
-            { key: "post",   label: "Post-chemotherapy",              icon: "↓", color: "#1a6b8a", bg: "#e8f4f8",  border: "#90cde0"  },
-            { key: "second", label: "Second Line / If not controlled", icon: "↻", color: "#276749", bg: "#f0fff4",  border: "#9ae6b4"  },
-          ].map(cell => {
-            const items = tier[cell.key];
-            if (!items || items.length === 0) return null;
-            return (
-              <div key={cell.key} style={{ borderBottom: "1px solid var(--border-light)" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 16px", background: cell.bg, borderBottom: `1px solid ${cell.border}` }}>
-                  <span style={{ width: 20, height: 20, borderRadius: "50%", background: cell.border, color: cell.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{cell.icon}</span>
-                  <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 11.5, color: cell.color, letterSpacing: "0.04em", textTransform: "uppercase" }}>{cell.label}</span>
-                </div>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, padding: "10px 16px 12px", margin: 0 }}>
-                  {items.map((item, ii) => {
-                    const isUrgent = item.startsWith("!!");
-                    const text = isUrgent ? item.slice(2).trim() : item;
-                    return isUrgent ? (
-                      <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 10px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
-                        <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
-                        <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{text}</span>
-                      </li>
-                    ) : (
-                      <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
-                        <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
-                        {boldify(item)}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            );
-          })}
-          {tier.notes && (
-            <div style={{ margin: "12px 16px", padding: "10px 14px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 8, display: "flex", alignItems: "flex-start", gap: 8 }}>
-              <span style={{ fontSize: 13, flexShrink: 0, marginTop: 1 }}>ℹ</span>
-              <p style={{ fontSize: 12.5, color: "#92700a", lineHeight: 1.6, margin: 0 }}>{tier.notes}</p>
-            </div>
-          )}
+          <CinvTierManagementBody tier={tier} c={c} siteColor={siteColor} />
         </div>
       )}
+    </div>
+  );
+}
+
+// Shared Pre/Post/Second-line body — used by CinvTierBlock and the risk-tier drilldown card.
+function CinvTierManagementBody({ tier, c, siteColor }) {
+  return (
+    <>
+      {[
+        { key: "pre",    label: "Pre-chemotherapy",               icon: "→", color: c.color,   bg: c.bg,       border: c.border   },
+        { key: "post",   label: "Post-chemotherapy",              icon: "↓", color: "#1a6b8a", bg: "#e8f4f8",  border: "#90cde0"  },
+        { key: "second", label: "Second Line / If not controlled", icon: "↻", color: "#276749", bg: "#f0fff4",  border: "#9ae6b4"  },
+      ].map(cell => {
+        const items = tier[cell.key];
+        if (!items || items.length === 0) return null;
+        return (
+          <div key={cell.key} style={{ borderBottom: "1px solid var(--border-light)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 16px", background: cell.bg, borderBottom: `1px solid ${cell.border}` }}>
+              <span style={{ width: 20, height: 20, borderRadius: "50%", background: cell.border, color: cell.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{cell.icon}</span>
+              <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 11.5, color: cell.color, letterSpacing: "0.04em", textTransform: "uppercase" }}>{cell.label}</span>
+            </div>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, padding: "10px 16px 12px", margin: 0 }}>
+              {items.map((item, ii) => {
+                const isUrgent = item.startsWith("!!");
+                const text = isUrgent ? item.slice(2).trim() : item;
+                return isUrgent ? (
+                  <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 10px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6 }}>
+                    <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 2 }}>⚡</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{text}</span>
+                  </li>
+                ) : (
+                  <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                    <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+                    {boldify(item)}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
+      {tier.notes && (
+        <div style={{ margin: "12px 16px", padding: "10px 14px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 8, display: "flex", alignItems: "flex-start", gap: 8 }}>
+          <span style={{ fontSize: 13, flexShrink: 0, marginTop: 1 }}>ℹ</span>
+          <p style={{ fontSize: 12.5, color: "#92700a", lineHeight: 1.6, margin: 0 }}>{tier.notes}</p>
+        </div>
+      )}
+    </>
+  );
+}
+
+function CinvTypeAccordion({ t, C, isLast }) {
+  const [open, setOpen] = useState(false);
+  const ClockIcon = () => (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="12" height="12">
+      <circle cx="8" cy="8" r="6.5"/><polyline points="8 4.5 8 8 10.5 9.5"/>
+    </svg>
+  );
+  const pinned = (t.notes || []).filter(n => n.startsWith("!!"));
+  const rest = (t.notes || []).filter(n => !n.startsWith("!!"));
+  return (
+    <div style={{ borderBottom: isLast ? "none" : `1px solid ${C.divider}` }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "grid", gridTemplateColumns: "1fr 168px 16px", alignItems: "center", gap: 12, padding: "9px 16px", background: C.bg, cursor: "pointer" }}
+      >
+        <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: C.color, letterSpacing: "-0.01em" }}>{t.label}</span>
+        <span style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, fontWeight: 600, color: C.color, opacity: 0.8, whiteSpace: "nowrap" }}>
+          <ClockIcon />{t.timing}
+        </span>
+        <span style={{ color: C.color, transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+      </div>
+      {open && (
+        <div style={{ padding: "10px 16px 12px", background: "var(--surface)", display: "flex", flexDirection: "column", gap: 7 }}>
+          {pinned.map((note, ni) => (
+            <div key={"p" + ni} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: C.bg, border: `1px solid ${C.border}`, borderRadius: 8 }}>
+              <span style={{ color: C.color, fontSize: 14, flexShrink: 0, lineHeight: 1.3, marginTop: 1 }}>ⓘ</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: C.color, lineHeight: 1.5 }}>{note.slice(2).trim()}</span>
+            </div>
+          ))}
+          <p style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>{t.definition}</p>
+          {rest.map((note, ni) => (
+            <div key={"r" + ni} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+              <span style={{ color: C.color, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+              <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{note}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DrugTableRow({ label, items, accent, danger }) {
+  if (!items || items.length === 0) return null;
+  if (danger) {
+    return (
+      <div style={{ padding: "10px 12px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ color: "#c53030", fontSize: 13, flexShrink: 0 }}>⚠</span>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#c53030", fontFamily: "Sora, sans-serif" }}>{label}</span>
+        </div>
+        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+          {items.map((it, i) => (
+            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, fontWeight: 600, color: "#742a2a", lineHeight: 1.5 }}>
+              <span style={{ flexShrink: 0, marginTop: 5, fontSize: 7 }}>●</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  return (
+    <div style={{ padding: "8px 0", borderBottom: "1px solid var(--border-light)" }}>
+      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: accent, fontFamily: "Sora, sans-serif", marginBottom: 6 }}>{label}</div>
+      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+        {items.map((it, i) => (
+          <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+            <span style={{ color: accent, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+            <span>{it}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function AntiemeticDrugAccordion({ drug }) {
+  const [open, setOpen] = useState(false);
+  const { color: c, bg, border } = drug;
+  return (
+    <div style={{ border: `1.5px solid ${open ? c : border}`, borderRadius: 10, overflow: "hidden", transition: "border-color 0.15s" }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 16px", background: open ? bg : "var(--bg)", cursor: "pointer", transition: "background 0.15s" }}
+      >
+        <span style={{ flex: 1, fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: open ? c : "var(--text-primary)" }}>{drug.label}</span>
+        <span style={{ color: open ? c : "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+      </div>
+      {open && (
+        <div style={{ borderTop: `1px solid ${border}`, background: "var(--surface)", padding: "10px 16px 14px", display: "flex", flexDirection: "column", gap: 8 }}>
+          <DrugTableRow label="Mechanism of Action" items={drug.moa} accent={c} />
+          <DrugTableRow label="Scenarios" items={drug.scenarios} accent={c} />
+          <DrugTableRow label="Uses" items={drug.uses} accent={c} />
+          <DrugTableRow label="Cautions" items={drug.cautions} accent={c} />
+          <DrugTableRow label="Risks" items={drug.risks} danger />
+          <DrugTableRow label="Contraindications" items={drug.contraindications} danger />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Generic label-header accordion — used for the "Chemo agents" / "Management" dropdowns
+// nested inside each risk tier of the drilldown card.
+function SimpleAccordion({ label, color, bg, border, padded = true, children }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ border: `1.5px solid ${open ? color : border}`, borderRadius: 10, overflow: "hidden", transition: "border-color 0.15s" }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: open ? bg : "var(--bg)", cursor: "pointer", transition: "background 0.15s" }}
+      >
+        <span style={{ flex: 1, fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: open ? color : "var(--text-primary)" }}>{label}</span>
+        <span style={{ color: open ? color : "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+      </div>
+      {open && (
+        <div style={{ borderTop: `1px solid ${border}`, background: "var(--surface)", padding: padded ? "12px 14px 14px" : 0 }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Agent | Management two-column table for combination regimens (e.g. "ABVD — NK1 standard").
+function ComboRegimenTable({ rows, color, border }) {
+  if (!rows || rows.length === 0) return null;
+  return (
+    <div>
+      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color, fontFamily: "Sora, sans-serif", marginBottom: 6 }}>
+        Key Combination Regimens
+      </div>
+      <div style={{ border: `1px solid ${border}`, borderRadius: 8, overflow: "hidden" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 132px" }}>
+          <div style={{ padding: "7px 10px", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color, background: "var(--bg)" }}>Agent / Regimen</div>
+          <div style={{ padding: "7px 10px", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color, background: "var(--bg)", borderLeft: `1px solid ${border}` }}>Management</div>
+        </div>
+        {rows.map((row, ri) => (
+          <div key={ri} style={{ display: "grid", gridTemplateColumns: "1fr 132px", borderTop: `1px solid ${border}` }}>
+            <div style={{ padding: "8px 10px", fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>{row.agent}</div>
+            <div style={{ padding: "8px 10px", fontSize: 12, fontWeight: row.management ? 600 : 400, color: row.management ? color : "var(--text-muted)", borderLeft: "1px solid var(--border-light)" }}>
+              {row.management || "—"}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// One risk tier of the drilldown card — "High Risk" / "Moderate Risk" / "Low Risk" — containing
+// a "Chemo agents" dropdown (drug classes + combo regimen table) and a "Management" dropdown
+// (the same Pre/Post/Second-line protocol used in the Antiemetic Regimens section).
+// Bold top-level bullets with indented sub-bullets for drug items that have a nested
+// "  · ..." note (e.g. NK1 antagonist options). Reads like a compact drug table.
+// Drug table — shaded header row (Drug Name / Dose / Route / Notes), plain (non-bold) cell text.
+// Rows flagged `urgent` (e.g. "Olanzapine NOT recommended...") get a red highlight.
+function MedicationTable({ rows, accent }) {
+  if (!rows || rows.length === 0) return null;
+  const cols = "1.2fr 1fr 0.8fr 1.6fr";
+  return (
+    <div style={{ border: "1px solid var(--border-light)", borderRadius: 8, overflow: "hidden" }}>
+      <div style={{ display: "grid", gridTemplateColumns: cols, background: "var(--bg)" }}>
+        {["Drug Name", "Dose", "Route", "Notes"].map((h, hi) => (
+          <div key={hi} style={{ padding: "7px 10px", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: accent, borderLeft: hi > 0 ? "1px solid var(--border-light)" : "none" }}>
+            {h}
+          </div>
+        ))}
+      </div>
+      {rows.map((row, ri) => {
+        const textColor = row.urgent ? "#742a2a" : "var(--text-secondary)";
+        return (
+          <div key={ri} style={{ display: "grid", gridTemplateColumns: cols, borderTop: "1px solid var(--border-light)", background: row.urgent ? "#fff5f5" : "var(--surface)" }}>
+            <div style={{ padding: "8px 10px", fontSize: 12.5, color: textColor, lineHeight: 1.45 }}>{row.drug || "—"}</div>
+            <div style={{ padding: "8px 10px", fontSize: 12.5, color: textColor, lineHeight: 1.45, borderLeft: "1px solid var(--border-light)" }}>{row.dose || "—"}</div>
+            <div style={{ padding: "8px 10px", fontSize: 12.5, color: textColor, lineHeight: 1.45, borderLeft: "1px solid var(--border-light)" }}>{row.route || "—"}</div>
+            <div style={{ padding: "8px 10px", fontSize: 12.5, color: textColor, lineHeight: 1.45, borderLeft: "1px solid var(--border-light)" }}>{row.notes || "—"}</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Management block — plain "Management" label followed by three dropdowns
+// (Premedication / Post Medications / Second Line), each rendering a MedicationTable.
+function CinvManagementBlock({ tier }) {
+  const c = tier.color;
+  const mt = tier.managementTier;
+  return (
+    <div>
+      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: c, fontFamily: "Sora, sans-serif", marginBottom: 8 }}>
+        Management
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <SimpleAccordion label="Premedication" color={c} bg={tier.bg} border={tier.border}>
+          <MedicationTable rows={mt.pre} accent={c} />
+        </SimpleAccordion>
+        <SimpleAccordion label="Post Medications" color={c} bg={tier.bg} border={tier.border}>
+          <MedicationTable rows={mt.post} accent={c} />
+        </SimpleAccordion>
+        <SimpleAccordion label="Second Line" color={c} bg={tier.bg} border={tier.border}>
+          <MedicationTable rows={mt.second} accent={c} />
+        </SimpleAccordion>
+      </div>
+      {mt.notes && (() => {
+        const sentences = mt.notes.split(/(?<=\.)\s+(?=[A-Z‡!])/).map(s => s.trim()).filter(Boolean);
+        const [intro, ...bullets] = sentences;
+        return (
+          <div style={{ marginTop: 10, display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8 }}>
+            <span style={{ color: "#1a6b8a", fontSize: 14, flexShrink: 0, lineHeight: 1.4, marginTop: 1 }}>ⓘ</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+              <p style={{ fontSize: 12.5, color: "#1a6b8a", fontWeight: 600, lineHeight: 1.6, margin: 0 }}>{intro}</p>
+              {bullets.length > 0 && (
+                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                  {bullets.map((b, bi) => (
+                    <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12.5, color: "#1a6b8a", lineHeight: 1.6 }}>
+                      <span style={{ fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        );
+      })()}
+    </div>
+  );
+}
+
+// One risk-tier card — "Chemo Agents" dropdown (drug classes + combo regimen table) plus
+// the Management block (Premedication / Post Medications / Second Line dropdowns).
+function CinvRiskTierCard({ tier }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+      <SimpleAccordion label="Chemo Agents" color={tier.color} bg={tier.bg} border={tier.border}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {tier.agentGroups.map((g, gi) => (
+            <DrugTableRow key={gi} label={g.heading} items={g.items} accent={tier.color} />
+          ))}
+          <ComboRegimenTable rows={tier.comboTable} color={tier.color} border={tier.border} />
+        </div>
+      </SimpleAccordion>
+      <CinvManagementBlock tier={tier} />
     </div>
   );
 }
@@ -12707,6 +15562,12 @@ function VteDrugChoicePathway({ siteColor, siteAccent }) {
   );
 }
 function AnthracyclineCTRCD({ siteColor, siteAccent }) {
+  const [openRisk, setOpenRisk] = useState({ low: true, moderate: true, high: true });
+  const toggleRisk = (key) => setOpenRisk(o => ({ ...o, [key]: !o[key] }));
+
+  const [openCTRCD, setOpenCTRCD] = useState({ mild: true, moderate: true, severe: true });
+  const toggleCTRCD = (key) => setOpenCTRCD(o => ({ ...o, [key]: !o[key] }));
+
   const Ul = ({ items }) => (
     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
       {items.map((item, i) => (
@@ -12720,6 +15581,10 @@ function AnthracyclineCTRCD({ siteColor, siteAccent }) {
 
   const subLabel = (text, first = false) => (
     <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "Sora, sans-serif", marginBottom: 4, marginTop: first ? 0 : 8 }}>{text}</div>
+  );
+
+  const groupLabel = (text, first = false) => (
+    <div style={{ fontSize: 12, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 6, marginTop: first ? 0 : 14, paddingBottom: 4, borderBottom: "1px solid var(--border-light)" }}>{text}</div>
   );
 
   const actionTag = (label, type) => {
@@ -12790,201 +15655,245 @@ function AnthracyclineCTRCD({ siteColor, siteAccent }) {
   return (
     <div style={{ padding: "4px 0" }}>
 
-      {/* ── Step 1 callout ── */}
-      <div style={{
-        background: siteAccent, border: `1.5px solid ${siteColor}`,
-        borderRadius: 10, padding: "12px 16px",
-        display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 20,
-      }}>
-        <div style={{
-          width: 26, height: 26, borderRadius: "50%", background: siteColor,
-          color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "Sora, sans-serif",
-          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1,
-        }}>1</div>
-        <div>
-          <p style={{ fontSize: 13.5, color: siteColor, lineHeight: 1.55, margin: "0 0 6px" }}>
-            Before starting anthracyclines, stratify cardiovascular risk using the{" "}
-            <strong>HFA–ICOS baseline risk assessment tool</strong>. Risk category (low / moderate / high / very high)
-            determines surveillance intensity and need for Cardio-Oncology referral.
-          </p>
+      {/* ── Risk Stratification card ── */}
+      <div style={{ ...cardStyle, border: `1.5px solid ${siteColor}`, marginBottom: 20 }}>
+        <div style={{ ...cardHeader, background: siteAccent }}>
+          <span style={{
+            width: 22, height: 22, borderRadius: "50%", background: "#2b6cb0",
+            color: "#fff", fontSize: 12.5, fontWeight: 700, fontFamily: "Sora, sans-serif",
+            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+          }}>1</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Risk Stratification</span>
+        </div>
+        <div style={{ padding: "12px 16px 14px" }}>
+          <Ul items={[
+            "Before starting anthracyclines, stratify cardiovascular risk using the HFA–ICOS baseline risk assessment tool.",
+            "Risk category (low / moderate / high / very high) determines surveillance intensity & need for Cardio-Oncology MDT referral.",
+          ]} />
           <a
             href="https://www.mdcalc.com/calc/10642/hfa-icos-baseline-cardio-oncology-risk-assessment-anthracycline-chemotherapy"
             target="_blank" rel="noopener noreferrer"
-            style={{ fontSize: 13, fontWeight: 700, color: siteColor }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10,
+              padding: "6px 12px", borderRadius: 6,
+              background: "#E6F1FB", color: "#0C447C", border: "1px solid #B5D4F4",
+              fontSize: 12.5, fontWeight: 700, fontFamily: "Sora, sans-serif", textDecoration: "none",
+            }}
           >
-            Open HFA–ICOS calculator ↗
+            Open HFA–ICOS Calculator
+            <IconExternal />
           </a>
         </div>
       </div>
 
-      {/* ── Table 1: Surveillance by risk ── */}
-      <span style={sectionLabel}>Table 1 — Surveillance by baseline risk</span>
+      {/* ── Table 1 → Surveillance by Risk ── */}
       <div style={{ ...cardStyle, marginBottom: 20 }}>
         <div style={{ ...cardHeader, background: siteAccent }}>
-          <span style={{ fontSize: 13, color: siteColor }}>♥</span>
-          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Baseline cardiovascular risk stratification &amp; surveillance</span>
+          <span style={{
+            width: 22, height: 22, borderRadius: "50%", background: "#2b6cb0",
+            color: "#fff", fontSize: 12.5, fontWeight: 700, fontFamily: "Sora, sans-serif",
+            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+          }}>2</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Surveillance by Risk</span>
         </div>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-            <colgroup>
-              <col style={{ width: "18%" }} /><col style={{ width: "28%" }} />
-              <col style={{ width: "27%" }} /><col style={{ width: "27%" }} />
-            </colgroup>
-            <thead>
-              <tr>
-                <th style={thStyle}>Risk</th>
-                <th style={thStyle}>Baseline investigations</th>
-                <th style={thStyle}>Cardiac biomarkers</th>
-                <th style={thStyle}>Echocardiography</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Low */}
-              <tr>
-                <td style={{ ...tdBase, ...rowBg.low }}>
-                  {riskLabel("Low", "#0F6E56")}
-                  {riskPill("HFA-ICOS low", "#E1F5EE", "#085041")}
-                </td>
-                <td style={{ ...tdBase, ...rowBg.low }}><Ul items={["ECG", "Echocardiogram"]} /></td>
-                <td style={{ ...tdBase, ...rowBg.low }}><Ul items={["Routine serial measurement not required", "Consider if clinical or imaging changes suggest cardiotoxicity"]} /></td>
-                <td style={{ ...tdBase, ...rowBg.low }}><Ul items={["At completion of treatment", "12 months post-treatment"]} /></td>
-              </tr>
-              {/* Moderate */}
-              <tr>
-                <td style={{ ...tdBase, ...rowBg.mod }}>
-                  {riskLabel("Moderate", "#854F0B")}
-                  {riskPill("HFA-ICOS moderate", "#FAEEDA", "#633806")}
-                </td>
-                <td style={{ ...tdBase, ...rowBg.mod }}><Ul items={["ECG", "Echocardiogram"]} /></td>
-                <td style={{ ...tdBase, ...rowBg.mod }}>
-                  <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 4 }}>Consider at:</div>
-                  <Ul items={["Mid-therapy", "New cardiovascular symptoms", "Significant LVEF or GLS decline", "Clinical suspicion of cardiotoxicity"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.mod }}><Ul items={["Mid-treatment", "Completion of treatment", "12 months post-treatment"]} /></td>
-              </tr>
-              {/* High */}
-              <tr>
-                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
-                  {riskLabel("High / Very high", "#A32D2D")}
-                  {riskPill("HFA-ICOS high / very high", "#FCEBEB", "#791F1F")}
-                </td>
-                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                    {["ECG", "Echocardiogram (or CMR if suboptimal windows)", "hs-Troponin + NT-proBNP"].map((item, i) => (
-                      <li key={i} style={{ padding: "2px 0 2px 14px", position: "relative", color: "var(--text-secondary)", fontSize: 13, lineHeight: 1.55 }}>
-                        <span style={{ position: "absolute", left: 0, color: "var(--text-muted)" }}>•</span>{item}
-                      </li>
-                    ))}
-                    <li style={{ padding: "2px 0 2px 14px", position: "relative", fontWeight: 700, color: "#A32D2D", fontSize: 13 }}>
-                      <span style={{ position: "absolute", left: 0 }}>•</span>Refer to Cardio-Oncology clinic
-                    </li>
-                  </ul>
-                </td>
-                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
-                  <Ul items={["Serial measurement at baseline", "Individualised monitoring plan thereafter", "Interval may decrease if biomarkers rise"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.high, borderBottom: "none" }}>
-                  <Ul items={["Every 3 cycles during treatment", "3 months post-treatment", "12 months post-treatment"]} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div style={{ padding: "14px 16px", display: "flex", flexDirection: "column", gap: 14 }}>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 8 }}>
+            <span style={{ color: "#742a2a", fontSize: 15, flexShrink: 0, marginTop: 1 }}>⚠</span>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", marginBottom: 4, fontFamily: "Sora, sans-serif" }}>Cumulative dose threshold</div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 3 }}>
+                <li style={{ fontSize: 13, color: "#742a2a", lineHeight: 1.5, paddingLeft: 14, position: "relative" }}>
+                  <span style={{ position: "absolute", left: 0 }}>•</span>
+                  <strong>Repeat</strong> cardiac imaging when anthracycline dose exceeds <strong>250mg/m²</strong> doxorubicin-equivalent
+                </li>
+                <li style={{ fontSize: 12.5, color: "#742a2a", lineHeight: 1.5, paddingLeft: 28, position: "relative" }}>
+                  <span style={{ position: "absolute", left: 14 }}>◦</span>
+                  ≈400mg/m² epirubicin
+                </li>
+                <li style={{ fontSize: 13, color: "#742a2a", lineHeight: 1.5, paddingLeft: 14, position: "relative" }}>
+                  <span style={{ position: "absolute", left: 0 }}>•</span>
+                  Then after every additional <strong>50mg/m²</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 12px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 8 }}>
+            <span style={{ color: "#1d4ed8", fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+            <span style={{ fontSize: 13, color: "#1e40af", lineHeight: 1.5 }}>All Cardio-Oncology Referrals are submitted via Nervecentre Internal Referrals</span>
+          </div>
+
+          {/* Low */}
+          <div style={{ border: "1px solid #9FE1CB", borderRadius: 10, overflow: "hidden" }}>
+            <div onClick={() => toggleRisk("low")} style={{ padding: "9px 14px", background: "#E1F5EE", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              {riskLabel("Low", "#0F6E56")}
+              <span style={{ color: "#0F6E56", display: "flex", transform: openRisk.low ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}><IconChevronDown /></span>
+            </div>
+            {openRisk.low && (
+            <div style={{ padding: "12px 14px", background: "var(--surface)" }}>
+              {subLabel("Baseline investigations", true)}
+              <Ul items={["ECG", "Echocardiogram"]} />
+              {subLabel("Cardiac biomarkers")}
+              <Ul items={["Routine serial measurement not required", "Consider if clinical or imaging changes suggest cardiotoxicity"]} />
+              {subLabel("Echocardiography")}
+              <Ul items={["At completion of treatment", "12 months post-treatment"]} />
+            </div>
+            )}
+          </div>
+
+          {/* Moderate */}
+          <div style={{ border: "1px solid #FAC775", borderRadius: 10, overflow: "hidden" }}>
+            <div onClick={() => toggleRisk("moderate")} style={{ padding: "9px 14px", background: "#FAEEDA", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              {riskLabel("Moderate", "#854F0B")}
+              <span style={{ color: "#854F0B", display: "flex", transform: openRisk.moderate ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}><IconChevronDown /></span>
+            </div>
+            {openRisk.moderate && (
+            <div style={{ padding: "12px 14px", background: "var(--surface)" }}>
+              {subLabel("Baseline investigations", true)}
+              <Ul items={["ECG", "Echocardiogram"]} />
+              {subLabel("Cardiac biomarkers")}
+              <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 4 }}>Consider at:</div>
+              <Ul items={["Mid-therapy", "New cardiovascular symptoms", "Significant LVEF or GLS decline", "Clinical suspicion of cardiotoxicity"]} />
+              {subLabel("Echocardiography")}
+              <Ul items={["Mid-treatment", "Completion of treatment", "12 months post-treatment"]} />
+            </div>
+            )}
+          </div>
+
+          {/* High / Very high */}
+          <div style={{ border: "1px solid #F5C4B3", borderRadius: 10, overflow: "hidden" }}>
+            <div onClick={() => toggleRisk("high")} style={{ padding: "9px 14px", background: "#FAECE7", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              {riskLabel("High / Very high", "#A32D2D")}
+              <span style={{ color: "#A32D2D", display: "flex", transform: openRisk.high ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}><IconChevronDown /></span>
+            </div>
+            {openRisk.high && (
+            <div style={{ padding: "12px 14px", background: "var(--surface)" }}>
+              {subLabel("Baseline investigations", true)}
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {["ECG", "Echocardiogram (or CMR if suboptimal windows)", "hs-Troponin + NT-proBNP"].map((item, i) => (
+                  <li key={i} style={{ padding: "2px 0 2px 14px", position: "relative", color: "var(--text-secondary)", fontSize: 13, lineHeight: 1.55 }}>
+                    <span style={{ position: "absolute", left: 0, color: "var(--text-muted)" }}>•</span>{item}
+                  </li>
+                ))}
+                <li style={{ padding: "2px 0 2px 14px", position: "relative", fontWeight: 700, color: "#A32D2D", fontSize: 13 }}>
+                  <span style={{ position: "absolute", left: 0 }}>•</span>Refer to Cardio-Oncology clinic
+                </li>
+              </ul>
+              {subLabel("Cardiac biomarkers")}
+              <Ul items={["Serial measurement at baseline", "Individualised monitoring plan thereafter", "Interval may decrease if biomarkers rise"]} />
+              {subLabel("Echocardiography")}
+              <Ul items={["Every 3 cycles during treatment", "3 months post-treatment", "12 months post-treatment"]} />
+            </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* ── Table 2: CTRCD classification ── */}
-      <span style={sectionLabel}>Table 2 — CTRCD classification &amp; management</span>
+      {/* ── Anthracycline induced Cardiotoxocity: Diagnosis & Management ── */}
       <div style={cardStyle}>
         <div style={{ ...cardHeader, background: siteAccent }}>
-          <span style={{ fontSize: 13, color: siteColor }}>⚡</span>
-          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Anthracycline-induced CTRCD — diagnosis &amp; management</span>
+          <span style={{
+            width: 22, height: 22, borderRadius: "50%", background: "#2b6cb0",
+            color: "#fff", fontSize: 12.5, fontWeight: 700, fontFamily: "Sora, sans-serif",
+            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+          }}>3</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif" }}>Anthracycline induced Cardiotoxocity: Diagnosis &amp; Management</span>
         </div>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-            <colgroup>
-              <col style={{ width: "15%" }} /><col style={{ width: "28%" }} />
-              <col style={{ width: "28.5%" }} /><col style={{ width: "28.5%" }} />
-            </colgroup>
-            <thead>
-              <tr>
-                <th style={thStyle}>Severity</th>
-                <th style={thStyle}>Diagnostic criteria</th>
-                <th style={thStyle}>Symptomatic management</th>
-                <th style={thStyle}>Asymptomatic management</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Mild */}
-              <tr>
-                <td style={{ ...tdBase, ...rowBg.mild }}>
-                  <div style={{ fontWeight: 700, fontSize: 13, color: "#854F0B", fontFamily: "Sora, sans-serif" }}>Mild</div>
-                </td>
-                <td style={{ ...tdBase, ...rowBg.mild }}>
-                  {subLabel("Symptomatic", true)}
-                  <Ul items={["Mild HF symptoms", "Not requiring initiation/escalation of intensive HF therapy"]} />
-                  {subLabel("Asymptomatic")}
-                  <Ul items={["EF ≥50%", "New relative GLS decline ≥15% from baseline", "And/or new rise in cardiac biomarkers"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.mild }}>
-                  {actionTag("MDT discussion", "mdt")}
-                  <Ul items={["Consider Cardio-Oncology MDT — continuation vs interruption", "Start HF therapy (ACEi/ARB/ARNI + beta-blocker + MRA + SGLT2i)"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.mild }}>
-                  {actionTag("Continue + monitor", "continue")}
-                  <Ul items={["Continue anthracyclines with close monitoring", "Initiate cardioprotective therapy — ACE inhibitor + beta-blocker", "Repeat echo + biomarkers in 4 weeks or at next cycle"]} />
-                </td>
-              </tr>
-              {/* Moderate */}
-              <tr>
-                <td style={{ ...tdBase, ...rowBg.moderate }}>
-                  <div style={{ fontWeight: 700, fontSize: 13, color: "#A32D2D", fontFamily: "Sora, sans-serif" }}>Moderate</div>
-                </td>
-                <td style={{ ...tdBase, ...rowBg.moderate }}>
-                  {subLabel("Symptomatic", true)}
-                  <Ul items={["Outpatient intensification of diuretic and HF therapy required"]} />
-                  {subLabel("Asymptomatic")}
-                  <Ul items={["EF reduction ≥10 pp to EF 40–49%", "Or EF reduction <10 pp to EF 40–49% plus GLS decline ≥15% or new rise in biomarkers"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.moderate }}>
-                  {actionTag("MDT discussion", "mdt")}
-                  <Ul items={["Consider Cardio-Oncology MDT — continuation vs interruption", "Start HF therapy"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.moderate }}>
-                  {actionTag("Pause anthracyclines", "pause")}
-                  <Ul items={["Pause anthracyclines", "Refer to Cardio-Oncology MDT", "Start HF therapy"]} />
-                </td>
-              </tr>
-              {/* Severe */}
-              <tr>
-                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
-                  <div style={{ fontWeight: 700, fontSize: 13, color: "#791F1F", fontFamily: "Sora, sans-serif" }}>Severe / Very severe</div>
-                </td>
-                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
-                  {subLabel("Symptomatic", true)}
-                  <Ul items={["Severe — HF requiring hospitalisation", "Very severe — HF requiring inotropic/mechanical circulatory support or consideration of transplantation"]} />
-                  {subLabel("Asymptomatic")}
-                  <Ul items={["EF ≤40%"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
-                  {actionTag("Discontinue anthracyclines", "stop")}
-                  <Ul items={["Severe: pause anthracyclines + urgent Cardio-Oncology MDT referral + HF therapy", "Very severe: discontinue + urgent Cardio-Oncology MDT referral + HF therapy"]} />
-                </td>
-                <td style={{ ...tdBase, ...rowBg.severe, borderBottom: "none" }}>
-                  {actionTag("Pause anthracyclines", "pause")}
-                  <Ul items={["Pause anthracyclines", "Refer to Cardio-Oncology MDT", "Start HF therapy"]} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        {/* Note */}
-        <div style={{
-          background: "var(--bg)", borderTop: "1px solid var(--border-light)",
-          padding: "8px 14px", fontSize: 12, color: "var(--text-muted)",
-          fontStyle: "italic", lineHeight: 1.5,
-        }}>
-          HF therapy = guideline-directed medical therapy: ACEi/ARB/ARNI + beta-blocker + MRA + SGLT2i as clinically appropriate.
-          ACE inhibitors must be discontinued for 48 hours before initiating ARNI. No washout required when switching from ARB to ARNI directly.
+        <div style={{ padding: "14px 16px", display: "flex", flexDirection: "column", gap: 14 }}>
+
+          {/* Mild */}
+          <div style={{ border: "1px solid #FAC775", borderRadius: 10, overflow: "hidden" }}>
+            <div onClick={() => toggleCTRCD("mild")} style={{ padding: "9px 14px", background: "#FAEEDA", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              <div style={{ fontWeight: 700, fontSize: 13, color: "#854F0B", fontFamily: "Sora, sans-serif" }}>Mild</div>
+              <span style={{ color: "#854F0B", display: "flex", transform: openCTRCD.mild ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}><IconChevronDown /></span>
+            </div>
+            {openCTRCD.mild && (
+            <div style={{ padding: "12px 14px", background: "var(--surface)" }}>
+              {groupLabel("Diagnostic Criteria", true)}
+              {subLabel("Symptomatic", true)}
+              <Ul items={["Mild HF symptoms", "Not requiring initiation/escalation of intensive HF therapy"]} />
+              {subLabel("Asymptomatic")}
+              <Ul items={["EF ≥50%", "New relative GLS decline ≥15% from baseline", "And/or new rise in cardiac biomarkers"]} />
+
+              {groupLabel("Symptomatic Management")}
+              {actionTag("MDT discussion", "mdt")}
+              <Ul items={["Consider Cardio-Oncology MDT — continuation vs interruption", "Start HF therapy (ACEi/ARB/ARNI + beta-blocker + MRA + SGLT2i)"]} />
+
+              {groupLabel("Asymptomatic Management")}
+              {actionTag("Continue + monitor", "continue")}
+              <Ul items={["Continue anthracyclines with close monitoring", "Initiate cardioprotective therapy — ACE inhibitor + beta-blocker", "Repeat echo + biomarkers in 4 weeks or at next cycle"]} />
+            </div>
+            )}
+          </div>
+
+          {/* Moderate */}
+          <div style={{ border: "1px solid #F5C4B3", borderRadius: 10, overflow: "hidden" }}>
+            <div onClick={() => toggleCTRCD("moderate")} style={{ padding: "9px 14px", background: "#FAECE7", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              <div style={{ fontWeight: 700, fontSize: 13, color: "#A32D2D", fontFamily: "Sora, sans-serif" }}>Moderate</div>
+              <span style={{ color: "#A32D2D", display: "flex", transform: openCTRCD.moderate ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}><IconChevronDown /></span>
+            </div>
+            {openCTRCD.moderate && (
+            <div style={{ padding: "12px 14px", background: "var(--surface)" }}>
+              {groupLabel("Diagnostic Criteria", true)}
+              {subLabel("Symptomatic", true)}
+              <Ul items={["Outpatient intensification of diuretic and HF therapy required"]} />
+              {subLabel("Asymptomatic")}
+              <Ul items={["EF reduction ≥10 pp to EF 40–49%", "Or EF reduction <10 pp to EF 40–49% plus GLS decline ≥15% or new rise in biomarkers"]} />
+
+              {groupLabel("Symptomatic Management")}
+              {actionTag("MDT discussion", "mdt")}
+              <Ul items={["Consider Cardio-Oncology MDT — continuation vs interruption", "Start HF therapy"]} />
+
+              {groupLabel("Asymptomatic Management")}
+              {actionTag("Pause anthracyclines", "pause")}
+              <Ul items={["Pause anthracyclines", "Refer to Cardio-Oncology MDT", "Start HF therapy"]} />
+            </div>
+            )}
+          </div>
+
+          {/* Severe / Very severe */}
+          <div style={{ border: "1px solid #F1A9A0", borderRadius: 10, overflow: "hidden" }}>
+            <div onClick={() => toggleCTRCD("severe")} style={{ padding: "9px 14px", background: "#FCEBEB", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              <div style={{ fontWeight: 700, fontSize: 13, color: "#791F1F", fontFamily: "Sora, sans-serif" }}>Severe / Very severe</div>
+              <span style={{ color: "#791F1F", display: "flex", transform: openCTRCD.severe ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}><IconChevronDown /></span>
+            </div>
+            {openCTRCD.severe && (
+            <div style={{ padding: "12px 14px", background: "var(--surface)" }}>
+              {groupLabel("Diagnostic Criteria", true)}
+              {subLabel("Symptomatic", true)}
+              <Ul items={["Severe — HF requiring hospitalisation", "Very severe — HF requiring inotropic/mechanical circulatory support or consideration of transplantation"]} />
+              {subLabel("Asymptomatic")}
+              <Ul items={["EF ≤40%"]} />
+
+              {groupLabel("Symptomatic Management")}
+              {actionTag("Discontinue anthracyclines", "stop")}
+              <Ul items={["Severe: pause anthracyclines + urgent Cardio-Oncology MDT referral + HF therapy", "Very severe: discontinue + urgent Cardio-Oncology MDT referral + HF therapy"]} />
+
+              {groupLabel("Asymptomatic Management")}
+              {actionTag("Pause anthracyclines", "pause")}
+              <Ul items={["Pause anthracyclines", "Refer to Cardio-Oncology MDT", "Start HF therapy"]} />
+            </div>
+            )}
+          </div>
+
+          {/* HF therapy info callout */}
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 12px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 8 }}>
+            <span style={{ color: "#1d4ed8", fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+              <li style={{ fontSize: 13, color: "#1e40af", lineHeight: 1.5, paddingLeft: 14, position: "relative" }}>
+                <span style={{ position: "absolute", left: 0 }}>•</span>
+                HF therapy = guideline-directed medical therapy: ACEi/ARB/ARNI + beta-blocker + MRA + SGLT2i as clinically appropriate.
+              </li>
+              <li style={{ fontSize: 13, color: "#1e40af", lineHeight: 1.5, paddingLeft: 14, position: "relative" }}>
+                <span style={{ position: "absolute", left: 0 }}>•</span>
+                ACE inhibitors must be discontinued for 48 hours before initiating ARNI.
+              </li>
+              <li style={{ fontSize: 13, color: "#1e40af", lineHeight: 1.5, paddingLeft: 14, position: "relative" }}>
+                <span style={{ position: "absolute", left: 0 }}>•</span>
+                No washout required when switching from ARB to ARNI directly.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -13069,8 +15978,7 @@ function SectionBlock({ sec, siteColor, siteAccent, siteId, subsiteId, expandedS
                 return (
                   <div key={bi} style={{padding: "9px 12px",
 background: isAlert ? "#fff5f5" : "var(--surface)",
-border: `1px solid ${isAlert ? "#fc8181" : block.border || "var(--border-light)"}`,
-borderLeft: `3px solid ${isAlert ? "#e53e3e" : blockColor}`,
+border: `1px solid ${isAlert ? "#e53e3e" : blockColor}`,
 borderRadius: 6,}}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
                       <span style={{ color: isAlert ? "#e53e3e" : blockColor, display: "flex", flexShrink: 0 }}>{icon}</span>
@@ -13122,14 +16030,43 @@ if (sec.type === "mscc_steroid_table") {
 if (sec.type === "scope_drugs") {
     return <ScopeDrugsSection sec={sec} siteColor={siteColor} />;
   }  
+if (sec.type === "expand_groups") {
+    return (
+      <div className="detail-card">
+        {sec.heading && <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>}
+        {sec.subheadings ? (
+          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+            {sec.subheadings.map((sh, shi) => (
+              <div key={shi}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--text-muted)", fontFamily: "Sora, sans-serif", marginBottom: 8 }}>{sh.label}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {sh.groups.map((group, i) => <ExpandGroupCard key={i} group={group} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />)}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {sec.groups.map((group, i) => <ExpandGroupCard key={i} group={group} siteColor={siteColor} siteAccent={siteAccent} onNavigate={onNavigate} />)}
+          </div>
+        )}
+      </div>
+    );
+  }
+
 if (sec.type === "pills") {
     return (
       <div className="detail-card">
         <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>
+        {sec.note && (
+          <div style={{ marginBottom: 12, display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 12px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 8 }}>
+            <span style={{ color: "#1d4ed8", fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+            <p style={{ fontSize: 13, color: "#1e40af", lineHeight: 1.5, margin: 0 }}>{sec.note}</p>
+          </div>
+        )}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {sec.items.map((pill, i) => <PillItem key={i} pill={pill} onNavigate={onNavigate} />)}
+          {sec.items.map((pill, i) => <PillItem key={i} pill={pill} onNavigate={onNavigate} indicationStyle={sec.indicationStyle} />)}
         </div>
-        {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 12, fontStyle: "italic", lineHeight: 1.5 }}>ⓘ {sec.note}</p>}
       </div>
     );
   }
@@ -13146,13 +16083,27 @@ if (sec.type === "pills") {
         <line x1="8" y1="2" x2="8" y2="12"/><polyline points="4 8 8 13 12 8"/>
       </svg>
     );
+    const SearchIcon = () => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+        <circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="14.5" y2="14.5"/>
+      </svg>
+    );
+    const PhoneIcon = () => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+        <path d="M2.5 2.5h3l1.2 3.2-1.6 1.4a9 9 0 0 0 4.3 4.3l1.4-1.6 3.2 1.2v3a1 1 0 0 1-1.1 1C7.6 14.5 1.5 8.4 1.5 3.6a1 1 0 0 1 1-1.1z"/>
+      </svg>
+    );
+    const FlameIcon = () => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+        <path d="M8 1.5c.5 2 2.5 2.8 2.5 5a2.5 2.5 0 0 1-5 0c0-.7.3-1.2.6-1.7C4.9 6 4 7.6 4 9.2a4 4 0 0 0 8 0c0-3.4-2.4-4.9-4-7.7z"/>
+      </svg>
+    );
+    const noResponseIcons = { search: SearchIcon, phone: PhoneIcon, flame: FlameIcon };
 
     return (
       <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
         {/* Section heading */}
-        <div style={{ padding: "13px 18px 10px", borderBottom: "1px solid var(--border-light)" }}>
-          <h3 style={{ margin: 0 }}>Review &amp; Monitoring</h3>
-        </div>
+        <h3 style={{ margin: 0, padding: "11px 24px", borderRadius: "var(--radius) var(--radius) 0 0" }}>Review &amp; Monitoring</h3>
 
         <div style={{ padding: "14px 18px", display: "flex", flexDirection: "column", gap: 14 }}>
 
@@ -13182,26 +16133,42 @@ if (sec.type === "pills") {
                   <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13, color: st.color }}>{st.label}</span>
                 </div>
                 <div style={{ padding: "8px 14px 10px", background: "var(--surface)" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 10px", marginBottom: 7 }}>
-                    {st.criteria.map((c, ci) => (
-                      <span key={ci} style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic" }}>• {c}</span>
-                    ))}
+                  <div style={{ padding: "8px 12px", background: st.bg, border: `1px solid ${st.border}`, borderRadius: 6, marginBottom: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 5 }}>
+                      <span style={{ color: st.color, fontSize: 13, lineHeight: 1 }}>ⓘ</span>
+                      <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 11.5, color: st.color, textTransform: "uppercase", letterSpacing: "0.04em" }}>Criteria</span>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                      {st.criteria.map((c, ci) => (
+                        <div key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6 }}>
+                          <span style={{ color: st.color, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                          <span style={{ fontSize: 12, color: st.color, fontStyle: "italic", lineHeight: 1.5 }}>{c}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  {st.items.map((item, ii) => {
-                    const isUrgent = item.startsWith("!!");
-                    const text = isUrgent ? item.slice(2).trim() : item;
-                    return isUrgent ? (
-                      <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, padding: "5px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6, marginBottom: 4 }}>
-                        <span style={{ color: "#742a2a", fontSize: 11, flexShrink: 0, marginTop: 1 }}>⚡</span>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: "#742a2a", lineHeight: 1.45 }}>{renderInline(text, onNavigate)}</span>
+                  {st.items.filter(item => !item.startsWith("!!")).map((item, ii) => (
+                    <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
+                      <span style={{ color: st.color, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                      <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{renderInline(item, onNavigate)}</span>
+                    </div>
+                  ))}
+                  {st.items.some(item => item.startsWith("!!")) && (
+                    <div style={{ padding: "7px 9px", background: "#fff5f5", border: "1px solid #fc8181", borderRadius: 6, marginTop: 2 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 5 }}>
+                        <span style={{ color: "#742a2a", flexShrink: 0, display: "flex" }}><IconAlertTriangle /></span>
+                        <span style={{ fontSize: 11.5, fontWeight: 700, color: "#742a2a", textTransform: "uppercase", letterSpacing: "0.04em", fontFamily: "Sora, sans-serif" }}>Important</span>
                       </div>
-                    ) : (
-                      <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 4 }}>
-                        <span style={{ color: st.color, fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
-                        <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{renderInline(item, onNavigate)}</span>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                        {st.items.filter(item => item.startsWith("!!")).map((item, ui) => (
+                          <div key={ui} style={{ display: "flex", alignItems: "flex-start", gap: 7 }}>
+                            <span style={{ color: "#742a2a", fontSize: 7, flexShrink: 0, marginTop: 6 }}>●</span>
+                            <span style={{ fontSize: 13, fontWeight: 400, color: "#742a2a", lineHeight: 1.45 }}>{renderInline(item.slice(2).trim(), onNavigate)}</span>
+                          </div>
+                        ))}
                       </div>
-                    );
-                  })}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -13219,10 +16186,12 @@ if (sec.type === "pills") {
             <div style={{ padding: "10px 14px", background: "var(--surface)" }}>
               <div style={{ fontSize: 13, color: "#742a2a", fontWeight: 600, marginBottom: 10 }}>{sec.noResponse.instruction}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {sec.noResponse.factors.map((f, fi) => (
+                {sec.noResponse.factors.map((f, fi) => {
+                  const FactorIcon = noResponseIcons[f.icon] || SearchIcon;
+                  return (
                   <div key={fi} style={{ background: "var(--bg)", border: "1px solid var(--border-light)", borderRadius: 7, overflow: "hidden" }}>
                     <div style={{ padding: "7px 12px", background: "#fff5f5", borderBottom: "1px solid #fc8181", display: "flex", alignItems: "center", gap: 7 }}>
-                      <span style={{ fontSize: 13 }}>{f.icon}</span>
+                      <span style={{ color: "#742a2a", flexShrink: 0, display: "flex" }}><FactorIcon /></span>
                       <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 12, color: "#742a2a" }}>{f.label}</span>
                     </div>
                     <div style={{ padding: "8px 12px", display: "flex", flexDirection: "column", gap: 4 }}>
@@ -13234,7 +16203,8 @@ if (sec.type === "pills") {
                       ))}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -13270,42 +16240,18 @@ if (sec.type === "pills") {
   // ── CINV Types — unified table, all blue, clock icon on timing ──────────
   if (sec.type === "cinv_types") {
     const C = { color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0", badge: "#b8dff0", divider: "#c8e6f2" };
-    const ClockIcon = () => (
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="12" height="12">
-        <circle cx="8" cy="8" r="6.5"/><polyline points="8 4.5 8 8 10.5 9.5"/>
-      </svg>
-    );
     return (
       <div className="detail-card">
         <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>
+        {sec.intro && (
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: C.bg, border: `1px solid ${C.border}`, borderRadius: 8, marginBottom: 12 }}>
+            <span style={{ color: C.color, fontSize: 15, flexShrink: 0, lineHeight: 1.4 }}>ⓘ</span>
+            <span style={{ fontSize: 13.5, color: C.color, fontWeight: 600, lineHeight: 1.5 }}>{sec.intro}</span>
+          </div>
+        )}
         <div style={{ border: `1.5px solid ${C.border}`, borderRadius: 10, overflow: "hidden" }}>
           {sec.types.map((t, i) => (
-            <div key={i} style={{ borderBottom: i < sec.types.length - 1 ? `1px solid ${C.divider}` : "none" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "9px 16px", background: C.bg }}>
-                <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: C.color, letterSpacing: "-0.01em" }}>{t.label}</span>
-                <span style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, fontWeight: 600, color: C.color, opacity: 0.8, flexShrink: 0 }}>
-                  <ClockIcon />{t.timing}
-                </span>
-              </div>
-              <div style={{ padding: "10px 16px 12px", background: "var(--surface)", display: "flex", flexDirection: "column", gap: 7 }}>
-                <p style={{ fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>{t.definition}</p>
-                {t.notes && t.notes.map((note, ni) => {
-                  const isUrgent = note.startsWith("!!");
-                  const text = isUrgent ? note.slice(2).trim() : note;
-                  return isUrgent ? (
-                    <div key={ni} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "6px 10px", background: C.badge, border: `1px solid ${C.border}`, borderRadius: 6 }}>
-                      <span style={{ color: C.color, fontSize: 12, flexShrink: 0, marginTop: 1 }}>⚡</span>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: C.color, lineHeight: 1.45 }}>{text}</span>
-                    </div>
-                  ) : (
-                    <div key={ni} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                      <span style={{ color: C.color, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
-                      <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55 }}>{text}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <CinvTypeAccordion key={i} t={t} C={C} isLast={i === sec.types.length - 1} />
           ))}
         </div>
       </div>
@@ -13334,8 +16280,31 @@ if (sec.type === "pills") {
     );
   }
 
+  // ── Antiemetic Drugs — one dropdown per drug, mini-table with danger rows ──
+  if (sec.type === "antiemetic_drugs") {
+    return (
+      <div className="detail-card">
+        <h3 style={{ marginBottom: 4 }}>{sec.heading}</h3>
+        {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 12, fontStyle: "italic", lineHeight: 1.5 }}>ⓘ {sec.note}</p>}
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {sec.drugs.map((drug, di) => (
+            <AntiemeticDrugAccordion key={di} drug={drug} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
-
+  // ── CINV Risk Tier card — one per risk tier (High/Moderate/Low/Minimal) ──
+  if (sec.type === "cinv_risk_tier") {
+    return (
+      <div className="detail-card">
+        <h3 style={{ marginBottom: 4 }}>{sec.heading}</h3>
+        {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 12, fontStyle: "italic", lineHeight: 1.5 }}>ⓘ {sec.note}</p>}
+        <CinvRiskTierCard tier={sec.tier} />
+      </div>
+    );
+  }
 
 if (sec.type === "hypo_assessment") {
     return <HypoAssessmentSection sec={sec} siteColor={siteColor} siteAccent={siteAccent} />;
@@ -13370,24 +16339,143 @@ if (sec.type === "hypo_assessment") {
     return <GraderSection sec={sec} siteColor={siteColor} siteId={siteId} subsiteId={subsiteId} />;
   }
 
+  if (sec.type === "accordion") {
+    return <AccordionSection sec={sec} onNavigate={onNavigate} />;
+  }
+
+  if (sec.type === "infobox") {
+    return <InfoboxSection sec={sec} onNavigate={onNavigate} />;
+  }
+
+  if (sec.type === "quickref") {
+    return <QuickRefSection sec={sec} onNavigate={onNavigate} />;
+  }
+
   if (sec.type === "criteria") {
-    return (
-      <div className="detail-card">
-        <h3>{sec.heading}</h3>
-        {sec.intro && <p style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 12, fontWeight: 500 }}>{sec.intro}</p>}
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {sec.items.map((item, i) => (
-            <div key={i} style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 8, padding: "12px 14px" }}>
-              <div style={{ fontSize: 13.5, fontWeight: 600, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 4, textAlign: "left" }}>{item.label}</div>
-              <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, textAlign: "left" }}>{item.detail}</div>
-              {item.warning && (
-                <div style={{ marginTop: 8, padding: "7px 10px", background: "#fffbeb", border: "1px solid #f6d860", borderRadius: 6, fontSize: 12.5, color: "#92700a", lineHeight: 1.5 }}>
-                  ⚠ {item.warning}
-                </div>
-              )}
+    const columns = sec.columns || ["Criteria", "Parameter", "Notes"];
+    // Inline reference link — a small squared pill with an icon, sitting mid-sentence
+    // inside a bullet of text (easier to spot and tap on mobile than plain underlined text).
+    const InlineRef = ({ label, guidelineId, url }) => {
+      const style = {
+        display: "inline-flex", alignItems: "center", gap: 4,
+        padding: "2px 8px", margin: "0 2px",
+        background: "#e8f4f8", color: "#1a6b8a",
+        border: "1px solid #90cde0", borderRadius: 6,
+        fontSize: 12, fontWeight: 700, fontFamily: "Sora, sans-serif",
+        textDecoration: "none", cursor: "pointer", verticalAlign: "middle",
+      };
+      if (guidelineId) {
+        return <span style={style} onClick={() => onNavigate && onNavigate({ type: "guideline", guidelineId })}>{label}<IconExternal /></span>;
+      }
+      return <a href={url} target="_blank" rel="noopener noreferrer" style={style}>{label}<IconExternal /></a>;
+    };
+    const renderFooterItem = (item, ii) => {
+      if (typeof item === "string") {
+        return (
+          <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+            <span style={{ color: "var(--text-muted)", fontSize: 8, marginTop: 5, flexShrink: 0 }}>●</span>
+            {boldify(item)}
+          </li>
+        );
+      }
+      // Object item with an embedded link: text contains a "{{LINK}}" placeholder.
+      const [before, after] = item.text.split("{{LINK}}");
+      return (
+        <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+          <span style={{ color: "var(--text-muted)", fontSize: 8, marginTop: 5, flexShrink: 0 }}>●</span>
+          <span>{before}<InlineRef label={item.link.label} guidelineId={item.link.guidelineId} url={item.link.url} />{after}</span>
+        </li>
+      );
+    };
+    const renderTable = (table, ti) => (
+      <div key={ti} style={{ marginTop: ti > 0 ? 18 : 0 }}>
+        {table.subheading && (
+          <div className="criteria-subheading" style={{ fontSize: 12, fontWeight: 700, color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            {table.subheading}
+          </div>
+        )}
+        <div className="criteria-tablewrap" style={{ border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, tableLayout: "fixed" }}>
+            <colgroup>
+              <col style={{ width: "20%" }} />
+              <col style={{ width: "32%" }} />
+              <col style={{ width: "48%" }} />
+            </colgroup>
+            <thead>
+              <tr style={{ background: "var(--bg)" }}>
+                {columns.map((col, i) => (
+                  <th key={i} style={{
+                    padding: "8px 10px", textAlign: "left", fontWeight: 600,
+                    color: "var(--text-secondary)", borderBottom: "1px solid var(--border)",
+                    borderRight: i < columns.length - 1 ? "1px solid var(--border)" : "none",
+                    fontFamily: "Sora, sans-serif", fontSize: 11.5, letterSpacing: "0.03em",
+                  }}>{col}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {table.rows.map((row, ri) => {
+                const isRed = row.highlight === "red";
+                const isLastRow = ri === table.rows.length - 1;
+                return (
+                  <tr key={ri} style={{ background: isRed ? "#fff5f5" : "transparent" }}>
+                    <td style={{ padding: "10px", verticalAlign: "top", fontWeight: 700, color: isRed ? "#742a2a" : siteColor, fontFamily: "Sora, sans-serif", fontSize: 12.5, lineHeight: 1.5, borderRight: "1px solid var(--border)", borderBottom: isLastRow ? "none" : "1px solid var(--border)", wordBreak: "break-word", overflowWrap: "break-word" }}>
+                      {row.criteria}
+                    </td>
+                    <td style={{ padding: "10px", verticalAlign: "top", borderRight: "1px solid var(--border)", borderBottom: isLastRow ? "none" : "1px solid var(--border)" }}>
+                      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                        {(row.parameter || []).map((p, pi) => {
+                          const text = typeof p === "object" ? p.text : p;
+                          const isBold = typeof p === "object" && p.bold;
+                          return (
+                            <li key={pi} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 13, color: "var(--text-primary)", fontWeight: isBold ? 700 : 600, lineHeight: 1.4, wordBreak: "break-word" }}>
+                              <span style={{ color: isRed ? "#e53e3e" : siteColor, fontSize: 8, marginTop: 5, flexShrink: 0 }}>●</span>
+                              {text}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </td>
+                    <td style={{ padding: "10px", verticalAlign: "top", fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5, borderBottom: isLastRow ? "none" : "1px solid var(--border)", wordBreak: "break-word" }}>
+                      {row.notes && row.notes.length > 0 ? (
+                        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+                          {row.notes.map((n, ni) => (
+                            <li key={ni} style={{ display: "flex", alignItems: "flex-start", gap: 6, lineHeight: 1.4 }}>
+                              <span style={{ color: "var(--text-muted)", fontSize: 8, marginTop: 5, flexShrink: 0 }}>●</span>
+                              {boldify(n)}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          {table.footerCallout && (
+            <div style={{ borderTop: "1px solid var(--border)", padding: "10px 14px", background: "var(--bg)", display: "flex", flexDirection: "column", gap: 6 }}>
+              <div className="criteria-footer-label" style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--text-muted)", fontFamily: "Sora, sans-serif" }}>
+                {table.footerCallout.label}
+              </div>
+              <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+                {table.footerCallout.items.map((item, ii) => renderFooterItem(item, ii))}
+              </ul>
             </div>
-          ))}
+          )}
         </div>
+      </div>
+    );
+    return (
+      <div className="detail-card" style={{ overflowX: "auto" }}>
+        <h3>{sec.heading}</h3>
+        {sec.intro && (
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8, marginBottom: 12 }}>
+            <span style={{ color: "#1a6b8a", fontSize: 15, flexShrink: 0, lineHeight: 1.4 }}>ⓘ</span>
+            <span className="criteria-intro-text" style={{ fontSize: 13, color: "#1a6b8a", fontWeight: 600, lineHeight: 1.5 }}>{sec.intro}</span>
+          </div>
+        )}
+        {sec.tables.map((table, ti) => renderTable(table, ti))}
       </div>
     );
   }
@@ -13445,6 +16533,12 @@ if (sec.type === "hypo_assessment") {
   return (
     <div className="detail-card">
       <h3>{sec.heading}</h3>
+      {sec.note && (
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", background: "#e8f4f8", border: "1px solid #90cde0", borderRadius: 8, marginBottom: 12 }}>
+          <span style={{ color: "#0d4a63", fontSize: 15, flexShrink: 0, lineHeight: 1.4 }}>ⓘ</span>
+          <span style={{ fontSize: 13.5, color: "#0d4a63", fontWeight: 500, lineHeight: 1.5 }}>{boldify(sec.note)}</span>
+        </div>
+      )}
       {sec.preamble_list && (
         <div style={{ marginBottom: 12, paddingBottom: 12, borderBottom: "1px solid var(--border-light)" }}>
           {sec.preamble_list.label && (
@@ -13485,8 +16579,8 @@ if (sec.type === "hypo_assessment") {
       ? { border: "#f6ad55", bg: "#fffbeb", heading: "#744210", bullet: "#dd6b20", text: "#7b4a00", btn: "#dd6b20" }
       : { border: "#e53e3e", bg: "#fff5f5", heading: "#c53030", bullet: "#e53e3e", text: "#742a2a", btn: "#c53030" };
     return (
-      <div className="detail-card" style={{ borderLeft: `3px solid ${AC.border}`, background: AC.bg }}>
-        {sec.heading && <h3 style={{ color: AC.heading }}>{sec.heading}</h3>}
+      <div className="detail-card" style={{ border: `1px solid ${AC.border}`, background: AC.bg }}>
+        {sec.heading && <h3 style={{ color: AC.heading, background: "transparent", border: "none", margin: "0 0 10px", padding: 0, borderRadius: 0 }}>{sec.heading}</h3>}
         {sec.note && <p style={{ fontSize: 13, color: AC.text, marginBottom: 10, fontStyle: "italic" }}>{sec.note}</p>}
         <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
           {sec.items.map((item, i) => {
@@ -13526,6 +16620,16 @@ if (sec.type === "hypo_assessment") {
                       <span>{boldify(item.detail)}</span>
                     </div>
                   )}
+                  {item.children && item.children.length > 0 && (
+                    <div style={{ paddingLeft: 20, display: "flex", flexDirection: "column", gap: 3 }}>
+                      {item.children.map((c, ci) => (
+                        <div key={ci} style={{ fontSize: 12.5, color: AC.text, lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 6, opacity: 0.85 }}>
+                          <span style={{ color: AC.bullet, flexShrink: 0, fontSize: 8, marginTop: 5 }}>●</span>
+                          <span>{boldify(c)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </li>
               );
             }
@@ -13563,11 +16667,47 @@ if (sec.type === "hypo_assessment") {
               }}>{i + 1}</div>
               <div>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--text-primary)", marginBottom: 2, fontFamily: "Sora, sans-serif" }}>{item.label}</div>
-                <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>{renderInline(item.detail, onNavigate)}</div>
+                <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>
+                  {Array.isArray(item.detail) ? (
+                    <StepDetailBullets items={item.detail} onNavigate={onNavigate} siteColor={siteColor} />
+                  ) : (
+                    renderInline(item.detail, onNavigate)
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
+        {sec.infoCallout && sec.infoCallout.items && sec.infoCallout.items.length > 0 && (
+          <div style={{ marginTop: 12, display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 12px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 8 }}>
+            <span style={{ color: "#1d4ed8", fontSize: 13, flexShrink: 0, marginTop: 1 }}>ⓘ</span>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+              {sec.infoCallout.items.map((it, ii) => {
+                const isObj = typeof it === "object" && it !== null;
+                const text = isObj ? it.text : it;
+                const children = isObj ? it.children : null;
+                return (
+                  <li key={ii} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "#1e40af", lineHeight: 1.5 }}>
+                      <span style={{ fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                      <span>{renderInline(text, onNavigate)}</span>
+                    </div>
+                    {children && children.length > 0 && (
+                      <ul style={{ listStyle: "none", padding: 0, margin: "0 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                        {children.map((c, ci) => (
+                          <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12.5, color: "#1e40af", opacity: 0.9, lineHeight: 1.5 }}>
+                            <span style={{ fontSize: 7, flexShrink: 0, marginTop: 5 }}>○</span>
+                            <span>{renderInline(c, onNavigate)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
     );
   }
@@ -13963,10 +17103,29 @@ if (sec.type === "hypo_assessment") {
                         <td style={{ padding: "8px 14px", verticalAlign: "top" }}>
                           <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
                             {row.examples.map((ex, ei) => (
-                              <li key={ei} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
-                                {ex}
-                              </li>
+                              ex && typeof ex === "object" && ex.label ? (
+                                <li key={ei} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                                  <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                    <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                                    <span style={{ fontWeight: 700 }}>{boldify(ex.label)}</span>
+                                  </div>
+                                  {ex.children && ex.children.length > 0 && (
+                                    <ul style={{ listStyle: "none", margin: 0, padding: "0 0 0 16px", display: "flex", flexDirection: "column", gap: 3 }}>
+                                      {ex.children.map((c2, ci) => (
+                                        <li key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12.5, color: "var(--text-secondary)", opacity: 0.9, lineHeight: 1.45 }}>
+                                          <span style={{ color: c.bullet, fontSize: 7, flexShrink: 0, marginTop: 5 }}>○</span>
+                                          <span>{boldify(c2)}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </li>
+                              ) : (
+                                <li key={ei} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                  <span style={{ color: c.bullet, fontSize: 8, flexShrink: 0, marginTop: 5 }}>●</span>
+                                  {boldify(ex)}
+                                </li>
+                              )
                             ))}
                           </ul>
                         </td>
@@ -14053,6 +17212,11 @@ if (sec.type === "hypo_assessment") {
                   ))}
                 </div>
               )}
+              {group.insetCard && (
+                <div style={{ borderTop: `0.5px solid ${c.border}`, padding: "8px 14px" }}>
+                  <InfoBoxes boxes={group.insetCard.boxes} onNavigate={onNavigate} />
+                </div>
+              )}
             </div>
           );
         })}
@@ -14086,7 +17250,24 @@ if (sec.type === "hypo_assessment") {
       {sec.note && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>{sec.note}</p>}
     </div>
   );
-}}
+}
+if (sec.items) {
+  return (
+    <div className="detail-card">
+      <h3>{sec.heading}</h3>
+      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 7, margin: "10px 0 0", padding: 0 }}>
+        {sec.items.map((item, i) => (
+          <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13.5, color: "var(--text-secondary)", lineHeight: 1.55 }}>
+            <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 6 }}>●</span>
+            {boldify(item)}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+return null;
+}
 
   // ── Stepped pathway — all steps in one card with red pill arrows between ────
   if (sec.type === "stepped_pathway") {
@@ -14694,7 +17875,7 @@ if (sec.type === "hypo_assessment") {
                 if (isAlert) {
                   return (
                     <li key={ii} style={{ listStyle: "none", marginLeft: -18, marginBottom: 6 }}>
-                      <div style={{ background: "#fff5f5", border: "1px solid #fc8181", borderLeft: "4px solid #e53e3e", borderRadius: 7, padding: "10px 13px" }}>
+                      <div style={{ background: "#fff5f5", border: "1px solid #e53e3e", borderRadius: 7, padding: "10px 13px" }}>
                         <div style={{ fontSize: 12.5, fontWeight: 700, color: "#742a2a", fontFamily: "Sora, sans-serif", marginBottom: subitems ? 6 : 0, lineHeight: 1.5 }}>{boldify(text)}</div>
                         {subitems && (
                           <ul style={{ margin: 0, paddingLeft: 16, listStyle: "disc" }}>
@@ -14800,14 +17981,104 @@ if (sec.type === "prophylaxis_box") {
                 </div>
                 {isOpen && (
                   <div style={{ padding: "10px 14px 12px", borderTop: "1px solid var(--border-light)" }}>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 5 }}>
-                      {score.criteria.map((c, j) => (
-                        <li key={j} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text-secondary)" }}>
-                          <span style={{ color: siteColor, flexShrink: 0, fontSize: 10, marginTop: 4 }}>●</span>
-                          {c}
-                        </li>
-                      ))}
-                    </ul>
+                    {score.imageLink && (
+                      <a href={score.imageLink.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
+                        style={{ display: "block", marginBottom: 12, borderRadius: 6, overflow: "hidden", border: `1px solid ${siteColor}`, textDecoration: "none" }}>
+                        <img src={score.imageLink.url} alt={score.imageLink.label} style={{ width: "100%", display: "block" }} />
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 10px", background: siteAccent, color: siteColor, fontSize: 12, fontWeight: 600 }}>
+                          <IconExternal /> {score.imageLink.label}
+                        </div>
+                      </a>
+                    )}
+                    {score.calculatorLink && (score.calculatorLink.calcId ? onNavigate : score.calculatorLink.url) && (
+                      <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "8px 10px", background: siteAccent, border: `1px solid ${siteColor}`, borderRadius: 6, marginBottom: 12 }}>
+                        <span style={{ fontSize: 12.5, color: siteColor, fontWeight: 600 }}>
+                          {score.calculatorLink.calcId ? "Internal Calculator Link →" : "External Calculator Link →"}
+                        </span>
+                        {score.calculatorLink.calcId ? (
+                          <button
+                            onClick={(e) => { e.stopPropagation(); onNavigate({ type: "calculator", calcId: score.calculatorLink.calcId }); }}
+                            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", borderRadius: 5, border: `1.5px solid ${siteColor}`, background: "var(--surface)", color: siteColor, fontSize: 12.5, fontWeight: 700, cursor: "pointer", fontFamily: "DM Sans, sans-serif" }}
+                          >
+                            <IconCalc />{score.calculatorLink.label}
+                          </button>
+                        ) : (
+                          <a
+                            href={score.calculatorLink.url} target="_blank" rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", borderRadius: 5, border: `1.5px solid ${siteColor}`, background: "var(--surface)", color: siteColor, fontSize: 12.5, fontWeight: 700, textDecoration: "none", fontFamily: "DM Sans, sans-serif" }}
+                          >
+                            {score.calculatorLink.label}<IconExternal />
+                          </a>
+                        )}
+                      </div>
+                    )}
+                    {score.role && score.role.length > 0 && (
+                      <div style={{ marginBottom: (score.interpretationTable || score.criteria) ? 12 : 0 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>Role</div>
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
+                          {score.role.map((r, j) => {
+                            const isObj = typeof r === "object" && r !== null;
+                            const text = isObj ? r.text : r;
+                            const children = isObj ? r.children : null;
+                            return (
+                              <li key={j} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                                <div style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                  <span style={{ color: siteColor, flexShrink: 0, fontSize: 10, marginTop: 4 }}>●</span>
+                                  <span>{renderInline(text, onNavigate)}</span>
+                                </div>
+                                {children && children.length > 0 && (
+                                  <ul style={{ listStyle: "none", padding: 0, margin: "1px 0 0 17px", display: "flex", flexDirection: "column", gap: 3 }}>
+                                    {children.map((c, k) => (
+                                      <li key={k} style={{ display: "flex", gap: 8, fontSize: 12.5, color: "var(--text-secondary)", opacity: 0.85, lineHeight: 1.5 }}>
+                                        <span style={{ color: siteColor, fontSize: 8, flexShrink: 0, marginTop: 5 }}>○</span>
+                                        <span>{renderInline(c, onNavigate)}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    )}
+
+                    {score.interpretationTable && (
+                      <div style={{ marginBottom: score.criteria ? 12 : 0 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: siteColor, fontFamily: "Sora, sans-serif", marginBottom: 6, opacity: 0.75 }}>Score Interpretation</div>
+                        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5, border: "1px solid var(--border)", borderRadius: 6, overflow: "hidden" }}>
+                          <thead>
+                            <tr style={{ background: siteAccent }}>
+                              {score.interpretationTable.headers.map((h, hi) => (
+                                <th key={hi} style={{ textAlign: "left", padding: "6px 9px", color: siteColor, fontWeight: 700, fontSize: 11, borderBottom: "1px solid var(--border)" }}>{h}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {score.interpretationTable.rows.map((row, ri) => (
+                              <tr key={ri} style={{ borderTop: ri > 0 ? "1px solid var(--border)" : "none" }}>
+                                {row.map((cell, ci) => (
+                                  <td key={ci} style={{ padding: "6px 9px", color: "var(--text-secondary)", verticalAlign: "top" }}>{cell}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {score.criteria && score.criteria.length > 0 && (
+                      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 5 }}>
+                        {score.criteria.map((c, j) => (
+                          <li key={j} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text-secondary)" }}>
+                            <span style={{ color: siteColor, flexShrink: 0, fontSize: 10, marginTop: 4 }}>●</span>
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
                   </div>
                 )}
               </div>
@@ -15057,8 +18328,8 @@ if (sec.type === "link_table") {
     letterSpacing: "0.01em",
   };
   return (
-    <div className="detail-card" style={{ borderLeft: "3px solid #3182ce", background: "var(--surface)" }}>
-      <h3 style={{ color: "var(--text-primary)", marginBottom: 12 }}>{sec.heading}</h3>
+    <div className="detail-card" style={{ border: "1px solid #3182ce", background: "var(--surface)" }}>
+      <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>
       {pinnedItem && (
         <div style={{ background: "#fffbeb", border: "1px solid #f6ad55", borderRadius: 7, padding: "10px 14px", marginBottom: 14, display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ fontSize: 12.5, color: "#744210", fontWeight: 600, fontFamily: "Sora, sans-serif", flexShrink: 0 }}>{pinnedItem.description}</span>
@@ -15113,8 +18384,8 @@ if (sec.type === "link_table") {
   if (sec.type === "link_table_groups") {
     const pinnedItem = sec.pinned;
     return (
-      <div className="detail-card" style={{ borderLeft: "3px solid #3182ce", background: "var(--surface)" }}>
-        <h3 style={{ color: "var(--text-primary)", marginBottom: 12 }}>{sec.heading}</h3>
+      <div className="detail-card" style={{ border: "1px solid #3182ce", background: "var(--surface)" }}>
+        <h3 style={{ marginBottom: 12 }}>{sec.heading}</h3>
         {pinnedItem && (
           <div style={{ background: "#fffbeb", border: "1px solid #f6ad55", borderRadius: 7, marginBottom: 12, overflow: "hidden" }}>
             <div style={{ padding: "10px 14px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
@@ -15218,6 +18489,42 @@ if (sec.type === "link_table") {
     );
   }
 
+  if (sec.type === "reference_table") {
+    return (
+      <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
+        <h3 style={{ margin: 0, padding: "11px 24px", borderRadius: "var(--radius) var(--radius) 0 0" }}>{sec.heading || "References"}</h3>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5 }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: "left", padding: "8px 24px", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: "0.04em", textTransform: "uppercase", borderBottom: "1px solid var(--border-light)", width: 56 }}>No.</th>
+                <th style={{ textAlign: "left", padding: "8px 12px", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: "0.04em", textTransform: "uppercase", borderBottom: "1px solid var(--border-light)" }}>Name</th>
+                <th style={{ textAlign: "left", padding: "8px 24px 8px 12px", fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: "0.04em", textTransform: "uppercase", borderBottom: "1px solid var(--border-light)", width: 90 }}>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sec.items.map((ref, ri) => (
+                <tr key={ri} style={{ borderBottom: "1px solid var(--border-light)" }}>
+                  <td style={{ padding: "9px 24px", color: "var(--text-muted)", verticalAlign: "top" }}>{ri + 1}</td>
+                  <td style={{ padding: "9px 12px", color: "var(--text-muted)", fontStyle: "italic", lineHeight: 1.5, verticalAlign: "top" }}>{ref.name}</td>
+                  <td style={{ padding: "9px 24px 9px 12px", verticalAlign: "top" }}>
+                    {ref.url ? (
+                      <a href={ref.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4, color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}>
+                        View <IconExternal />
+                      </a>
+                    ) : (
+                      <span style={{ color: "var(--text-muted)" }}>—</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
   if (sec.type === "references") {
     return (
       <div className="detail-card" style={{ padding: 0, overflow: "hidden" }}>
@@ -15277,6 +18584,11 @@ const IconExternal = () => (
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
   </svg>
 );
+const IconPill = ({ size = 14 }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={size} height={size}>
+    <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/>
+  </svg>
+);
 const IconPDF = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
@@ -15302,6 +18614,11 @@ const IconCalc = () => (
     <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/>
   </svg>
 );
+const IconAlertTriangle = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+);
 const IconHome = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
@@ -15312,12 +18629,17 @@ const IconArrowLeft = () => (
     <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
   </svg>
 );
+const IconPrint = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+    <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+  </svg>
+);
 
 // ── STYLES ────────────────────────────────────────────────────────────────────
 
 
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15371,7 +18693,7 @@ const css = `
     box-shadow: var(--shadow-lg);
   }
   .sidebar-header {
-    padding: 16px 16px 12px;
+    padding: 16px 16px 16px;
     border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
@@ -15500,15 +18822,45 @@ const css = `
     display: flex; align-items: center; gap: 6px;
     font-size: 13px;
     color: var(--text-muted);
-    flex: 1;
   }
   .topbar-breadcrumb span { color: var(--text-primary); font-weight: 500; }
   .topbar-breadcrumb a { color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color var(--transition); }
   .topbar-breadcrumb a:hover { color: var(--accent); }
 
+  /* Breadcrumb row sits below the topbar, on every screen size */
+  .topbar-breadcrumb-row {
+    padding: 8px 24px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Mobile-only topbar controls (back/home) */
+  .mobile-only-btn { display: none; }
+
+  /* Print button on the breadcrumb row — pinned far right, hidden on mobile */
+  .breadcrumb-print-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-left: auto;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 12.5px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+  .breadcrumb-print-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+
   .search-wrap {
     position: relative;
     flex-shrink: 0;
+    margin-left: auto;
   }
   .search-input {
     width: 220px;
@@ -15744,6 +19096,20 @@ const css = `
   }
   .detail-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
 
+  .detail-meta-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .detail-meta-table tr { border-bottom: 1px solid var(--border); }
+  .detail-meta-table tr:last-child { border-bottom: none; }
+  .detail-meta-table td { padding: 6px 10px; vertical-align: top; color: var(--text-secondary); line-height: 1.5; }
+  .detail-meta-table td.dmt-label { width: 108px; min-width: 108px; color: var(--text-muted); font-weight: 500; white-space: nowrap; border-right: 1px solid var(--border); }
+  .dmt-links { display: flex; flex-direction: column; gap: 4px; }
+  .dmt-link-row { font-size: 12px; }
+  .dmt-link-row a { display: inline-flex; align-items: center; gap: 5px; color: var(--accent); text-decoration: none; font-weight: 500; }
+  .dmt-link-row a:hover { text-decoration: underline; }
+  .review-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 99px; font-size: 11.5px; font-weight: 500; }
+  .review-badge-future { background: #e8f5ee; color: #1a7a4c; border: 1px solid #b7e0c8; }
+  .review-badge-soon { background: #fff6dd; color: #92660a; border: 1px solid #f0d98c; }
+  .review-badge-past { background: #fdecea; color: #b3261e; border: 1px solid #f3b7b0; }
+
   .detail-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -15760,6 +19126,18 @@ const css = `
     color: var(--text-muted);
     font-family: 'Sora', sans-serif;
     margin-bottom: 10px;
+  }
+  /* Section header bar — matches the "Steroid protocol by presentation" treatment:
+     pastel blue background, dark blue text, bled out to the card's edges. Scoped to
+     direct-child h3s only, so cards with their own custom header bar (already
+     nested in an inner div) or semantic alert colors are unaffected. */
+  .detail-card > h3 {
+    font-weight: 700;
+    color: #1a6b8a;
+    background: #e8f4f8;
+    margin: -22px -24px 14px -24px;
+    padding: 11px 24px;
+    border-radius: var(--radius) var(--radius) 0 0;
   }
   .detail-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 
@@ -15856,8 +19234,7 @@ const css = `
   /* Summary callout */
   .summary-callout {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--callout-color, var(--accent));
+    border: 1px solid var(--callout-color, var(--accent));
     border-radius: var(--radius);
     padding: 13px 16px;
     margin-bottom: 14px;
@@ -15900,12 +19277,23 @@ const css = `
     .sidebar.collapsed { width: 0; min-width: 0; box-shadow: none; }
     .content { padding: 16px; }
     .topbar { padding: 10px 14px; }
+    .mobile-only-btn { display: flex; }
+    .topbar-breadcrumb-row { padding: 8px 14px; }
+    .breadcrumb-print-btn { display: none; }
     .search-input { width: 140px; }
     .search-input:focus { width: 180px; }
     .sites-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .guideline-detail { max-width: 100%; }
     .detail-actions { flex-direction: column; }
     .detail-btn { justify-content: center; }
+
+    /* Criteria table (e.g. Neutropenic Sepsis) — shrink text so columns stay readable */
+    .criteria-intro-text { font-size: 12px !important; }
+    .criteria-subheading { font-size: 10.5px !important; }
+    .criteria-footer-label { font-size: 10px !important; }
+    .criteria-tablewrap th { font-size: 9.5px !important; padding: 6px 5px !important; }
+    .criteria-tablewrap td { padding: 7px 5px !important; }
+    .criteria-tablewrap td, .criteria-tablewrap li { font-size: 11px !important; }
   }
   .preview-badge {
     display: inline-flex; align-items: center; gap: 5px;
@@ -15918,6 +19306,16 @@ const css = `
     font-weight: 500;
     font-family: 'Sora', sans-serif;
     margin-left: 8px;
+  }
+
+  /* Print — show only the guideline content, no app chrome */
+  @media print {
+    .sidebar, .topbar, .topbar-breadcrumb-row, .detail-back-btn, .detail-actions, .sidebar-overlay {
+      display: none !important;
+    }
+    .app, .main, .content { display: block; height: auto; overflow: visible; }
+    .content { padding: 0; }
+    .guideline-detail { max-width: 100%; }
   }
 `;
 
@@ -15966,13 +19364,47 @@ export default function App() {
     setExpandedSidebarCats(s => ({ ...s, [key]: s[key] === false ? true : false }));
   };
 
+  // Browser history integration — lets the browser's own back/forward buttons
+  // (and the in-app mobile back button) move through app navigation.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.history.state || typeof window.history.state.depth !== "number") {
+      window.history.replaceState({ view: { type: "home" }, depth: 0 }, "");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onPopState = (e) => {
+      setView(e.state?.view || { type: "home" });
+      setSearchQuery("");
+      setSearchActive(false);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
   const navigate = (v) => {
     setView(v);
     setSearchQuery("");
     setSearchActive(false);
     const mobile = window.innerWidth < 768;
     if (mobile) setSidebarOpen(false);
+    if (typeof window !== "undefined") {
+      const depth = (window.history.state?.depth ?? 0) + 1;
+      window.history.pushState({ view: v, depth }, "");
+    }
   };
+
+  const goBack = () => {
+    if (typeof window !== "undefined" && (window.history.state?.depth ?? 0) > 0) {
+      window.history.back();
+    } else {
+      navigate({ type: "home" });
+    }
+  };
+
+  const goHome = () => navigate({ type: "home" });
 
   useEffect(() => {
     const handler = (e) => navigate({ type: "calculator", calcId: e.detail });
@@ -16113,6 +19545,11 @@ const DIRECTORY_DATA = {
       { label: "Home", onClick: () => navigate({ type: "home" }) },
       { label: currentSite?.label },
     ];
+    if (view.type === "guideline" && currentGuideline?.toolsOnly) return [
+      { label: "Home", onClick: () => navigate({ type: "home" }) },
+      { label: "Tools" },
+      { label: currentGuideline?.title },
+    ];
     if (view.type === "guideline") return [
       { label: "Home", onClick: () => navigate({ type: "home" }) },
       { label: currentGuidelineSite?.label, onClick: () => navigate({ type: "site", siteId: currentGuidelineSite?.id }) },
@@ -16252,7 +19689,7 @@ const DIRECTORY_DATA = {
                                     <span style={{ fontSize: "10.5px", color: site.color, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "Sora, sans-serif" }}>{ss.label}</span>
                                     <span style={{ color: site.color, opacity: 0.7, transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex" }}><IconChevronRight /></span>
                                   </div>
-                                  {open && ss.guidelines.map(g => (
+                                  {open && ss.guidelines.filter(g => !g.toolsOnly).map(g => (
                                     <div key={g.id}
                                       className={`sidebar-item sidebar-sub-item ${view.type === "guideline" && view.guidelineId === g.id ? "active" : ""}`}
                                       style={{ paddingLeft: 32, opacity: !g.sections ? 0.45 : 1 }}
@@ -16307,6 +19744,14 @@ const DIRECTORY_DATA = {
                     </span>
                     Directory
                   </div>
+                  <div
+                    className={`sidebar-item ${view.type === "guideline" && view.guidelineId === "oncology-drug-list" ? "active" : ""}`}
+                    onClick={() => navigate({ type: "guideline", guidelineId: "oncology-drug-list" })}
+                    style={{ fontSize: 13, paddingLeft: 10 }}
+                  >
+                    <span style={{ display: "flex", opacity: 0.8 }}><IconPill /></span>
+                    Drug reference
+                  </div>
                 </div>
               )}
             </div>
@@ -16337,6 +19782,20 @@ const DIRECTORY_DATA = {
               <IconMenu />
             </button>
             <button
+              className="topbar-menu-btn mobile-only-btn"
+              onClick={goBack}
+              title="Back"
+            >
+              <IconArrowLeft />
+            </button>
+            <button
+              className="topbar-menu-btn mobile-only-btn"
+              onClick={goHome}
+              title="Home"
+            >
+              <IconHome />
+            </button>
+            <button
               className={`topbar-menu-btn topbar-fav-btn${view.type === "favourites" ? " active" : ""}`}
               onClick={() => navigate({ type: "favourites" })}
               title="Favourites"
@@ -16346,17 +19805,6 @@ const DIRECTORY_DATA = {
                 <span className="topbar-fav-badge">{favourites.length}</span>
               )}
             </button>
-            <nav className="topbar-breadcrumb">
-              {breadcrumbs().map((b, i) => (
-                <span key={i} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  {i > 0 && <span style={{ color: "var(--border)", fontSize: 16 }}>/</span>}
-                  {b.onClick
-                    ? <a onClick={b.onClick}>{b.label}</a>
-                    : <span>{b.label}</span>
-                  }
-                </span>
-              ))}
-            </nav>
             <div className="search-wrap">
               <span className="search-icon"><IconSearch /></span>
               <input
@@ -16368,6 +19816,24 @@ const DIRECTORY_DATA = {
               />
             </div>
           </header>
+
+          {/* Breadcrumb row — sits below the topbar/search row */}
+          <nav className="topbar-breadcrumb topbar-breadcrumb-row">
+            {breadcrumbs().map((b, i) => (
+              <span key={i} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                {i > 0 && <span style={{ color: "var(--border)", fontSize: 16 }}>/</span>}
+                {b.onClick
+                  ? <a onClick={b.onClick}>{b.label}</a>
+                  : <span>{b.label}</span>
+                }
+              </span>
+            ))}
+            {view.type === "guideline" && (
+              <button className="breadcrumb-print-btn" onClick={() => window.print()} title="Print guideline">
+                <IconPrint /> Print
+              </button>
+            )}
+          </nav>
 
           {/* Content */}
           <div className="content">
@@ -16575,7 +20041,7 @@ function SiteView({ site, favourites, onStar, onNavigate }) {
   // Parent site with subsites
   if (site.isParent) {
     const activeSubsites = site.subsites.filter(ss => !ss.comingSoon);
-    const totalGuidelines = activeSubsites.reduce((acc, ss) => acc + (ss.guidelines || []).length, 0);
+    const totalGuidelines = activeSubsites.reduce((acc, ss) => acc + (ss.guidelines || []).filter(g => !g.toolsOnly).length, 0);
     return (
       <div>
         <div className="site-header">
@@ -16588,7 +20054,7 @@ function SiteView({ site, favourites, onStar, onNavigate }) {
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {site.subsites.map((ss) => {
             const isOpen = openSubsites[ss.id] !== false; // default open
-            const guidelineCount = (ss.guidelines || []).length;
+            const guidelineCount = (ss.guidelines || []).filter(g => !g.toolsOnly).length;
 
             // Coming soon subsite — single callout, no pills
             if (ss.comingSoon) {
@@ -16622,11 +20088,11 @@ function SiteView({ site, favourites, onStar, onNavigate }) {
                       <p style={{ fontSize: 13, color: "var(--text-muted)", padding: "4px 4px 8px", fontStyle: "italic" }}>No guidelines yet.</p>
                     ) : (
                       <div className="guideline-pills-grid">
-                        {(ss.guidelines || []).filter(g => g.sections).map(g => (
+                        {(ss.guidelines || []).filter(g => g.sections && !g.toolsOnly).map(g => (
                           <GuidelinePill key={g.id} g={g} site={site} starred={favourites.includes(g.id)}
                             onStar={onStar} onClick={() => onNavigate({ type: "guideline", guidelineId: g.id })} stub={false} />
                         ))}
-                        {(ss.guidelines || []).filter(g => !g.sections).map(g => (
+                        {(ss.guidelines || []).filter(g => !g.sections && !g.toolsOnly).map(g => (
                           <GuidelinePill key={g.id} g={g} site={site} starred={false}
                             onStar={onStar} onClick={g.redirectTo ? () => onNavigate({ type: "guideline", guidelineId: g.redirectTo }) : null} stub={!g.redirectTo} />
                         ))}
@@ -16727,6 +20193,73 @@ function GuidelineRow({ g, site, starred, onStar, onClick, showSite, stub }) {
   );
 }
 
+// Extract a review/update date from free-text metadata strings (e.g. "Mar 2028 (review)",
+// "Ratified Jan 2021 (review Jan 2026)", "Review 30/04/2029") and classify it relative to today:
+// "future" (>=12 months out), "soon" (<12 months out), "past" (already passed), or null if unparseable.
+function parseReviewDateStatus(str) {
+  if (!str) return null;
+  const months = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+  const extractDate = (s) => {
+    let m = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    if (m) return new Date(+m[3], +m[2] - 1, +m[1]);
+    m = s.match(/([A-Za-z]{3,9})\.?\s+(\d{4})/);
+    if (m) {
+      const mon = months[m[1].slice(0, 3).toLowerCase()];
+      if (mon !== undefined) return new Date(+m[2], mon, 1);
+    }
+    m = s.match(/\b(20\d{2})\b/);
+    if (m) return new Date(+m[1], 0, 1);
+    return null;
+  };
+  const reviewIdx = str.toLowerCase().indexOf("review");
+  let date = reviewIdx >= 0 ? extractDate(str.slice(reviewIdx)) : null;
+  if (!date) date = extractDate(str);
+  if (!date || isNaN(date.getTime())) return null;
+
+  const now = new Date();
+  const monthsDiff = (date.getFullYear() - now.getFullYear()) * 12 + (date.getMonth() - now.getMonth());
+  if (monthsDiff < 0) return "past";
+  if (monthsDiff < 12) return "soon";
+  return "future";
+}
+
+function GuidelineTOC({ sections, siteColor, siteAccent }) {
+  const [open, setOpen] = useState(false);
+  const items = (sections || []).map((s, i) => ({ heading: s.heading, i })).filter(s => s.heading);
+  if (items.length < 2) return null;
+  const scrollTo = (i) => {
+    const el = document.getElementById(`gsec-${i}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  return (
+    <div style={{ border: `1.5px solid ${open ? siteColor : "var(--border)"}`, borderRadius: 8, overflow: "hidden", marginBottom: 14, transition: "border-color 0.15s", background: "#fff" }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", background: open ? siteAccent : "var(--bg)", cursor: "pointer", transition: "background 0.15s" }}
+      >
+        <span style={{ color: open ? siteColor : "var(--text-muted)", display: "flex", flexShrink: 0 }}><IconMenu /></span>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 13.5, color: open ? siteColor : "var(--text-primary)" }}>Table of Contents</div>
+        </div>
+        <span style={{ color: open ? siteColor : "var(--text-muted)", transform: open ? "rotate(90deg)" : "none", transition: "transform 0.15s", display: "flex", flexShrink: 0 }}><IconChevronRight /></span>
+      </div>
+      {open && (
+        <div style={{ borderTop: "1px solid var(--border-light)", padding: "8px 14px 10px", display: "flex", flexDirection: "column" }}>
+          {items.map(({ heading, i }) => (
+            <a key={i} href={`#gsec-${i}`}
+              onClick={e => { e.preventDefault(); scrollTo(i); }}
+              style={{ padding: "7px 4px", fontSize: 13, color: "var(--text-secondary)", textDecoration: "none", borderBottom: i < items.length - 1 ? "1px solid var(--border-light)" : "none", cursor: "pointer" }}
+              onMouseEnter={e => e.currentTarget.style.color = siteColor}
+              onMouseLeave={e => e.currentTarget.style.color = "var(--text-secondary)"}
+            >
+              {heading}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
   const [expandedScore, setExpandedScore] = useState(null);
 
@@ -16741,9 +20274,9 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
 
   return (
     <div className="guideline-detail">
-      <button className="detail-back-btn" onClick={() => onNavigate({ type: "site", siteId: g.siteId })}>
+      <button className="detail-back-btn" onClick={() => onNavigate(g.toolsOnly ? { type: "home" } : { type: "site", siteId: g.siteId })}>
         <IconArrowLeft />
-        Back to {site.label}
+        {g.toolsOnly ? "Back to Home" : `Back to ${site.label}`}
       </button>
 
       {/* Header */}
@@ -16753,48 +20286,89 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
           {g.category}
         </div>
         <h1 className="detail-title">{g.title}</h1>
-        {(g.authors || g.version) && (
-          <div className="detail-meta" style={{ marginBottom: 4 }}>
-            {g.version && <span>Version {g.version}</span>}
-            {g.authors && <span style={{ marginLeft: g.version ? 12 : 0 }}>Authors: {g.authors}</span>}
-          </div>
-        )}
-        {g.evidenceBase && <div className="detail-meta" style={{ marginBottom: 4 }}>Evidence base: {g.evidenceBase}</div>}
-        <div className="detail-meta">Review date: {g.updated}</div>
 
-        {/* Calculator pills */}
-        {((g.calculators && g.calculators.length > 0) || g.subsiteId === "onco-io") && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, margin: "10px 0 14px" }}>
-            {(g.calculators || []).map((calc, i) => {
-              const internalCalc = Object.values(CALCULATORS).find(c => c.label === calc.label);
-              return internalCalc ? (
-                <button key={i} onClick={() => onNavigate({ type: "calculator", calcId: internalCalc.id })}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 12px", borderRadius: 99, border: `1.5px solid ${site.color}`, background: site.accent, color: site.color, fontSize: 12.5, fontWeight: 600, cursor: "pointer", fontFamily: "DM Sans, sans-serif" }}>
-                  <span style={{ fontSize: 13 }}>{internalCalc.icon}</span>{calc.label}
-                </button>
-              ) : (
-                <a key={i} href={calc.url} target="_blank" rel="noopener noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 12px", borderRadius: 99, border: `1.5px solid ${site.color}`, background: site.accent, color: site.color, fontSize: 12.5, fontWeight: 600, textDecoration: "none" }}>
-                  <IconCalc />{calc.label}<IconExternal />
-                </a>
-              );
-            })}
-            {g.subsiteId === "onco-io" && (
-              <button onClick={() => onNavigate({ type: "calculator", calcId: "irae-grade" })}
-                style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 12px", borderRadius: 99, border: `1.5px solid ${site.color}`, background: site.accent, color: site.color, fontSize: 12.5, fontWeight: 600, cursor: "pointer", fontFamily: "DM Sans, sans-serif" }}>
-                <span>🧬</span> irAE Grade Calculator
-              </button>
+        {/* Metadata + links table */}
+        <table className="detail-meta-table">
+          <tbody>
+            {g.version && (
+              <tr>
+                <td className="dmt-label">Version</td>
+                <td>{g.version}</td>
+              </tr>
             )}
-          </div>
-        )}
+            {g.authors && (
+              <tr>
+                <td className="dmt-label">Authors</td>
+                <td>{g.authors}</td>
+              </tr>
+            )}
+            {g.evidenceBase && (
+              <tr>
+                <td className="dmt-label">Evidence base</td>
+                <td>{g.evidenceBase}</td>
+              </tr>
+            )}
+            {g.updated && (() => {
+              const reviewStatus = parseReviewDateStatus(g.updated);
+              return (
+                <tr>
+                  <td className="dmt-label">Review date</td>
+                  <td>
+                    {reviewStatus ? (
+                      <span className={`review-badge review-badge-${reviewStatus}`}>{g.updated}</span>
+                    ) : (
+                      g.updated
+                    )}
+                  </td>
+                </tr>
+              );
+            })()}
+            {((g.calculators && g.calculators.length > 0) || g.subsiteId === "onco-io") && (
+              <tr>
+                <td className="dmt-label">Links</td>
+                <td>
+                  <div className="dmt-links">
+                    {(g.calculators || []).map((calc, i) => {
+                      const internalCalc = (calc.calcId && CALCULATORS[calc.calcId]) || Object.values(CALCULATORS).find(c => c.label === calc.label);
+                      return internalCalc ? (
+                        <div className="dmt-link-row" key={i}>
+                          <a href="#" onClick={e => { e.preventDefault(); onNavigate({ type: "calculator", calcId: internalCalc.id }); }}>
+                            <IconCalc />{calc.label}
+                          </a>
+                        </div>
+                      ) : (
+                        <div className="dmt-link-row" key={i}>
+                          <a href={calc.url} target="_blank" rel="noopener noreferrer">
+                            {calc.label}<IconExternal />
+                          </a>
+                        </div>
+                      );
+                    })}
+                    {g.subsiteId === "onco-io" && (
+                      <div className="dmt-link-row">
+                        <a href="#" onClick={e => { e.preventDefault(); onNavigate({ type: "calculator", calcId: "irae-grade" }); }}>
+                          <IconCalc />irAE Grade Calculator
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
 
         <div className="detail-actions">
-          <a className="detail-btn detail-btn-primary" href={g.pdfUrl} target="_blank" rel="noopener noreferrer">
-            <IconPDF /> View Full PDF
-          </a>
-          <a className="detail-btn detail-btn-secondary" href={g.portalUrl} target="_blank" rel="noopener noreferrer">
-            <IconExternal /> Open in Web Portal
-          </a>
+          {g.pdfUrl && (
+            <a className="detail-btn detail-btn-primary" href={g.pdfUrl} target="_blank" rel="noopener noreferrer">
+              <IconPDF /> View Full PDF
+            </a>
+          )}
+          {g.portalUrl && (
+            <a className="detail-btn detail-btn-secondary" href={g.portalUrl} target="_blank" rel="noopener noreferrer">
+              <IconExternal /> Open in Web Portal
+            </a>
+          )}
           <button className="detail-btn detail-btn-secondary"
             style={starred ? { color: "#f59e0b", borderColor: "#f6d860", background: "#fef9e7" } : {}}
             onClick={e => onStar(e, g.id)}>
@@ -16804,7 +20378,11 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
         </div>
       </div>
 
+      {/* Table of contents */}
+      <GuidelineTOC sections={g.sections} siteColor={site.color} siteAccent={site.accent} />
+
       {/* Summary callout */}
+      {summaryBullets.length > 0 && (
       <div className="summary-callout" style={{ "--callout-color": site.color }}>
         <ul>
           {summaryBullets.map((b, i) => (
@@ -16833,10 +20411,11 @@ function GuidelineDetail({ g, site, starred, onStar, onNavigate }) {
           </div>
         )}
       </div>
+      )}
 
       {/* Rich sections */}
       {(g.sections || []).map((sec, i) => (
-  <div key={i} style={{ marginBottom: 16 }}>
+  <div key={i} id={`gsec-${i}`} style={{ marginBottom: 16, scrollMarginTop: 16 }}>
     <SectionBlock sec={sec} siteColor={site.color} siteAccent={site.accent}
       siteId={site.id} subsiteId={g.subsiteId}
       expandedScore={expandedScore} setExpandedScore={setExpandedScore} onNavigate={onNavigate} />
@@ -16950,6 +20529,47 @@ function RotationTable({ entries, siteColor, siteAccent }) {
     if (entry.sas) return { headerBg: "#cffafe", text: "#155e75" }; // SAS — teal
     return { headerBg: "#fde68a", text: "#92400e" }; // fellow — amber highlight (no RT competency)
   };
+
+  // Reverse-lookup: for each clin onc NTN SpR's `consultants` field (e.g. "Dr Hosni /
+  // Dr Kamlow"), find the matching consultant card(s) so we can show "SpR: [name]"
+  // underneath that consultant's own timetable. Names in `consultants` are sometimes
+  // a surname ("Dr Hosni"), sometimes a first name where the surname is unwieldy
+  // ("Dr Sangary" → Kathirgamakarthigeyan, Sangary), so match against both.
+  const normNamePart = (s) => (s || "").toLowerCase().replace(/[-\s]+/g, " ").trim();
+  const consultantMatchesRef = (consultantEntry, ref) => {
+    const refNorm = normNamePart(ref);
+    if (!refNorm) return false;
+    const [surnameRaw, restRaw] = consultantEntry.name.split(",");
+    const surname = normNamePart(surnameRaw);
+    const rest = (restRaw || "").replace(/\([^)]*\)/g, "").replace(/\bLOCUM\b/gi, "").trim();
+    const firstname = normNamePart(rest);
+    if (surname === refNorm || firstname === refNorm) return true;
+    const surnameWords = surname.split(" ").filter(Boolean);
+    const firstnameWords = firstname.split(" ").filter(Boolean);
+    const refWords = refNorm.split(" ").filter(Boolean);
+    if (refWords.length && refWords.every(w => surnameWords.includes(w))) return true;
+    if (refWords.length === 1 && firstnameWords.includes(refWords[0])) return true;
+    return false;
+  };
+  const sprDisplayName = (name) => {
+    const [surname, rest] = name.split(",");
+    return rest ? `${rest.trim()} ${surname.trim()}` : name;
+  };
+  const sprPairings = new Map(); // consultant entry -> [SpR display names]
+  entries.forEach(e => {
+    if (e.role === "consultant" || e.ntn !== true || e.onc === "med" || !e.consultants) return;
+    const refs = e.consultants.split("/").map(s => s.replace(/^\s*Dr\.?\s*/i, "").trim()).filter(Boolean);
+    refs.forEach(ref => {
+      const match = entries.find(c => c.role === "consultant" && consultantMatchesRef(c, ref));
+      if (match) {
+        if (!sprPairings.has(match)) sprPairings.set(match, []);
+        const list = sprPairings.get(match);
+        const dn = sprDisplayName(e.name);
+        if (!list.includes(dn)) list.push(dn);
+      }
+    });
+  });
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       <div style={{ position: "relative" }}>
@@ -16989,6 +20609,7 @@ function RotationTable({ entries, siteColor, siteAccent }) {
       {filtered.map((entry, i) => {
         const badge = getBadge(entry);
         const oncPill = getOncPill(entry);
+        const pairedSprs = entry.role === "consultant" ? sprPairings.get(entry) : null;
         const cardStyle = getCardStyle(entry);
         return (
           <div key={i} style={{ border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden", background: "var(--surface)" }}>
@@ -17013,10 +20634,14 @@ function RotationTable({ entries, siteColor, siteAccent }) {
               </div>
             )}
             <div style={{ overflowX: "auto" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 500 }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+                <colgroup>
+                  <col style={{ width: "10%" }} />
+                  {days.map(d => <col key={d} style={{ width: "18%" }} />)}
+                </colgroup>
                 <thead>
                   <tr style={{ background: "var(--bg)" }}>
-                    <th style={{ padding: "4px 10px", fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", width: 32, borderRight: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }} />
+                    <th style={{ padding: "4px 10px", fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", borderRight: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }} />
                     {days.map(d => (
                       <th key={d} style={{ padding: "4px 8px", fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "Sora, sans-serif", textAlign: "left", borderRight: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }}>{dayLabels[d]}</th>
                     ))}
@@ -17029,8 +20654,13 @@ function RotationTable({ entries, siteColor, siteAccent }) {
                       {days.map(d => {
                         const text = entry.schedule?.[d]?.[period] || "—";
                         const isNwd = text === "NWD";
+                        const lines = (text === "—" || isNwd) ? [text] : text.split(/\s*\/\s*/).filter(Boolean);
                         return (
-                          <td key={d} style={{ padding: "5px 8px", fontSize: 11.5, color: isNwd ? "var(--text-muted)" : "var(--text-secondary)", background: isNwd ? "var(--bg)" : "transparent", fontStyle: isNwd ? "italic" : "normal", verticalAlign: "top", borderRight: "1px solid var(--border-light)", lineHeight: 1.4 }}>{text}</td>
+                          <td key={d} style={{ padding: "5px 8px", fontSize: 11.5, color: isNwd ? "var(--text-muted)" : "var(--text-secondary)", background: isNwd ? "var(--bg)" : "transparent", fontStyle: isNwd ? "italic" : "normal", verticalAlign: "top", borderRight: "1px solid var(--border-light)", lineHeight: 1.4, wordBreak: "break-word" }}>
+                            {lines.map((line, li) => (
+                              <div key={li} style={{ marginBottom: li < lines.length - 1 ? 3 : 0 }}>{line}</div>
+                            ))}
+                          </td>
                         );
                       })}
                     </tr>
@@ -17038,6 +20668,15 @@ function RotationTable({ entries, siteColor, siteAccent }) {
                 </tbody>
               </table>
             </div>
+            {pairedSprs && pairedSprs.length > 0 && (
+              <div style={{ borderTop: "1px solid var(--border-light)", background: "var(--bg)" }}>
+                {pairedSprs.map((sprName, si) => (
+                  <div key={si} style={{ padding: "6px 14px", fontSize: 12, color: "var(--text-secondary)", borderBottom: si < pairedSprs.length - 1 ? "1px solid var(--border-light)" : "none" }}>
+                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>SpR:</span> {sprName}
+                  </div>
+                ))}
+              </div>
+            )}
             {entry.email && (
               <div style={{ padding: "7px 14px", borderTop: "1px solid var(--border-light)", background: "var(--bg)", display: "flex", alignItems: "center", gap: 6, fontSize: 12 }}>
                 <span style={{ fontWeight: 600, color: "var(--text-muted)", fontFamily: "Sora, sans-serif", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em" }}>Email</span>
@@ -17056,6 +20695,8 @@ function RotationTable({ entries, siteColor, siteAccent }) {
 function ContactDirectory({ entries, siteColor, siteAccent }) {
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [openEntries, setOpenEntries] = useState({});
+  const toggleEntry = (key) => setOpenEntries(s => ({ ...s, [key]: !s[key] }));
 
   const CATEGORY_META = {
     ward:      { label: "Wards",          color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0" },
@@ -17073,6 +20714,19 @@ function ContactDirectory({ entries, siteColor, siteAccent }) {
     { id: "all", label: "All" },
     ...Object.entries(CATEGORY_META).map(([id, m]) => ({ id, label: m.label })),
   ];
+
+  const hasActiveFilters = activeFilter !== "all" || query.trim() !== "";
+  const clearFilters = () => { setActiveFilter("all"); setQuery(""); };
+
+  const selectStyle = {
+    padding: "7px 30px 7px 11px", borderRadius: 8, border: "1px solid var(--border)",
+    background: "var(--bg)", color: "var(--text-primary)", fontSize: 12.5,
+    fontFamily: "Sora, sans-serif", cursor: "pointer", outline: "none",
+    appearance: "none", WebkitAppearance: "none", MozAppearance: "none",
+    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
+    backgroundRepeat: "no-repeat", backgroundPosition: "right 9px center", backgroundSize: "13px",
+    minWidth: 170,
+  };
 
   const q = query.toLowerCase().trim();
   const filtered = entries.filter(e => {
@@ -17128,27 +20782,31 @@ function ContactDirectory({ entries, siteColor, siteAccent }) {
         )}
       </div>
 
-      {/* Category filter pills */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-        {filters.map(f => {
-          const meta = CATEGORY_META[f.id];
-          const active = activeFilter === f.id;
-          return (
-            <button key={f.id} onClick={() => setActiveFilter(f.id)}
-              style={{
-                padding: "4px 12px", borderRadius: 99,
-                border: `1px solid ${active && meta ? meta.border : "var(--border)"}`,
-                background: active ? (meta ? meta.bg : siteAccent) : "var(--bg)",
-                color: active ? (meta ? meta.color : siteColor) : "var(--text-muted)",
-                fontSize: 12, fontWeight: active ? 700 : 400,
-                fontFamily: "Sora, sans-serif", cursor: "pointer",
-                transition: "all 0.15s",
-              }}
-            >
-              {f.label}
-            </button>
-          );
-        })}
+      {/* Category filter dropdown */}
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
+        <select
+          value={activeFilter}
+          onChange={e => setActiveFilter(e.target.value)}
+          style={selectStyle}
+        >
+          <option value="all">Select Category: All</option>
+          {filters.filter(f => f.id !== "all").map(f => (
+            <option key={f.id} value={f.id}>{f.label}</option>
+          ))}
+        </select>
+
+        {hasActiveFilters && (
+          <button onClick={clearFilters}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 4,
+              background: "none", border: "none", cursor: "pointer",
+              color: "var(--text-muted)", fontSize: 12, fontFamily: "Sora, sans-serif",
+              textDecoration: "underline", padding: "4px 2px",
+            }}
+          >
+            <IconClose /> Clear filters
+          </button>
+        )}
       </div>
 
       {/* Results count */}
@@ -17162,110 +20820,137 @@ function ContactDirectory({ entries, siteColor, siteAccent }) {
           No contacts found.
         </div>
       ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {filtered.map((entry, i) => {
             const cat = CATEGORY_META[entry.category] || CATEGORY_META.ward;
             const nicData = WARD_NIC_CONTACTS[entry.name] || null;
+            const key = `${entry.name}-${i}`;
+
+            // Build labeled contact rows; long numbers (mobiles) go last
+            const isLong = n => n.replace(/\s/g, "").length > 6;
+            const numberRows = [];
+            if (entry.drsOffice)      numberRows.push({ label: "Drs Office",      num: entry.drsOffice });
+            if (entry.tel1)           numberRows.push({ label: "Tel 1",           num: entry.tel1 });
+            if (entry.tel2)           numberRows.push({ label: "Tel 2",           num: entry.tel2 });
+            if (entry.tel3)           numberRows.push({ label: "Tel 3",           num: entry.tel3 });
+            if (entry.rapidResponse)  numberRows.push({ label: "Rapid Response",  num: entry.rapidResponse });
+            if (!numberRows.length && entry.numbers) {
+              entry.numbers.forEach((n, idx) => {
+                if (typeof n === "object") numberRows.push({ label: n.label, num: n.num });
+                else numberRows.push({ label: `Number ${idx + 1}`, num: n });
+              });
+            }
+            if (nicData) {
+              numberRows.push({ label: "NIC Mobile", num: nicData.nic });
+              if (nicData.redPhone) numberRows.push({ label: "Red Phone", num: nicData.redPhone });
+            }
+            numberRows.sort((a, b) => isLong(a.num) - isLong(b.num));
+
+            // Build detail table rows for the dropdown, drug-reference style
+            const tableRows = [];
+            if (entry.code) tableRows.push({ label: "Ward Code", value: entry.code, type: "text" });
+            if (entry.spec) tableRows.push({ label: "Specialty", value: entry.spec, type: "text" });
+            if (entry.location) tableRows.push({ label: "Location", value: entry.location, type: "text" });
+            if (entry.note) tableRows.push({ label: "Note", value: entry.note, type: "text" });
+            if (numberRows.length) tableRows.push({ label: "Contacts", value: numberRows, type: "contacts" });
+            if (entry.consultants && entry.consultants.length > 0) tableRows.push({ label: "Consultants", value: entry.consultants, type: "consultants" });
+
+            const expandable = tableRows.length > 0;
+            const isOpen = expandable && !!openEntries[key];
+
             return (
-              <div key={i} style={{
+              <div key={key} style={{
                 background: "var(--surface)",
-                border: "1px solid var(--border)", borderLeft: `3px solid ${cat.border}`,
-                borderRadius: 7, overflow: "hidden",
+                border: `1px solid ${cat.border}`,
+                borderRadius: 8, overflow: "hidden",
               }}>
-                {/* Header: name + code | type pill + location */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 12px", gap: 8 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 7, minWidth: 0, flexWrap: "wrap" }}>
-                    <span style={{ fontWeight: 600, fontSize: 13.5, fontFamily: "Sora, sans-serif", color: "var(--text-primary)" }}>
+                {/* Header row — click to expand/collapse */}
+                <div
+                  onClick={expandable ? () => toggleEntry(key) : undefined}
+                  style={{
+                    display: "grid", gridTemplateColumns: "1fr auto",
+                    padding: "10px 14px", gap: 8, cursor: expandable ? "pointer" : "default",
+                    background: isOpen ? cat.bg : "var(--surface)",
+                    transition: "background 0.15s",
+                    alignItems: "center",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, minWidth: 0, flexWrap: "wrap" }}>
+                    <span style={{ fontWeight: 700, fontSize: 14, fontFamily: "Sora, sans-serif", color: "var(--text-primary)" }}>
                       {entry.name}
                     </span>
-                    {entry.code && (
-                      <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4, background: "var(--bg)", border: "1px solid var(--border)", color: "var(--text-muted)", fontFamily: "Sora, sans-serif" }}>
-                        {entry.code}
-                      </span>
-                    )}
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5, flexShrink: 0, flexWrap: "wrap", justifyContent: "flex-end" }}>
-                    {entry.spec && (
-                      <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4, background: "var(--bg)", border: "1px solid var(--border)", color: "var(--text-muted)", fontFamily: "Sora, sans-serif", whiteSpace: "nowrap" }}>
-                        {entry.spec}
-                      </span>
-                    )}
+                  {/* Right: category pill + chevron */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
                     <span style={{ fontSize: 11, padding: "1px 7px", borderRadius: 99, background: cat.bg, color: cat.color, border: `1px solid ${cat.border}`, fontWeight: 600, fontFamily: "Sora, sans-serif", whiteSpace: "nowrap" }}>
                       {cat.label}
                     </span>
-                    {entry.location && (
-                      <span style={{ fontSize: 11, color: "var(--text-muted)", fontFamily: "Sora, sans-serif", whiteSpace: "nowrap" }}>📍 {entry.location}</span>
+                    {expandable && (
+                      <span style={{
+                        display: "flex", alignSelf: "center", flexShrink: 0,
+                        color: isOpen ? cat.color : "var(--text-muted)",
+                        transform: isOpen ? "rotate(90deg)" : "none",
+                        transition: "transform 0.15s",
+                      }}>
+                        <IconChevronRight />
+                      </span>
                     )}
                   </div>
                 </div>
-                {/* Hairline */}
-                <div style={{ height: 1, background: "var(--border)" }} />
-                {/* Body */}
-                <div style={{ padding: "8px 12px" }}>
-                  {entry.note && (
-                    <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginBottom: 6, lineHeight: 1.5 }}>{entry.note}</div>
-                  )}
-                  {(() => {
-                    // Build labeled contact rows; long numbers (mobiles) go last
-                    const isLong = n => n.replace(/\s/g, "").length > 6;
-                    const rows = [];
-                    if (entry.drsOffice)      rows.push({ label: "Drs Office",      num: entry.drsOffice });
-                    if (entry.tel1)           rows.push({ label: "Tel 1",           num: entry.tel1 });
-                    if (entry.tel2)           rows.push({ label: "Tel 2",           num: entry.tel2 });
-                    if (entry.tel3)           rows.push({ label: "Tel 3",           num: entry.tel3 });
-                    if (entry.rapidResponse)  rows.push({ label: "Rapid Response",  num: entry.rapidResponse });
-                    if (!rows.length && entry.numbers) {
-                      entry.numbers.forEach((n, idx) => {
-                        if (typeof n === "object") rows.push({ label: n.label, num: n.num });
-                        else rows.push({ label: `Number ${idx + 1}`, num: n });
-                      });
-                    }
-                    if (nicData) {
-                      rows.push({ label: "NIC Mobile", num: nicData.nic });
-                      if (nicData.redPhone) rows.push({ label: "Red Phone", num: nicData.redPhone });
-                    }
-                    if (!rows.length) return null;
-                    // Sort: short numbers first, long (mobile) numbers last
-                    rows.sort((a, b) => isLong(a.num) - isLong(b.num));
-                    return (
-                      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
-                        <thead>
-                          <tr>
-                            <th style={{ padding: "2px 8px 4px 0", textAlign: "left", color: "var(--text-muted)", fontWeight: 600, fontFamily: "Sora, sans-serif", fontSize: 10.5, borderBottom: "1px solid var(--border)", whiteSpace: "nowrap" }}>Name</th>
-                            <th style={{ padding: "2px 0 4px 8px", textAlign: "right", color: "var(--text-muted)", fontWeight: 600, fontFamily: "Sora, sans-serif", fontSize: 10.5, borderBottom: "1px solid var(--border)" }}>Number</th>
+
+                {/* Expanded body — detail table */}
+                {isOpen && (
+                  <div style={{ borderTop: `1px solid ${cat.border}` }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                      <tbody>
+                        {tableRows.map((row, ri) => (
+                          <tr key={ri} style={{
+                            borderBottom: ri < tableRows.length - 1 ? "1px solid var(--border-light)" : "none",
+                          }}>
+                            <td style={{
+                              padding: "8px 14px", fontSize: 11, fontWeight: 700,
+                              color: "var(--text-muted)", fontFamily: "Sora, sans-serif",
+                              width: "34%", verticalAlign: "top",
+                              textTransform: "uppercase", letterSpacing: "0.03em",
+                            }}>
+                              {row.label}
+                            </td>
+                            <td style={{
+                              padding: "8px 14px", fontSize: 12.5,
+                              color: "var(--text-secondary)", lineHeight: 1.5,
+                            }}>
+                              {row.type === "contacts" ? (
+                                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                                  {row.value.map((r, ni) => (
+                                    <div key={ni} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                                      <span style={{ color: "var(--text-secondary)", fontSize: 12 }}>{r.label}</span>
+                                      <a href={`tel:${r.num.replace(/\s/g, "")}`} style={{ display: "inline-flex", alignItems: "center", gap: 3, padding: "2px 8px", background: cat.bg, border: `1px solid ${cat.border}`, borderRadius: 5, color: cat.color, fontWeight: 700, fontSize: 12, fontFamily: "Sora, sans-serif", textDecoration: "none", whiteSpace: "nowrap" }}>
+                                        ☎ {r.num}
+                                      </a>
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : row.type === "consultants" ? (
+                                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                                  {row.value.map((c, ci) => (
+                                    <div key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 11.5, lineHeight: 1.45 }}>
+                                      <span style={{ color: "var(--text-muted)", flexShrink: 0 }}>•</span>
+                                      <span style={{ color: "var(--text-secondary)" }}>
+                                        {c.name}
+                                        <span style={{ color: "var(--text-muted)", fontFamily: "Sora, sans-serif", fontSize: 11, marginLeft: 4 }}>({c.code})</span>
+                                        {c.specialty && <span style={{ color: "var(--text-muted)" }}> — {c.specialty}</span>}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : row.value}
+                            </td>
                           </tr>
-                        </thead>
-                        <tbody>
-                          {rows.map((row, ri) => (
-                            <tr key={ri} style={{ borderBottom: ri < rows.length - 1 ? "1px solid var(--border-light, #f0f0f0)" : "none" }}>
-                              <td style={{ padding: "4px 8px 4px 0", color: "var(--text-secondary)", fontSize: 12, whiteSpace: "nowrap" }}>{row.label}</td>
-                              <td style={{ padding: "4px 0 4px 8px", textAlign: "right" }}>
-                                <a href={`tel:${row.num.replace(/\s/g, "")}`} style={{ display: "inline-flex", alignItems: "center", gap: 3, padding: "2px 8px", background: cat.bg, border: `1px solid ${cat.border}`, borderRadius: 5, color: cat.color, fontWeight: 700, fontSize: 12, fontFamily: "Sora, sans-serif", textDecoration: "none", whiteSpace: "nowrap" }}>
-                                  ☎ {row.num}
-                                </a>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    );
-                  })()}
-                  {/* Consultants for PA entries */}
-                  {entry.consultants && entry.consultants.length > 0 && (
-                    <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 2 }}>
-                      {entry.consultants.map((c, ci) => (
-                        <div key={ci} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 11.5, lineHeight: 1.45 }}>
-                          <span style={{ color: "var(--text-muted)", flexShrink: 0 }}>•</span>
-                          <span style={{ color: "var(--text-secondary)" }}>
-                            {c.name}
-                            <span style={{ color: "var(--text-muted)", fontFamily: "Sora, sans-serif", fontSize: 11, marginLeft: 4 }}>({c.code})</span>
-                            {c.specialty && <span style={{ color: "var(--text-muted)" }}> — {c.specialty}</span>}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -17300,7 +20985,11 @@ function DirectoryPage({ onNavigate }) {
   // Drug table function
 function DrugRegistry({ entries, siteColor, siteAccent }) {
   const [query, setQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [typeFilter, setTypeFilter] = useState("all");        // all | sact | supportive
+  const [subTypeFilter, setSubTypeFilter] = useState("all");  // category id, e.g. chemo, antiemetic
+  const [classFilter, setClassFilter] = useState("all");      // base drug class, e.g. "Alkylating agent"
+  const [openDrugs, setOpenDrugs] = useState({});
+  const toggleDrug = (key) => setOpenDrugs(s => ({ ...s, [key]: !s[key] }));
 
   const CATEGORY_META = {
     chemo:        { label: "Cytotoxic chemotherapy", color: "#742a2a", bg: "#fff5f5", border: "#fc8181" },
@@ -17308,6 +20997,7 @@ function DrugRegistry({ entries, siteColor, siteAccent }) {
     immunotherapy:{ label: "Immunotherapy / ICI",     color: "#276749", bg: "#f0fff4", border: "#9ae6b4" },
     hormone:      { label: "Hormonal / endocrine",    color: "#1a6b8a", bg: "#e8f4f8", border: "#90cde0" },
     supportive:   { label: "Supportive / other",      color: "#553c9a", bg: "#f3effe", border: "#c4b5fd" },
+    antiemetic:   { label: "Antiemetics",              color: "#553c9a", bg: "#f3effe", border: "#c4b5fd" },
   };
 
   const RISK_META = {
@@ -17325,22 +21015,62 @@ function DrugRegistry({ entries, siteColor, siteAccent }) {
     hyperphosphataemia: { label: "Hyperphosphataemia",     icon: "🧪" },
     ppe:           { label: "Palmar-plantar erythrodysaesthesia (PPE)", icon: "✋" },
     ocular_tox:    { label: "Ocular toxicity",             icon: "👁" },
+    sedation:      { label: "Sedation risk",               icon: "😴" },
+    extrapyramidal: { label: "Extrapyramidal / dystonic reactions", icon: "🥴" },
   };
 
-  const filters = [
-    { id: "all", label: "All" },
-    ...Object.entries(CATEGORY_META).map(([id, m]) => ({ id, label: m.label.split(" / ")[0].split(" ")[0] })),
-  ];
+  // Broad type groupings for the top-level "Select Type" dropdown
+  const TYPE_GROUPS = {
+    sact:       { label: "SACT", categories: ["chemo", "targeted", "immunotherapy", "hormone"] },
+    supportive: { label: "Supportive", categories: ["supportive", "antiemetic"] },
+  };
+  // Label for the 3rd-level "class" dropdown, per category
+  const CLASS_LEVEL_LABEL = {
+    chemo: "Cytotoxic Class",
+    targeted: "Targeted Therapy Class",
+    immunotherapy: "Immunotherapy Class",
+    hormone: "Hormonal Class",
+    antiemetic: "Antiemetic Class",
+    supportive: "Supportive Class",
+  };
+  // Strip trailing qualifiers like "(oral)" / "(2nd gen)" so near-duplicate
+  // classes collapse into one bucket in the class dropdown
+  const baseClass = (dc) => (dc || "").replace(/\s*\([^)]*\)\s*$/, "").trim();
+
+  const availableTypes = Object.entries(TYPE_GROUPS)
+    .filter(([, g]) => g.categories.some(c => entries.some(e => e.category === c)));
+  const availableSubTypes = typeFilter !== "all"
+    ? TYPE_GROUPS[typeFilter].categories.filter(c => entries.some(e => e.category === c))
+    : [];
+  const availableClasses = subTypeFilter !== "all"
+    ? [...new Set(entries.filter(e => e.category === subTypeFilter).map(e => baseClass(e.drugClass)).filter(Boolean))]
+        .sort((a, b) => a.localeCompare(b))
+    : [];
+
+  const hasActiveFilters = typeFilter !== "all" || query.trim() !== "";
+  const clearFilters = () => { setTypeFilter("all"); setSubTypeFilter("all"); setClassFilter("all"); setQuery(""); };
+
+  const selectStyle = {
+    padding: "7px 30px 7px 11px", borderRadius: 8, border: "1px solid var(--border)",
+    background: "var(--bg)", color: "var(--text-primary)", fontSize: 12.5,
+    fontFamily: "Sora, sans-serif", cursor: "pointer", outline: "none",
+    appearance: "none", WebkitAppearance: "none", MozAppearance: "none",
+    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
+    backgroundRepeat: "no-repeat", backgroundPosition: "right 9px center", backgroundSize: "13px",
+    minWidth: 170,
+  };
 
   const q = query.toLowerCase().trim();
   const filtered = entries.filter(e => {
-    const matchesFilter = activeFilter === "all" || e.category === activeFilter;
+    const matchesType = typeFilter === "all" || TYPE_GROUPS[typeFilter].categories.includes(e.category);
+    const matchesSubType = subTypeFilter === "all" || e.category === subTypeFilter;
+    const matchesClass = classFilter === "all" || baseClass(e.drugClass) === classFilter;
     const matchesQuery = !q ||
       e.name.toLowerCase().includes(q) ||
       (e.brand && e.brand.toLowerCase().includes(q)) ||
       (e.drugClass && e.drugClass.toLowerCase().includes(q)) ||
       (e.notes && e.notes.toLowerCase().includes(q));
-    return matchesFilter && matchesQuery;
+    return matchesType && matchesSubType && matchesClass && matchesQuery;
   });
 
   // Group by first letter for directory feel
@@ -17353,6 +21083,27 @@ function DrugRegistry({ entries, siteColor, siteAccent }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+
+      {/* Quick reference disclaimer + BNF link */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, background: "#ebf8ff", border: "1px solid #90cdf4", borderRadius: 8, padding: "10px 13px", flexWrap: "wrap" }}>
+        <span style={{ color: "#2b6cb0", flexShrink: 0, fontSize: 13 }}>ℹ</span>
+        <span style={{ flex: 1, minWidth: 200, fontSize: 12.5, color: "#2b6cb0", lineHeight: 1.5 }}>
+          This is a quick reference only. For full details, indications, dosing and cautions, see individual drug profiles on the <strong>BNF</strong> (British National Formulary).
+        </span>
+        <a
+          href="https://bnf.nice.org.uk/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0,
+            padding: "6px 14px", borderRadius: 99, background: "#2b6cb0", color: "#fff",
+            fontSize: 12.5, fontWeight: 700, fontFamily: "Sora, sans-serif",
+            textDecoration: "none", whiteSpace: "nowrap",
+          }}
+        >
+          <IconPill size={13} /> Open BNF <IconExternal />
+        </a>
+      </div>
 
       {/* Search bar */}
       <div style={{ position: "relative" }}>
@@ -17383,26 +21134,53 @@ function DrugRegistry({ entries, siteColor, siteAccent }) {
         )}
       </div>
 
-      {/* Category filter pills */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-        {filters.map(f => {
-          const meta = CATEGORY_META[f.id];
-          const active = activeFilter === f.id;
-          return (
-            <button key={f.id} onClick={() => setActiveFilter(f.id)}
-              style={{
-                padding: "4px 12px", borderRadius: 99, border: `1px solid ${active && meta ? meta.border : "var(--border)"}`,
-                background: active ? (meta ? meta.bg : siteAccent) : "var(--bg)",
-                color: active ? (meta ? meta.color : siteColor) : "var(--text-muted)",
-                fontSize: 12, fontWeight: active ? 700 : 400,
-                fontFamily: "Sora, sans-serif", cursor: "pointer",
-                transition: "all 0.15s",
-              }}
-            >
-              {f.label}
-            </button>
-          );
-        })}
+      {/* Cascading type / class dropdowns */}
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
+        <select
+          value={typeFilter}
+          onChange={e => { setTypeFilter(e.target.value); setSubTypeFilter("all"); setClassFilter("all"); }}
+          style={selectStyle}
+        >
+          <option value="all">Select Type: All</option>
+          {availableTypes.map(([id, g]) => <option key={id} value={id}>{g.label}</option>)}
+        </select>
+
+        {typeFilter !== "all" && (
+          <select
+            value={subTypeFilter}
+            onChange={e => { setSubTypeFilter(e.target.value); setClassFilter("all"); }}
+            style={selectStyle}
+          >
+            <option value="all">Select {TYPE_GROUPS[typeFilter].label} Type: All</option>
+            {availableSubTypes.map(id => (
+              <option key={id} value={id}>{CATEGORY_META[id].label}</option>
+            ))}
+          </select>
+        )}
+
+        {subTypeFilter !== "all" && availableClasses.length > 0 && (
+          <select
+            value={classFilter}
+            onChange={e => setClassFilter(e.target.value)}
+            style={selectStyle}
+          >
+            <option value="all">Select {CLASS_LEVEL_LABEL[subTypeFilter] || "Class"}: All</option>
+            {availableClasses.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+        )}
+
+        {hasActiveFilters && (
+          <button onClick={clearFilters}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 4,
+              background: "none", border: "none", cursor: "pointer",
+              color: "var(--text-muted)", fontSize: 12, fontFamily: "Sora, sans-serif",
+              textDecoration: "underline", padding: "4px 2px",
+            }}
+          >
+            <IconClose /> Clear filters
+          </button>
+        )}
       </div>
 
       {/* Results count */}
@@ -17428,64 +21206,123 @@ function DrugRegistry({ entries, siteColor, siteAccent }) {
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {drugs.sort((a, b) => a.name.localeCompare(b.name)).map((drug, i) => {
                   const cat = CATEGORY_META[drug.category] || CATEGORY_META.supportive;
+                  const key = `${letter}-${drug.name}`;
+
+                  // Build detail table rows for the dropdown
+                  const tableRows = [];
+                  if (drug.brand) tableRows.push({ label: "Brand Name", value: drug.brand, type: "text" });
+                  if (drug.drugClass) tableRows.push({ label: "Mechanism", value: `${cat.label}: ${drug.drugClass}`, type: "text" });
+                  if (drug.notes) {
+                    // Split on ";" for top-level bullets, then split each bullet on
+                    // an em dash ("—") into a bullet + an indented sub-bullet
+                    const noteItems = (Array.isArray(drug.notes) ? drug.notes : drug.notes.split(";"))
+                      .map(s => s.trim()).filter(Boolean)
+                      .map(s => {
+                        const dashIdx = s.indexOf("—");
+                        if (dashIdx !== -1) {
+                          return { text: s.slice(0, dashIdx).trim(), sub: s.slice(dashIdx + 1).trim() };
+                        }
+                        return { text: s };
+                      });
+                    tableRows.push({ label: "Notes", value: noteItems, type: "list" });
+                  }
+                  if (drug.risks && drug.risks.length) {
+                    const riskItems = drug.risks.map(r => RISK_META[r]?.label).filter(Boolean);
+                    if (riskItems.length) tableRows.push({ label: "RISKS/SAEs", value: riskItems, type: "list" });
+                  }
+
+                  const expandable = tableRows.length > 0;
+                  const isOpen = expandable && !!openDrugs[key];
                   return (
                     <div key={i} style={{
-                      display: "grid", gridTemplateColumns: "1fr auto",
-                      padding: "10px 14px", background: "var(--surface)",
-                      border: `1px solid var(--border)`, borderLeft: `3px solid ${cat.border}`,
-                      borderRadius: 8, gap: 8,
+                      background: "var(--surface)",
+                      border: `1px solid ${cat.border}`,
+                      borderRadius: 8,
+                      overflow: "hidden",
                     }}>
-                      {/* Left: name + class + notes */}
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+                      {/* Header row — click to expand/collapse */}
+                      <div
+                        onClick={expandable ? () => toggleDrug(key) : undefined}
+                        style={{
+                          display: "grid", gridTemplateColumns: "1fr auto",
+                          padding: "10px 14px", gap: 8, cursor: expandable ? "pointer" : "default",
+                          background: isOpen ? cat.bg : "var(--surface)",
+                          transition: "background 0.15s",
+                          alignItems: "center",
+                        }}
+                      >
+                        {/* Left: name only */}
+                        <div style={{ minWidth: 0, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                           <span style={{ fontWeight: 700, fontSize: 14, fontFamily: "Sora, sans-serif", color: "var(--text-primary)" }}>
                             {drug.name}
                           </span>
-                          {drug.brand && (
-                            <span style={{ fontSize: 12, color: "var(--text-muted)", fontStyle: "italic" }}>
-                              {drug.brand}
-                            </span>
-                          )}
                         </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 3, flexWrap: "wrap" }}>
-                          {/* Category pill */}
+                        {/* Right: category pill + chevron */}
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
                           <span style={{
                             fontSize: 11, padding: "1px 7px", borderRadius: 99,
                             background: cat.bg, color: cat.color, border: `1px solid ${cat.border}`,
-                            fontWeight: 600, fontFamily: "Sora, sans-serif",
+                            fontWeight: 600, fontFamily: "Sora, sans-serif", whiteSpace: "nowrap",
                           }}>
                             {cat.label}
                           </span>
-                          {/* Drug class */}
-                          {drug.drugClass && (
-                            <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                              {drug.drugClass}
+                          {expandable && (
+                            <span style={{
+                              display: "flex", alignSelf: "center", flexShrink: 0,
+                              color: isOpen ? cat.color : "var(--text-muted)",
+                              transform: isOpen ? "rotate(90deg)" : "none",
+                              transition: "transform 0.15s",
+                            }}>
+                              <IconChevronRight />
                             </span>
                           )}
                         </div>
-                        {drug.notes && (
-                          <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 4, lineHeight: 1.5 }}>
-                            {drug.notes}
-                          </div>
-                        )}
                       </div>
-                      {/* Right: risk badges */}
-                      {drug.risks && drug.risks.length > 0 && (
-                        <div style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "flex-end", flexShrink: 0 }}>
-                          {drug.risks.map((risk, ri) => {
-                            const rm = RISK_META[risk];
-                            if (!rm) return null;
-                            return (
-                              <span key={ri} style={{
-                                fontSize: 11, padding: "2px 7px", borderRadius: 4,
-                                background: "var(--bg)", border: "1px solid var(--border)",
-                                color: "var(--text-secondary)", whiteSpace: "nowrap",
-                                fontFamily: "Sora, sans-serif",
-                              }}>
-                                {rm.icon} {rm.label}
-                              </span>
-                            );
-                          })}
+
+                      {/* Expanded body — detail table */}
+                      {isOpen && (
+                        <div style={{ borderTop: `1px solid ${cat.border}` }}>
+                          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                            <tbody>
+                              {tableRows.map((row, ri) => (
+                                <tr key={row.key || ri} style={{
+                                  borderBottom: ri < tableRows.length - 1 ? "1px solid var(--border-light)" : "none",
+                                }}>
+                                  <td style={{
+                                    padding: "8px 14px", fontSize: 11, fontWeight: 700,
+                                    color: "var(--text-muted)", fontFamily: "Sora, sans-serif",
+                                    width: "34%", verticalAlign: "top",
+                                    textTransform: "uppercase", letterSpacing: "0.03em",
+                                  }}>
+                                    {row.label}
+                                  </td>
+                                  <td style={{
+                                    padding: "8px 14px", fontSize: 12.5,
+                                    color: "var(--text-secondary)", lineHeight: 1.5,
+                                  }}>
+                                    {row.type === "list" ? (
+                                      <ul style={{ margin: 0, paddingLeft: 16, display: "flex", flexDirection: "column", gap: 3 }}>
+                                        {row.value.map((item, vi) => (
+                                          typeof item === "string" ? (
+                                            <li key={vi}>{item}</li>
+                                          ) : (
+                                            <li key={vi}>
+                                              {item.text}
+                                              {item.sub && (
+                                                <ul style={{ margin: "3px 0 0", paddingLeft: 16 }}>
+                                                  <li>{item.sub}</li>
+                                                </ul>
+                                              )}
+                                            </li>
+                                          )
+                                        ))}
+                                      </ul>
+                                    ) : row.value}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                         </div>
                       )}
                     </div>
